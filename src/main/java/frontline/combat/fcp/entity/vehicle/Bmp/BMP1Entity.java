@@ -78,6 +78,15 @@ public class BMP1Entity extends CamoVehicleBase {
             setSteeringAngle(compound.getFloat("SteeringAngle"));
         }
     }
+    public boolean GetWeaponState(String WeaponName, int Count) {
+        if (getAmmoCount(WeaponName) == Count)
+            return true;
+        else if (getAmmoCount(WeaponName) < Count)
+            return true;
+        else
+            return false;
+
+    }
 
     @Override
     public void baseTick() {

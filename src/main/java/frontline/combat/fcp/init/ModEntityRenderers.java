@@ -2,17 +2,30 @@ package frontline.combat.fcp.init;
 
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.renderer.Bmp.BMP1Renderer;
+import frontline.combat.fcp.client.renderer.GazTigr.GazTigrGLRenderer;
+import frontline.combat.fcp.client.renderer.GazTigr.GazTigrMGRenderer;
+import frontline.combat.fcp.client.renderer.GazTigr.GazTigrRWSRenderer;
+import frontline.combat.fcp.client.renderer.GazTigr.GazTigrRenderer;
+import frontline.combat.fcp.client.renderer.Kamaz.KamazRenderer;
 import frontline.combat.fcp.client.renderer.Lav.Lav25Renderer;
 import frontline.combat.fcp.client.renderer.Littlebird.LittlebirdArmedRenderer;
 import frontline.combat.fcp.client.renderer.Littlebird.LittlebirdRenderer;
+import frontline.combat.fcp.client.renderer.Projectile.Hellfire.WireGuidedHellfireRenderer;
+import frontline.combat.fcp.client.renderer.Projectile.Malyutka.MalyutkaRenderer;
+import frontline.combat.fcp.client.renderer.Projectile.Sidewinder.SidewinderRenderer;
 import frontline.combat.fcp.client.renderer.Stryker.StrykerM2Renderer;
 import frontline.combat.fcp.client.renderer.Stryker.StrykerMGSRenderer;
+import frontline.combat.fcp.client.renderer.T72av.T72AVRenderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxBMPRenderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxRenderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxRocketPodRenderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxSpg9Renderer;
 import frontline.combat.fcp.client.renderer.Uaz.UAZDSHKARenderer;
 import frontline.combat.fcp.client.renderer.Uaz.UAZRenderer;
+import frontline.combat.fcp.client.renderer.Ural.UralGradRenderer;
+import frontline.combat.fcp.client.renderer.Ural.UralRenderer;
+import frontline.combat.fcp.client.renderer.Viper.ViperRenderer;
+import frontline.combat.fcp.client.renderer.Projectile.Hellfire.LockOnHellfireRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -38,5 +51,27 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.BMP1.get(), BMP1Renderer::new);
 
         event.registerEntityRenderer(ModEntities.LAV25.get(), Lav25Renderer::new);
+
+        event.registerEntityRenderer(ModEntities.T72AV.get(), T72AVRenderer::new);
+
+        event.registerEntityRenderer(ModEntities.URAL.get(), UralRenderer::new);
+        event.registerEntityRenderer(ModEntities.URAL_GRAD.get(), UralGradRenderer::new);
+
+        event.registerEntityRenderer(ModEntities.KAMAZ.get(), KamazRenderer::new);
+
+        event.registerEntityRenderer(ModEntities.VIPER.get(), ViperRenderer::new);
+
+        event.registerEntityRenderer(ModEntities.GAZ_TIGR.get(), GazTigrRenderer::new);
+        event.registerEntityRenderer(ModEntities.GAZ_TIGR_RWS.get(), GazTigrRWSRenderer::new);
+        event.registerEntityRenderer(ModEntities.GAZ_TIGR_MG.get(), GazTigrMGRenderer::new);
+        event.registerEntityRenderer(ModEntities.GAZ_TIGR_GL.get(), GazTigrGLRenderer::new);
+
+        // Projectiles
+        event.registerEntityRenderer(ModEntities.LOCK_ON_HELLFIRE.get(), LockOnHellfireRenderer::new);
+        event.registerEntityRenderer(ModEntities.WIRE_GUIDED_HELLFIRE.get(), WireGuidedHellfireRenderer::new);
+
+        event.registerEntityRenderer(ModEntities.SIDEWINDER.get(), SidewinderRenderer::new);
+
+        event.registerEntityRenderer(ModEntities.MALYUTKA.get(), MalyutkaRenderer::new);
     }
 }

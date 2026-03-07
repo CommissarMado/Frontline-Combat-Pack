@@ -73,7 +73,7 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Weapons": ["Cannon"],
+      "Weapons": ["Cannon", "Coax"],
       "BanHand": true,
       "Position": [0.5, 0.5625, 2.1875],
       "CameraPos": {
@@ -146,15 +146,15 @@
     "@superbwarfare:wire_guide_missile * 1",
     "All - 11"
   ],
-  "VehicleContainerType": "Huge",
+  "VehicleContainerType": "Medium",
   "DestroyInfo": {
-    "ParticleType": "Huge",
+    "ParticleType": "Medium",
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },
   "Weapons": {
     "Cannon": {
-      "Icon": "fcp:textures/screens/vehicle_weapon/ap_shell.png",
+      "Icon": "fcp:textures/screens/vehicle_weapon/105mm_ap.png",
       "DefaultFireMode": "Semi",
       "AvailableFireModes": "Semi",
       "Projectile": "superbwarfare:cannon_shell",
@@ -172,20 +172,20 @@
       "ShootAnimationTime": 10,
       "Crosshair": "@VehicleUsTank",
       "CrosshairColor": "0x00ff66",
-      "Name": "weapon.fcp.m68a2_105mm",
+      "Name": "weapon.fcp.m68a2_105mm_ap",
       "AmmoType": [
-        "superbwarfare:small_rocket",
+        "superbwarfare:creative_ammo_box",
         {
-          "Ammo": "superbwarfare:small_rocket",
+          "Ammo": "superbwarfare:creative_ammo_box",
           "Override": {
-            "Icon": "fcp:textures/screens/vehicle_weapon/he_shell.png",
+            "Icon": "fcp:textures/screens/vehicle_weapon/105mm_he.png",
             "IsArmorPiercingProjectile": false,
             "IsHighExplosiveProjectile": true,
             "Velocity": 25,
             "Damage": 250,
             "ExplosionDamage": 120,
             "ExplosionRadius": 10,
-            "Name": "weapon.fcp.m68a2_105mm"
+            "Name": "weapon.fcp.m68a2_105mm_he"
           }
         }
       ],
@@ -204,7 +204,42 @@
       }
     },
     "PassengerMachineGun": {
-      "Icon": "fcp:textures/screens/vehicle_weapon/12_7mm.png",
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Projectile": "superbwarfare:projectile",
+      "DefaultZoom": 3,
+      "RPM": 550,
+      "EmptyReloadTime": 160,
+      "Magazine": 200,
+      "Velocity": 25,
+      "Damage": 12,
+      "BypassesArmor": 0.2,
+      "HeatPerShoot": 5,
+      "NaturalCooldown": 1,
+      "RecoilTime": 16,
+      "RecoilForce": 0.05,
+      "ShootAnimationTime": 1,
+      "Spread": 0.25,
+      "Crosshair": "@VehicleCommonGun",
+      "CrosshairColor": "0x66FF00",
+      "Name": "weapon.fcp.m2_hb",
+      "SoundInfo": {
+        "Fire1P": "fcp:m2_fire_1p",
+        "Fire3P": "fcp:m2_fire_3p",
+        "Fire3PFar": "fcp:m2_fire_3p_far",
+        "VehicleReload": "fcp:m2_reload"
+      },
+      "ShootPos": {
+        "Transform": "WeaponStationBarrel",
+        "Positions": [[-0.007381, 0.184081, 1.425625]],
+        "Directions": ["WeaponStationBarrel"]
+      },
+      "SoundRadius": 16,
+      "AmmoType": "superbwarfare:creative_ammo_box",
+      "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png"
+    },
+    "Coax": {
+      "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png",
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
       "Spread": 0.25,
@@ -212,7 +247,7 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 450,
-      "Damage": 40,
+      "Damage": 5,
       "BypassesArmor": 0.2,
       "Velocity": 25,
       "RecoilTime": 16,
@@ -220,18 +255,18 @@
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "AmmoType": "superbwarfare:small_rocket",
+      "AmmoType": "superbwarfare:creative_ammo_box",
       "ShootPos": {
-        "Transform": "WeaponStationBarrel",
-        "Positions": [[-0.007381, 0.184081, 1.425625]],
-        "Directions": ["WeaponStationBarrel"]
+        "Transform": "Barrel",
+        "Positions": [[0.390169, 0.417637, 1.687963]],
+        "Directions": ["Barrel"]
       },
       "Crosshair": "@VehicleCommonGun",
       "Name": "weapon.fcp.m2_50cal",
       "SoundInfo": {
-        "Fire1P": "fcp:russian_coax_1p",
-        "Fire3P": "fcp:russian_coax_3p",
-        "Fire3PFar": "fcp:russian_coax_3p_far",
+        "Fire1P": "fcp:m2_fire_1p",
+        "Fire3P": "fcp:m2_fire_3p",
+        "Fire3PFar": "fcp:m2_fire_3p_far",
         "Change": "fcp:coax_equip"
       },
       "SoundRadius": 16

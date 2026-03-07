@@ -61,7 +61,7 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements ICamoV
                         : "Unknown";
 
                 player.displayClientMessage(
-                        Component.translatable("message.vvp.camo_changed", camoName).withStyle(ChatFormatting.GREEN),
+                        Component.translatable("message.fcp.camo_changed", camoName).withStyle(ChatFormatting.GREEN),
                         true
                 );
                 this.level().playSound(null, this.blockPosition(),

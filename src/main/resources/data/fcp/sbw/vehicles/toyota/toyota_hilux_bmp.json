@@ -6,7 +6,7 @@
   "TurretTurnSpeed": [15, 15],
   "TurretPitchRange": [-10, 40],
   "BarrelPos": [0.057356, -0.019113, 0.852225],
-  "TurretControllerIndex": 5,
+  "TurretControllerIndex": 1,
   "OBB": [
     {
       "Size": [0.21, 0.465, 0.465],
@@ -61,6 +61,20 @@
     },
     {
       "IsEnclosed": true,
+      "HidePlayer": true,
+      "Weapons": ["Cannon", "Coax"],
+      "Transform": "Vehicle",
+      "CameraPos": {
+        "Transform": "Turret",
+        "Position": [0.305994, 0.455074, 0.582156],
+        "UseFixedCameraPos": true
+      },
+      "MinPitch": -10,
+      "MaxPitch": 40,
+      "Position": [0, 0.5, -2.5]
+    },
+    {
+      "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
       "Position": [-0.50, 0.30, 0.25],
@@ -97,25 +111,11 @@
       "MaxPitch": 60,
       "MinYaw": -95,
       "MaxYaw": 95
-    },
-    {
-      "IsEnclosed": true,
-      "HidePlayer": true,
-      "Weapons": ["Cannon", "Coax"],
-      "Transform": "Vehicle",
-      "CameraPos": {
-        "Transform": "Turret",
-        "Position": [0.305994, 0.455074, 0.582156],
-        "UseFixedCameraPos": true
-      },
-      "MinPitch": -10,
-      "MaxPitch": 40,
-      "Position": [0, 0.5, -2.5]
     }
   ],
   "Weapons": {
     "Cannon": {
-      "Icon": "fcp:textures/screens/vehicle_weapon/ap_shell.png",
+      "Icon": "fcp:textures/screens/vehicle_weapon/73mm_ap.png",
       "DefaultFireMode": "Semi",
       "AvailableFireModes": "Semi",
       "Projectile": "superbwarfare:small_cannon_shell",
@@ -135,7 +135,7 @@
       "CrosshairColor": "0x00ff66",
       "Name": "weapon.fcp.2a28_grom",
       "AmmoType": [
-        "superbwarfare:ap_cannon_shell"
+        "superbwarfare:creative_ammo_box"
       ],
       "SoundRadius": 32,
       "SoundInfo": {
@@ -161,7 +161,7 @@
       "Magazine": 100,
       "EmptyReloadTime": 20,
       "Velocity": 25,
-      "Damage": 200,
+      "Damage": 4,
       "BypassesArmor": 0.2,
       "HeatPerShoot": 0,
       "NaturalCooldown": 1,
@@ -178,8 +178,8 @@
         "Change": "fcp:coax_equip"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:small_rocket",
-      "Icon": "fcp:textures/screens/vehicle_weapon/12_7mm.png",
+      "AmmoType": "superbwarfare:creative_ammo_box",
+      "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [[-0.467737, 0.003569, 2.497287]],
@@ -231,9 +231,9 @@
     "@superbwarfare:mortar_shell * 2",
     "All - 4"
   ],
-  "VehicleContainerType": "Huge",
+  "VehicleContainerType": "Medium",
   "DestroyInfo": {
-    "ParticleType": "Huge",
+    "ParticleType": "Medium",
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },

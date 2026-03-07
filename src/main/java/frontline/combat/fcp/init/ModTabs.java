@@ -1,10 +1,10 @@
 package frontline.combat.fcp.init;
 
-import com.atsuishio.superbwarfare.block.ContainerBlock;
 import com.atsuishio.superbwarfare.item.common.container.ContainerBlockItem;
 import frontline.combat.fcp.FCP;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.Container;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -27,6 +27,8 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX_SPG9.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP1.get()));
+
+                output.accept(ContainerBlockItem.createInstance(ModEntities.T72AV.get()));
             }).build());
 
     public static final RegistryObject<CreativeModeTab> RUSSIAN_VEHICLE_TAB = TABS.register("russian_tab", () -> CreativeModeTab.builder()
@@ -35,6 +37,16 @@ public class ModTabs {
             .displayItems((parameters, output) -> {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.UAZ.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.UAZ_DSHKA.get()));
+
+                output.accept(ContainerBlockItem.createInstance(ModEntities.URAL.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.URAL_GRAD.get()));
+
+                output.accept(ContainerBlockItem.createInstance(ModEntities.KAMAZ.get()));
+
+                output.accept(ContainerBlockItem.createInstance(ModEntities.GAZ_TIGR.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.GAZ_TIGR_RWS.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.GAZ_TIGR_MG.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.GAZ_TIGR_GL.get()));
             }).build());
 
     public static final RegistryObject<CreativeModeTab> AMERICAN_VEHICLE_TAB = TABS.register("american_tab", () -> CreativeModeTab.builder()
@@ -48,6 +60,8 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.LITTLEBIRD_ARMED.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.LAV25.get()));
+
+                output.accept(ContainerBlockItem.createInstance(ModEntities.VIPER.get()));
             }).build());
 
     @Mod.EventBusSubscriber(modid = FCP.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)

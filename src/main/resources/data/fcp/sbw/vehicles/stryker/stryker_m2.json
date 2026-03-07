@@ -219,9 +219,9 @@
     "@superbwarfare:wire_guide_missile * 1",
     "All - 11"
   ],
-  "VehicleContainerType": "Huge",
+  "VehicleContainerType": "Medium",
   "DestroyInfo": {
-    "ParticleType": "Huge",
+    "ParticleType": "Medium",
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },
@@ -253,8 +253,8 @@
         "VehicleReload": "fcp:m2_reload"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:small_rocket",
-      "Icon": "fcp:textures/screens/vehicle_weapon/12_7mm.png",
+      "AmmoType": "superbwarfare:creative_ammo_box",
+      "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [[-0.006932, 0.155487, 1.059012]],

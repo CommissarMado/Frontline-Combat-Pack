@@ -47,8 +47,8 @@
       "Damage": 0
     },
     "Rocket": {
-      "AmmoType": "superbwarfare:small_rocket",
-      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/small_rocket.png",
+      "AmmoType": "superbwarfare:creative_ammo_box",
+      "Icon": "fcp:textures/screens/vehicle_weapon/hydra_70.png",
       "DefaultZoom": 2,
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
@@ -79,11 +79,12 @@
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:projectile",
-      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/cannon_20mm.png",
+      "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "DefaultZoom": 3,
       "RPM": 1000,
       "Velocity": 30,
       "Damage": 2.5,
+      "Magazine": 1000,
       "HeatPerShoot": 1,
       "NaturalCooldown": 1,
       "Spread": 0.6,
@@ -131,7 +132,7 @@
     "All * 0.8",
     "All - 8"
   ],
-  "DestroyInfo": {"ParticleType": "Giant", "ExplosionDamage": 350, "ExplosionRadius": 12, "CrashPassengers": true},
+  "DestroyInfo": {"ParticleType": "Medium", "ExplosionDamage": 350, "ExplosionRadius": 12, "CrashPassengers": true},
   "ContainerIcon": "fcp:textures/gui/vehicle/type/air_us.png",
   "Type": "Helicopter",
   "HudType": "@Helicopter",

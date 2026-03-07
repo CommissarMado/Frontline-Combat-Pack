@@ -20,7 +20,7 @@ public class Lav25Entity extends CamoVehicleBase {
             new ResourceLocation("fcp", "textures/entity/lav/lav25_tan.png")
     };
 
-    private static final String[] CAMO_NAMES = {"Flag", "No-Flag"};
+    private static final String[] CAMO_NAMES = {"Camo Variant 1","Camo Variant 2", "Camo Variant 3","No-Camo", "Tan"};
 
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(Lav25Entity.class, EntityDataSerializers.FLOAT);
 

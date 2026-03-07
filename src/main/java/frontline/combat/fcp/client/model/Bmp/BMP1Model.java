@@ -3,6 +3,7 @@ package frontline.combat.fcp.client.model.Bmp;
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import frontline.combat.fcp.entity.vehicle.Bmp.BMP1Entity;
+import frontline.combat.fcp.entity.vehicle.Stryker.StrykerM2Entity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZEntity;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
@@ -15,114 +16,17 @@ public class BMP1Model extends VehicleModel<BMP1Entity> {
     }
 
 
-    private static final int TRACK_COUNT = 40;
-    private static final int MAX_IDX = 40;
-    private static final float[][] KEYFRAMES = {
-            {175.55f, 17.49f, 45.29f},
-            {123.17f, 15.66f, 48.65f},
-            {63.86f, 11.86f, 48.95f},
-            {37.40f, 9.32f, 46.02f},
-            {37.40f, 6.91f, 42.85f},
-            {37.40f, 4.49f, 39.69f},
-            {37.40f, 2.07f, 36.53f},
-            {0.53f, 0.70f, 32.95f},
-            {0.00f, 0.70f, 28.97f},
-            {0.00f, 0.70f, 24.99f},
-            {0.00f, 0.70f, 21.01f},
-            {0.00f, 0.70f, 17.03f},
-            {0.00f, 0.70f, 13.05f},
-            {0.00f, 0.70f, 9.07f},
-            {0.00f, 0.70f, 5.09f},
-            {0.00f, 0.70f, 1.11f},
-            {0.00f, 0.70f, -2.87f},
-            {0.00f, 0.70f, -6.85f},
-            {0.00f, 0.70f, -10.83f},
-            {0.00f, 0.70f, -14.81f},
-            {0.00f, 0.70f, -18.79f},
-            {0.00f, 0.70f, -22.77f},
-            {0.00f, 0.70f, -26.75f},
-            {0.00f, 0.70f, -30.73f},
-            {0.00f, 0.70f, -34.71f},
-            {0.00f, 0.70f, -38.69f},
-            {0.00f, 0.70f, -42.67f},
-            {-15.23f, 0.97f, -46.63f},
-            {-24.82f, 2.59f, -50.26f},
-            {-24.82f, 4.26f, -53.88f},
-            {-24.82f, 5.93f, -57.49f},
-            {-24.82f, 7.60f, -61.10f},
-            {-29.17f, 9.27f, -64.71f},
-            {-63.79f, 12.09f, -67.41f},
-            {-103.35f, 15.97f, -67.81f},
-            {-142.91f, 19.28f, -65.72f},
-            {-177.00f, 20.60f, -62.05f},
-            {179.64f, 20.58f, -58.07f},
-            {179.64f, 20.55f, -54.09f},
-            {179.64f, 20.53f, -50.11f},
-            {179.64f, 20.50f, -46.13f},
-            {179.64f, 20.48f, -42.15f},
-            {179.64f, 20.45f, -38.17f},
-            {179.64f, 20.43f, -34.19f},
-            {179.73f, 20.40f, -30.21f},
-            {-180.00f, 20.40f, -26.23f},
-            {-180.00f, 20.40f, -22.25f},
-            {-180.00f, 20.40f, -18.27f},
-            {-180.00f, 20.40f, -14.29f},
-            {-180.00f, 20.40f, -10.31f},
-            {-180.00f, 20.40f, -6.33f},
-            {179.63f, 20.40f, -2.35f},
-            {178.52f, 20.30f, 1.63f},
-            {178.52f, 20.20f, 5.61f},
-            {178.52f, 20.10f, 9.59f},
-            {178.52f, 19.99f, 13.57f},
-            {178.52f, 19.89f, 17.55f},
-            {175.54f, 19.76f, 21.52f},
-            {174.54f, 19.38f, 25.49f},
-            {174.54f, 19.00f, 29.45f},
-            {174.54f, 18.63f, 33.41f},
-            {174.54f, 18.25f, 37.37f},
-            {174.54f, 17.87f, 41.33f},
-            {175.55f, 17.49f, 45.29f}
-    };
-
-    private static final float START_Y = 17.49f;
-    private static final float START_Z = 45.29f;
-
-    private float getKeyframeValue(float t, int component) {
-        int wrapRange = TRACK_COUNT * 2;
-        float normalized = (t / wrapRange) * MAX_IDX;
-        int idx1 = Mth.clamp((int) normalized, 0, MAX_IDX);
-        int idx2 = Mth.clamp(idx1 + 1, 0, MAX_IDX);
-        float frac = normalized - (int) normalized;
-
-        float p1 = KEYFRAMES[idx1][component];
-        float p2 = KEYFRAMES[idx2][component];
-
-        if (component == 0) {
-            float diff = p2 - p1;
-            if (diff > 180f) p2 -= 360f;
-            else if (diff < -180f) p2 += 360f;
-        }
-
-        return Mth.lerp(frac, p1, p2);
-    }
-
     @Override
-    public float getBoneRotX(float t) {
-        return getKeyframeValue(t, 0);
-    }
-
-    @Override
-    public float getBoneMoveY(float t) {
-        return getKeyframeValue(t, 1) - START_Y;
-    }
-
-    @Override
-    public float getBoneMoveZ(float t) {
-        return getKeyframeValue(t, 2) - START_Z;
-    }
-
-    @Override
-    public int getDefaultWrapRange(VehicleEntity vehicle) {
-        return TRACK_COUNT * 2;
+    public @Nullable VehicleModel.TransformContext<BMP1Entity> collectTransform(String boneName) {
+        return switch (boneName) {
+            case "Malyutka" ->
+                    (bone, vehicle, state) -> bone.setHidden(vehicle.GetWeaponState("malyutka", 0));
+            case "WheelL0", "WheelR0", "WheelL1", "WheelR1", "WheelL2", "WheelR2", "WheelL3", "WheelR3",
+                 "WheelL4", "WheelR4", "WheelL5", "WheelR5", "WheelL6", "WheelR6", "WheelL7", "WheelR7" -> (bone, vehicle, state) -> {
+                float wheelRot = Mth.lerp(state.getPartialTick(), vehicle.getPrevWheelRotation(), vehicle.getWheelRotation());
+                bone.setRotX((float) Math.toRadians(-wheelRot));
+            };
+            default -> super.collectTransform(boneName);
+        };
     }
 }

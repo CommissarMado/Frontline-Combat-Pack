@@ -158,14 +158,14 @@
       }
     ]
   },
-    "littlebird_engine_idle": {
-        "sounds": [
-        {
-            "name": "fcp:littlebird/littlebird_engine_idle",
-            "stream": true
-        }
-        ]
-    },
+  "littlebird_engine_idle": {
+    "sounds": [
+      {
+        "name": "fcp:littlebird/littlebird_engine_idle",
+        "stream": true
+      }
+    ]
+  },
   "stryker_engine": {
     "sounds": [
       {
@@ -323,6 +323,96 @@
       {
         "name": "fcp:littlebird/m134/m134_fire_3p_far",
         "stream": false
+      }
+    ]
+  },
+  "we_got_him": {
+    "sounds": [
+      {
+        "name": "fcp:we_got_him",
+        "stream": false
+      }
+    ]
+  },
+  "bomb_iran": {
+    "sounds": [
+      {
+        "name": "fcp:bomb_iran",
+        "stream": true
+      }
+    ]
+  },
+  "god_syria_and_bashar": {
+    "sounds": [
+      {
+        "name": "fcp:god_syria_and_bashar",
+        "stream": true
+      }
+    ]
+  },
+  "funky_town": {
+    "sounds": [
+      {
+        "name": "fcp:funky_town",
+        "stream": true
+      }
+    ]
+  },
+  "erika_trap_remix": {
+    "sounds": [
+      {
+        "name": "fcp:erika_trap_remix",
+        "stream": true
+      }
+    ]
+  },
+  "erika": {
+    "sounds": [
+      {
+        "name": "fcp:erika",
+        "stream": true
+      }
+    ]
+  },
+  "mk19_fire_1p": {
+    "sounds": [
+      {
+        "name": "fcp:tigr/mk19/mk19_fire_1p"
+      }
+    ]
+  },
+  "mk19_fire_3p": {
+    "sounds": [
+      {
+        "name": "fcp:tigr/mk19/mk19_fire_3p"
+      }
+    ]
+  },
+  "mk19_fire_3p_far": {
+    "sounds": [
+      {
+        "name": "fcp:tigr/mk19/mk19_fire_3p_far"
+      }
+    ]
+  },
+  "mk19_fire_3p_very_far": {
+    "sounds": [
+      {
+        "name": "fcp:tigr/mk19/mk19_fire_very_far"
+      }
+    ]
+  },
+  "mk19_reload": {
+    "sounds": [
+      {
+        "name": "fcp:tigr/mk19/mk19_reload"
+      }
+    ]
+  },
+  "tigr_engine": {
+    "sounds": [
+      {
+        "name": "fcp:tigr/tigr_engine"
       }
     ]
   }

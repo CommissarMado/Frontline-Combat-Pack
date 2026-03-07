@@ -102,7 +102,7 @@
         "Fire3P": "superbwarfare:coax_fire_1p"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:small_rocket",
+      "AmmoType": "superbwarfare:creative_ammo_box",
       "Icon": "fcp:textures/screens/vehicle_weapon/12_7mm.png",
       "ShootPos": {
         "Transform": "Barrel",
@@ -154,9 +154,9 @@
     "@superbwarfare:mortar_shell * 2",
     "All - 4"
   ],
-  "VehicleContainerType": "Huge",
+  "VehicleContainerType": "Medium",
   "DestroyInfo": {
-    "ParticleType": "Huge",
+    "ParticleType": "Medium",
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },

@@ -136,9 +136,9 @@
     "@superbwarfare:mortar_shell * 2",
     "All - 4"
   ],
-  "VehicleContainerType": "Huge",
+  "VehicleContainerType": "Medium",
   "DestroyInfo": {
-    "ParticleType": "Huge",
+    "ParticleType": "Medium",
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },

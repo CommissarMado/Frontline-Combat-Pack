@@ -145,15 +145,15 @@
     "@superbwarfare:mortar_shell * 2",
     "All - 4"
   ],
-  "VehicleContainerType": "Huge",
+  "VehicleContainerType": "Medium",
   "DestroyInfo": {
-    "ParticleType": "Huge",
+    "ParticleType": "Medium",
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },
   "Weapons": {
     "Rocket": {
-      "AmmoType": "superbwarfare:small_rocket",
+      "AmmoType": "superbwarfare:creative_ammo_box",
       "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/small_rocket.png",
       "DefaultZoom": 2,
       "DefaultFireMode": "Semi",

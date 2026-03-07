@@ -17,10 +17,14 @@ public class LittlebirdArmedEntity extends CamoVehicleBase {
             new ResourceLocation("fcp", "textures/entity/littlebird/littlebird_armed_4.png")
     };
 
-    private static final String[] CAMO_NAMES = {"Standard", "Dark", "Shark"};
+    private static final String[] CAMO_NAMES = {"Dark", "Light", "Green", "Tan"};
 
     private static Field propellerRotField;
     private static Field propellerRotOField;
+
+    private int previousCannonAmmo = -1;
+    private float barrelRotation = 0f;
+    private float barrelRotationOld = 0f;
 
     static {
         try {
@@ -68,5 +72,50 @@ public class LittlebirdArmedEntity extends CamoVehicleBase {
         } catch (Exception e) {
             return 0f;
         }
+    }
+
+    @Override
+    public void baseTick() {
+        super.baseTick();
+
+        // Store previous barrel rotation for smooth interpolation
+        barrelRotationOld = barrelRotation;
+
+        // Check if cannon ammo has changed (meaning it was fired)
+        int currentAmmo = getAmmoCount("Cannon");
+
+        // Initialize on first tick
+        if (previousCannonAmmo == -1) {
+            previousCannonAmmo = currentAmmo;
+        }
+
+        // If ammo decreased, increment barrel rotation
+        if (currentAmmo < previousCannonAmmo) {
+            barrelRotation += 20f; // Increment by 20 degrees per shot
+            if (barrelRotation >= 360f) {
+                barrelRotation -= 360f; // Wrap around at 360 degrees
+            }
+        }
+
+        // Update stored ammo count for next tick
+        previousCannonAmmo = currentAmmo;
+    }
+
+    public boolean GetWeaponState(String WeaponName, int Count) {
+        if (getAmmoCount(WeaponName) == Count)
+            return true;
+        else if (getAmmoCount(WeaponName) < Count)
+            return true;
+        else
+            return false;
+
+    }
+
+    public float getBarrelRot() {
+        return barrelRotation;
+    }
+
+    public float getBarrelRot0() {
+        return barrelRotationOld;
     }
 }

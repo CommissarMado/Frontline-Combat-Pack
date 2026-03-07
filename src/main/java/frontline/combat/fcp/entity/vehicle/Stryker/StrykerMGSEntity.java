@@ -17,7 +17,7 @@ public class StrykerMGSEntity extends CamoVehicleBase {
             new ResourceLocation("fcp", "textures/entity/stryker/stryker_mgs_3.png"),
     };
 
-    private static final String[] CAMO_NAMES = {"Base", "Z", "Ukraine", "Ukraine Medic", "Blue", "Orange", "Ruined"};
+    private static final String[] CAMO_NAMES = {"Base", "Tan"};
 
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(StrykerMGSEntity.class, EntityDataSerializers.FLOAT);
 

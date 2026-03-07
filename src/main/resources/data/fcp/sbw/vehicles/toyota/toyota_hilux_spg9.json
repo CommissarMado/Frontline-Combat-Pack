@@ -143,15 +143,15 @@
     "@superbwarfare:mortar_shell * 2",
     "All - 4"
   ],
-  "VehicleContainerType": "Huge",
+  "VehicleContainerType": "Medium",
   "DestroyInfo": {
-    "ParticleType": "Huge",
+    "ParticleType": "Medium",
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },
   "Weapons": {
     "Rocket": {
-      "AmmoType": "superbwarfare:small_rocket",
+      "AmmoType": "superbwarfare:creative_ammo_box",
       "Icon": "fcp:textures/screens/vehicle_weapon/pg_9v.png",
       "IsArmorPiercingProjectile": true,
       "IsHighExplosiveProjectile": true,

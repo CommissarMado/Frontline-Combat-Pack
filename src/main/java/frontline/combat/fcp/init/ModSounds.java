@@ -76,6 +76,23 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> LAV25_FIRE_3P_FAR = register("lav25_fire_3p_far");
     public static final RegistryObject<SoundEvent> LAV25_RELOAD = register("lav25_engine");
 
+    // Tigr
+    public static final RegistryObject<SoundEvent> TIGR_ENGINE = register("tigr_engine");
+
+    // MK-19
+    public static final RegistryObject<SoundEvent> MK19_FIRE_1P = register("mk19_fire_1p");
+    public static final RegistryObject<SoundEvent> MK19_FIRE_3P = register("mk19_fire_3p");
+    public static final RegistryObject<SoundEvent> MK19_FIRE_3P_FAR = register("mk19_fire_3p_far");
+    public static final RegistryObject<SoundEvent> MK19_FIRE_3P_VERY_FAR = register("mk19_fire_3p_very_far");
+    public static final RegistryObject<SoundEvent> MK19_RELOAD = register("mk19_engine");
+
+    // Funny
+    public static final RegistryObject<SoundEvent> WE_GOT_HIM = register("we_got_him");
+    public static final RegistryObject<SoundEvent> BOMB_IRAN = register("bomb_iran");
+    public static final RegistryObject<SoundEvent> GOD_SYRIA_AND_BASHAR = register("god_syria_and_bashar");
+    public static final RegistryObject<SoundEvent> FUNKY_TOWN = register("funky_town");
+    public static final RegistryObject<SoundEvent> ERIKA_TRAP_REMIX = register("erika_trap_remix");
+    public static final RegistryObject<SoundEvent> ERIKA = register("erika");
     private static RegistryObject<SoundEvent> register(String name) {
         return REGISTRY.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("fcp", name)));
     }

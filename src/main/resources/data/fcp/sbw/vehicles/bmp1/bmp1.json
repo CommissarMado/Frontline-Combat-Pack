@@ -33,7 +33,7 @@
   "Seats": [
     {
       "IsEnclosed": true,
-      "Transform": "Vehicle",
+      "Transform": "Turret",
       "Weapons": ["Cannon","malyutka","Coax"],
       "BanHand": true,
       "CameraPos": {
@@ -42,7 +42,9 @@
         "Position": [0.36845, 0.254644, -0.194312],
         "Rotation": "Barrel"
       },
-      "Position": [0.50, 0.30, 0.25],
+      "CanRotateHead": false,
+      "HidePassenger": true,
+      "Position": [0, -1.25, 0],
       "MinPitch": -10,
       "MaxPitch": 30
     }
@@ -67,15 +69,15 @@
       "AvailableFireModes": "Semi",
       "DefaultZoom": 3,
       "Name": "weapon.fcp.malyutka",
-      "AmmoType": "superbwarfare:medium_anti_ground_missile",
-      "Projectile": "superbwarfare:wire_guide_missile",
+      "AmmoType": "superbwarfare:creative_ammo_box",
+      "Projectile": "fcp:malyutka",
       "Magazine": 1,
       "EmptyReloadTime": 250,
       "Damage": 400,
       "ExplosionDamage": 80,
       "ExplosionRadius": 6,
       "Velocity": 3,
-      "ShootPos": {"Transform": "Barrel", "Positions": [[-0.017569, 0.522662, 1.425669]], "Directions": ["Barrel"]},
+      "ShootPos": {"Transform": "Barrel", "Positions": [[0.019256, 0.338075, 0.547013]], "Directions": [[0, 0.1, 1]]},
       "Crosshair": "@VehicleCommonMissile",
       "CrosshairColor": "0x00FF66",
       "SoundRadius": 32,
@@ -86,10 +88,10 @@
         "VehicleReload": "fcp:bmp1_malyutka_reload",
         "Change": "fcp:bmp1_into_malyutka"
       },
-      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/missile_9m113.png"
+      "Icon": "fcp:textures/screens/vehicle_weapon/malyutka.png"
     },
     "Cannon": {
-      "Icon": "fcp:textures/screens/vehicle_weapon/ap_shell.png",
+      "Icon": "fcp:textures/screens/vehicle_weapon/73mm_ap.png",
       "DefaultFireMode": "Semi",
       "AvailableFireModes": "Semi",
       "Projectile": "superbwarfare:small_cannon_shell",
@@ -109,7 +111,7 @@
       "CrosshairColor": "0x00ff66",
       "Name": "weapon.fcp.2a28_grom",
       "AmmoType": [
-        "superbwarfare:ap_cannon_shell"
+        "superbwarfare:creative_ammo_box"
       ],
       "SoundRadius": 32,
       "SoundInfo": {
@@ -135,7 +137,7 @@
       "Magazine": 100,
       "EmptyReloadTime": 20,
       "Velocity": 25,
-      "Damage": 40,
+      "Damage": 4,
       "BypassesArmor": 0.2,
       "HeatPerShoot": 0,
       "NaturalCooldown": 1,
@@ -153,7 +155,7 @@
       },
       "SoundRadius": 16,
       "AmmoType": "superbwarfare:small_rocket",
-      "Icon": "fcp:textures/screens/vehicle_weapon/12_7mm.png",
+      "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [[-0.467737, 0.003569, 2.497287]],
@@ -192,9 +194,9 @@
     "@superbwarfare:wire_guide_missile * 1",
     "All - 11"
   ],
-  "VehicleContainerType": "Huge",
+  "VehicleContainerType": "Medium",
   "DestroyInfo": {
-    "ParticleType": "Huge",
+    "ParticleType": "Medium",
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },

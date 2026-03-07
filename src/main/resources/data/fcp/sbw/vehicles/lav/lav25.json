@@ -157,7 +157,7 @@
       "Spread": 0.5,
       "CrosshairColor": "0x66FF00",
       "Crosshair": "@VehicleRuApc",
-      "Name": "weapon.fcp.m242_bushmaster",
+      "Name": "weapon.fcp.m242_bushmaster_ap",
       "SoundInfo": {
         "Fire1P": "fcp:lav25_fire_1p",
         "Fire3P": "fcp:lav25_fire_3p",
@@ -165,22 +165,22 @@
       },
       "SoundRadius": 24,
       "AmmoType": [
-        "suberbwarfare:small_rocket",
+        "superbwarfare:creative_ammo_box",
         {
-          "Ammo": "suberbwarfare:small_rocket",
+          "Ammo": "superbwarfare:creative_ammo_box",
           "Override": {
-            "Icon": "fcp:textures/screens/vehicle_weapon/he_shell.png",
+            "Icon": "fcp:textures/screens/vehicle_weapon/25mm_he.png",
             "IsArmorPiercingProjectile": false,
             "IsHighExplosiveProjectile": true,
             "Velocity": 25,
             "Damage": 17,
             "ExplosionDamage": 75,
             "ExplosionRadius": 6,
-            "Name": "weapon.fcp.25mm_cannon_he"
+            "Name": "weapon.fcp.m242_bushmaster_he"
           }
         }
       ],
-      "Icon": "fcp:textures/screens/vehicle_weapon/ap_shell.png",
+      "Icon": "fcp:textures/screens/vehicle_weapon/25mm_ap.png",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [[0.013843, 0.014213, 2.488857]],
@@ -194,7 +194,6 @@
       "DefaultZoom": 3,
       "RPM": 550,
       "EmptyReloadTime": 160,
-      "Magazine": 200,
       "Velocity": 25,
       "Damage": 5,
       "BypassesArmor": 0.2,
@@ -211,11 +210,11 @@
         "Fire1P": "fcp:m2_fire_1p",
         "Fire3P": "fcp:m2_fire_3p",
         "Fire3PFar": "fcp:m2_fire_3p_far",
-        "VehicleReload": "fcp:m2_reload"
+        "Change": "fcp:coax_equip"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:small_rocket",
-      "Icon": "fcp:textures/screens/vehicle_weapon/12_7mm.png",
+      "AmmoType": "superbwarfare:creative_ammo_box",
+      "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [[-0.234944, 0.014894, 0.335581]],
@@ -276,7 +275,7 @@
   ],
   "VehicleContainerType": "Medium",
   "DestroyInfo": {
-    "ParticleType": "Huge",
+    "ParticleType": "Medium",
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },

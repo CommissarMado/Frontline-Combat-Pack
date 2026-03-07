@@ -14,6 +14,8 @@ public class LittlebirdArmedModel extends VehicleModel<LittlebirdArmedEntity> {
                     (bone, vehicle, state) -> bone.setRotY(-Mth.lerp(state.getPartialTick(), vehicle.getPropellerRotO(), vehicle.getPropellerRot()));
             case "tailPropeller" ->
                     (bone, vehicle, state) -> bone.setRotX(6 * Mth.lerp(state.getPartialTick(), vehicle.getPropellerRotO(), vehicle.getPropellerRot()));
+            case "BarrelRotationController1", "BarrelRotationController2" ->
+                    (bone, vehicle, state) -> bone.setRotZ(-Mth.lerp(state.getPartialTick(), vehicle.getBarrelRot0(), vehicle.getBarrelRot()));
             default -> super.collectTransform(boneName);
         };
     }
