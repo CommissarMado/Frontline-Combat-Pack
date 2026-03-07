@@ -111,7 +111,7 @@
       },
       "SoundInfo": {
         "Fire1P": "superbwarfare:small_rocket_fire_1p",
-        "Fire3P": "superbwarfare:small_rocket_fire_3p",
+        "Fire3P": "superbwarfare:small_rocket_fire_3p"
       },
       "Crosshair": "@Empty",
       "SoundRadius": 12
