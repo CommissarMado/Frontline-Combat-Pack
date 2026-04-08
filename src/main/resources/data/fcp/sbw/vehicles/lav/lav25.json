@@ -63,6 +63,21 @@
     {
       "HidePassenger": true,
       "CameraPos": {
+        "Transform": "Vehicle",
+        "UseFixedCameraPos": true,
+        "Position": [0.523556, 2.48535, 2.220112]
+      },
+      "Weapons": ["Empty"],
+      "Transform": "Vehicle",
+      "Position": [0, 0, 0],
+      "MinYaw": -65,
+      "MaxYaw": 65,
+      "MinPitch": -15,
+      "MaxPitch": 32.5
+    },
+    {
+      "HidePassenger": true,
+      "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
         "Position": [0.602431, 0.485237, 0.2572],
@@ -73,66 +88,6 @@
       "Position": [0, 0, 0],
       "MinPitch": -15,
       "MaxPitch": 32.5
-    },
-    {
-      "HidePassenger": true,
-      "BanHand": true,
-      "Transform": "Vehicle",
-      "Position": [0, 2.2, 0],
-      "CameraPos": {
-        "UseSimulate3P": true,
-        "Simulate3PPos": [6, 1]
-      }
-    },
-    {
-      "HidePassenger": true,
-      "BanHand": true,
-      "Transform": "Vehicle",
-      "Position": [0, 2.2, 0],
-      "CameraPos": {
-        "UseSimulate3P": true,
-        "Simulate3PPos": [6, 1]
-      }
-    },
-    {
-      "HidePassenger": true,
-      "BanHand": true,
-      "Transform": "Vehicle",
-      "Position": [0, 2.2, 0],
-      "CameraPos": {
-        "UseSimulate3P": true,
-        "Simulate3PPos": [6, 1]
-      }
-    },
-    {
-      "HidePassenger": true,
-      "BanHand": true,
-      "Transform": "Vehicle",
-      "Position": [0, 2.2, 0],
-      "CameraPos": {
-        "UseSimulate3P": true,
-        "Simulate3PPos": [6, 1]
-      }
-    },
-    {
-      "HidePassenger": true,
-      "BanHand": true,
-      "Transform": "Vehicle",
-      "Position": [0, 2.2, 0],
-      "CameraPos": {
-        "UseSimulate3P": true,
-        "Simulate3PPos": [6, 1]
-      }
-    },
-    {
-      "HidePassenger": true,
-      "BanHand": true,
-      "Transform": "Vehicle",
-      "Position": [0, 2.2, 0],
-      "CameraPos": {
-        "UseSimulate3P": true,
-        "Simulate3PPos": [6, 1]
-      }
     }
   ],
   "Weapons": {
@@ -186,6 +141,12 @@
         "Positions": [[0.013843, 0.014213, 2.488857]],
         "Directions": ["Barrel"]
       }
+    },
+    "Empty": {
+      "Magazine": 0,
+      "RPM": 0,
+      "Crosshair": "@Empty",
+      "Damage": 0
     },
     "Coax": {
       "DefaultFireMode": "Auto",
@@ -241,6 +202,7 @@
   "TurretPitchRange": [-10, 60],
   "BarrelPos": [-0.087881, 0.286625, 1.034462],
   "ThirdPersonCameraPos": [0, 3, 5],
+  "TurretControllerIndex": 1,
   "HasDecoy": true,
   "UpStep": 1.5,
   "RotateOffsetHeight": 2.2,

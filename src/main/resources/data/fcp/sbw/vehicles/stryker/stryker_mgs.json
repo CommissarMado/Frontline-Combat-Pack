@@ -11,7 +11,8 @@
   "PassengerWeaponStationTurnSpeed": [15, 15],
   "PassengerWeaponStationYawRange": [-5, 90],
   "PassengerWeaponStationPitchRange": [-4, 30],
-  "TurretControllerIndex": 0,
+  "TurretControllerIndex": 1,
+  "PassengerWeaponStationControllerIndex": 2,
   "OBB": [
     {
       "Size": [0.2265625, 0.6328125, 0.625],
@@ -70,6 +71,22 @@
     }
   ],
   "Seats": [
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Weapons": ["Empty"],
+      "BanHand": true,
+      "HidePassenger": true,
+      "CameraPos": {
+        "UseFixedCameraPos": true,
+        "Position": [0.549106, 2.59995, 2.838525]
+      },
+      "Position": [0.5, 0.5625, 2.1875],
+      "MinYaw": -55,
+      "MaxYaw": 55,
+      "MinPitch": -3,
+      "MaxPitch": 15
+    },
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
@@ -270,6 +287,12 @@
         "Change": "fcp:coax_equip"
       },
       "SoundRadius": 16
+    },
+    "Empty": {
+      "Magazine": 0,
+      "Damage": 0,
+      "Crosshair": "@Empty",
+      "RPM": 0
     }
   },
   "ThirdPersonCameraPos": [0, 1, 5],

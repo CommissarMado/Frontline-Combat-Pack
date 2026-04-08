@@ -1,15 +1,19 @@
 package frontline.combat.fcp.init;
 
 import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.client.renderer.Bmp.BMP2Renderer;
 import frontline.combat.fcp.entity.projectile.Hellfire.LockOnHellfireEntity;
 import frontline.combat.fcp.entity.projectile.Hellfire.WireGuidedHellfireEntity;
 import frontline.combat.fcp.entity.projectile.Malyutka.MalyutkaEntity;
 import frontline.combat.fcp.entity.projectile.Sidewinder.SidewinderEntity;
 import frontline.combat.fcp.entity.vehicle.Bmp.BMP1Entity;
+import frontline.combat.fcp.entity.vehicle.Bmp.BMP1UEntity;
+import frontline.combat.fcp.entity.vehicle.Bmp.BMP2Entity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrGLEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrMGEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrRWSEntity;
+import frontline.combat.fcp.entity.vehicle.Huey.HueyEntity;
 import frontline.combat.fcp.entity.vehicle.Kamaz.KamazEntity;
 import frontline.combat.fcp.entity.vehicle.Lav.Lav25Entity;
 import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdArmedEntity;
@@ -17,6 +21,7 @@ import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdEntity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerM2Entity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerMGSEntity;
 import frontline.combat.fcp.entity.vehicle.T72av.T72AVEntity;
+import frontline.combat.fcp.entity.vehicle.T80bvm.T80BVMEntity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxBMPEntity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxEntity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxRocketPodEntity;
@@ -69,11 +74,19 @@ public class ModEntities {
     public static final RegistryObject<EntityType<BMP1Entity>> BMP1 = register("bmp1",
             EntityType.Builder.of(BMP1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
 
+    public static final RegistryObject<EntityType<BMP1UEntity>> BMP1U = register("bmp1u",
+            EntityType.Builder.of(BMP1UEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+
+    public static final RegistryObject<EntityType<BMP2Entity>> BMP2 = register("bmp2",
+            EntityType.Builder.of(BMP2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+
     public static final RegistryObject<EntityType<Lav25Entity>> LAV25 = register("lav25",
             EntityType.Builder.of(Lav25Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
 
     public static final RegistryObject<EntityType<T72AVEntity>> T72AV = register("t72av",
             EntityType.Builder.of(T72AVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<T80BVMEntity>> T80BVM = register("t80bvm",
+            EntityType.Builder.of(T80BVMEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<UralEntity>> URAL = register("ural",
             EntityType.Builder.of(UralEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<UralGradEntity>> URAL_GRAD = register("ural_grad",
@@ -90,6 +103,8 @@ public class ModEntities {
             EntityType.Builder.of(GazTigrMGEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<GazTigrGLEntity>> GAZ_TIGR_GL = register("gaz_tigr_gl",
             EntityType.Builder.of(GazTigrGLEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<HueyEntity>> HUEY = register("huey",
+            EntityType.Builder.of(HueyEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     // Projectiles
     public static final RegistryObject<EntityType<LockOnHellfireEntity>> LOCK_ON_HELLFIRE = register("lock_on_hellfire",
             EntityType.Builder.<LockOnHellfireEntity>of(LockOnHellfireEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f, 0.5f));

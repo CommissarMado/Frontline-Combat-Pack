@@ -400,8 +400,13 @@
 					]
 				},
 				{
-					"name": "GUN",
+					"name": "BarrelRotationController1",
 					"parent": "MInigun",
+					"pivot": [-106.3349, 13.42746, 42.59444]
+				},
+				{
+					"name": "GUN",
+					"parent": "BarrelRotationController1",
 					"pivot": [-106.3349, 13.42746, 51.59444],
 					"cubes": [
 						{
@@ -1191,8 +1196,13 @@
 					]
 				},
 				{
-					"name": "GUN2",
+					"name": "BarrelRotationController2",
 					"parent": "MInigun2",
+					"pivot": [106.3349, 13.42746, 42.5944]
+				},
+				{
+					"name": "GUN2",
+					"parent": "BarrelRotationController2",
 					"pivot": [106.3349, 13.42746, 51.59444],
 					"cubes": [
 						{

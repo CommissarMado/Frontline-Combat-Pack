@@ -5,7 +5,7 @@
   "TurretPos": [0.043375, 2.060769, -0.309344],
   "TurretTurnSpeed": [2.5, 2.5],
   "TurretPitchRange": [-10, 30],
-  "TurretControllerIndex": 0,
+  "TurretControllerIndex": 1,
   "BarrelPos": [-0.036825, 0.184587, 0.878656],
   "OBB": [
     {
@@ -31,6 +31,24 @@
     }
   ],
   "Seats": [
+    {
+      "IsEnclosed": true,
+      "Transform": "Turret",
+      "Weapons": ["Empty"],
+      "BanHand": true,
+      "CameraPos": {
+        "UseFixedCameraPos": true,
+        "Transform": "Vehicle",
+        "Position": [0.98625, 2.092744, 2.260175]
+      },
+      "CanRotateHead": false,
+      "HidePassenger": true,
+      "Position": [0, -1.25, 0],
+      "MinYaw": -65,
+      "MaxYaw": 65,
+      "MinPitch": -10,
+      "MaxPitch": 30
+    },
     {
       "IsEnclosed": true,
       "Transform": "Turret",
@@ -127,6 +145,12 @@
         "Positions": [[0.0247, 0.004644, 1.868188]],
         "Directions": ["Barrel"]
       }
+    },
+    "Empty": {
+      "Magazine": 0,
+      "RPM": 0,
+      "Crosshair": "@Empty",
+      "Damage": 0
     },
     "Coax": {
       "DefaultFireMode": "Auto",
