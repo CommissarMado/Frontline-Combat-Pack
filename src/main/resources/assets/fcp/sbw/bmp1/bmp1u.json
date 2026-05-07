@@ -1,7 +1,7 @@
 ﻿{
-  "ID": "fcp:bmp1",
+  "ID": "fcp:bmp1u",
   "Model": {
-    "Model": "fcp:geo/bmp1.geo.json",
+    "Model": "fcp:geo/bmp1u.geo.json",
     "Texture": "fcp:textures/entity/toyota.png"
   }
 }

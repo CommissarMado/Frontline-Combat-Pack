@@ -1,4 +1,4 @@
-package frontline.combat.fcp.entity.vehicle.Trailer;
+package frontline.combat.fcp.entity.vehicle.Trailers;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -67,12 +67,14 @@ public record TrailerConfig(
     public record HitchConfig(
             double offsetX,
             double offsetY,
-            double offsetZ
+            double offsetZ,
+            float smoothing
     ) {
         public static final Codec<HitchConfig> CODEC = RecordCodecBuilder.create(inst -> inst.group(
                 Codec.DOUBLE.optionalFieldOf("offset_x", 0.0).forGetter(HitchConfig::offsetX),
                 Codec.DOUBLE.optionalFieldOf("offset_y", 0.5).forGetter(HitchConfig::offsetY),
-                Codec.DOUBLE.fieldOf("offset_z").forGetter(HitchConfig::offsetZ)
+                Codec.DOUBLE.fieldOf("offset_z").forGetter(HitchConfig::offsetZ),
+                Codec.FLOAT.optionalFieldOf("smoothing", 0.3f).forGetter(HitchConfig::smoothing)
         ).apply(inst, HitchConfig::new));
     }
 

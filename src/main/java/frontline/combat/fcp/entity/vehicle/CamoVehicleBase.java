@@ -87,6 +87,7 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements ICamoV
             setCamoType(compound.getInt("CamoType"));
         }
     }
+
     @Override
     public abstract ResourceLocation[] getCamoTextures();
 

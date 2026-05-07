@@ -1,12 +1,20 @@
 package frontline.combat.fcp.client.model.T72av;
 
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
+import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.entity.vehicle.Bmp.BMP1Entity;
+import frontline.combat.fcp.entity.vehicle.Stryker.StrykerMGSEntity;
 import frontline.combat.fcp.entity.vehicle.T72av.T72AVEntity;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
 
 public class T72AVModel extends VehicleModel<T72AVEntity> {
+
+    @Override
+    public ResourceLocation getModelResource(T72AVEntity animatable) {
+        return new ResourceLocation(FCP.MODID, "geo/t72av.geo.json");
+    }
 
     @Override
     public boolean hideForTurretControllerWhileZooming() {

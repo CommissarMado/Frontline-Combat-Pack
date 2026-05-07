@@ -102,7 +102,7 @@
         "Fire3P": "superbwarfare:coax_fire_1p"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:creative_ammo_box",
+      "AmmoType": "superbwarfare:rifle_ammo",
       "Icon": "fcp:textures/screens/vehicle_weapon/12_7mm.png",
       "ShootPos": {
         "Transform": "Barrel",

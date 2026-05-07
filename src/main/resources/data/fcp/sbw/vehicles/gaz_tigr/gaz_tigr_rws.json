@@ -143,7 +143,7 @@
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "AmmoType": "superbwarfare:creative_ammo_box",
+      "AmmoType": "superbwarfare:rifle_ammo",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [[0.069013, 0.045656, 1.668175]],

@@ -1,6 +1,7 @@
 package frontline.combat.fcp.client.model.Projectile.Sidewinder;
 
 import com.atsuishio.superbwarfare.Mod;
+import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.entity.projectile.Hellfire.LockOnHellfireEntity;
 import frontline.combat.fcp.entity.projectile.Sidewinder.SidewinderEntity;
 import net.minecraft.resources.ResourceLocation;
@@ -15,11 +16,11 @@ public class SidewinderModel extends GeoModel<SidewinderEntity> {
 
     @Override
     public ResourceLocation getModelResource(SidewinderEntity entity) {
-        return Mod.loc("geo/sidewinder.geo.json");
+        return new ResourceLocation(FCP.MODID, "geo/sidewinder.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(SidewinderEntity entity) {
-        return Mod.loc("textures/entity/sidewinder/sidewinder.png");
+        return new ResourceLocation(FCP.MODID,"textures/entity/sidewinder/sidewinder.png");
     }
 }

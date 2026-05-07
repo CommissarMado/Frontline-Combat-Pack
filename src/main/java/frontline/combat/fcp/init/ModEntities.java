@@ -1,7 +1,6 @@
 package frontline.combat.fcp.init;
 
 import frontline.combat.fcp.FCP;
-import frontline.combat.fcp.client.renderer.Bmp.BMP2Renderer;
 import frontline.combat.fcp.entity.projectile.Hellfire.LockOnHellfireEntity;
 import frontline.combat.fcp.entity.projectile.Hellfire.WireGuidedHellfireEntity;
 import frontline.combat.fcp.entity.projectile.Malyutka.MalyutkaEntity;
@@ -14,18 +13,21 @@ import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrGLEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrMGEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrRWSEntity;
 import frontline.combat.fcp.entity.vehicle.Huey.HueyEntity;
+import frontline.combat.fcp.entity.vehicle.Huey.HueyRocketsEntity;
 import frontline.combat.fcp.entity.vehicle.Kamaz.KamazEntity;
 import frontline.combat.fcp.entity.vehicle.Lav.Lav25Entity;
 import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdArmedEntity;
 import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdEntity;
+import frontline.combat.fcp.entity.vehicle.Matv.MATVEntity;
+import frontline.combat.fcp.entity.vehicle.Novator.NovatorEntity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerM2Entity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerMGSEntity;
 import frontline.combat.fcp.entity.vehicle.T72av.T72AVEntity;
-import frontline.combat.fcp.entity.vehicle.T80bvm.T80BVMEntity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxBMPEntity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxEntity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxRocketPodEntity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxSpg9Entity;
+import frontline.combat.fcp.entity.vehicle.Trailers.ExampleTrailer.ExampleTrailerEntity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZDSHKAEntity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZEntity;
 import frontline.combat.fcp.entity.vehicle.Ural.UralEntity;
@@ -85,8 +87,6 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<T72AVEntity>> T72AV = register("t72av",
             EntityType.Builder.of(T72AVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
-    public static final RegistryObject<EntityType<T80BVMEntity>> T80BVM = register("t80bvm",
-            EntityType.Builder.of(T80BVMEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<UralEntity>> URAL = register("ural",
             EntityType.Builder.of(UralEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<UralGradEntity>> URAL_GRAD = register("ural_grad",
@@ -105,6 +105,13 @@ public class ModEntities {
             EntityType.Builder.of(GazTigrGLEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<HueyEntity>> HUEY = register("huey",
             EntityType.Builder.of(HueyEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<HueyRocketsEntity>> HUEY_ROCKETS = register("huey_rockets",
+            EntityType.Builder.of(HueyRocketsEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<NovatorEntity>> NOVATOR = register("novator",
+            EntityType.Builder.of(NovatorEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<MATVEntity>> MATV = register("matv",
+            EntityType.Builder.of(MATVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+
     // Projectiles
     public static final RegistryObject<EntityType<LockOnHellfireEntity>> LOCK_ON_HELLFIRE = register("lock_on_hellfire",
             EntityType.Builder.<LockOnHellfireEntity>of(LockOnHellfireEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f, 0.5f));
@@ -118,6 +125,10 @@ public class ModEntities {
         return ENTITY_TYPES.register(name, () -> entityTypeBuilder.build(name));
 
     }
+
+    // Trailers
+    public static final RegistryObject<EntityType<ExampleTrailerEntity>> EXAMPLE_TRAILER = register("example_trailer",
+            EntityType.Builder.of(ExampleTrailerEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2.5f, 1.8f));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

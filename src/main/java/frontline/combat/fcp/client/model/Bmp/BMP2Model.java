@@ -1,11 +1,19 @@
 package frontline.combat.fcp.client.model.Bmp;
 
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
+import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.entity.vehicle.Bmp.BMP1Entity;
 import frontline.combat.fcp.entity.vehicle.Bmp.BMP2Entity;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
 
 public class BMP2Model extends VehicleModel<BMP2Entity> {
+
+    @Override
+    public ResourceLocation getModelResource(BMP2Entity animatable) {
+        return new ResourceLocation(FCP.MODID, "geo/bmp2.geo.json");
+    }
 
     @Override
     public boolean hideForTurretControllerWhileZooming() {

@@ -78,7 +78,7 @@
       },
       "Crosshair": "@VehicleCommonGun",
       "CrosshairColor": "0x00FF66",
-      "AmmoType": "superbwarfare:creative_ammo_box",
+      "AmmoType": "superbwarfare:small_shell",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
@@ -88,7 +88,7 @@
       }
     },
     "Rocket": {
-      "AmmoType": "superbwarfare:creative_ammo_box",
+      "AmmoType": "superbwarfare:small_rocket",
       "Icon": "fcp:textures/screens/vehicle_weapon/hydra_70.png",
       "DefaultZoom": 2,
       "DefaultFireMode": "Auto",
@@ -141,11 +141,11 @@
       },
       "AmmoType": [
         {
-          "Ammo": "superbwarfare:creative_ammo_box",
+          "Ammo": "superbwarfare:large_anti_ground_missile",
           "ShouldUnload": false
         },
         {
-          "Ammo": "superbwarfare:creative_ammo_box",
+          "Ammo": "superbwarfare:large_anti_ground_missile",
           "ShouldUnload": false,
           "Override": {
             "Name": "weapon.fcp.hellfire_missile_block",
@@ -190,7 +190,7 @@
       "AvailableFireModes": "Semi",
       "DefaultZoom": 3,
       "Name": "weapon.fcp.hellfire_wire",
-      "AmmoType": "superbwarfare:creative_ammo_box",
+      "AmmoType": "superbwarfare:large_anti_ground_missile",
       "Projectile": "fcp:wire_guided_hellfire",
       "Magazine": 4,
       "EmptyReloadTime": 200,
@@ -234,7 +234,7 @@
       },
       "AmmoType": [
         {
-          "Ammo": "superbwarfare:large_anti_ground_missile",
+          "Ammo": "superbwarfare:medium_anti_ground_missile",
           "ShouldUnload": false
         }
       ],

@@ -47,7 +47,7 @@
       "Damage": 0
     },
     "Rocket": {
-      "AmmoType": "superbwarfare:creative_ammo_box",
+      "AmmoType": "superbwarfare:small_rocket",
       "Icon": "fcp:textures/screens/vehicle_weapon/hydra_70.png",
       "DefaultZoom": 2,
       "DefaultFireMode": "Auto",
@@ -76,6 +76,7 @@
       "SoundRadius": 12
     },
     "Cannon": {
+      "AmmoType": "superbwarfare:rifle_ammo",
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:projectile",

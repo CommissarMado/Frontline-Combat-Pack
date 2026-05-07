@@ -1,11 +1,19 @@
 package frontline.combat.fcp.client.model.Viper;
 
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
+import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.entity.vehicle.Ural.UralEntity;
 import frontline.combat.fcp.entity.vehicle.Viper.ViperEntity;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
 
 public class ViperModel extends VehicleModel<ViperEntity> {
+
+    @Override
+    public ResourceLocation getModelResource(ViperEntity animatable) {
+        return new ResourceLocation(FCP.MODID, "geo/viper.geo.json");
+    }
 
     @Override
     public @Nullable VehicleModel.TransformContext<ViperEntity> collectTransform(String boneName) {

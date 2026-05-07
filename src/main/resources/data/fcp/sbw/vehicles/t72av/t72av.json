@@ -99,9 +99,9 @@
       "CrosshairColor": "0x00ff66",
       "Name": "weapon.fcp.2a46m_125mm_ap",
       "AmmoType": [
-        "superbwarfare:creative_ammo_box",
+        "superbwarfare:ap_5_inches",
         {
-          "Ammo": "superbwarfare:creative_ammo_box",
+          "Ammo": "superbwarfare:he_5_inches",
           "Override": {
             "Icon": "fcp:textures/screens/vehicle_weapon/125mm_he.png",
             "IsArmorPiercingProjectile": false,
@@ -151,7 +151,7 @@
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "AmmoType": "superbwarfare:creative_ammo_box",
+      "AmmoType": "superbwarfare:rifle_ammo",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [[-0.459419, -0.097856, 0.080344]],

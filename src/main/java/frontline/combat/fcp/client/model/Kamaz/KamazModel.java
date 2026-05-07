@@ -1,11 +1,19 @@
 package frontline.combat.fcp.client.model.Kamaz;
 
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
+import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.entity.vehicle.Huey.HueyEntity;
 import frontline.combat.fcp.entity.vehicle.Kamaz.KamazEntity;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
 
 public class KamazModel extends VehicleModel<KamazEntity> {
+
+    @Override
+    public ResourceLocation getModelResource(KamazEntity animatable) {
+        return new ResourceLocation(FCP.MODID, "geo/kamaz.geo.json");
+    }
 
     @Override
     public boolean hideForTurretControllerWhileZooming() {

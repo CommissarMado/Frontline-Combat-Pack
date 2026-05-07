@@ -87,7 +87,7 @@
       "AvailableFireModes": "Semi",
       "DefaultZoom": 3,
       "Name": "weapon.fcp.kornet",
-      "AmmoType": "superbwarfare:creative_ammo_box",
+      "AmmoType": "superbwarfare:medium_anti_ground_missile",
       "Projectile": "fcp:malyutka",
       "Magazine": 1,
       "EmptyReloadTime": 250,
@@ -95,7 +95,7 @@
       "ExplosionDamage": 80,
       "ExplosionRadius": 6,
       "Velocity": 3,
-      "ShootPos": {"Transform": "Turret", "Positions": [[0.100612, 0.926794, -0.23805]], "Directions": [[0, 0.1, 1]]},
+      "ShootPos": {"Transform": "Turret", "Positions": [[0.100612, 0.926794, -0.23805]], "Directions": [[0, 0, 1]]},
       "Crosshair": "@VehicleCommonMissile",
       "CrosshairColor": "0x00FF66",
       "SoundRadius": 32,
@@ -106,7 +106,7 @@
         "VehicleReload": "fcp:bmp1_malyutka_reload",
         "Change": "fcp:bmp1_into_malyutka"
       },
-      "Icon": "fcp:textures/screens/vehicle_weapon/kornet.png"
+      "Icon": "fcp:textures/screens/vehicle_weapon/malyutka.png"
     },
     "Cannon": {
       "DefaultFireMode": "Auto",
@@ -137,11 +137,11 @@
       },
       "SoundRadius": 24,
       "AmmoType": [
-        "superbwarfare:creative_ammo_box",
+        "superbwarfare:ap_5_inches",
         {
-          "Ammo": "superbwarfare:creative_ammo_box",
+          "Ammo": "superbwarfare:he_5_inches",
           "Override": {
-            "Icon": "fcp:textures/screens/vehicle_weapon/30mm_he.png",
+            "Icon": "fcp:textures/screens/vehicle_weapon/25mm_he.png",
             "IsArmorPiercingProjectile": false,
             "IsHighExplosiveProjectile": true,
             "Velocity": 25,
@@ -152,7 +152,7 @@
           }
         }
       ],
-      "Icon": "fcp:textures/screens/vehicle_weapon/30mm_ap.png",
+      "Icon": "fcp:textures/screens/vehicle_weapon/25mm_ap.png",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [[-0.021325, 0.004025, 2.780912]],
@@ -191,7 +191,7 @@
         "Change": "fcp:coax_equip"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:creative_ammo_box",
+      "AmmoType": "superbwarfare:rifle_ammo",
       "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png",
       "ShootPos": {
         "Transform": "Barrel",

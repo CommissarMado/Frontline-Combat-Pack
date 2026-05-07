@@ -2,9 +2,10 @@
   "hitch": {
     "offset_x": 0,
     "offset_y": 0.5,
-    "offset_z": -0.5
+    "offset_z": -3.5,
+    "smoothing": 0.3
   },
-  "trailer_length": 4,
+  "trailer_length": 7,
   "max_health": 300,
   "width": 2.5,
   "height": 1.8,

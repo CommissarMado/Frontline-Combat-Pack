@@ -23,8 +23,8 @@
       "Position": [0, 1.25, 0.25]
     },
     {
-      "Size": [1.0, 0.5, 1],
-      "Position": [0, 0.5, 0],
+      "Size": [1.0, 0.75, 1],
+      "Position": [0, 0.25, 0],
       "Part": "Turret",
       "Transform": "Turret",
       "Rotation": "Turret"
@@ -87,7 +87,7 @@
       "AvailableFireModes": "Semi",
       "DefaultZoom": 3,
       "Name": "weapon.fcp.malyutka",
-      "AmmoType": "superbwarfare:creative_ammo_box",
+      "AmmoType": "superbwarfare:medium_anti_ground_missile",
       "Projectile": "fcp:malyutka",
       "Magazine": 2,
       "EmptyReloadTime": 250,
@@ -137,11 +137,11 @@
       },
       "SoundRadius": 24,
       "AmmoType": [
-        "superbwarfare:creative_ammo_box",
+        "superbwarfare:ap_5_inches",
         {
-          "Ammo": "superbwarfare:creative_ammo_box",
+          "Ammo": "superbwarfare:he_5_inches",
           "Override": {
-            "Icon": "fcp:textures/screens/vehicle_weapon/30mm_he.png",
+            "Icon": "fcp:textures/screens/vehicle_weapon/25mm_he.png",
             "IsArmorPiercingProjectile": false,
             "IsHighExplosiveProjectile": true,
             "Velocity": 25,
@@ -152,7 +152,7 @@
           }
         }
       ],
-      "Icon": "fcp:textures/screens/vehicle_weapon/30mm_ap.png",
+      "Icon": "fcp:textures/screens/vehicle_weapon/25mm_ap.png",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [[-0.028838, 0.199394, 3.451294]],
@@ -191,7 +191,7 @@
         "Change": "fcp:coax_equip"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:small_rocket",
+      "AmmoType": "superbwarfare:rifle_ammo",
       "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",

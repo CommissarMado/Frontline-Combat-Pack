@@ -1,7 +1,10 @@
 package frontline.combat.fcp.client.model.Stryker;
 
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
+import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.entity.vehicle.Stryker.StrykerM2Entity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerMGSEntity;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
@@ -10,10 +13,14 @@ import software.bernie.geckolib.core.animation.AnimationState;
 public class StrykerMGSModel extends VehicleModel<StrykerMGSEntity> {
 
     @Override
+    public ResourceLocation getModelResource(StrykerMGSEntity animatable) {
+        return new ResourceLocation(FCP.MODID, "geo/stryker_mgs.geo.json");
+    }
+
+    @Override
     public boolean hideForTurretControllerWhileZooming() {
         return false;
     }
-
 
     @Override
     public @Nullable VehicleModel.TransformContext<StrykerMGSEntity> collectTransform(String boneName) {
@@ -35,4 +42,4 @@ public class StrykerMGSModel extends VehicleModel<StrykerMGSEntity> {
             default -> super.collectTransform(boneName);
         };
     }
-    }
+}

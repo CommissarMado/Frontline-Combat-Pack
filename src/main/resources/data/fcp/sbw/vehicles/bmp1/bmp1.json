@@ -87,7 +87,7 @@
       "AvailableFireModes": "Semi",
       "DefaultZoom": 3,
       "Name": "weapon.fcp.malyutka",
-      "AmmoType": "superbwarfare:creative_ammo_box",
+      "AmmoType": "superbwarfare:medium_anti_ground_missile",
       "Projectile": "fcp:malyutka",
       "Magazine": 1,
       "EmptyReloadTime": 250,
@@ -128,9 +128,7 @@
       "Crosshair": "@VehicleCommonGun",
       "CrosshairColor": "0x00ff66",
       "Name": "weapon.fcp.2a28_grom",
-      "AmmoType": [
-        "superbwarfare:creative_ammo_box"
-      ],
+      "AmmoType": ["superbwarfare:ap_5_inchesx"],
       "SoundRadius": 32,
       "SoundInfo": {
         "Fire1P": "fcp:bmp1_fire_1p",
@@ -178,7 +176,7 @@
         "Change": "fcp:coax_equip"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:small_rocket",
+      "AmmoType": "superbwarfare:rifle_ammo",
       "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",

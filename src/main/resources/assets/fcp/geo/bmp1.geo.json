@@ -1669,13 +1669,13 @@
 					"pivot": [25.35084, 0.41202, -27.72413]
 				},
 				{
-					"name": "TrackL",
+					"name": "LeftTrack",
 					"parent": "Track",
 					"pivot": [25.35084, 12.19916, 2.1003]
 				},
 				{
-					"name": "trackMovL0",
-					"parent": "TrackL",
+					"name": "LSegment1",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 1.41202, 34.87587],
 					"rotation": [1, 0, 0],
 					"cubes": [
@@ -1706,8 +1706,8 @@
 					]
 				},
 				{
-					"name": "trackMovL1",
-					"parent": "TrackL",
+					"name": "LSegment2",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 1.31202, 29.27587],
 					"cubes": [
 						{
@@ -1737,8 +1737,8 @@
 					]
 				},
 				{
-					"name": "trackMovL2",
-					"parent": "TrackL",
+					"name": "LSegment3",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 1.31202, 23.27587],
 					"cubes": [
 						{
@@ -1768,8 +1768,8 @@
 					]
 				},
 				{
-					"name": "trackMovL3",
-					"parent": "TrackL",
+					"name": "LSegment4",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 1.31202, 17.27587],
 					"cubes": [
 						{
@@ -1799,8 +1799,8 @@
 					]
 				},
 				{
-					"name": "trackMovL4",
-					"parent": "TrackL",
+					"name": "LSegment5",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 1.31202, 11.27587],
 					"cubes": [
 						{
@@ -1830,8 +1830,8 @@
 					]
 				},
 				{
-					"name": "trackMovL5",
-					"parent": "TrackL",
+					"name": "LSegment6",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 1.31202, 5.27587],
 					"cubes": [
 						{
@@ -1861,8 +1861,8 @@
 					]
 				},
 				{
-					"name": "trackMovL6",
-					"parent": "TrackL",
+					"name": "LSegment7",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 1.31202, -0.72413],
 					"cubes": [
 						{
@@ -1892,8 +1892,8 @@
 					]
 				},
 				{
-					"name": "trackMovL7",
-					"parent": "TrackL",
+					"name": "LSegment8",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 1.31202, -6.72413],
 					"cubes": [
 						{
@@ -1923,8 +1923,8 @@
 					]
 				},
 				{
-					"name": "trackMovL8",
-					"parent": "TrackL",
+					"name": "LSegment9",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 1.31202, -12.72413],
 					"cubes": [
 						{
@@ -1954,8 +1954,8 @@
 					]
 				},
 				{
-					"name": "trackMovL9",
-					"parent": "TrackL",
+					"name": "LSegment10",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 1.31202, -18.72413],
 					"cubes": [
 						{
@@ -1985,8 +1985,8 @@
 					]
 				},
 				{
-					"name": "trackMovL10",
-					"parent": "TrackL",
+					"name": "LSegment11",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 1.31202, -24.72413],
 					"cubes": [
 						{
@@ -2016,8 +2016,8 @@
 					]
 				},
 				{
-					"name": "trackMovL11",
-					"parent": "TrackL",
+					"name": "LSegment12",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 1.31202, -30.72413],
 					"cubes": [
 						{
@@ -2047,8 +2047,8 @@
 					]
 				},
 				{
-					"name": "trackMovL12",
-					"parent": "TrackL",
+					"name": "LSegment13",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 2.81202, -36.02413],
 					"rotation": [-30, 0, 0],
 					"cubes": [
@@ -2079,8 +2079,8 @@
 					]
 				},
 				{
-					"name": "trackMovL13",
-					"parent": "TrackL",
+					"name": "LSegment14",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 5.71202, -41.02414],
 					"rotation": [-35, 0, 0],
 					"cubes": [
@@ -2115,8 +2115,8 @@
 					]
 				},
 				{
-					"name": "trackMovL14",
-					"parent": "TrackL",
+					"name": "LSegment15",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 9.11202, -45.82413],
 					"cubes": [
 						{
@@ -2150,8 +2150,8 @@
 					]
 				},
 				{
-					"name": "trackMovL15",
-					"parent": "TrackL",
+					"name": "LSegment16",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 13.31202, -49.72413],
 					"rotation": [-49, 0, 0],
 					"cubes": [
@@ -2182,8 +2182,8 @@
 					]
 				},
 				{
-					"name": "trackMovL16",
-					"parent": "TrackL",
+					"name": "LSegment17",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 17.69583, -50.87729],
 					"rotation": [-109.5, 0, 0],
 					"cubes": [
@@ -2218,8 +2218,8 @@
 					]
 				},
 				{
-					"name": "trackMovL17",
-					"parent": "TrackL",
+					"name": "LSegment18",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21.11202, -47.62413],
 					"rotation": [-159, 0, 0],
 					"cubes": [
@@ -2250,8 +2250,8 @@
 					]
 				},
 				{
-					"name": "trackMovL18",
-					"parent": "TrackL",
+					"name": "LSegment19",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21.71202, -42.32413],
 					"rotation": [171.5, 0, 0],
 					"cubes": [
@@ -2282,8 +2282,8 @@
 					]
 				},
 				{
-					"name": "trackMovL19",
-					"parent": "TrackL",
+					"name": "LSegment20",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21.11202, -36.62414],
 					"rotation": [175, 0, 0],
 					"cubes": [
@@ -2318,8 +2318,8 @@
 					]
 				},
 				{
-					"name": "trackMovL20",
-					"parent": "TrackL",
+					"name": "LSegment21",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, -30.72413],
 					"cubes": [
 						{
@@ -2349,8 +2349,8 @@
 					]
 				},
 				{
-					"name": "trackMovL21",
-					"parent": "TrackL",
+					"name": "LSegment22",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, -24.72413],
 					"cubes": [
 						{
@@ -2380,8 +2380,8 @@
 					]
 				},
 				{
-					"name": "trackMovL22",
-					"parent": "TrackL",
+					"name": "LSegment23",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, -18.72413],
 					"cubes": [
 						{
@@ -2411,8 +2411,8 @@
 					]
 				},
 				{
-					"name": "trackMovL23",
-					"parent": "TrackL",
+					"name": "LSegment24",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, -12.72413],
 					"cubes": [
 						{
@@ -2442,8 +2442,8 @@
 					]
 				},
 				{
-					"name": "trackMovL24",
-					"parent": "TrackL",
+					"name": "LSegment25",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, -6.72413],
 					"cubes": [
 						{
@@ -2473,8 +2473,8 @@
 					]
 				},
 				{
-					"name": "trackMovL25",
-					"parent": "TrackL",
+					"name": "LSegment26",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, -0.72413],
 					"cubes": [
 						{
@@ -2504,8 +2504,8 @@
 					]
 				},
 				{
-					"name": "trackMovL26",
-					"parent": "TrackL",
+					"name": "LSegment27",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, 5.27587],
 					"cubes": [
 						{
@@ -2535,8 +2535,8 @@
 					]
 				},
 				{
-					"name": "trackMovL27",
-					"parent": "TrackL",
+					"name": "LSegment28",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, 11.27587],
 					"cubes": [
 						{
@@ -2566,8 +2566,8 @@
 					]
 				},
 				{
-					"name": "trackMovL28",
-					"parent": "TrackL",
+					"name": "LSegment29",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, 17.27587],
 					"cubes": [
 						{
@@ -2597,8 +2597,8 @@
 					]
 				},
 				{
-					"name": "trackMovL29",
-					"parent": "TrackL",
+					"name": "LSegment30",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, 23.27587],
 					"cubes": [
 						{
@@ -2628,8 +2628,8 @@
 					]
 				},
 				{
-					"name": "trackMovL30",
-					"parent": "TrackL",
+					"name": "LSegment31",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, 29.27587],
 					"cubes": [
 						{
@@ -2659,8 +2659,8 @@
 					]
 				},
 				{
-					"name": "trackMovL31",
-					"parent": "TrackL",
+					"name": "LSegment32",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, 35.27587],
 					"cubes": [
 						{
@@ -2690,8 +2690,8 @@
 					]
 				},
 				{
-					"name": "trackMovL32",
-					"parent": "TrackL",
+					"name": "LSegment33",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, 40.37586],
 					"cubes": [
 						{
@@ -2721,8 +2721,8 @@
 					]
 				},
 				{
-					"name": "trackMovL33",
-					"parent": "TrackL",
+					"name": "LSegment34",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 20.8, 45.27587],
 					"cubes": [
 						{
@@ -2756,8 +2756,8 @@
 					]
 				},
 				{
-					"name": "trackMovL34",
-					"parent": "TrackL",
+					"name": "LSegment35",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 20.00725, 50.63136],
 					"rotation": [166.5, 0, 0],
 					"cubes": [
@@ -2788,8 +2788,8 @@
 					]
 				},
 				{
-					"name": "trackMovL35",
-					"parent": "TrackL",
+					"name": "LSegment36",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 17.11202, 53.92587],
 					"rotation": [110, 0, 0],
 					"cubes": [
@@ -2820,8 +2820,8 @@
 					]
 				},
 				{
-					"name": "trackMovL36",
-					"parent": "TrackL",
+					"name": "LSegment37",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 12.18702, 53.82586],
 					"rotation": [68, 0, 0],
 					"cubes": [
@@ -2852,8 +2852,8 @@
 					]
 				},
 				{
-					"name": "trackMovL37",
-					"parent": "TrackL",
+					"name": "LSegment38",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 8.31202, 50.45087],
 					"rotation": [30.75, 0, 0],
 					"cubes": [
@@ -2884,8 +2884,8 @@
 					]
 				},
 				{
-					"name": "trackMovL38",
-					"parent": "TrackL",
+					"name": "LSegment39",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 5.41202, 45.27587],
 					"rotation": [27.5, 0, 0],
 					"cubes": [
@@ -2916,8 +2916,8 @@
 					]
 				},
 				{
-					"name": "trackMovL39",
-					"parent": "TrackL",
+					"name": "LSegment40",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 2.71202, 40.07586],
 					"rotation": [26.75, 0, 0],
 					"cubes": [
@@ -2948,8 +2948,8 @@
 					]
 				},
 				{
-					"name": "trackMovL40",
-					"parent": "TrackL",
+					"name": "LSegment41",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 2.71202, 40.07586],
 					"rotation": [26.75, 0, 0],
 					"cubes": [
@@ -2980,8 +2980,8 @@
 					]
 				},
 				{
-					"name": "trackMovL41",
-					"parent": "TrackL",
+					"name": "LSegment42",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 2.71202, 40.07586],
 					"rotation": [26.75, 0, 0],
 					"cubes": [
@@ -3012,8 +3012,8 @@
 					]
 				},
 				{
-					"name": "trackMovL42",
-					"parent": "TrackL",
+					"name": "LSegment43",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 2.71202, 40.07586],
 					"rotation": [26.75, 0, 0],
 					"cubes": [
@@ -3044,8 +3044,8 @@
 					]
 				},
 				{
-					"name": "trackMovL43",
-					"parent": "TrackL",
+					"name": "LSegment44",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 2.71202, 40.07586],
 					"rotation": [26.75, 0, 0],
 					"cubes": [
@@ -3076,8 +3076,8 @@
 					]
 				},
 				{
-					"name": "trackMovL44",
-					"parent": "TrackL",
+					"name": "LSegment45",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 5.41202, 45.27587],
 					"rotation": [27.5, 0, 0],
 					"cubes": [
@@ -3108,8 +3108,8 @@
 					]
 				},
 				{
-					"name": "trackMovL45",
-					"parent": "TrackL",
+					"name": "LSegment46",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 2.71202, 40.07586],
 					"rotation": [26.75, 0, 0],
 					"cubes": [
@@ -3140,8 +3140,8 @@
 					]
 				},
 				{
-					"name": "trackMovL46",
-					"parent": "TrackL",
+					"name": "LSegment47",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 8.31202, 50.45087],
 					"rotation": [30.75, 0, 0],
 					"cubes": [
@@ -3172,8 +3172,8 @@
 					]
 				},
 				{
-					"name": "trackMovL47",
-					"parent": "TrackL",
+					"name": "LSegment48",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, 29.27587],
 					"cubes": [
 						{
@@ -3203,8 +3203,8 @@
 					]
 				},
 				{
-					"name": "trackMovL48",
-					"parent": "TrackL",
+					"name": "LSegment49",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, 23.27587],
 					"cubes": [
 						{
@@ -3234,8 +3234,8 @@
 					]
 				},
 				{
-					"name": "trackMovL49",
-					"parent": "TrackL",
+					"name": "LSegment50",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, 17.27587],
 					"cubes": [
 						{
@@ -3265,8 +3265,8 @@
 					]
 				},
 				{
-					"name": "trackMovL50",
-					"parent": "TrackL",
+					"name": "LSegment51",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, 11.27587],
 					"cubes": [
 						{
@@ -3296,8 +3296,8 @@
 					]
 				},
 				{
-					"name": "trackMovL51",
-					"parent": "TrackL",
+					"name": "LSegment52",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, 5.27587],
 					"cubes": [
 						{
@@ -3327,8 +3327,8 @@
 					]
 				},
 				{
-					"name": "trackMovL52",
-					"parent": "TrackL",
+					"name": "LSegment53",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, -0.72413],
 					"cubes": [
 						{
@@ -3358,8 +3358,8 @@
 					]
 				},
 				{
-					"name": "trackMovL53",
-					"parent": "TrackL",
+					"name": "LSegment54",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, -6.72413],
 					"cubes": [
 						{
@@ -3389,8 +3389,8 @@
 					]
 				},
 				{
-					"name": "trackMovL54",
-					"parent": "TrackL",
+					"name": "LSegment55",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, -12.72413],
 					"cubes": [
 						{
@@ -3420,8 +3420,8 @@
 					]
 				},
 				{
-					"name": "trackMovL55",
-					"parent": "TrackL",
+					"name": "LSegment56",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, -18.72413],
 					"cubes": [
 						{
@@ -3451,8 +3451,8 @@
 					]
 				},
 				{
-					"name": "trackMovL56",
-					"parent": "TrackL",
+					"name": "LSegment57",
+					"parent": "LeftTrack",
 					"pivot": [25.35084, 21, -24.72413],
 					"cubes": [
 						{

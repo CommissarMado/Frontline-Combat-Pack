@@ -1,12 +1,19 @@
 package frontline.combat.fcp.client.model.GazTigr;
 
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
+import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrMGEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrRWSEntity;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
 
 public class GazTigrMGModel extends VehicleModel<GazTigrMGEntity> {
+
+    @Override
+    public ResourceLocation getModelResource(GazTigrMGEntity animatable) {
+        return new ResourceLocation(FCP.MODID, "geo/gaz_tigr_mg.geo.json");
+    }
 
     @Override
     public boolean hideForTurretControllerWhileZooming() {

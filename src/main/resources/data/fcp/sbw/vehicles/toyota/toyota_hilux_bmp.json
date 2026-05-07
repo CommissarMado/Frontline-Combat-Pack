@@ -135,7 +135,7 @@
       "CrosshairColor": "0x00ff66",
       "Name": "weapon.fcp.2a28_grom",
       "AmmoType": [
-        "superbwarfare:creative_ammo_box"
+        "superbwarfare:ap_5_inches"
       ],
       "SoundRadius": 32,
       "SoundInfo": {
@@ -178,7 +178,7 @@
         "Change": "fcp:coax_equip"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:creative_ammo_box",
+      "AmmoType": "superbwarfare:rifle_ammo",
       "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",

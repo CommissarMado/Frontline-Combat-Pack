@@ -151,7 +151,7 @@
   },
   "Weapons": {
     "Rocket": {
-      "AmmoType": "superbwarfare:creative_ammo_box",
+      "AmmoType": "superbwarfare:rpg_rocket_standard",
       "Icon": "fcp:textures/screens/vehicle_weapon/pg_9v.png",
       "IsArmorPiercingProjectile": true,
       "IsHighExplosiveProjectile": true,

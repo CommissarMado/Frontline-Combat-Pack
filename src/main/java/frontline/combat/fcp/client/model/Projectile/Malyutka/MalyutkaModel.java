@@ -1,6 +1,7 @@
 package frontline.combat.fcp.client.model.Projectile.Malyutka;
 
 import com.atsuishio.superbwarfare.Mod;
+import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.entity.projectile.Malyutka.MalyutkaEntity;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.GeoModel;
@@ -14,12 +15,11 @@ public class MalyutkaModel extends GeoModel<MalyutkaEntity> {
 
     @Override
     public ResourceLocation getModelResource(MalyutkaEntity entity) {
-        // Используем модель igla как базу (можно заменить на свою)
-        return Mod.loc("geo/malyutka.geo.json");
+        return new ResourceLocation(FCP.MODID, "geo/malyutka.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(MalyutkaEntity entity) {
-        return Mod.loc("textures/entity/malyutka/malyutka.png");
+        return new ResourceLocation(FCP.MODID,"textures/entity/malyutka/malyutka.png");
     }
 }

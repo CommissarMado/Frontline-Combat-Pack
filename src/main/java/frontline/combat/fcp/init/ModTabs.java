@@ -32,8 +32,6 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP2.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.T72AV.get()));
-
-                output.accept(ContainerBlockItem.createInstance(ModEntities.T80BVM.get()));
             }).build());
 
     public static final RegistryObject<CreativeModeTab> RUSSIAN_VEHICLE_TAB = TABS.register("russian_tab", () -> CreativeModeTab.builder()
@@ -52,6 +50,8 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.GAZ_TIGR_RWS.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.GAZ_TIGR_MG.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.GAZ_TIGR_GL.get()));
+
+                output.accept(ContainerBlockItem.createInstance(ModEntities.NOVATOR.get()));
             }).build());
 
     public static final RegistryObject<CreativeModeTab> AMERICAN_VEHICLE_TAB = TABS.register("american_tab", () -> CreativeModeTab.builder()
@@ -69,6 +69,9 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.VIPER.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY_ROCKETS.get()));
+
+                output.accept(ContainerBlockItem.createInstance(ModEntities.MATV.get()));
             }).build());
 
     @Mod.EventBusSubscriber(modid = FCP.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)

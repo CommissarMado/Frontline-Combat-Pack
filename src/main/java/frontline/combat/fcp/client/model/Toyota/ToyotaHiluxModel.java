@@ -1,11 +1,19 @@
 package frontline.combat.fcp.client.model.Toyota;
 
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
+import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.entity.vehicle.T72av.T72AVEntity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxEntity;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
 
 public class ToyotaHiluxModel extends VehicleModel<ToyotaHiluxEntity>{
+    @Override
+    public ResourceLocation getModelResource(ToyotaHiluxEntity animatable) {
+        return new ResourceLocation(FCP.MODID, "geo/toyota_hilux.geo.json");
+    }
+
     @Override
     public boolean hideForTurretControllerWhileZooming() {
         return false;

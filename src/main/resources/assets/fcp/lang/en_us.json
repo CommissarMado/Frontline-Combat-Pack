@@ -6,6 +6,7 @@
   "entity.fcp.toyota_hilux_bmp": "Toyota Hilux With BMP",
   "entity.fcp.toyota_hilux_spg9": "Toyota Hilux With SPG-9",
   "entity.fcp.bmp1": "BMP-1",
+  "entity.fcp.bmp1u": "BMP-1U",
   "entity.fcp.bmp2": "BMP-2",
   "entity.fcp.t72av": "T72-AV",
   "entity.fcp.lav25": "LAV-25",
@@ -21,6 +22,7 @@
   "entity.fcp.gaz_tigr_rws": "Gaz Tigr RWS",
   "entity.fcp.gaz_tigr_mg": "Gaz Tigr With Machine Gun",
   "entity.fcp.gaz_tigr_gl": "Gaz Tigr With MK19",
+  "entity.fcp.novator": "Novator",
 
   "//": "======================== Weapons ========================",
   "weapon.fcp.ub32": "UB-32",
@@ -65,7 +67,17 @@
   "entity.fcp.stryker_dragoon": "Stryker Dragoon",
   "entity.fcp.stryker_m2": "Stryker M2",
   "entity.fcp.viper": "Viper",
+  "entity.fcp.huey": "Huey",
+  "entity.fcp.huey_rockets": "Huey With Rockets",
+  "entity.fcp.huey_m60": "Huey With M60",
+  "entity.fcp.matv": "MATV",
 
   "//": "======================= Messages ========================",
-  "message.fcp.camo_changed": "Camo changed to %s"
+  "message.fcp.camo_changed": "Camo changed to %s",
+
+  "//" : "====================== Trailer =========================",
+  "fcp.trailer.attached": "Trailer attached.",
+  "fcp.trailer.detached": "Trailer detached.",
+  "fcp.trailer.not_attached": "This trailer is not attached to anything.",
+  "fcp.trailer.no_vehicle_nearby": "No vehicle nearby to attach to."
 }

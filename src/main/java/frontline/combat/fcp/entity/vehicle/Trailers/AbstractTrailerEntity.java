@@ -1,4 +1,4 @@
-package frontline.combat.fcp.entity.vehicle.Trailer;
+package frontline.combat.fcp.entity.vehicle.Trailers;
 
 import com.atsuishio.superbwarfare.entity.vehicle.base.GeoVehicleEntity;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
@@ -11,6 +11,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -167,26 +168,34 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
         Entity tower = resolveTower();
 
         if (tower != null) {
-            // Set deltaMovement BEFORE super.baseTick() so that when SBW calls
-            // move() internally, it integrates our kinematic velocity — not the
-            // trailer's own engine physics (which is zero anyway, since there's
-            // no driver). SBW then applies only friction and gravity on top,
-            // both of which are handled gracefully by the correction term.
+            // Set deltaMovement BEFORE super.baseTick() so SBW's move() call
+            // integrates our velocity through its normal pipeline.
             applyTowedVelocity(tower);
         }
 
-        // Always run SBW's full baseTick — handles move(), damage,
-        // GeckoLib animations, and all other vehicle lifecycle work.
+        // Run SBW's full baseTick — handles move(), damage, GeckoLib, etc.
         super.baseTick();
+
+        if (tower != null) {
+            // Re-apply yaw AFTER super.baseTick(). SBW's vehicle logic can
+            // overwrite yaw during its tick (e.g. aligning to movement direction).
+            // Stamping it here ensures the trailer always faces the hitch point
+            // regardless of what SBW did during its tick.
+            float savedYaw = getTrailerYaw();
+            this.setYRot(savedYaw);
+            this.yRotO = savedYaw; // also set the previous-tick yaw SBW tracks
+            this.setXRot(0.0f);
+            this.xRotO = 0.0f;
+        }
     }
 
     // ════════════════════════════════════════════════════════════════════════
-    // Velocity-based kinematic model
+    // Center-point rotation towing model
     // ════════════════════════════════════════════════════════════════════════
 
     private void applyTowedVelocity(Entity tower) {
         TrailerConfig.HitchConfig hitch = getConfig().hitch();
-        double trailerLength = getConfig().trailerLength();
+        double halfLen = getConfig().trailerLength() * 0.5;
 
         // ── 1. Compute world-space hitch point from tower ─────────────────
         //
@@ -199,78 +208,58 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
 
         double hitchX = tower.getX() + (hitch.offsetX() * towerCos) + (hitch.offsetZ() * towerSin);
         double hitchZ = tower.getZ() - (hitch.offsetX() * towerSin) + (hitch.offsetZ() * towerCos);
+        double hitchY = tower.getY() + hitch.offsetY();
 
-        // ── 2. Reconstruct axle from entity position and yaw ──────────────
+        // ── 2. Compute target yaw: direction from trailer center to hitch ──
         //
-        // Derived from double-precision getX()/getZ() and synced yaw each tick.
-        // Not stored as floats — eliminates precision drift and sync-packet lag.
-        double halfLen       = trailerLength * 0.5;
-        double trailerYawRad = Math.toRadians(this.getYRot());
-        double trailerSin    = Math.sin(trailerYawRad);
-        double trailerCos    = Math.cos(trailerYawRad);
+        // The trailer rotates around its own center to face the hitch point.
+        // atan2(-dx, dz) gives Minecraft clockwise yaw from the direction vector.
+        double dx        = hitchX - this.getX();
+        double dz        = hitchZ - this.getZ();
+        float targetYaw  = (float) Math.toDegrees(Math.atan2(-dx, dz));
 
-        double axleX = this.getX() - trailerSin * halfLen;
-        double axleZ = this.getZ() - trailerCos * halfLen;
-
-        // ── 3. Compute axle→hitch vector ──────────────────────────────────
-        double dx   = hitchX - axleX;
-        double dz   = hitchZ - axleZ;
-        double dist = Math.sqrt(dx * dx + dz * dz);
-
-        if (dist < 0.001) return; // degenerate — tower and trailer in same spot
-
-        double nx = dx / dist; // normalized tow direction (axle → hitch)
-        double nz = dz / dist;
-
-        // ── 4. Project tower velocity onto the tow direction ──────────────
+        // ── 3. Smoothly rotate toward target yaw ──────────────────────────
         //
-        // Only the component of the tower's motion along the tow rod actually
-        // pulls the trailer. The perpendicular component just makes the hitch
-        // swing sideways, which is handled by the yaw derivation below.
+        // Mth.rotLerp handles the 360°/0° wraparound correctly.
+        // smoothing() from the JSON hitch config controls responsiveness:
+        //   1.0 = instant snap (no lag), 0.15 = loose and laggy, 0.3 = default.
+        float currentYaw = this.getYRot();
+        float newYaw     = Mth.rotLerp(hitch.smoothing(), currentYaw, targetYaw);
+
+        // ── 4. Compute target center position ─────────────────────────────
+        //
+        // The trailer's front (hitch connection) must sit at the hitch point.
+        // Since the entity origin is the center, we step back halfLen along
+        // the trailer's new facing direction to find where the center should be.
+        double newYawRad   = Math.toRadians(newYaw);
+        double newSin      = Math.sin(newYawRad);
+        double newCos      = Math.cos(newYawRad);
+
+        double targetCenterX = hitchX - newSin * halfLen;
+        double targetCenterZ = hitchZ - newCos * halfLen;
+
+        // ── 5. Express as velocity — no setPos() ──────────────────────────
+        //
+        // The displacement from current center to target center is the exact
+        // velocity needed. SBW's move() integrates it through its normal
+        // pipeline so collisions, step-up, and terrain work naturally.
+        double velX = targetCenterX - this.getX();
+        double velZ = targetCenterZ - this.getZ();
+
+        // Y: let move() handle terrain step-up when terrain_follow is on.
+        // Preserve downward velocity (gravity, ledge drops) but suppress
+        // upward so we don't fight the ground. When terrain_follow is off,
+        // match the tower's Y so ramps and bridges are followed correctly.
         Vec3 towerVel = tower.getDeltaMovement();
-        double projectedSpeed = towerVel.x * nx + towerVel.z * nz;
-
-        // ── 5. Compute constraint correction ─────────────────────────────
-        //
-        // slack = how far the axle→hitch distance deviates from trailerLength.
-        // A positive slack means the tower pulled ahead and the trailer is
-        // stretching — we add velocity to close the gap.
-        // A negative slack (compression) is unusual but handled gracefully.
-        //
-        // Correction factor 0.8: pulls the trailer firmly without oscillation.
-        // Range: 0.5 (soft, slight lag) to 1.0 (stiff, instant correction).
-        // Increase toward 1.0 if trailing lag is visible at high speeds.
-        double slack      = dist - trailerLength;
-        double correction = slack * 0.8;
-
-        // ── 6. Compute and apply trailer velocity ─────────────────────────
-        //
-        // The trailer moves along the tow direction at the combined speed.
-        // No setPos() — this velocity is what SBW's move() will integrate.
-        double velX = nx * (projectedSpeed + correction);
-        double velZ = nz * (projectedSpeed + correction);
-
-        // Y velocity:
-        //   - terrain_follow = true:  let move() handle step-up naturally.
-        //     We allow downward velocity (falling off ledges) but not upward
-        //     so we don't fight the terrain.
-        //   - terrain_follow = false: inherit the tower's Y directly so the
-        //     trailer rises/falls with bridges, ramps, etc.
         double velY = getConfig().terrainFollow()
                 ? Math.min(this.getDeltaMovement().y, 0.0)
                 : towerVel.y;
 
+        // ── 6. Apply velocity and sync yaw ───────────────────────────────
+        // setYRot is NOT called here — it runs after super.baseTick() in the
+        // outer tick() method so SBW cannot overwrite it during its own tick.
         this.setDeltaMovement(velX, velY, velZ);
-
-        // ── 7. Derive trailer yaw from tow direction ──────────────────────
-        //
-        // Yaw is NOT copied from the tower. It is the direction the hitch
-        // is relative to the axle — this produces natural off-tracking on
-        // corners, where the axle lags behind the hitch's lateral movement.
-        float newYaw = (float) Math.toDegrees(Math.atan2(dx, dz));
         this.entityData.set(TRAILER_YAW, newYaw);
-        this.setYRot(newYaw);
-        this.setXRot(0.0f);
     }
 
     // ════════════════════════════════════════════════════════════════════════

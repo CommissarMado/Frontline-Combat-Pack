@@ -191,9 +191,9 @@
       "CrosshairColor": "0x00ff66",
       "Name": "weapon.fcp.m68a2_105mm_ap",
       "AmmoType": [
-        "superbwarfare:creative_ammo_box",
+        "superbwarfare:ap_5_inches",
         {
-          "Ammo": "superbwarfare:creative_ammo_box",
+          "Ammo": "superbwarfare:he_5_inches",
           "Override": {
             "Icon": "fcp:textures/screens/vehicle_weapon/105mm_he.png",
             "IsArmorPiercingProjectile": false,
