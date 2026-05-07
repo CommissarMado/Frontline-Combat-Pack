@@ -1,0 +1,24 @@
+﻿{
+  "hitch": {
+    "offset_x": 0,
+    "offset_y": 0.5,
+    "offset_z": -0.5
+  },
+  "trailer_length": 4,
+  "max_health": 300,
+  "width": 2.5,
+  "height": 1.8,
+  "terrain_follow": true,
+  "seats": [
+    {
+      "offset_x": 0,
+      "offset_y": 1.2,
+      "offset_z": 0.5
+    },
+    {
+      "offset_x": 0,
+      "offset_y": 1.2,
+      "offset_z": -0.5
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+﻿package frontline.combat.fcp.event;
+
+public class TrailerHitchHandler {
+}
