@@ -46,6 +46,7 @@
   "weapon.fcp.m242_bushmaster_ap": "M242 Bushmaster AP",
   "weapon.fcp.m242_bushmaster_he": "M242 Bushmaster HE",
   "weapon.fcp.m240": "M240 Machine Gun",
+  "weapon.fcp.m60": "M60 Machine Gun",
   "weapon.fcp.m2_50cal": "M2 50cal Machine Gun",
   "weapon.fcp.2a46_125mm": "2A46 125mm Cannon",
   "weapon.fcp.12_7mm": "12.7mm Machine Gun",
@@ -69,7 +70,8 @@
   "entity.fcp.viper": "Viper",
   "entity.fcp.huey": "Huey",
   "entity.fcp.huey_rockets": "Huey With Rockets",
-  "entity.fcp.huey_m60": "Huey With M60",
+  "entity.fcp.huey_door_gunner_m60": "Huey With M60",
+  "entity.fcp.huey_door_gunner_m134": "Huey With M134",
   "entity.fcp.matv": "MATV",
 
   "//": "======================= Messages ========================",

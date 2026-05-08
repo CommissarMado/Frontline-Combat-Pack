@@ -1,7 +1,12 @@
 ﻿{
-  "ID": "fcp:huey",
+  "ID": "fcp:huey_door_gunner_m60",
   "MaxHealth": 280,
   "MaxEnergy": 8000000,
+  "TurretPos": [-1.77410625, 1.440825, -0.38746875],
+  "BarrelPos": [0, 0, 0],
+  "TurretTurnSpeed": [15, 15],
+  "TurretPitchRange": [-60, 60],
+  "TurretControllerIndex": 1,
   "OBB": [
     {"Size": [1.125, 0.9375, 3], "Position": [0, 1.5, 0]},
     {"Size": [1.125, 0.9375, 0.375], "Position": [0, 1.5, 3.375]},
@@ -15,9 +20,9 @@
   "Seats": [
     {
       "Transform": "Vehicle",
-      "Position": [-0.55, 0.5, 2.4],
+      "Position": [-0.55, 0.45, 2.4],
       "Sensitivity": [0, 0, 0],
-      "Weapons": ["Empty"],
+      "Weapons": ["Rocket"],
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Position": [-0.55, 2.25, 2.55],
@@ -25,6 +30,21 @@
         "AircraftCameraPos": [-3, 3, -10]
       },
       "CanRotateHead": false
+    },
+    {
+      "Transform": "Vehicle",
+      "Position": [-0.7, 0.45, -0.4],
+      "CameraPos": {
+        "Transform": "Barrel",
+        "UseFixedCameraPos": true,
+        "Position": [0, 0.25, -0.5]
+      },
+      "Weapons": ["m60"],
+      "Orientation": 90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75
     },
     {
       "Transform": "Vehicle",
@@ -84,7 +104,7 @@
       "Position": [-0.7, 0.45, 0.35],
       "CameraPos": {
         "UseFixedCameraPos": true,
-        "Position": [-0.7, 1.79, 0.35]
+        "Position": [-0.75, 1.79, 0.35]
       },
       "Orientation": 90,
       "MinPitch": -50,
@@ -97,22 +117,9 @@
       "Position": [0.7, 0.45, 0.35],
       "CameraPos": {
         "UseFixedCameraPos": true,
-        "Position": [0.7, 1.79, 0.35]
+        "Position": [0.75, 1.79, 0.35]
       },
       "Orientation": -90,
-      "MinPitch": -50,
-      "MaxPitch": 15,
-      "MinYaw": -75,
-      "MaxYaw": 75
-    },
-    {
-      "Transform": "Vehicle",
-      "Position": [-0.7, 0.45, -0.4],
-      "CameraPos": {
-        "UseFixedCameraPos": true,
-        "Position": [-0.7, 1.79, -0.4]
-      },
-      "Orientation": 90,
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
@@ -123,7 +130,7 @@
       "Position": [0.7, 0.45, -0.4],
       "CameraPos": {
         "UseFixedCameraPos": true,
-        "Position": [0.7, 1.79, -0.4]
+        "Position": [0.75, 1.79, -0.4]
       },
       "Orientation": -90,
       "MinPitch": -50,
@@ -133,12 +140,39 @@
     }
   ],
   "Weapons": {
-    "Empty": {
-      "Name": "",
-      "Crosshair": "@Empty",
-      "RPM": 0,
-      "Magazine": 0,
-      "Damage": 0
+    "m60": {
+      "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Spread": 0.25,
+      "CrosshairColor": "0x00ff66",
+      "Projectile": "superbwarfare:projectile",
+      "DefaultZoom": 3,
+      "RPM": 550,
+      "Damage": 5.5,
+      "BypassesArmor": 0.2,
+      "Velocity": 25,
+      "RecoilTime": 16,
+      "RecoilForce": 0.05,
+      "HeatPerShoot": 5,
+      "NaturalCooldown": 1,
+      "ShootAnimationTime": 1,
+      "AmmoType": "superbwarfare:creative_ammo_box",
+      "ShootPos": {
+        "Transform": "Barrel",
+        "Positions": [[-0.00923750000000001, -0.06088125, 0.88015]],
+        "Directions": ["Barrel"]
+      },
+      "Crosshair": "@VehicleCommonGun",
+      "Name": "weapon.fcp.m60",
+      "SoundInfo": {
+        "Fire1P": "superbwarfare:m_2_hb_fire_1p",
+        "Fire3P": "superbwarfare:m_2_hb_fire_3p",
+        "Fire3PFar": "superbwarfare:m_2_hb_far",
+        "Fire3PVeryFar": "superbwarfare:m_2_hb_veryfar",
+        "Change": "fcp:into_coax"
+      },
+      "SoundRadius": 16
     }
   },
   "EngineType": "Helicopter",

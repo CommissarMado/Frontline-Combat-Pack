@@ -20,7 +20,7 @@
       "Weapons": ["Rocket"],
       "CameraPos": {
         "UseFixedCameraPos": true,
-        "Position": [-0.55, 2, 2.55],
+        "Position": [-0.55, 2.25, 2.55],
         "UseAircraftCamera": true,
         "AircraftCameraPos": [-3, 3, -10]
       },
@@ -31,7 +31,7 @@
       "Position": [0.55, 0.45, 2.4],
       "CameraPos": {
         "UseFixedCameraPos": true,
-        "Position": [0.55, 2, 2.55]
+        "Position": [0.55, 2.25, 2.55]
       },
       "CanRotateHead": true,
       "MinPitch": -50,

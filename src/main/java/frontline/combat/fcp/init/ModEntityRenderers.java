@@ -8,6 +8,8 @@ import frontline.combat.fcp.client.renderer.GazTigr.GazTigrGLRenderer;
 import frontline.combat.fcp.client.renderer.GazTigr.GazTigrMGRenderer;
 import frontline.combat.fcp.client.renderer.GazTigr.GazTigrRWSRenderer;
 import frontline.combat.fcp.client.renderer.GazTigr.GazTigrRenderer;
+import frontline.combat.fcp.client.renderer.Huey.HueyDoorGunnerM134Renderer;
+import frontline.combat.fcp.client.renderer.Huey.HueyDoorGunnerM60Renderer;
 import frontline.combat.fcp.client.renderer.Huey.HueyRenderer;
 import frontline.combat.fcp.client.renderer.Huey.HueyRocketsRenderer;
 import frontline.combat.fcp.client.renderer.Kamaz.KamazRenderer;
@@ -15,6 +17,7 @@ import frontline.combat.fcp.client.renderer.Lav.Lav25Renderer;
 import frontline.combat.fcp.client.renderer.Littlebird.LittlebirdArmedRenderer;
 import frontline.combat.fcp.client.renderer.Littlebird.LittlebirdRenderer;
 import frontline.combat.fcp.client.renderer.Matv.MATVRenderer;
+import frontline.combat.fcp.client.renderer.MemeVehicles.BigBirdRenderer;
 import frontline.combat.fcp.client.renderer.Novator.NovatorRenderer;
 import frontline.combat.fcp.client.renderer.Projectile.Hellfire.WireGuidedHellfireRenderer;
 import frontline.combat.fcp.client.renderer.Projectile.Malyutka.MalyutkaRenderer;
@@ -78,6 +81,8 @@ public class ModEntityRenderers {
 
         event.registerEntityRenderer(ModEntities.HUEY.get(), HueyRenderer::new);
         event.registerEntityRenderer(ModEntities.HUEY_ROCKETS.get(), HueyRocketsRenderer::new);
+        event.registerEntityRenderer(ModEntities.HUEY_DOOR_GUNNER_M60.get(), HueyDoorGunnerM60Renderer::new);
+        event.registerEntityRenderer(ModEntities.HUEY_DOOR_GUNNER_M134.get(), HueyDoorGunnerM134Renderer::new);
 
         event.registerEntityRenderer(ModEntities.NOVATOR.get(), NovatorRenderer::new);
 
@@ -91,6 +96,8 @@ public class ModEntityRenderers {
 
         event.registerEntityRenderer(ModEntities.MALYUTKA.get(), MalyutkaRenderer::new);
 
+        // Meme Vehicles
+        event.registerEntityRenderer(ModEntities.BIGBIRD.get(), BigBirdRenderer::new);
         // Trailers
         event.registerEntityRenderer(ModEntities.EXAMPLE_TRAILER.get(), ExampleTrailerRenderer::new);
     }

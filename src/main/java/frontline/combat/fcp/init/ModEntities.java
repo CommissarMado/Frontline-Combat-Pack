@@ -12,6 +12,8 @@ import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrGLEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrMGEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrRWSEntity;
+import frontline.combat.fcp.entity.vehicle.Huey.HueyDoorGunnerM134Entity;
+import frontline.combat.fcp.entity.vehicle.Huey.HueyDoorGunnerM60Entity;
 import frontline.combat.fcp.entity.vehicle.Huey.HueyEntity;
 import frontline.combat.fcp.entity.vehicle.Huey.HueyRocketsEntity;
 import frontline.combat.fcp.entity.vehicle.Kamaz.KamazEntity;
@@ -19,6 +21,7 @@ import frontline.combat.fcp.entity.vehicle.Lav.Lav25Entity;
 import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdArmedEntity;
 import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdEntity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATVEntity;
+import frontline.combat.fcp.entity.vehicle.MemeVehicles.BigBirdEntity;
 import frontline.combat.fcp.entity.vehicle.Novator.NovatorEntity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerM2Entity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerMGSEntity;
@@ -107,6 +110,10 @@ public class ModEntities {
             EntityType.Builder.of(HueyEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<HueyRocketsEntity>> HUEY_ROCKETS = register("huey_rockets",
             EntityType.Builder.of(HueyRocketsEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<HueyDoorGunnerM60Entity>> HUEY_DOOR_GUNNER_M60 = register("huey_door_gunner_m60",
+            EntityType.Builder.of(HueyDoorGunnerM60Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<HueyDoorGunnerM134Entity>> HUEY_DOOR_GUNNER_M134 = register("huey_door_gunner_m134",
+            EntityType.Builder.of(HueyDoorGunnerM134Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<NovatorEntity>> NOVATOR = register("novator",
             EntityType.Builder.of(NovatorEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<MATVEntity>> MATV = register("matv",
@@ -121,6 +128,10 @@ public class ModEntities {
             EntityType.Builder.<SidewinderEntity>of(SidewinderEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f, 0.5f));
     public static final RegistryObject<EntityType<MalyutkaEntity>> MALYUTKA = register("malyutka",
             EntityType.Builder.<MalyutkaEntity>of(MalyutkaEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f, 0.5f));
+
+    // Meme Vehicles
+    public static final RegistryObject<EntityType<BigBirdEntity>> BIGBIRD = register("bigbird",
+            EntityType.Builder.of(BigBirdEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> entityTypeBuilder) {
         return ENTITY_TYPES.register(name, () -> entityTypeBuilder.build(name));
 
