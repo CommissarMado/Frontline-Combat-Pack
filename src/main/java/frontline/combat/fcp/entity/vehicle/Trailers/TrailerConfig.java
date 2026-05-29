@@ -6,23 +6,14 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
 /**
- * TrailerConfig — loaded from data/<namespace>/trailers/<id>.json
+ * TrailerConfig — defines the trailer's own geometry.
+ * Loaded from: data/<namespace>/trailers/<id>.json
  *
- * Minimum required JSON:
- * {
- *   "hitch": {
- *     "offset_z": -0.5
- *   },
- *   "trailer_length": 4.0
- * }
+ * The hitch point is no longer defined here — it comes from the
+ * towing vehicle's TowableConfig (data/fcp/towable_vehicles/<id>.json).
  *
- * Full example:
+ * Example (data/fcp/trailers/example_trailer.json):
  * {
- *   "hitch": {
- *     "offset_x":  0.0,
- *     "offset_y":  0.5,
- *     "offset_z": -0.5
- *   },
  *   "trailer_length": 4.0,
  *   "max_health": 300.0,
  *   "width": 2.5,
@@ -33,16 +24,10 @@ import java.util.List;
  *   ]
  * }
  *
- * Hitch offset is in the towing vehicle's local coordinate space:
- *   offset_x = lateral      (+right of tower, -left)
- *   offset_y = vertical     (+above tower origin)
- *   offset_z = longitudinal (-behind tower, +in front)
- *
- * trailer_length = blocks from hitch pin to rear axle.
- * Entity center is placed at the midpoint between hitch and axle.
+ * trailer_length = distance in blocks from front hitch connection to rear.
+ *   The entity center is placed at the midpoint along this length.
  */
 public record TrailerConfig(
-        HitchConfig hitch,
         double trailerLength,
         float maxHealth,
         float width,
@@ -51,7 +36,6 @@ public record TrailerConfig(
         List<SeatConfig> seats
 ) {
     public static final Codec<TrailerConfig> CODEC = RecordCodecBuilder.create(inst -> inst.group(
-            HitchConfig.CODEC.fieldOf("hitch").forGetter(TrailerConfig::hitch),
             Codec.DOUBLE.fieldOf("trailer_length").forGetter(TrailerConfig::trailerLength),
             Codec.FLOAT.optionalFieldOf("max_health", 200.0f).forGetter(TrailerConfig::maxHealth),
             Codec.FLOAT.optionalFieldOf("width", 2.5f).forGetter(TrailerConfig::width),
@@ -61,29 +45,8 @@ public record TrailerConfig(
     ).apply(inst, TrailerConfig::new));
 
     /**
-     * The pin point on the towing vehicle where this trailer attaches.
-     * All offsets are in the towing vehicle's local coordinate space.
-     */
-    public record HitchConfig(
-            double offsetX,
-            double offsetY,
-            double offsetZ,
-            float smoothing
-    ) {
-        public static final Codec<HitchConfig> CODEC = RecordCodecBuilder.create(inst -> inst.group(
-                Codec.DOUBLE.optionalFieldOf("offset_x", 0.0).forGetter(HitchConfig::offsetX),
-                Codec.DOUBLE.optionalFieldOf("offset_y", 0.5).forGetter(HitchConfig::offsetY),
-                Codec.DOUBLE.fieldOf("offset_z").forGetter(HitchConfig::offsetZ),
-                Codec.FLOAT.optionalFieldOf("smoothing", 0.3f).forGetter(HitchConfig::smoothing)
-        ).apply(inst, HitchConfig::new));
-    }
-
-    /**
-     * A single passenger seat on the trailer.
-     * Offset is in the trailer's local coordinate space (rotated with trailer yaw).
-     *   offset_x = lateral  (+right, -left)
-     *   offset_y = vertical (+up)
-     *   offset_z = forward  (+toward hitch end, -toward axle end)
+     * A passenger seat in trailer-local space.
+     * offset_z: +toward front (hitch end), -toward rear
      */
     public record SeatConfig(
             double offsetX,

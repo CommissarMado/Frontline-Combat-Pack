@@ -10,7 +10,7 @@ public class MalyutkaModel extends GeoModel<MalyutkaEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(MalyutkaEntity entity) {
-        return Mod.loc("animations/javelin_missile.animation.json");
+        return Mod.loc("animations/javelin.animation.json");
     }
 
     @Override

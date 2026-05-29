@@ -10,7 +10,7 @@ public class LockOnHellfireModel extends GeoModel<LockOnHellfireEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(LockOnHellfireEntity entity) {
-        return Mod.loc("animations/javelin_missile.animation.json");
+        return Mod.loc("animations/javelin.animation.json");
     }
 
     @Override

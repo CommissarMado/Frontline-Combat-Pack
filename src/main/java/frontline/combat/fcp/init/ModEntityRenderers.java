@@ -12,12 +12,15 @@ import frontline.combat.fcp.client.renderer.Huey.HueyDoorGunnerM134Renderer;
 import frontline.combat.fcp.client.renderer.Huey.HueyDoorGunnerM60Renderer;
 import frontline.combat.fcp.client.renderer.Huey.HueyRenderer;
 import frontline.combat.fcp.client.renderer.Huey.HueyRocketsRenderer;
+import frontline.combat.fcp.client.renderer.Humvee.HumveeRenderer;
+import frontline.combat.fcp.client.renderer.Humvee.HumveeTOWRenderer;
 import frontline.combat.fcp.client.renderer.Kamaz.KamazRenderer;
 import frontline.combat.fcp.client.renderer.Lav.Lav25Renderer;
 import frontline.combat.fcp.client.renderer.Littlebird.LittlebirdArmedRenderer;
 import frontline.combat.fcp.client.renderer.Littlebird.LittlebirdRenderer;
 import frontline.combat.fcp.client.renderer.Matv.MATVRenderer;
 import frontline.combat.fcp.client.renderer.MemeVehicles.BigBirdRenderer;
+import frontline.combat.fcp.client.renderer.MemeVehicles.LaHumveeRenderer;
 import frontline.combat.fcp.client.renderer.Novator.NovatorRenderer;
 import frontline.combat.fcp.client.renderer.Projectile.Hellfire.WireGuidedHellfireRenderer;
 import frontline.combat.fcp.client.renderer.Projectile.Malyutka.MalyutkaRenderer;
@@ -88,6 +91,9 @@ public class ModEntityRenderers {
 
         event.registerEntityRenderer(ModEntities.MATV.get(), MATVRenderer::new);
 
+        event.registerEntityRenderer(ModEntities.HUMVEE.get(), HumveeRenderer::new);
+        event.registerEntityRenderer(ModEntities.HUMVEE_TOW.get(), HumveeTOWRenderer::new);
+
         // Projectiles
         event.registerEntityRenderer(ModEntities.LOCK_ON_HELLFIRE.get(), LockOnHellfireRenderer::new);
         event.registerEntityRenderer(ModEntities.WIRE_GUIDED_HELLFIRE.get(), WireGuidedHellfireRenderer::new);
@@ -98,6 +104,7 @@ public class ModEntityRenderers {
 
         // Meme Vehicles
         event.registerEntityRenderer(ModEntities.BIGBIRD.get(), BigBirdRenderer::new);
+        event.registerEntityRenderer(ModEntities.LA_HUMVEE.get(), LaHumveeRenderer::new);
         // Trailers
         event.registerEntityRenderer(ModEntities.EXAMPLE_TRAILER.get(), ExampleTrailerRenderer::new);
     }

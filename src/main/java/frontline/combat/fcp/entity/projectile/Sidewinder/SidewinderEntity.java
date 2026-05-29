@@ -42,14 +42,88 @@ public class SidewinderEntity extends MissileProjectile implements GeoEntity {
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
+    private static java.lang.reflect.Field damageField;
+    private static java.lang.reflect.Field explosionDamageField;
+    private static java.lang.reflect.Field explosionRadiusField;
+    private static java.lang.reflect.Field durabilityField;
+
+    static {
+        try {
+            Class<?> parentClass = MissileProjectile.class;
+            damageField = parentClass.getDeclaredField("damage");
+            damageField.setAccessible(true);
+
+            explosionDamageField = parentClass.getDeclaredField("explosionDamage");
+            explosionDamageField.setAccessible(true);
+
+            explosionRadiusField = parentClass.getDeclaredField("explosionRadius");
+            explosionRadiusField.setAccessible(true);
+
+            durabilityField = parentClass.getDeclaredField("durability");
+            durabilityField.setAccessible(true);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+    }
+
     public SidewinderEntity(EntityType<? extends SidewinderEntity> type, Level level) {
         super(type, level);
         this.noCulling = true;
-        this.damage = 1100;
-        this.explosionDamage = 180;
-        this.explosionRadius = 12;
+        setDamage(1100);
+        setExplosionDamage(180);
+        setExplosionRadius(12);
         this.distracted = false;
-        this.durability = 25;
+    }
+
+    private void setDamage(int value) {
+        try {
+            if (damageField != null) damageField.setInt(this, value);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setExplosionDamage(int value) {
+        try {
+            if (explosionDamageField != null) explosionDamageField.setInt(this, value);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setExplosionRadius(int value) {
+        try {
+            if (explosionRadiusField != null) explosionRadiusField.setInt(this, value);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private int getDamage() {
+        try {
+            if (damageField != null) return damageField.getInt(this);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    private int getExplosionDamage() {
+        try {
+            if (explosionDamageField != null) return explosionDamageField.getInt(this);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    private int getExplosionRadius() {
+        try {
+            if (explosionRadiusField != null) return explosionRadiusField.getInt(this);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     @Override
@@ -65,7 +139,7 @@ public class SidewinderEntity extends MissileProjectile implements GeoEntity {
             return;
         if (this.level() instanceof ServerLevel) {
 
-            DamageHandler.doDamage(entity, ModDamageTypes.causeProjectileHitDamage(this.level().registryAccess(), this, this.getOwner()), this.damage);
+            DamageHandler.doDamage(entity, ModDamageTypes.causeProjectileHitDamage(this.level().registryAccess(), this, this.getOwner()), getDamage());
 
             if (entity instanceof LivingEntity) {
                 entity.invulnerableTime = 0;
@@ -80,7 +154,7 @@ public class SidewinderEntity extends MissileProjectile implements GeoEntity {
         if (this.level() instanceof ServerLevel) {
             ProjectileTool.causeCustomExplode(this,
                     ModDamageTypes.causeProjectileExplosionDamage(this.level().registryAccess(), this, this.getOwner()),
-                    this, this.explosionDamage, this.explosionRadius);
+                    this, getExplosionDamage(), getExplosionRadius());
         }
         this.discard();
     }

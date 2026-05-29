@@ -2,6 +2,7 @@ package frontline.combat.fcp.entity.vehicle.Trailers;
 
 import com.atsuishio.superbwarfare.entity.vehicle.base.GeoVehicleEntity;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
+import frontline.combat.fcp.init.FcpTowableConfigs;
 import frontline.combat.fcp.init.FcpTrailerConfigs;
 import frontline.combat.fcp.init.ModItems;
 import net.minecraft.core.BlockPos;
@@ -11,8 +12,8 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -21,6 +22,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
 import java.util.Comparator;
@@ -31,57 +33,45 @@ import java.util.UUID;
 /**
  * AbstractTrailerEntity — base type for all towed trailer entities in FCP.
  *
- * Extends CamoVehicleBase so trailers inherit camo spray support, the SBW
- * damage system, GeckoLib rendering, and all standard vehicle behaviour.
+ * Extends CamoVehicleBase so trailers inherit camo spray, SBW damage,
+ * GeckoLib rendering, and all standard vehicle behaviour.
  *
- * ── Physics model ────────────────────────────────────────────────────────────
+ * ── How it works ─────────────────────────────────────────────────────────────
  *
- * The trailer moves entirely through its own deltaMovement — there is no
- * setPos() override. Each tick, before SBW's own physics runs, we compute
- * the velocity the trailer needs and set it as deltaMovement. SBW then
- * integrates that velocity through its normal move() call, so collisions,
- * step-up, and terrain interaction all work naturally.
+ * Each tick:
+ *   1. Look up the towing vehicle's TowableConfig to get its hitch point
+ *      position (defined in the tower's local space via JSON).
+ *   2. Rotate the hitch offset by the tower's current yaw to get the
+ *      hitch world position.
+ *   3. Compute the direction from the trailer's center to that hitch point.
+ *   4. Smoothly rotate the trailer to face that direction using rotLerp
+ *      with the smoothing value from the TowableConfig.
+ *   5. Compute where the trailer center should be (hitch point stepped back
+ *      by half the trailer's length along its new facing direction).
+ *   6. Express that as deltaMovement and let SBW's move() integrate it —
+ *      no setPos(), collisions and terrain work naturally.
+ *   7. After super.baseTick(), re-stamp the yaw so SBW can't overwrite it.
  *
- * Velocity is computed as follows:
+ * ── Config files ─────────────────────────────────────────────────────────────
  *
- *   1. Find the world-space hitch point on the towing vehicle (from JSON offset).
- *   2. Reconstruct the trailer's rear axle from its current position and yaw
- *      (double precision, no stored floats — eliminates sync-lag drift).
- *   3. Project the tower's velocity onto the axle→hitch direction.
- *      This is the component of the tower's motion that actually pulls the trailer.
- *   4. Add a constraint correction proportional to how far the axle→hitch
- *      distance deviates from trailerLength. This prevents drift accumulation
- *      under acceleration without any position teleporting.
- *   5. Set deltaMovement = towDirection * (projectedSpeed + correction).
- *   6. Derive trailer yaw from atan2(hitch - axle) so corners are tracked
- *      naturally with realistic off-tracking, not copied from the tower.
+ * Per towing vehicle: data/fcp/towable_vehicles/<entity_id>.json
+ *   Defines where the hitch point is on that vehicle.
+ *   entity_id must match the vehicle's registry name exactly.
  *
- * Since the trailer has no driver or engine, SBW's baseTick() physics applies
- * only friction and gravity on top of our velocity — both are negligible or
- * desirable. The correction term in step 4 compensates for friction decay.
+ * Per trailer: data/<namespace>/trailers/<id>.json
+ *   Defines the trailer's own geometry (length, hitbox, seats, etc).
  *
  * ── Subclass contract ────────────────────────────────────────────────────────
  *
- *   getConfigId()                → ResourceLocation of the trailer's JSON config
- *   getCamoTextures()            → texture paths for camo variants
+ *   getConfigId()                → ResourceLocation of the trailer's JSON
+ *   getCamoTextures()            → texture array for camo variants
  *   getCamoNames()               → display names for camo variants
  *   registerControllers()        → GeckoLib animation controllers
  *   getAnimatableInstanceCache() → GeckoLib instance cache
  *
- * ── JSON config ──────────────────────────────────────────────────────────────
- *
- * File: data/<namespace>/trailers/<id>.json
- *
- * Hitch offset (in towing vehicle local space):
- *   offset_x = lateral      (+right of tower, -left)
- *   offset_y = vertical     (+above tower origin)
- *   offset_z = longitudinal (-behind tower, +in front)
- *
- * trailer_length = blocks from hitch pin to rear axle.
- *
  * ── Interaction ──────────────────────────────────────────────────────────────
  *
- *   Right-click              → attach to nearest SBW vehicle, or detach
+ *   Right-click              → attach to nearest towable SBW vehicle, or detach
  *   Sneak + right-click      → force detach
  *   Right-click with spray   → cycle camo (CamoVehicleBase)
  */
@@ -98,9 +88,10 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
             SynchedEntityData.defineId(AbstractTrailerEntity.class, EntityDataSerializers.BOOLEAN);
 
     /**
-     * Trailer yaw in degrees, derived each tick from atan2(hitch - axle).
-     * Synced for client-side renderer lerp. The axle itself is NOT stored —
-     * it is reconstructed each tick from entity position + this yaw.
+     * Current trailer yaw in degrees, always facing the hitch point.
+     * Synced so the client can lerp rotation smoothly between packets.
+     * Usage in renderer:
+     *   Mth.rotLerp(partialTick, entity.prevTrailerYaw, entity.getTrailerYaw())
      */
     private static final EntityDataAccessor<Float> TRAILER_YAW =
             SynchedEntityData.defineId(AbstractTrailerEntity.class, EntityDataSerializers.FLOAT);
@@ -109,14 +100,10 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
     // Client lerp state — read by renderer
     // ════════════════════════════════════════════════════════════════════════
 
-    /**
-     * Yaw from the previous tick, exposed so the renderer can lerp:
-     *   Mth.rotLerp(partialTick, entity.prevTrailerYaw, entity.getTrailerYaw())
-     */
     public float prevTrailerYaw;
 
     // ════════════════════════════════════════════════════════════════════════
-    // Runtime state (not synced)
+    // Runtime state
     // ════════════════════════════════════════════════════════════════════════
 
     @Nullable
@@ -134,11 +121,6 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
     // Subclass contract
     // ════════════════════════════════════════════════════════════════════════
 
-    /**
-     * ResourceLocation of this trailer's JSON config.
-     * Example: new ResourceLocation("fcp", "example_trailer")
-     * File at: data/fcp/trailers/example_trailer.json
-     */
     protected abstract ResourceLocation getConfigId();
 
     public final TrailerConfig getConfig() {
@@ -158,6 +140,37 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
     }
 
     // ════════════════════════════════════════════════════════════════════════
+    // Rotation — always driven by TRAILER_YAW synced data
+    // ════════════════════════════════════════════════════════════════════════
+
+    /**
+     * GeckoLib and vanilla both call getViewYRot() to determine which way
+     * to render the entity. By returning TRAILER_YAW here (lerped by partial
+     * tick) the visual rotation is always correct on both client and server
+     * regardless of what SBW's baseTick() does to yRot internally.
+     */
+    @Override
+    public float getViewYRot(float partialTick) {
+        if (!isAttached()) return super.getViewYRot(partialTick);
+        return Mth.rotLerp(partialTick, prevTrailerYaw, getTrailerYaw());
+    }
+
+    /**
+     * Called on the client whenever synced entity data changes.
+     * Immediately apply TRAILER_YAW to yRot so the entity's own rotation
+     * field stays in sync — this is what position packets read on the client.
+     */
+    @Override
+    public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
+        super.onSyncedDataUpdated(key);
+        if (key.equals(TRAILER_YAW)) {
+            float yaw = getTrailerYaw();
+            this.setYRot(yaw);
+            this.yRotO = yaw;
+        }
+    }
+
+    // ════════════════════════════════════════════════════════════════════════
     // Tick
     // ════════════════════════════════════════════════════════════════════════
 
@@ -168,96 +181,109 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
         Entity tower = resolveTower();
 
         if (tower != null) {
-            // Set deltaMovement BEFORE super.baseTick() so SBW's move() call
-            // integrates our velocity through its normal pipeline.
+            // Compute and apply velocity BEFORE super.baseTick() so SBW's
+            // internal move() call integrates our velocity this tick.
             applyTowedVelocity(tower);
         }
 
-        // Run SBW's full baseTick — handles move(), damage, GeckoLib, etc.
+        // Run SBW's full lifecycle — move(), damage, GeckoLib, etc.
         super.baseTick();
 
         if (tower != null) {
-            // Re-apply yaw AFTER super.baseTick(). SBW's vehicle logic can
-            // overwrite yaw during its tick (e.g. aligning to movement direction).
-            // Stamping it here ensures the trailer always faces the hitch point
-            // regardless of what SBW did during its tick.
-            float savedYaw = getTrailerYaw();
-            this.setYRot(savedYaw);
-            this.yRotO = savedYaw; // also set the previous-tick yaw SBW tracks
+            // Re-stamp yaw AFTER super.baseTick(). SBW's vehicle logic can
+            // overwrite yaw during its tick (steering logic, movement alignment).
+            // Forcing it here ensures the trailer always faces the hitch point.
+            float yaw = getTrailerYaw();
+            this.setYRot(yaw);
+            this.yRotO = yaw;   // SBW tracks previous yaw here for interpolation
             this.setXRot(0.0f);
             this.xRotO = 0.0f;
         }
     }
 
     // ════════════════════════════════════════════════════════════════════════
-    // Center-point rotation towing model
+    // Core towing logic
     // ════════════════════════════════════════════════════════════════════════
 
     private void applyTowedVelocity(Entity tower) {
-        TrailerConfig.HitchConfig hitch = getConfig().hitch();
-        double halfLen = getConfig().trailerLength() * 0.5;
+        // Get the tower's entity registry id and look up its TowableConfig
+        ResourceLocation towerId = ForgeRegistries.ENTITY_TYPES.getKey(tower.getType());
+        if (towerId == null) return;
+
+        TowableConfig towable = FcpTowableConfigs.get(towerId);
+        if (towable == null) return; // shouldn't happen — we checked on attach
+
+        double trailerLength = getConfig().trailerLength();
+        double halfLen = trailerLength * 0.5;
 
         // ── 1. Compute world-space hitch point from tower ─────────────────
         //
+        // The hitch offset is in the tower's local coordinate space.
+        // Rotate it by the tower's current yaw to get the world position.
+        //
         // Minecraft yaw: 0° = south (+Z), increases clockwise.
-        //   worldX = towerX + (offsetX * cos) + (offsetZ * sin)
-        //   worldZ = towerZ - (offsetX * sin) + (offsetZ * cos)
+        //   worldX = towerX + (hitchX * cos) + (hitchZ * sin)
+        //   worldZ = towerZ - (hitchX * sin) + (hitchZ * cos)
+        //
+        // hitch_z is typically negative (behind the tower center).
+        // e.g. hitch_z = -2.5 places the hitch 2.5 blocks behind the tower.
         double towerYawRad = Math.toRadians(tower.getYRot());
         double towerSin    = Math.sin(towerYawRad);
         double towerCos    = Math.cos(towerYawRad);
 
-        double hitchX = tower.getX() + (hitch.offsetX() * towerCos) + (hitch.offsetZ() * towerSin);
-        double hitchZ = tower.getZ() - (hitch.offsetX() * towerSin) + (hitch.offsetZ() * towerCos);
-        double hitchY = tower.getY() + hitch.offsetY();
+        double hitchWorldX = tower.getX() + (towable.hitchX() * towerCos) + (towable.hitchZ() * towerSin);
+        double hitchWorldZ = tower.getZ() - (towable.hitchX() * towerSin) + (towable.hitchZ() * towerCos);
+        double hitchWorldY = tower.getY() + towable.hitchY();
 
-        // ── 2. Compute target yaw: direction from trailer center to hitch ──
+        // ── 2. Compute direction from trailer center to hitch point ────────
         //
-        // The trailer rotates around its own center to face the hitch point.
+        // This vector tells us exactly which way the trailer should face.
+        // The trailer's front always points toward the hitch point on the tower.
+        double dx = hitchWorldX - this.getX();
+        double dz = hitchWorldZ - this.getZ();
+
+        // ── 3. Compute target yaw ─────────────────────────────────────────
+        //
         // atan2(-dx, dz) gives Minecraft clockwise yaw from the direction vector.
-        double dx        = hitchX - this.getX();
-        double dz        = hitchZ - this.getZ();
-        float targetYaw  = (float) Math.toDegrees(Math.atan2(-dx, dz));
+        // We negate dx because atan2 is counter-clockwise and Minecraft is clockwise.
+        float targetYaw = (float) Math.toDegrees(Math.atan2(-dx, dz));
 
-        // ── 3. Smoothly rotate toward target yaw ──────────────────────────
+        // ── 4. Smoothly rotate toward target yaw ──────────────────────────
         //
-        // Mth.rotLerp handles the 360°/0° wraparound correctly.
-        // smoothing() from the JSON hitch config controls responsiveness:
-        //   1.0 = instant snap (no lag), 0.15 = loose and laggy, 0.3 = default.
-        float currentYaw = this.getYRot();
-        float newYaw     = Mth.rotLerp(hitch.smoothing(), currentYaw, targetYaw);
+        // Mth.rotLerp correctly handles the 360°/0° wraparound.
+        // smoothing comes from the tower's TowableConfig:
+        //   1.0 = instant (rigid bar feel)
+        //   0.25 = default (natural corner lag)
+        //   0.1 = very loose
+        float newYaw = Mth.rotLerp(towable.smoothing(), this.getYRot(), targetYaw);
 
-        // ── 4. Compute target center position ─────────────────────────────
+        // ── 5. Compute target center position ─────────────────────────────
         //
-        // The trailer's front (hitch connection) must sit at the hitch point.
-        // Since the entity origin is the center, we step back halfLen along
-        // the trailer's new facing direction to find where the center should be.
-        double newYawRad   = Math.toRadians(newYaw);
-        double newSin      = Math.sin(newYawRad);
-        double newCos      = Math.cos(newYawRad);
+        // The trailer's front (hitch connection point) must sit at hitchWorld.
+        // Step back halfLen along the trailer's new facing direction to find
+        // where the entity center should be.
+        double newYawRad = Math.toRadians(newYaw);
+        double newSin    = Math.sin(newYawRad);
+        double newCos    = Math.cos(newYawRad);
 
-        double targetCenterX = hitchX - newSin * halfLen;
-        double targetCenterZ = hitchZ - newCos * halfLen;
+        double targetX = hitchWorldX - newSin * halfLen;
+        double targetZ = hitchWorldZ - newCos * halfLen;
 
-        // ── 5. Express as velocity — no setPos() ──────────────────────────
+        // ── 6. Express as velocity — no setPos() ──────────────────────────
         //
-        // The displacement from current center to target center is the exact
-        // velocity needed. SBW's move() integrates it through its normal
-        // pipeline so collisions, step-up, and terrain work naturally.
-        double velX = targetCenterX - this.getX();
-        double velZ = targetCenterZ - this.getZ();
+        // Displacement from current center to target center = exact velocity needed.
+        // SBW's move() integrates this, so collisions and terrain work normally.
+        double velX = targetX - this.getX();
+        double velZ = targetZ - this.getZ();
 
-        // Y: let move() handle terrain step-up when terrain_follow is on.
-        // Preserve downward velocity (gravity, ledge drops) but suppress
-        // upward so we don't fight the ground. When terrain_follow is off,
-        // match the tower's Y so ramps and bridges are followed correctly.
+        // Y: preserve downward motion (gravity/ledge drops) when terrain_follow
+        // is on so move() handles step-up naturally. When off, match tower Y.
         Vec3 towerVel = tower.getDeltaMovement();
         double velY = getConfig().terrainFollow()
                 ? Math.min(this.getDeltaMovement().y, 0.0)
                 : towerVel.y;
 
-        // ── 6. Apply velocity and sync yaw ───────────────────────────────
-        // setYRot is NOT called here — it runs after super.baseTick() in the
-        // outer tick() method so SBW cannot overwrite it during its own tick.
+        // ── 7. Apply velocity and store yaw for post-baseTick re-stamp ────
         this.setDeltaMovement(velX, velY, velZ);
         this.entityData.set(TRAILER_YAW, newYaw);
     }
@@ -275,7 +301,7 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
 
         TrailerConfig.SeatConfig seat = (seatIndex >= 0 && seatIndex < seats.size())
                 ? seats.get(seatIndex)
-                : new TrailerConfig.SeatConfig(0.0, 1.0, 0.0); // fallback: center, 1 block up
+                : new TrailerConfig.SeatConfig(0.0, 1.0, 0.0);
 
         double yawRad = Math.toRadians(this.getYRot());
         double sin    = Math.sin(yawRad);
@@ -289,29 +315,25 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
     }
 
     // ════════════════════════════════════════════════════════════════════════
-    // Interaction — hitch/unhitch and camo spray
+    // Interaction — attach/detach and camo spray
     // ════════════════════════════════════════════════════════════════════════
 
     @Override
     public InteractionResult interact(Player player, InteractionHand hand) {
-        // Let spray can be handled by CamoVehicleBase first
+        // Spray can handled by CamoVehicleBase
         if (player.getItemInHand(hand).is(ModItems.SPRAY.get())) {
             return super.interact(player, hand);
         }
 
-        if (this.level().isClientSide()) {
-            return InteractionResult.SUCCESS;
-        }
+        if (this.level().isClientSide()) return InteractionResult.SUCCESS;
 
         // Sneak + right-click = force detach
         if (player.isShiftKeyDown()) {
             if (isAttached()) {
                 detach();
-                player.displayClientMessage(
-                        Component.translatable("fcp.trailer.detached"), true);
+                player.displayClientMessage(Component.translatable("fcp.trailer.detached"), true);
             } else {
-                player.displayClientMessage(
-                        Component.translatable("fcp.trailer.not_attached"), true);
+                player.displayClientMessage(Component.translatable("fcp.trailer.not_attached"), true);
             }
             return InteractionResult.SUCCESS;
         }
@@ -319,35 +341,37 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
         // Already attached → detach
         if (isAttached()) {
             detach();
-            player.displayClientMessage(
-                    Component.translatable("fcp.trailer.detached"), true);
+            player.displayClientMessage(Component.translatable("fcp.trailer.detached"), true);
             return InteractionResult.SUCCESS;
         }
 
-        // Not attached → find and attach to nearest SBW vehicle
+        // Find nearest towable SBW vehicle and attach
         Entity tower = findNearestTower();
         if (tower == null) {
-            player.displayClientMessage(
-                    Component.translatable("fcp.trailer.no_vehicle_nearby"), true);
+            player.displayClientMessage(Component.translatable("fcp.trailer.no_vehicle_nearby"), true);
             return InteractionResult.SUCCESS;
         }
 
         attachTo(tower);
-        player.displayClientMessage(
-                Component.translatable("fcp.trailer.attached"), true);
+        player.displayClientMessage(Component.translatable("fcp.trailer.attached"), true);
         return InteractionResult.SUCCESS;
     }
 
-    private static final double HITCH_SEARCH_RADIUS = 6.0;
+    private static final double HITCH_SEARCH_RADIUS = 8.0;
 
     @Nullable
     private Entity findNearestTower() {
         List<Entity> candidates = this.level().getEntities(
                 this,
                 this.getBoundingBox().inflate(HITCH_SEARCH_RADIUS),
-                entity -> entity instanceof GeoVehicleEntity
-                        && !(entity instanceof AbstractTrailerEntity)
-                        && !(entity instanceof Player)
+                entity -> {
+                    if (!(entity instanceof GeoVehicleEntity)) return false;
+                    if (entity instanceof AbstractTrailerEntity) return false;
+                    if (entity instanceof Player) return false;
+                    // Only allow vehicles that have a TowableConfig registered
+                    ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(entity.getType());
+                    return id != null && FcpTowableConfigs.has(id);
+                }
         );
 
         if (candidates.isEmpty()) return null;
@@ -374,8 +398,6 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
 
     @Override
     public boolean isPushable() {
-        // While towed the velocity model controls movement — external pushes
-        // would fight the constraint correction and cause jitter
         return !isAttached() && super.isPushable();
     }
 
@@ -387,9 +409,6 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
 
     @Override
     public boolean isNoGravity() {
-        // While towed with terrain_follow, gravity is handled by move().
-        // While towed without terrain_follow, we inherit tower Y velocity instead.
-        // Either way, SBW's built-in gravity should not also apply.
         return isAttached() || super.isNoGravity();
     }
 
@@ -405,46 +424,51 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
     // ════════════════════════════════════════════════════════════════════════
 
     /**
-     * Attaches this trailer to the given entity.
-     * Snaps position and yaw once so the first applyTowedVelocity() tick
-     * starts from a geometrically correct state.
+     * Attaches this trailer to the given tower entity.
+     * Performs a one-time position snap so the first tick starts correctly.
      */
     public void attachTo(Entity tower) {
+        ResourceLocation towerId = ForgeRegistries.ENTITY_TYPES.getKey(tower.getType());
+        if (towerId == null) return;
+
+        TowableConfig towable = FcpTowableConfigs.get(towerId);
+        if (towable == null) return;
+
         this.entityData.set(TOWER_UUID, Optional.of(tower.getUUID()));
         this.entityData.set(IS_TOWED, true);
 
-        TrailerConfig.HitchConfig hitch = getConfig().hitch();
         double trailerLength = getConfig().trailerLength();
+        double halfLen = trailerLength * 0.5;
 
-        double yawRad = Math.toRadians(tower.getYRot());
-        double sin    = Math.sin(yawRad);
-        double cos    = Math.cos(yawRad);
+        double yawRad  = Math.toRadians(tower.getYRot());
+        double sin     = Math.sin(yawRad);
+        double cos     = Math.cos(yawRad);
 
-        double hitchX = tower.getX() + (hitch.offsetX() * cos) + (hitch.offsetZ() * sin);
-        double hitchZ = tower.getZ() - (hitch.offsetX() * sin) + (hitch.offsetZ() * cos);
-        double hitchY = tower.getY() + hitch.offsetY();
+        // Compute hitch world position
+        double hitchX = tower.getX() + (towable.hitchX() * cos) + (towable.hitchZ() * sin);
+        double hitchZ = tower.getZ() - (towable.hitchX() * sin) + (towable.hitchZ() * cos);
+        double hitchY = tower.getY() + towable.hitchY();
 
-        double axleX  = hitchX - sin * trailerLength;
-        double axleZ  = hitchZ - cos * trailerLength;
-
-        double centerX = (hitchX + axleX) * 0.5;
-        double centerZ = (hitchZ + axleZ) * 0.5;
+        // Trailer center = hitch point stepped back halfLen along tower facing
+        double centerX = hitchX - sin * halfLen;
+        double centerZ = hitchZ - cos * halfLen;
 
         float snapYaw = tower.getYRot();
         this.entityData.set(TRAILER_YAW, snapYaw);
         prevTrailerYaw = snapYaw;
 
-        // One-time snap on attach only — after this, velocity drives all movement
+        // One-time snap — after this, velocity drives all movement
         this.setPos(centerX, hitchY, centerZ);
         this.setYRot(snapYaw);
+        this.yRotO = snapYaw;
         this.setDeltaMovement(Vec3.ZERO);
 
         cachedTower = tower;
     }
 
     /**
-     * Detaches this trailer. Free SBW vehicle physics resume next tick.
-     * The last inherited velocity persists so the trailer rolls naturally.
+     * Detaches trailer. Free SBW physics resume next tick.
+     * Last velocity is preserved so it rolls naturally rather than stopping dead.
      */
     public void detach() {
         this.entityData.set(TOWER_UUID, Optional.empty());
@@ -474,6 +498,7 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
         Optional<UUID> uuid = this.entityData.get(TOWER_UUID);
         if (uuid.isEmpty()) return null;
 
+        // Re-use cache if still valid this tick
         if (cachedTower != null
                 && cachedTower.isAlive()
                 && cachedTower.getUUID().equals(uuid.get())) {
@@ -481,9 +506,24 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
         }
 
         if (this.level() instanceof ServerLevel sl) {
+            // Server: direct UUID lookup
             cachedTower = sl.getEntity(uuid.get());
             if (cachedTower == null) {
                 detach();
+            }
+        } else {
+            // Client: scan nearby entities for matching UUID.
+            // Required so applyTowedVelocity runs client-side and the
+            // renderer gets live yaw updates every frame rather than waiting
+            // for the next server position packet.
+            UUID target = uuid.get();
+            cachedTower = null;
+            for (Entity e : this.level().getEntitiesOfClass(
+                    Entity.class,
+                    this.getBoundingBox().inflate(64.0),
+                    e -> e.getUUID().equals(target))) {
+                cachedTower = e;
+                break;
             }
         }
 

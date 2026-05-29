@@ -21,12 +21,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * FcpTrailerConfigs — loads all trailer JSON configs from datapacks.
+ * FcpTrailerConfigs — loads trailer geometry configs.
  *
  * Reads from: data/<namespace>/trailers/<id>.json
  * Reloads automatically on /reload.
  *
- * Usage: FcpTrailerConfigs.get(new ResourceLocation("fcp", "my_trailer"))
+ * Usage: FcpTrailerConfigs.get(new ResourceLocation("fcp", "example_trailer"))
  */
 @Mod.EventBusSubscriber(modid = FCP.MODID)
 public class FcpTrailerConfigs {
@@ -34,10 +34,6 @@ public class FcpTrailerConfigs {
     private static final Logger LOGGER = LogManager.getLogger();
     private static final Map<ResourceLocation, TrailerConfig> CONFIGS = new HashMap<>();
 
-    /**
-     * Returns the TrailerConfig for the given id.
-     * Throws if no config is found — check your JSON path and spelling.
-     */
     public static TrailerConfig get(ResourceLocation id) {
         TrailerConfig cfg = CONFIGS.get(id);
         if (cfg == null) {
@@ -49,7 +45,6 @@ public class FcpTrailerConfigs {
         return cfg;
     }
 
-    /** Returns true if a config is registered for the given id. */
     public static boolean has(ResourceLocation id) {
         return CONFIGS.containsKey(id);
     }
@@ -59,31 +54,23 @@ public class FcpTrailerConfigs {
         event.addListener(new SimplePreparableReloadListener<Map<ResourceLocation, TrailerConfig>>() {
 
             @Override
-            protected Map<ResourceLocation, TrailerConfig> prepare(ResourceManager manager, ProfilerFiller profiler) {
+            protected Map<ResourceLocation, TrailerConfig> prepare(
+                    ResourceManager manager, ProfilerFiller profiler) {
+
                 Map<ResourceLocation, TrailerConfig> loaded = new HashMap<>();
 
-                // listResources can produce null keys from malformed resource pack entries —
-                // iterate over entrySet() so we can explicitly guard both key and value.
                 for (Map.Entry<ResourceLocation, Resource> entry :
-                        manager.listResources("trailers", path -> {
-                            // Guard against null path before calling getPath()
-                            if (path == null) return false;
-                            return path.getPath().endsWith(".json");
-                        }).entrySet()) {
+                        manager.listResources("trailers",
+                                path -> path != null && path.getPath().endsWith(".json")
+                        ).entrySet()) {
 
                     ResourceLocation location = entry.getKey();
                     Resource resource = entry.getValue();
 
-                    // Skip any null keys that a broken resource pack may have introduced
-                    if (location == null) {
-                        LOGGER.warn("[FCP] Skipping trailer resource with null location key");
-                        continue;
-                    }
+                    if (location == null || resource == null) continue;
 
-                    if (resource == null) {
-                        LOGGER.warn("[FCP] Skipping null resource at {}", location);
-                        continue;
-                    }
+                    String rawPath = location.getPath();
+                    if (rawPath == null) continue;
 
                     try (InputStreamReader reader = new InputStreamReader(resource.open())) {
                         JsonElement json = JsonParser.parseReader(reader);
@@ -93,18 +80,11 @@ public class FcpTrailerConfigs {
                                 .getOrThrow(false, err ->
                                         LOGGER.error("[FCP] Bad trailer config {}: {}", location, err));
 
-                        // Strip "trailers/" prefix and ".json" suffix for the registry key
-                        String rawPath = location.getPath();
-                        if (rawPath == null) {
-                            LOGGER.warn("[FCP] Trailer location has null path: {}", location);
-                            continue;
-                        }
-
-                        String strippedPath = rawPath
+                        String stripped = rawPath
                                 .replace("trailers/", "")
                                 .replace(".json", "");
 
-                        ResourceLocation key = new ResourceLocation(location.getNamespace(), strippedPath);
+                        ResourceLocation key = new ResourceLocation(location.getNamespace(), stripped);
                         loaded.put(key, config);
                         LOGGER.debug("[FCP] Loaded trailer config: {}", key);
 

@@ -16,12 +16,15 @@ import frontline.combat.fcp.entity.vehicle.Huey.HueyDoorGunnerM134Entity;
 import frontline.combat.fcp.entity.vehicle.Huey.HueyDoorGunnerM60Entity;
 import frontline.combat.fcp.entity.vehicle.Huey.HueyEntity;
 import frontline.combat.fcp.entity.vehicle.Huey.HueyRocketsEntity;
+import frontline.combat.fcp.entity.vehicle.Humvee.HumveeEntity;
+import frontline.combat.fcp.entity.vehicle.Humvee.HumveeTOWEntity;
 import frontline.combat.fcp.entity.vehicle.Kamaz.KamazEntity;
 import frontline.combat.fcp.entity.vehicle.Lav.Lav25Entity;
 import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdArmedEntity;
 import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdEntity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATVEntity;
 import frontline.combat.fcp.entity.vehicle.MemeVehicles.BigBirdEntity;
+import frontline.combat.fcp.entity.vehicle.MemeVehicles.LaHumveeEntity;
 import frontline.combat.fcp.entity.vehicle.Novator.NovatorEntity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerM2Entity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerMGSEntity;
@@ -118,7 +121,10 @@ public class ModEntities {
             EntityType.Builder.of(NovatorEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<MATVEntity>> MATV = register("matv",
             EntityType.Builder.of(MATVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
-
+    public static final RegistryObject<EntityType<HumveeEntity>> HUMVEE = register("humvee",
+            EntityType.Builder.of(HumveeEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<HumveeTOWEntity>> HUMVEE_TOW = register("humvee_tow",
+            EntityType.Builder.of(HumveeTOWEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     // Projectiles
     public static final RegistryObject<EntityType<LockOnHellfireEntity>> LOCK_ON_HELLFIRE = register("lock_on_hellfire",
             EntityType.Builder.<LockOnHellfireEntity>of(LockOnHellfireEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f, 0.5f));
@@ -128,19 +134,18 @@ public class ModEntities {
             EntityType.Builder.<SidewinderEntity>of(SidewinderEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f, 0.5f));
     public static final RegistryObject<EntityType<MalyutkaEntity>> MALYUTKA = register("malyutka",
             EntityType.Builder.<MalyutkaEntity>of(MalyutkaEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f, 0.5f));
-
     // Meme Vehicles
     public static final RegistryObject<EntityType<BigBirdEntity>> BIGBIRD = register("bigbird",
             EntityType.Builder.of(BigBirdEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
+    public static final RegistryObject<EntityType<LaHumveeEntity>> LA_HUMVEE = register("la_humvee",
+            EntityType.Builder.of(LaHumveeEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> entityTypeBuilder) {
-        return ENTITY_TYPES.register(name, () -> entityTypeBuilder.build(name));
-
+        return ENTITY_TYPES.register(name, () -> entityTypeBuilder.build(FCP.MODID + ":" + name));
     }
 
     // Trailers
     public static final RegistryObject<EntityType<ExampleTrailerEntity>> EXAMPLE_TRAILER = register("example_trailer",
             EntityType.Builder.of(ExampleTrailerEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2.5f, 1.8f));
-
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

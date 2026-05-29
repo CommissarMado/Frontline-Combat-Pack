@@ -1,6 +1,7 @@
 package frontline.combat.fcp.entity.vehicle;
 
 import com.atsuishio.superbwarfare.entity.vehicle.base.GeoVehicleEntity;
+import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import frontline.combat.fcp.init.ModItems;
 import frontline.combat.fcp.init.ModSounds;
 import net.minecraft.ChatFormatting;
@@ -21,7 +22,7 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements ICamoV
 
     private static final EntityDataAccessor<Integer> CAMO_TYPE = SynchedEntityData.defineId(CamoVehicleBase.class, EntityDataSerializers.INT);
 
-    public CamoVehicleBase(EntityType<? extends GeoVehicleEntity> type, Level world) {
+    public CamoVehicleBase(EntityType<? extends VehicleEntity> type, Level world) {
         super(type, world);
     }
 

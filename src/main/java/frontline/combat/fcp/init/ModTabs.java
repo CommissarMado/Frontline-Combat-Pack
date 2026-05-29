@@ -1,6 +1,7 @@
 package frontline.combat.fcp.init;
 
-import com.atsuishio.superbwarfare.item.common.container.ContainerBlockItem;
+
+import com.atsuishio.superbwarfare.item.container.ContainerBlockItem;
 import frontline.combat.fcp.FCP;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -70,6 +71,8 @@ public class ModTabs {
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY_ROCKETS.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY_DOOR_GUNNER_M60.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY_DOOR_GUNNER_M134.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV.get()));
             }).build());
