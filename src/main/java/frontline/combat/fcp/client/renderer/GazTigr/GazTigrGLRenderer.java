@@ -15,13 +15,6 @@ public class GazTigrGLRenderer extends VehicleRenderer<GazTigrGLEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(GazTigrGLEntity entity) {
-        ResourceLocation[] textures = entity.getCamoTextures();
-        int camoType = entity.getCamoType();
-
-        if (camoType >= 0 && camoType < textures.length) {
-            return textures[camoType];
-        }
-
-        return textures[0];
+        return entity.getCurrentTexture();
     }
 }

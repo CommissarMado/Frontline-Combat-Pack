@@ -11,9 +11,14 @@ import java.lang.reflect.Field;
 public class HueyRocketsEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
+            //Normal Texture
             new ResourceLocation("fcp", "textures/entity/huey/huey_1.png"),
             new ResourceLocation("fcp", "textures/entity/huey/huey_2.png"),
-            new ResourceLocation("fcp", "textures/entity/huey/huey_3.png")
+            new ResourceLocation("fcp", "textures/entity/huey/huey_3.png"),
+            //Wrecked Texture
+            new ResourceLocation("fcp", "textures/entity/huey/huey_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/huey/huey_2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/huey/huey_3_wrecked.png")
     };
     private static final String[] CAMO_NAMES = {"Standard", "White", "Shark"};
 

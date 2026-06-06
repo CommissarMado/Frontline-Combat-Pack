@@ -12,9 +12,14 @@ import net.minecraft.world.level.Level;
 public class HumveeTOWEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
+            //Normal Texture
             new ResourceLocation("fcp", "textures/entity/humvee/humvee_tow_green.png"),
             new ResourceLocation("fcp", "textures/entity/humvee/humvee_tow_iraq.png"),
-            new ResourceLocation("fcp", "textures/entity/humvee/humvee_tow_ukr.png")
+            new ResourceLocation("fcp", "textures/entity/humvee/humvee_tow_ukr.png"),
+            //Wrecked Texture
+            new ResourceLocation("fcp", "textures/entity/humvee/humvee_tow_green_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/humvee/humvee_tow_iraq_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/humvee/humvee_tow_ukr_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"Green", "Iraq", "Ukrainian"};

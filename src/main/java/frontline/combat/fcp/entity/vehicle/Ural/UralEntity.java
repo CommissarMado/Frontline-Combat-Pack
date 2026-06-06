@@ -12,6 +12,7 @@ import net.minecraft.world.level.Level;
 public class UralEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
+            //Normal Texture
             new ResourceLocation("fcp", "textures/entity/ural/ural_1.png"),
             new ResourceLocation("fcp", "textures/entity/ural/ural_2.png"),
             new ResourceLocation("fcp", "textures/entity/ural/ural_3.png"),
@@ -19,7 +20,16 @@ public class UralEntity extends CamoVehicleBase {
             new ResourceLocation("fcp", "textures/entity/ural/ural_5.png"),
             new ResourceLocation("fcp", "textures/entity/ural/ural_6.png"),
             new ResourceLocation("fcp", "textures/entity/ural/ural_7.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_8.png")
+            new ResourceLocation("fcp", "textures/entity/ural/ural_8.png"),
+            //Wrecked Texture
+            new ResourceLocation("fcp", "textures/entity/ural/ural_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/ural/ural_2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/ural/ural_3_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/ural/ural_4_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/ural/ural_5_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/ural/ural_6_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/ural/ural_7_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/ural/ural_8_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"Standard", "Camo"};

@@ -36,11 +36,18 @@ public class ExampleTrailerEntity extends AbstractTrailerEntity {
             new ResourceLocation("fcp", "example_trailer");
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
+            //Normal Textures
             new ResourceLocation("fcp", "textures/entity/lav/lav25_camo1.png"),
             new ResourceLocation("fcp", "textures/entity/lav/lav25_camo2.png"),
             new ResourceLocation("fcp", "textures/entity/lav/lav25_camo3.png"),
             new ResourceLocation("fcp", "textures/entity/lav/lav25_od.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_tan.png")
+            new ResourceLocation("fcp", "textures/entity/lav/lav25_tan.png"),
+            //Wrecked Textures
+            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo3_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/lav/lav25_od_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/lav/lav25_tan_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"Camo Variant 1","Camo Variant 2", "Camo Variant 3","No-Camo", "Tan"};

@@ -13,8 +13,6 @@ public class HueyDoorGunnerM134Renderer extends VehicleRenderer<HueyDoorGunnerM1
 
     @Override
     public ResourceLocation getTextureLocation(HueyDoorGunnerM134Entity entity) {
-        ResourceLocation[] textures = entity.getCamoTextures();
-        int camoType = entity.getCamoType();
-        return (camoType >= 0 && camoType < textures.length) ? textures[camoType] : textures[0];
+        return entity.getCurrentTexture();
     }
 }

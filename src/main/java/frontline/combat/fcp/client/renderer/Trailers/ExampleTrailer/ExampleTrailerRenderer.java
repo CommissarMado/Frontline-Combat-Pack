@@ -17,14 +17,7 @@ public class ExampleTrailerRenderer extends VehicleRenderer<ExampleTrailerEntity
 
     @Override
     public ResourceLocation getTextureLocation(ExampleTrailerEntity entity) {
-        ResourceLocation[] textures = entity.getCamoTextures();
-        int camoType = entity.getCamoType();
-
-        if (camoType >= 0 && camoType < textures.length) {
-            return textures[camoType];
-        } else {
-            return textures[0];
-        }
+        return entity.getCurrentTexture();
     }
 
     @Override

@@ -13,8 +13,6 @@ public class LaHumveeRenderer extends VehicleRenderer<LaHumveeEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(LaHumveeEntity entity) {
-        ResourceLocation[] textures = entity.getCamoTextures();
-        int camoType = entity.getCamoType();
-        return (camoType >= 0 && camoType < textures.length) ? textures[camoType] : textures[0];
+        return entity.getCurrentTexture();
     }
 }

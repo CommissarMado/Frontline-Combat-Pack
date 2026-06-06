@@ -12,8 +12,12 @@ import net.minecraft.world.level.Level;
 public class StrykerM2Entity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
+            //Normal Texture
             new ResourceLocation("fcp", "textures/entity/stryker/stryker_1.png"),
-            new ResourceLocation("fcp", "textures/entity/stryker/stryker_2.png")
+            new ResourceLocation("fcp", "textures/entity/stryker/stryker_2.png"),
+            //Wrecked Texture
+            new ResourceLocation("fcp", "textures/entity/stryker/stryker_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/stryker/stryker_2_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"Base", "Tan"};

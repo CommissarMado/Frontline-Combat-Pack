@@ -12,7 +12,10 @@ import net.minecraft.world.level.Level;
 public class KamazEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
-            new ResourceLocation("fcp", "textures/entity/kamaz/kamaz.png")
+            //Normal Texture
+            new ResourceLocation("fcp", "textures/entity/kamaz/kamaz.png"),
+            //Wrecked Texture
+            new ResourceLocation("fcp", "textures/entity/kamaz/kamaz_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"Standard", "Camo"};

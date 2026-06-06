@@ -11,9 +11,14 @@ import java.lang.reflect.Field;
 public class ViperEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
+            // Normal camos [0-2]
             new ResourceLocation("fcp", "textures/entity/viper/viper_1.png"),
             new ResourceLocation("fcp", "textures/entity/viper/viper_2.png"),
-            new ResourceLocation("fcp", "textures/entity/viper/viper_3.png")
+            new ResourceLocation("fcp", "textures/entity/viper/viper_3.png"),
+            // Wrecked variants [3-5], one per camo in the same order
+            new ResourceLocation("fcp", "textures/entity/viper/viper_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/viper/viper_2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/viper/viper_3_wrecked.png")
     };
     private static final String[] CAMO_NAMES = {"Standard", "White", "Shark"};
 

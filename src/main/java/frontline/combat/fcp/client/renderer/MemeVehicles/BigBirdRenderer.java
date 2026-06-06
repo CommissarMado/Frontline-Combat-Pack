@@ -13,8 +13,6 @@ public class BigBirdRenderer extends VehicleRenderer<BigBirdEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(BigBirdEntity entity) {
-        ResourceLocation[] textures = entity.getCamoTextures();
-        int camoType = entity.getCamoType();
-        return (camoType >= 0 && camoType < textures.length) ? textures[camoType] : textures[0];
+        return entity.getCurrentTexture();
     }
 }

@@ -16,13 +16,6 @@ public class BMP2Renderer extends VehicleRenderer<BMP2Entity> {
 
     @Override
     public ResourceLocation getTextureLocation(BMP2Entity entity) {
-        ResourceLocation[] textures = entity.getCamoTextures();
-        int camoType = entity.getCamoType();
-
-        if (camoType >= 0 && camoType < textures.length) {
-            return textures[camoType];
-        } else {
-            return textures[0];
-        }
+        return entity.getCurrentTexture();
     }
 }

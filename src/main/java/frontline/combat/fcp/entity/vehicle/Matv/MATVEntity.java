@@ -12,9 +12,14 @@ import net.minecraft.world.level.Level;
 public class MATVEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
+            //Normal Texture
             new ResourceLocation("fcp", "textures/entity/matv/matv_1.png"),
             new ResourceLocation("fcp", "textures/entity/matv/matv_2.png"),
-            new ResourceLocation("fcp", "textures/entity/matv/matv_3.png")
+            new ResourceLocation("fcp", "textures/entity/matv/matv_3.png"),
+            //Wrecked Texture
+            new ResourceLocation("fcp", "textures/entity/matv/matv_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/matv/matv_2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/matv/matv_3_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"Sand", "Green", "PINK"};

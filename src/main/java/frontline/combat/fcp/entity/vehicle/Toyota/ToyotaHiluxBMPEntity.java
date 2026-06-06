@@ -12,7 +12,10 @@ import net.minecraft.world.level.Level;
 public class ToyotaHiluxBMPEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
-            new ResourceLocation("fcp", "textures/entity/toyota/toyota_hilux.png")
+            //Normal Texture
+            new ResourceLocation("fcp", "textures/entity/toyota/toyota_hilux.png"),
+            //Wrecked Texture
+            new ResourceLocation("fcp", "textures/entity/toyota/toyota_hilux_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"Toyota"};

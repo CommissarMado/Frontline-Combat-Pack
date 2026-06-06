@@ -11,8 +11,6 @@ public class LittlebirdArmedRenderer extends VehicleRenderer<LittlebirdArmedEnti
 
     @Override
     public ResourceLocation getTextureLocation(LittlebirdArmedEntity entity) {
-        ResourceLocation[] textures = entity.getCamoTextures();
-        int camoType = entity.getCamoType();
-        return (camoType >= 0 && camoType < textures.length) ? textures[camoType] : textures[0];
+        return entity.getCurrentTexture();
     }
 }

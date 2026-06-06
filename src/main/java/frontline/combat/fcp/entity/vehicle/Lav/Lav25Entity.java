@@ -13,11 +13,18 @@ import net.minecraft.world.level.Level;
 public class Lav25Entity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
+            //Normal Texture
             new ResourceLocation("fcp", "textures/entity/lav/lav25_camo1.png"),
             new ResourceLocation("fcp", "textures/entity/lav/lav25_camo2.png"),
             new ResourceLocation("fcp", "textures/entity/lav/lav25_camo3.png"),
             new ResourceLocation("fcp", "textures/entity/lav/lav25_od.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_tan.png")
+            new ResourceLocation("fcp", "textures/entity/lav/lav25_tan.png"),
+            //Wrecked Texture
+            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo3_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/lav/lav25_od_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/lav/lav25_tan_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"Camo Variant 1","Camo Variant 2", "Camo Variant 3","No-Camo", "Tan"};

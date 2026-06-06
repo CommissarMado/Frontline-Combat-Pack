@@ -12,7 +12,10 @@ import net.minecraft.world.level.Level;
 public class T72AVEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
-            new ResourceLocation("fcp", "textures/entity/t72av/t72av.png")
+            //Normal Texture
+            new ResourceLocation("fcp", "textures/entity/t72av/t72av.png"),
+            //Wrecked Texture
+            new ResourceLocation("fcp", "textures/entity/t72av/t72av_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"Flag", "No-Flag"};

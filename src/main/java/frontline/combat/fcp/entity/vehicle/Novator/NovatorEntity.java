@@ -12,11 +12,18 @@ import net.minecraft.world.level.Level;
 
 public class NovatorEntity extends CamoVehicleBase {
     private static final ResourceLocation[] CAMO_TEXTURES = {
+            //Normal Texture
             new ResourceLocation("fcp", "textures/entity/novator/novator.png"),
             new ResourceLocation("fcp", "textures/entity/novator/novator_1.png"),
             new ResourceLocation("fcp", "textures/entity/novator/novator_2.png"),
             new ResourceLocation("fcp", "textures/entity/novator/novator_3.png"),
-            new ResourceLocation("fcp", "textures/entity/novator/novator_pink.png")
+            new ResourceLocation("fcp", "textures/entity/novator/novator_pink.png"),
+            //Wrecked Texture
+            new ResourceLocation("fcp", "textures/entity/novator/novator_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/novator/novator_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/novator/novator_2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/novator/novator_3_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/novator/novator_pink_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"Base", "Tent", "Camo", "Camo + Tent", "PINK"};

@@ -13,13 +13,20 @@ import net.minecraft.world.level.Level;
 public class UAZEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
+            // Normal Camos
             new ResourceLocation("fcp", "textures/entity/uaz/uaz_1.png"),
             new ResourceLocation("fcp", "textures/entity/uaz/uaz_2.png"),
             new ResourceLocation("fcp", "textures/entity/uaz/uaz_3.png"),
             new ResourceLocation("fcp", "textures/entity/uaz/uaz_4.png"),
             new ResourceLocation("fcp", "textures/entity/uaz/uaz_5.png"),
             new ResourceLocation("fcp", "textures/entity/uaz/uaz_6.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_ruined.png")
+            // Wrecked Variants
+            new ResourceLocation("fcp", "textures/entity/uaz/uaz_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/uaz/uaz_2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/uaz/uaz_3_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/uaz/uaz_4_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/uaz/uaz_5_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/uaz/uaz_6_wrecked.png"),
     };
 
     private static final String[] CAMO_NAMES = {"Base", "Z", "Ukraine", "Ukraine Medic", "Blue", "Orange", "Ruined"};

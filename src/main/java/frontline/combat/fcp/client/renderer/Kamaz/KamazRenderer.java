@@ -13,13 +13,6 @@ public class KamazRenderer extends VehicleRenderer<KamazEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(KamazEntity entity) {
-        ResourceLocation[] textures = entity.getCamoTextures();
-        int camoType = entity.getCamoType();
-
-        if (camoType >= 0 && camoType < textures.length) {
-            return textures[camoType];
-        }
-
-        return textures[0];
+        return entity.getCurrentTexture();
     }
 }

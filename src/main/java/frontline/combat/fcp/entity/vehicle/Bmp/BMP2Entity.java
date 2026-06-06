@@ -12,6 +12,7 @@ import net.minecraft.world.level.Level;
 public class BMP2Entity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
+            //Normal Texture
             new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_1.png"),
             new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_2.png"),
             new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_3.png"),
@@ -19,7 +20,16 @@ public class BMP2Entity extends CamoVehicleBase {
             new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_5.png"),
             new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_6.png"),
             new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_7.png"),
-            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_8.png")
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_8.png"),
+            //Wrecked Texture
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_3_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_4_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_5_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_6_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_7_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_8_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"1", "2", "3", "4", "5", "6", "7", "8"};

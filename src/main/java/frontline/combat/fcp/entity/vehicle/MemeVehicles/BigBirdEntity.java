@@ -12,7 +12,10 @@ import java.lang.reflect.Field;
 public class BigBirdEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
-            new ResourceLocation("fcp", "textures/entity/meme_vehicles/bigbird.png")
+            //Normal Texture
+            new ResourceLocation("fcp", "textures/entity/meme_vehicles/bigbird.png"),
+            //Wrecked Texture
+            new ResourceLocation("fcp", "textures/entity/meme_vehicles/bigbird_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"BIGBIRD!"};

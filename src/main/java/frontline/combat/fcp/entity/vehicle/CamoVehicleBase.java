@@ -32,6 +32,34 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements ICamoV
         this.entityData.define(CAMO_TYPE, 0);
     }
 
+    /**
+     * The texture array is split into two halves:
+     * [0 .. camoCount-1] = normal camo textures
+     * [camoCount .. total-1] = wrecked variants, one per camo in the same order
+     *
+     * camoCount = ceil(totalTextures / 2)
+     *
+     * When wrecked, the modifier (camoCount) is added to the current camo index
+     * to land on the corresponding wrecked texture.
+     */
+    public ResourceLocation getCurrentTexture() {
+        ResourceLocation[] textures = getCamoTextures();
+        int total = textures.length;
+        // Round up so an odd total always favours the camo side
+        int camoCount = (int) Math.ceil(total / 2.0);
+        int index = getCamoType();
+        if (index < 0 || index >= camoCount) index = 0;
+
+        if (this.isWreck()) {
+            int wreckedIndex = index + camoCount;
+            // Safety clamp in case of an odd total leaving one fewer wrecked texture
+            if (wreckedIndex >= total) wreckedIndex = total - 1;
+            return textures[wreckedIndex];
+        }
+
+        return textures[index];
+    }
+
     @Override
     public int getCamoType() {
         return this.entityData.get(CAMO_TYPE);
@@ -44,15 +72,16 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements ICamoV
 
     @Override
     public void cycleCamo() {
+        int total = getCamoTextures().length;
+        int camoCount = (int) Math.ceil(total / 2.0);
         int current = getCamoType();
-        setCamoType((current + 1) % getCamoTextures().length);
+        // Only cycle within the normal camo range, never into the wrecked half
+        setCamoType((current + 1) % camoCount);
     }
 
     @Override
     public InteractionResult interact(Player player, InteractionHand hand) {
-
         if (player.getItemInHand(hand).is(ModItems.SPRAY.get())) {
-
             if (!this.level().isClientSide) {
                 cycleCamo();
                 String[] camoNames = getCamoNames();
@@ -69,7 +98,6 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements ICamoV
                         ModSounds.SPRAY.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
             }
             player.swing(hand);
-
             return InteractionResult.SUCCESS;
         }
         return super.interact(player, hand);

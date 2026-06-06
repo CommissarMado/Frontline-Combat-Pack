@@ -11,13 +11,6 @@ public class ToyotaHiluxRenderer extends VehicleRenderer<ToyotaHiluxEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(ToyotaHiluxEntity entity) {
-        ResourceLocation[] textures = entity.getCamoTextures();
-        int camoType = entity.getCamoType();
-
-        if (camoType >= 0 && camoType < textures.length) {
-            return textures[camoType];
-        } else {
-            return textures[0];
-        }
+        return entity.getCurrentTexture();
     }
 }
