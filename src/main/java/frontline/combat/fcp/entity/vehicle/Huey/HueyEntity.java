@@ -53,8 +53,7 @@ public class HueyEntity extends CamoVehicleBase {
 
     @Override
     public DamageModifier getDamageModifier() {
-        return super.getDamageModifier()
-                .custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);
+        return super.getDamageModifier();
     }
 
     public float getPropellerRot() {

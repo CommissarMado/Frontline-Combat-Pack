@@ -3,13 +3,97 @@
   "MaxHealth": 175,
   "MaxEnergy": 5250000,
   "OBB": [
-    {"Size": [0.2265625, 0.65625, 0.65625], "Position": [1.1796875, 0.65625, 2.28125], "Part": "WheelLeft"},
-    {"Size": [0.2265625, 0.65625, 0.65625], "Position": [1.1796875, 0.65625, -2], "Part": "WheelLeft"},
-    {"Size": [0.2265625, 0.65625, 0.65625], "Position": [-1.1796875, 0.65625, 2.28125], "Part": "WheelRight"},
-    {"Size": [0.2265625, 0.65625, 0.65625], "Position": [-1.1796875, 0.65625, -2], "Part": "WheelRight"},
-    {"Size": [1.4375, 1.140625, 1.34375], "Position": [0, 1.65625, 0.015625], "Part":  "Body"},
-    {"Size": [1.4375, 0.765625, 0.9375], "Position": [0, 2.03125, -2.265625], "Part":  "Body"},
-    {"Size": [1.4375, 0.375, 0.96875], "Position": [0, 1.703125, 2.328125], "Part": "MainEngine"}
+    {
+      "Size": [
+        0.2265625,
+        0.65625,
+        0.65625
+      ],
+      "Position": [
+        1.1796875,
+        0.65625,
+        2.28125
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.2265625,
+        0.65625,
+        0.65625
+      ],
+      "Position": [
+        1.1796875,
+        0.65625,
+        -2
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.2265625,
+        0.65625,
+        0.65625
+      ],
+      "Position": [
+        -1.1796875,
+        0.65625,
+        2.28125
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.2265625,
+        0.65625,
+        0.65625
+      ],
+      "Position": [
+        -1.1796875,
+        0.65625,
+        -2
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        1.4375,
+        1.140625,
+        1.34375
+      ],
+      "Position": [
+        0,
+        1.65625,
+        0.015625
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        1.4375,
+        0.765625,
+        0.9375
+      ],
+      "Position": [
+        0,
+        2.03125,
+        -2.265625
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        1.4375,
+        0.375,
+        0.96875
+      ],
+      "Position": [
+        0,
+        1.703125,
+        2.328125
+      ],
+      "Part": "MainEngine"
+    }
   ],
   "Seats": [
     {
@@ -40,7 +124,7 @@
     },
     {
       "IsEnclosed": true,
-      "Orientation": 90.0,
+      "Orientation": 90,
       "Transform": "Vehicle",
       "Position": [
         0.89831875,
@@ -54,7 +138,7 @@
     },
     {
       "IsEnclosed": true,
-      "Orientation": 90.0,
+      "Orientation": 90,
       "Transform": "Vehicle",
       "Position": [
         0.58581875,
@@ -68,7 +152,7 @@
     },
     {
       "IsEnclosed": true,
-      "Orientation": 90.0,
+      "Orientation": 90,
       "Transform": "Vehicle",
       "Position": [
         0.58581875,
@@ -82,7 +166,7 @@
     },
     {
       "IsEnclosed": true,
-      "Orientation": -90.0,
+      "Orientation": -90,
       "Transform": "Vehicle",
       "Position": [
         -0.58581875,
@@ -96,7 +180,7 @@
     },
     {
       "IsEnclosed": true,
-      "Orientation": -90.0,
+      "Orientation": -90,
       "Transform": "Vehicle",
       "Position": [
         -0.58581875,
@@ -116,12 +200,16 @@
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
     "MaxForwardSpeedRate": 1.224,
-    "MaxBackwardSpeedRate": 0.20,
+    "MaxBackwardSpeedRate": 0.2,
     "Increment": 0.025,
-    "Decrement": 0.020,
+    "Decrement": 0.02,
     "SteeringSpeed": 0.1
   },
-  "ThirdPersonCameraPos": [0, 1, 3],
+  "ThirdPersonCameraPos": [
+    0,
+    1,
+    3
+  ],
   "HasDecoy": false,
   "UpStep": 2.2,
   "RotateOffsetHeight": 2.2,
@@ -166,14 +254,47 @@
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
-      [0, 0, true],
-      [0, 0, true],
-      [0.15, 0.09, false]
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0.15,
+        0.09,
+        false
+      ]
     ]
   },
   "EngineSound": "superbwarfare:lav_150_engine",
   "HornSound": "superbwarfare:truck_horn",
   "HudType": "@Empty",
-  "TerrainCompat": [[1.156, 0, 1.594], [-1.156, 0, 1.594], [1.156, 0, -1.594], [-1.156, 0, -1.594]],
+  "TerrainCompat": [
+    [
+      1.156,
+      0,
+      1.594
+    ],
+    [
+      -1.156,
+      0,
+      1.594
+    ],
+    [
+      1.156,
+      0,
+      -1.594
+    ],
+    [
+      -1.156,
+      0,
+      -1.594
+    ]
+  ],
   "InertiaRotateRate": 1.8
 }
