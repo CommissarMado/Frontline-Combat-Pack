@@ -1,0 +1,62 @@
+Frontline Combat Pack License
+
+Copyright (c) 2024 Commissar_Mado
+
+PERMISSIONS GRANTED:
+
+1. Personal and Non-Commercial Use (Free, No Permission Required)
+   
+   You may freely:
+   - Use this mod for personal enjoyment
+   - Modify the source code
+   - Distribute copies and modifications
+   - Use on free, non-monetized servers
+   - Create content (videos, streams, tutorials)
+   
+   For these uses, no permission is required.
+
+2. Commercial Use (Permission Required)
+   
+   Commercial use includes:
+   - Servers that charge for access, ranks, or perks
+   - Paid modpacks
+   - Hosting services offering this mod
+   - Any use that generates revenue
+   
+   For commercial use, you MUST:
+   - Request permission via [email/Discord]
+   - Wait for approval before commercial deployment
+   - Provide attribution to the original mod
+   
+   Permission is typically granted FOR within 5-7 days.
+   We just want to know who's using the mod commercially.
+
+3. Source Code Availability
+   
+   - Source code must remain publicly available
+   - Modifications must be clearly marked
+   - This license must be included with all copies
+
+RESTRICTIONS:
+
+- You may not claim this software as your own
+- You may not remove or alter this license
+- You may not grant permissions on behalf of the copyright holder
+
+DISCLAIMER:
+
+THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+
+COMMERCIAL PERMISSION REQUESTS:
+
+To request commercial use permission:
+- Email: frontline.combat@outlook.com
+- Discord: discord.gg/frontlinecombat
+
+We typically respond within 5-7 days and grant permission for free.
+
+---
+
+For questions: frontline.combat@outlook.com

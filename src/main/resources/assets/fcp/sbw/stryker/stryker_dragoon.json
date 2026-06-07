@@ -1,0 +1,7 @@
+﻿{
+  "ID": "fcp:stryker_dragoon",
+  "Model": {
+    "Model": "fcp:geo/stryker_dragoon.geo.json",
+    "Texture": "fcp:textures/entity/uaz.png"
+  }
+}

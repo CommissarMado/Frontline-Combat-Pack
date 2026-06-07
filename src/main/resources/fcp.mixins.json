@@ -1,0 +1,12 @@
+{
+  "required": false,
+  "minVersion": "0.8",
+  "package": "frontline.combat.fcp.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "fcp.refmap.json",
+  "mixins": [],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

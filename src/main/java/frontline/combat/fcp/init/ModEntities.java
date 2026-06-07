@@ -1,0 +1,138 @@
+package frontline.combat.fcp.init;
+
+import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.entity.projectile.Hellfire.LockOnHellfireEntity;
+import frontline.combat.fcp.entity.projectile.Hellfire.WireGuidedHellfireEntity;
+import frontline.combat.fcp.entity.projectile.Malyutka.MalyutkaEntity;
+import frontline.combat.fcp.entity.projectile.Sidewinder.SidewinderEntity;
+import frontline.combat.fcp.entity.vehicle.Bmp.BMP1Entity;
+import frontline.combat.fcp.entity.vehicle.Bmp.BMP1UEntity;
+import frontline.combat.fcp.entity.vehicle.Bmp.BMP2Entity;
+import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrEntity;
+import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrGLEntity;
+import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrMGEntity;
+import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrRWSEntity;
+import frontline.combat.fcp.entity.vehicle.Huey.HueyDoorGunnerM134Entity;
+import frontline.combat.fcp.entity.vehicle.Huey.HueyDoorGunnerM60Entity;
+import frontline.combat.fcp.entity.vehicle.Huey.HueyEntity;
+import frontline.combat.fcp.entity.vehicle.Huey.HueyRocketsEntity;
+import frontline.combat.fcp.entity.vehicle.Humvee.HumveeEntity;
+import frontline.combat.fcp.entity.vehicle.Humvee.HumveeTOWEntity;
+import frontline.combat.fcp.entity.vehicle.Kamaz.KamazEntity;
+import frontline.combat.fcp.entity.vehicle.Lav.Lav25Entity;
+import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdArmedEntity;
+import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdEntity;
+import frontline.combat.fcp.entity.vehicle.Matv.MATVEntity;
+import frontline.combat.fcp.entity.vehicle.MemeVehicles.BigBirdEntity;
+import frontline.combat.fcp.entity.vehicle.MemeVehicles.LaHumveeEntity;
+import frontline.combat.fcp.entity.vehicle.Novator.NovatorEntity;
+import frontline.combat.fcp.entity.vehicle.Stryker.StrykerM2Entity;
+import frontline.combat.fcp.entity.vehicle.Stryker.StrykerMGSEntity;
+import frontline.combat.fcp.entity.vehicle.T72av.T72AVEntity;
+import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxBMPEntity;
+import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxEntity;
+import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxRocketPodEntity;
+import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxSpg9Entity;
+import frontline.combat.fcp.entity.vehicle.Trailers.ExampleTrailer.ExampleTrailerEntity;
+import frontline.combat.fcp.entity.vehicle.Uaz.UAZDSHKAEntity;
+import frontline.combat.fcp.entity.vehicle.Uaz.UAZEntity;
+import frontline.combat.fcp.entity.vehicle.Ural.UralEntity;
+import frontline.combat.fcp.entity.vehicle.Ural.UralGradEntity;
+import frontline.combat.fcp.entity.vehicle.Viper.ViperEntity;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import java.util.function.Supplier;
+
+public class ModEntities {
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(Registries.ENTITY_TYPE, FCP.MODID);
+
+    public static final Supplier<EntityType<ToyotaHiluxEntity>> TOYOTA_HILUX = register("toyota_hilux",
+            EntityType.Builder.of(ToyotaHiluxEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<ToyotaHiluxRocketPodEntity>> TOYOTA_HILUX_ROCKET_POD = register("toyota_hilux_rocket_pod",
+            EntityType.Builder.of(ToyotaHiluxRocketPodEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<ToyotaHiluxBMPEntity>> TOYOTA_HILUX_BMP = register("toyota_hilux_bmp",
+            EntityType.Builder.of(ToyotaHiluxBMPEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<ToyotaHiluxSpg9Entity>> TOYOTA_HILUX_SPG9 = register("toyota_hilux_spg9",
+            EntityType.Builder.of(ToyotaHiluxSpg9Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<UAZEntity>> UAZ = register("uaz",
+            EntityType.Builder.of(UAZEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
+    public static final Supplier<EntityType<UAZDSHKAEntity>> UAZ_DSHKA = register("uaz_dshka",
+            EntityType.Builder.of(UAZDSHKAEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
+    public static final Supplier<EntityType<StrykerMGSEntity>> STRYKER_MGS = register("stryker_mgs",
+            EntityType.Builder.of(StrykerMGSEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<StrykerM2Entity>> STRYKER_M2 = register("stryker_m2",
+            EntityType.Builder.of(StrykerM2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<LittlebirdEntity>> LITTLEBIRD = register("littlebird",
+            EntityType.Builder.of(LittlebirdEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
+    public static final Supplier<EntityType<LittlebirdArmedEntity>> LITTLEBIRD_ARMED = register("littlebird_armed",
+            EntityType.Builder.of(LittlebirdArmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
+    public static final Supplier<EntityType<BMP1Entity>> BMP1 = register("bmp1",
+            EntityType.Builder.of(BMP1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<BMP1UEntity>> BMP1U = register("bmp1u",
+            EntityType.Builder.of(BMP1UEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<BMP2Entity>> BMP2 = register("bmp2",
+            EntityType.Builder.of(BMP2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<Lav25Entity>> LAV25 = register("lav25",
+            EntityType.Builder.of(Lav25Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<T72AVEntity>> T72AV = register("t72av",
+            EntityType.Builder.of(T72AVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<UralEntity>> URAL = register("ural",
+            EntityType.Builder.of(UralEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<UralGradEntity>> URAL_GRAD = register("ural_grad",
+            EntityType.Builder.of(UralGradEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<KamazEntity>> KAMAZ = register("kamaz",
+            EntityType.Builder.of(KamazEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<ViperEntity>> VIPER = register("viper",
+            EntityType.Builder.of(ViperEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<GazTigrEntity>> GAZ_TIGR = register("gaz_tigr",
+            EntityType.Builder.of(GazTigrEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<GazTigrRWSEntity>> GAZ_TIGR_RWS = register("gaz_tigr_rws",
+            EntityType.Builder.of(GazTigrRWSEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<GazTigrMGEntity>> GAZ_TIGR_MG = register("gaz_tigr_mg",
+            EntityType.Builder.of(GazTigrMGEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<GazTigrGLEntity>> GAZ_TIGR_GL = register("gaz_tigr_gl",
+            EntityType.Builder.of(GazTigrGLEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<HueyEntity>> HUEY = register("huey",
+            EntityType.Builder.of(HueyEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<HueyRocketsEntity>> HUEY_ROCKETS = register("huey_rockets",
+            EntityType.Builder.of(HueyRocketsEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<HueyDoorGunnerM60Entity>> HUEY_DOOR_GUNNER_M60 = register("huey_door_gunner_m60",
+            EntityType.Builder.of(HueyDoorGunnerM60Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<HueyDoorGunnerM134Entity>> HUEY_DOOR_GUNNER_M134 = register("huey_door_gunner_m134",
+            EntityType.Builder.of(HueyDoorGunnerM134Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<NovatorEntity>> NOVATOR = register("novator",
+            EntityType.Builder.of(NovatorEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<MATVEntity>> MATV = register("matv",
+            EntityType.Builder.of(MATVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<HumveeEntity>> HUMVEE = register("humvee",
+            EntityType.Builder.of(HumveeEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final Supplier<EntityType<HumveeTOWEntity>> HUMVEE_TOW = register("humvee_tow",
+            EntityType.Builder.of(HumveeTOWEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+
+    public static final Supplier<EntityType<LockOnHellfireEntity>> LOCK_ON_HELLFIRE = register("lock_on_hellfire",
+            EntityType.Builder.<LockOnHellfireEntity>of(LockOnHellfireEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f,0.5f));
+    public static final Supplier<EntityType<WireGuidedHellfireEntity>> WIRE_GUIDED_HELLFIRE = register("wire_guided_hellfire",
+            EntityType.Builder.<WireGuidedHellfireEntity>of(WireGuidedHellfireEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f,0.5f));
+    public static final Supplier<EntityType<SidewinderEntity>> SIDEWINDER = register("sidewinder",
+            EntityType.Builder.<SidewinderEntity>of(SidewinderEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f,0.5f));
+    public static final Supplier<EntityType<MalyutkaEntity>> MALYUTKA = register("malyutka",
+            EntityType.Builder.<MalyutkaEntity>of(MalyutkaEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f,0.5f));
+
+    public static final Supplier<EntityType<BigBirdEntity>> BIGBIRD = register("bigbird",
+            EntityType.Builder.of(BigBirdEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
+    public static final Supplier<EntityType<LaHumveeEntity>> LA_HUMVEE = register("la_humvee",
+            EntityType.Builder.of(LaHumveeEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+
+    public static final Supplier<EntityType<ExampleTrailerEntity>> EXAMPLE_TRAILER = register("example_trailer",
+            EntityType.Builder.of(ExampleTrailerEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2.5f,1.8f));
+
+    private static <T extends Entity> Supplier<EntityType<T>> register(String name, EntityType.Builder<T> builder) {
+        return ENTITY_TYPES.register(name, () -> builder.build(FCP.MODID + ":" + name));
+    }
+
+    public static void register(IEventBus eventBus) { ENTITY_TYPES.register(eventBus); }
+}

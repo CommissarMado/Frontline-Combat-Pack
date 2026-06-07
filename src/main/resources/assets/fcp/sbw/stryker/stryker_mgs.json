@@ -1,0 +1,7 @@
+﻿{
+  "ID": "fcp:stryker_mgs",
+  "Model": {
+    "Model": "fcp:geo/stryker_mgs.geo.json",
+    "Texture": "fcp:textures/entity/uaz.png"
+  }
+}
