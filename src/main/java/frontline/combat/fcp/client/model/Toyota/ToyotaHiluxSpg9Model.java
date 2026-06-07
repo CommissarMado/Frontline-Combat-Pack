@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 public class ToyotaHiluxSpg9Model extends VehicleModel<ToyotaHiluxSpg9Entity> {
     @Override
     public ResourceLocation getModelResource(ToyotaHiluxSpg9Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/toyota_hilux_spg9.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/toyota_hilux_spg9.geo.json");
     }
 
     @Override

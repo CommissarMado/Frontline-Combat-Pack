@@ -13,7 +13,7 @@ public class UAZDSHKAModel extends VehicleModel<UAZDSHKAEntity> {
 
     @Override
     public ResourceLocation getModelResource(UAZDSHKAEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/uaz_dshka.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/uaz_dshka.geo.json");
     }
 
     @Override

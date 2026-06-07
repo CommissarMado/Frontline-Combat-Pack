@@ -7,14 +7,14 @@ import frontline.combat.fcp.entity.vehicle.Stryker.StrykerMGSEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.cache.object.GeoBone;
+import software.bernie.geckolib.animation.AnimationState;
 
 public class StrykerMGSModel extends VehicleModel<StrykerMGSEntity> {
 
     @Override
     public ResourceLocation getModelResource(StrykerMGSEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/stryker_mgs.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/stryker_mgs.geo.json");
     }
 
     @Override

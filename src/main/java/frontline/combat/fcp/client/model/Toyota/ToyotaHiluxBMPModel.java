@@ -12,7 +12,7 @@ public class ToyotaHiluxBMPModel extends VehicleModel<ToyotaHiluxBMPEntity>{
 
     @Override
     public ResourceLocation getModelResource(ToyotaHiluxBMPEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/toyota_hilux_bmp.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/toyota_hilux_bmp.geo.json");
     }
 
     @Override

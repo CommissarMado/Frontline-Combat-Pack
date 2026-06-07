@@ -10,11 +10,11 @@ import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraftforge.event.AddReloadListenerEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import net.neoforged.neoforge.event.AddReloadListenerEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import com.mojang.logging.LogUtils;
+
 
 import java.io.InputStreamReader;
 import java.util.HashMap;
@@ -30,13 +30,13 @@ import java.util.Map;
  * Reloads automatically on /reload — no restart needed when tuning offsets.
  *
  * Usage:
- *   TowableConfig cfg = FcpTowableConfigs.get(new ResourceLocation("fcp", "kamaz"));
- *   boolean towable   = FcpTowableConfigs.has(new ResourceLocation("fcp", "kamaz"));
+ *   TowableConfig cfg = FcpTowableConfigs.get(ResourceLocation.fromNamespaceAndPath("fcp", "kamaz"));
+ *   boolean towable   = FcpTowableConfigs.has(ResourceLocation.fromNamespaceAndPath("fcp", "kamaz"));
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID)
+@EventBusSubscriber(modid = FCP.MODID)
 public class FcpTowableConfigs {
 
-    private static final Logger LOGGER = LogManager.getLogger();
+    private static final org.slf4j.Logger LOGGER = LogUtils.getLogger();
     private static final Map<ResourceLocation, TowableConfig> CONFIGS = new HashMap<>();
 
     /**
@@ -80,15 +80,14 @@ public class FcpTowableConfigs {
 
                         TowableConfig config = TowableConfig.CODEC
                                 .parse(JsonOps.INSTANCE, json)
-                                .getOrThrow(false, err ->
-                                        LOGGER.error("[FCP] Bad towable config {}: {}", location, err));
+                                .getOrThrow(err -> { LOGGER.error("[FCP] Bad towable config {}: {}", location, err); return new IllegalStateException(err); });
 
                         // Key is the entity registry id — strip folder prefix and extension
                         String stripped = rawPath
                                 .replace("towable_vehicles/", "")
                                 .replace(".json", "");
 
-                        ResourceLocation key = new ResourceLocation(location.getNamespace(), stripped);
+                        ResourceLocation key = ResourceLocation.fromNamespaceAndPath(location.getNamespace(), stripped);
                         loaded.put(key, config);
                         LOGGER.debug("[FCP] Loaded towable config: {}", key);
 

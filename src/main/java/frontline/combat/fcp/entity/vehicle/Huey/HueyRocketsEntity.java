@@ -12,13 +12,13 @@ public class HueyRocketsEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
             //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/huey/huey_1.png"),
-            new ResourceLocation("fcp", "textures/entity/huey/huey_2.png"),
-            new ResourceLocation("fcp", "textures/entity/huey/huey_3.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/huey/huey_1.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/huey/huey_2.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/huey/huey_3.png"),
             //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/huey/huey_1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/huey/huey_2_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/huey/huey_3_wrecked.png")
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/huey/huey_1_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/huey/huey_2_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/huey/huey_3_wrecked.png")
     };
     private static final String[] CAMO_NAMES = {"Standard", "White", "Shark"};
 
@@ -53,8 +53,7 @@ public class HueyRocketsEntity extends CamoVehicleBase {
 
     @Override
     public DamageModifier getDamageModifier() {
-        return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+        return super.getDamageModifier();
     }
 
     public float getPropellerRot() {

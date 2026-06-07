@@ -12,9 +12,9 @@ import net.minecraft.world.level.Level;
 public class ToyotaHiluxSpg9Entity extends CamoVehicleBase {
     private static final ResourceLocation[] CAMO_TEXTURES = {
             //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/toyota/toyota_hilux.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/toyota/toyota_hilux.png"),
             //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/toyota/toyota_hilux_wrecked.png")
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/toyota/toyota_hilux_wrecked.png")
 
     };
 
@@ -37,9 +37,9 @@ public class ToyotaHiluxSpg9Entity extends CamoVehicleBase {
     public String[] getCamoNames() {return CAMO_NAMES;}
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(STEERING_ANGLE, 0f);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(STEERING_ANGLE, 0f);
     }
 
     public float getSteeringAngle() {
@@ -63,8 +63,7 @@ public class ToyotaHiluxSpg9Entity extends CamoVehicleBase {
 
     @Override
     public DamageModifier getDamageModifier() {
-        return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+        return super.getDamageModifier();
     }
 
     @Override

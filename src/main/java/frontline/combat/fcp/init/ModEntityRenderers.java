@@ -22,6 +22,7 @@ import frontline.combat.fcp.client.renderer.Matv.MATVRenderer;
 import frontline.combat.fcp.client.renderer.MemeVehicles.BigBirdRenderer;
 import frontline.combat.fcp.client.renderer.MemeVehicles.LaHumveeRenderer;
 import frontline.combat.fcp.client.renderer.Novator.NovatorRenderer;
+import frontline.combat.fcp.client.renderer.Projectile.Hellfire.LockOnHellfireRenderer;
 import frontline.combat.fcp.client.renderer.Projectile.Hellfire.WireGuidedHellfireRenderer;
 import frontline.combat.fcp.client.renderer.Projectile.Malyutka.MalyutkaRenderer;
 import frontline.combat.fcp.client.renderer.Projectile.Sidewinder.SidewinderRenderer;
@@ -38,12 +39,12 @@ import frontline.combat.fcp.client.renderer.Uaz.UAZRenderer;
 import frontline.combat.fcp.client.renderer.Ural.UralGradRenderer;
 import frontline.combat.fcp.client.renderer.Ural.UralRenderer;
 import frontline.combat.fcp.client.renderer.Viper.ViperRenderer;
-import frontline.combat.fcp.client.renderer.Projectile.Hellfire.LockOnHellfireRenderer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-@Mod.EventBusSubscriber(modid = FCP.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+
+@EventBusSubscriber(modid = FCP.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModEntityRenderers {
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
@@ -51,61 +52,39 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_ROCKET_POD.get(), ToyotaHiluxRocketPodRenderer::new);
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_BMP.get(), ToyotaHiluxBMPRenderer::new);
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_SPG9.get(), ToyotaHiluxSpg9Renderer::new);
-
         event.registerEntityRenderer(ModEntities.UAZ.get(), UAZRenderer::new);
         event.registerEntityRenderer(ModEntities.UAZ_DSHKA.get(), UAZDSHKARenderer::new);
-
         event.registerEntityRenderer(ModEntities.STRYKER_MGS.get(), StrykerMGSRenderer::new);
         event.registerEntityRenderer(ModEntities.STRYKER_M2.get(), StrykerM2Renderer::new);
-
         event.registerEntityRenderer(ModEntities.LITTLEBIRD.get(), LittlebirdRenderer::new);
         event.registerEntityRenderer(ModEntities.LITTLEBIRD_ARMED.get(), LittlebirdArmedRenderer::new);
-
         event.registerEntityRenderer(ModEntities.BMP1.get(), BMP1Renderer::new);
         event.registerEntityRenderer(ModEntities.BMP1U.get(), BMP1URenderer::new);
-
         event.registerEntityRenderer(ModEntities.BMP2.get(), BMP2Renderer::new);
-
         event.registerEntityRenderer(ModEntities.LAV25.get(), Lav25Renderer::new);
-
         event.registerEntityRenderer(ModEntities.T72AV.get(), T72AVRenderer::new);
-
         event.registerEntityRenderer(ModEntities.URAL.get(), UralRenderer::new);
         event.registerEntityRenderer(ModEntities.URAL_GRAD.get(), UralGradRenderer::new);
-
         event.registerEntityRenderer(ModEntities.KAMAZ.get(), KamazRenderer::new);
-
         event.registerEntityRenderer(ModEntities.VIPER.get(), ViperRenderer::new);
-
         event.registerEntityRenderer(ModEntities.GAZ_TIGR.get(), GazTigrRenderer::new);
         event.registerEntityRenderer(ModEntities.GAZ_TIGR_RWS.get(), GazTigrRWSRenderer::new);
         event.registerEntityRenderer(ModEntities.GAZ_TIGR_MG.get(), GazTigrMGRenderer::new);
         event.registerEntityRenderer(ModEntities.GAZ_TIGR_GL.get(), GazTigrGLRenderer::new);
-
         event.registerEntityRenderer(ModEntities.HUEY.get(), HueyRenderer::new);
         event.registerEntityRenderer(ModEntities.HUEY_ROCKETS.get(), HueyRocketsRenderer::new);
         event.registerEntityRenderer(ModEntities.HUEY_DOOR_GUNNER_M60.get(), HueyDoorGunnerM60Renderer::new);
         event.registerEntityRenderer(ModEntities.HUEY_DOOR_GUNNER_M134.get(), HueyDoorGunnerM134Renderer::new);
-
         event.registerEntityRenderer(ModEntities.NOVATOR.get(), NovatorRenderer::new);
-
         event.registerEntityRenderer(ModEntities.MATV.get(), MATVRenderer::new);
-
         event.registerEntityRenderer(ModEntities.HUMVEE.get(), HumveeRenderer::new);
         event.registerEntityRenderer(ModEntities.HUMVEE_TOW.get(), HumveeTOWRenderer::new);
-
-        // Projectiles
         event.registerEntityRenderer(ModEntities.LOCK_ON_HELLFIRE.get(), LockOnHellfireRenderer::new);
         event.registerEntityRenderer(ModEntities.WIRE_GUIDED_HELLFIRE.get(), WireGuidedHellfireRenderer::new);
-
         event.registerEntityRenderer(ModEntities.SIDEWINDER.get(), SidewinderRenderer::new);
-
         event.registerEntityRenderer(ModEntities.MALYUTKA.get(), MalyutkaRenderer::new);
-
-        // Meme Vehicles
         event.registerEntityRenderer(ModEntities.BIGBIRD.get(), BigBirdRenderer::new);
         event.registerEntityRenderer(ModEntities.LA_HUMVEE.get(), LaHumveeRenderer::new);
-        // Trailers
         event.registerEntityRenderer(ModEntities.EXAMPLE_TRAILER.get(), ExampleTrailerRenderer::new);
     }
 }

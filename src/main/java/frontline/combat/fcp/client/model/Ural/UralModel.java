@@ -12,7 +12,7 @@ public class UralModel extends VehicleModel<UralEntity> {
 
     @Override
     public ResourceLocation getModelResource(UralEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/ural.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/ural.geo.json");
     }
 
     @Override

@@ -13,23 +13,23 @@ public class UralEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
             //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/ural/ural_1.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_2.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_3.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_4.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_5.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_6.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_7.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_8.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/ural/ural_1.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/ural/ural_2.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/ural/ural_3.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/ural/ural_4.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/ural/ural_5.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/ural/ural_6.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/ural/ural_7.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/ural/ural_8.png"),
             //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/ural/ural_1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_2_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_3_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_4_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_5_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_6_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_7_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_8_wrecked.png")
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/ural/ural_1_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/ural/ural_2_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/ural/ural_3_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/ural/ural_4_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/ural/ural_5_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/ural/ural_6_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/ural/ural_7_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/ural/ural_8_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"Standard", "Camo"};
@@ -55,9 +55,9 @@ public class UralEntity extends CamoVehicleBase {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(STEERING_ANGLE, 0f);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(STEERING_ANGLE, 0f);
     }
 
     public float getSteeringAngle() {
@@ -82,8 +82,7 @@ public class UralEntity extends CamoVehicleBase {
 
     @Override
     public DamageModifier getDamageModifier() {
-        return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+        return super.getDamageModifier();
     }
 
     @Override

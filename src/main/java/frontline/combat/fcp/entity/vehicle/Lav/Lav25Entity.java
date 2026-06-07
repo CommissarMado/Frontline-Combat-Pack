@@ -14,17 +14,17 @@ public class Lav25Entity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
             //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo1.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo2.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo3.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_od.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_tan.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_camo1.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_camo2.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_camo3.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_od.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_tan.png"),
             //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo2_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo3_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_od_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_tan_wrecked.png")
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_camo1_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_camo2_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_camo3_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_od_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_tan_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"Camo Variant 1","Camo Variant 2", "Camo Variant 3","No-Camo", "Tan"};
@@ -46,9 +46,9 @@ public class Lav25Entity extends CamoVehicleBase {
     public String[] getCamoNames() {return CAMO_NAMES;}
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(STEERING_ANGLE, 0f);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(STEERING_ANGLE, 0f);
     }
 
     public float getSteeringAngle() {
@@ -72,8 +72,7 @@ public class Lav25Entity extends CamoVehicleBase {
 
     @Override
     public DamageModifier getDamageModifier() {
-        return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+        return super.getDamageModifier();
     }
 
     @Override

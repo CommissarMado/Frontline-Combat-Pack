@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 public class NovatorModel extends VehicleModel<NovatorEntity> {
     @Override
     public ResourceLocation getModelResource(NovatorEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/novator.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/novator.geo.json");
     }
 
     @Override

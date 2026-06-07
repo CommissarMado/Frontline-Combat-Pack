@@ -4,10 +4,10 @@ import frontline.combat.fcp.entity.vehicle.Trailers.AbstractTrailerEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 /**
@@ -33,21 +33,21 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 public class ExampleTrailerEntity extends AbstractTrailerEntity {
 
     private static final ResourceLocation CONFIG_ID =
-            new ResourceLocation("fcp", "example_trailer");
+            ResourceLocation.fromNamespaceAndPath("fcp", "example_trailer");
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
             //Normal Textures
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo1.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo2.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo3.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_od.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_tan.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_camo1.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_camo2.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_camo3.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_od.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_tan.png"),
             //Wrecked Textures
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo2_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo3_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_od_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_tan_wrecked.png")
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_camo1_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_camo2_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_camo3_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_od_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/lav/lav25_tan_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"Camo Variant 1","Camo Variant 2", "Camo Variant 3","No-Camo", "Tan"};

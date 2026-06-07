@@ -13,13 +13,13 @@ public class MATVEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
             //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/matv/matv_1.png"),
-            new ResourceLocation("fcp", "textures/entity/matv/matv_2.png"),
-            new ResourceLocation("fcp", "textures/entity/matv/matv_3.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/matv/matv_1.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/matv/matv_2.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/matv/matv_3.png"),
             //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/matv/matv_1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/matv/matv_2_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/matv/matv_3_wrecked.png")
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/matv/matv_1_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/matv/matv_2_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/matv/matv_3_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"Sand", "Green", "PINK"};
@@ -41,9 +41,9 @@ public class MATVEntity extends CamoVehicleBase {
     public String[] getCamoNames() {return CAMO_NAMES;}
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(STEERING_ANGLE, 0f);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(STEERING_ANGLE, 0f);
     }
 
     public float getSteeringAngle() {
@@ -67,8 +67,7 @@ public class MATVEntity extends CamoVehicleBase {
 
     @Override
     public DamageModifier getDamageModifier() {
-        return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+        return super.getDamageModifier();
     }
 
     @Override

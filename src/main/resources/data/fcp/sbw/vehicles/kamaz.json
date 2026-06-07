@@ -3,20 +3,120 @@
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "OBB": [
-    {"Size": [0.35, 0.65, 0.65], "Position": [1.2, 0.72, 2.75], "Part": "WheelLeft"},
-    {"Size": [0.35, 0.65, 0.65], "Position": [1.2, 0.72, -1.275], "Part": "WheelLeft"},
-    {"Size": [0.35, 0.65, 0.65], "Position": [1.2, 0.72, -2.75], "Part": "WheelLeft"},
-    {"Size": [0.35, 0.65, 0.65], "Position": [-1.2, 0.72, 2.75], "Part": "WheelRight"},
-    {"Size": [0.35, 0.65, 0.65], "Position": [-1.2, 0.72, -1.275], "Part": "WheelRight"},
-    {"Size": [0.35, 0.65, 0.65], "Position": [-1.2, 0.72, -2.75], "Part": "WheelRight"},
-    {"Size": [1.3, 1.24, 1.25], "Position": [0, 2.32, 3.2], "Part": "MainEngine"},
-    {"Size": [1.5, 0.35, 3], "Position": [0, 1.68, -1.8], "Part":  "Body"}
+    {
+      "Size": [
+        0.35,
+        0.65,
+        0.65
+      ],
+      "Position": [
+        1.2,
+        0.72,
+        2.75
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.35,
+        0.65,
+        0.65
+      ],
+      "Position": [
+        1.2,
+        0.72,
+        -1.275
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.35,
+        0.65,
+        0.65
+      ],
+      "Position": [
+        1.2,
+        0.72,
+        -2.75
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.35,
+        0.65,
+        0.65
+      ],
+      "Position": [
+        -1.2,
+        0.72,
+        2.75
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.35,
+        0.65,
+        0.65
+      ],
+      "Position": [
+        -1.2,
+        0.72,
+        -1.275
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.35,
+        0.65,
+        0.65
+      ],
+      "Position": [
+        -1.2,
+        0.72,
+        -2.75
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        1.3,
+        1.24,
+        1.25
+      ],
+      "Position": [
+        0,
+        2.32,
+        3.2
+      ],
+      "Part": "MainEngine"
+    },
+    {
+      "Size": [
+        1.5,
+        0.35,
+        3
+      ],
+      "Position": [
+        0,
+        1.68,
+        -1.8
+      ],
+      "Part": "Body"
+    }
   ],
   "Seats": [
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [0.625, 1.3, 2.9],
+      "Position": [
+        0.625,
+        1.3,
+        2.9
+      ],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -25,7 +125,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-0.625, 1.3, 2.9],
+      "Position": [
+        -0.625,
+        1.3,
+        2.9
+      ],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -34,7 +138,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-1, 1.4, 0.2],
+      "Position": [
+        -1,
+        1.4,
+        0.2
+      ],
       "Orientation": -90,
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -44,7 +152,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-1, 1.4, -1.0],
+      "Position": [
+        -1,
+        1.4,
+        -1
+      ],
       "Orientation": -90,
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -54,7 +166,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-1, 1.4, -2.0],
+      "Position": [
+        -1,
+        1.4,
+        -2
+      ],
       "Orientation": -90,
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -64,7 +180,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-1, 1.4, -3.0],
+      "Position": [
+        -1,
+        1.4,
+        -3
+      ],
       "Orientation": -90,
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -74,18 +194,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-1, 1.4, -4.0],
-      "Orientation": -90,
-      "MinPitch": -60,
-      "MaxPitch": 60,
-      "MinYaw": -85,
-      "MaxYaw": 85
-    },
-
-    {
-      "IsEnclosed": true,
-      "Transform": "Vehicle",
-      "Position": [1, 1.4, 0.2],
+      "Position": [
+        -1,
+        1.4,
+        -4
+      ],
       "Orientation": -90,
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -95,7 +208,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [1, 1.4, -1.0],
+      "Position": [
+        1,
+        1.4,
+        0.2
+      ],
       "Orientation": -90,
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -105,7 +222,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [1, 1.4, -2.0],
+      "Position": [
+        1,
+        1.4,
+        -1
+      ],
       "Orientation": -90,
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -115,7 +236,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [1, 1.4, -3.0],
+      "Position": [
+        1,
+        1.4,
+        -2
+      ],
       "Orientation": -90,
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -125,7 +250,25 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [1, 1.4, -4.0],
+      "Position": [
+        1,
+        1.4,
+        -3
+      ],
+      "Orientation": -90,
+      "MinPitch": -60,
+      "MaxPitch": 60,
+      "MinYaw": -85,
+      "MaxYaw": 85
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        1,
+        1.4,
+        -4
+      ],
       "Orientation": -90,
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -144,7 +287,7 @@
     "Increment": 0.012,
     "Decrement": 0.009,
     "SteeringSpeed": 0.05,
-    "EngineSoundVolume" : 0.6
+    "EngineSoundVolume": 0.6
   },
   "UpStep": 1.5,
   "Mass": 20,
@@ -183,22 +326,63 @@
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },
-  "ThirdPersonCameraPos": [0, 1, 5],
+  "ThirdPersonCameraPos": [
+    0,
+    1,
+    5
+  ],
   "VehicleIcon": "superbwarfare:textures/vehicle_icon/truck_icon.png",
   "ContainerIcon": "fcp:textures/gui/vehicle/type/civ_rus.png",
   "Type": "Car",
   "CollisionLevel": {
     "Level": 4,
     "PowerLimits": [
-      [0, 0, true],
-      [0, 0, true],
-      [0.15, 0.09, false],
-      [1, 0.3, false]
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0.15,
+        0.09,
+        false
+      ],
+      [
+        1,
+        0.3,
+        false
+      ]
     ]
   },
   "EngineSound": "superbwarfare:truck_engine",
   "HornSound": "superbwarfare:truck_horn",
   "HudType": "@Land",
-  "TerrainCompat": [[1.1875, 0, 3.1875], [-1.1875, 0, 3.1875], [1.1875, 0, -1.0625], [-1.1875, 0, -1.0625]],
+  "TerrainCompat": [
+    [
+      1.1875,
+      0,
+      3.1875
+    ],
+    [
+      -1.1875,
+      0,
+      3.1875
+    ],
+    [
+      1.1875,
+      0,
+      -1.0625
+    ],
+    [
+      -1.1875,
+      0,
+      -1.0625
+    ]
+  ],
   "InertiaRotateRate": 0.8
 }

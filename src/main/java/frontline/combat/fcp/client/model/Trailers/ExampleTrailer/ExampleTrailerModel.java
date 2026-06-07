@@ -12,7 +12,7 @@ public class ExampleTrailerModel extends VehicleModel<ExampleTrailerEntity> {
 
     @Override
     public ResourceLocation getModelResource(ExampleTrailerEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/lav25.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/lav25.geo.json");
     }
 
     @Override

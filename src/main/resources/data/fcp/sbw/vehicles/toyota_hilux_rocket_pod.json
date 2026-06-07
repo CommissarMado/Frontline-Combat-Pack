@@ -3,21 +3,111 @@
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "OBB": [
-    {"Size": [0.21, 0.465, 0.465], "Position": [0.96, 0.510, 1.95], "Part": "WheelLeft"},
-    {"Size": [0.21, 0.465, 0.465], "Position": [-0.96, 0.510, 1.95], "Part": "WheelRight"},
-    {"Size": [0.21, 0.465, 0.465], "Position": [0.96, 0.510, -2.1], "Part": "WheelLeft"},
-    {"Size": [0.21, 0.465, 0.465], "Position": [-0.96, 0.510, -1.95], "Part": "WheelRight"},
-    {"Size": [1.068, 0.525, 2.5], "Position": [0, 1.135, -0.99], "Part":  "Body"},
-    {"Size": [1.068, 0.525, 0.75], "Position": [0, 1.135, 2.26], "Part": "MainEngine"},
-    {"Size": [1.068, 0.35, 1.425], "Position": [0, 2.01, 0.05], "Part":  "Body"}
+    {
+      "Size": [
+        0.21,
+        0.465,
+        0.465
+      ],
+      "Position": [
+        0.96,
+        0.51,
+        1.95
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.21,
+        0.465,
+        0.465
+      ],
+      "Position": [
+        -0.96,
+        0.51,
+        1.95
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.21,
+        0.465,
+        0.465
+      ],
+      "Position": [
+        0.96,
+        0.51,
+        -2.1
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.21,
+        0.465,
+        0.465
+      ],
+      "Position": [
+        -0.96,
+        0.51,
+        -1.95
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        1.068,
+        0.525,
+        2.5
+      ],
+      "Position": [
+        0,
+        1.135,
+        -0.99
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        1.068,
+        0.525,
+        0.75
+      ],
+      "Position": [
+        0,
+        1.135,
+        2.26
+      ],
+      "Part": "MainEngine"
+    },
+    {
+      "Size": [
+        1.068,
+        0.35,
+        1.425
+      ],
+      "Position": [
+        0,
+        2.01,
+        0.05
+      ],
+      "Part": "Body"
+    }
   ],
   "Seats": [
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Weapons": ["Rocket"],
+      "Weapons": [
+        "Rocket"
+      ],
       "BanHand": true,
-      "Position": [0.50, 0.30, 0.25],
+      "Position": [
+        0.5,
+        0.3,
+        0.25
+      ],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -27,7 +117,11 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [-0.50, 0.30, 0.25],
+      "Position": [
+        -0.5,
+        0.3,
+        0.25
+      ],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -37,7 +131,11 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [0.50, 0.30, -0.9],
+      "Position": [
+        0.5,
+        0.3,
+        -0.9
+      ],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -47,7 +145,11 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [0, 0.30, -0.9],
+      "Position": [
+        0,
+        0.3,
+        -0.9
+      ],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -56,7 +158,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-0.50, 0.30, -0.9],
+      "Position": [
+        -0.5,
+        0.3,
+        -0.9
+      ],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -64,12 +170,44 @@
     }
   ],
   "Weapons": {
-    "Nothing": {
-      "Name": "",
-      "Crosshair": "@Empty",
-      "RPM": 0,
-      "Magazine": 0,
-      "Damage": 0
+    "Rocket": {
+      "AmmoType": "superbwarfare:small_rocket",
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/small_rocket.png",
+      "DefaultZoom": 2,
+      "DefaultFireMode": "Semi",
+      "AvailableFireModes": "Semi",
+      "Magazine": 12,
+      "EmptyReloadTime": 180,
+      "Projectile": "superbwarfare:small_rocket",
+      "Spread": 0.3,
+      "Name": "weapon.fcp.ub32",
+      "RPM": 400,
+      "Damage": 80,
+      "ExplosionDamage": 40,
+      "ExplosionRadius": 5,
+      "Gravity": 0.02,
+      "Velocity": 16,
+      "SoundInfo": {
+        "Fire1P": "superbwarfare:small_rocket_fire_1p",
+        "Fire3P": "superbwarfare:small_rocket_fire_3p"
+      },
+      "ShootPos": {
+        "Transform": "Vehicle",
+        "Positions": [
+          [
+            0,
+            3.175,
+            -1
+          ]
+        ],
+        "Directions": [
+          [
+            0,
+            0.02,
+            1
+          ]
+        ]
+      }
     }
   },
   "EngineType": "Wheel",
@@ -81,9 +219,9 @@
     "MaxForwardSpeedRate": 1.62,
     "MaxBackwardSpeedRate": 0.33,
     "Increment": 0.025,
-    "Decrement": 0.020,
+    "Decrement": 0.02,
     "SteeringSpeed": 0.1,
-    "EngineSoundVolume" : 0.6
+    "EngineSoundVolume": 0.6
   },
   "UpStep": 2.2,
   "Mass": 10,
@@ -121,48 +259,56 @@
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },
-  "Weapons": {
-    "Rocket": {
-      "AmmoType": "superbwarfare:small_rocket",
-      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/small_rocket.png",
-      "DefaultZoom": 2,
-      "DefaultFireMode": "Semi",
-      "AvailableFireModes": "Semi",
-      "Magazine": 12,
-      "EmptyReloadTime": 180,
-      "Projectile": "superbwarfare:small_rocket",
-      "Spread": 0.3,
-      "Name": "weapon.fcp.ub32",
-      "RPM": 400,
-      "Damage": 80,
-      "ExplosionDamage": 40,
-      "ExplosionRadius": 5,
-      "Gravity": 0.02,
-      "Velocity": 16,
-      "SoundInfo": {
-        "Fire1P": "superbwarfare:small_rocket_fire_1p",
-        "Fire3P": "superbwarfare:small_rocket_fire_3p"
-      },
-      "ShootPos": {
-        "Transform": "Vehicle",
-        "Positions": [[0, 3.175, -1]],
-        "Directions": [[0, 0.02, 1]]
-      }
-    }
-  },
-  "ThirdPersonCameraPos": [0, 1, 5],
+  "ThirdPersonCameraPos": [
+    0,
+    1,
+    5
+  ],
   "ContainerIcon": "fcp:textures/gui/vehicle/type/land_ter.png",
   "Type": "Car",
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
-      [0, 0, true],
-      [0, 0, true],
-      [0.15, 0.09, false]
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0.15,
+        0.09,
+        false
+      ]
     ]
   },
   "EngineSound": "fcp:toyota_engine",
   "HudType": "@Land",
-  "TerrainCompat": [[1.156, 0, 1.594], [-1.156, 0, 1.594], [1.156, 0, -1.594], [-1.156, 0, -1.594]],
+  "TerrainCompat": [
+    [
+      1.156,
+      0,
+      1.594
+    ],
+    [
+      -1.156,
+      0,
+      1.594
+    ],
+    [
+      1.156,
+      0,
+      -1.594
+    ],
+    [
+      -1.156,
+      0,
+      -1.594
+    ]
+  ],
   "InertiaRotateRate": 1.8
 }

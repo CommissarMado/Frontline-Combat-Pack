@@ -14,19 +14,19 @@ public class UAZEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
             // Normal Camos
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_1.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_2.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_3.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_4.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_5.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_6.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_1.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_2.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_3.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_4.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_5.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_6.png"),
             // Wrecked Variants
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_2_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_3_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_4_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_5_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_6_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_1_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_2_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_3_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_4_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_5_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_6_wrecked.png"),
     };
 
     private static final String[] CAMO_NAMES = {"Base", "Z", "Ukraine", "Ukraine Medic", "Blue", "Orange", "Ruined"};
@@ -48,9 +48,9 @@ public class UAZEntity extends CamoVehicleBase {
     public String[] getCamoNames() {return CAMO_NAMES;}
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(STEERING_ANGLE, 0f);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(STEERING_ANGLE, 0f);
     }
 
     public float getSteeringAngle() {
@@ -74,8 +74,7 @@ public class UAZEntity extends CamoVehicleBase {
 
     @Override
     public DamageModifier getDamageModifier() {
-        return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+        return super.getDamageModifier();
     }
 
     @Override

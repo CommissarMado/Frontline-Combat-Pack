@@ -12,7 +12,7 @@ public class HueyRocketsModel extends VehicleModel<HueyRocketsEntity> {
 
     @Override
     public ResourceLocation getModelResource(HueyRocketsEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/huey_rockets.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/huey_rockets.geo.json");
     }
 
     @Override

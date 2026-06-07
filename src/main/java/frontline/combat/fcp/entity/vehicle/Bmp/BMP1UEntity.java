@@ -13,11 +13,11 @@ public class BMP1UEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
             //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/bmp1/bmp1_1.png"),
-            new ResourceLocation("fcp", "textures/entity/bmp1/bmp1_2.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/bmp1/bmp1_1.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/bmp1/bmp1_2.png"),
             //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/bmp1/bmp1_1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/bmp1/bmp1_2_wrecked.png")
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/bmp1/bmp1_1_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/bmp1/bmp1_2_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"Flag", "No-Flag"};
@@ -39,9 +39,9 @@ public class BMP1UEntity extends CamoVehicleBase {
     public String[] getCamoNames() {return CAMO_NAMES;}
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(STEERING_ANGLE, 0f);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(STEERING_ANGLE, 0f);
     }
 
     public float getSteeringAngle() {
@@ -65,8 +65,7 @@ public class BMP1UEntity extends CamoVehicleBase {
 
     @Override
     public DamageModifier getDamageModifier() {
-        return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+        return super.getDamageModifier();
     }
 
     @Override

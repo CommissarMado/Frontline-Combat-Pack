@@ -15,11 +15,11 @@ public class MalyutkaModel extends GeoModel<MalyutkaEntity> {
 
     @Override
     public ResourceLocation getModelResource(MalyutkaEntity entity) {
-        return new ResourceLocation(FCP.MODID, "geo/malyutka.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/malyutka.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(MalyutkaEntity entity) {
-        return new ResourceLocation(FCP.MODID,"textures/entity/malyutka/malyutka.png");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "textures/entity/malyutka/malyutka.png");
     }
 }

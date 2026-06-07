@@ -27,9 +27,9 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements ICamoV
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(CAMO_TYPE, 0);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(CAMO_TYPE, 0);
     }
 
     /**

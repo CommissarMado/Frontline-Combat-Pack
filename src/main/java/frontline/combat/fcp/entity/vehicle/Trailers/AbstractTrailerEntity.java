@@ -22,7 +22,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 import javax.annotation.Nullable;
 import java.util.Comparator;
@@ -132,11 +132,11 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
     // ════════════════════════════════════════════════════════════════════════
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(TOWER_UUID, Optional.empty());
-        this.entityData.define(IS_TOWED, false);
-        this.entityData.define(TRAILER_YAW, 0.0f);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(TOWER_UUID, Optional.empty());
+        builder.define(IS_TOWED, false);
+        builder.define(TRAILER_YAW, 0.0f);
     }
 
     // ════════════════════════════════════════════════════════════════════════
@@ -207,7 +207,7 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
 
     private void applyTowedVelocity(Entity tower) {
         // Get the tower's entity registry id and look up its TowableConfig
-        ResourceLocation towerId = ForgeRegistries.ENTITY_TYPES.getKey(tower.getType());
+        ResourceLocation towerId = BuiltInRegistries.ENTITY_TYPE.getKey(tower.getType());
         if (towerId == null) return;
 
         TowableConfig towable = FcpTowableConfigs.get(towerId);
@@ -369,7 +369,7 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
                     if (entity instanceof AbstractTrailerEntity) return false;
                     if (entity instanceof Player) return false;
                     // Only allow vehicles that have a TowableConfig registered
-                    ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(entity.getType());
+                    ResourceLocation id = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
                     return id != null && FcpTowableConfigs.has(id);
                 }
         );
@@ -428,7 +428,7 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
      * Performs a one-time position snap so the first tick starts correctly.
      */
     public void attachTo(Entity tower) {
-        ResourceLocation towerId = ForgeRegistries.ENTITY_TYPES.getKey(tower.getType());
+        ResourceLocation towerId = BuiltInRegistries.ENTITY_TYPE.getKey(tower.getType());
         if (towerId == null) return;
 
         TowableConfig towable = FcpTowableConfigs.get(towerId);

@@ -12,7 +12,7 @@ public class LittlebirdModel extends VehicleModel<LittlebirdEntity> {
 
     @Override
     public ResourceLocation getModelResource(LittlebirdEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/littlebird.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/littlebird.geo.json");
     }
 
     @Override

@@ -12,15 +12,15 @@ public class LittlebirdArmedEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
             //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/littlebird/littlebird_armed_1.png"),
-            new ResourceLocation("fcp", "textures/entity/littlebird/littlebird_armed_2.png"),
-            new ResourceLocation("fcp", "textures/entity/littlebird/littlebird_armed_3.png"),
-            new ResourceLocation("fcp", "textures/entity/littlebird/littlebird_armed_4.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/littlebird/littlebird_armed_1.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/littlebird/littlebird_armed_2.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/littlebird/littlebird_armed_3.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/littlebird/littlebird_armed_4.png"),
             //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/littlebird/littlebird_armed_1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/littlebird/littlebird_armed_2_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/littlebird/littlebird_armed_3_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/littlebird/littlebird_armed_4_wrecked.png")
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/littlebird/littlebird_armed_1_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/littlebird/littlebird_armed_2_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/littlebird/littlebird_armed_3_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/littlebird/littlebird_armed_4_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"Dark", "Light", "Green", "Tan"};
@@ -60,8 +60,7 @@ public class LittlebirdArmedEntity extends CamoVehicleBase {
 
     @Override
     public DamageModifier getDamageModifier() {
-        return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+        return super.getDamageModifier();
     }
 
     public float getPropellerRot() {

@@ -13,9 +13,9 @@ public class T72AVEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
             //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/t72av/t72av.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/t72av/t72av.png"),
             //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/t72av/t72av_wrecked.png")
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/t72av/t72av_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"Flag", "No-Flag"};
@@ -37,9 +37,9 @@ public class T72AVEntity extends CamoVehicleBase {
     public String[] getCamoNames() {return CAMO_NAMES;}
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(STEERING_ANGLE, 0f);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(STEERING_ANGLE, 0f);
     }
 
     public float getSteeringAngle() {
@@ -63,8 +63,7 @@ public class T72AVEntity extends CamoVehicleBase {
 
     @Override
     public DamageModifier getDamageModifier() {
-        return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+        return super.getDamageModifier();
     }
 
     @Override

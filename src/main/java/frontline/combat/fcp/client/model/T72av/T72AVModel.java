@@ -13,7 +13,7 @@ public class T72AVModel extends VehicleModel<T72AVEntity> {
 
     @Override
     public ResourceLocation getModelResource(T72AVEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/t72av.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/t72av.geo.json");
     }
 
     @Override

@@ -13,9 +13,9 @@ public class BigBirdEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
             //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/meme_vehicles/bigbird.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/meme_vehicles/bigbird.png"),
             //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/meme_vehicles/bigbird_wrecked.png")
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/meme_vehicles/bigbird_wrecked.png")
     };
 
     private static final String[] CAMO_NAMES = {"BIGBIRD!"};
@@ -51,8 +51,7 @@ public class BigBirdEntity extends CamoVehicleBase {
 
     @Override
     public DamageModifier getDamageModifier() {
-        return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+        return super.getDamageModifier();
     }
 
     public float getPropellerRot() {

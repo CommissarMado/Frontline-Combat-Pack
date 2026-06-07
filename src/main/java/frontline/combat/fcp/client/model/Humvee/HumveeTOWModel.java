@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 public class HumveeTOWModel extends VehicleModel<HumveeTOWEntity> {
     @Override
     public ResourceLocation getModelResource(HumveeTOWEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/humvee_tow.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/humvee_tow.geo.json");
     }
 
     @Override

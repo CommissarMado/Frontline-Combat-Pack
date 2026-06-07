@@ -12,13 +12,13 @@ public class HueyDoorGunnerM60Entity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
             //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/huey/huey_1_m60.png"),
-            new ResourceLocation("fcp", "textures/entity/huey/huey_2_m60.png"),
-            new ResourceLocation("fcp", "textures/entity/huey/huey_3_m60.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/huey/huey_1_m60.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/huey/huey_2_m60.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/huey/huey_3_m60.png"),
             //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/huey/huey_1_m60_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/huey/huey_2_m60_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/huey/huey_3_m60_wrecked.png")
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/huey/huey_1_m60_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/huey/huey_2_m60_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/huey/huey_3_m60_wrecked.png")
     };
     private static final String[] CAMO_NAMES = {"Standard", "White", "Shark"};
 
@@ -53,8 +53,7 @@ public class HueyDoorGunnerM60Entity extends CamoVehicleBase {
 
     @Override
     public DamageModifier getDamageModifier() {
-        return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+        return super.getDamageModifier();
     }
 
     public float getPropellerRot() {

@@ -13,17 +13,17 @@ public class UAZDSHKAEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
             //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_dshka_2.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_dshka_1.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_dshka_3.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_dshka_4.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_dshka_5.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_dshka_2.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_dshka_1.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_dshka_3.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_dshka_4.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_dshka_5.png"),
             //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_dshka_2_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_dshka_1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_dshka_3_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_dshka_4_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_dshka_5_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_dshka_2_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_dshka_1_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_dshka_3_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_dshka_4_wrecked.png"),
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/uaz/uaz_dshka_5_wrecked.png"),
     };
 
     private static final String[] CAMO_NAMES = {"Base", "Z", "Ukraine Medic", "Ukraine", "Ukraine Striped"};
@@ -45,9 +45,9 @@ public class UAZDSHKAEntity extends CamoVehicleBase {
     public String[] getCamoNames() {return CAMO_NAMES;}
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(STEERING_ANGLE, 0f);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(STEERING_ANGLE, 0f);
     }
 
     public float getSteeringAngle() {
@@ -71,8 +71,7 @@ public class UAZDSHKAEntity extends CamoVehicleBase {
 
     @Override
     public DamageModifier getDamageModifier() {
-        return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+        return super.getDamageModifier();
     }
 
     @Override

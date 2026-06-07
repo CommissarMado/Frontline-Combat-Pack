@@ -3,35 +3,121 @@
   "MaxHealth": 280,
   "MaxEnergy": 8000000,
   "OBB": [
-    {"Size": [1.1, 1.2, 2.85], "Position": [0, 2.0, -0.5], "Part":  "Body"},
-    {"Size": [0.25, 0.25, 2.25], "Position": [0, 2.45, -5.55], "Part":  "Body"},
-    {"Size": [0.4, 1.15, 0.5], "Position": [0.1, 2.65, -7.8], "Part":  "SubEngine"},
-    {"Size": [0.4, 0.35, 1.25], "Position": [0, 3.55, -1.4], "Part":  "MainEngine"}
+    {
+      "Size": [
+        1.1,
+        1.2,
+        2.85
+      ],
+      "Position": [
+        0,
+        2,
+        -0.5
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        0.25,
+        0.25,
+        2.25
+      ],
+      "Position": [
+        0,
+        2.45,
+        -5.55
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        0.4,
+        1.15,
+        0.5
+      ],
+      "Position": [
+        0.1,
+        2.65,
+        -7.8
+      ],
+      "Part": "SubEngine"
+    },
+    {
+      "Size": [
+        0.4,
+        0.35,
+        1.25
+      ],
+      "Position": [
+        0,
+        3.55,
+        -1.4
+      ],
+      "Part": "MainEngine"
+    }
   ],
   "Seats": [
     {
       "Transform": "Vehicle",
-      "Position": [0.5, 1, 0.8],
-      "Sensitivity": [0, 0, 0],
-      "Weapons": ["Cannon","Rocket"],
+      "Position": [
+        0.5,
+        1,
+        0.8
+      ],
+      "Sensitivity": [
+        0,
+        0,
+        0
+      ],
+      "Weapons": [
+        "Cannon",
+        "Rocket"
+      ],
       "CameraPos": {
         "UseAircraftCamera": true,
-        "AircraftCameraPos": [-3, 3, -10]
+        "AircraftCameraPos": [
+          -3,
+          3,
+          -10
+        ]
       },
       "CanRotateHead": false,
-      "DismountInfo": {"Transform": "Vehicle", "Position": [2, 0.5, 1]}
+      "DismountInfo": {
+        "Transform": "Vehicle",
+        "Position": [
+          2,
+          0.5,
+          1
+        ]
+      }
     },
     {
       "Transform": "Vehicle",
-      "Position": [-0.5, 1, 0.8],
-      "Weapons": ["Empty"],
+      "Position": [
+        -0.5,
+        1,
+        0.8
+      ],
+      "Weapons": [
+        "Empty"
+      ],
       "CameraPos": {
         "UseAircraftCamera": true,
-        "AircraftCameraPos": [-3, 3, -10]
+        "AircraftCameraPos": [
+          -3,
+          3,
+          -10
+        ]
       },
       "BanHand": true,
-      "DismountInfo": {"Transform": "Vehicle", "Position": [-2, 0.5, 1]},
-
+      "DismountInfo": {
+        "Transform": "Vehicle",
+        "Position": [
+          -2,
+          0.5,
+          1
+        ]
+      },
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
@@ -69,8 +155,25 @@
       },
       "ShootPos": {
         "Transform": "Vehicle",
-        "Positions": [[2.225, 0.75, 0.75],[-2.225, 0.75, 0.75]],
-        "Directions": [[0, 0.02, 1]]
+        "Positions": [
+          [
+            2.225,
+            0.75,
+            0.75
+          ],
+          [
+            -2.225,
+            0.75,
+            0.75
+          ]
+        ],
+        "Directions": [
+          [
+            0,
+            0.02,
+            1
+          ]
+        ]
       },
       "Crosshair": "@Empty",
       "SoundRadius": 12
@@ -97,8 +200,25 @@
       },
       "ShootPos": {
         "Transform": "Vehicle",
-        "Positions": [[1.525, 0.85, 1.3],[-1.525, 0.85, 1.3]],
-        "Directions": [[0, 0.02, 1]]
+        "Positions": [
+          [
+            1.525,
+            0.85,
+            1.3
+          ],
+          [
+            -1.525,
+            0.85,
+            1.3
+          ]
+        ],
+        "Directions": [
+          [
+            0,
+            0.02,
+            1
+          ]
+        ]
       },
       "Crosshair": "@Empty",
       "SoundRadius": 12
@@ -117,10 +237,14 @@
     "EngineSoundVolume": 1.5
   },
   "EngineSound": "superbwarfare:ah_6_engine",
-  "ThirdPersonCameraPos": [2.5, 3.5, 10],
+  "ThirdPersonCameraPos": [
+    2.5,
+    3.5,
+    10
+  ],
   "UpStep": 1.1,
   "RotateOffsetHeight": 1.5,
-  "Mass": 1.0,
+  "Mass": 1,
   "AllowFreeCam": true,
   "HasDecoy": true,
   "DamageModifiers": [
@@ -133,9 +257,45 @@
     "All * 0.8",
     "All - 8"
   ],
-  "DestroyInfo": {"ParticleType": "Medium", "ExplosionDamage": 350, "ExplosionRadius": 12, "CrashPassengers": true},
+  "DestroyInfo": {
+    "ParticleType": "Medium",
+    "ExplosionDamage": 350,
+    "ExplosionRadius": 12,
+    "CrashPassengers": true
+  },
   "ContainerIcon": "fcp:textures/gui/vehicle/type/air_us.png",
   "Type": "Helicopter",
   "HudType": "@Helicopter",
-  "TerrainCompat": [[-1.4, 0, 3], [1.4, 0, 3],[-1.4, 0, 2.5],[1.4, 0, 2.5],[-1.4, 0, 2],[-1.4, 0, 2]]
+  "TerrainCompat": [
+    [
+      -1.4,
+      0,
+      3
+    ],
+    [
+      1.4,
+      0,
+      3
+    ],
+    [
+      -1.4,
+      0,
+      2.5
+    ],
+    [
+      1.4,
+      0,
+      2.5
+    ],
+    [
+      -1.4,
+      0,
+      2
+    ],
+    [
+      -1.4,
+      0,
+      2
+    ]
+  ]
 }

@@ -12,7 +12,7 @@ public class LaHumveeModel extends VehicleModel<LaHumveeEntity> {
 
     @Override
     public ResourceLocation getModelResource(LaHumveeEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/humvee_mk19.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/humvee_mk19.geo.json");
     }
 
     @Override

@@ -12,7 +12,7 @@ public class GazTigrRWSModel extends VehicleModel<GazTigrRWSEntity> {
 
     @Override
     public ResourceLocation getModelResource(GazTigrRWSEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/gaz_tigr_rws.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/gaz_tigr_rws.geo.json");
     }
 
     @Override

@@ -15,11 +15,11 @@ public class WireGuidedHellfireModel extends GeoModel<WireGuidedHellfireEntity> 
 
     @Override
     public ResourceLocation getModelResource(WireGuidedHellfireEntity entity) {
-        return new ResourceLocation(FCP.MODID, "geo/hellfire.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/hellfire.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(WireGuidedHellfireEntity entity) {
-        return new ResourceLocation(FCP.MODID, "textures/entity/hellfire/hellfire.png");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "textures/entity/hellfire/hellfire.png");
     }
 }

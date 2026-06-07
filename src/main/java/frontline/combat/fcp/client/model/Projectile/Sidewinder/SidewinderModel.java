@@ -16,11 +16,11 @@ public class SidewinderModel extends GeoModel<SidewinderEntity> {
 
     @Override
     public ResourceLocation getModelResource(SidewinderEntity entity) {
-        return new ResourceLocation(FCP.MODID, "geo/sidewinder.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/sidewinder.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(SidewinderEntity entity) {
-        return new ResourceLocation(FCP.MODID,"textures/entity/sidewinder/sidewinder.png");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "textures/entity/sidewinder/sidewinder.png");
     }
 }

@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 public class ToyotaHiluxRocketPodModel extends VehicleModel<ToyotaHiluxRocketPodEntity> {
     @Override
     public ResourceLocation getModelResource(ToyotaHiluxRocketPodEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/toyota_hilux_rocket_pod.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/toyota_hilux_rocket_pod.geo.json");
     }
 
     @Override

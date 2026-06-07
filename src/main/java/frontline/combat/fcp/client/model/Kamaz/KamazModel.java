@@ -12,7 +12,7 @@ public class KamazModel extends VehicleModel<KamazEntity> {
 
     @Override
     public ResourceLocation getModelResource(KamazEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/kamaz.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/kamaz.geo.json");
     }
 
     @Override
