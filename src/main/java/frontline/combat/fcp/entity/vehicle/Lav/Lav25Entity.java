@@ -27,7 +27,7 @@ public class Lav25Entity extends CamoVehicleBase {
             new ResourceLocation("fcp", "textures/entity/lav/lav25_tan_wrecked.png")
     };
 
-    private static final String[] CAMO_NAMES = {"Camo Variant 1","Camo Variant 2", "Camo Variant 3","No-Camo", "Tan"};
+    private static final String[] CAMO_NAMES = {"Camo Variant 1", "Camo Variant 2", "Camo Variant 3", "No-Camo", "Tan"};
 
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(Lav25Entity.class, EntityDataSerializers.FLOAT);
 
@@ -37,19 +37,19 @@ public class Lav25Entity extends CamoVehicleBase {
 
     private float prevWheelRotation = 0f;
 
-    private float MaxBarrelForward = 5f;
-
-    private float MaxBarrelBackward = -5f;
-
-    private float BarrelModifier = 0f;
-
-    public Lav25Entity(EntityType<Lav25Entity> type, Level world) {super(type, world);}
+    public Lav25Entity(EntityType<Lav25Entity> type, Level world) {
+        super(type, world);
+    }
 
     @Override
-    public ResourceLocation[] getCamoTextures() {return CAMO_TEXTURES;}
+    public ResourceLocation[] getCamoTextures() {
+        return CAMO_TEXTURES;
+    }
 
     @Override
-    public String[] getCamoNames() {return CAMO_NAMES;}
+    public String[] getCamoNames() {
+        return CAMO_NAMES;
+    }
 
     @Override
     protected void defineSynchedData() {
@@ -61,26 +61,21 @@ public class Lav25Entity extends CamoVehicleBase {
         return this.entityData.get(STEERING_ANGLE);
     }
 
-    public void setSteeringAngle(float angle) {this.entityData.set(STEERING_ANGLE, angle);
+    public void setSteeringAngle(float angle) {
+        this.entityData.set(STEERING_ANGLE, angle);
     }
 
-    public float getPrevSteeringAngle(){
+    public float getPrevSteeringAngle() {
         return prevSteeringAngle;
     }
 
-    public float getWheelRotation(){
+    public float getWheelRotation() {
         return wheelRotation;
     }
 
-    public float getPrevWheelRotation(){
+    public float getPrevWheelRotation() {
         return prevWheelRotation;
     }
-
-    public float getMaxBarrelForward(){return MaxBarrelForward;}
-
-    public float getMaxBarrelBackward(){return MaxBarrelBackward;}
-
-    public float getBarrelModifier(){return BarrelModifier;}
 
     @Override
     public DamageModifier getDamageModifier() {
@@ -130,7 +125,7 @@ public class Lav25Entity extends CamoVehicleBase {
         }
 
         if (isMoving && Math.abs(currentAngle) > 1f) {
-            float turnAmount = currentAngle * 0.009f * (float)speed;
+            float turnAmount = currentAngle * 0.009f * (float) speed;
             this.setYRot(this.getYRot() + turnAmount);
         }
 

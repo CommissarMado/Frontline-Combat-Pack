@@ -56,6 +56,7 @@
       "IsArmorPiercingProjectile": true,
       "IsHighExplosiveProjectile": false,
       "EmptyReloadTime": 180,
+      "Magazine": 1000,
       "DefaultZoom": 3,
       "RPM": 200,
       "Velocity": 20,
@@ -78,9 +79,9 @@
       },
       "SoundRadius": 24,
       "AmmoType": [
-        "superbwarfare:ap_5_inches",
+        "superbwarfare:small_shell_ap",
         {
-          "Ammo": "superbwarfare:he_5_inches",
+          "Ammo": "superbwarfare:small_shell_he",
           "Override": {
             "Icon": "fcp:textures/screens/vehicle_weapon/25mm_he.png",
             "IsArmorPiercingProjectile": false,
