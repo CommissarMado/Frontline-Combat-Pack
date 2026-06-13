@@ -86,9 +86,9 @@
             "IsArmorPiercingProjectile": false,
             "IsHighExplosiveProjectile": true,
             "Velocity": 25,
-            "Damage": 17,
+            "Damage": 15,
             "ExplosionDamage": 20,
-            "ExplosionRadius": 5,
+            "ExplosionRadius": 3,
             "Name": "weapon.fcp.m242_bushmaster_he"
           }
         }
