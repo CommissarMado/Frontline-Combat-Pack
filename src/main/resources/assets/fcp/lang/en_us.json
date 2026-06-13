@@ -35,6 +35,7 @@
   "weapon.fcp.2a28_grom": "2A28 Grom",
   "weapon.fcp.m134_minigun": "M134 Minigun",
   "weapon.fcp.malyutka": "9M14 Malyutka",
+  "weapon.fcp.kornet": "9M133 Kornet",
   "weapon.fcp.coaxial_pkt": "Coaxial PKT Machine Gun",
   "weapon.fcp.2a46m_125mm_ap": "2A46M 125mm AP Cannon",
   "weapon.fcp.2a46m_125mm_he": "2A46M 125mm HE Cannon",
@@ -73,6 +74,7 @@
   "entity.fcp.huey_door_gunner_m60": "Huey With M60",
   "entity.fcp.huey_door_gunner_m134": "Huey With M134",
   "entity.fcp.matv": "MATV",
+  "entity.fcp.venom": "Venom",
 
   "//": "======================= Messages ========================",
   "message.fcp.camo_changed": "Camo changed to %s",

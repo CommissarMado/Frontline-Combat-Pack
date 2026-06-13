@@ -33,14 +33,16 @@
     },
     {
       "HidePassenger": true,
+      "IsEnclosed": true,
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
         "Position": [0.602431, 0.485237, 0.2572],
         "Direction": "Barrel"
       },
+      "CanRotateHead": false,
       "Weapons": ["Cannon", "Coax"],
-      "Transform": "Vehicle",
+      "Transform": "Turret",
       "Position": [0, 0, 0],
       "MinPitch": -15,
       "MaxPitch": 32.5
@@ -154,7 +156,7 @@
     "SteeringSpeed": 0.1
   },
   "TurretPos": [0.2644, 2.592669, -1.181556],
-  "TurretTurnSpeed": [4, 10],
+  "TurretTurnSpeed": [2.5, 1.8],
   "TurretPitchRange": [-10, 60],
   "BarrelPos": [-0.087881, 0.286625, 1.034462],
   "ThirdPersonCameraPos": [0, 3, 5],

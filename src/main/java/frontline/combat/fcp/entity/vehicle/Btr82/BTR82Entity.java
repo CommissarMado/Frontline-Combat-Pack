@@ -1,7 +1,6 @@
-package frontline.combat.fcp.entity.vehicle.Lav;
+package frontline.combat.fcp.entity.vehicle.Btr82;
 
 import com.atsuishio.superbwarfare.entity.vehicle.damage.DamageModifier;
-import frontline.combat.fcp.entity.vehicle.Bmp.BMP1Entity;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -10,26 +9,28 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 
-public class Lav25Entity extends CamoVehicleBase {
+public class BTR82Entity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
             //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo1.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo2.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo3.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_od.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_tan.png"),
+            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82.png"),
+            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_camo.png"),
+            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_desert.png"),
+            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_ukr.png"),
+            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_winter_1.png"),
+            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_winter_2.png"),
             //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo2_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo3_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_od_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_tan_wrecked.png")
+            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_camo_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_desert_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_ukr_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_winter_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_winter_2_wrecked.png"),
     };
 
-    private static final String[] CAMO_NAMES = {"Camo Variant 1","Camo Variant 2", "Camo Variant 3","No-Camo", "Tan"};
+    private static final String[] CAMO_NAMES = {"Default", "Camo", "Desert", "Ukrainian", "Winter 1", "Winter 2"};
 
-    private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(Lav25Entity.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(BTR82Entity.class, EntityDataSerializers.FLOAT);
 
     private float prevSteeringAngle = 0f;
 
@@ -37,13 +38,7 @@ public class Lav25Entity extends CamoVehicleBase {
 
     private float prevWheelRotation = 0f;
 
-    private float MaxBarrelForward = 5f;
-
-    private float MaxBarrelBackward = -5f;
-
-    private float BarrelModifier = 0f;
-
-    public Lav25Entity(EntityType<Lav25Entity> type, Level world) {super(type, world);}
+    public BTR82Entity(EntityType<BTR82Entity> type, Level world) {super(type, world);}
 
     @Override
     public ResourceLocation[] getCamoTextures() {return CAMO_TEXTURES;}
@@ -75,12 +70,6 @@ public class Lav25Entity extends CamoVehicleBase {
     public float getPrevWheelRotation(){
         return prevWheelRotation;
     }
-
-    public float getMaxBarrelForward(){return MaxBarrelForward;}
-
-    public float getMaxBarrelBackward(){return MaxBarrelBackward;}
-
-    public float getBarrelModifier(){return BarrelModifier;}
 
     @Override
     public DamageModifier getDamageModifier() {
@@ -138,4 +127,3 @@ public class Lav25Entity extends CamoVehicleBase {
         wheelRotation += (float) (speed * 20f);
     }
 }
-
