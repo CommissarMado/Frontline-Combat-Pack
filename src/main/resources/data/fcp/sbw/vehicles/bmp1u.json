@@ -17,7 +17,6 @@
     {
       "IsEnclosed": true,
       "Transform": "Turret",
-      "Weapons": ["Empty"],
       "BanHand": true,
       "CameraPos": {
         "UseFixedCameraPos": true,
@@ -108,7 +107,7 @@
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "RecoilTime": 31,
-      "RecoilForce": 0.62,
+      "RecoilForce": 0.31,
       "ShootAnimationTime": 3,
       "Spread": 0.5,
       "CrosshairColor": "0xFFC700",
@@ -181,7 +180,7 @@
       "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[-0.467737, 0.003569, 2.497287]],
+        "Positions": [[0.15, 0.203569, 1.5]],
         "Directions": ["Barrel"]
       }
     }

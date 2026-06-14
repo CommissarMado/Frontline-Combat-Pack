@@ -16,7 +16,6 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Weapons": ["Nothing"],
       "Position": [0.75, 0.3, 0.3],
       "MinPitch": -60,
       "MaxPitch": 60,

@@ -23,7 +23,6 @@
         "UseFixedCameraPos": true,
         "Position": [0.523556, 2.48535, 2.220112]
       },
-      "Weapons": ["Empty"],
       "Transform": "Vehicle",
       "Position": [0, 0, 0],
       "MinYaw": -65,

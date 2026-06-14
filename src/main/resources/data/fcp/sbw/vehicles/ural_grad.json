@@ -22,7 +22,6 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "Position": [0.6152125, 1.2, 1.15],
-      "Weapon": ["Empty"],
       "MinPitch": -0,
       "MaxPitch": 22.5,
       "MinYaw": -95,

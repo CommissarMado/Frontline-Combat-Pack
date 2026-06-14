@@ -47,6 +47,7 @@ public class FcpDriverOverlay implements IGuiOverlay {
 
     private static final Set<String> DRIVER_OVERLAY_VEHICLES = Set.of(
             "fcp:bmp1",
+            "fcp:bmp1u",
             "fcp:bmp2",
             "fcp:btr82",
             "fcp:lav25",

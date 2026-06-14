@@ -19,6 +19,8 @@ public final class CannonRecoilTransforms {
 
         STANDARD(12f, 3f),
 
+        SIDETOSIDE(1f, 3f),
+
         LIGHT(3f, 0.8f);
 
 

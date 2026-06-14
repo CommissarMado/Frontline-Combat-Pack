@@ -17,7 +17,6 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Weapons": ["Empty"],
       "BanHand": true,
       "CameraPos": {
         "UseFixedCameraPos": true,
@@ -180,7 +179,7 @@
       "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/gun_7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[0.668287, -0.0008, 0.937419]],
+        "Positions": [[0.268287, -0.0008, 0.937419]],
         "Directions": ["Barrel"]
       }
     }

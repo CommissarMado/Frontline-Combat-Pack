@@ -17,7 +17,6 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Weapons": ["Empty"],
       "BanHand": true,
       "CameraPos": {
         "UseFixedCameraPos": true,

@@ -27,7 +27,6 @@
         "CanRotateHead": false,
         "Crosshair": "@Empty",
         "HudType": "@Land",
-        "Weapons": ["Nothing"],
         "DismountInfo": {"Transform": "Vehicle", "Position": [-2, 0.5, 1]}
       },
     {

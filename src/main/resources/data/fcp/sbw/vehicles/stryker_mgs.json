@@ -30,7 +30,6 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Weapons": ["Empty"],
       "BanHand": true,
       "HidePassenger": true,
       "CameraPos": {
