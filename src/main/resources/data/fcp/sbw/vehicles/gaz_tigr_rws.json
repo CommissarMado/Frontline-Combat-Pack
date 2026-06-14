@@ -229,6 +229,8 @@
       "RPM": 500,
       "Damage": 15,
       "BypassesArmor": 2,
+      "IsArmorPiercingProjectile": true,
+      "IsHighExplosiveProjectile": false,
       "Velocity": 25,
       "RecoilTime": 16,
       "RecoilForce": 0.05,
