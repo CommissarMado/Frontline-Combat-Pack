@@ -1,10 +1,13 @@
 {
   "textures": [
-    "fcp:qmp/fireball3",
-    "fcp:mts/spark0",
-    "fcp:mts/spark1",
-    "fcp:mts/spark2",
-    "fcp:mts/spark3",
-    "fcp:mts/spark4"
+    "fcp:flash1",
+    "fcp:flash2",
+    "fcp:flash3",
+    "fcp:flash4",
+    "fcp:flash5",
+    "fcp:flash6",
+    "fcp:flash7",
+    "fcp:flash8",
+    "fcp:flash9"
   ]
 }

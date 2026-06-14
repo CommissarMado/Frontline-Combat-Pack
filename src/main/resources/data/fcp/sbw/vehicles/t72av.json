@@ -82,9 +82,9 @@
       "CrosshairColor": "0x00ff66",
       "Name": "weapon.fcp.2a46m_125mm_ap",
       "AmmoType": [
-        "superbwarfare:ap_5_inches",
+        "superbwarfare:small_shell_ap",
         {
-          "Ammo": "superbwarfare:he_5_inches",
+          "Ammo": "superbwarfare:small_shell_he",
           "Override": {
             "Icon": "fcp:textures/screens/vehicle_weapon/125mm_he.png",
             "IsArmorPiercingProjectile": false,

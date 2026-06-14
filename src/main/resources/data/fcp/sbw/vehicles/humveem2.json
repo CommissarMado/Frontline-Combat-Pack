@@ -1,5 +1,5 @@
 {
-  "ID": "vvp:humvee_m2",
+  "ID": "fcp:humvee_m2",
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "TurretControllerIndex": 1,
@@ -118,8 +118,8 @@
         "VehicleReload": "fcp:m2_reload"
       },
       "SoundRadius": 16,
-      "AmmoType": "vvp:item_12_7mm",
-      "Icon": "vvp:textures/screens/vehicle_weapon/12_7mm.png",
+      "AmmoType": "fcp:rifle_ammo",
+      "Icon": "fcp:textures/screens/vehicle_weapon/12_7mm.png",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [[0.05, -2.4, 0.0]],
@@ -169,7 +169,7 @@
   "TurretPitchRange": [-7.5, 74],
   "BarrelPos": [0, 2.8, 1.5],
   "VehicleIcon": "superbwarfare:textures/vehicle_icon/humvee_icon.png",
-  "ContainerIcon": "vvp:textures/gui/vehicle/type/land.png",
+  "ContainerIcon": "fcp:textures/gui/vehicle/type/land.png",
   "Type": "Car",
   "CollisionLevel": {
     "Level": 3,
@@ -179,7 +179,7 @@
       [0.15, 0.09, false]
     ]
   },
-  "EngineSound": "vvp:humvee_engine",
+  "EngineSound": "fcp:humvee_engine",
   "HornSound": "superbwarfare:truck_horn",
   "HudType": "@Empty",
   "TerrainCompat": [[1.156, 0, 1.594], [-1.156, 0, 1.594], [1.156, 0, -1.594], [-1.156, 0, -1.594]],

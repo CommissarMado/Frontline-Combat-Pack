@@ -113,7 +113,7 @@
       "Crosshair": "@VehicleCommonGun",
       "CrosshairColor": "0x00ff66",
       "Name": "weapon.fcp.2a28_grom",
-      "AmmoType": ["superbwarfare:ap_5_inches"],
+      "AmmoType": "superbwarfare:small_shell_ap",
       "SoundRadius": 32,
       "SoundInfo": {
         "Fire1P": "fcp:bmp1_fire_1p",

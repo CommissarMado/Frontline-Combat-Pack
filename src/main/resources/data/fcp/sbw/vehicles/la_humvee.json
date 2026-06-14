@@ -120,7 +120,7 @@
   },
   "ThirdPersonCameraPos": [0, 1, 5],
   "VehicleIcon": "superbwarfare:textures/vehicle_icon/humvee_icon.png",
-  "ContainerIcon": "vvp:textures/gui/vehicle/type/civilian.png",
+  "ContainerIcon": "fcp:textures/gui/vehicle/type/civilian.png",
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
@@ -129,7 +129,7 @@
       [0.15, 0.09, false]
     ]
   },
-  "EngineSound": "vvp:humvee_engine",
+  "EngineSound": "fcp:humvee_engine",
   "HornSound": "superbwarfare:truck_horn",
   "Type": "Helicopter",
   "HudType": "@Land",

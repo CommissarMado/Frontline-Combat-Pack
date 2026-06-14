@@ -1,5 +1,5 @@
 {
-  "ID": "vvp:humvee_mk19",
+  "ID": "fcp:humvee_mk19",
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "TurretControllerIndex": 1,
@@ -111,15 +111,15 @@
       "Spread": 0.8,
       "Crosshair": "@VehicleCommon",
       "CrosshairColor": "0x66FF00",
-      "Name": "weapon.vvp.mk_19",
+      "Name": "weapon.fcp.mk_19",
       "SoundInfo": {
-        "Fire1P": "vvp:hk_gmg_1p",
-        "Fire3P": "vvp:hk_gmg_1p",
-        "Fire3PFar": "vvp:hk_gmg_3p"
+        "Fire1P": "fcp:hk_gmg_1p",
+        "Fire3P": "fcp:hk_gmg_1p",
+        "Fire3PFar": "fcp:hk_gmg_3p"
       },
       "SoundRadius": 16,
-      "AmmoType": "vvp:item_40_mm",
-      "Icon": "vvp:textures/screens/vehicle_weapon/40_mm.png",
+      "AmmoType": "fcp:item_40_mm",
+      "Icon": "fcp:textures/screens/vehicle_weapon/40_mm.png",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [[0.05, -2.4, 0.0]],
@@ -169,7 +169,7 @@
   "TurretPitchRange": [-7.5, 74],
   "BarrelPos": [0, 2.8, 1.5],
   "VehicleIcon": "superbwarfare:textures/vehicle_icon/humvee_icon.png",
-  "ContainerIcon": "vvp:textures/gui/vehicle/type/land.png",
+  "ContainerIcon": "fcp:textures/gui/vehicle/type/land.png",
   "Type": "Car",
   "CollisionLevel": {
     "Level": 3,
@@ -179,7 +179,7 @@
       [0.15, 0.09, false]
     ]
   },
-  "EngineSound": "vvp:humvee_engine",
+  "EngineSound": "fcp:humvee_engine",
   "HornSound": "superbwarfare:truck_horn",
   "HudType": "@Empty",
   "TerrainCompat": [[1.156, 0, 1.594], [-1.156, 0, 1.594], [1.156, 0, -1.594], [-1.156, 0, -1.594]],
