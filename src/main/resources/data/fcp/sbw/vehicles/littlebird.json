@@ -3,33 +3,119 @@
   "MaxHealth": 280,
   "MaxEnergy": 8000000,
   "OBB": [
-    {"Size": [1.1, 1.2, 2.85], "Position": [0, 2.0, -0.5], "Part":  "Body"},
-    {"Size": [0.25, 0.25, 2.25], "Position": [0, 2.45, -5.55], "Part":  "Body"},
-    {"Size": [0.4, 1.15, 0.5], "Position": [0.1, 2.65, -7.8], "Part":  "SubEngine"},
-    {"Size": [0.4, 0.35, 1.25], "Position": [0, 3.55, -1.4], "Part":  "MainEngine"}
+    {
+      "Size": [
+        0.825,
+        0.9,
+        2.1375
+      ],
+      "Position": [
+        0.003609,
+        1.514575,
+        -0.972685
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        0.1875,
+        0.1875,
+        1.6875
+      ],
+      "Position": [
+        0.003609,
+        1.852075,
+        -4.760185
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        0.3,
+        0.8625,
+        0.375
+      ],
+      "Position": [
+        0.078609,
+        2.002075,
+        -6.447685
+      ],
+      "Part": "SubEngine"
+    },
+    {
+      "Size": [
+        0.3,
+        0.2625,
+        0.9375
+      ],
+      "Position": [
+        0.003609,
+        2.677075,
+        -1.647685
+      ],
+      "Part": "MainEngine"
+    }
   ],
   "Seats": [
     {
       "Transform": "Vehicle",
-      "Position": [0.5, 1, 0.8],
-      "Sensitivity": [0, 0, 0],
-      "Weapons": ["Empty"],
+      "Position": [
+        0.378609,
+        0.327075,
+        -0.122685
+      ],
+      "Sensitivity": [
+        0,
+        0,
+        0
+      ],
+      "Weapons": [
+        "Empty"
+      ],
       "CameraPos": {
         "UseAircraftCamera": true,
-        "AircraftCameraPos": [-3, 3, -10]
+        "AircraftCameraPos": [
+          -2.25,
+          2.25,
+          -7.5
+        ]
       },
       "CanRotateHead": false,
-      "DismountInfo": {"Transform": "Vehicle", "Position": [2, 0.5, 1]}
+      "DismountInfo": {
+        "Transform": "Vehicle",
+        "Position": [
+          1.503609,
+          0.110425,
+          0.152315
+        ]
+      }
     },
     {
       "Transform": "Vehicle",
-      "Position": [-0.5, 1, 0.8],
-      "Weapons": ["Empty"],
+      "Position": [
+        -0.371391,
+        0.327075,
+        -0.122685
+      ],
+      "Weapons": [
+        "Empty"
+      ],
       "CameraPos": {
         "UseAircraftCamera": true,
-        "AircraftCameraPos": [-3, 3, -10]
+        "AircraftCameraPos": [
+          -2.25,
+          2.25,
+          -7.5
+        ]
       },
-      "DismountInfo": {"Transform": "Vehicle", "Position": [-2, 0.5, 1]},
+      "DismountInfo": {
+        "Transform": "Vehicle",
+        "Position": [
+          -1.496391,
+          0.110425,
+          0.152315
+        ]
+      },
       "BanHand": true,
       "MinPitch": -50,
       "MaxPitch": 15,
@@ -38,9 +124,20 @@
     },
     {
       "Transform": "Vehicle",
-      "Position": [1.4, 0.5, 0.4],
+      "Position": [
+        1.053609,
+        0.110425,
+        -0.297685
+      ],
       "Orientation": -90,
-      "DismountInfo": {"Transform": "Vehicle", "Position": [2, 0.5, 1]},
+      "DismountInfo": {
+        "Transform": "Vehicle",
+        "Position": [
+          1.503609,
+          0.110425,
+          0.152315
+        ]
+      },
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
@@ -48,9 +145,20 @@
     },
     {
       "Transform": "Vehicle",
-      "Position": [-1.4, 0.5, 0.4],
+      "Position": [
+        -1.046391,
+        0.110425,
+        -0.297685
+      ],
       "Orientation": 90,
-      "DismountInfo": {"Transform": "Vehicle", "Position": [2, 0.5, 1]},
+      "DismountInfo": {
+        "Transform": "Vehicle",
+        "Position": [
+          1.503609,
+          0.110425,
+          0.152315
+        ]
+      },
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
@@ -58,9 +166,20 @@
     },
     {
       "Transform": "Vehicle",
-      "Position": [1.4, 0.5, -0.8],
+      "Position": [
+        1.053609,
+        0.110425,
+        -1.197685
+      ],
       "Orientation": -90,
-      "DismountInfo": {"Transform": "Vehicle", "Position": [2, 0.5, 1]},
+      "DismountInfo": {
+        "Transform": "Vehicle",
+        "Position": [
+          1.503609,
+          0.110425,
+          0.152315
+        ]
+      },
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
@@ -68,9 +187,20 @@
     },
     {
       "Transform": "Vehicle",
-      "Position": [-1.4, 0.5, -0.8],
+      "Position": [
+        -1.046391,
+        0.110425,
+        -1.197685
+      ],
       "Orientation": 90,
-      "DismountInfo": {"Transform": "Vehicle", "Position": [2, 0.5, 1]},
+      "DismountInfo": {
+        "Transform": "Vehicle",
+        "Position": [
+          1.503609,
+          0.110425,
+          0.152315
+        ]
+      },
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
@@ -99,9 +229,13 @@
     "EngineSoundVolume": 5
   },
   "EngineSound": "fcp:littlebird_engine_idle",
-  "ThirdPersonCameraPos": [2.5, 3.5, 10],
+  "ThirdPersonCameraPos": [
+    1.875,
+    2.625,
+    7.5
+  ],
   "UpStep": 1.1,
-  "RotateOffsetHeight": 1.5,
+  "RotateOffsetHeight": 1.139575,
   "Mass": 1.0,
   "AllowFreeCam": true,
   "HasDecoy": true,
@@ -115,9 +249,45 @@
     "All * 0.8",
     "All - 8"
   ],
-  "DestroyInfo": {"ParticleType": "Medium", "ExplosionDamage": 350, "ExplosionRadius": 12, "CrashPassengers": true},
+  "DestroyInfo": {
+    "ParticleType": "Medium",
+    "ExplosionDamage": 350,
+    "ExplosionRadius": 12,
+    "CrashPassengers": true
+  },
   "ContainerIcon": "fcp:textures/gui/vehicle/type/air_us.png",
   "Type": "Helicopter",
   "HudType": "@Helicopter",
-  "TerrainCompat": [[-1.4, 0, 3], [1.4, 0, 3],[-1.4, 0, 2.5],[1.4, 0, 2.5],[-1.4, 0, 2],[-1.4, 0, 2]]
+  "TerrainCompat": [
+    [
+      -1.046391,
+      0.014575,
+      1.652315
+    ],
+    [
+      1.053609,
+      0.014575,
+      1.652315
+    ],
+    [
+      -1.046391,
+      0.014575,
+      1.277315
+    ],
+    [
+      1.053609,
+      0.014575,
+      1.277315
+    ],
+    [
+      -1.046391,
+      0.014575,
+      0.902315
+    ],
+    [
+      -1.046391,
+      0.014575,
+      0.902315
+    ]
+  ]
 }
