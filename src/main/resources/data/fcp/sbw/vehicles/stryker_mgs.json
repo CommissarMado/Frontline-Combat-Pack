@@ -122,7 +122,10 @@
   "DestroyInfo": {
     "ParticleType": "Medium",
     "ExplosionDamage": 120,
-    "ExplosionRadius": 7
+    "ExplosionRadius": 7,
+    "SympatheticDetonation": true,
+    "SympatheticDetonationForce": 1.5,
+    "SympatheticDetonationChance": 0.0
   },
   "Weapons": {
     "Cannon": {
