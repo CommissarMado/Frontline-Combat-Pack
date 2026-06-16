@@ -6,7 +6,6 @@ import com.atsuishio.superbwarfare.client.overlay.VehicleMainWeaponHudOverlay;
 import com.atsuishio.superbwarfare.data.gun.GunData;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import com.atsuishio.superbwarfare.entity.vehicle.utils.VehicleVecUtils;
-import com.atsuishio.superbwarfare.event.ClientEventHandler;
 import com.atsuishio.superbwarfare.init.ModKeyMappings;
 import com.atsuishio.superbwarfare.tools.FormatTool;
 import com.atsuishio.superbwarfare.tools.MathTool;
@@ -32,7 +31,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.gui.overlay.ForgeGui;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 
-import java.util.Set;
+import java.util.List;
+import java.util.Map;
 
 @OnlyIn(Dist.CLIENT)
 public class FcpPilotOverlay implements IGuiOverlay {
@@ -61,9 +61,16 @@ public class FcpPilotOverlay implements IGuiOverlay {
     private static final ResourceLocation HUD_LINE =
             new ResourceLocation("superbwarfare", "textures/overlay/vehicle/aircraft/hud_line.png");
 
-    private static final Set<String> PILOT_OVERLAY_VEHICLES = Set.of(
-            "fcp:littlebird",
-            "fcp:littlebird_armed"
+    // Per-vehicle seat list: [ vehicle, [seats that get the pilot HUD] ].
+    // Keys are the entity id path (no namespace), e.g. "littlebird" matches fcp:littlebird.
+    private static final Map<String, List<Integer>> PILOT_OVERLAY_VEHICLES = Map.ofEntries(
+            Map.entry("littlebird",       List.of(0, 1)),
+            Map.entry("littlebird_armed", List.of(1)),
+            Map.entry("venom", List.of(0, 1)),
+            Map.entry("huey", List.of(0, 1)),
+            Map.entry("huey_rockets", List.of(1)),
+            Map.entry("huey_door_gunner_m60", List.of(0, 2)),
+            Map.entry("huey_door_gunner_m134", List.of(2))
     );
 
     // Smoothed HUD state (matches the default helicopter HUD's lerped values).
@@ -77,20 +84,18 @@ public class FcpPilotOverlay implements IGuiOverlay {
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         if (player == null || player.isSpectator() || mc.options.hideGui) return;
-
-        // Only draw the pilot HUD in first person (or while aim-zoomed, like the default).
-        if (mc.options.getCameraType() != CameraType.FIRST_PERSON && !ClientEventHandler.zoomVehicle) return;
+        if (mc.options.getCameraType() != CameraType.FIRST_PERSON) return;
 
         var vehicle = player.getVehicle();
         if (!(vehicle instanceof VehicleEntity ve)) return;
         if (!ve.computed().getHudType().equals("@Helicopter")) return;
 
-        // First two seats (driver + co-pilot) get the full pilot flight HUD.
-        int seatIndex = ve.getSeatIndex(player);
-        if (seatIndex != 0 && seatIndex != 1) return;
+        // Look up which seats of this vehicle should show the pilot HUD.
+        List<Integer> hudSeats = PILOT_OVERLAY_VEHICLES.get(EntityType.getKey(ve.getType()).getPath());
+        if (hudSeats == null) return;
 
-        String vehicleId = EntityType.getKey(ve.getType()).toString();
-        if (!PILOT_OVERLAY_VEHICLES.contains(vehicleId)) return;
+        int seatIndex = ve.getSeatIndex(player);
+        if (!hudSeats.contains(seatIndex)) return;
 
         int color = ve.getHudColor();
         var poseStack = guiGraphics.pose();
