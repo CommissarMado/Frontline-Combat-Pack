@@ -1,6 +1,7 @@
 package frontline.combat.fcp.init;
 
 import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.client.overlay.FcpPilotOverlay;
 import frontline.combat.fcp.client.renderer.Bmp.BMP1Renderer;
 import frontline.combat.fcp.client.renderer.Bmp.BMP1URenderer;
 import frontline.combat.fcp.client.renderer.Bmp.BMP2Renderer;
@@ -121,6 +122,7 @@ public class ModEntityRenderers {
     @SubscribeEvent
     public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
         event.registerBelowAll(FcpDriverOverlay.ID, FcpDriverOverlay.INSTANCE);
+        event.registerBelowAll(FcpPilotOverlay.ID, FcpPilotOverlay.INSTANCE);
     }
 
 }

@@ -78,11 +78,11 @@
       },
       "Crosshair": "@VehicleCommonGun",
       "CrosshairColor": "0x00FF66",
-      "AmmoType": "superbwarfare:small_shell",
+      "AmmoType": "superbwarfare:grenade_40mm",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
-          [0.008194, 0.081644, 1.620919]
+          [0.008194, 0.081644, 2.120919]
         ],
         "Directions": ["Barrel"]
       }

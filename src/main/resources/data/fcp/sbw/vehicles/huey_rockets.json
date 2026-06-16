@@ -152,7 +152,7 @@
       "Velocity": 16,
       "ShootPos": {
         "Transform": "Vehicle",
-        "Positions": [[-2.4, 1.17, -0.97], [2.4, 1.17, -0.97]],
+        "Positions": [[-1.8, 0.6, 0.97], [1.8, 0.6, 0.97]],
         "Directions": [[0, 0.02, 1], [0, 0.02, 1]]
       },
       "SoundInfo": {
