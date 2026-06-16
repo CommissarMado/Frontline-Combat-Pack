@@ -161,7 +161,7 @@
       "AmmoType": "superbwarfare:rifle_ammo",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[0.075325, -0.18841875, 0.9279375]],
+        "Positions": [[-0.075325, 0.2, 0.9279375]],
         "Directions": ["Barrel"]
       },
       "Crosshair": "@Empty",

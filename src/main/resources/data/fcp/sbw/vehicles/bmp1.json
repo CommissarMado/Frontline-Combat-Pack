@@ -164,7 +164,7 @@
       "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[-0.467737, 0.003569, 2.497287]],
+        "Positions": [[-0.2, 0.003569, 0.4]],
         "Directions": ["Barrel"]
       }
     }

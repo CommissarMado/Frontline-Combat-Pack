@@ -149,9 +149,9 @@
       "CrosshairColor": "0x00ff66",
       "Name": "weapon.fcp.m68a2_105mm_ap",
       "AmmoType": [
-        "superbwarfare:small_shell_ap",
+        "superbwarfare:large_shell_ap",
         {
-          "Ammo": "superbwarfare:small_shell_he",
+          "Ammo": "superbwarfare:large_shell_he",
           "Override": {
             "Icon": "fcp:textures/screens/vehicle_weapon/105mm_he.png",
             "IsArmorPiercingProjectile": false,
@@ -174,7 +174,7 @@
       },
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[-0.044194, 0.072237, -6.793044]],
+        "Positions": [[-0.044194, 0.072237, 6.793044]],
         "Directions": ["Barrel"]
       }
     },
@@ -206,7 +206,7 @@
       },
       "ShootPos": {
         "Transform": "WeaponStationBarrel",
-        "Positions": [[-0.007381, 0.184081, 1.425625]],
+        "Positions": [[-0.007381, 0.35, 1.425625]],
         "Directions": ["WeaponStationBarrel"]
       },
       "SoundRadius": 16,

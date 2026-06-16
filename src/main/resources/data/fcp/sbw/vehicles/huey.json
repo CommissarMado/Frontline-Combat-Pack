@@ -17,7 +17,6 @@
       "Transform": "Vehicle",
       "Position": [-0.55, 0.5, 2.4],
       "Sensitivity": [0, 0, 0],
-      "Weapons": ["Empty"],
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Position": [-0.55, 2.15, 2.55],

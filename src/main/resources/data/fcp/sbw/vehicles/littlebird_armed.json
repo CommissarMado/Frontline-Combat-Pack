@@ -3,121 +3,40 @@
   "MaxHealth": 280,
   "MaxEnergy": 8000000,
   "OBB": [
-    {
-      "Size": [
-        0.825,
-        0.9,
-        2.1375
-      ],
-      "Position": [
-        0.003609,
-        1.514575,
-        -0.972685
-      ],
-      "Part": "Body"
-    },
-    {
-      "Size": [
-        0.1875,
-        0.1875,
-        1.6875
-      ],
-      "Position": [
-        0.003609,
-        1.852075,
-        -4.760185
-      ],
-      "Part": "Body"
-    },
-    {
-      "Size": [
-        0.3,
-        0.8625,
-        0.375
-      ],
-      "Position": [
-        0.078609,
-        2.002075,
-        -6.447685
-      ],
-      "Part": "SubEngine"
-    },
-    {
-      "Size": [
-        0.3,
-        0.2625,
-        0.9375
-      ],
-      "Position": [
-        0.003609,
-        2.677075,
-        -1.647685
-      ],
-      "Part": "MainEngine"
-    }
+    {"Size": [0.825, 0.9, 2.1375], "Position": [0.003609, 1.514575, -0.972685], "Part": "Body"},
+    {"Size": [0.1875, 0.1875, 1.6875], "Position": [0.003609, 1.852075, -4.760185], "Part": "Body"},
+    {"Size": [0.3, 0.8625, 0.375], "Position": [0.078609, 2.002075, -6.447685], "Part": "SubEngine"},
+    {"Size": [0.3, 0.2625, 0.9375], "Position": [0.003609, 2.677075, -1.647685], "Part": "MainEngine"}
   ],
+  "PassengerRenderScale": 0.85,
   "Seats": [
     {
       "Transform": "Vehicle",
-      "Position": [
-        0.378609,
-        0.327075,
-        -0.122685
-      ],
-      "Sensitivity": [
-        0,
-        0,
-        0
-      ],
-      "Weapons": [
-        "Cannon",
-        "Rocket"
-      ],
+      "Position": [0.378609, 0.60, -0.122685],
+      "Sensitivity": [0, 0, 0],
+      "Weapons": ["Cannon", "Rocket"],
       "CameraPos": {
         "UseAircraftCamera": true,
-        "AircraftCameraPos": [
-          -2.25,
-          2.25,
-          -7.5
-        ]
+        "AircraftCameraPos": [-2.25, 2.25, -7.5]
       },
       "CanRotateHead": false,
       "DismountInfo": {
         "Transform": "Vehicle",
-        "Position": [
-          1.503609,
-          0.110425,
-          0.152315
-        ]
+        "Position": [1.503609, 0.110425, 0.152315]
       }
     },
     {
       "Transform": "Vehicle",
-      "Position": [
-        -0.371391,
-        0.327075,
-        -0.122685
-      ],
-      "Weapons": [
-        "Empty"
-      ],
+      "Position": [-0.371391, 0.60, -0.122685],
       "CameraPos": {
         "UseAircraftCamera": true,
-        "AircraftCameraPos": [
-          -2.25,
-          2.25,
-          -7.5
-        ]
+        "AircraftCameraPos": [-2.25, 2.25, -7.5]
       },
-      "BanHand": true,
       "DismountInfo": {
         "Transform": "Vehicle",
-        "Position": [
-          -1.496391,
-          0.110425,
-          0.152315
-        ]
+        "Position": [-1.496391, 0.110425, 0.152315]
       },
+      "BanHand": true,
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
