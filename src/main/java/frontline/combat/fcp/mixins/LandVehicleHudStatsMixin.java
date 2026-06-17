@@ -1,4 +1,4 @@
-package frontline.combat.fcp.mixin;
+package frontline.combat.fcp.mixins;
 
 import com.atsuishio.superbwarfare.client.RenderHelper;
 import com.atsuishio.superbwarfare.client.overlay.VehicleMainWeaponHudOverlay;

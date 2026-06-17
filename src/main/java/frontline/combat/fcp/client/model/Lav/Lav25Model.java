@@ -56,7 +56,7 @@ public class Lav25Model extends FCPVehicleModel<Lav25Entity> {
             if (!CANNON_WEAPON.equals(vehicle.getGunName(1))) {
                 return;
             }
-            CannonRecoilTransforms.apply(bone, vehicle, CannonRecoilTransforms.Profile.STANDARD);
+            CannonRecoilTransforms.apply(bone, vehicle, CannonRecoilTransforms.Profile.FORWARDBACK);
         };
     }
 }

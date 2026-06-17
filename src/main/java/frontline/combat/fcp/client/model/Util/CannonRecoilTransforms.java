@@ -19,7 +19,11 @@ public final class CannonRecoilTransforms {
 
         STANDARD(12f, 3f),
 
-        SIDETOSIDE(1f, 3f),
+        HEAVY(40f, 3f),
+
+        SIDETOSIDE(0.8f, 3f),
+
+        FORWARDBACK(12f, 0.8f),
 
         LIGHT(3f, 0.8f);
 

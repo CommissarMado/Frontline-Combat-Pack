@@ -16,14 +16,13 @@
   "Seats": [
     {
       "IsEnclosed": true,
-      "Transform": "Turret",
+      "Transform": "Vehicle",
       "BanHand": true,
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Transform": "Vehicle",
         "Position": [0.98625, 2.092744, 2.260175]
       },
-      "CanRotateHead": false,
       "HidePassenger": true,
       "Position": [0, -1.25, 0],
       "MinYaw": -65,
@@ -52,7 +51,7 @@
   "EngineType": "Track",
   "EngineSound": "fcp:bmp1_engine",
   "EngineInfo": {
-    "Buoyancy": 0,
+    "Buoyancy": 0.05,
     "EnergyCostRate": 96,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
@@ -127,12 +126,6 @@
         "Positions": [[0.0247, 0.004644, 1.868188]],
         "Directions": ["Barrel"]
       }
-    },
-    "Empty": {
-      "Magazine": 0,
-      "RPM": 0,
-      "Crosshair": "@Empty",
-      "Damage": 0
     },
     "Coax": {
       "DefaultFireMode": "Auto",

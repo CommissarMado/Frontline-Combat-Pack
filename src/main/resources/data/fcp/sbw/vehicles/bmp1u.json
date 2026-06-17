@@ -16,7 +16,7 @@
   "Seats": [
     {
       "IsEnclosed": true,
-      "Transform": "Turret",
+      "Transform": "Vehicle",
       "BanHand": true,
       "CameraPos": {
         "UseFixedCameraPos": true,
