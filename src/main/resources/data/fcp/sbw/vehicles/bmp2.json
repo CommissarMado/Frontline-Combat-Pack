@@ -222,7 +222,7 @@
     "ExplosionRadius": 7,
     "SympatheticDetonation": true,
     "SympatheticDetonationForce": 1.5,
-    "SympatheticDetonationChance": 0.5
+    "SympatheticDetonationChance": 0.0
   },
   "ThirdPersonCameraPos": [0, 1, 5],
   "ContainerIcon": "fcp:textures/gui/vehicle/type/land_ter.png",

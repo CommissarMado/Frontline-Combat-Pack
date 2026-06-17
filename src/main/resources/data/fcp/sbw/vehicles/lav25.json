@@ -197,7 +197,10 @@
   "DestroyInfo": {
     "ParticleType": "Medium",
     "ExplosionDamage": 120,
-    "ExplosionRadius": 7
+    "ExplosionRadius": 7,
+    "SympatheticDetonation": true,
+    "SympatheticDetonationForce": 1.5,
+    "SympatheticDetonationChance": 0.0
   },
   "ContainerIcon": "fcp:textures/gui/vehicle/type/land_us.png",
   "Type": "APC",
