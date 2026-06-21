@@ -3920,7 +3920,7 @@
 				{
 					"name": "gun_cannon",
 					"parent": "cord",
-					"pivot": [-5.22833, 42.54751, 22.34557],
+					"pivot": [-10.72833, 44.54751, 16.34557],
 					"cubes": [
 						{
 							"origin": [-29.28155, 41.01962, 27.22889],
@@ -3995,7 +3995,7 @@
 					]
 				},
 				{
-					"name": "gun_barrel",
+					"name": "passengerWeaponStationPitch",
 					"parent": "gun_cannon",
 					"pivot": [-4.41486, 49.23417, 24.09928],
 					"cubes": [
