@@ -117,7 +117,7 @@
       "AmmoType": "superbwarfare:rifle_ammo",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[-0.008825, 0.06924375, 3.50439375]],
+        "Positions": [[-0.00654375, 0.048125, 2.01693125]],
         "Directions": ["Barrel"]
       },
       "Crosshair": "@VehicleCommonGun",
@@ -144,8 +144,8 @@
     "Decrement": 0.020,
     "SteeringSpeed": 0.1
   },
-  "TurretPos": [-0.0269375, 2.9375, 0.1406875],
-  "BarrelPos": [0.0001875, 0.3569625, 0],
+  "TurretPos": [-0.02255, 2.8326875, 0.11731875],
+  "BarrelPos": [0, 0.3679125, -0.19256875],
   "TurretTurnSpeed": [15, 15],
   "TurretPitchRange": [-60, 60],
   "TurretControllerIndex": 1,

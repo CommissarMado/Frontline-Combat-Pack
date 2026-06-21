@@ -1,7 +1,7 @@
 package frontline.combat.fcp.init;
 
 import frontline.combat.fcp.FCP;
-import frontline.combat.fcp.entity.vehicle.Trailers.TrailerConfig;
+import frontline.combat.fcp.entity.vehicle.Trailers.TrailerDriverData;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.mojang.serialization.JsonOps;
@@ -21,52 +21,49 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * FcpTrailerConfigs — loads trailer geometry configs.
+ * TrailerDriverConfigs — datapack registry of hitch points for towing vehicles.
  *
- * Reads from: data/<namespace>/trailers/<id>.json
- * Reloads automatically on /reload.
+ * Reads:  data/<namespace>/trailer_driver/<entity_id>.json
+ * Keyed by the vehicle's entity registry id (namespace + path).
+ * Reloads automatically on /reload — tune hitch offsets without a restart.
  *
- * Usage: FcpTrailerConfigs.get(new ResourceLocation("fcp", "example_trailer"))
+ *   TrailerDriverData d = TrailerDriverConfigs.get(new ResourceLocation("fcp", "kamaz"));
+ *   boolean canTow       = TrailerDriverConfigs.has(new ResourceLocation("fcp", "kamaz"));
+ *
+ * Returns null when a vehicle has no hitch config — null means "cannot tow".
  */
 @Mod.EventBusSubscriber(modid = FCP.MODID)
-public class FcpTrailerConfigs {
+public class TrailerDriverConfigs {
 
+    private static final String FOLDER = "trailer_driver";
     private static final Logger LOGGER = LogManager.getLogger();
-    private static final Map<ResourceLocation, TrailerConfig> CONFIGS = new HashMap<>();
+    private static final Map<ResourceLocation, TrailerDriverData> CONFIGS = new HashMap<>();
 
-    public static TrailerConfig get(ResourceLocation id) {
-        TrailerConfig cfg = CONFIGS.get(id);
-        if (cfg == null) {
-            throw new IllegalStateException(
-                    "[FCP] No trailer config found for: " + id
-                            + " — expected at: data/" + id.getNamespace() + "/trailers/" + id.getPath() + ".json"
-            );
-        }
-        return cfg;
+    public static TrailerDriverData get(ResourceLocation entityId) {
+        return CONFIGS.get(entityId);
     }
 
-    public static boolean has(ResourceLocation id) {
-        return CONFIGS.containsKey(id);
+    public static boolean has(ResourceLocation entityId) {
+        return CONFIGS.containsKey(entityId);
     }
 
     @SubscribeEvent
     public static void onAddReloadListeners(AddReloadListenerEvent event) {
-        event.addListener(new SimplePreparableReloadListener<Map<ResourceLocation, TrailerConfig>>() {
+        event.addListener(new SimplePreparableReloadListener<Map<ResourceLocation, TrailerDriverData>>() {
 
             @Override
-            protected Map<ResourceLocation, TrailerConfig> prepare(
+            protected Map<ResourceLocation, TrailerDriverData> prepare(
                     ResourceManager manager, ProfilerFiller profiler) {
 
-                Map<ResourceLocation, TrailerConfig> loaded = new HashMap<>();
+                Map<ResourceLocation, TrailerDriverData> loaded = new HashMap<>();
 
                 for (Map.Entry<ResourceLocation, Resource> entry :
-                        manager.listResources("trailers",
+                        manager.listResources(FOLDER,
                                 path -> path != null && path.getPath().endsWith(".json")
                         ).entrySet()) {
 
                     ResourceLocation location = entry.getKey();
                     Resource resource = entry.getValue();
-
                     if (location == null || resource == null) continue;
 
                     String rawPath = location.getPath();
@@ -75,33 +72,32 @@ public class FcpTrailerConfigs {
                     try (InputStreamReader reader = new InputStreamReader(resource.open())) {
                         JsonElement json = JsonParser.parseReader(reader);
 
-                        TrailerConfig config = TrailerConfig.CODEC
+                        TrailerDriverData config = TrailerDriverData.CODEC
                                 .parse(JsonOps.INSTANCE, json)
                                 .getOrThrow(false, err ->
-                                        LOGGER.error("[FCP] Bad trailer config {}: {}", location, err));
+                                        LOGGER.error("[FCP] Bad trailer_driver config {}: {}", location, err));
 
                         String stripped = rawPath
-                                .replace("trailers/", "")
+                                .replace(FOLDER + "/", "")
                                 .replace(".json", "");
 
                         ResourceLocation key = new ResourceLocation(location.getNamespace(), stripped);
                         loaded.put(key, config);
-                        LOGGER.debug("[FCP] Loaded trailer config: {}", key);
+                        LOGGER.debug("[FCP] Loaded trailer_driver config: {}", key);
 
                     } catch (Exception e) {
-                        LOGGER.error("[FCP] Failed to load trailer config {}: {}", location, e.getMessage());
+                        LOGGER.error("[FCP] Failed to load trailer_driver config {}: {}", location, e.getMessage());
                     }
                 }
-
                 return loaded;
             }
 
             @Override
-            protected void apply(Map<ResourceLocation, TrailerConfig> loaded,
+            protected void apply(Map<ResourceLocation, TrailerDriverData> loaded,
                                  ResourceManager manager, ProfilerFiller profiler) {
                 CONFIGS.clear();
                 CONFIGS.putAll(loaded);
-                LOGGER.info("[FCP] Loaded {} trailer config(s)", CONFIGS.size());
+                LOGGER.info("[FCP] Loaded {} trailer_driver config(s)", CONFIGS.size());
             }
         });
     }

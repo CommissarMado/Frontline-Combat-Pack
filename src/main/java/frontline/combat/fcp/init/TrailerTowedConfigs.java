@@ -1,7 +1,7 @@
 package frontline.combat.fcp.init;
 
 import frontline.combat.fcp.FCP;
-import frontline.combat.fcp.entity.vehicle.Trailers.TowableConfig;
+import frontline.combat.fcp.entity.vehicle.Trailers.TrailerTowedData;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.mojang.serialization.JsonOps;
@@ -21,55 +21,49 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * FcpTowableConfigs — loads hitch point configs for all towable vehicles.
+ * TrailerTowedConfigs — datapack registry of tongue points / tow rules for trailers.
  *
- * Reads from: data/<namespace>/towable_vehicles/<entity_id>.json
- * The entity_id must match the registry name of the vehicle entity exactly.
- * e.g. data/fcp/towable_vehicles/kamaz.json for the entity registered as "kamaz"
+ * Reads:  data/<namespace>/trailer_towed/<entity_id>.json
+ * Keyed by the trailer's entity registry id (namespace + path).
+ * Reloads automatically on /reload.
  *
- * Reloads automatically on /reload — no restart needed when tuning offsets.
+ *   TrailerTowedData t = TrailerTowedConfigs.get(new ResourceLocation("fcp", "example_trailer"));
+ *   boolean isTrailer   = TrailerTowedConfigs.has(new ResourceLocation("fcp", "example_trailer"));
  *
- * Usage:
- *   TowableConfig cfg = FcpTowableConfigs.get(new ResourceLocation("fcp", "kamaz"));
- *   boolean towable   = FcpTowableConfigs.has(new ResourceLocation("fcp", "kamaz"));
+ * Returns null when a trailer entity has no towed config — null means it can't be hitched.
  */
 @Mod.EventBusSubscriber(modid = FCP.MODID)
-public class FcpTowableConfigs {
+public class TrailerTowedConfigs {
 
+    private static final String FOLDER = "trailer_towed";
     private static final Logger LOGGER = LogManager.getLogger();
-    private static final Map<ResourceLocation, TowableConfig> CONFIGS = new HashMap<>();
+    private static final Map<ResourceLocation, TrailerTowedData> CONFIGS = new HashMap<>();
 
-    /**
-     * Returns the TowableConfig for the given entity registry id, or null if
-     * no config exists for that vehicle. Null means the vehicle cannot tow.
-     */
-    public static TowableConfig get(ResourceLocation entityId) {
+    public static TrailerTowedData get(ResourceLocation entityId) {
         return CONFIGS.get(entityId);
     }
 
-    /** Returns true if this entity type has a towable config registered. */
     public static boolean has(ResourceLocation entityId) {
         return CONFIGS.containsKey(entityId);
     }
 
     @SubscribeEvent
     public static void onAddReloadListeners(AddReloadListenerEvent event) {
-        event.addListener(new SimplePreparableReloadListener<Map<ResourceLocation, TowableConfig>>() {
+        event.addListener(new SimplePreparableReloadListener<Map<ResourceLocation, TrailerTowedData>>() {
 
             @Override
-            protected Map<ResourceLocation, TowableConfig> prepare(
+            protected Map<ResourceLocation, TrailerTowedData> prepare(
                     ResourceManager manager, ProfilerFiller profiler) {
 
-                Map<ResourceLocation, TowableConfig> loaded = new HashMap<>();
+                Map<ResourceLocation, TrailerTowedData> loaded = new HashMap<>();
 
                 for (Map.Entry<ResourceLocation, Resource> entry :
-                        manager.listResources("towable_vehicles",
+                        manager.listResources(FOLDER,
                                 path -> path != null && path.getPath().endsWith(".json")
                         ).entrySet()) {
 
                     ResourceLocation location = entry.getKey();
                     Resource resource = entry.getValue();
-
                     if (location == null || resource == null) continue;
 
                     String rawPath = location.getPath();
@@ -78,34 +72,32 @@ public class FcpTowableConfigs {
                     try (InputStreamReader reader = new InputStreamReader(resource.open())) {
                         JsonElement json = JsonParser.parseReader(reader);
 
-                        TowableConfig config = TowableConfig.CODEC
+                        TrailerTowedData config = TrailerTowedData.CODEC
                                 .parse(JsonOps.INSTANCE, json)
                                 .getOrThrow(false, err ->
-                                        LOGGER.error("[FCP] Bad towable config {}: {}", location, err));
+                                        LOGGER.error("[FCP] Bad trailer_towed config {}: {}", location, err));
 
-                        // Key is the entity registry id — strip folder prefix and extension
                         String stripped = rawPath
-                                .replace("towable_vehicles/", "")
+                                .replace(FOLDER + "/", "")
                                 .replace(".json", "");
 
                         ResourceLocation key = new ResourceLocation(location.getNamespace(), stripped);
                         loaded.put(key, config);
-                        LOGGER.debug("[FCP] Loaded towable config: {}", key);
+                        LOGGER.debug("[FCP] Loaded trailer_towed config: {}", key);
 
                     } catch (Exception e) {
-                        LOGGER.error("[FCP] Failed to load towable config {}: {}", location, e.getMessage());
+                        LOGGER.error("[FCP] Failed to load trailer_towed config {}: {}", location, e.getMessage());
                     }
                 }
-
                 return loaded;
             }
 
             @Override
-            protected void apply(Map<ResourceLocation, TowableConfig> loaded,
+            protected void apply(Map<ResourceLocation, TrailerTowedData> loaded,
                                  ResourceManager manager, ProfilerFiller profiler) {
                 CONFIGS.clear();
                 CONFIGS.putAll(loaded);
-                LOGGER.info("[FCP] Loaded {} towable vehicle config(s)", CONFIGS.size());
+                LOGGER.info("[FCP] Loaded {} trailer_towed config(s)", CONFIGS.size());
             }
         });
     }
