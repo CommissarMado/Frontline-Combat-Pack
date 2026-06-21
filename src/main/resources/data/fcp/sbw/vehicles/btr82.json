@@ -21,10 +21,18 @@
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [0.523556, 2.48535, 2.220112]
+        "Position": [
+          0.523556,
+          2.48535,
+          2.220112
+        ]
       },
       "Transform": "Vehicle",
-      "Position": [0, 0, 0],
+      "Position": [
+        0,
+        0,
+        0
+      ],
       "MinYaw": -65,
       "MaxYaw": 65,
       "MinPitch": -15,
@@ -36,13 +44,24 @@
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
-        "Position": [0.602431, 0.485237, 0.2572],
+        "Position": [
+          0.602431,
+          0.485237,
+          0.2572
+        ],
         "Direction": "Barrel"
       },
       "CanRotateHead": false,
-      "Weapons": ["Cannon", "Coax"],
+      "Weapons": [
+        "Cannon",
+        "Coax"
+      ],
       "Transform": "Turret",
-      "Position": [0, 0, 0],
+      "Position": [
+        0,
+        0,
+        0
+      ],
       "MinPitch": -15,
       "MaxPitch": 32.5
     }
@@ -56,12 +75,12 @@
       "IsHighExplosiveProjectile": false,
       "EmptyReloadTime": 180,
       "DefaultZoom": 3,
-      "RPM": 200,
+      "RPM": 330,
       "Velocity": 20,
-      "Damage": 35,
-      "ExplosionDamage": 15,
-      "ExplosionRadius": 4,
-      "HeatPerShoot": 10,
+      "Damage": 50,
+      "ExplosionDamage": 0,
+      "ExplosionRadius": 0,
+      "HeatPerShoot": 8,
       "NaturalCooldown": 1,
       "RecoilTime": 31,
       "RecoilForce": 0.62,
@@ -69,7 +88,7 @@
       "Spread": 0.5,
       "CrosshairColor": "0x66FF00",
       "Crosshair": "@VehicleRuApc",
-      "Name": "weapon.fcp.m242_bushmaster_ap",
+      "Name": "weapon.fcp.2a72_30mm_ap",
       "SoundInfo": {
         "Fire1P": "fcp:lav25_fire_1p",
         "Fire3P": "fcp:lav25_fire_3p",
@@ -85,18 +104,26 @@
             "IsArmorPiercingProjectile": false,
             "IsHighExplosiveProjectile": true,
             "Velocity": 25,
-            "Damage": 17,
-            "ExplosionDamage": 75,
-            "ExplosionRadius": 6,
-            "Name": "weapon.fcp.m242_bushmaster_he"
+            "Damage": 15,
+            "ExplosionDamage": 16,
+            "ExplosionRadius": 3,
+            "Name": "weapon.fcp.2a72_30mm_he"
           }
         }
       ],
       "Icon": "fcp:textures/screens/vehicle_weapon/25mm_ap.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[0.013843, 0.014213, 2.488857]],
-        "Directions": ["Barrel"]
+        "Positions": [
+          [
+            0.013843,
+            0.014213,
+            2.488857
+          ]
+        ],
+        "Directions": [
+          "Barrel"
+        ]
       }
     },
     "Empty": {
@@ -110,10 +137,10 @@
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 550,
+      "RPM": 600,
       "EmptyReloadTime": 160,
       "Velocity": 25,
-      "Damage": 5,
+      "Damage": 4,
       "BypassesArmor": 0.2,
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
@@ -123,7 +150,7 @@
       "Spread": 0.25,
       "Crosshair": "@VehicleCommonGun",
       "CrosshairColor": "0x66FF00",
-      "Name": "weapon.fcp.m240",
+      "Name": "weapon.fcp.coaxial_pktm",
       "SoundInfo": {
         "Fire1P": "fcp:m2_fire_1p",
         "Fire3P": "fcp:m2_fire_3p",
@@ -135,8 +162,16 @@
       "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[-0.234944, 0.014894, 0.335581]],
-        "Directions": ["Barrel"]
+        "Positions": [
+          [
+            -0.234944,
+            0.014894,
+            0.335581
+          ]
+        ],
+        "Directions": [
+          "Barrel"
+        ]
       }
     }
   },
@@ -148,26 +183,44 @@
     "WheelDifferential": 0.5,
     "TrackRotSpeed": 1.9,
     "TrackDifferential": 0.8,
-    "MaxForwardSpeedRate": 1.08,
-    "MaxBackwardSpeedRate": 0.4,
+    "MaxForwardSpeedRate": 0.86,
+    "MaxBackwardSpeedRate": 0.29,
     "Increment": 0.025,
-    "Decrement": 0.015,
+    "Decrement": 0.018,
     "SteeringSpeed": 0.1
   },
-  "TurretPos": [-0.03565625, 2.08718125, 1.23145625],
-  "TurretTurnSpeed": [2.5, 2.5],
-  "TurretPitchRange": [-10, 60],
-  "BarrelPos": [-0.04876875, 0.60893125, 0.3707],
-  "ThirdPersonCameraPos": [0, 3, 5],
+  "TurretPos": [
+    -0.03565625,
+    2.08718125,
+    1.23145625
+  ],
+  "TurretTurnSpeed": [
+    2.5,
+    2.3
+  ],
+  "TurretPitchRange": [
+    -10,
+    60
+  ],
+  "BarrelPos": [
+    -0.04876875,
+    0.60893125,
+    0.3707
+  ],
+  "ThirdPersonCameraPos": [
+    0,
+    3,
+    5
+  ],
   "TurretControllerIndex": 1,
   "HasDecoy": true,
   "UpStep": 1.5,
   "RotateOffsetHeight": 2.2,
-  "Mass": 13.6,
+  "Mass": 14.8,
   "DamageModifiers": [
     "minecraft:lava - -11",
     "minecraft:lava * 10",
-    "All * 0.2",
+    "All * 0.35",
     "minecraft:arrow * 1.5",
     "minecraft:trident * 1.5",
     "minecraft:mob_attack * 2.5",
@@ -177,20 +230,20 @@
     "minecraft:player_explosion * 6",
     "superbwarfare:custom_explosion * 2.0",
     "superbwarfare:projectile_explosion * 2",
-    "superbwarfare:mine * 0.75",
+    "superbwarfare:mine * 1.1",
     "superbwarfare:projectile_hit * 1.25",
     "superbwarfare:grapeshot_hit * 0.3",
     "superbwarfare:laser * 1.25",
     "@#superbwarfare:aerial_bomb * 3",
-    "#superbwarfare:projectile * 0.25",
-    "#superbwarfare:projectile_absolute * 0.85",
+    "#superbwarfare:projectile * 0.3",
+    "#superbwarfare:projectile_absolute * 0.9",
     "superbwarfare:vehicle_strike * 4",
-    "@superbwarfare:mortar_shell * 1.25",
-    "@superbwarfare:gun_grenade * 1.5",
-    "@superbwarfare:javelin_missile * 0.8",
-    "@superbwarfare:igla_9k38_missile * 0.75",
-    "@superbwarfare:wire_guide_missile * 1",
-    "All - 11"
+    "@superbwarfare:mortar_shell * 1.4",
+    "@superbwarfare:gun_grenade * 1.6",
+    "@superbwarfare:javelin_missile * 1",
+    "@superbwarfare:igla_9k38_missile * 0.9",
+    "@superbwarfare:wire_guide_missile * 1.2",
+    "All - 8"
   ],
   "VehicleContainerType": "Medium",
   "DestroyInfo": {
@@ -198,18 +251,51 @@
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },
-  "ContainerIcon": "fcp:textures/gui/vehicle/type/land_us.png",
+  "ContainerIcon": "fcp:textures/gui/vehicle/type/land_ru.png",
   "Type": "APC",
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
-      [0, 0, true],
-      [0, 0, true],
-      [0.15, 0.09, false]
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0.15,
+        0.09,
+        false
+      ]
     ]
   },
   "EngineSound": "fcp:lav25_engine",
   "HudType": "@Land",
-  "TerrainCompat": [[1.156, 0, 1.594], [-1.156, 0, 1.594], [1.156, 0, -1.594], [-1.156, 0, -1.594]],
+  "TerrainCompat": [
+    [
+      1.156,
+      0,
+      1.594
+    ],
+    [
+      -1.156,
+      0,
+      1.594
+    ],
+    [
+      1.156,
+      0,
+      -1.594
+    ],
+    [
+      -1.156,
+      0,
+      -1.594
+    ]
+  ],
   "InertiaRotateRate": 1.25
 }
