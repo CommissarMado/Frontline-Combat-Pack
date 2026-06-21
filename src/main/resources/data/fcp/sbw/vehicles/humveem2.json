@@ -3,7 +3,7 @@
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "TurretControllerIndex": 1,
-  "OBB": [
+  "OBB": [w
     {"Size": [1, 0.35, 1.5], "Position": [0, 0, 0], "Part": "Turret", "Transform": "Turret", "Rotation": "Turret"},
     {"Size": [0.25, 0.55, 0.55], "Position": [1.2, 0.55, 2.125], "Part": "WheelLeft"},
     {"Size": [0.25, 0.55, 0.55], "Position": [1.2, 0.55, -1.975], "Part": "WheelLeft"},

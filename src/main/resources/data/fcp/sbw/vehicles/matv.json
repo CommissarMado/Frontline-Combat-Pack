@@ -110,8 +110,10 @@
       "IsArmorPiercingProjectile": true,
       "IsHighExplosiveProjectile": false,
       "Velocity": 25,
-      "RecoilTime": 16,
-      "RecoilForce": 0.05,
+      "RecoilTime": 32,
+      "EmptyReloadTime": 200,
+      "Magazine": 200,
+      "RecoilForce": 0.1,
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
@@ -136,7 +138,8 @@
         "Fire3P": "superbwarfare:m_2_hb_fire_3p",
         "Fire3PFar": "superbwarfare:m_2_hb_far",
         "Fire3PVeryFar": "superbwarfare:m_2_hb_veryfar",
-        "Change": "fcp:into_coax"
+        "Change": "fcp:into_coax",
+        "VehicleReload": "fcp:m2_reload"
       },
       "SoundRadius": 16
     }
