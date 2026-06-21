@@ -9,7 +9,6 @@
   "PassengerWeaponStationPos": [-0.9697, 0.46805, 0.066094],
   "PassengerWeaponStationBarrelPos": [-0.0208, 0.066725, 0.951962],
   "PassengerWeaponStationTurnSpeed": [15, 15],
-  "PassengerWeaponStationYawRange": [-5, 90],
   "PassengerWeaponStationPitchRange": [-4, 30],
   "TurretControllerIndex": 1,
   "PassengerWeaponStationControllerIndex": 2,

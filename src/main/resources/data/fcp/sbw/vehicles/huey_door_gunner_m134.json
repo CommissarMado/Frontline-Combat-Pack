@@ -17,10 +17,11 @@
     {"Size": [0.375, 0.2625, 1.875], "Position": [0, 2.7, -1.5], "Part":  "Body"},
     {"Size": [0.1875, 0.45, 0.1875], "Position": [0, 3.4125, -0.375], "Part":  "MainEngine"}
   ],
+  "PassengerRenderScale": 0.85,
   "Seats": [
     {
       "Transform": "Vehicle",
-      "Position": [-0.55, 0.45, 2.4],
+      "Position": [-0.55, 0.7, 2.4],
       "Sensitivity": [0, 0, 0],
       "Weapons": ["Rocket"],
       "CameraPos": {
@@ -33,7 +34,7 @@
     },
     {
       "Transform": "Vehicle",
-      "Position": [-0.7, 0.45, -0.4],
+      "Position": [-0.7, 0.7, -0.4],
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
@@ -49,7 +50,7 @@
     },
     {
       "Transform": "Vehicle",
-      "Position": [0.55, 0.45, 2.4],
+      "Position": [0.55, 0.7, 2.4],
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Position": [0.55, 2.15, 2.55]
@@ -63,7 +64,7 @@
     },
     {
       "Transform": "Vehicle",
-      "Position": [0.55, 0.45, 1.1],
+      "Position": [0.55, 0.7, 1.1],
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Position": [0.55, 1.79, 1.1]
@@ -76,7 +77,7 @@
     },
     {
       "Transform": "Vehicle",
-      "Position": [0, 0.45, 1.1],
+      "Position": [0, 0.7, 1.1],
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Position": [0, 1.79, 1.1]
@@ -89,7 +90,7 @@
     },
     {
       "Transform": "Vehicle",
-      "Position": [-0.55, 0.45, 1.1],
+      "Position": [-0.55, 0.7, 1.1],
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Position": [-0.55, 1.79, 1.1]
@@ -102,7 +103,7 @@
     },
     {
       "Transform": "Vehicle",
-      "Position": [-0.7, 0.45, 0.35],
+      "Position": [-0.7, 0.7, 0.35],
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Position": [-0.75, 1.79, 0.35]
@@ -115,7 +116,7 @@
     },
     {
       "Transform": "Vehicle",
-      "Position": [0.7, 0.45, 0.35],
+      "Position": [0.7, 0.7, 0.35],
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Position": [0.75, 1.79, 0.35]
@@ -128,7 +129,7 @@
     },
     {
       "Transform": "Vehicle",
-      "Position": [0.7, 0.45, -0.4],
+      "Position": [0.7, 0.7, -0.4],
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Position": [0.75, 1.79, -0.4]

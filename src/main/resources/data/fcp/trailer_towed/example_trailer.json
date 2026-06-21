@@ -1,11 +1,12 @@
-﻿{
+{
   "tow_x": 0,
   "tow_y": 0.4,
   "tow_z": 3,
   "allowed_drivers": [
     "fcp:kamaz",
     "fcp:matv",
-    "fcp:lav25"
+    "fcp:lav25",
+    "fcp:wolf"
   ],
   "allow_any_driver": false,
   "max_articulation": 110,
