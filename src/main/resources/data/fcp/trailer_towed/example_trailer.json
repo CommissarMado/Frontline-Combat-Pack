@@ -4,7 +4,8 @@
   "tow_z": 3,
   "allowed_drivers": [
     "fcp:kamaz",
-    "fcp:matv"
+    "fcp:matv",
+    "fcp:lav25"
   ],
   "allow_any_driver": false,
   "max_articulation": 110,

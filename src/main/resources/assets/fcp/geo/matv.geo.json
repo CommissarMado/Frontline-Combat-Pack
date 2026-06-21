@@ -4392,8 +4392,13 @@
 					]
 				},
 				{
-					"name": "barrel",
+					"name": "BarrelOccilator",
 					"parent": "turret",
+					"pivot": [-0.2908, 50.83782, -18.66948]
+				},
+				{
+					"name": "barrel",
+					"parent": "BarrelOccilator",
 					"pivot": [-0.25396, 46.26588, 4.91071],
 					"cubes": [
 						{
