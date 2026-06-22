@@ -215,7 +215,7 @@
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },
-  "ContainerIcon": "fcp:textures/gui/vehicle/type/land_ru.png",
+  "ContainerIcon": "fcp:textures/gui/vehicle/type/land_rus.png",
   "Type": "APC",
   "CollisionLevel": {
     "Level": 3,

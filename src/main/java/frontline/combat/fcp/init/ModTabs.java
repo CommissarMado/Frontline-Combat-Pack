@@ -53,6 +53,8 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.GAZ_TIGR_GL.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.NOVATOR.get()));
+
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BTR82.get()));
             }).build());
 
     public static final RegistryObject<CreativeModeTab> AMERICAN_VEHICLE_TAB = TABS.register("american_tab", () -> CreativeModeTab.builder()
@@ -73,6 +75,8 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY_ROCKETS.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY_DOOR_GUNNER_M60.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY_DOOR_GUNNER_M134.get()));
+
+                output.accept(ContainerBlockItem.createInstance(ModEntities.VENOM.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV.get()));
             }).build());

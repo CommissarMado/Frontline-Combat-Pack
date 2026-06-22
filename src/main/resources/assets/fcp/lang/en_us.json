@@ -23,6 +23,7 @@
   "entity.fcp.gaz_tigr_mg": "Gaz Tigr With Machine Gun",
   "entity.fcp.gaz_tigr_gl": "Gaz Tigr With MK19",
   "entity.fcp.novator": "Novator",
+  "entity.fcp.btr82": "BTR82A",
 
   "//": "======================== Weapons ========================",
   "weapon.fcp.ub32": "UB-32",
@@ -53,6 +54,13 @@
   "weapon.fcp.12_7mm": "12.7mm Machine Gun",
   "weapon.fcp.m2": "M2 Machine Gun",
   "weapon.fcp.mk_19": "MK19 Grenade Launcher",
+  "weapon.fcp.2a42_30mm_ap": "2A42 30mm AP",
+  "weapon.fcp.2a42_30mm_he": "2A42 30mm HE",
+  "weapon.fcp.kba2_30mm_ap": "KBA2 30mm AP",
+  "weapon.fcp.kba2_30mm_he": "KBA2 30mm HE",
+  "weapon.fcp.9m113_konkurs": "9M113 KONKURS",
+  "weapon.fcp.kord_12_7mm_rws": "KORD 12.7mm RWS",
+  "weapon.fcp.coaxial_pktm": "COAXIAL PKTM",
 
   "//": "========================= Foods =========================",
   "item.fcp.delicious_snack": "Box of Crayons",
@@ -78,7 +86,7 @@
 
   "//": "======================= Messages ========================",
   "message.fcp.camo_changed": "Camo changed to %s",
-
+  
   "//" : "====================== Trailer =========================",
   "fcp.trailer.attached": "Trailer attached.",
   "fcp.trailer.detached": "Trailer detached.",
