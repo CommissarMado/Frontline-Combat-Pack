@@ -31,21 +31,20 @@
       "MaxPitch": 30
     },
     {
+      "HidePassenger": true,
       "IsEnclosed": true,
-      "Transform": "Turret",
-      "Weapons": ["Cannon", "Konkurs", "Coax"],
-      "BanHand": true,
       "CameraPos": {
-        "UseFixedCameraPos": true,
         "Transform": "Barrel",
+        "UseFixedCameraPos": true,
         "Position": [-0.044869, 0.470494, 1.127438],
-        "Rotation": "Barrel"
+        "Direction": "Barrel"
       },
       "CanRotateHead": false,
-      "HidePassenger": true,
-      "Position": [0, -1.25, 0],
-      "MinPitch": -10,
-      "MaxPitch": 25
+      "Weapons": ["Cannon", "Konkurs", "Coax"],
+      "Transform": "Turret",
+      "Position": [0, 0, 0],
+      "MinPitch": -15,
+      "MaxPitch": 32.5
     }
   ],
   "EngineType": "Track",

@@ -3,7 +3,7 @@
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "OBB": [
-    {"Size": [0.5, 1, 1], "Position": [0, 0, 0], "Part": "Body"}
+    {"Size": [0.3, 0.45, 0.75], "Position": [0, 0.45, 0], "Part": "Body"}
   ],
   "Seats": [
     {
@@ -24,7 +24,7 @@
     "Buoyancy": 1,
     "EnergyCostRate": 96,
     "WheelRotSpeed": 1.25,
-    "WheelDifferential": 0.5,
+    "WheelDifferential": 1,
     "MaxForwardSpeedRate": 1.62,
     "MaxBackwardSpeedRate": 0.33,
     "Increment": 0.025,

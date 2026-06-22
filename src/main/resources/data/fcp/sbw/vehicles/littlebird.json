@@ -94,15 +94,6 @@
       "MaxYaw": 75
     }
   ],
-  "Weapons": {
-    "Empty": {
-      "Name": "",
-      "Crosshair": "@Empty",
-      "RPM": 0,
-      "Magazine": 0,
-      "Damage": 0
-    }
-  },
   "EngineType": "Helicopter",
   "EngineInfo": {
     "EnergyCostRate": 280,

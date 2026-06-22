@@ -42,19 +42,20 @@
       "MaxPitch": 15
     },
     {
+      "HidePassenger": true,
       "IsEnclosed": true,
-      "Transform": "Vehicle",
-      "Weapons": ["Cannon", "Coax"],
-      "BanHand": true,
-      "Position": [0.5, 0.5625, 2.1875],
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
         "Position": [-0.503544, 1.308006, -0],
-        "Rotation": "Barrel"
+        "Direction": "Barrel"
       },
-      "MinPitch": -3,
-      "MaxPitch": 15
+      "CanRotateHead": false,
+      "Weapons": ["Cannon", "Coax"],
+      "Transform": "Turret",
+      "Position": [0, 0, 0],
+      "MinPitch": -15,
+      "MaxPitch": 32.5
     },
     {
       "IsEnclosed": true,

@@ -26,10 +26,16 @@ public class WolfModel extends FCPVehicleModel<WolfEntity> {
     public @Nullable VehicleModel.TransformContext<WolfEntity> collectTransform(String boneName) {
         return switch (boneName) {
 
-            case "leg0", "leg1", "leg2", "leg3" -> (bone, vehicle, state) -> {
+            case "leg1", "leg2" -> (bone, vehicle, state) -> {
                 float wheelRot = Mth.lerp(state.getPartialTick(), vehicle.getPrevWheelRotation(), vehicle.getWheelRotation());
                 bone.setRotX((float) Math.toRadians(-wheelRot));
             };
+
+            case "leg0", "leg3"-> (bone, vehicle, state) -> {
+                float wheelRot = Mth.lerp(state.getPartialTick(), vehicle.getPrevWheelRotation()+180, vehicle.getWheelRotation()+180);
+                bone.setRotX((float) Math.toRadians(-wheelRot));
+            };
+
             default -> super.collectTransform(boneName);
         };
     }

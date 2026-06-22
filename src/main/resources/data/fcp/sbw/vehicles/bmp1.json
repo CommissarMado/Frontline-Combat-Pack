@@ -15,37 +15,35 @@
   ],
   "Seats": [
     {
-      "IsEnclosed": true,
-      "Transform": "Vehicle",
       "BanHand": true,
+      "HidePassenger": true,
       "CameraPos": {
-        "UseFixedCameraPos": true,
         "Transform": "Vehicle",
+        "UseFixedCameraPos": true,
         "Position": [0.98625, 2.092744, 2.260175]
       },
-      "HidePassenger": true,
-      "Position": [0, -1.25, 0],
+      "Transform": "Vehicle",
+      "Position": [0, 0, 0],
       "MinYaw": -65,
       "MaxYaw": 65,
-      "MinPitch": -10,
-      "MaxPitch": 30
+      "MinPitch": -15,
+      "MaxPitch": 32.5
     },
     {
+      "HidePassenger": true,
       "IsEnclosed": true,
-      "Transform": "Turret",
-      "Weapons": ["Cannon", "malyutka", "Coax"],
-      "BanHand": true,
       "CameraPos": {
-        "UseFixedCameraPos": true,
         "Transform": "Barrel",
+        "UseFixedCameraPos": true,
         "Position": [0.36845, 0.254644, -0.194312],
-        "Rotation": "Barrel"
+        "Direction": "Barrel"
       },
       "CanRotateHead": false,
-      "HidePassenger": true,
-      "Position": [0, -1.25, 0],
-      "MinPitch": -10,
-      "MaxPitch": 30
+      "Weapons": ["Cannon", "Coax"],
+      "Transform": "Turret",
+      "Position": [0, 0, 0],
+      "MinPitch": -15,
+      "MaxPitch": 32.5
     }
   ],
   "EngineType": "Track",

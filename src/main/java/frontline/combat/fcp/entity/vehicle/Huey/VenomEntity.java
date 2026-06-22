@@ -15,8 +15,8 @@ public class VenomEntity extends CamoVehicleBase {
             new ResourceLocation("fcp", "textures/entity/huey/venom_1.png"),
             new ResourceLocation("fcp", "textures/entity/huey/venom_2.png"),
             //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/huey/bigbird.png"),
-            new ResourceLocation("fcp", "textures/entity/huey/bigbird.png")
+            new ResourceLocation("fcp", "textures/entity/huey/venom_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/huey/venom_2_wrecked.png")
     };
     private static final String[] CAMO_NAMES = {"Standard", "Thanos"};
 
