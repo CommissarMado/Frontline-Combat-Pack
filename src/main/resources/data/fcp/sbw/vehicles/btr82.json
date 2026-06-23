@@ -153,37 +153,11 @@
     "Decrement": 0.018,
     "SteeringSpeed": 0.1
   },
-<<<<<<< HEAD
-  "TurretPos": [
-    -0.03565625,
-    2.08718125,
-    1.23145625
-  ],
-  "TurretTurnSpeed": [
-    2.5,
-    2.3
-  ],
-  "TurretPitchRange": [
-    -10,
-    60
-  ],
-  "BarrelPos": [
-    -0.04876875,
-    0.60893125,
-    -0.3707
-  ],
-  "ThirdPersonCameraPos": [
-    0,
-    3,
-    5
-  ],
-=======
   "TurretPos": [0.2644, 2.592669, -1.181556],
   "TurretTurnSpeed": [2.5, 1.8],
   "TurretPitchRange": [-10, 60],
   "BarrelPos": [-0.087881, 0.286625, 1.034462],
   "ThirdPersonCameraPos": [0, 3, 5],
->>>>>>> origin/master
   "TurretControllerIndex": 1,
   "HasDecoy": true,
   "UpStep": 1.5,
