@@ -154,7 +154,7 @@ public class ModEntities {
 
     // Trailers
     public static final RegistryObject<EntityType<ExampleTrailerEntity>> EXAMPLE_TRAILER = register("example_trailer",
-            EntityType.Builder.of(ExampleTrailerEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2.5f, 1.8f));
+            EntityType.Builder.of(ExampleTrailerEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(5f, 3f));
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

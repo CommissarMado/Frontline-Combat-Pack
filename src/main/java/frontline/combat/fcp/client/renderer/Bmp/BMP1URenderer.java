@@ -4,15 +4,21 @@ import com.atsuishio.superbwarfare.client.renderer.entity.VehicleRenderer;
 import frontline.combat.fcp.client.model.Bmp.BMP1Model;
 import frontline.combat.fcp.client.model.Bmp.BMP1UModel;
 import frontline.combat.fcp.client.model.Uaz.UAZModel;
+import frontline.combat.fcp.client.renderer.FCPVehicleRenderer;
 import frontline.combat.fcp.entity.vehicle.Bmp.BMP1Entity;
 import frontline.combat.fcp.entity.vehicle.Bmp.BMP1UEntity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 
-public class BMP1URenderer extends VehicleRenderer<BMP1UEntity> {
+public class BMP1URenderer extends FCPVehicleRenderer<BMP1UEntity> {
 
     public BMP1URenderer(EntityRendererProvider.Context renderManager) { super(renderManager, new BMP1UModel());}
+
+    @Override
+    protected float tiltStrength() {
+        return 0.25f; // (0 = flat, 1 = SBW default)
+    }
 
     @Override
     public ResourceLocation getTextureLocation(BMP1UEntity entity) {

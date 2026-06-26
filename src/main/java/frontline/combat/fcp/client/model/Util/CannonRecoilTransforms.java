@@ -9,11 +9,7 @@ import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
 
 public final class CannonRecoilTransforms {
 
-
-
     private static final float REFERENCE_TICKS = 42f;
-
-
 
     public enum Profile {
 
@@ -27,13 +23,9 @@ public final class CannonRecoilTransforms {
 
         LIGHT(3f, 0.8f);
 
-
-
         private final float slideMax;
 
         private final float kickMaxDeg;
-
-
 
         Profile(float slideMax, float kickMaxDeg) {
 
@@ -45,19 +37,13 @@ public final class CannonRecoilTransforms {
 
     }
 
-
-
     private record RecoilOffsets(float slide, float kick) {
 
     }
 
-
-
     private CannonRecoilTransforms() {
 
     }
-
-
 
     @Nullable
 
@@ -70,8 +56,6 @@ public final class CannonRecoilTransforms {
             return null;
 
         }
-
-
 
         float force = Mth.clamp(vehicle.getCannonRecoilForce(), 0f, 2f);
 
@@ -88,8 +72,6 @@ public final class CannonRecoilTransforms {
         return new RecoilOffsets(slide, kick);
 
     }
-
-
 
     public static void apply(CoreGeoBone bone, VehicleEntity vehicle, Profile profile) {
 
@@ -109,8 +91,6 @@ public final class CannonRecoilTransforms {
 
     }
 
-
-
     public static void applyBarrelPitchAndRecoil(
 
             CoreGeoBone bone,
@@ -126,8 +106,6 @@ public final class CannonRecoilTransforms {
         applyBarrelPitchAndRecoil(bone, vehicle, modelTurretXRot, profile, null);
 
     }
-
-
 
     public static void applyBarrelPitchAndRecoil(
 
@@ -157,15 +135,11 @@ public final class CannonRecoilTransforms {
 
         bone.setPosZ(0f);
 
-
-
         if (requiredWeapon != null && !requiredWeapon.equals(vehicle.getGunName(1))) {
 
             return;
 
         }
-
-
 
         RecoilOffsets recoil = computeRecoilOffsets(vehicle, profile);
 
@@ -181,8 +155,6 @@ public final class CannonRecoilTransforms {
 
     }
 
-
-
     @Nullable
 
     public static <T extends VehicleEntity & GeoAnimatable> VehicleModel.TransformContext<T> matchBarrel(String boneName) {
@@ -191,8 +163,6 @@ public final class CannonRecoilTransforms {
 
     }
 
-
-
     @Nullable
 
     public static <T extends VehicleEntity & GeoAnimatable> VehicleModel.TransformContext<T> matchBarrel(String boneName, Profile profile) {
@@ -200,8 +170,6 @@ public final class CannonRecoilTransforms {
         return matchBarrelForWeapon(boneName, profile, null);
 
     }
-
-
 
     @Nullable
 
@@ -231,8 +199,6 @@ public final class CannonRecoilTransforms {
 
     }
 
-
-
     @Nullable
 
     public static <T extends VehicleEntity & GeoAnimatable> VehicleModel.TransformContext<T> matchBarrelForWeapon(
@@ -247,8 +213,6 @@ public final class CannonRecoilTransforms {
 
     }
 
-
-
     @Nullable
 
     public static <T extends VehicleEntity & GeoAnimatable> VehicleModel.TransformContext<T> match(String boneName, String bone) {
@@ -256,8 +220,6 @@ public final class CannonRecoilTransforms {
         return match(boneName, bone, Profile.STANDARD);
 
     }
-
-
 
     @Nullable
 
@@ -272,8 +234,6 @@ public final class CannonRecoilTransforms {
         return (geoBone, vehicle, state) -> apply(geoBone, vehicle, profile);
 
     }
-
-
 
     @Nullable
 
@@ -316,8 +276,6 @@ public final class CannonRecoilTransforms {
         };
 
     }
-
-
 
     @Nullable
 

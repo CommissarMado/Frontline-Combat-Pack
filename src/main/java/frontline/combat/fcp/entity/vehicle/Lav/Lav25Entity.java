@@ -3,6 +3,7 @@ package frontline.combat.fcp.entity.vehicle.Lav;
 import com.atsuishio.superbwarfare.entity.vehicle.damage.DamageModifier;
 import frontline.combat.fcp.entity.vehicle.Bmp.BMP1Entity;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
+import frontline.combat.fcp.entity.vehicle.SteerableVehicle;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -10,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 
-public class Lav25Entity extends CamoVehicleBase {
+public class Lav25Entity extends CamoVehicleBase implements SteerableVehicle {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
             //Normal Texture
@@ -133,4 +134,3 @@ public class Lav25Entity extends CamoVehicleBase {
         wheelRotation += (float) (speed * 20f);
     }
 }
-

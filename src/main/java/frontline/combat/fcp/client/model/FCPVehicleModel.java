@@ -29,11 +29,13 @@ public abstract class FCPVehicleModel <T extends VehicleEntity & GeoAnimatable> 
         if (transforms.isEmpty()) {
             return;
         }
+
         for (Pair<String, TransformContext<T>> pair : transforms) {
             CoreGeoBone bone = getAnimationProcessor().getBone(pair.getA());
             if (bone != null) {
                 ModelBoneTransforms.resetForVehicleRender(bone);
             }
         }
+
     }
 }

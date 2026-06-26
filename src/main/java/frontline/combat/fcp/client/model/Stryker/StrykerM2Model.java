@@ -2,6 +2,8 @@ package frontline.combat.fcp.client.model.Stryker;
 
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.client.model.FCPVehicleModel;
+import frontline.combat.fcp.client.model.Util.WheelRotationTransforms;
 import frontline.combat.fcp.entity.vehicle.Novator.NovatorEntity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerM2Entity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerMGSEntity;
@@ -9,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
 
-public class StrykerM2Model extends VehicleModel<StrykerM2Entity> {
+public class StrykerM2Model extends FCPVehicleModel<StrykerM2Entity> {
 
     @Override
     public ResourceLocation getModelResource(StrykerM2Entity animatable) {
@@ -23,22 +25,17 @@ public class StrykerM2Model extends VehicleModel<StrykerM2Entity> {
 
     @Override
     public @Nullable VehicleModel.TransformContext<StrykerM2Entity> collectTransform(String boneName) {
-        return switch (boneName) {
 
-            case "WheelL0Turn", "WheelR0Turn", "WheelL1Turn", "WheelR1Turn" -> (bone, vehicle, state) -> {
-                float wheelRot = Mth.lerp(state.getPartialTick(), vehicle.getPrevWheelRotation(), vehicle.getWheelRotation());
-                bone.setRotX((float) Math.toRadians(-wheelRot));
+        VehicleModel.TransformContext<StrykerM2Entity> turn =
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
+                        "WheelL0Turn", "WheelR0Turn", "WheelL1Turn", "WheelR1Turn");
+        if (turn != null) return turn;
 
-                float steeringAngle = Mth.lerp(state.getPartialTick(), vehicle.getPrevSteeringAngle(), vehicle.getSteeringAngle());
-                steeringAngle = Mth.clamp(steeringAngle, -30f, 30f);
-                bone.setRotY((float) Math.toRadians(steeringAngle));
-            };
+        VehicleModel.TransformContext<StrykerM2Entity> wheels =
+                WheelRotationTransforms.matchAny(boneName, 0.6,
+                        "WheelL0", "WheelR0", "WheelL1", "WheelR1");
+        if (wheels != null) return wheels;
 
-            case "WheelL0", "WheelR0", "WheelL1", "WheelR1" -> (bone, vehicle, state) -> {
-                float wheelRot = Mth.lerp(state.getPartialTick(), vehicle.getPrevWheelRotation(), vehicle.getWheelRotation());
-                bone.setRotX((float) Math.toRadians(-wheelRot));
-            };
-            default -> super.collectTransform(boneName);
-        };
+        return super.collectTransform(boneName);
     }
 }

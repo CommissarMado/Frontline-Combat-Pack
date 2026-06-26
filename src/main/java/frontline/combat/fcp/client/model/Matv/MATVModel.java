@@ -5,6 +5,8 @@ import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.model.FCPVehicleModel;
 import frontline.combat.fcp.client.model.Util.CannonRecoilTransforms;
 import frontline.combat.fcp.client.model.Util.ModelBoneTransforms;
+import frontline.combat.fcp.client.model.Util.WheelRotationTransforms;
+import frontline.combat.fcp.entity.vehicle.Kamaz.KamazEntity;
 import frontline.combat.fcp.entity.vehicle.Lav.Lav25Entity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATVEntity;
 import net.minecraft.resources.ResourceLocation;
@@ -28,26 +30,17 @@ public class MATVModel extends FCPVehicleModel<MATVEntity> {
 
     @Override
     public @Nullable VehicleModel.TransformContext<MATVEntity> collectTransform(String boneName) {
-        return switch (boneName) {
+        VehicleModel.TransformContext<MATVEntity> turn =
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
+                        "WheelL0Turn", "WheelR0Turn", "WheelL1Turn", "WheelR1Turn");
+        if (turn != null) return turn;
 
-            case "BarrelOccilator" -> barrelRecoil(0);
+        VehicleModel.TransformContext<MATVEntity> wheels =
+                WheelRotationTransforms.matchAny(boneName, 0.6,
+                        "WheelL0", "WheelR0", "WheelL1", "WheelR1");
+        if (wheels != null) return wheels;
 
-            case "WheelL0Turn", "WheelR0Turn" -> (bone, vehicle, state) -> {
-                float wheelRot = Mth.lerp(state.getPartialTick(), vehicle.getPrevWheelRotation(), vehicle.getWheelRotation());
-                bone.setRotX((float) Math.toRadians(-wheelRot));
-
-                float steeringAngle = Mth.lerp(state.getPartialTick(), vehicle.getPrevSteeringAngle(), vehicle.getSteeringAngle());
-                steeringAngle = Mth.clamp(steeringAngle, -30f, 30f);
-                bone.setRotY((float) Math.toRadians(steeringAngle));
-            };
-
-            case "WheelL0", "WheelR0" -> (bone, vehicle, state) -> {
-                float wheelRot = Mth.lerp(state.getPartialTick(), vehicle.getPrevWheelRotation(), vehicle.getWheelRotation());
-
-                bone.setRotX((float) Math.toRadians(-wheelRot));
-            };
-            default -> super.collectTransform(boneName);
-        };
+        return super.collectTransform(boneName);
     }
 
     private VehicleModel.TransformContext<MATVEntity> barrelRecoil(int barrelIndex) {

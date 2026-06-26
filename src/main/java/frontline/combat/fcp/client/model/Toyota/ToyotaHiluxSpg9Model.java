@@ -2,6 +2,7 @@ package frontline.combat.fcp.client.model.Toyota;
 
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.client.model.Util.WheelRotationTransforms;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxEntity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxSpg9Entity;
 import net.minecraft.resources.ResourceLocation;
@@ -22,23 +23,17 @@ public class ToyotaHiluxSpg9Model extends VehicleModel<ToyotaHiluxSpg9Entity> {
 
     @Override
     public @Nullable VehicleModel.TransformContext<ToyotaHiluxSpg9Entity> collectTransform(String boneName) {
-        return switch (boneName) {
 
+        VehicleModel.TransformContext<ToyotaHiluxSpg9Entity> turn =
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
+                        "WheelL0Turn", "WheelR0Turn", "WheelL1Turn", "WheelR1Turn");
+        if (turn != null) return turn;
 
-            case "WheelL0Turn", "WheelR0Turn" -> (bone, vehicle, state) -> {
-                float wheelRot = Mth.lerp(state.getPartialTick(), vehicle.getPrevWheelRotation(), vehicle.getWheelRotation());
-                bone.setRotX((float) Math.toRadians(-wheelRot));
+        VehicleModel.TransformContext<ToyotaHiluxSpg9Entity> wheels =
+                WheelRotationTransforms.matchAny(boneName, 0.6,
+                        "WheelL0", "WheelR0", "WheelL1", "WheelR1");
+        if (wheels != null) return wheels;
 
-                float steeringAngle = Mth.lerp(state.getPartialTick(), vehicle.getPrevSteeringAngle(), vehicle.getSteeringAngle());
-                steeringAngle = Mth.clamp(steeringAngle, -30f, 30f);
-                bone.setRotY((float) Math.toRadians(steeringAngle));
-            };
-
-            case "WheelL0", "WheelR0" -> (bone, vehicle, state) -> {
-                float wheelRot = Mth.lerp(state.getPartialTick(), vehicle.getPrevWheelRotation(), vehicle.getWheelRotation());
-                bone.setRotX((float) Math.toRadians(-wheelRot));
-            };
-            default -> super.collectTransform(boneName);
-        };
+        return super.collectTransform(boneName);
     }
 }

@@ -4,12 +4,12 @@ import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.model.FCPVehicleModel;
 import frontline.combat.fcp.client.model.Util.CannonRecoilTransforms;
+import frontline.combat.fcp.client.model.Util.WheelRotationTransforms;
 import frontline.combat.fcp.client.model.Util.ModelBoneTransforms;
 import frontline.combat.fcp.entity.vehicle.Huey.HueyEntity;
 import frontline.combat.fcp.entity.vehicle.Lav.Lav25Entity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerM2Entity;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
 
 public class Lav25Model extends FCPVehicleModel<Lav25Entity> {
@@ -28,24 +28,24 @@ public class Lav25Model extends FCPVehicleModel<Lav25Entity> {
 
     @Override
     public @Nullable VehicleModel.TransformContext<Lav25Entity> collectTransform(String boneName) {
-        return switch (boneName) {
-            case "BarrelOccilator" -> barrelRecoil(0);
+        if ("BarrelOccilator".equals(boneName)) {
+            return barrelRecoil(0);
+        }
 
-            case "WheelL0Turn", "WheelR0Turn", "WheelL1Turn", "WheelR1Turn" -> (bone, vehicle, state) -> {
-                float wheelRot = Mth.lerp(state.getPartialTick(), vehicle.getPrevWheelRotation(), vehicle.getWheelRotation());
-                bone.setRotX((float) Math.toRadians(-wheelRot));
+        // Steering wheels (roll on X + pivot on Y). Lav25Entity implements
+        // SteerableVehicle, so these pivot from its steering angle.
+        VehicleModel.TransformContext<Lav25Entity> turn =
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
+                        "WheelL0Turn", "WheelR0Turn", "WheelL1Turn", "WheelR1Turn");
+        if (turn != null) return turn;
 
-                float steeringAngle = Mth.lerp(state.getPartialTick(), vehicle.getPrevSteeringAngle(), vehicle.getSteeringAngle());
-                steeringAngle = Mth.clamp(steeringAngle, -30f, 30f);
-                bone.setRotY((float) Math.toRadians(steeringAngle));
-            };
+        // Plain rolling wheels.
+        VehicleModel.TransformContext<Lav25Entity> wheels =
+                WheelRotationTransforms.matchAny(boneName, 0.6,
+                        "WheelL0", "WheelR0", "WheelL1", "WheelR1");
+        if (wheels != null) return wheels;
 
-            case "WheelL0", "WheelR0", "WheelL1", "WheelR1" -> (bone, vehicle, state) -> {
-                float wheelRot = Mth.lerp(state.getPartialTick(), vehicle.getPrevWheelRotation(), vehicle.getWheelRotation());
-                bone.setRotX((float) Math.toRadians(-wheelRot));
-            };
-            default -> super.collectTransform(boneName);
-        };
+        return super.collectTransform(boneName);
     }
     private VehicleModel.TransformContext<Lav25Entity> barrelRecoil(int barrelIndex) {
         return (bone, vehicle, state) -> {
@@ -56,7 +56,7 @@ public class Lav25Model extends FCPVehicleModel<Lav25Entity> {
             if (!CANNON_WEAPON.equals(vehicle.getGunName(1))) {
                 return;
             }
-            CannonRecoilTransforms.apply(bone, vehicle, CannonRecoilTransforms.Profile.FORWARDBACK);
+            CannonRecoilTransforms.apply(bone, vehicle, CannonRecoilTransforms.Profile.STANDARD);
         };
     }
 }
