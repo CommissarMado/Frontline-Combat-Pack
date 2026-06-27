@@ -35,13 +35,13 @@ public class Lav25Model extends FCPVehicleModel<Lav25Entity> {
         // Steering wheels (roll on X + pivot on Y). Lav25Entity implements
         // SteerableVehicle, so these pivot from its steering angle.
         VehicleModel.TransformContext<Lav25Entity> turn =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.51, 30f,
                         "WheelL0Turn", "WheelR0Turn", "WheelL1Turn", "WheelR1Turn");
         if (turn != null) return turn;
 
         // Plain rolling wheels.
         VehicleModel.TransformContext<Lav25Entity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.6,
+                WheelRotationTransforms.matchAny(boneName, 0.51,
                         "WheelL0", "WheelR0", "WheelL1", "WheelR1");
         if (wheels != null) return wheels;
 
