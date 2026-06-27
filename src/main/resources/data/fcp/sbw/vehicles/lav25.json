@@ -169,7 +169,7 @@
   "DamageModifiers": [
     "minecraft:lava - -11",
     "minecraft:lava * 10",
-    "All * 0.2",
+    "All * 0.3",
     "minecraft:arrow * 1.5",
     "minecraft:trident * 1.5",
     "minecraft:mob_attack * 2.5",
@@ -192,7 +192,7 @@
     "@superbwarfare:javelin_missile * 0.8",
     "@superbwarfare:igla_9k38_missile * 0.75",
     "@superbwarfare:wire_guide_missile * 1",
-    "All - 11"
+    "All - 9"
   ],
   "VehicleContainerType": "Medium",
   "DestroyInfo": {
