@@ -5,6 +5,7 @@ import frontline.combat.fcp.entity.projectile.Hellfire.LockOnHellfireEntity;
 import frontline.combat.fcp.entity.projectile.Hellfire.WireGuidedHellfireEntity;
 import frontline.combat.fcp.entity.projectile.Malyutka.MalyutkaEntity;
 import frontline.combat.fcp.entity.projectile.Sidewinder.SidewinderEntity;
+import frontline.combat.fcp.entity.vehicle.Aavp.AAVPEntity;
 import frontline.combat.fcp.entity.vehicle.Bmp.BMP1Entity;
 import frontline.combat.fcp.entity.vehicle.Bmp.BMP1UEntity;
 import frontline.combat.fcp.entity.vehicle.Bmp.BMP2Entity;
@@ -91,6 +92,8 @@ public class ModEntities {
     public static final RegistryObject<EntityType<BMP2Entity>> BMP2 = register("bmp2",
             EntityType.Builder.of(BMP2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
 
+    public static final RegistryObject<EntityType<AAVPEntity>> AAVP = register("aavp",
+            EntityType.Builder.of(AAVPEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<Lav25Entity>> LAV25 = register("lav25",
             EntityType.Builder.of(Lav25Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
 

@@ -6,7 +6,8 @@
   "refmap": "fcp.refmap.json",
   "mixins": [],
   "client": [
-    "LandVehicleHudStatsMixin"
+    "LandVehicleHudStatsMixin",
+    "HideVehicleHitboxMixin"
   ],
   "injectors": {
     "defaultRequire": 1

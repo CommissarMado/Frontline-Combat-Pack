@@ -30,8 +30,8 @@
     {
       "IsEnclosed": true,
       "CameraPos": {
-        "Transform": "Barrel",
         "UseFixedCameraPos": true,
+        "Transform": "Barrel",
         "Position": [
           0,
           0.65,
@@ -121,11 +121,7 @@
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
-          [
-            0.00219375,
-            0.37521375,
-            1.45358125
-          ]
+          [0, 0.37521375, 1.55]
         ],
         "Directions": [
           "Barrel"
@@ -156,30 +152,12 @@
     "Decrement": 0.02,
     "SteeringSpeed": 0.1
   },
-  "TurretPos": [
-    -0.00123125,
-    2.65119375,
-    -0.8426125
-  ],
-  "BarrelPos": [
-    0,
-    0.1494,
-    0.4986875
-  ],
-  "TurretTurnSpeed": [
-    15,
-    15
-  ],
-  "TurretPitchRange": [
-    -9,
-    40
-  ],
+  "TurretPos": [-0.00123125, 2.65119375, -0.8426125],
+  "BarrelPos": [-0.0175, 0.1494, 0.4986875],
+  "TurretTurnSpeed": [15, 15],
+  "TurretPitchRange": [-9, 40],
   "TurretControllerIndex": 1,
-  "ThirdPersonCameraPos": [
-    0,
-    1,
-    3
-  ],
+  "ThirdPersonCameraPos": [0, 1, 3],
   "HasDecoy": false,
   "UpStep": 2.2,
   "RotateOffsetHeight": 2.2,
@@ -245,26 +223,12 @@
   "HornSound": "superbwarfare:truck_horn",
   "HudType": "@Empty",
   "TerrainCompat": [
-    [
-      1.156,
-      0,
-      1.594
-    ],
-    [
-      -1.156,
-      0,
-      1.594
-    ],
-    [
-      1.156,
-      0,
-      -1.594
-    ],
-    [
-      -1.156,
-      0,
-      -1.594
-    ]
+    [1.0, 0, 2.35],
+    [-1.0, 0, 2.35],
+    [1.0, 0, 1.75],
+    [-1.0, 0, 1.75],
+    [1.0, 0, -2.15],
+    [-1.0, 0, -2.15]
   ],
-  "InertiaRotateRate": 1.8
+  "InertiaRotateRate": 1
 }

@@ -91,5 +91,9 @@
   "fcp.trailer.attached": "Trailer attached.",
   "fcp.trailer.detached": "Trailer detached.",
   "fcp.trailer.not_attached": "This trailer is not attached to anything.",
-  "fcp.trailer.no_vehicle_nearby": "No vehicle nearby to attach to."
+  "fcp.trailer.no_vehicle_nearby": "No vehicle nearby to attach to.",
+
+  "//" : "====================== Key =============================",
+  "key.categories.fcp": "Frontline Combat Pack",
+  "key.fcp.vehicle_debug": "Toggle Vehicle Debug Overlay"
 }

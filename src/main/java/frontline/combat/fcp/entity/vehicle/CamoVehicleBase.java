@@ -26,6 +26,24 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements ICamoV
         super(type, world);
     }
 
+    /**
+     * Build A ground suspension: rest the vehicle on its terrainCompat pads (lift-only)
+     * after SBW's normal movement. Server-side; the corrected Y syncs to clients. The
+     * bounding box stays as the safety floor. Override to false on a vehicle that
+     * shouldn't use pad suspension (e.g. trailers whose Y is set by the hitch).
+     */
+    protected boolean useTerrainSuspension() {
+        return true;
+    }
+
+    @Override
+    public void baseTick() {
+        super.baseTick();
+        if (!this.level().isClientSide && useTerrainSuspension()) {
+            frontline.combat.fcp.entity.vehicle.physics.FCPGroundSuspension.apply(this);
+        }
+    }
+
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();

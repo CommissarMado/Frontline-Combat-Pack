@@ -1,22 +1,14 @@
 package frontline.combat.fcp.client.renderer.MemeVehicles;
 
 import com.atsuishio.superbwarfare.client.renderer.entity.VehicleRenderer;
-import frontline.combat.fcp.client.model.Lav.Lav25Model;
 import frontline.combat.fcp.client.model.MemeVehicles.WolfModel;
-import frontline.combat.fcp.client.renderer.FCPVehicleRenderer;
-import frontline.combat.fcp.entity.vehicle.Lav.Lav25Entity;
 import frontline.combat.fcp.entity.vehicle.MemeVehicles.WolfEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 
-public class WolfRenderer extends FCPVehicleRenderer<WolfEntity> {
+public class WolfRenderer extends VehicleRenderer<WolfEntity> {
 
     public WolfRenderer(EntityRendererProvider.Context renderManager) { super(renderManager, new WolfModel());}
-
-    @Override
-    protected float tiltStrength() {
-        return 2f; // (0 = flat, 1 = SBW default)
-    }
 
     @Override
     public ResourceLocation getTextureLocation(WolfEntity entity) {

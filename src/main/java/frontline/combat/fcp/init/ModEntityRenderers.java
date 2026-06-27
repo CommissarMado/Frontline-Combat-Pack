@@ -2,6 +2,7 @@ package frontline.combat.fcp.init;
 
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.overlay.FcpPilotOverlay;
+import frontline.combat.fcp.client.renderer.Aavp.AAVPRenderer;
 import frontline.combat.fcp.client.renderer.Bmp.BMP1Renderer;
 import frontline.combat.fcp.client.renderer.Bmp.BMP1URenderer;
 import frontline.combat.fcp.client.renderer.Bmp.BMP2Renderer;
@@ -74,6 +75,8 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.BMP1U.get(), BMP1URenderer::new);
 
         event.registerEntityRenderer(ModEntities.BMP2.get(), BMP2Renderer::new);
+
+        event.registerEntityRenderer(ModEntities.AAVP.get(), AAVPRenderer::new);
 
         event.registerEntityRenderer(ModEntities.LAV25.get(), Lav25Renderer::new);
 

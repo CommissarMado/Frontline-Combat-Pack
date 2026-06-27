@@ -2,9 +2,7 @@ package frontline.combat.fcp.client.renderer.Huey;
 
 import com.atsuishio.superbwarfare.client.renderer.entity.VehicleRenderer;
 import frontline.combat.fcp.client.model.Huey.HueyDoorGunnerM134Model;
-import frontline.combat.fcp.client.model.Huey.HueyDoorGunnerM60Model;
 import frontline.combat.fcp.entity.vehicle.Huey.HueyDoorGunnerM134Entity;
-import frontline.combat.fcp.entity.vehicle.Huey.HueyDoorGunnerM60Entity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 
