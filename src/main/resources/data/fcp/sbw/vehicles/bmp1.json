@@ -39,7 +39,7 @@
         "Direction": "Barrel"
       },
       "CanRotateHead": false,
-      "Weapons": ["Cannon", "Coax"],
+      "Weapons": ["Cannon", "Coax", "Malyutka"],
       "Transform": "Turret",
       "Position": [0, 0, 0],
       "MinPitch": -15,
@@ -63,7 +63,7 @@
     "EngineSoundVolume": 1.0
   },
   "Weapons": {
-    "malyutka": {
+    "Malyutka": {
       "DefaultFireMode": "Semi",
       "AvailableFireModes": "Semi",
       "DefaultZoom": 3,

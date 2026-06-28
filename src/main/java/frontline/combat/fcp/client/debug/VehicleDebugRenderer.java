@@ -126,6 +126,8 @@ public final class VehicleDebugRenderer {
             List<Vec3> points = v.computed().getTerrainCompat();
             if (points == null || points.isEmpty()) return;
 
+            // Vehicle's terrainCompat list, placed flat (yaw-only) exactly like SBW samples
+            // them. Count/layout match the vehicle data (e.g. MATV = 6 points).
             Matrix4d transform = v.getWheelsTransform(pt);
             for (Vec3 local : points) {
                 Vector4d w = v.transformPosition(transform, local.x, local.y, local.z);

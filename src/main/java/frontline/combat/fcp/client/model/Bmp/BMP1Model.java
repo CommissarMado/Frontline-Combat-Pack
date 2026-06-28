@@ -24,7 +24,7 @@ public class BMP1Model extends VehicleModel<BMP1Entity> {
     public @Nullable VehicleModel.TransformContext<BMP1Entity> collectTransform(String boneName) {
         // Hide the Malyutka missile once it has been fired.
         if ("Malyutka".equals(boneName)) {
-            return (bone, vehicle, state) -> bone.setHidden(vehicle.GetWeaponState("malyutka", 0));
+            return (bone, vehicle, state) -> bone.setHidden(vehicle.GetWeaponState("Malyutka", 0));
         }
 
         return super.collectTransform(boneName);

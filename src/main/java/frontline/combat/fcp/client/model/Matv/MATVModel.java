@@ -27,7 +27,6 @@ public class MATVModel extends FCPVehicleModel<MATVEntity> {
         return false;
     }
 
-
     @Override
     public @Nullable VehicleModel.TransformContext<MATVEntity> collectTransform(String boneName) {
         VehicleModel.TransformContext<MATVEntity> turn =
