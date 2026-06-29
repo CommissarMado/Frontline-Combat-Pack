@@ -2,16 +2,16 @@
   "ID": "fcp:bmp1",
   "MaxHealth": 270,
   "MaxEnergy": 5000000,
-  "TurretPos": [0.043375, 2.060769, -0.309344],
+  "TurretPos": [0.036869, 1.751654, -0.262942],
   "TurretTurnSpeed": [1.5, 1.0],
   "TurretPitchRange": [-10, 30],
   "TurretControllerIndex": 1,
-  "BarrelPos": [-0.036825, 0.184587, 0.878656],
+  "BarrelPos": [-0.031301, 0.156899, 0.746858],
   "OBB": [
-    {"Size": [0.25, 0.75, 3.5], "Position": [1.6, 0.75, -0.05], "Part": "WheelLeft"},
-    {"Size": [0.25, 0.75, 3.5], "Position": [-1.6, 0.75, -0.05], "Part": "WheelRight"},
-    {"Size": [1.6, 0.75, 4.15], "Position": [0, 1.25, 0.25], "Part": "Body"},
-    {"Size": [1.0, 0.25, 1], "Position": [0, 0.25, 0], "Part": "Turret", "Transform": "Turret", "Rotation": "Turret"}
+    {"Size": [0.2125, 0.6375, 2.975], "Position": [1.36, 0.6375, -0.0425], "Part": "WheelLeft"},
+    {"Size": [0.2125, 0.6375, 2.975], "Position": [-1.36, 0.6375, -0.0425], "Part": "WheelRight"},
+    {"Size": [1.36, 0.6375, 3.5275], "Position": [0.0, 1.0625, 0.2125], "Part": "Body"},
+    {"Size": [0.85, 0.2125, 0.85], "Position": [0.0, 0.2125, 0.0], "Part": "Turret", "Transform": "Turret", "Rotation": "Turret"}
   ],
   "Seats": [
     {
@@ -20,7 +20,7 @@
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [0.98625, 2.092744, 2.260175]
+        "Position": [0.838312, 1.778832, 1.921149]
       },
       "Transform": "Vehicle",
       "Position": [0, 0, 0],
@@ -35,7 +35,7 @@
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
-        "Position": [0.36845, 0.254644, -0.194312],
+        "Position": [0.313182, 0.216447, -0.165165],
         "Direction": "Barrel"
       },
       "CanRotateHead": false,
@@ -76,7 +76,7 @@
       "ExplosionDamage": 65,
       "ExplosionRadius": 6,
       "Velocity": 2.5,
-      "ShootPos": {"Transform": "Barrel", "Positions": [[0.019256, 0.338075, 0.547013]], "Directions": [[0, 0.1, 1]]},
+      "ShootPos": {"Transform": "Barrel", "Positions": [[0.016368, 0.287364, 0.464961]], "Directions": [[0, 0.1, 1]]},
       "Crosshair": "@VehicleCommonMissile",
       "CrosshairColor": "0x00FF66",
       "SoundRadius": 32,
@@ -121,7 +121,7 @@
       },
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[0.0247, 0.004644, 1.868188]],
+        "Positions": [[0.020995, 0.003947, 1.58796]],
         "Directions": ["Barrel"]
       }
     },
@@ -155,7 +155,7 @@
       "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[-0.2, 0.003569, 0.4]],
+        "Positions": [[-0.17, 0.003034, 0.34]],
         "Directions": ["Barrel"]
       }
     }
@@ -213,8 +213,8 @@
   },
   "HudType": "@Land",
   "TerrainCompat": [
-    [1.6, 0, 2.15], [1.6, 0, 1.075], [1.6, 0, 0], [1.6, 0, -1.25], [1.6, 0, -2.5],
-    [-1.6, 0, 2.15], [-1.6, 0, 1.075], [-1.6, 0, 0], [-1.6, 0, -1.25], [-1.6, 0, -2.5]
+    [1.36, 0, 1.8275], [1.36, 0, 0.91375], [1.36, 0, 0.0], [1.36, 0, -1.0625], [1.36, 0, -2.125],
+    [-1.36, 0, 1.8275], [-1.36, 0, 0.91375], [-1.36, 0, 0.0], [-1.36, 0, -1.0625], [-1.36, 0, -2.125]
   ],
   "InertiaRotateRate": 1.5
 }
