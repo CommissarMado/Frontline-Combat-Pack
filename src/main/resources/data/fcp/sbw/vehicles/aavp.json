@@ -1,27 +1,23 @@
 {
-  "ID": "fcp:btr82",
+  "ID": "fcp:aavp",
   "MaxHealth": 250,
   "MaxEnergy": 5500000,
   "OBB": [
-    {"Size": [0.2, 0.62, 0.62], "Position": [1.33, 0.625, 2.46], "Part": "WheelLeft"},
-    {"Size": [0.2, 0.62, 0.62], "Position": [1.33, 0.625, 1.02], "Part": "WheelLeft"},
-    {"Size": [0.2, 0.62, 0.62], "Position": [1.33, 0.625, -0.92], "Part": "WheelLeft"},
-    {"Size": [0.2, 0.62, 0.62], "Position": [1.33, 0.625, -2.36], "Part": "WheelLeft"},
-    {"Size": [0.2, 0.62, 0.62], "Position": [-1.33, 0.625, 2.46], "Part": "WheelRight"},
-    {"Size": [0.2, 0.62, 0.62], "Position": [-1.33, 0.625, 1.02], "Part": "WheelRight"},
-    {"Size": [0.2, 0.62, 0.62], "Position": [-1.33, 0.625, -0.92], "Part": "WheelRight"},
-    {"Size": [0.2, 0.62, 0.62], "Position": [-1.33, 0.625, -2.36], "Part": "WheelRight"},
-    {"Size": [1.43, 0.72, 4.0], "Position": [0, 1.4, 0.25], "Part":  "Body"},
-    {"Size": [1.55, 0.5, 0.65], "Position": [0, 1.75, -2], "Part":  "MainEngine"},
-    {"Size": [0.75, 0.45, 0.75], "Position": [0, 0.45, 0], "Part": "Turret", "Transform": "Turret", "Rotation": "Turret"}
+    {"Size": [0.255, 0.527, 3.1], "Position": [1.2155, 0.53125, -0.5], "Part": "WheelLeft"},
+    {"Size": [0.255, 0.527, 3.1], "Position": [-1.2155, 0.53125, -0.5], "Part": "WheelRight"},
+    {"Size": [1, 0.35, 3.25], "Position": [0.0, 0.9, -0.5], "Part": "Body"},
+    {"Size": [1.5, 0.65, 3.75], "Position": [0.0, 1.775, 0], "Part": "Body"},
+    {"Size": [1.6, 0.35, 1.15], "Position": [0.0, 1, 1.5], "Part": "Body"},
+    {"Size": [0.7, 0.35, 0.8], "Position": [0.0, 0, 0], "Part": "Turret", "Transform": "Turret", "Rotation": "Turret"}
   ],
   "Seats": [
     {
+      "BanHand": true,
       "HidePassenger": true,
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [0.523556, 2.48535, 2.220112]
+        "Position": [0.445023, 2.112547, 1.887095]
       },
       "Transform": "Vehicle",
       "Position": [0, 0, 0],
@@ -36,18 +32,15 @@
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
-        "Position": [0.2826125, -0.21386875, 1.01259375],
+        "Position": [-0.305, 0.4, 0.05],
         "Direction": "Barrel"
       },
       "CanRotateHead": false,
-      "Weapons": [
-        "Cannon",
-        "Coax"
-      ],
+      "Weapons": ["Cannon", "Coax"],
       "Transform": "Turret",
       "Position": [0, 0, 0],
       "MinPitch": -15,
-      "MaxPitch": 32.5
+      "MaxPitch": 25
     }
   ],
   "Weapons": {
@@ -59,12 +52,12 @@
       "IsHighExplosiveProjectile": false,
       "EmptyReloadTime": 180,
       "DefaultZoom": 3,
-      "RPM": 330,
+      "RPM": 200,
       "Velocity": 20,
-      "Damage": 50,
+      "Damage": 60,
       "ExplosionDamage": 0,
       "ExplosionRadius": 0,
-      "HeatPerShoot": 8,
+      "HeatPerShoot": 10,
       "NaturalCooldown": 1,
       "RecoilTime": 31,
       "RecoilForce": 0.62,
@@ -72,7 +65,7 @@
       "Spread": 0.5,
       "CrosshairColor": "0x66FF00",
       "Crosshair": "@VehicleRuApc",
-      "Name": "weapon.fcp.2a72_30mm_ap",
+      "Name": "weapon.fcp.m242_bushmaster_ap",
       "SoundInfo": {
         "Fire1P": "fcp:lav25_fire_1p",
         "Fire3P": "fcp:lav25_fire_3p",
@@ -89,30 +82,34 @@
             "IsHighExplosiveProjectile": true,
             "Velocity": 25,
             "Damage": 15,
-            "ExplosionDamage": 16,
+            "ExplosionDamage": 20,
             "ExplosionRadius": 3,
-            "Name": "weapon.fcp.2a72_30mm_he"
+            "Name": "weapon.fcp.m242_bushmaster_he"
           }
         }
       ],
       "Icon": "fcp:textures/screens/vehicle_weapon/25mm_ap.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[0.05316875, -0.05079375, 2.528125]],
-        "Directions": [
-          "Barrel"
-        ]
+        "Positions": [[0, 0, 0.9]],
+        "Directions": ["Barrel"]
       }
+    },
+    "Empty": {
+      "Magazine": 0,
+      "RPM": 0,
+      "Crosshair": "@Empty",
+      "Damage": 0
     },
     "Coax": {
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 600,
+      "RPM": 650,
       "EmptyReloadTime": 160,
       "Velocity": 25,
-      "Damage": 4,
+      "Damage": 5,
       "BypassesArmor": 0.2,
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
@@ -122,7 +119,7 @@
       "Spread": 0.25,
       "Crosshair": "@VehicleCommonGun",
       "CrosshairColor": "0x66FF00",
-      "Name": "weapon.fcp.coaxial_pktm",
+      "Name": "weapon.fcp.m240",
       "SoundInfo": {
         "Fire1P": "fcp:m2_fire_1p",
         "Fire3P": "fcp:m2_fire_3p",
@@ -134,7 +131,7 @@
       "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[-0.404975, 0.0541625, 0.71119375]],
+        "Positions": [[-0.61, 0.01, 0.9]],
         "Directions": ["Barrel"]
       }
     }
@@ -153,22 +150,11 @@
     "Decrement": 0.018,
     "SteeringSpeed": 0.1
   },
-  "TurretPos": [-0.03565625, 2.08718125, 1.23145625],
-  "TurretTurnSpeed": [2.5, 2.3],
-  "TurretPitchRange": [
-    -10,
-    60
-  ],
-  "BarrelPos": [
-    -0.04876875,
-    0.60893125,
-    -0.3707
-  ],
-  "ThirdPersonCameraPos": [
-    0,
-    3,
-    5
-  ],
+  "TurretPos": [-0.5805, 2.72, 1.04058125],
+  "TurretTurnSpeed": [2.5, 1.8],
+  "TurretPitchRange": [-10, 60],
+  "BarrelPos": [0.32395625, 0, 0.466575],
+  "ThirdPersonCameraPos": [0, 3, 5],
   "TurretControllerIndex": 1,
   "HasDecoy": true,
   "UpStep": 1.5,
@@ -211,40 +197,18 @@
     "SympatheticDetonationForce": 1.5,
     "SympatheticDetonationChance": 0.0
   },
-  "ContainerIcon": "fcp:textures/gui/vehicle/type/land_rus.png",
+  "ContainerIcon": "fcp:textures/gui/vehicle/type/land_us.png",
   "Type": "APC",
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0.15,
-        0.09,
-        false
-      ]
+      [0, 0, true],
+      [0, 0, true],
+      [0.15, 0.09, false]
     ]
   },
   "EngineSound": "fcp:lav25_engine",
   "HudType": "@Land",
-  "TerrainCompat": [
-    [1.13, 0, 3.08], [1.13, 0, 1.64], [1.13, 0, -0.30], [1.13, 0, -1.84],
-    [1.13, 0, 1.84], [1.13, 0, 0.40], [1.13, 0, -1.54], [1.13, 0, -2.98],
-    [1.53, 0, 3.08], [1.53, 0, 1.64], [1.53, 0, -0.30], [1.53, 0, -1.84],
-    [1.53, 0, 1.84], [1.53, 0, 0.40], [1.53, 0, -1.54], [1.53, 0, -2.98],
-
-    [-1.13, 0, 3.08], [-1.13, 0, 1.64], [-1.13, 0, -0.30], [-1.13, 0, -1.84],
-    [-1.13, 0, 1.84], [-1.13, 0, 0.40], [-1.13, 0, -1.54], [-1.13, 0, -2.98],
-    [-1.53, 0, 3.08], [-1.53, 0, 1.64], [-1.53, 0, -0.30], [-1.53, 0, -1.84],
-    [-1.53, 0, 1.84], [-1.53, 0, 0.40], [-1.53, 0, -1.54], [-1.53, 0, -2.98]
-  ],
+  "TerrainCompat": [[0.9826, 0, 1.3549], [-0.9826, 0, 1.3549], [0.9826, 0, -1.3549], [-0.9826, 0, -1.3549]],
   "InertiaRotateRate": 1.25
 }
