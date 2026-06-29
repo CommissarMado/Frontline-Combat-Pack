@@ -17,6 +17,7 @@
   ],
   "Seats": [
     {
+      "BanHand": true,
       "HidePassenger": true,
       "CameraPos": {
         "Transform": "Vehicle",
@@ -31,6 +32,7 @@
       "MaxPitch": 32.5
     },
     {
+      "BanHand": true,
       "HidePassenger": true,
       "IsEnclosed": true,
       "CameraPos": {

@@ -1,6 +1,6 @@
 {
   "ID": "fcp:aavp",
-  "MaxHealth": 250,
+  "MaxHealth": 290,
   "MaxEnergy": 5500000,
   "OBB": [
     {"Size": [0.255, 0.527, 3.1], "Position": [1.2155, 0.53125, -0.5], "Part": "WheelLeft"},
@@ -44,54 +44,42 @@
     }
   ],
   "Weapons": {
-    "Cannon": {
+    "Coax": {
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
-      "Projectile": "superbwarfare:small_cannon_shell",
+      "Projectile": "superbwarfare:projectile",
+      "DefaultZoom": 3,
+      "RPM": 500,
+      "Damage": 15,
+      "BypassesArmor": 2,
       "IsArmorPiercingProjectile": true,
       "IsHighExplosiveProjectile": false,
-      "EmptyReloadTime": 180,
-      "DefaultZoom": 3,
-      "RPM": 200,
-      "Velocity": 20,
-      "Damage": 60,
-      "ExplosionDamage": 0,
-      "ExplosionRadius": 0,
-      "HeatPerShoot": 10,
+      "Velocity": 25,
+      "RecoilTime": 32,
+      "EmptyReloadTime": 200,
+      "Magazine": 200,
+      "RecoilForce": 0.1,
+      "HeatPerShoot": 5,
       "NaturalCooldown": 1,
-      "RecoilTime": 31,
-      "RecoilForce": 0.62,
-      "ShootAnimationTime": 3,
-      "Spread": 0.5,
+      "ShootAnimationTime": 1,
+      "Spread": 0.25,
       "CrosshairColor": "0x66FF00",
       "Crosshair": "@VehicleRuApc",
-      "Name": "weapon.fcp.m242_bushmaster_ap",
+      "Name": "weapon.fcp.m2a1_browning",
       "SoundInfo": {
-        "Fire1P": "fcp:lav25_fire_1p",
-        "Fire3P": "fcp:lav25_fire_3p",
-        "Fire3PFar": "fcp:lav25_fire_3p_far"
+        "Fire1P": "superbwarfare:m_2_hb_fire_1p",
+        "Fire3P": "superbwarfare:m_2_hb_fire_3p",
+        "Fire3PFar": "superbwarfare:m_2_hb_far",
+        "Fire3PVeryFar": "superbwarfare:m_2_hb_veryfar",
+        "Change": "fcp:into_coax",
+        "VehicleReload": "fcp:m2_reload"
       },
-      "SoundRadius": 24,
-      "AmmoType": [
-        "superbwarfare:small_shell_ap",
-        {
-          "Ammo": "superbwarfare:small_shell_he",
-          "Override": {
-            "Icon": "fcp:textures/screens/vehicle_weapon/25mm_he.png",
-            "IsArmorPiercingProjectile": false,
-            "IsHighExplosiveProjectile": true,
-            "Velocity": 25,
-            "Damage": 15,
-            "ExplosionDamage": 20,
-            "ExplosionRadius": 3,
-            "Name": "weapon.fcp.m242_bushmaster_he"
-          }
-        }
-      ],
-      "Icon": "fcp:textures/screens/vehicle_weapon/25mm_ap.png",
+      "SoundRadius": 16,
+      "AmmoType": "superbwarfare:rifle_ammo",
+      "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[0, 0, 0.9]],
+        "Positions": [[-0.61, 0.01, 0.9]],
         "Directions": ["Barrel"]
       }
     },
@@ -101,37 +89,41 @@
       "Crosshair": "@Empty",
       "Damage": 0
     },
-    "Coax": {
+    "Cannon": {
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
-      "Projectile": "superbwarfare:projectile",
-      "DefaultZoom": 3,
-      "RPM": 650,
-      "EmptyReloadTime": 160,
-      "Velocity": 25,
-      "Damage": 5,
-      "BypassesArmor": 0.2,
+      "Projectile": "superbwarfare:gun_grenade",
+      "DefaultZoom": 2,
+      "RPM": 325,
+      "Magazine": 32,
+      "EmptyReloadTime": 200,
+      "Velocity": 7,
+      "Damage": 0,
+      "ExplosionDamage": 15,
+      "ExplosionRadius": 3,
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
-      "RecoilTime": 16,
-      "RecoilForce": 0.05,
-      "ShootAnimationTime": 1,
-      "Spread": 0.25,
-      "Crosshair": "@VehicleCommonGun",
+      "RecoilTime": 30,
+      "RecoilForce": 0.31,
+      "ShootAnimationTime": 3,
+      "Spread": 0.8,
+      "IsArmorPiercingProjectile": false,
+      "IsHighExplosiveProjectile": true,
+      "Crosshair": "@VehicleRuApc",
       "CrosshairColor": "0x66FF00",
-      "Name": "weapon.fcp.m240",
+      "Name": "weapon.fcp.mk19",
       "SoundInfo": {
-        "Fire1P": "fcp:m2_fire_1p",
-        "Fire3P": "fcp:m2_fire_3p",
-        "Fire3PFar": "fcp:m2_fire_3p_far",
-        "Change": "fcp:coax_equip"
+        "Fire1P": "fcp:mk19_fire_1p",
+        "Fire3P": "fcp:mk19_fire_3p",
+        "Fire3PFar": "fcp:mk19_fire_3p_far",
+        "VehicleRelaod": "fcp:mk19_reload"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
-      "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png",
+      "AmmoType": "superbwarfare:grenade_40mm",
+      "Icon": "fcp:textures/screens/vehicle_weapon/40mm.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[-0.61, 0.01, 0.9]],
+        "Positions": [[0, 0, 0.9]],
         "Directions": ["Barrel"]
       }
     }
@@ -142,13 +134,13 @@
     "EnergyCostRate": 96,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "TrackRotSpeed": 1.9,
+    "TrackRotSpeed": 1.7,
     "TrackDifferential": 0.8,
-    "MaxForwardSpeedRate": 0.95,
-    "MaxBackwardSpeedRate": 0.32,
-    "Increment": 0.025,
-    "Decrement": 0.018,
-    "SteeringSpeed": 0.1
+    "MaxForwardSpeedRate": 0.57,
+    "MaxBackwardSpeedRate": 0.22,
+    "Increment": 0.020,
+    "Decrement": 0.014,
+    "SteeringSpeed": 0.085
   },
   "TurretPos": [-0.5805, 2.72, 1.04058125],
   "TurretTurnSpeed": [2.5, 1.8],
@@ -159,11 +151,11 @@
   "HasDecoy": true,
   "UpStep": 1.5,
   "RotateOffsetHeight": 2.2,
-  "Mass": 13.6,
+  "Mass": 19,
   "DamageModifiers": [
     "minecraft:lava - -11",
     "minecraft:lava * 10",
-    "All * 0.3",
+    "All * 0.34",
     "minecraft:arrow * 1.5",
     "minecraft:trident * 1.5",
     "minecraft:mob_attack * 2.5",
@@ -186,7 +178,7 @@
     "@superbwarfare:javelin_missile * 0.8",
     "@superbwarfare:igla_9k38_missile * 0.75",
     "@superbwarfare:wire_guide_missile * 1",
-    "All - 9"
+    "All - 8"
   ],
   "VehicleContainerType": "Medium",
   "DestroyInfo": {
@@ -210,5 +202,5 @@
   "EngineSound": "fcp:lav25_engine",
   "HudType": "@Land",
   "TerrainCompat": [[0.9826, 0, 1.3549], [-0.9826, 0, 1.3549], [0.9826, 0, -1.3549], [-0.9826, 0, -1.3549]],
-  "InertiaRotateRate": 1.25
+  "InertiaRotateRate": 1.1
 }

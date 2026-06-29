@@ -132,8 +132,8 @@ public final class VpbIntegrationConfig {
 
     private static void writeDefault(Path path) throws IOException {
         JsonObject root = new JsonObject();
-        root.addProperty("_comment",
-                "FCP <-> Point Blank integration. Keys are registry ids. projectileWarheads maps a VPB "
+        root.addProperty("comment",
+                "FCP  Point Blank integration. Keys are registry ids. projectileWarheads maps a VPB "
                         + "projectile ENTITY id to the SBW warhead it is replaced by on impact: directDamage is "
                         + "a flat hit on the struck entity (runs through SBW vehicle DamageModifiers/armor), "
                         + "explosionDamage/explosionRadius are the AoE blast. AP = direct only; HE = explosion "
