@@ -26,6 +26,7 @@ import frontline.combat.fcp.entity.vehicle.Lav.Lav25Entity;
 import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdArmedEntity;
 import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdEntity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATV9In1Entity;
+import frontline.combat.fcp.entity.vehicle.Matv.MATVCrowsEntity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATVEntity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATVTOWEntity;
 import frontline.combat.fcp.entity.vehicle.MemeVehicles.BigBirdEntity;
@@ -135,6 +136,9 @@ public class ModEntities {
             EntityType.Builder.of(MATVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<MATVTOWEntity>> MATV_TOW = register("matv_tow",
             EntityType.Builder.of(MATVTOWEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<MATVCrowsEntity>> MATV_CROW = register("matv_crow",
+            EntityType.Builder.of(MATVCrowsEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+
     public static final RegistryObject<EntityType<MATV9In1Entity>> MATV_9IN1 = register("matv_9in1",
             EntityType.Builder.of(MATV9In1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<HumveeEntity>> HUMVEE = register("humvee",

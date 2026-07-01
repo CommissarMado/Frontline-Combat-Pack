@@ -1,12 +1,7 @@
 {
-  "ID": "fcp:viper",
+  "ID": "fcp:mi17",
   "MaxHealth": 280,
   "MaxEnergy": 8000000,
-  "TurretPos": [0.0, 0.8125, 3.237137],
-  "TurretPitchRange": [-60, 8],
-  "TurretYawRange": [-75, 75],
-  "BarrelPos": [0.0, 0.0, 0.069288],
-  "TurretControllerIndex": 1,
   "OBB": [
     {"Size": [1.5, 1.25, 6.5], "Position": [0, 2.25, -0.85], "Part": "Body"},
     {"Size": [1, 0.5, 3.5], "Position": [0, 3.75, -1], "Part": "MainEngine"},
@@ -19,13 +14,16 @@
   "Seats": [
     {
       "IsEnclosed": true,
+      "BanHand": true,
       "Transform": "Vehicle",
       "Position": [0.7, 0.9, 3.2],
       "Sensitivity": [0, 0, 0],
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [0.7, 2.5, 3.2]
+        "Position": [0.7, 2.5, 3.2],
+        "UseAircraftCamera": true,
+        "AircraftCameraPos": [-3, 3, -10]
       },
       "CanRotateHead": false
     },
@@ -182,6 +180,7 @@
     "EngineSoundVolume": 1.5
   },
   "EngineSound": "superbwarfare:ah_6_engine",
+  "ThirdPersonCameraPos": [2.5, 3.5, 10],
   "UpStep": 1.1,
   "RotateOffsetHeight": 1.5,
   "Mass": 1.0,
@@ -203,3 +202,4 @@
   "HudType": "@Helicopter",
   "TerrainCompat": [[-1.4, 0, 3], [1.4, 0, 3],[-1.4, 0, 2.5],[1.4, 0, 2.5],[-1.4, 0, 2],[-1.4, 0, 2]]
 }
+

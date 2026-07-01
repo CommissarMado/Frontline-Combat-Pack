@@ -23,6 +23,7 @@ import frontline.combat.fcp.client.renderer.Lav.Lav25Renderer;
 import frontline.combat.fcp.client.renderer.Littlebird.LittlebirdArmedRenderer;
 import frontline.combat.fcp.client.renderer.Littlebird.LittlebirdRenderer;
 import frontline.combat.fcp.client.renderer.Matv.MATV9In1Renderer;
+import frontline.combat.fcp.client.renderer.Matv.MATVCrowsRenderer;
 import frontline.combat.fcp.client.renderer.Matv.MATVRenderer;
 import frontline.combat.fcp.client.renderer.Matv.MATVTOWRenderer;
 import frontline.combat.fcp.client.renderer.MemeVehicles.BigBirdRenderer;
@@ -107,6 +108,7 @@ public class ModEntityRenderers {
 
         event.registerEntityRenderer(ModEntities.MATV.get(), MATVRenderer::new);
         event.registerEntityRenderer(ModEntities.MATV_TOW.get(), MATVTOWRenderer::new);
+        event.registerEntityRenderer(ModEntities.MATV_CROW.get(), MATVCrowsRenderer::new);
         event.registerEntityRenderer(ModEntities.MATV_9IN1.get(), MATV9In1Renderer::new);
 
         event.registerEntityRenderer(ModEntities.HUMVEE.get(), HumveeRenderer::new);
