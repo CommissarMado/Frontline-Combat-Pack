@@ -22,10 +22,13 @@ import frontline.combat.fcp.client.renderer.Kamaz.KamazRenderer;
 import frontline.combat.fcp.client.renderer.Lav.Lav25Renderer;
 import frontline.combat.fcp.client.renderer.Littlebird.LittlebirdArmedRenderer;
 import frontline.combat.fcp.client.renderer.Littlebird.LittlebirdRenderer;
+import frontline.combat.fcp.client.renderer.Matv.MATV9In1Renderer;
 import frontline.combat.fcp.client.renderer.Matv.MATVRenderer;
+import frontline.combat.fcp.client.renderer.Matv.MATVTOWRenderer;
 import frontline.combat.fcp.client.renderer.MemeVehicles.BigBirdRenderer;
 import frontline.combat.fcp.client.renderer.MemeVehicles.LaHumveeRenderer;
 import frontline.combat.fcp.client.renderer.MemeVehicles.WolfRenderer;
+import frontline.combat.fcp.client.renderer.Mi17.MI17Renderer;
 import frontline.combat.fcp.client.renderer.Novator.NovatorRenderer;
 import frontline.combat.fcp.client.renderer.Projectile.Hellfire.WireGuidedHellfireRenderer;
 import frontline.combat.fcp.client.renderer.Projectile.Malyutka.MalyutkaRenderer;
@@ -103,11 +106,15 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.NOVATOR.get(), NovatorRenderer::new);
 
         event.registerEntityRenderer(ModEntities.MATV.get(), MATVRenderer::new);
+        event.registerEntityRenderer(ModEntities.MATV_TOW.get(), MATVTOWRenderer::new);
+        event.registerEntityRenderer(ModEntities.MATV_9IN1.get(), MATV9In1Renderer::new);
 
         event.registerEntityRenderer(ModEntities.HUMVEE.get(), HumveeRenderer::new);
         event.registerEntityRenderer(ModEntities.HUMVEE_TOW.get(), HumveeTOWRenderer::new);
 
         event.registerEntityRenderer(ModEntities.BTR82.get(), BTR82Renderer::new);
+
+        event.registerEntityRenderer(ModEntities.MI17.get(), MI17Renderer::new);
 
         // Projectiles
         event.registerEntityRenderer(ModEntities.LOCK_ON_HELLFIRE.get(), LockOnHellfireRenderer::new);
