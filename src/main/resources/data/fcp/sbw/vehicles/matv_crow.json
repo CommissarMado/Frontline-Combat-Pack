@@ -32,7 +32,7 @@
       }
     },
     {
-      "IsEnclosed": false,
+      "IsEnclosed": true,
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Transform": "Barrel",
