@@ -4645,7 +4645,7 @@
 					]
 				},
 				{
-					"name": "turret1",
+					"name": "turret",
 					"parent": "root",
 					"pivot": [0.7084, 44.3032, 12.8401],
 					"cubes": [
@@ -5027,7 +5027,7 @@
 				},
 				{
 					"name": "BarrelOccilator",
-					"parent": "turret1",
+					"parent": "turret",
 					"pivot": [-0.0908, 51.3378, -18.2695]
 				},
 				{
