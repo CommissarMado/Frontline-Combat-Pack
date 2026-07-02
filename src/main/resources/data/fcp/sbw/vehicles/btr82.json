@@ -38,7 +38,7 @@
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
-        "Position": [0.2826125, -0.21386875, 1.01259375],
+        "Position": [0.2826125, -0.21386875, 1.11259375],
         "Direction": "Barrel"
       },
       "CanRotateHead": false,

@@ -110,7 +110,7 @@
       "MaxPitch": 15,
       "MinYaw": -75,
       "MaxYaw": 75,
-      "BanHand": true
+      "BanHand": false
     },
     {
       "IsEnclosed": true,
@@ -121,7 +121,7 @@
       "MaxPitch": 15,
       "MinYaw": -75,
       "MaxYaw": 75,
-      "BanHand": true
+      "BanHand": false
     }
   ],
   "EngineType": "Wheel",

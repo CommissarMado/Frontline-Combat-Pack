@@ -1,6 +1,6 @@
 {
   "ID": "fcp:mi17",
-  "MaxHealth": 280,
+  "MaxHealth": 420,
   "MaxEnergy": 8000000,
   "OBB": [
     {
@@ -340,28 +340,28 @@
       "BanHand": true
     },
     {
-    "IsEnclosed": true,
-    "Transform": "Vehicle",
-    "Position": [
-      -0.88,
-      0.8,
-      -2.8
-    ],
-    "CameraPos": {
+      "IsEnclosed": true,
       "Transform": "Vehicle",
-      "UseFixedCameraPos": true,
       "Position": [
         -0.88,
-        2.0,
+        0.8,
         -2.8
-      ]
-    },
-    "Orientation": -90,
-    "MinPitch": -50,
-    "MaxPitch": 15,
-    "MinYaw": -75,
-    "MaxYaw": 75,
-    "BanHand": true
+      ],
+      "CameraPos": {
+        "Transform": "Vehicle",
+        "UseFixedCameraPos": true,
+        "Position": [
+          -0.88,
+          2.0,
+          -2.8
+        ]
+      },
+      "Orientation": -90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
     },
     {
       "IsEnclosed": true,
@@ -393,10 +393,10 @@
     "EnergyCostRate": 280,
     "Increment": 0.9,
     "Decrement": 0.9,
-    "PitchSpeed": 0.85,
-    "YawSpeed": 0.9,
-    "RollSpeed": 0.7,
-    "LiftSpeed": 0.95,
+    "PitchSpeed": 0.55,
+    "YawSpeed": 0.6,
+    "RollSpeed": 0.45,
+    "LiftSpeed": 0.92,
     "EngineStartSound": "superbwarfare:ah_6_engine_start",
     "EngineSoundVolume": 1.5
   },
@@ -427,7 +427,7 @@
     "ExplosionRadius": 12,
     "CrashPassengers": true
   },
-  "ContainerIcon": "fcp:textures/gui/vehicle/type/air_us.png",
+  "ContainerIcon": "fcp:textures/gui/vehicle/type/air_rus.png",
   "Type": "Helicopter",
   "HudType": "@Helicopter",
   "TerrainCompat": [

@@ -124,7 +124,7 @@
   },
   "TurretPos": [0.02378125, 2.76895, -0.31960625],
   "BarrelPos": [0.00333125, 0.80206875, 0.000425],
-  "TurretTurnSpeed": [15, 15],
+  "TurretTurnSpeed": [5, 5],
   "TurretPitchRange": [-9, 40],
   "TurretControllerIndex": 1,
   "ThirdPersonCameraPos": [0, 1, 3],
@@ -191,7 +191,7 @@
   },
   "EngineSound": "superbwarfare:lav_150_engine",
   "HornSound": "superbwarfare:truck_horn",
-  "HudType": "@Empty",
+  "HudType": "@Land",
   "TerrainCompat": [
     [1.0, 0, 2.75],
     [-1.0, 0, 2.75],
