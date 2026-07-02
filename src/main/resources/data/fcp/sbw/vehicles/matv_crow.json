@@ -10,7 +10,7 @@
     {"Size": [1.0375, 1.140625, 1.34375], "Position": [0, 1.65625, 0.015625], "Part": "Body"},
     {"Size": [1.2375, 0.765625, 0.9375], "Position": [0, 2.03125, -2.265625], "Part": "Body"},
     {"Size": [1.2375, 0.375, 0.96875], "Position": [0, 1.703125, 2.328125], "Part": "MainEngine"},
-    {"Size": [0.5, 0.3, 0.8], "Position": [0, 0.4, 0.1], "Part": "Body", "Transform": "Turret", "Rotation": "Turret"}
+    {"Size": [0.5, 0.5, 0.5], "Position": [0, 0.5, 0.1], "Part": "Body", "Transform": "Turret", "Rotation": "Turret"}
   ],
   "Seats": [
     {
@@ -36,33 +36,19 @@
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Transform": "Barrel",
-        "Position": [
-          0,
-          0.65,
-          0
-        ],
+        "Position": [0, 0.65, 0],
         "Direction": "Barrel"
       },
-      "Transform": "Turret",
-      "Position": [
-        0,
-        -1,
-        0
-      ],
+      "Transform": "Vehicle",
+      "Position": [0.45, 0.605, -0.75],
       "MinPitch": -9,
       "MaxPitch": 40,
-      "Weapons": [
-        "TOW"
-      ]
+      "Weapons": ["Crows"]
     },
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [
-        -0.45,
-        0.605,
-        0
-      ],
+      "Position": [-0.45, 0.605, 0],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -76,25 +62,7 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [
-        0.45,
-        0.605,
-        -0.75
-      ],
-      "MinPitch": -60,
-      "MaxPitch": 60,
-      "MinYaw": -95,
-      "MaxYaw": 95,
-      "BanHand": true
-    },
-    {
-      "IsEnclosed": true,
-      "Transform": "Vehicle",
-      "Position": [
-        -0.45,
-        0.605,
-        -0.75
-      ],
+      "Position": [-0.45, 0.605, -0.75],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -103,31 +71,43 @@
     }
   ],
   "Weapons": {
-    "TOW": {
-      "DefaultFireMode": "Semi",
-      "AvailableFireModes": "Semi",
+    "Crows": {
+      "Icon": "fcp:textures/screens/vehicle_weapon/12_7mm.png",
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Spread": 0.25,
+      "CrosshairColor": "0x00ff66",
+      "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "Name": "weapon.fcp.malyutka",
-      "AmmoType": "superbwarfare:medium_anti_ground_missile",
-      "Projectile": "fcp:malyutka",
-      "Magazine": 1,
-      "EmptyReloadTime": 280,
-      "Damage": 500,
-      "ExplosionDamage": 65,
-      "ExplosionRadius": 6,
-      "Velocity": 2.5,
-      "ShootPos": {"Transform": "Barrel", "Positions": [[0, 0, 1]], "Directions": [[0, 0, 1]]},
-      "Crosshair": "@VehicleCommonMissile",
-      "CrosshairColor": "0x00FF66",
-      "SoundRadius": 32,
-      "SoundInfo": {
-        "Fire1P": "fcp:bmp1_malyutka_fire_1p",
-        "Fire3P": "fcp:bmp1_malyutka_fire_3p",
-        "Fire3PFar": "fcp:bmp1_malyutka_fire_3p_far",
-        "VehicleReload": "fcp:bmp1_malyutka_reload",
-        "Change": "fcp:bmp1_into_malyutka"
+      "RPM": 500,
+      "Damage": 15,
+      "BypassesArmor": 2,
+      "IsArmorPiercingProjectile": true,
+      "IsHighExplosiveProjectile": false,
+      "Velocity": 25,
+      "RecoilTime": 16,
+      "RecoilForce": 0.05,
+      "HeatPerShoot": 5,
+      "NaturalCooldown": 1,
+      "ShootAnimationTime": 1,
+      "AmmoType": "superbwarfare:rifle_ammo",
+      "ShootPos": {
+        "Transform": "Barrel",
+        "Positions": [[0.0, 0.025, 1.25]],
+        "Directions": [
+          "Barrel"
+        ]
       },
-      "Icon": "fcp:textures/screens/vehicle_weapon/malyutka.png"
+      "Crosshair": "@VehicleCommonGun",
+      "Name": "weapon.fcp.kord_12_7mm_rws",
+      "SoundInfo": {
+        "Fire1P": "superbwarfare:m_2_hb_fire_1p",
+        "Fire3P": "superbwarfare:m_2_hb_fire_3p",
+        "Fire3PFar": "superbwarfare:m_2_hb_far",
+        "Fire3PVeryFar": "superbwarfare:m_2_hb_veryfar",
+        "Change": "fcp:into_coax"
+      },
+      "SoundRadius": 16
     }
   },
   "EngineType": "Wheel",
@@ -142,8 +122,8 @@
     "Decrement": 0.02,
     "SteeringSpeed": 0.1
   },
-  "TurretPos": [-0.02865, 2.76895, -0.31813125],
-  "BarrelPos": [-0.00026875, 0.83535625, -0.11468125],
+  "TurretPos": [0.02378125, 2.76895, -0.31960625],
+  "BarrelPos": [0.00333125, 0.80206875, 0.000425],
   "TurretTurnSpeed": [15, 15],
   "TurretPitchRange": [-9, 40],
   "TurretControllerIndex": 1,

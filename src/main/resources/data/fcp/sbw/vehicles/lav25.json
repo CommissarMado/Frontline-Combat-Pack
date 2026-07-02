@@ -48,6 +48,84 @@
       "MinPitch": -15,
       "MaxPitch": 32.5
     }
+  ,
+    {
+      "HidePassenger": true,
+      "IsEnclosed": true,
+      "BanHand": true,
+      "CameraPos": {
+        "UseSimulate3P": true
+      },
+      "CanRotateHead": true,
+      "Transform": "Vehicle",
+      "Position": [0, 1, 0]
+    },
+    {
+      "HidePassenger": true,
+      "IsEnclosed": true,
+      "BanHand": true,
+      "CameraPos": {
+        "UseSimulate3P": true
+      },
+      "CanRotateHead": true,
+      "Transform": "Vehicle",
+      "Position": [0, 1, 0]
+    },
+    {
+      "HidePassenger": true,
+      "IsEnclosed": true,
+      "BanHand": true,
+      "CameraPos": {
+        "UseSimulate3P": true
+      },
+      "CanRotateHead": true,
+      "Transform": "Vehicle",
+      "Position": [0, 1, 0]
+    },
+    {
+      "HidePassenger": true,
+      "IsEnclosed": true,
+      "BanHand": true,
+      "CameraPos": {
+        "UseSimulate3P": true
+      },
+      "CanRotateHead": true,
+      "Transform": "Vehicle",
+      "Position": [0, 1, 0]
+    },
+    {
+      "HidePassenger": true,
+      "IsEnclosed": true,
+      "BanHand": true,
+      "CameraPos": {
+        "UseSimulate3P": true
+      },
+      "CanRotateHead": true,
+      "Transform": "Vehicle",
+      "Position": [0, 1, 0]
+    },
+    {
+      "HidePassenger": true,
+      "IsEnclosed": true,
+      "BanHand": true,
+      "CameraPos": {
+        "UseSimulate3P": true
+      },
+      "CanRotateHead": true,
+      "Transform": "Vehicle",
+      "Position": [0, 1, 0]
+    },
+    {
+      "HidePassenger": true,
+      "IsEnclosed": true,
+      "BanHand": true,
+      "CameraPos": {
+        "UseSimulate3P": true
+      },
+      "CanRotateHead": true,
+      "Transform": "Vehicle",
+      "Position": [0, 1, 0]
+    }
   ],
   "Weapons": {
     "Cannon": {
