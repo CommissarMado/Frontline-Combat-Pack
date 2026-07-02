@@ -128,7 +128,7 @@
       }
     }
   },
-  "EngineType": "Wheel",
+  "EngineType": "Track",
   "EngineInfo": {
     "Buoyancy": 0.05,
     "EnergyCostRate": 96,

@@ -7492,7 +7492,7 @@
 					"pivot": [21.42872, 9.85491, -0.22008]
 				},
 				{
-					"name": "WheelTurnL1",
+					"name": "WheelL0Turn",
 					"parent": "wheeL",
 					"pivot": [21.44144, 9.86737, -39.79595],
 					"rotation": [-45, 0, 0],
@@ -7668,7 +7668,7 @@
 					]
 				},
 				{
-					"name": "WheelTurnL2",
+					"name": "WheelL1Turn",
 					"parent": "wheeL",
 					"pivot": [21.44144, 9.86737, -15.99595],
 					"rotation": [-45, 0, 0],
@@ -7844,7 +7844,7 @@
 					]
 				},
 				{
-					"name": "WheelL3",
+					"name": "WheelL0",
 					"parent": "wheeL",
 					"pivot": [21.44144, 9.86737, 14.60405],
 					"rotation": [-45, 0, 0],
@@ -8020,7 +8020,7 @@
 					]
 				},
 				{
-					"name": "WheelL4",
+					"name": "WheelL1",
 					"parent": "wheeL",
 					"pivot": [21.44144, 9.86737, 38.40405],
 					"rotation": [-45, 0, 0],
@@ -8201,7 +8201,7 @@
 					"pivot": [-21.42872, 9.85491, -0.22008]
 				},
 				{
-					"name": "WheelTurnR1",
+					"name": "WheelR0Turn",
 					"parent": "wheeR",
 					"pivot": [-21.44144, 9.86737, -39.79595],
 					"rotation": [-45, 0, 0],
@@ -8377,7 +8377,7 @@
 					]
 				},
 				{
-					"name": "WheelTurnR2",
+					"name": "WheelR1Turn",
 					"parent": "wheeR",
 					"pivot": [-21.44144, 9.86737, -15.99595],
 					"rotation": [-45, 0, 0],
@@ -8553,7 +8553,7 @@
 					]
 				},
 				{
-					"name": "WheelR3",
+					"name": "WheelR0",
 					"parent": "wheeR",
 					"pivot": [-21.44144, 9.86737, 14.60405],
 					"rotation": [-45, 0, 0],
@@ -8729,7 +8729,7 @@
 					]
 				},
 				{
-					"name": "WheelR4",
+					"name": "WheelR1",
 					"parent": "wheeR",
 					"pivot": [-21.44144, 9.86737, 38.40405],
 					"rotation": [-45, 0, 0],

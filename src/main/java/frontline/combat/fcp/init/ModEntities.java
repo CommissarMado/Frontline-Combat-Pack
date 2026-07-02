@@ -10,6 +10,7 @@ import frontline.combat.fcp.entity.vehicle.Bmp.BMP1Entity;
 import frontline.combat.fcp.entity.vehicle.Bmp.BMP1UEntity;
 import frontline.combat.fcp.entity.vehicle.Bmp.BMP2Entity;
 import frontline.combat.fcp.entity.vehicle.Btr82.BTR82Entity;
+import frontline.combat.fcp.entity.vehicle.Fmtv.FMTVEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrGLEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrMGEntity;
@@ -147,6 +148,8 @@ public class ModEntities {
             EntityType.Builder.of(HumveeTOWEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<BTR82Entity>> BTR82 = register("btr82",
             EntityType.Builder.of(BTR82Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<FMTVEntity>> FMTV = register("fmtv",
+            EntityType.Builder.of(FMTVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     // Projectiles
     public static final RegistryObject<EntityType<LockOnHellfireEntity>> LOCK_ON_HELLFIRE = register("lock_on_hellfire",
             EntityType.Builder.<LockOnHellfireEntity>of(LockOnHellfireEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f, 0.5f));
