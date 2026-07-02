@@ -3,128 +3,274 @@
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "OBB": [
-    {"Size": [0.2975, 0.5525, 0.5525], "Position": [1.02, 0.612, 2.5], "Part": "WheelLeft"},
-    {"Size": [0.2975, 0.5525, 0.5525], "Position": [1.02, 0.612, -0.95], "Part": "WheelLeft"},
-    {"Size": [0.2975, 0.5525, 0.5525], "Position": [1.02, 0.612, -2.25], "Part": "WheelLeft"},
-    {"Size": [0.2975, 0.5525, 0.5525], "Position": [-1.02, 0.612, 2.5], "Part": "WheelRight"},
-    {"Size": [0.2975, 0.5525, 0.5525], "Position": [-1.02, 0.612, -0.95], "Part": "WheelRight"},
-    {"Size": [0.2975, 0.5525, 0.5525], "Position": [-1.02, 0.612, -2.25], "Part": "WheelRight"},
-    {"Size": [1.105, 1.054, 1.0625], "Position": [0.0, 1.972, 2.8], "Part": "MainEngine"},
-    {"Size": [1.275, 0.4, 2.55], "Position": [0.0, 1.5, -1.3], "Part": "Body"}
+    {
+      "Size": [
+        0.2975,
+        0.5525,
+        0.5525
+      ],
+      "Position": [
+        1.02,
+        0.612,
+        2.5
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.2975,
+        0.5525,
+        0.5525
+      ],
+      "Position": [
+        1.02,
+        0.612,
+        -0.95
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.2975,
+        0.5525,
+        0.5525
+      ],
+      "Position": [
+        1.02,
+        0.612,
+        -2.25
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.2975,
+        0.5525,
+        0.5525
+      ],
+      "Position": [
+        -1.02,
+        0.612,
+        2.5
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.2975,
+        0.5525,
+        0.5525
+      ],
+      "Position": [
+        -1.02,
+        0.612,
+        -0.95
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.2975,
+        0.5525,
+        0.5525
+      ],
+      "Position": [
+        -1.02,
+        0.612,
+        -2.25
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        1.105,
+        1.054,
+        1.0625
+      ],
+      "Position": [
+        0.0,
+        1.972,
+        2.8
+      ],
+      "Part": "MainEngine"
+    },
+    {
+      "Size": [
+        1.275,
+        0.4,
+        2.55
+      ],
+      "Position": [
+        0.0,
+        1.5,
+        -1.3
+      ],
+      "Part": "Body"
+    }
   ],
   "PassengerRenderScale": 0.85,
   "Seats": [
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [0.55, 1.2, 2.65],
+      "Position": [
+        0.55,
+        1.2,
+        2.65
+      ],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
-      "MaxYaw": 95
+      "MaxYaw": 95,
+      "BanHand": true
     },
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [0, 1.2, 2.65],
+      "Position": [
+        0,
+        1.2,
+        2.65
+      ],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
-      "MaxYaw": 95
+      "MaxYaw": 95,
+      "BanHand": true
     },
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-0.55, 1.2, 2.65],
+      "Position": [
+        -0.55,
+        1.2,
+        2.65
+      ],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
-      "MaxYaw": 95
+      "MaxYaw": 95,
+      "BanHand": true
     },
     {
-      "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [0.85, 1.25, 0.5],
+      "Position": [
+        0.85,
+        1.25,
+        0.5
+      ],
       "Orientation": 90,
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
-      "MaxYaw": 75
+      "MaxYaw": 75,
+      "BanHand": true
     },
     {
-      "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-0.85, 1.25, 0.5],
+      "Position": [
+        -0.85,
+        1.25,
+        0.5
+      ],
       "Orientation": -90,
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
-      "MaxYaw": 75
+      "MaxYaw": 75,
+      "BanHand": true
     },
     {
-      "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [0.85, 1.25, -0.5],
+      "Position": [
+        0.85,
+        1.25,
+        -0.5
+      ],
       "Orientation": 90,
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
-      "MaxYaw": 75
+      "MaxYaw": 75,
+      "BanHand": true
     },
     {
-      "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-0.85, 1.25, -0.5],
+      "Position": [
+        -0.85,
+        1.25,
+        -0.5
+      ],
       "Orientation": -90,
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
-      "MaxYaw": 75
+      "MaxYaw": 75,
+      "BanHand": true
     },
     {
-      "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [0.85, 1.25, -1.5],
+      "Position": [
+        0.85,
+        1.25,
+        -1.5
+      ],
       "Orientation": 90,
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
-      "MaxYaw": 75
+      "MaxYaw": 75,
+      "BanHand": true
     },
     {
-      "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-0.85, 1.25, -1.5],
+      "Position": [
+        -0.85,
+        1.25,
+        -1.5
+      ],
       "Orientation": -90,
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
-      "MaxYaw": 75
+      "MaxYaw": 75,
+      "BanHand": true
     },
     {
-      "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [0.85, 1.25, -2.5],
+      "Position": [
+        0.85,
+        1.25,
+        -2.5
+      ],
       "Orientation": 90,
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
-      "MaxYaw": 75
+      "MaxYaw": 75,
+      "BanHand": true
     },
     {
-      "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-0.85, 1.25, -2.5],
+      "Position": [
+        -0.85,
+        1.25,
+        -2.5
+      ],
       "Orientation": -90,
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
-      "MaxYaw": 75
+      "MaxYaw": 75,
+      "BanHand": true
     },
     {
-      "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [0.85, 1.25, -3.25],
+      "Position": [
+        0.85,
+        1.25,
+        -3.25
+      ],
       "Orientation": 90,
       "MinPitch": -50,
       "MaxPitch": 15,
@@ -132,9 +278,12 @@
       "MaxYaw": 75
     },
     {
-      "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-0.85, 1.25, -3.25],
+      "Position": [
+        -0.85,
+        1.25,
+        -3.25
+      ],
       "Orientation": -90,
       "MinPitch": -50,
       "MaxPitch": 15,
@@ -148,8 +297,8 @@
     "EnergyCostRate": 96,
     "WheelRotSpeed": 0.833,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.10,
-    "MaxBackwardSpeedRate": 0.20,
+    "MaxForwardSpeedRate": 1.1,
+    "MaxBackwardSpeedRate": 0.2,
     "Increment": 0.018,
     "Decrement": 0.013,
     "SteeringSpeed": 0.05,

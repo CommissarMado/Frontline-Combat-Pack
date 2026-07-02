@@ -163,7 +163,8 @@
           -10
         ]
       },
-      "CanRotateHead": false
+      "CanRotateHead": false,
+      "IsEnclosed": true
     },
     {
       "Transform": "Vehicle",
@@ -185,7 +186,8 @@
       "MaxPitch": 15,
       "MinYaw": -75,
       "MaxYaw": 75,
-      "BanHand": true
+      "BanHand": true,
+      "IsEnclosed": true
     },
     {
       "Transform": "Vehicle",
@@ -201,7 +203,8 @@
       "MaxPitch": 15,
       "MinYaw": -75,
       "MaxYaw": 75,
-      "BanHand": true
+      "BanHand": true,
+      "IsEnclosed": true
     },
     {
       "Transform": "Vehicle",
@@ -217,7 +220,8 @@
       "MaxPitch": 15,
       "MinYaw": -75,
       "MaxYaw": 75,
-      "BanHand": true
+      "BanHand": true,
+      "IsEnclosed": true
     },
     {
       "Transform": "Vehicle",
@@ -233,7 +237,8 @@
       "MaxPitch": 15,
       "MinYaw": -75,
       "MaxYaw": 75,
-      "BanHand": true
+      "BanHand": true,
+      "IsEnclosed": true
     },
     {
       "Transform": "Vehicle",
