@@ -98,7 +98,8 @@
   "PassengerRenderScale": 0.75,
   "Seats": [
     {
-      "IsEnclosed": true,
+      "BanHand": true,
+"IsEnclosed": true,
       "Transform": "Vehicle",
       "Position": [
         0.629,
@@ -111,6 +112,7 @@
       "MaxYaw": 95
     },
     {
+      "BanHand": true,
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
@@ -135,7 +137,8 @@
       "CanRotateHead": false
     },
     {
-      "IsEnclosed": true,
+      "BanHand": true,
+"IsEnclosed": true,
       "CanRotateBody": true,
       "Transform": "Vehicle",
       "Position": [
@@ -149,7 +152,8 @@
       "MaxYaw": 95
     },
     {
-      "IsEnclosed": true,
+      "BanHand": true,
+"IsEnclosed": true,
       "Transform": "Vehicle",
       "Position": [
         -0.629,
@@ -162,7 +166,8 @@
       "MaxYaw": 95
     },
     {
-      "IsEnclosed": true,
+      "BanHand": true,
+"IsEnclosed": true,
       "Orientation": 90.0,
       "Transform": "Vehicle",
       "Position": [
@@ -176,7 +181,8 @@
       "MaxYaw": 95
     },
     {
-      "IsEnclosed": true,
+      "BanHand": true,
+"IsEnclosed": true,
       "Orientation": 90.0,
       "Transform": "Vehicle",
       "Position": [
@@ -190,7 +196,8 @@
       "MaxYaw": 95
     },
     {
-      "IsEnclosed": true,
+      "BanHand": true,
+"IsEnclosed": true,
       "Orientation": 90.0,
       "Transform": "Vehicle",
       "Position": [
@@ -204,7 +211,8 @@
       "MaxYaw": 95
     },
     {
-      "IsEnclosed": true,
+      "BanHand": true,
+"IsEnclosed": true,
       "Orientation": -90.0,
       "Transform": "Vehicle",
       "Position": [
@@ -218,7 +226,8 @@
       "MaxYaw": 95
     },
     {
-      "IsEnclosed": true,
+      "BanHand": true,
+"IsEnclosed": true,
       "Orientation": -90.0,
       "Transform": "Vehicle",
       "Position": [

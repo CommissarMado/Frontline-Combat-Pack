@@ -25,10 +25,14 @@
       "MaxPitch": 60,
       "MinYaw": -95,
       "MaxYaw": 95,
-      "BanHand": true
+      "BanHand": true,
+      "CameraPos": {
+        "UseFixedCameraPos": true,
+        "Position": [0.6, 2.3, 0.2]
+      }
     },
     {
-      "IsEnclosed": true,
+      "IsEnclosed": false,
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Transform": "Barrel",
@@ -63,7 +67,11 @@
       "MaxPitch": 60,
       "MinYaw": -95,
       "MaxYaw": 95,
-      "BanHand": true
+      "BanHand": true,
+      "CameraPos": {
+        "UseFixedCameraPos": true,
+        "Position": [-0.6, 2.3, 0.2]
+      }
     },
     {
       "IsEnclosed": true,

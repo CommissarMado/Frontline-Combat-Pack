@@ -53,7 +53,8 @@ public class FcpDriverOverlay implements IGuiOverlay {
             "fcp:lav25",
             "fcp:stryker_m2",
             "fcp:stryker_mgs",
-            "fcp:t72av"
+            "fcp:t72av",
+            "fcp:aavp"
     );
 
     @Override

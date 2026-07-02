@@ -17,7 +17,7 @@
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [0.445023, 2.112547, 1.887095]
+        "Position": [0.745023, 2.812547, 2.287095]
       },
       "Transform": "Vehicle",
       "Position": [0, 0, 0],

@@ -41,7 +41,8 @@ public class LandVehicleHudStatsMixin {
             "fcp:lav25",
             "fcp:stryker_mgs",
             "fcp:t72av",
-            "fcp:aavp"
+            "fcp:aavp",
+            "fcp:matv_tow"
     );
 
     // Vehicles that suppress the TV frame entirely but show no replacement overlay

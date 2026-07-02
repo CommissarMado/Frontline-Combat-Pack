@@ -95,13 +95,14 @@
       "Part": "SubEngine"
     }
   ],
+  "PassengerRenderScale": 0.85,
   "Seats": [
     {
       "IsEnclosed": true,
       "BanHand": true,
       "Transform": "Vehicle",
       "Position": [
-        0.56,
+        -0.56,
         0.72,
         2.56
       ],
@@ -114,7 +115,7 @@
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
         "Position": [
-          0.56,
+          -0.56,
           2.0,
           2.56
         ],
@@ -131,7 +132,7 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "Position": [
-        -0.56,
+        0.56,
         0.72,
         2.56
       ],
@@ -139,7 +140,7 @@
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
         "Position": [
-          -0.56,
+          0.56,
           2.0,
           2.56
         ]
@@ -329,6 +330,54 @@
           0.88,
           2.0,
           -2.0
+        ]
+      },
+      "Orientation": 90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+    "IsEnclosed": true,
+    "Transform": "Vehicle",
+    "Position": [
+      -0.88,
+      0.8,
+      -2.8
+    ],
+    "CameraPos": {
+      "Transform": "Vehicle",
+      "UseFixedCameraPos": true,
+      "Position": [
+        -0.88,
+        2.0,
+        -2.8
+      ]
+    },
+    "Orientation": -90,
+    "MinPitch": -50,
+    "MaxPitch": 15,
+    "MinYaw": -75,
+    "MaxYaw": 75,
+    "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        0.88,
+        0.8,
+        -2.8
+      ],
+      "CameraPos": {
+        "Transform": "Vehicle",
+        "UseFixedCameraPos": true,
+        "Position": [
+          0.88,
+          2.0,
+          -2.8
         ]
       },
       "Orientation": 90,
