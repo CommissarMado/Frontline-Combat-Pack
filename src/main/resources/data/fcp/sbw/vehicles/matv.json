@@ -129,7 +129,7 @@
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
-          [0, 0.37521375, 1.55]
+          [0, 0.26, 1.45]
         ],
         "Directions": [
           "Barrel"
@@ -160,8 +160,8 @@
     "Decrement": 0.02,
     "SteeringSpeed": 0.1
   },
-  "TurretPos": [-0.00123125, 2.65119375, -0.8426125],
-  "BarrelPos": [-0.0175, 0.1494, 0.4986875],
+  "TurretPos": [0.044275, 2.76895, -0.80250625],
+  "BarrelPos": [-0.04269375, 0.183425, 0.49223125],
   "TurretTurnSpeed": [15, 15],
   "TurretPitchRange": [-9, 40],
   "TurretControllerIndex": 1,
