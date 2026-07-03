@@ -19,10 +19,10 @@ public class AAVPEntity extends CamoVehicleBase {
             new ResourceLocation("fcp", "textures/entity/aavp/aavp_3.png"),
             new ResourceLocation("fcp", "textures/entity/aavp/aavp_4.png"),
             //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/aavp/aavp_1.png"),
-            new ResourceLocation("fcp", "textures/entity/aavp/aavp_2.png"),
-            new ResourceLocation("fcp", "textures/entity/aavp/aavp_3.png"),
-            new ResourceLocation("fcp", "textures/entity/aavp/aavp_4.png"),
+            new ResourceLocation("fcp", "textures/entity/aavp/aavp_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/aavp/aavp_2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/aavp/aavp_3_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/aavp/aavp_4_wrecked.png"),
     };
 
     private static final String[] CAMO_NAMES = {"Flag", "No-Flag"};
