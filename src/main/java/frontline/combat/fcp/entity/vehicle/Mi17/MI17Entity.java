@@ -21,13 +21,13 @@ public class MI17Entity extends CamoVehicleBase {
             new ResourceLocation("fcp", "textures/entity/mi17/mi17_6.png"),
             new ResourceLocation("fcp", "textures/entity/mi17/mi17_7.png"),
             // Wrecked variants [3-5], one per camo in the same order
-            new ResourceLocation("fcp", "textures/entity/mi17/mi17_1.png_wrecked"),
-            new ResourceLocation("fcp", "textures/entity/mi17/mi17_2.png_wrecked"),
-            new ResourceLocation("fcp", "textures/entity/mi17/mi17_3.png_wrecked"),
-            new ResourceLocation("fcp", "textures/entity/mi17/mi17_4.png_wrecked"),
-            new ResourceLocation("fcp", "textures/entity/mi17/mi17_5.png_wrecked"),
-            new ResourceLocation("fcp", "textures/entity/mi17/mi17_6.png_wrecked"),
-            new ResourceLocation("fcp", "textures/entity/mi17/mi17_7.png_wrecked"),
+            new ResourceLocation("fcp", "textures/entity/mi17/mi17_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/mi17/mi17_2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/mi17/mi17_3_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/mi17/mi17_4_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/mi17/mi17_5_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/mi17/mi17_6_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/mi17/mi17_7_wrecked.png"),
     };
     private static final String[] CAMO_NAMES = {"Standard", "White", "Shark"};
 
