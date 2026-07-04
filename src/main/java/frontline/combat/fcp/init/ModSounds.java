@@ -33,7 +33,7 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> COAX_EQUIP = register("coax_equip");
 
     // Russian Coax
-    public static final RegistryObject<SoundEvent> RUSSIAN_COAX__1P = register("russian_coax_1p");
+    public static final RegistryObject<SoundEvent> RUSSIAN_COAX_1P = register("russian_coax_1p");
     public static final RegistryObject<SoundEvent> RUSSIAN_COAX_3P = register("russian_coax_3p");
     public static final RegistryObject<SoundEvent> RUSSIAN_COAX_3P_FAR = register("russian_coax_3p_far");
 
