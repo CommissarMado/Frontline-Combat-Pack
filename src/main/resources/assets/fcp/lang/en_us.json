@@ -14,6 +14,7 @@
   "//": "====================== Russian Tab ======================",
   "russiantab.fc_russian_tab": "[FC] Russian Vehicles",
   "entity.fcp.uaz": "UAZ",
+  "entity.fcp.mi17": "MI-17",
   "entity.fcp.uaz_dshka": "UAZ With DSHKA",
   "entity.fcp.ural": "Ural",
   "entity.fcp.ural_grad": "Ural With Grad",
@@ -63,6 +64,8 @@
   "weapon.fcp.9m113_konkurs": "9M113 KONKURS",
   "weapon.fcp.kord_12_7mm_rws": "KORD 12.7mm RWS",
   "weapon.fcp.coaxial_pktm": "COAXIAL PKTM",
+  "weapon.fcp.mk19": "MK19 Grenade Launcher",
+  "weapon.fcp.m2a1_browning": "M2A1 Browning",
 
   "//": "========================= Foods =========================",
   "item.fcp.delicious_snack": "Box of Crayons",
@@ -84,7 +87,10 @@
   "entity.fcp.huey_door_gunner_m60": "Huey With M60",
   "entity.fcp.huey_door_gunner_m134": "Huey With M134",
   "entity.fcp.matv": "MATV",
+  "entity.fcp.matv_crow": "MATV With CROWS",
+  "entity.fcp.matv_tow": "MATV With TOW",
   "entity.fcp.venom": "Venom",
+  "entity.fcp.aavp": "AAVP",
 
   "//": "======================= Messages ========================",
   "message.fcp.camo_changed": "Camo changed to %s",

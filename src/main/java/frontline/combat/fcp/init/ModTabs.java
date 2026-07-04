@@ -79,6 +79,10 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.VENOM.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.MATV_CROW.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.MATV_TOW.get()));
+
+                output.accept(ContainerBlockItem.createInstance(ModEntities.AAVP.get()));
             }).build());
 
     @Mod.EventBusSubscriber(modid = FCP.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
