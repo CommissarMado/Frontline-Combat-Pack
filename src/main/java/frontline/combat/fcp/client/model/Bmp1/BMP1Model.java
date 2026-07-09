@@ -1,9 +1,8 @@
-package frontline.combat.fcp.client.model.Bmp;
+package frontline.combat.fcp.client.model.Bmp1;
 
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
-import frontline.combat.fcp.client.model.Util.WheelRotationTransforms;
-import frontline.combat.fcp.entity.vehicle.Bmp.BMP1Entity;
+import frontline.combat.fcp.entity.vehicle.Bmp1.BMP1Entity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;

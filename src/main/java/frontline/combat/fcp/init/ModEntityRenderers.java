@@ -3,9 +3,10 @@ package frontline.combat.fcp.init;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.overlay.FcpPilotOverlay;
 import frontline.combat.fcp.client.renderer.Aavp.AAVPRenderer;
-import frontline.combat.fcp.client.renderer.Bmp.BMP1Renderer;
-import frontline.combat.fcp.client.renderer.Bmp.BMP1URenderer;
-import frontline.combat.fcp.client.renderer.Bmp.BMP2Renderer;
+import frontline.combat.fcp.client.renderer.Bmp1.BMP1AMRenderer;
+import frontline.combat.fcp.client.renderer.Bmp1.BMP1Renderer;
+import frontline.combat.fcp.client.renderer.Bmp1.BMP1URenderer;
+import frontline.combat.fcp.client.renderer.Bmp2.BMP2Renderer;
 import frontline.combat.fcp.client.renderer.Btr82.BTR82Renderer;
 import frontline.combat.fcp.client.renderer.Fmtv.FMTVRenderer;
 import frontline.combat.fcp.client.renderer.GazTigr.GazTigrGLRenderer;
@@ -55,7 +56,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import frontline.combat.fcp.client.overlay.FcpDriverOverlay;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 
 @Mod.EventBusSubscriber(modid = FCP.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -78,6 +78,7 @@ public class ModEntityRenderers {
 
         event.registerEntityRenderer(ModEntities.BMP1.get(), BMP1Renderer::new);
         event.registerEntityRenderer(ModEntities.BMP1U.get(), BMP1URenderer::new);
+        event.registerEntityRenderer(ModEntities.BMP1AM.get(), BMP1AMRenderer::new);
 
         event.registerEntityRenderer(ModEntities.BMP2.get(), BMP2Renderer::new);
 

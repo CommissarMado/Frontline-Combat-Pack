@@ -1,7 +1,6 @@
 package frontline.combat.fcp.entity.vehicle.Aavp;
 
 import com.atsuishio.superbwarfare.entity.vehicle.damage.DamageModifier;
-import frontline.combat.fcp.entity.vehicle.Bmp.BMP1Entity;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;

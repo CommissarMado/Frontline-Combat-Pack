@@ -1,8 +1,7 @@
-package frontline.combat.fcp.entity.vehicle.Lav;
+package frontline.combat.fcp.entity.vehicle.Bmp1;
 
 import com.atsuishio.superbwarfare.entity.vehicle.damage.DamageModifier;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
-import frontline.combat.fcp.entity.vehicle.SteerableVehicle;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -10,26 +9,32 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 
-public class Lav25Entity extends CamoVehicleBase implements SteerableVehicle {
+public class BMP1AMEntity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
-            //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo1.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo2.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo3.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_od.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_tan.png"),
-            //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo2_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo3_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_od_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_tan_wrecked.png")
+            // Normal Texture
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_1.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_2.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_3.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_4.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_5.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_6.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_7.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_8.png"),
+            // Wrecked Texture
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_3_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_4_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_5_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_6_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_7_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp2/bmp2_camo_8_wrecked.png")
     };
 
-    private static final String[] CAMO_NAMES = {"Camo Variant 1", "Camo Variant 2", "Camo Variant 3", "No-Camo", "Tan"};
+    private static final String[] CAMO_NAMES = {"Flag", "No-Flag"};
 
-    private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(Lav25Entity.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(BMP1AMEntity.class, EntityDataSerializers.FLOAT);
 
     private float prevSteeringAngle = 0f;
 
@@ -37,19 +42,13 @@ public class Lav25Entity extends CamoVehicleBase implements SteerableVehicle {
 
     private float prevWheelRotation = 0f;
 
-    public Lav25Entity(EntityType<Lav25Entity> type, Level world) {
-        super(type, world);
-    }
+    public BMP1AMEntity(EntityType<BMP1AMEntity> type, Level world) {super(type, world);}
 
     @Override
-    public ResourceLocation[] getCamoTextures() {
-        return CAMO_TEXTURES;
-    }
+    public ResourceLocation[] getCamoTextures() {return CAMO_TEXTURES;}
 
     @Override
-    public String[] getCamoNames() {
-        return CAMO_NAMES;
-    }
+    public String[] getCamoNames() {return CAMO_NAMES;}
 
     @Override
     protected void defineSynchedData() {
@@ -61,19 +60,18 @@ public class Lav25Entity extends CamoVehicleBase implements SteerableVehicle {
         return this.entityData.get(STEERING_ANGLE);
     }
 
-    public void setSteeringAngle(float angle) {
-        this.entityData.set(STEERING_ANGLE, angle);
+    public void setSteeringAngle(float angle) {this.entityData.set(STEERING_ANGLE, angle);
     }
 
-    public float getPrevSteeringAngle() {
+    public float getPrevSteeringAngle(){
         return prevSteeringAngle;
     }
 
-    public float getWheelRotation() {
+    public float getWheelRotation(){
         return wheelRotation;
     }
 
-    public float getPrevWheelRotation() {
+    public float getPrevWheelRotation(){
         return prevWheelRotation;
     }
 
@@ -95,6 +93,15 @@ public class Lav25Entity extends CamoVehicleBase implements SteerableVehicle {
         if (compound.contains("SteeringAngle")) {
             setSteeringAngle(compound.getFloat("SteeringAngle"));
         }
+    }
+    public boolean GetWeaponState(String WeaponName, int Count) {
+        if (getAmmoCount(WeaponName) == Count)
+            return true;
+        else if (getAmmoCount(WeaponName) < Count)
+            return true;
+        else
+            return false;
+
     }
 
     @Override
@@ -125,7 +132,7 @@ public class Lav25Entity extends CamoVehicleBase implements SteerableVehicle {
         }
 
         if (isMoving && Math.abs(currentAngle) > 1f) {
-            float turnAmount = currentAngle * 0.009f * (float) speed;
+            float turnAmount = currentAngle * 0.009f * (float)speed;
             this.setYRot(this.getYRot() + turnAmount);
         }
 

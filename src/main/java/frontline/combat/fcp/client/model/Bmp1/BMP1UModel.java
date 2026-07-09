@@ -1,13 +1,11 @@
-package frontline.combat.fcp.client.model.Bmp;
+package frontline.combat.fcp.client.model.Bmp1;
 
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.model.FCPVehicleModel;
 import frontline.combat.fcp.client.model.Util.CannonRecoilTransforms;
 import frontline.combat.fcp.client.model.Util.ModelBoneTransforms;
-import frontline.combat.fcp.entity.vehicle.Bmp.BMP1Entity;
-import frontline.combat.fcp.entity.vehicle.Bmp.BMP1UEntity;
-import frontline.combat.fcp.entity.vehicle.Bmp.BMP2Entity;
+import frontline.combat.fcp.entity.vehicle.Bmp1.BMP1UEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;

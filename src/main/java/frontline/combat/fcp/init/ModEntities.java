@@ -6,9 +6,10 @@ import frontline.combat.fcp.entity.projectile.Hellfire.WireGuidedHellfireEntity;
 import frontline.combat.fcp.entity.projectile.Malyutka.MalyutkaEntity;
 import frontline.combat.fcp.entity.projectile.Sidewinder.SidewinderEntity;
 import frontline.combat.fcp.entity.vehicle.Aavp.AAVPEntity;
-import frontline.combat.fcp.entity.vehicle.Bmp.BMP1Entity;
-import frontline.combat.fcp.entity.vehicle.Bmp.BMP1UEntity;
-import frontline.combat.fcp.entity.vehicle.Bmp.BMP2Entity;
+import frontline.combat.fcp.entity.vehicle.Bmp1.BMP1AMEntity;
+import frontline.combat.fcp.entity.vehicle.Bmp1.BMP1Entity;
+import frontline.combat.fcp.entity.vehicle.Bmp1.BMP1UEntity;
+import frontline.combat.fcp.entity.vehicle.Bmp2.BMP2Entity;
 import frontline.combat.fcp.entity.vehicle.Btr82.BTR82Entity;
 import frontline.combat.fcp.entity.vehicle.Fmtv.FMTVEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrEntity;
@@ -50,7 +51,6 @@ import frontline.combat.fcp.entity.vehicle.Ural.UralGradEntity;
 import frontline.combat.fcp.entity.vehicle.Viper.ViperEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -94,6 +94,8 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<BMP1UEntity>> BMP1U = register("bmp1u",
             EntityType.Builder.of(BMP1UEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<BMP1AMEntity>> BMP1AM = register("bmp1am",
+            EntityType.Builder.of(BMP1AMEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
 
     public static final RegistryObject<EntityType<BMP2Entity>> BMP2 = register("bmp2",
             EntityType.Builder.of(BMP2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
