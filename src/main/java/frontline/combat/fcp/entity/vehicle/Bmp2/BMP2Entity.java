@@ -1,4 +1,4 @@
-package frontline.combat.fcp.entity.vehicle.Bmp;
+package frontline.combat.fcp.entity.vehicle.Bmp2;
 
 import com.atsuishio.superbwarfare.entity.vehicle.damage.DamageModifier;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;

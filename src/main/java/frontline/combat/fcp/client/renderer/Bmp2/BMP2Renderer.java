@@ -1,8 +1,8 @@
-package frontline.combat.fcp.client.renderer.Bmp;
+package frontline.combat.fcp.client.renderer.Bmp2;
 
 import com.atsuishio.superbwarfare.client.renderer.entity.VehicleRenderer;
-import frontline.combat.fcp.client.model.Bmp.BMP2Model;
-import frontline.combat.fcp.entity.vehicle.Bmp.BMP2Entity;
+import frontline.combat.fcp.client.model.Bmp2.BMP2Model;
+import frontline.combat.fcp.entity.vehicle.Bmp2.BMP2Entity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 

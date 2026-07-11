@@ -29,6 +29,7 @@ public class ModTabs {
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP1.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP1U.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BMP1AM.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP2.get()));
 
