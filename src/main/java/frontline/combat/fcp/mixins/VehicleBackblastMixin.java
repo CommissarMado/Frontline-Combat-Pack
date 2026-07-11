@@ -41,7 +41,7 @@ public abstract class VehicleBackblastMixin {
     );
 
     /** Tube length in blocks (59.28237 px / 16) - steps from the muzzle back to the breech. */
-    private static final double FCP_TUBE_LENGTH = 3.7052;
+    private static final double FCP_TUBE_LENGTH = 3.15;
 
     @Inject(method = "afterShoot", at = @At("TAIL"), remap = false)
     private void fcp$backblast(GunData gunData, Vec3 shootVec, CallbackInfo ci) {
