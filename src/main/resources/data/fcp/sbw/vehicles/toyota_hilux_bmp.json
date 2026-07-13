@@ -2,21 +2,131 @@
   "ID": "fcp:toyota_hilux_bmp",
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
-  "TurretPos": [-0.029495, 2.531003, -1.968685],
-  "TurretTurnSpeed": [15, 15],
-  "TurretPitchRange": [-10, 40],
-  "BarrelPos": [0.048753, -0.016246, 0.724391],
+  "TurretPos": [
+    -0.029495,
+    2.531003,
+    -1.968685
+  ],
+  "TurretTurnSpeed": [
+    1.5,
+    1.0
+  ],
+  "TurretPitchRange": [
+    -10,
+    30
+  ],
+  "BarrelPos": [
+    0.048753,
+    -0.016246,
+    0.724391
+  ],
   "TurretControllerIndex": 1,
   "PassengerRenderScale": 0.85,
   "OBB": [
-    {"Size": [0.1785, 0.39525, 0.39525], "Position": [0.816, 0.4335, 1.6575], "Part": "WheelLeft"},
-    {"Size": [0.1785, 0.39525, 0.39525], "Position": [-0.816, 0.4335, 1.6575], "Part": "WheelRight"},
-    {"Size": [0.1785, 0.39525, 0.39525], "Position": [0.816, 0.4335, -1.785], "Part": "WheelLeft"},
-    {"Size": [0.1785, 0.39525, 0.39525], "Position": [-0.816, 0.4335, -1.6575], "Part": "WheelRight"},
-    {"Size": [0.9078, 0.44625, 2.125], "Position": [0.0, 0.96475, -0.8415], "Part": "Body"},
-    {"Size": [0.9078, 0.44625, 0.6375], "Position": [0.0, 0.96475, 1.921], "Part": "MainEngine"},
-    {"Size": [0.9078, 0.2975, 1.21125], "Position": [0.0, 1.7085, 0.0425], "Part": "Body"},
-    {"Size": [0.85, 0.2125, 0.8228], "Position": [-0.0425, 2.635, -1.955], "Part": "Turret"}
+    {
+      "Size": [
+        0.1785,
+        0.39525,
+        0.39525
+      ],
+      "Position": [
+        0.816,
+        0.4335,
+        1.6575
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.1785,
+        0.39525,
+        0.39525
+      ],
+      "Position": [
+        -0.816,
+        0.4335,
+        1.6575
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.1785,
+        0.39525,
+        0.39525
+      ],
+      "Position": [
+        0.816,
+        0.4335,
+        -1.785
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.1785,
+        0.39525,
+        0.39525
+      ],
+      "Position": [
+        -0.816,
+        0.4335,
+        -1.6575
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.9078,
+        0.44625,
+        2.125
+      ],
+      "Position": [
+        0.0,
+        0.96475,
+        -0.8415
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        0.9078,
+        0.44625,
+        0.6375
+      ],
+      "Position": [
+        0.0,
+        0.96475,
+        1.921
+      ],
+      "Part": "MainEngine"
+    },
+    {
+      "Size": [
+        0.9078,
+        0.2975,
+        1.21125
+      ],
+      "Position": [
+        0.0,
+        1.7085,
+        0.0425
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        0.85,
+        0.2125,
+        0.8228
+      ],
+      "Position": [
+        -0.0425,
+        2.635,
+        -1.955
+      ],
+      "Part": "Turret"
+    }
   ],
   "Seats": [
     {
@@ -24,31 +134,52 @@
       "Transform": "Vehicle",
       "Weapons": [],
       "BanHand": true,
-      "Position": [0.425, 0.255, 0.2125],
+      "Position": [
+        0.425,
+        0.255,
+        0.2125
+      ],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
       "MaxYaw": 95
     },
     {
+      "HidePassenger": true,
       "IsEnclosed": true,
-      "HidePlayer": true,
-      "Weapons": ["Cannon", "Coax"],
-      "Transform": "Vehicle",
       "CameraPos": {
-        "Transform": "Turret",
-        "Position": [0.260095, 0.386813, 0.494833],
-        "UseFixedCameraPos": true
+        "Transform": "Barrel",
+        "UseFixedCameraPos": true,
+        "Position": [
+          0.211342,
+          0.403059,
+          -0.229558
+        ],
+        "Direction": "Barrel"
       },
-      "MinPitch": -10,
-      "MaxPitch": 40,
-      "Position": [0.0, 0.425, -2.125]
+      "CanRotateHead": false,
+      "Weapons": [
+        "Cannon",
+        "Coax"
+      ],
+      "Transform": "Turret",
+      "Position": [
+        0,
+        0,
+        0
+      ],
+      "MinPitch": -15,
+      "MaxPitch": 32.5
     },
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [-0.425, 0.255, 0.2125],
+      "Position": [
+        -0.425,
+        0.255,
+        0.2125
+      ],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -58,7 +189,11 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [0.425, 0.255, -0.765],
+      "Position": [
+        0.425,
+        0.255,
+        -0.765
+      ],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -68,16 +203,25 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [0.0, 0.255, -0.765],
+      "Position": [
+        0.0,
+        0.255,
+        -0.765
+      ],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
       "MaxYaw": 95
     },
     {
+      "BanHand": true,
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-0.425, 0.255, -0.765],
+      "Position": [
+        -0.425,
+        0.255,
+        -0.765
+      ],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -105,7 +249,9 @@
       "Crosshair": "@VehicleCommonGun",
       "CrosshairColor": "0x00ff66",
       "Name": "weapon.fcp.2a28_grom",
-      "AmmoType": ["superbwarfare:small_shell_ap"],
+      "AmmoType": [
+        "superbwarfare:small_shell_ap"
+      ],
       "SoundRadius": 32,
       "SoundInfo": {
         "Fire1P": "fcp:bmp1_fire_1p",
@@ -117,8 +263,16 @@
       },
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[0.01666, 0.17, 1.576691]],
-        "Directions": ["Barrel"]
+        "Positions": [
+          [
+            0.01666,
+            0.17,
+            1.576691
+          ]
+        ],
+        "Directions": [
+          "Barrel"
+        ]
       }
     },
     "Coax": {
@@ -126,7 +280,7 @@
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 450,
+      "RPM": 600,
       "Magazine": 100,
       "EmptyReloadTime": 20,
       "Velocity": 25,
@@ -151,8 +305,16 @@
       "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[-0.2125, 0.130534, 0.51]],
-        "Directions": ["Barrel"]
+        "Positions": [
+          [
+            -0.2125,
+            0.130534,
+            0.51
+          ]
+        ],
+        "Directions": [
+          "Barrel"
+        ]
       }
     }
   },
@@ -166,7 +328,7 @@
     "MaxForwardSpeedRate": 1.62,
     "MaxBackwardSpeedRate": 0.33,
     "Increment": 0.025,
-    "Decrement": 0.020,
+    "Decrement": 0.02,
     "SteeringSpeed": 0.1,
     "EngineSoundVolume": 0.6
   },
@@ -206,18 +368,55 @@
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },
-  "ThirdPersonCameraPos": [0, 1, 5],
+  "ThirdPersonCameraPos": [
+    0,
+    1,
+    5
+  ],
   "ContainerIcon": "fcp:textures/gui/vehicle/type/land_ter.png",
   "Type": "Car",
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
-      [0, 0, true],
-      [0, 0, true],
-      [0.15, 0.09, false]
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0.15,
+        0.09,
+        false
+      ]
     ]
   },
   "HudType": "@Land",
-  "TerrainCompat": [[0.9826, 0, 1.3549], [-0.9826, 0, 1.3549], [0.9826, 0, -1.3549], [-0.9826, 0, -1.3549]],
+  "TerrainCompat": [
+    [
+      0.9826,
+      0,
+      1.3549
+    ],
+    [
+      -0.9826,
+      0,
+      1.3549
+    ],
+    [
+      0.9826,
+      0,
+      -1.3549
+    ],
+    [
+      -0.9826,
+      0,
+      -1.3549
+    ]
+  ],
   "InertiaRotateRate": 1.8
 }

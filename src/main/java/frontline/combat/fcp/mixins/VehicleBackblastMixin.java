@@ -44,7 +44,7 @@ public abstract class VehicleBackblastMixin {
      *                cannot be a shared constant: it differs per launcher, and it breaks
      *                silently when a model is rescaled (the Grad's 0.85x resize did).
      *                  ural_grad          50.39 px / 16 = 3.1494
-     *                  toyota_rocket_pod  29.89 px / 16 = 1.8681
+     *                  toyota_rocket_pod  25.406 px / 16 = 1.5879  (0.85x resize)
      *   flashScale - multiplies flash size AND how far the plume is staggered back.
      *   rpgSmoke   - true  = RPG-7's CLOUD puff (small S-5/S-8 pods)
      *                false = the Grad's heavier CAMPFIRE_COSY_SMOKE column
@@ -52,8 +52,8 @@ public abstract class VehicleBackblastMixin {
     private record Blast(double tubeLength, double flashScale, boolean rpgSmoke) {}
 
     private static final Map<String, Blast> FCP_BACKBLAST_VEHICLES = Map.of(
-            "fcp:ural_grad",               new Blast(3.1494, 1.00, false),
-            "fcp:toyota_hilux_rocket_pod", new Blast(1.8681, 0.40, true)
+            "fcp:ural_grad",               new Blast(3.15, 1.00, false),
+            "fcp:toyota_hilux_rocket_pod", new Blast(1.5879, 0.40, true)
     );
 
 

@@ -44,7 +44,9 @@ public class LandVehicleHudStatsMixin {
             "fcp:t72av",
             "fcp:aavp",
             "fcp:matv_tow",
-            "fcp:ural_grad"
+            "fcp:ural_grad",
+            "fcp:toyota_hilux_bmp",
+            "fcp:toyota_hilux_spg9"
     );
 
     // Vehicles that suppress the TV frame entirely but show no replacement overlay

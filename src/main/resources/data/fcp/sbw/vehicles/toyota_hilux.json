@@ -55,6 +55,7 @@
       "MaxYaw": 95
     },
     {
+      "BanHand": true,
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "Position": [-0.425, 0.255, -0.765],
