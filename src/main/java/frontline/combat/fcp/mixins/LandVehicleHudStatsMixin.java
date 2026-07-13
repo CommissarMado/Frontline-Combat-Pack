@@ -59,7 +59,8 @@ public class LandVehicleHudStatsMixin {
     // Additive: does NOT by itself suppress the TV frame or draw gunner.png. Add the
     // vehicle to FCP_NO_FRAME_VEHICLES / FCP_GUNNER_FRAME_VEHICLES too if you want those.
     private static final Set<String> FCP_MORTAR_HUD_VEHICLES = Set.of(
-            "fcp:ural_grad"
+            "fcp:ural_grad",
+            "fcp:toyota_hilux_rocket_pod"
     );
 
     private static final ResourceLocation GUNNER_FRAME =

@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 /**
  * Rear-only backblast for data-driven FCP launchers.
@@ -36,19 +36,34 @@ import java.util.Set;
 @Mixin(value = VehicleEntity.class, remap = false)
 public abstract class VehicleBackblastMixin {
 
-    private static final Set<String> FCP_BACKBLAST_VEHICLES = Set.of(
-            "fcp:ural_grad"
+    /**
+     * Per-vehicle backblast config.
+     *
+     *   tubeLength - blocks, straight from the model. getShootPos() gives the MUZZLE;
+     *                the blast vents from the BREECH at the far end of the tube. This
+     *                cannot be a shared constant: it differs per launcher, and it breaks
+     *                silently when a model is rescaled (the Grad's 0.85x resize did).
+     *                  ural_grad          50.39 px / 16 = 3.1494
+     *                  toyota_rocket_pod  29.89 px / 16 = 1.8681
+     *   flashScale - multiplies flash size AND how far the plume is staggered back.
+     *   rpgSmoke   - true  = RPG-7's CLOUD puff (small S-5/S-8 pods)
+     *                false = the Grad's heavier CAMPFIRE_COSY_SMOKE column
+     */
+    private record Blast(double tubeLength, double flashScale, boolean rpgSmoke) {}
+
+    private static final Map<String, Blast> FCP_BACKBLAST_VEHICLES = Map.of(
+            "fcp:ural_grad",               new Blast(3.1494, 1.00, false),
+            "fcp:toyota_hilux_rocket_pod", new Blast(1.8681, 0.40, true)
     );
 
-    /** Tube length in blocks (59.28237 px / 16) - steps from the muzzle back to the breech. */
-    private static final double FCP_TUBE_LENGTH = 3.15;
 
     @Inject(method = "afterShoot", at = @At("TAIL"), remap = false)
     private void fcp$backblast(GunData gunData, Vec3 shootVec, CallbackInfo ci) {
         VehicleEntity self = (VehicleEntity) (Object) this;
 
         String vehicleId = EntityType.getKey(self.getType()).toString();
-        if (!FCP_BACKBLAST_VEHICLES.contains(vehicleId)) return;
+        Blast cfg = FCP_BACKBLAST_VEHICLES.get(vehicleId);
+        if (cfg == null) return;
         if (!(self.level() instanceof ServerLevel level)) return;
 
         Vec3 barrelVector = self.getBarrelVector(1f);
@@ -79,7 +94,7 @@ public abstract class VehicleBackblastMixin {
         // getShootPos gives the MUZZLE of the tube that just fired; step back one tube
         // length to reach its breech, where the blast actually vents from.
         Vec3 muzzle = self.getShootPos(turretIndex, 1f);
-        Vec3 breech = muzzle.add(back.scale(FCP_TUBE_LENGTH));
+        Vec3 breech = muzzle.add(back.scale(cfg.tubeLength()));
 
         // --- FCP muzzle flash blasting out the rear of the tube ---
         // Uses FCP's own muzzle particles. Two things matter here:
@@ -90,61 +105,68 @@ public abstract class VehicleBackblastMixin {
         // Sent via level.sendParticles with count 0, so the xyz args are a VELOCITY
         // vector rather than a spread - same as FCPMuzzleEffects.send().
         RandomSource rand = self.getRandom();
+        double fs = cfg.flashScale();
+
 
         // Fireball: three collapsing blooms staggered backwards, so the plume is a jet
         // running away from the tubes rather than a ball sat on them.
         // (r, g, b, life, fade, animSpeed, baseScale, targetScale, frameCount, layer)
         Vec3 b0 = breech;
         level.sendParticles(
-                new FCPMuzzleParticleOption(1f, 1f, 0.95f, 8, 0.86f, 1, 16f, 1.5f, 1,
+                new FCPMuzzleParticleOption(1f, 1f, 0.95f, 8, 0.86f, 1, (float)(16 * fs), (float)(1.5 * fs), 1,
                         FCPMuzzleParticleOption.LAYER_BLOOM),
                 b0.x, b0.y, b0.z, 0, 0.0, 0.0, 0.0, 1.0);          // ~3.2 blocks, white hot
 
-        Vec3 b1 = breech.add(back.scale(1.0));
+        Vec3 b1 = breech.add(back.scale(1.0 * fs));
         level.sendParticles(
-                new FCPMuzzleParticleOption(1f, 0.90f, 0.55f, 9, 0.87f, 1, 13f, 1.2f, 1,
+                new FCPMuzzleParticleOption(1f, 0.90f, 0.55f, 9, 0.87f, 1, (float)(13 * fs), (float)(1.2 * fs), 1,
                         FCPMuzzleParticleOption.LAYER_BLOOM),
                 b1.x, b1.y, b1.z, 0, 0.0, 0.0, 0.0, 1.0);          // ~2.6 blocks, yellow
 
-        Vec3 b2 = breech.add(back.scale(2.2));
+        Vec3 b2 = breech.add(back.scale(2.2 * fs));
         level.sendParticles(
-                new FCPMuzzleParticleOption(1f, 0.62f, 0.28f, 10, 0.88f, 1, 9f, 1.0f, 1,
+                new FCPMuzzleParticleOption(1f, 0.62f, 0.28f, 10, 0.88f, 1, (float)(9 * fs), (float)(1.0 * fs), 1,
                         FCPMuzzleParticleOption.LAYER_BLOOM),
                 b2.x, b2.y, b2.z, 0, 0.0, 0.0, 0.0, 1.0);          // ~1.8 blocks, orange
 
         // Animated flash frames on the tube mouth itself.
         level.sendParticles(
-                new FCPMuzzleParticleOption(1f, 1f, 1f, 12, 0.88f, 2, 6f, 8f, 9,
+                new FCPMuzzleParticleOption(1f, 1f, 1f, 12, 0.88f, 2, (float)(6 * fs), (float)(8 * fs), 9,
                         FCPMuzzleParticleOption.LAYER_BANG_STATIC),
                 breech.x, breech.y, breech.z, 0, 0.0, 0.0, 0.0, 1.0);
 
         // Sparks thrown out the back.
         for (int i = 0; i < 12; i++) {
-            Vec3 jet = back.scale(0.35 + rand.nextDouble() * 0.45).add(
+            Vec3 jet = back.scale((0.35 + rand.nextDouble() * 0.45) * fs).add(
                     (rand.nextDouble() - 0.5) * 0.18,
                     (rand.nextDouble() - 0.5) * 0.18,
                     (rand.nextDouble() - 0.5) * 0.18);
             level.sendParticles(
-                    new FCPMuzzleParticleOption(1f, 0.95f, 0.75f, 8, 0.86f, 1, 2.6f, 0.02f, 9,
+                    new FCPMuzzleParticleOption(1f, 0.95f, 0.75f, 8, 0.86f, 1, (float)(2.6 * fs), 0.02f, 9,
                             FCPMuzzleParticleOption.LAYER_BANG_SPARK),
                     breech.x, breech.y, breech.z, 0, jet.x, jet.y, jet.z, 1.0);
         }
 
-        // --- smoke plume, thinner and tighter than before ---
-        // Same particle MediumRocketEntity trails (largeTrail -> CAMPFIRE_COSY_SMOKE).
-        Vec3 core = breech.add(back.scale(0.5));
-        ParticleTool.sendParticle(level, ParticleTypes.CAMPFIRE_COSY_SMOKE,
-                core.x, core.y, core.z,
-                10, 0.22, 0.22, 0.22, 0.01, true);
+        // --- smoke ---
+        if (cfg.rpgSmoke()) {
+            // Exactly RpgItem's backblast: sendParticle(level, CLOUD, x,y,z, 30, 0.4,0.4,0.4, 0.005, true)
+            Vec3 puff = breech.add(back.scale(0.4));
+            ParticleTool.sendParticle(level, ParticleTypes.CLOUD,
+                    puff.x, puff.y, puff.z,
+                    30, 0.4, 0.4, 0.4, 0.005, true);
+        } else {
+            // Heavier column for the Grad. CAMPFIRE_COSY_SMOKE = what largeTrail() lays down.
+            Vec3 core = breech.add(back.scale(0.5));
+            ParticleTool.sendParticle(level, ParticleTypes.CAMPFIRE_COSY_SMOKE,
+                    core.x, core.y, core.z, 10, 0.22, 0.22, 0.22, 0.01, true);
 
-        Vec3 mid = breech.add(back.scale(1.5));
-        ParticleTool.sendParticle(level, ParticleTypes.CAMPFIRE_COSY_SMOKE,
-                mid.x, mid.y, mid.z,
-                6, 0.35, 0.35, 0.35, 0.015, true);
+            Vec3 mid = breech.add(back.scale(1.5));
+            ParticleTool.sendParticle(level, ParticleTypes.CAMPFIRE_COSY_SMOKE,
+                    mid.x, mid.y, mid.z, 6, 0.35, 0.35, 0.35, 0.015, true);
 
-        Vec3 tail = breech.add(back.scale(2.6));
-        ParticleTool.sendParticle(level, ParticleTypes.CAMPFIRE_COSY_SMOKE,
-                tail.x, tail.y, tail.z,
-                4, 0.5, 0.5, 0.5, 0.02, true);
+            Vec3 tail = breech.add(back.scale(2.6));
+            ParticleTool.sendParticle(level, ParticleTypes.CAMPFIRE_COSY_SMOKE,
+                    tail.x, tail.y, tail.z, 4, 0.5, 0.5, 0.5, 0.02, true);
+        }
     }
 }
