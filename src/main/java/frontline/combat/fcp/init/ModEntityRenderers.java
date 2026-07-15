@@ -21,6 +21,7 @@ import frontline.combat.fcp.client.renderer.Huey.HueyRocketsRenderer;
 import frontline.combat.fcp.client.renderer.Humvee.HumveeRenderer;
 import frontline.combat.fcp.client.renderer.Humvee.HumveeTOWRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.JohnDeereRenderer;
+import frontline.combat.fcp.client.renderer.JohnDeere.SeederRenderer;
 import frontline.combat.fcp.client.renderer.Kamaz.KamazRenderer;
 import frontline.combat.fcp.client.renderer.Lav.Lav25Renderer;
 import frontline.combat.fcp.client.renderer.Littlebird.LittlebirdArmedRenderer;
@@ -144,6 +145,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.T14_ARMATA.get(), WolfRenderer::new);
         // Trailers
         event.registerEntityRenderer(ModEntities.EXAMPLE_TRAILER.get(), ExampleTrailerRenderer::new);
+        event.registerEntityRenderer(ModEntities.SEEDER.get(), SeederRenderer::new);
     }
     @SubscribeEvent
     public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {

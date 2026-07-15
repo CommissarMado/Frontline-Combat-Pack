@@ -18,7 +18,7 @@ public class JohnDeereEntity extends CamoVehicleBase {
             new ResourceLocation("fcp", "textures/entity/tractor/john_deere_wrecked.png")
     };
 
-    private static final String[] CAMO_NAMES = {"Sand", "Green", "PINK"};
+    private static final String[] CAMO_NAMES = {"John Deere"};
 
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(JohnDeereEntity.class, EntityDataSerializers.FLOAT);
 

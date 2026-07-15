@@ -1,8 +1,8 @@
 package frontline.combat.fcp.entity.vehicle.Trailers;
 
 import com.atsuishio.superbwarfare.entity.vehicle.base.GeoVehicleEntity;
+import com.atsuishio.superbwarfare.tools.OBB;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
-import frontline.combat.fcp.init.ModItems;
 import frontline.combat.fcp.init.TrailerDriverConfigs;
 import frontline.combat.fcp.init.TrailerTowedConfigs;
 import net.minecraft.core.BlockPos;
@@ -188,6 +188,14 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
         }
 
         super.baseTick();
+
+        // The tongue point is only pushed into synced data by attach(). Publish it from
+        // the config while detached, so the tongue is known (client included) BEFORE the
+        // first hitch — the hitch click zone and the debug overlay both need it. Re-read
+        // periodically rather than once, so /reload picks up edits to the JSON live.
+        if (!this.level().isClientSide() && !attached && this.tickCount % 20 == 0) {
+            syncTowDataFromConfig();
+        }
 
         if (!attached) return;
 
@@ -422,19 +430,100 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
 
     // ── Interaction (single source of truth for attach/detach) ──────────────────
 
-    @Override
-    public InteractionResult interact(Player player, InteractionHand hand) {
-        if (player.getItemInHand(hand).is(ModItems.SPRAY.get())) {
-            return super.interact(player, hand); // camo
+    /** Publish tongue + articulation from the datapack config into synced data. */
+    private void syncTowDataFromConfig() {
+        TrailerTowedData towed = getTowedData();
+        if (towed == null) return; // no config yet (or not loaded) — try again next tick
+        this.entityData.set(TOW_X, (float) towed.towX());
+        this.entityData.set(TOW_Y, (float) towed.towY());
+        this.entityData.set(TOW_Z, (float) towed.towZ());
+        this.entityData.set(MAX_ART, towed.maxArticulation());
+    }
+
+    /**
+     * Fallback radius (blocks) around the tongue, used ONLY when the trailer defines no
+     * Interactive OBB. Prefer defining a tongue hitbox in the vehicle JSON instead.
+     */
+    protected double hitchZoneRadius() {
+        return 1.0;
+    }
+
+    /** Nudge a surface hit this far toward the box centre before testing containment. */
+    private static final double OBB_CONTAINS_EPSILON = 0.01;
+
+    /**
+     * True when a click landed on the tongue.
+     *
+     * Preferred: the trailer declares a tongue hitbox in its vehicle JSON as an OBB with
+     * {@code "Part": "Interactive"} — exactly like SBW's MainEngine/Turret part boxes. The
+     * click is then tested against that real, rotating box:
+     * <pre>
+     *   "OBB": [
+     *     { "Size": [0.2, 0.2, 0.5], "Position": [0, 0.6, 3.0], "Part": "Interactive" }
+     *   ]
+     * </pre>
+     * Size is HALF-extents, Position is trailer-local, and the box follows the body's
+     * rotation. Nothing else in SBW uses the Interactive part on vehicles, so it is free
+     * for this and takes no part damage.
+     *
+     * If no Interactive OBB exists, falls back to a sphere around the tongue point so
+     * existing trailers keep working.
+     *
+     * {@code vec} is the hit position RELATIVE to the entity position on WORLD axes (what
+     * interactAt receives). With SBW's OBB picking it is a point on an OBB SURFACE, so it
+     * is nudged slightly inward before the containment test — a surface point is otherwise
+     * a coin-flip against floating-point error.
+     */
+    protected boolean isInHitchZone(Vec3 vec) {
+        Vec3 world = this.position().add(vec);
+
+        boolean hasZoneBox = false;
+        for (OBB obb : this.getOBBs()) {
+            if (obb.part != OBB.Part.INTERACTIVE) continue;
+            hasZoneBox = true;
+
+            Vec3 centre = new Vec3(obb.center.x, obb.center.y, obb.center.z);
+            Vec3 probe = world;
+            Vec3 inward = centre.subtract(world);
+            if (inward.lengthSqr() > 1.0e-9) {
+                probe = world.add(inward.normalize().scale(OBB_CONTAINS_EPSILON));
+            }
+            if (obb.contains(probe)) return true;
         }
+        // A tongue box is defined and the click missed it — no hitch.
+        if (hasZoneBox) return false;
+
+        return isNearTonguePoint(vec);
+    }
+
+    /** Sphere around the configured tongue point — the no-OBB fallback. */
+    private boolean isNearTonguePoint(Vec3 vec) {
+        double theta = Math.toRadians(this.getYRot());
+        double cos = Math.cos(theta), sin = Math.sin(theta);
+
+        // Inverse of the yaw rotation used everywhere else (x = right, z = forward).
+        double lx = vec.x * cos + vec.z * sin;
+        double lz = -vec.x * sin + vec.z * cos;
+        double ly = vec.y;
+
+        Vec3 tow = getTowOffset();
+        double dx = lx - tow.x, dy = ly - tow.y, dz = lz - tow.z;
+        double r = hitchZoneRadius();
+        return dx * dx + dy * dy + dz * dz <= r * r;
+    }
+
+    /**
+     * Hitching is offered ONLY for an empty hand clicked near the tongue. Everything else
+     * falls through (PASS) to the normal vehicle interaction, so a held item keeps its own
+     * behaviour — crowbar pickup, camo spray, and anything SBW does — and subclasses are
+     * free to use plain clicks on the body (e.g. opening an inventory).
+     */
+    @Override
+    public InteractionResult interactAt(Player player, Vec3 vec, InteractionHand hand) {
+        if (!player.getItemInHand(hand).isEmpty()) return InteractionResult.PASS;
+        if (!isInHitchZone(vec)) return InteractionResult.PASS;
 
         if (this.level().isClientSide()) return InteractionResult.SUCCESS;
-
-        if (player.isShiftKeyDown()) {
-            if (isAttached()) { detach(); say(player, "fcp.trailer.detached"); }
-            else say(player, "fcp.trailer.not_attached");
-            return InteractionResult.SUCCESS;
-        }
 
         if (isAttached()) {
             detach();
