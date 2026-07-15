@@ -3,7 +3,7 @@
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "TurretPos": [0.017581, 2.323019, -0.846531],
-  "TurretTurnSpeed": [15, 15],
+  "TurretTurnSpeed": [2.5, 1.8],
   "TurretPitchRange": [-3, 40],
   "BarrelPos": [-0.061775, 0.667244, -0.946513],
   "PassengerWeaponStationPos": [-0.9697, 0.46805, 0.066094],
