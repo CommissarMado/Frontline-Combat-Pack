@@ -8,8 +8,8 @@
     -0.645842
   ],
   "TurretTurnSpeed": [
-    15,
-    15
+    5,
+    5
   ],
   "TurretPitchRange": [
     -45,
@@ -309,5 +309,9 @@
       -1.3549
     ]
   ],
-  "InertiaRotateRate": 1.8
+  "InertiaRotateRate": 1.8,
+  "TurretYawRange": [
+    -95,
+    95
+  ]
 }

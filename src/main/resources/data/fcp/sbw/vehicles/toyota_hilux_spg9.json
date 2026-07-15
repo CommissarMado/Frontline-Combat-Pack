@@ -160,7 +160,11 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [-0.425, 0.255, 0.2125],
+      "Position": [
+        -0.425,
+        0.255,
+        0.2125
+      ],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -277,7 +281,7 @@
       "Crosshair": "@VehicleCommonMissile",
       "CrosshairColor": "0x00ff66",
       "RPM": 400,
-      "Damage": 100,
+      "Damage": 150,
       "ExplosionDamage": 40,
       "ExplosionRadius": 4,
       "Velocity": 16,
@@ -302,7 +306,8 @@
             1
           ]
         ]
-      }
+      },
+      "SoundRadius": 32
     }
   },
   "ThirdPersonCameraPos": [

@@ -8,8 +8,8 @@
     -0.83333
   ],
   "TurretTurnSpeed": [
-    15,
-    15
+    5,
+    5
   ],
   "TurretPitchRange": [
     -6,
@@ -91,7 +91,7 @@
   ],
   "Seats": [
     {
-      "IsEnclosed": true,
+      "IsEnclosed": false,
       "Transform": "Vehicle",
       "BanHand": true,
       "Position": [
@@ -105,7 +105,7 @@
       "MaxYaw": 95
     },
     {
-      "IsEnclosed": true,
+      "IsEnclosed": false,
       "Transform": "Vehicle",
       "BanHand": false,
       "Position": [
@@ -162,7 +162,7 @@
       "Crosshair": "@VehicleCommonMissile",
       "CrosshairColor": "0x00ff66",
       "RPM": 400,
-      "Damage": 100,
+      "Damage": 150,
       "ExplosionDamage": 40,
       "ExplosionRadius": 4,
       "Velocity": 16,
@@ -187,7 +187,8 @@
             1
           ]
         ]
-      }
+      },
+      "SoundRadius": 32
     }
   },
   "EngineType": "Wheel",
