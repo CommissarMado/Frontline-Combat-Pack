@@ -46,6 +46,7 @@ import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxSpg9Renderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxZu23Renderer;
 import frontline.combat.fcp.client.renderer.Trailers.ExampleTrailer.ExampleTrailerRenderer;
 import frontline.combat.fcp.client.renderer.Uaz.UAZDSHKARenderer;
+import frontline.combat.fcp.client.renderer.Uaz.UAZSPG9Renderer;
 import frontline.combat.fcp.client.renderer.Uaz.UAZRenderer;
 import frontline.combat.fcp.client.renderer.Ural.UralGradRenderer;
 import frontline.combat.fcp.client.renderer.Ural.UralRenderer;
@@ -71,6 +72,7 @@ public class ModEntityRenderers {
 
         event.registerEntityRenderer(ModEntities.UAZ.get(), UAZRenderer::new);
         event.registerEntityRenderer(ModEntities.UAZ_DSHKA.get(), UAZDSHKARenderer::new);
+        event.registerEntityRenderer(ModEntities.UAZ_SPG9.get(), UAZSPG9Renderer::new);
 
         event.registerEntityRenderer(ModEntities.STRYKER_MGS.get(), StrykerMGSRenderer::new);
         event.registerEntityRenderer(ModEntities.STRYKER_M2.get(), StrykerM2Renderer::new);

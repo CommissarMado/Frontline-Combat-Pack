@@ -46,6 +46,7 @@ import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxSpg9Entity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxZu23Entity;
 import frontline.combat.fcp.entity.vehicle.Trailers.ExampleTrailer.ExampleTrailerEntity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZDSHKAEntity;
+import frontline.combat.fcp.entity.vehicle.Uaz.UAZSPG9Entity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZEntity;
 import frontline.combat.fcp.entity.vehicle.Ural.UralEntity;
 import frontline.combat.fcp.entity.vehicle.Ural.UralGradEntity;
@@ -81,6 +82,9 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<UAZDSHKAEntity>> UAZ_DSHKA = register("uaz_dshka",
             EntityType.Builder.of(UAZDSHKAEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
+
+    public static final RegistryObject<EntityType<UAZSPG9Entity>> UAZ_SPG9 = register("uaz_spg9",
+            EntityType.Builder.of(UAZSPG9Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
     public static final RegistryObject<EntityType<StrykerMGSEntity>> STRYKER_MGS = register("stryker_mgs",
             EntityType.Builder.of(StrykerMGSEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
 

@@ -47,7 +47,7 @@
 					]
 				},
 				{
-					"name": "whell1",
+					"name": "WheelL0Turn",
 					"parent": "wgh",
 					"pivot": [11.50155, 6.42083, -22.36558],
 					"cubes": [
@@ -194,7 +194,7 @@
 				},
 				{
 					"name": "shgona3",
-					"parent": "whell1",
+					"parent": "WheelL0Turn",
 					"pivot": [-17.7787, 6.70022, -90.23108],
 					"cubes": [
 						{
@@ -312,7 +312,7 @@
 					]
 				},
 				{
-					"name": "whell2",
+					"name": "WheelR0Turn",
 					"parent": "wgh",
 					"pivot": [-11.50155, 6.42083, -22.36558],
 					"cubes": [
@@ -459,7 +459,7 @@
 				},
 				{
 					"name": "shgona2",
-					"parent": "whell2",
+					"parent": "WheelR0Turn",
 					"pivot": [-17.7787, 6.70022, -90.23108],
 					"cubes": [
 						{
@@ -577,7 +577,7 @@
 					]
 				},
 				{
-					"name": "whell4",
+					"name": "WheelL0",
 					"parent": "wgh",
 					"pivot": [11.50155, 6.42083, 18.43442],
 					"cubes": [
@@ -724,7 +724,7 @@
 				},
 				{
 					"name": "shgona5",
-					"parent": "whell4",
+					"parent": "WheelL0",
 					"pivot": [-17.7787, 6.70022, -90.23108],
 					"cubes": [
 						{
@@ -842,7 +842,7 @@
 					]
 				},
 				{
-					"name": "whell5",
+					"name": "WheelR0",
 					"parent": "wgh",
 					"pivot": [-11.50155, 6.42083, 18.43442],
 					"cubes": [
@@ -989,7 +989,7 @@
 				},
 				{
 					"name": "shgona6",
-					"parent": "whell5",
+					"parent": "WheelR0",
 					"pivot": [-17.7787, 6.70022, -90.23108],
 					"cubes": [
 						{
@@ -3954,7 +3954,7 @@
 				{
 					"name": "turret",
 					"parent": "spg_9",
-					"pivot": [2.73174, 26.69, 13.26],
+					"pivot": [-0.16826, 26.69, 13.26],
 					"cubes": [
 						{
 							"origin": [-0.70576, 26.9025, 10.71],
@@ -3974,6 +3974,13 @@
 					"name": "barrel",
 					"parent": "turret",
 					"pivot": [2.90482, 28.82034, 12.13718],
+					"rotation": [0, 0, -180]
+				},
+				{
+					"name": "spg_barrel",
+					"parent": "barrel",
+					"pivot": [2.90482, 28.82034, 12.13718],
+					"rotation": [0, 0, 180],
 					"cubes": [
 						{
 							"origin": [-0.50817, 30.06627, -2.64878],

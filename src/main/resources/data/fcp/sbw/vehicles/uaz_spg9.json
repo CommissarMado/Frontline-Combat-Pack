@@ -1,24 +1,24 @@
 {
-  "ID": "fcp:uaz_dshka",
+  "ID": "fcp:uaz_spg9",
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "TurretPos": [
-    0.004617,
-    1.696046,
-    -0.645842
+    0.01051875,
+    1.668125,
+    -0.83333
   ],
   "TurretTurnSpeed": [
     15,
     15
   ],
   "TurretPitchRange": [
-    -45,
-    85
+    -6,
+    40
   ],
   "BarrelPos": [
-    0.0,
-    0.0,
-    0.0
+    -0.010818,
+    0.133146,
+    -0.070176
   ],
   "TurretControllerIndex": 2,
   "PassengerRenderScale": 0.85,
@@ -91,7 +91,7 @@
   ],
   "Seats": [
     {
-      "IsEnclosed": false,
+      "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
       "Position": [
@@ -105,7 +105,7 @@
       "MaxYaw": 95
     },
     {
-      "IsEnclosed": false,
+      "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": false,
       "Position": [
@@ -123,79 +123,61 @@
       "Transform": "Turret",
       "BanHand": true,
       "Weapons": [
-        "DHSKA"
+        "Rocket"
       ],
       "Position": [
-        0.0,
-        -1.0,
-        -0.65
+        0.225,
+        -1.19,
+        -0.5
       ],
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Transform": "Barrel",
         "Position": [
-          0.0,
-          0.5,
-          -0.75
+          0.114362,
+          0.063415,
+          0.340956
         ],
         "Direction": "Barrel"
       },
-      "MinPitch": -30,
-      "MaxPitch": 45,
-      "MinYaw": -95,
-      "MaxYaw": 95,
-      "Pose": "MachineGunStand",
-      "CanRotateHead": false,
-      "Sensitivity": [
-        0.7,
-        0.75,
-        1
-      ],
-      "DismountInfo": {
-        "Transform": "Vehicle",
-        "Position": [
-          0.0,
-          0.75,
-          -3.0
-        ]
-      }
+      "MinPitch": -6,
+      "MaxPitch": 40,
+      "Pose": "Tow"
     }
   ],
   "Weapons": {
-    "DHSKA": {
-      "DefaultFireMode": "Auto",
-      "AvailableFireModes": "Auto",
-      "Projectile": "superbwarfare:projectile",
-      "DefaultZoom": 3,
-      "RPM": 450,
-      "Magazine": 100,
-      "EmptyReloadTime": 20,
-      "Velocity": 25,
-      "Damage": 15,
-      "BypassesArmor": 2,
-      "HeatPerShoot": 5,
-      "NaturalCooldown": 1,
-      "RecoilTime": 16,
-      "RecoilForce": 0.05,
-      "ShootAnimationTime": 1,
-      "Spread": 0.25,
-      "Crosshair": "@Empty",
-      "CrosshairColor": "0x66FF00",
-      "Name": "weapon.fcp.dshka",
+    "Rocket": {
+      "AmmoType": "superbwarfare:rpg_rocket_standard",
+      "Icon": "fcp:textures/screens/vehicle_weapon/pg_9v.png",
+      "IsArmorPiercingProjectile": true,
+      "IsHighExplosiveProjectile": true,
+      "DefaultZoom": 2,
+      "DefaultFireMode": "Semi",
+      "AvailableFireModes": "Semi",
+      "Magazine": 1,
+      "EmptyReloadTime": 100,
+      "Projectile": "superbwarfare:small_cannon_shell",
+      "Spread": 0.3,
+      "Name": "weapon.fcp.spg9",
+      "Crosshair": "@VehicleCommonMissile",
+      "CrosshairColor": "0x00ff66",
+      "RPM": 400,
+      "Damage": 100,
+      "ExplosionDamage": 40,
+      "ExplosionRadius": 4,
+      "Velocity": 16,
       "SoundInfo": {
-        "Fire1P": "superbwarfare:coax_fire_1p",
-        "Fire3P": "superbwarfare:coax_fire_1p"
+        "Fire1P": "fcp:spg9_fire_1p",
+        "Fire3P": "fcp:spg9_fire_3p",
+        "VehicleReload": "fcp:spg9_reload"
       },
-      "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
-      "Icon": "fcp:textures/screens/vehicle_weapon/12_7mm.png",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
           [
-            -0.0017,
-            0.33,
-            1.065
+            0,
+            0.0794,
+            1.5497
           ]
         ],
         "Directions": [
