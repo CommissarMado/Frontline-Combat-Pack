@@ -23,6 +23,7 @@ import frontline.combat.fcp.entity.vehicle.Huey.HueyRocketsEntity;
 import frontline.combat.fcp.entity.vehicle.Huey.VenomEntity;
 import frontline.combat.fcp.entity.vehicle.Humvee.HumveeEntity;
 import frontline.combat.fcp.entity.vehicle.Humvee.HumveeTOWEntity;
+import frontline.combat.fcp.entity.vehicle.JohnDeere.JohnDeereEntity;
 import frontline.combat.fcp.entity.vehicle.Kamaz.KamazEntity;
 import frontline.combat.fcp.entity.vehicle.Lav.Lav25Entity;
 import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdArmedEntity;
@@ -170,6 +171,8 @@ public class ModEntities {
             EntityType.Builder.of(WolfEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.5f,0.5f));
     public static final RegistryObject<EntityType<MI17Entity>> MI17 = register("mi17",
             EntityType.Builder.of(MI17Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<JohnDeereEntity>> JOHN_DEERE = register("john_deere",
+            EntityType.Builder.of(JohnDeereEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f, 3f));
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> entityTypeBuilder) {
         return ENTITY_TYPES.register(name, () -> entityTypeBuilder.build(FCP.MODID + ":" + name));
     }

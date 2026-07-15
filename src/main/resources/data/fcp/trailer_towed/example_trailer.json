@@ -6,7 +6,8 @@
     "fcp:kamaz",
     "fcp:matv",
     "fcp:lav25",
-    "fcp:wolf"
+    "fcp:wolf",
+    "fcp:john_deere"
   ],
   "allow_any_driver": false,
   "max_articulation": 110,

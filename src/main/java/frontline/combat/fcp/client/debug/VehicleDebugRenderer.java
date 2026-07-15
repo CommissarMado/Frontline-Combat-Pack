@@ -5,11 +5,15 @@ import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.entity.vehicle.Trailers.AbstractTrailerEntity;
+import frontline.combat.fcp.entity.vehicle.Trailers.TrailerDriverData;
+import frontline.combat.fcp.init.TrailerDriverConfigs;
 import net.minecraft.client.Camera;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.ClipContext;
@@ -22,6 +26,7 @@ import net.minecraftforge.client.settings.KeyConflictContext;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.joml.Matrix3f;
 import org.joml.Matrix4d;
 import org.joml.Matrix4f;
@@ -108,6 +113,7 @@ public final class VehicleDebugRenderer {
             drawBarrel(vehicle, pt, pose, lines);
             drawTurret(vehicle, pt, pose, lines);
             drawShootPositions(vehicle, pt, pose, lines);
+            drawHitch(vehicle, pt, pose, lines);
         }
 
         pose.popPose();
@@ -195,6 +201,89 @@ public final class VehicleDebugRenderer {
     }
 
     // ── primitives ───────────────────────────────────────────────────────────────
+
+    /**
+     * Trailer hitch debug.
+     *
+     * MAGENTA cross = the driver's hitch point (where a tongue gets pinned).
+     *   - drawn on any vehicle that HAS a trailer_driver config (i.e. can tow), and
+     *   - drawn from a towed trailer's synced hitch offset while it's attached.
+     * BLUE cross = a trailer's own tongue / tow point.
+     * WHITE line = tongue -> hitch link when they coincide (constraint satisfied);
+     * turns RED as the gap grows, which means the constraint is being violated.
+     * YELLOW line = driver's forward axis at the hitch, so articulation is visible.
+     *
+     * Uses the SAME math as AbstractTrailerEntity.applyHitchConstraint (yaw-only
+     * rotation about the entity position), so these marks are exactly the points the
+     * hitch solver works with — not an approximation.
+     */
+    private static void drawHitch(VehicleEntity v, float pt, PoseStack pose, VertexConsumer vc) {
+        // A trailer: draw its tongue, and the hitch it's pinned to.
+        try {
+            if (v instanceof AbstractTrailerEntity trailer) {
+                Vec3 tow = trailer.getTowOffset();
+                Vec3 tongue = localToWorld(trailer, tow, pt);
+                cross(pose, vc, tongue, 0.14, 0.2f, 0.5f, 1f, 1f); // blue tongue
+
+                if (trailer.isAttached()) {
+                    Entity driver = trailer.getDriver();
+                    if (driver != null) {
+                        Vec3 hitchLocal = trailer.getHitchOffset();
+                        Vec3 hitch = localToWorld(driver, hitchLocal, pt);
+                        cross(pose, vc, hitch, 0.14, 1f, 0f, 1f, 1f); // magenta hitch
+
+                        // Link: white when pinned, reddening as the gap opens up.
+                        double gap = hitch.distanceTo(tongue);
+                        float bad = (float) Math.min(1.0, gap / 1.0);
+                        line(pose, vc, tongue.x, tongue.y, tongue.z, hitch.x, hitch.y, hitch.z,
+                                1f, 1f - bad, 1f - bad, 1f);
+
+                        // Driver's forward axis at the hitch — shows the articulation angle.
+                        float dYaw = Mth.rotLerp(pt, driver.yRotO, driver.getYRot());
+                        double dr = Math.toRadians(dYaw);
+                        Vec3 fwd = new Vec3(-Math.sin(dr), 0.0, Math.cos(dr)).scale(1.5);
+                        line(pose, vc, hitch.x, hitch.y, hitch.z,
+                                hitch.x + fwd.x, hitch.y + fwd.y, hitch.z + fwd.z,
+                                1f, 1f, 0f, 1f);
+                    }
+                }
+                return; // a trailer isn't also a driver
+            }
+        } catch (Throwable ignored) {
+        }
+
+        // A towing vehicle: draw its hitch point if it has a trailer_driver config.
+        // NOTE: those configs are datapack-loaded server-side, so this branch shows up in
+        // singleplayer; on a dedicated server the client map is empty and only an attached
+        // trailer's synced hitch (above) will draw.
+        try {
+            ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(v.getType());
+            if (id == null) return;
+            TrailerDriverData drv = TrailerDriverConfigs.get(id);
+            if (drv == null) return;
+
+            Vec3 hitch = localToWorld(v, new Vec3(drv.hitchX(), drv.hitchY(), drv.hitchZ()), pt);
+            cross(pose, vc, hitch, 0.14, 1f, 0f, 1f, 1f); // magenta hitch
+        } catch (Throwable ignored) {
+        }
+    }
+
+    /**
+     * Entity-local (x=right, y=up, z=forward) -> world, using yaw only about the entity
+     * position — the exact transform the hitch constraint uses. Interpolated for smooth
+     * rendering between ticks.
+     */
+    private static Vec3 localToWorld(Entity e, Vec3 local, float pt) {
+        double ex = Mth.lerp(pt, e.xo, e.getX());
+        double ey = Mth.lerp(pt, e.yo, e.getY());
+        double ez = Mth.lerp(pt, e.zo, e.getZ());
+        double theta = Math.toRadians(Mth.rotLerp(pt, e.yRotO, e.getYRot()));
+        double cos = Math.cos(theta), sin = Math.sin(theta);
+        return new Vec3(
+                ex + (local.x * cos - local.z * sin),
+                ey + local.y,
+                ez + (local.x * sin + local.z * cos));
+    }
 
     private static void cross(PoseStack pose, VertexConsumer vc, Vec3 p, double s,
                               float r, float g, float b, float a) {

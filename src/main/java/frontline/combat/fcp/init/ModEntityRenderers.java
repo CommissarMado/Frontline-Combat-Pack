@@ -20,6 +20,7 @@ import frontline.combat.fcp.client.renderer.Huey.VenomRenderer;
 import frontline.combat.fcp.client.renderer.Huey.HueyRocketsRenderer;
 import frontline.combat.fcp.client.renderer.Humvee.HumveeRenderer;
 import frontline.combat.fcp.client.renderer.Humvee.HumveeTOWRenderer;
+import frontline.combat.fcp.client.renderer.JohnDeere.JohnDeereRenderer;
 import frontline.combat.fcp.client.renderer.Kamaz.KamazRenderer;
 import frontline.combat.fcp.client.renderer.Lav.Lav25Renderer;
 import frontline.combat.fcp.client.renderer.Littlebird.LittlebirdArmedRenderer;
@@ -50,6 +51,7 @@ import frontline.combat.fcp.client.renderer.Ural.UralGradRenderer;
 import frontline.combat.fcp.client.renderer.Ural.UralRenderer;
 import frontline.combat.fcp.client.renderer.Viper.ViperRenderer;
 import frontline.combat.fcp.client.renderer.Projectile.Hellfire.LockOnHellfireRenderer;
+import frontline.combat.fcp.entity.vehicle.JohnDeere.JohnDeereEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -121,6 +123,8 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.MI17.get(), MI17Renderer::new);
 
         event.registerEntityRenderer(ModEntities.FMTV.get(), FMTVRenderer::new);
+
+        event.registerEntityRenderer(ModEntities.JOHN_DEERE.get(), JohnDeereRenderer::new);
 
         // Projectiles
         event.registerEntityRenderer(ModEntities.LOCK_ON_HELLFIRE.get(), LockOnHellfireRenderer::new);

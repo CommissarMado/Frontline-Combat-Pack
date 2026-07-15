@@ -145,6 +145,31 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
         return this.entityData.get(ATTACHED);
     }
 
+    /**
+     * The driver's hitch point in the DRIVER's local space, as synced at attach time.
+     * Only meaningful while attached. Synced, so it is valid on the client too.
+     */
+    public Vec3 getHitchOffset() {
+        return new Vec3(this.entityData.get(HITCH_X),
+                this.entityData.get(HITCH_Y),
+                this.entityData.get(HITCH_Z));
+    }
+
+    /**
+     * This trailer's tongue point in the TRAILER's local space. Synced, so it is valid
+     * on the client too (getTowedData() resolves from datapack configs and is server-side).
+     */
+    public Vec3 getTowOffset() {
+        return new Vec3(this.entityData.get(TOW_X),
+                this.entityData.get(TOW_Y),
+                this.entityData.get(TOW_Z));
+    }
+
+    /** Max articulation angle (degrees) between driver and trailer. Synced. */
+    public float getMaxArticulation() {
+        return this.entityData.get(MAX_ART);
+    }
+
     // ── Tick ──────────────────────────────────────────────────────────────────
 
     @Override

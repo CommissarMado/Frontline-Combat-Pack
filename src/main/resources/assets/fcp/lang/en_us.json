@@ -93,6 +93,9 @@
   "entity.fcp.venom": "Venom",
   "entity.fcp.aavp": "AAVP",
 
+  "//": "==================== Other Vehicles =====================",
+  "entity.fcp.john_deere": "John Deere Tractor",
+
   "//": "======================= Messages ========================",
   "message.fcp.camo_changed": "Camo changed to %s",
   
