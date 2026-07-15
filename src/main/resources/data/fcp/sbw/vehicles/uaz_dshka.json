@@ -20,7 +20,7 @@
     0.0,
     0.0
   ],
-  "TurretControllerIndex": 2,
+  "TurretControllerIndex": 1,
   "PassengerRenderScale": 0.85,
   "OBB": [
     {
@@ -106,20 +106,6 @@
     },
     {
       "IsEnclosed": false,
-      "Transform": "Vehicle",
-      "BanHand": false,
-      "Position": [
-        -0.40375,
-        0.255,
-        0.1275
-      ],
-      "MinPitch": -60,
-      "MaxPitch": 60,
-      "MinYaw": -95,
-      "MaxYaw": 95
-    },
-    {
-      "IsEnclosed": false,
       "Transform": "Turret",
       "BanHand": true,
       "Weapons": [
@@ -159,6 +145,20 @@
           -3.0
         ]
       }
+    },
+    {
+      "IsEnclosed": false,
+      "Transform": "Vehicle",
+      "BanHand": false,
+      "Position": [
+        -0.40375,
+        0.255,
+        0.1275
+      ],
+      "MinPitch": -60,
+      "MaxPitch": 60,
+      "MinYaw": -95,
+      "MaxYaw": 95
     }
   ],
   "Weapons": {
