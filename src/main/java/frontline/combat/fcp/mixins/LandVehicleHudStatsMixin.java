@@ -4,6 +4,7 @@ import com.atsuishio.superbwarfare.client.RenderHelper;
 import com.atsuishio.superbwarfare.client.overlay.VehicleMainWeaponHudOverlay;
 import com.atsuishio.superbwarfare.client.overlay.weapon.LandVehicleHud;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
+import com.atsuishio.superbwarfare.entity.vehicle.utils.VehicleVecUtils;
 import com.atsuishio.superbwarfare.event.ClientEventHandler;
 import com.atsuishio.superbwarfare.tools.FormatTool;
 import com.atsuishio.superbwarfare.tools.MathTool;
@@ -42,12 +43,27 @@ public class LandVehicleHudStatsMixin {
             "fcp:stryker_mgs",
             "fcp:t72av",
             "fcp:aavp",
-            "fcp:matv_tow"
+            "fcp:matv_tow",
+            "fcp:ural_grad",
+            "fcp:toyota_hilux_bmp",
+            "fcp:toyota_hilux_spg9",
+            "fcp:uaz_spg9"
     );
 
     // Vehicles that suppress the TV frame entirely but show no replacement overlay
     private static final Set<String> FCP_NO_FRAME_VEHICLES = Set.of(
-            "fcp:matv"
+            "fcp:toyota_hilux_zu23"
+    );
+
+    // Vehicles whose gunner seat gets the mortar-style Pitch / Yaw / Range readout.
+    // Muzzle velocity and projectile gravity are pulled from that seat's own GunData,
+    // so it stays correct per vehicle/weapon with no hardcoded constants.
+    //
+    // Additive: does NOT by itself suppress the TV frame or draw gunner.png. Add the
+    // vehicle to FCP_NO_FRAME_VEHICLES / FCP_GUNNER_FRAME_VEHICLES too if you want those.
+    private static final Set<String> FCP_MORTAR_HUD_VEHICLES = Set.of(
+            "fcp:ural_grad",
+            "fcp:toyota_hilux_rocket_pod"
     );
 
     private static final ResourceLocation GUNNER_FRAME =
@@ -80,8 +96,9 @@ public class LandVehicleHudStatsMixin {
         String vehicleId = EntityType.getKey(vehicle.getType()).toString();
         boolean hasGunnerFrame = FCP_GUNNER_FRAME_VEHICLES.contains(vehicleId);
         boolean noFrame = FCP_NO_FRAME_VEHICLES.contains(vehicleId);
+        boolean hasMortarHud = FCP_MORTAR_HUD_VEHICLES.contains(vehicleId);
 
-        if (!hasGunnerFrame && !noFrame) return;
+        if (!hasGunnerFrame && !noFrame && !hasMortarHud) return;
 
         ci.cancel();
 
@@ -181,6 +198,12 @@ public class LandVehicleHudStatsMixin {
                     MathTool.getGradientColor(color, 0xFF0000, bodyHeal, 2));
             poseStack.popPose();
 
+            // Mortar-style ballistic readout: Pitch / Yaw / Range
+            if (hasMortarHud) {
+                renderMortarInfo(vehicle, player, guiGraphics, mc, partialTick,
+                        screenWidth, screenHeight, color);
+            }
+
             // Rangefinder
             var camera = mc.gameRenderer.getMainCamera();
             var cameraPos = camera.getPosition();
@@ -217,5 +240,76 @@ public class LandVehicleHudStatsMixin {
             VehicleMainWeaponHudOverlay.renderEnergyInfo(
                     vehicle, guiGraphics, screenWidth, screenHeight, mc.font);
         }
+    }
+
+    /**
+     * Mortar-style Pitch / Yaw / Range readout.
+     *
+     * The range is solved to GROUND level, not to launch height. SBW's own
+     * RangeTool.getRange() assumes the shell returns to the height it was fired from,
+     * but the muzzle sits several blocks above the ground (and climbs further as the
+     * barrel elevates), so the shell keeps falling past that point and lands long.
+     * On the Grad that is roughly +6% at minimum elevation.
+     *
+     *   h = muzzle height above the ground the vehicle is standing on
+     *   t = (vy + sqrt(vy^2 + 2*g*h)) / g     <- positive root = the descending branch
+     *   R = vx * t
+     *
+     * Layout mirrors SBW's MortarInfoOverlay: three lines from (centre - 90, centre - 26).
+     */
+    private void renderMortarInfo(
+            VehicleEntity vehicle,
+            Player player,
+            GuiGraphics guiGraphics,
+            Minecraft mc,
+            float partialTick,
+            int screenWidth,
+            int screenHeight,
+            int color
+    ) {
+        // Actual launch vector (resolves the seat's GunData -> ShootPos.Directions), so
+        // this stays true even if a weapon's tubes are angled relative to the barrel.
+        // getXRotFromVector is atan2(y, horizontal): positive when elevated = theta.
+        Vec3 shootVec = vehicle.getShootVec(player, partialTick);
+        double pitch = VehicleVecUtils.getXRotFromVector(shootVec);
+        double yaw = -VehicleVecUtils.getYRotFromVector(shootVec);
+
+        double velocity = vehicle.getProjectileVelocity(player);
+        double gravity = vehicle.getProjectileGravity(player);
+
+        String rangeStr;
+        if (gravity <= 0 || velocity <= 0 || pitch <= 0) {
+            // Flat-trajectory weapon, or barrel level/depressed: no ballistic arc to solve
+            rangeStr = "---m";
+        } else {
+            Vec3 muzzle = vehicle.getShootPos(player, partialTick);
+            double h = Math.max(0.0, muzzle.y - vehicle.getY());
+
+            double rad = Math.toRadians(pitch);
+            double vy = velocity * Math.sin(rad);
+            double vx = velocity * Math.cos(rad);
+
+            double flightTime = (vy + Math.sqrt(vy * vy + 2 * gravity * h)) / gravity;
+            double range = vx * flightTime;
+            rangeStr = FormatTool.format1D(Math.floor(range), "m");
+        }
+
+        int baseX = screenWidth / 2 - 90;
+        int baseY = screenHeight / 2 - 26;
+
+        guiGraphics.drawString(mc.font,
+                Component.translatable("tips.superbwarfare.mortar.pitch")
+                        .append(Component.literal(FormatTool.format1D(pitch, "\u00B0"))),
+                baseX, baseY, color, false);
+
+        guiGraphics.drawString(mc.font,
+                Component.translatable("tips.superbwarfare.mortar.yaw")
+                        .append(Component.literal(FormatTool.format1D(yaw, "\u00B0"))),
+                baseX, baseY + 10, color, false);
+
+        guiGraphics.drawString(mc.font,
+                Component.translatable("tips.superbwarfare.mortar.range")
+                        .append(Component.literal(rangeStr)),
+                baseX, baseY + 20, color, false);
     }
 }
