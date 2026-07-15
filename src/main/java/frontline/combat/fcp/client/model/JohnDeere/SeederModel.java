@@ -30,7 +30,9 @@ public class SeederModel extends FCPVehicleModel<SeederEntity> {
 
         VehicleModel.TransformContext<SeederEntity> wheels =
                 WheelRotationTransforms.matchAny(boneName, 0.6,
-                        "WheelL0", "WheelR0", "WheelL1", "WheelR1", "WheelL2", "WheelR2");
+                        "WheelL0", "WheelR0", "WheelL1", "WheelR1", "WheelL2", "WheelR2",
+                        "RollerL0", "RollerR0", "RollerL1", "RollerR1", "RollerL2", "RollerR2", "RollerL3", "RollerR3",
+                        "RollerL4", "RollerR4", "RollerL5", "RollerR5", "RollerL6", "RollerR6");
         if (wheels != null) return wheels;
 
         return super.collectTransform(boneName);

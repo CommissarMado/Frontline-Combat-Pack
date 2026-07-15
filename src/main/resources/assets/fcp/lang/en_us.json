@@ -104,6 +104,8 @@
   "fcp.trailer.detached": "Trailer detached.",
   "fcp.trailer.not_attached": "This trailer is not attached to anything.",
   "fcp.trailer.no_vehicle_nearby": "No vehicle nearby to attach to.",
+  "fcp.trailer.cannot_attach": "That vehicle can't tow this trailer.",
+  "fcp.trailer.hitch_taken": "That vehicle's hitch already has a trailer on it.",
 
   "//" : "====================== Key =============================",
   "key.categories.fcp": "Frontline Combat Pack",

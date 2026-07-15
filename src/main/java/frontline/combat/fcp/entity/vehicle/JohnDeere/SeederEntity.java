@@ -74,7 +74,7 @@ public class SeederEntity extends AbstractTrailerEntity {
     /** Inventory slots. Must be a multiple of 9 (uses the vanilla chest UI). */
     private static final int INVENTORY_SIZE = 27;
     /** Half the planting width in blocks. 1.5 => a 4-wide row at 1.0 spacing. */
-    private static final double ROW_HALF_WIDTH = 1.5;
+    private static final double ROW_HALF_WIDTH = 9;
     /** Lateral gap between coulters. 1.0 = one seed per block column. */
     private static final double ROW_SPACING = 1.0;
     /** Where the row sits along the trailer: local Z (+forward, -rear). */

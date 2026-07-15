@@ -29,6 +29,11 @@ import java.util.List;
  *                       driver's heading; prevents violent jackknife flips.
  *   terrain_follow    = if true the trailer rides at hitch height; reserved for
  *                       future ground-snapping. Currently rides at the hitch.
+ *   attach_search_radius = how close a towing vehicle's HITCH point must be to
+ *                       this trailer's TONGUE point for it to be offered as a
+ *                       driver, in blocks. Measured hitch-to-tongue, not
+ *                       centre-to-centre, so it matches what actually gets
+ *                       pinned. Small = must line up properly; large = lenient.
  *
  * Example (data/fcp/trailer_towed/example_trailer.json):
  * {
@@ -38,7 +43,8 @@ import java.util.List;
  *   "allowed_drivers": [ "fcp:kamaz", "fcp:matv" ],
  *   "allow_any_driver": false,
  *   "max_articulation": 110.0,
- *   "terrain_follow": false
+ *   "terrain_follow": false,
+ *   "attach_search_radius": 6.0
  * }
  */
 public record TrailerTowedData(
@@ -48,7 +54,8 @@ public record TrailerTowedData(
         List<ResourceLocation> allowedDrivers,
         boolean allowAnyDriver,
         float maxArticulation,
-        boolean terrainFollow
+        boolean terrainFollow,
+        double attachSearchRadius
 ) {
     public static final Codec<TrailerTowedData> CODEC = RecordCodecBuilder.create(inst -> inst.group(
             Codec.DOUBLE.optionalFieldOf("tow_x", 0.0).forGetter(TrailerTowedData::towX),
@@ -58,7 +65,9 @@ public record TrailerTowedData(
                     .forGetter(TrailerTowedData::allowedDrivers),
             Codec.BOOL.optionalFieldOf("allow_any_driver", false).forGetter(TrailerTowedData::allowAnyDriver),
             Codec.FLOAT.optionalFieldOf("max_articulation", 110.0f).forGetter(TrailerTowedData::maxArticulation),
-            Codec.BOOL.optionalFieldOf("terrain_follow", false).forGetter(TrailerTowedData::terrainFollow)
+            Codec.BOOL.optionalFieldOf("terrain_follow", false).forGetter(TrailerTowedData::terrainFollow),
+            Codec.DOUBLE.optionalFieldOf("attach_search_radius", 6.0)
+                    .forGetter(TrailerTowedData::attachSearchRadius)
     ).apply(inst, TrailerTowedData::new));
 
     /** True if a vehicle with the given registry id is permitted to tow this trailer. */

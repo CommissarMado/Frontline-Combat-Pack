@@ -21,11 +21,11 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
-import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -88,7 +88,12 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
     private static final EntityDataAccessor<Float> MAX_ART =
             SynchedEntityData.defineId(AbstractTrailerEntity.class, EntityDataSerializers.FLOAT);
 
-    private static final double ATTACH_SEARCH_RADIUS = 6.0;
+    /**
+     * Extra reach added to the BROAD entity query only (not the accept test). A hitch point
+     * sits behind its vehicle's origin and can lie outside that vehicle's own bounding box,
+     * so the query has to look further than the configured radius to even see the vehicle.
+     */
+    private static final double HITCH_QUERY_MARGIN = 10.0;
 
     // Anti-glitch guard. The hitch point should never move more than a vehicle can
     // plausibly travel in one tick; a bigger jump is a transient (e.g. client
@@ -323,6 +328,7 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
         TrailerTowedData towed = getTowedData();
         if (towed == null) return false;                // trailer has no tow config
         if (!towed.canBeTowedBy(driverId)) return false; // not whitelisted
+        if (isHitchTaken(driver, this)) return false;    // hitch already has a trailer on it
 
         this.driverUUID = driver.getUUID();
         this.entityData.set(DRIVER_ID, driver.getId());
@@ -388,14 +394,87 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
         return this.level().getEntity(id);
     }
 
-    @Nullable
-    private Entity findNearestDriver() {
-        TrailerTowedData towed = getTowedData();
-        if (towed == null) return null;
+    /**
+     * This trailer's tongue point in WORLD space — the point that gets pinned to a hitch.
+     * Yaw-only rotation about the entity position, the same convention the hitch constraint
+     * uses.
+     */
+    public Vec3 getTongueWorldPos() {
+        Vec3 tow = getTowOffset();
+        double theta = Math.toRadians(this.getYRot());
+        double cos = Math.cos(theta), sin = Math.sin(theta);
+        return new Vec3(
+                this.getX() + (tow.x * cos - tow.z * sin),
+                this.getY() + tow.y,
+                this.getZ() + (tow.x * sin + tow.z * cos));
+    }
 
+    /** A towing vehicle's hitch point in WORLD space, or null if it can't tow. */
+    @Nullable
+    public static Vec3 getHitchWorldPos(Entity driver) {
+        ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(driver.getType());
+        if (id == null) return null;
+        TrailerDriverData drv = TrailerDriverConfigs.get(id);
+        if (drv == null) return null;
+
+        double theta = Math.toRadians(driver.getYRot());
+        double cos = Math.cos(theta), sin = Math.sin(theta);
+        return new Vec3(
+                driver.getX() + (drv.hitchX() * cos - drv.hitchZ() * sin),
+                driver.getY() + drv.hitchY(),
+                driver.getZ() + (drv.hitchX() * sin + drv.hitchZ() * cos));
+    }
+
+    /**
+     * Result of a driver search: the connectable vehicle if one was found, plus whether we
+     * rejected any candidate purely because its hitch was already in use — so the player
+     * can be told "that hitch is taken" instead of a misleading "nothing nearby".
+     */
+    private record DriverSearch(@Nullable Entity driver, boolean sawTakenHitch) {
+    }
+
+    /**
+     * True if some OTHER trailer is already hitched to this vehicle. A hitch is a single
+     * connection point — without this, two trailers happily pin to the same tractor and
+     * fight over the same position.
+     */
+    private static boolean isHitchTaken(Entity driver, @Nullable AbstractTrailerEntity ignore) {
+        List<AbstractTrailerEntity> trailers = driver.level().getEntitiesOfClass(
+                AbstractTrailerEntity.class,
+                driver.getBoundingBox().inflate(HITCH_QUERY_MARGIN),
+                t -> t != ignore && t.isAttached());
+        for (AbstractTrailerEntity trailer : trailers) {
+            if (trailer.getDriver() == driver) return true;
+        }
+        return false;
+    }
+
+    /**
+     * Find the best vehicle to hitch to.
+     *
+     * A candidate only counts if it offers a hitch we can actually connect to — it has a
+     * trailer_driver config (so a real hitch point exists), it's whitelisted for this
+     * trailer, its hitch is within reach of our tongue, and that hitch isn't already in use.
+     *
+     * Distance is measured HITCH-to-TONGUE, not centre-to-centre, so the radius means what
+     * you'd expect: how close the two connection points have to be. The nearest hitch wins,
+     * which is also the one that will move the least when it snaps.
+     */
+    private DriverSearch findNearestDriver() {
+        TrailerTowedData towed = getTowedData();
+        if (towed == null) return new DriverSearch(null, false);
+
+        double radius = towed.attachSearchRadius();
+        double radiusSq = radius * radius;
+        Vec3 tongue = getTongueWorldPos();
+
+        // The broad query is deliberately wider than the radius: a hitch sits several
+        // blocks behind its vehicle's origin and can even fall outside that vehicle's own
+        // bounding box, so a tight query would miss vehicles whose hitch is right there.
+        // The real tests are the hitch checks below.
         List<Entity> candidates = this.level().getEntities(
                 this,
-                this.getBoundingBox().inflate(ATTACH_SEARCH_RADIUS),
+                new AABB(tongue, tongue).inflate(radius + HITCH_QUERY_MARGIN),
                 entity -> {
                     if (entity == this) return false;
                     if (!(entity instanceof GeoVehicleEntity)) return false;
@@ -408,10 +487,30 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
                 }
         );
 
-        if (candidates.isEmpty()) return null;
-        return candidates.stream()
-                .min(Comparator.comparingDouble(e -> e.distanceToSqr(this.position())))
-                .orElse(null);
+        if (candidates.isEmpty()) return new DriverSearch(null, false);
+
+        Entity best = null;
+        double bestDistSq = Double.MAX_VALUE;
+        boolean sawTakenHitch = false;
+
+        for (Entity candidate : candidates) {
+            // A real, reachable hitch point — not merely a vehicle that happens to be near.
+            Vec3 hitch = getHitchWorldPos(candidate);
+            if (hitch == null) continue;                    // no hitch to connect to
+            double distSq = hitch.distanceToSqr(tongue);
+            if (distSq > radiusSq) continue;                // hitch out of reach of the tongue
+
+            if (isHitchTaken(candidate, this)) {            // hitch exists but is occupied
+                sawTakenHitch = true;
+                continue;
+            }
+
+            if (distSq < bestDistSq) {
+                bestDistSq = distSq;
+                best = candidate;
+            }
+        }
+        return new DriverSearch(best, sawTakenHitch);
     }
 
     // ── Suppress SBW interpolation while attached (the constraint owns position) ─
@@ -531,9 +630,12 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
             return InteractionResult.SUCCESS;
         }
 
-        Entity driver = findNearestDriver();
+        DriverSearch search = findNearestDriver();
+        Entity driver = search.driver();
         if (driver == null) {
-            say(player, "fcp.trailer.no_vehicle_nearby");
+            say(player, search.sawTakenHitch()
+                    ? "fcp.trailer.hitch_taken"
+                    : "fcp.trailer.no_vehicle_nearby");
             return InteractionResult.SUCCESS;
         }
 
