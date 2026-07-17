@@ -109,5 +109,6 @@
 
   "//" : "====================== Key =============================",
   "key.categories.fcp": "Frontline Combat Pack",
-  "key.fcp.vehicle_debug": "Toggle Vehicle Debug Overlay"
+  "key.fcp.vehicle_debug": "Toggle Vehicle Debug Overlay",
+  "weapon.fcp.m240_coax": "M240 Coaxial"
 }

@@ -2,28 +2,190 @@
   "ID": "fcp:stryker_mgs",
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
-  "TurretPos": [0.017581, 2.323019, -0.846531],
-  "TurretTurnSpeed": [2.5, 1.8],
-  "TurretPitchRange": [-3, 40],
-  "BarrelPos": [-0.061775, 0.667244, -0.946513],
-  "PassengerWeaponStationPos": [-0.9697, 0.46805, 0.066094],
-  "PassengerWeaponStationBarrelPos": [-0.0208, 0.066725, 0.951962],
-  "PassengerWeaponStationTurnSpeed": [15, 15],
-  "PassengerWeaponStationPitchRange": [-4, 30],
+  "TurretPos": [
+    0.017581,
+    2.323019,
+    -0.846531
+  ],
+  "TurretTurnSpeed": [
+    2.5,
+    1.8
+  ],
+  "TurretPitchRange": [
+    -3,
+    40
+  ],
+  "BarrelPos": [
+    -0.061775,
+    0.667244,
+    -0.946513
+  ],
+  "PassengerWeaponStationPos": [
+    -0.976459,
+    0.646601,
+    0.016606
+  ],
+  "PassengerWeaponStationBarrelPos": [
+    -0.020801,
+    0.066722,
+    0.951965
+  ],
+  "PassengerWeaponStationTurnSpeed": [
+    15,
+    15
+  ],
+  "PassengerWeaponStationPitchRange": [
+    -4,
+    30
+  ],
   "TurretControllerIndex": 1,
   "PassengerWeaponStationControllerIndex": 2,
   "OBB": [
-    {"Size": [0.2265625, 0.6328125, 0.625], "Position": [1.35, 0.75, 2.525], "Part": "WheelLeft"},
-    {"Size": [0.2265625, 0.6328125, 0.625], "Position": [1.35, 0.75, 1.15], "Part": "WheelLeft"},
-    {"Size": [0.2265625, 0.6328125, 0.625], "Position": [1.35, 0.75, -2.025], "Part": "WheelLeft"},
-    {"Size": [0.2265625, 0.6328125, 0.625], "Position": [1.35, 0.75, -0.55], "Part": "WheelLeft"},
-    {"Size": [0.2265625, 0.6328125, 0.625], "Position": [-1.35, 0.75, 2.525], "Part": "WheelRight"},
-    {"Size": [0.2265625, 0.6328125, 0.625], "Position": [-1.35, 0.75, 1.15], "Part": "WheelRight"},
-    {"Size": [0.2265625, 0.6328125, 0.625], "Position": [-1.35, 0.75, -2.025], "Part": "WheelRight"},
-    {"Size": [0.2265625, 0.6328125, 0.625], "Position": [-1.35, 0.75, -0.55], "Part": "WheelRight"},
-    {"Size": [1.5, 0.625, 4.25], "Position": [0, 1.15, 0.2], "Part":  "Body"},
-    {"Size": [1.5, 0.425, 4.25], "Position": [0, 2.2, 0.2], "Part":  "Body"},
-    {"Size": [0.5, 0.425, 4], "Position": [0, 0.225, 2.75], "Transform": "Barrel", "Part": "Turret", "Rotation": "Barrel"}
+    {
+      "Size": [
+        0.2265625,
+        0.6328125,
+        0.625
+      ],
+      "Position": [
+        1.35,
+        0.75,
+        2.525
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.2265625,
+        0.6328125,
+        0.625
+      ],
+      "Position": [
+        1.35,
+        0.75,
+        1.15
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.2265625,
+        0.6328125,
+        0.625
+      ],
+      "Position": [
+        1.35,
+        0.75,
+        -2.025
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.2265625,
+        0.6328125,
+        0.625
+      ],
+      "Position": [
+        1.35,
+        0.75,
+        -0.55
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.2265625,
+        0.6328125,
+        0.625
+      ],
+      "Position": [
+        -1.35,
+        0.75,
+        2.525
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.2265625,
+        0.6328125,
+        0.625
+      ],
+      "Position": [
+        -1.35,
+        0.75,
+        1.15
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.2265625,
+        0.6328125,
+        0.625
+      ],
+      "Position": [
+        -1.35,
+        0.75,
+        -2.025
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.2265625,
+        0.6328125,
+        0.625
+      ],
+      "Position": [
+        -1.35,
+        0.75,
+        -0.55
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        1.5,
+        0.625,
+        4.25
+      ],
+      "Position": [
+        0,
+        1.15,
+        0.2
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        1.5,
+        0.425,
+        4.25
+      ],
+      "Position": [
+        0,
+        2.2,
+        0.2
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        0.5,
+        0.425,
+        4
+      ],
+      "Position": [
+        0,
+        0.225,
+        2.75
+      ],
+      "Transform": "Barrel",
+      "Part": "Turret",
+      "Rotation": "Barrel"
+    }
   ],
   "Seats": [
     {
@@ -33,9 +195,17 @@
       "HidePassenger": true,
       "CameraPos": {
         "UseFixedCameraPos": true,
-        "Position": [0.549106, 2.59995, 2.838525]
+        "Position": [
+          0.549106,
+          2.59995,
+          2.838525
+        ]
       },
-      "Position": [0.5, 0.5625, 2.1875],
+      "Position": [
+        0.5,
+        0.5625,
+        2.1875
+      ],
       "MinYaw": -55,
       "MaxYaw": 55,
       "MinPitch": -3,
@@ -47,30 +217,54 @@
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
-        "Position": [-0.503544, 1.308006, -0],
+        "Position": [
+          -0.503544,
+          1.308006,
+          0
+        ],
         "Direction": "Barrel"
       },
       "CanRotateHead": false,
-      "Weapons": ["Cannon", "Coax"],
+      "Weapons": [
+        "Cannon",
+        "Coax"
+      ],
       "Transform": "Turret",
-      "Position": [0, 0, 0],
-      "MinPitch": -15,
+      "Position": [
+        0,
+        0,
+        0
+      ],
+      "MinPitch": -3,
       "MaxPitch": 32.5
     },
     {
-      "IsEnclosed": true,
-      "Transform": "Turret",
-      "Weapons": ["PassengerMachineGun"],
+      "IsEnclosed": false,
+      "Transform": "WeaponStationBarrel",
+      "Weapons": [
+        "PassengerMachineGun"
+      ],
       "BanHand": true,
-      "Position": [-0.9697, -0.7, -0.066094],
+      "Position": [
+        0,
+        -1.3,
+        -1.2
+      ],
       "CameraPos": {
         "Transform": "WeaponStationBarrel",
         "UseFixedCameraPos": true,
-        "Position": [0, 0.75, -1],
-        "Rotation": "WeaponStationBarrel"
+        "Position": [
+          0,
+          0.75,
+          -1
+        ],
+        "Direction": "WeaponStationBarrel"
       },
-      "MinPitch": -4,
-      "MaxPitch": 30
+      "MinPitch": -10,
+      "MaxPitch": 20,
+      "MinYaw": -5,
+      "MaxYaw": 160,
+      "Pose": "MachineGunStand"
     }
   ],
   "EngineType": "Wheel",
@@ -83,9 +277,9 @@
     "MaxForwardSpeedRate": 1.02375,
     "MaxBackwardSpeedRate": 0.33,
     "Increment": 0.025,
-    "Decrement": 0.020,
+    "Decrement": 0.02,
     "SteeringSpeed": 0.1,
-    "EngineSoundVolume" : 1.0
+    "EngineSoundVolume": 1.0
   },
   "UpStep": 2.2,
   "Mass": 10,
@@ -174,8 +368,20 @@
       },
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[-0.044194, 0.072237, 6.793044]],
-        "Directions": ["Barrel"]
+        "Positions": [
+          [
+            0.05,
+            0.08,
+            6.8532
+          ]
+        ],
+        "Directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
       }
     },
     "PassengerMachineGun": {
@@ -183,12 +389,12 @@
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 550,
+      "RPM": 500,
       "EmptyReloadTime": 160,
       "Magazine": 200,
       "Velocity": 25,
-      "Damage": 12,
-      "BypassesArmor": 0.2,
+      "Damage": 15,
+      "BypassesArmor": 2,
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "RecoilTime": 16,
@@ -206,22 +412,34 @@
       },
       "ShootPos": {
         "Transform": "WeaponStationBarrel",
-        "Positions": [[-0.007381, 0.35, 1.425625]],
-        "Directions": ["WeaponStationBarrel"]
+        "Positions": [
+          [
+            -0.00738,
+            0.18408,
+            1.33625
+          ]
+        ],
+        "Directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
       },
       "SoundRadius": 16,
       "AmmoType": "superbwarfare:rifle_ammo",
       "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png"
     },
     "Coax": {
-      "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png",
+      "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
       "Spread": 0.25,
       "CrosshairColor": "0x00ff66",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 450,
+      "RPM": 650,
       "Damage": 5,
       "BypassesArmor": 0.2,
       "Velocity": 25,
@@ -233,15 +451,28 @@
       "AmmoType": "superbwarfare:rifle_ammo",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[0.390169, 0.417637, 1.687963]],
-        "Directions": ["Barrel"]
+        "Positions": [
+          [
+            0.390169,
+            0.417637,
+            1.687963
+          ]
+        ],
+        "Directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
       },
       "Crosshair": "@VehicleCommonGun",
-      "Name": "weapon.fcp.m2_50cal",
+      "Name": "weapon.fcp.m240_coax",
       "SoundInfo": {
-        "Fire1P": "fcp:m2_fire_1p",
-        "Fire3P": "fcp:m2_fire_3p",
-        "Fire3PFar": "fcp:m2_fire_3p_far",
+        "Fire1P": "superbwarfare:coax_fire_1p",
+        "Fire3P": "superbwarfare:mg_17_fire_3p",
+        "Fire3PFar": "superbwarfare:mg_17_far",
+        "Fire3PVeryFar": "superbwarfare:mg_17_veryfar",
         "Change": "fcp:coax_equip"
       },
       "SoundRadius": 16
@@ -253,18 +484,59 @@
       "RPM": 0
     }
   },
-  "ThirdPersonCameraPos": [0, 1, 5],
+  "ThirdPersonCameraPos": [
+    0,
+    1,
+    5
+  ],
   "ContainerIcon": "fcp:textures/gui/vehicle/type/land_us.png",
   "Type": "APC",
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
-      [0, 0, true],
-      [0, 0, true],
-      [0.15, 0.09, false]
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0.15,
+        0.09,
+        false
+      ]
     ]
   },
   "HudType": "@Land",
-  "TerrainCompat": [[1.156, 0, 1.594], [-1.156, 0, 1.594], [1.156, 0, -1.594], [-1.156, 0, -1.594]],
-  "InertiaRotateRate": 1.8
+  "TerrainCompat": [
+    [
+      1.156,
+      0,
+      1.594
+    ],
+    [
+      -1.156,
+      0,
+      1.594
+    ],
+    [
+      1.156,
+      0,
+      -1.594
+    ],
+    [
+      -1.156,
+      0,
+      -1.594
+    ]
+  ],
+  "InertiaRotateRate": 1.8,
+  "PassengerWeaponStationYawRange": [
+    -160,
+    160
+  ]
 }
