@@ -6,13 +6,18 @@ import com.atsuishio.superbwarfare.data.gun.GunProp;
 import com.atsuishio.superbwarfare.data.gun.ProjectileInfo;
 import com.atsuishio.superbwarfare.data.gun.ShootParameters;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
+import com.atsuishio.superbwarfare.tools.ParticleTool;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.particle.FCPMuzzleParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.Set;
 
 /**
  * MTS / QMP / OfficialPack muzzle burst: bloom + bang + layered smoke with spawnEveryTick emulation.
@@ -24,12 +29,31 @@ public final class FCPMuzzleEffects {
     private static final float MTS_VEL = 0.1f;
     private static final int HIGH_RPM_AUTOCANNON = 400;
 
+    /**
+     * Vehicles whose main gun gets the dedicated forward muzzle blast instead of the
+     * generic TANK preset. Grad-backblast construction (collapsing blooms + spark jet +
+     * heavy smoke) but fired down-range, with the smoke driven forward rather than
+     * billowing out to the sides. Gated to the TANK preset so only the big cannon
+     * triggers it — the coax/passenger MGs (MACHINE_GUN preset) are untouched.
+     */
+    private static final Set<String> FORWARD_CANNON_BLAST_VEHICLES = Set.of(
+            "fcp:stryker_mgs"
+    );
+
     private FCPMuzzleEffects() {
     }
 
     public static boolean isFCPVehicle(VehicleEntity vehicle) {
         ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(vehicle.getType());
         return id != null && FCP.MODID.equals(id.getNamespace());
+    }
+
+    private static boolean isForwardCannonBlast(Entity supplier) {
+        if (!(supplier instanceof VehicleEntity vehicle)) {
+            return false;
+        }
+        ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(vehicle.getType());
+        return id != null && FORWARD_CANNON_BLAST_VEHICLES.contains(id.toString());
     }
 
     public static MuzzleEffectPreset resolvePreset(GunData gunData) {
@@ -71,6 +95,14 @@ public final class FCPMuzzleEffects {
         MuzzleEffectPreset preset = resolvePreset(parameters.data);
         GunAxes axes = GunAxes.fromDirection(direction.normalize());
         MuzzleAnchor anchor = MuzzleAnchor.from(parameters);
+
+        // Dedicated forward cannon blast (Stryker MGS 105mm etc.) replaces the generic
+        // TANK muzzle so the two flashes don't stack.
+        if (preset == MuzzleEffectPreset.TANK && isForwardCannonBlast(parameters.ammoSupplier)) {
+            spawnForwardCannonBlast(level, anchor, pos, axes, level.getRandom());
+            return;
+        }
+
         long gameTick = level.getGameTime();
         int shotIndex = anchor.isValid() ? MuzzleBurstTracker.recordShot(anchor.vehicleId(), gameTick) : 0;
         int rpm = parameters.data.get(GunProp.RPM);
@@ -135,6 +167,121 @@ public final class FCPMuzzleEffects {
         }
         if (shotIndex % 5 == 0) {
             spawnCooldownSmoke(level, anchor, random, MuzzleEffectPreset.AUTOCANNON);
+        }
+    }
+
+    /**
+     * Forward muzzle blast for large-calibre direct-fire guns (Stryker MGS 105mm).
+     *
+     * This is the Ural Grad backblast, turned around: the same collapsing fireball
+     * blooms, animated bang and spark jet, and heavy smoke — but everything is thrown
+     * DOWN-RANGE along the bore instead of venting from the breech. The smoke is the
+     * point of difference from the generic TANK preset: it is given a strong forward
+     * velocity with only a little lateral spread, so it reads as a jet punching out of
+     * the barrel rather than a cloud billowing sideways.
+     *
+     * FCP's own LAYER_SMOKE carries the plume. With lingerSmoke=false + movementDuration
+     * it travels forward and decelerates without the buoyant rise, keeping the column
+     * tight to the bore line. A small lingering haze is left hanging at the muzzle.
+     */
+    private static void spawnForwardCannonBlast(ServerLevel level, MuzzleAnchor anchor, Vec3 pos, GunAxes axes, RandomSource random) {
+        Vec3 fwd = axes.forward();
+        MuzzleFlashLight.spawn(level, pos, fwd, MuzzleEffectPreset.TANK);
+
+        // Fireball: three collapsing blooms staggered forward out the muzzle, each given
+        // a slight forward drift so the flash punches down-range instead of sitting on
+        // the barrel. SIZE_UNIT = 0.2, so base 16 ~= 3.2 blocks; blooms START large and
+        // COLLAPSE (base -> target). Grad-scale, not the smaller generic-TANK scale.
+        Vec3 jet = fwd.scale(0.15);
+
+        send(level, new FCPMuzzleParticleOption(1f, 1f, 0.95f, 8, 0.86f, 1, 16f, 1.5f, 1,
+                FCPMuzzleParticleOption.LAYER_BLOOM), pos, jet);                              // white hot, at the mouth
+        Vec3 f1 = pos.add(fwd.scale(1.0));
+        send(level, new FCPMuzzleParticleOption(1f, 0.90f, 0.55f, 9, 0.87f, 1, 13f, 1.2f, 1,
+                FCPMuzzleParticleOption.LAYER_BLOOM), f1, jet);                               // yellow, ~1 block out
+        Vec3 f2 = pos.add(fwd.scale(2.2));
+        send(level, new FCPMuzzleParticleOption(1f, 0.62f, 0.28f, 10, 0.88f, 1, 9f, 1.0f, 1,
+                FCPMuzzleParticleOption.LAYER_BLOOM), f2, jet);                               // orange, ~2.2 blocks out
+
+        // Animated flash frames on the muzzle itself.
+        send(level, new FCPMuzzleParticleOption(1f, 1f, 1f, 12, 0.88f, 2, 6f, 8f, 9,
+                FCPMuzzleParticleOption.LAYER_BANG_STATIC), pos, Vec3.ZERO);
+
+        // Sparks thrown forward down-range, tight to the bore.
+        for (int i = 0; i < 14; i++) {
+            Vec3 spark = fwd.scale(0.45 + random.nextDouble() * 0.6).add(
+                    axes.toWorld(new Vec3(
+                            (random.nextDouble() - 0.5) * 0.22,
+                            (random.nextDouble() - 0.5) * 0.22,
+                            0.0)));
+            send(level, new FCPMuzzleParticleOption(1f, 0.95f, 0.75f, 8, 0.86f, 1, 2.8f, 0.02f, 9,
+                    FCPMuzzleParticleOption.LAYER_BANG_SPARK), pos, spark);
+        }
+
+        // Forward-driven smoke plume + a little lingering haze at the muzzle.
+        spawnForwardSmoke(level, anchor, pos, axes, random, true);
+
+        // Sustain the plume for a few ticks so it trails the shot, re-resolving the
+        // muzzle each tick so it tracks the barrel as the turret settles from recoil.
+        for (int tick = 1; tick <= 3; tick++) {
+            Mod.queueServerWork(tick, () -> {
+                MuzzlePositionResolver.MuzzlePose pose = anchor.resolve(level);
+                if (pose == null) {
+                    return;
+                }
+                GunAxes tickAxes = GunAxes.fromDirection(pose.direction());
+                spawnForwardSmoke(level, anchor, pose.position(), tickAxes, level.getRandom(), false);
+            });
+        }
+    }
+
+    private static void spawnForwardSmoke(ServerLevel level, MuzzleAnchor anchor, Vec3 pos, GunAxes axes, RandomSource random, boolean initial) {
+        Vec3 muzzle = new Vec3(0, -0.05, 0);
+        Vec3 jitter = new Vec3(0.10, 0.10, 0.15);
+
+        if (initial) {
+            // Heavy body: strong forward push, low lateral spread, grows as it rolls out.
+            spawnSmokeBatch(level, anchor, pos, axes, random, 10, 90, 1.2f, 14.0f,
+                    new Vec3(0, 0, 9.0), new Vec3(1.2, 1.2, 4.0), false,
+                    muzzle, jitter, 0xC9C4BE, 9, false, 12, false);
+            // Leading edge: thinner, faster jet punching further down-range.
+            spawnSmokeBatch(level, anchor, pos, axes, random, 6, 60, 0.9f, 8.0f,
+                    new Vec3(0, 0, 13.0), new Vec3(0.8, 0.8, 3.0), false,
+                    muzzle, jitter, 0xC1C1C1, 7, false, 10, false);
+            // Residual muzzle haze: hangs at the barrel, barrel-attached, drifts up gently.
+            spawnSmokeBatch(level, anchor, pos, axes, random, 4, 70, 1.0f, 6.0f,
+                    new Vec3(0, 0, 2.0), new Vec3(1.0, 0.8, 2.0), false,
+                    new Vec3(0, 0.05, 0), new Vec3(0.12, 0.12, 0.15), 0xB9B4AD, 8, true, 0, false);
+        } else {
+            // Trailing puffs on the follow-up ticks: lighter, still forward-biased.
+            spawnSmokeBatch(level, anchor, pos, axes, random, 4, 70, 1.0f, 9.0f,
+                    new Vec3(0, 0, 6.0), new Vec3(1.0, 1.0, 3.0), false,
+                    muzzle, jitter, 0xC4C0BB, 8, false, 9, false);
+        }
+
+        // Heavy rolling billow. Same particle the Grad backblast column uses
+        // (CAMPFIRE_COSY_SMOKE = what MediumRocketEntity's largeTrail lays down), so it
+        // reads like the Grad's smoke but piled DOWN-RANGE: stepped forward from the
+        // muzzle so it stacks along the bore instead of blooming at the sides. Placement
+        // carries it forward; the particle's own buoyancy then rolls it up into a body.
+        spawnBillow(level, pos, axes.forward(), initial);
+    }
+
+    private static void spawnBillow(ServerLevel level, Vec3 pos, Vec3 fwd, boolean initial) {
+        // (count, gaussian spread, drift speed) per step. Bigger + denser on the initial
+        // burst; a lighter continuation on the follow-up ticks.
+        Vec3 s0 = pos.add(fwd.scale(0.6));
+        ParticleTool.sendParticle(level, ParticleTypes.CAMPFIRE_COSY_SMOKE,
+                s0.x, s0.y, s0.z, initial ? 9 : 4, 0.28, 0.28, 0.28, 0.012, true);
+
+        Vec3 s1 = pos.add(fwd.scale(1.7));
+        ParticleTool.sendParticle(level, ParticleTypes.CAMPFIRE_COSY_SMOKE,
+                s1.x, s1.y, s1.z, initial ? 7 : 3, 0.42, 0.42, 0.42, 0.016, true);
+
+        if (initial) {
+            Vec3 s2 = pos.add(fwd.scale(3.0));
+            ParticleTool.sendParticle(level, ParticleTypes.CAMPFIRE_COSY_SMOKE,
+                    s2.x, s2.y, s2.z, 5, 0.6, 0.6, 0.6, 0.02, true);
         }
     }
 

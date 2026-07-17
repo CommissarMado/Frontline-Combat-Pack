@@ -35,8 +35,8 @@
     15
   ],
   "PassengerWeaponStationPitchRange": [
-    -4,
-    30
+    -10,
+    20
   ],
   "TurretControllerIndex": 1,
   "PassengerWeaponStationControllerIndex": 2,
@@ -336,7 +336,7 @@
       "ExplosionDamage": 160,
       "ExplosionRadius": 6,
       "RecoilTime": 42,
-      "RecoilForce": 0,
+      "RecoilForce": 1.1,
       "Spread": 0.02,
       "ShootAnimationTime": 10,
       "Crosshair": "@VehicleUsTank",
@@ -534,9 +534,6 @@
       -1.594
     ]
   ],
-  "InertiaRotateRate": 1.8,
-  "PassengerWeaponStationYawRange": [
-    -160,
-    160
-  ]
+  "InertiaRotateRate": 1.8
+
 }
