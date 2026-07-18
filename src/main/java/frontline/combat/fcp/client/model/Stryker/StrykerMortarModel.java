@@ -11,25 +11,49 @@ import org.jetbrains.annotations.Nullable;
 
 public class StrykerMortarModel extends FCPVehicleModel<StrykerMortarEntity> {
 
-    @Override public ResourceLocation getModelResource(StrykerMortarEntity a) { return new ResourceLocation(FCP.MODID, "geo/stryker_mortar.geo.json"); }
-    @Override public boolean hideForTurretControllerWhileZooming() { return false; }
+    @Override
+    public ResourceLocation getModelResource(StrykerMortarEntity a) {
+        return new ResourceLocation(FCP.MODID, "geo/stryker_mortar.geo.json");
+    }
 
-    @Override public @Nullable VehicleModel.TransformContext<StrykerMortarEntity> collectTransform(String boneName) {
+    @Override
+    public boolean hideForTurretControllerWhileZooming() {
+        return false;
+    }
+
+    @Override
+    public @Nullable VehicleModel.TransformContext<StrykerMortarEntity> collectTransform(String boneName) {
+
         VehicleModel.TransformContext<StrykerMortarEntity> wheels =
                 WheelRotationTransforms.matchAny(boneName, 0.6,
                         "wheRR", "wheRR2", "wheRR3", "wheRR4", "wheRR5", "wheRR6", "wheRR7", "wheRR8");
         if (wheels != null) return wheels;
 
-        // M249 secondary MG: hull-independent of the 360 mortar turret. Driven by the
-        // passenger weapon station gunner (gunYRot/gunXRot), clamped to a 180-deg forward
-        // arc. No -turretYRot term (SBW's passengerWeaponStationYaw assumes a turret-nested
-        // station) because turret2/barrel2 are parented to the hull, so the aim is already
-        // hull-relative. turret2 = yaw mount (clamped to the 180-deg forward arc), barrel2 =
-        // its pitch child. Driven by the passenger-weapon-station gunner (gunYRot/gunXRot).
+        // Mortar tube elevation. The tube geometry points UP (+Y) at rest, but SBW's shoot
+        // (getBarrelTransform) assumes the barrel points FORWARD (+Z) and pitches by turretXRot.
+        // That 90-deg offset is why the tube didn't match the shot. Subtract 90 so the tube
+        // starts forward (matching +Z) and carries the same pitch the shot uses. If the tube
+        // ends up pointing the wrong way, flip to (90 - pitch).
+        if ("barrel".equals(boneName)) {
+            return (bone, vehicle, state) -> {
+                float xr = Mth.lerp((float) state.getPartialTick(), vehicle.getTurretXRotO(), vehicle.getTurretXRot());
+                float pitch = Mth.clamp(-xr, vehicle.getTurretMinPitch(), vehicle.getTurretMaxPitch());
+                bone.setRotX((pitch - 90f) * Mth.DEG_TO_RAD);
+            };
+        }
+
+        // M249 secondary MG. turret2 = hull-parented yaw mount, barrel2 = its pitch child.
+        // NOTE: SBW's passenger weapon station is architecturally built on the turret
+        // (getGunTransform starts from getTurretTransform), so the station's aim value (gunYRot)
+        // is turret-referenced and its shoot position orbits with the mortar turret. Making the
+        // M249 fully hull-independent needs a mixin that rebuilds getGunTransform on the hull; this
+        // transform only decouples the visual as far as the data allows.
         if ("turret2".equals(boneName)) {
             return (bone, vehicle, state) -> {
-                float yaw = Mth.lerp((float) state.getPartialTick(), vehicle.getGunYRotO(), vehicle.getGunYRot());
-                bone.setRotY(Mth.clamp(yaw, -90f, 90f) * Mth.DEG_TO_RAD);
+                float pt = (float) state.getPartialTick();
+                float yaw = Mth.lerp(pt, vehicle.getGunYRotO(), vehicle.getGunYRot());
+                float turretYaw = Mth.lerp(pt, vehicle.getTurretYRotO(), vehicle.getTurretYRot());
+                bone.setRotY(Mth.clamp(yaw - turretYaw, -90f, 90f) * Mth.DEG_TO_RAD);
             };
         }
         if ("barrel2".equals(boneName)) {

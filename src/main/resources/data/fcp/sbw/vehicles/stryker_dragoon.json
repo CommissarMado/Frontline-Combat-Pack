@@ -180,7 +180,8 @@
       "IsEnclosed": true,
       "BanHand": true,
       "Weapons": [
-        "Cannon"
+        "Cannon",
+        "Coax"
       ],
       "Transform": "Vehicle",
       "Position": [
@@ -193,9 +194,9 @@
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
         "Position": [
-          0.0,
+          -0.5,
           0.5,
-          -1.0
+          0.5
         ],
         "Direction": "Barrel"
       },
@@ -434,7 +435,7 @@
         {
           "Ammo": "superbwarfare:small_shell_he",
           "Override": {
-            "Icon": "fcp:textures/screens/vehicle_weapon/25mm_he.png",
+            "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/cannon_30mm_he.png",
             "IsArmorPiercingProjectile": false,
             "IsHighExplosiveProjectile": true,
             "Velocity": 25,
@@ -445,7 +446,7 @@
           }
         }
       ],
-      "Icon": "fcp:textures/screens/vehicle_weapon/25mm_ap.png",
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/cannon_30mm_ap.png",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [

@@ -194,8 +194,8 @@
         "UseFixedCameraPos": true,
         "Position": [
           0.0,
-          0.5,
-          -1.0
+          -0.2,
+          0.4
         ],
         "Direction": "Barrel"
       },
@@ -403,7 +403,7 @@
   "Weapons": {
     "Nothing": {
       "Name": "",
-      "Crosshair": "@Empty",
+      "Crosshair": "@VehicleCommonGun",
       "RPM": 0,
       "Magazine": 0,
       "Damage": 0
@@ -411,39 +411,40 @@
     "Grenade": {
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
-      "Projectile": "superbwarfare:small_cannon_shell",
+      "Projectile": "superbwarfare:gun_grenade",
       "DefaultZoom": 2,
-      "RPM": 350,
+      "RPM": 325,
       "Magazine": 32,
       "EmptyReloadTime": 200,
       "Velocity": 7,
-      "Damage": 10,
-      "ExplosionDamage": 40,
-      "ExplosionRadius": 2.5,
+      "Damage": 0,
+      "ExplosionDamage": 15,
+      "ExplosionRadius": 3,
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "RecoilTime": 30,
       "RecoilForce": 0.31,
       "ShootAnimationTime": 3,
       "Spread": 0.8,
-      "Crosshair": "@VehicleCommon",
+      "Crosshair": "@VehicleCommonGun",
       "CrosshairColor": "0x66FF00",
       "Name": "weapon.fcp.mk_19",
       "SoundInfo": {
-        "Fire1P": "fcp:hk_gmg_1p",
-        "Fire3P": "fcp:hk_gmg_1p",
-        "Fire3PFar": "fcp:hk_gmg_3p"
+        "Fire1P": "fcp:mk19_fire_1p",
+        "Fire3P": "fcp:mk19_fire_3p",
+        "Fire3PFar": "fcp:mk19_fire_3p_far",
+        "VehicleReload": "fcp:m2_reload"
       },
       "SoundRadius": 16,
       "AmmoType": "fcp:item_40_mm",
-      "Icon": "fcp:textures/screens/vehicle_weapon/40_mm.png",
+      "Icon": "fcp:textures/screens/vehicle_weapon/40mm.png",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
           [
-            0.0345,
+            -0.02,
             0.0454,
-            0.8536
+            0.75
           ]
         ],
         "Directions": [
