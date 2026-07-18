@@ -2312,7 +2312,13 @@
 				{
 					"name": "turret",
 					"parent": "STRYKER",
+					"pivot": [0.0825, 16.98, 33]
+				},
+				{
+					"name": "none",
+					"parent": "turret",
 					"pivot": [0.0825, 16.98, 33],
+					"rotation": [0, 180, 0],
 					"cubes": [
 						{
 							"origin": [-5.56, 15.82504, 27.36031],
@@ -2332,8 +2338,9 @@
 				},
 				{
 					"name": "barrel",
-					"parent": "turret",
-					"pivot": [-0.22451, 19.3246, 33.39767],
+					"parent": "none",
+					"pivot": [-0.02451, 19.3246, 22.39767],
+					"rotation": [-62.5, 0, 0],
 					"cubes": [
 						{
 							"origin": [-19.29893, 38.42513, 33.00099],
