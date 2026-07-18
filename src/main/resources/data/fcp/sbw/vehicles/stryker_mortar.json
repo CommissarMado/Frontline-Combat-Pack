@@ -12,8 +12,8 @@
     5
   ],
   "TurretPitchRange": [
-    5.08,
-    35
+    45,
+    85
   ],
   "BarrelPos": [
     -0.0067,
@@ -196,38 +196,26 @@
         ],
         "Direction": "Barrel"
       },
-      "MinPitch": 5.08,
-      "MaxPitch": 35,
+      "MinPitch": 45,
+      "MaxPitch": 85,
       "MinYaw": -180,
       "MaxYaw": 180
     },
     {
-      "IsEnclosed": false,
-      "Transform": "WeaponStationBarrel",
-      "Weapons": [
-        "M249"
-      ],
+      "Orientation": 90.0,
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
       "BanHand": true,
       "Position": [
-        0,
-        -1.3,
-        -1.2
+        0.75,
+        0.9,
+        -0.6
       ],
-      "CameraPos": {
-        "Transform": "WeaponStationBarrel",
-        "UseFixedCameraPos": true,
-        "Position": [
-          0,
-          0.75,
-          -1
-        ],
-        "Direction": "WeaponStationBarrel"
-      },
-      "MinPitch": -10,
-      "MaxPitch": 20,
-      "MinYaw": -90,
-      "MaxYaw": 90,
-      "Pose": "MachineGunStand"
+      "CameraPos": {},
+      "MinPitch": -60,
+      "MaxPitch": 60,
+      "MinYaw": -95,
+      "MaxYaw": 95
     },
     {
       "IsEnclosed": true,
@@ -408,53 +396,6 @@
       },
       "Crosshair": "@Empty",
       "SoundRadius": 12
-    },
-    "M249": {
-      "DefaultFireMode": "Auto",
-      "AvailableFireModes": "Auto",
-      "Projectile": "superbwarfare:projectile",
-      "DefaultZoom": 3,
-      "RPM": 500,
-      "EmptyReloadTime": 160,
-      "Magazine": 200,
-      "Velocity": 25,
-      "Damage": 15,
-      "BypassesArmor": 2,
-      "HeatPerShoot": 5,
-      "NaturalCooldown": 1,
-      "RecoilTime": 16,
-      "RecoilForce": 0.05,
-      "ShootAnimationTime": 1,
-      "Spread": 0.25,
-      "Crosshair": "@VehicleCommonGun",
-      "CrosshairColor": "0x66FF00",
-      "Name": "weapon.fcp.m249",
-      "SoundInfo": {
-        "Fire1P": "fcp:m2_fire_1p",
-        "Fire3P": "fcp:m2_fire_3p",
-        "Fire3PFar": "fcp:m2_fire_3p_far",
-        "VehicleReload": "fcp:m2_reload"
-      },
-      "ShootPos": {
-        "Transform": "WeaponStationBarrel",
-        "Positions": [
-          [
-            0.0,
-            0.15,
-            1.0
-          ]
-        ],
-        "Directions": [
-          [
-            0,
-            0,
-            1
-          ]
-        ]
-      },
-      "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
-      "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png"
     }
   },
   "ThirdPersonCameraPos": [
@@ -507,28 +448,5 @@
       -1.594
     ]
   ],
-  "InertiaRotateRate": 1.8,
-  "PassengerWeaponStationPos": [
-    -0.6495,
-    2.7415,
-    -0.521
-  ],
-  "PassengerWeaponStationBarrelPos": [
-    0.0,
-    0.375,
-    1.0
-  ],
-  "PassengerWeaponStationTurnSpeed": [
-    15,
-    15
-  ],
-  "PassengerWeaponStationPitchRange": [
-    -10,
-    20
-  ],
-  "PassengerWeaponStationControllerIndex": 2,
-  "PassengerWeaponStationYawRange": [
-    -90,
-    90
-  ]
+  "InertiaRotateRate": 1.8
 }
