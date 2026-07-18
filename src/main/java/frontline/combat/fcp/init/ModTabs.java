@@ -64,6 +64,10 @@ public class ModTabs {
             .displayItems((parameters, output) -> {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.STRYKER_MGS.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.STRYKER_M2.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.STRYKER_DRAGOON.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.STRYKER_MK19.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.STRYKER_TOW.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.STRYKER_MORTAR.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.LITTLEBIRD.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.LITTLEBIRD_ARMED.get()));

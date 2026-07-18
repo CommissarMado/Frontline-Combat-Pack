@@ -40,6 +40,10 @@ import frontline.combat.fcp.entity.vehicle.Mi17.MI17Entity;
 import frontline.combat.fcp.entity.vehicle.Novator.NovatorEntity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerM2Entity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerMGSEntity;
+import frontline.combat.fcp.entity.vehicle.Stryker.StrykerDragoonEntity;
+import frontline.combat.fcp.entity.vehicle.Stryker.StrykerMk19Entity;
+import frontline.combat.fcp.entity.vehicle.Stryker.StrykerTowEntity;
+import frontline.combat.fcp.entity.vehicle.Stryker.StrykerMortarEntity;
 import frontline.combat.fcp.entity.vehicle.T72av.T72AVEntity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxBMPEntity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxEntity;
@@ -92,6 +96,18 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<StrykerM2Entity>> STRYKER_M2 = register("stryker_m2",
             EntityType.Builder.of(StrykerM2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+
+    public static final RegistryObject<EntityType<StrykerDragoonEntity>> STRYKER_DRAGOON = register("stryker_dragoon",
+            EntityType.Builder.of(StrykerDragoonEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+
+    public static final RegistryObject<EntityType<StrykerMk19Entity>> STRYKER_MK19 = register("stryker_mk19",
+            EntityType.Builder.of(StrykerMk19Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+
+    public static final RegistryObject<EntityType<StrykerTowEntity>> STRYKER_TOW = register("stryker_tow",
+            EntityType.Builder.of(StrykerTowEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+
+    public static final RegistryObject<EntityType<StrykerMortarEntity>> STRYKER_MORTAR = register("stryker_mortar",
+            EntityType.Builder.of(StrykerMortarEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
 
     public static final RegistryObject<EntityType<LittlebirdEntity>> LITTLEBIRD = register("littlebird",
             EntityType.Builder.of(LittlebirdEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));

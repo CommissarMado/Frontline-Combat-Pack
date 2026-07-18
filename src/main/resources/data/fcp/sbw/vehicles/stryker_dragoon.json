@@ -1,11 +1,11 @@
 {
-  "ID": "fcp:stryker_m2",
+  "ID": "fcp:stryker_dragoon",
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "TurretPos": [
-    -0.664887,
-    2.827731,
-    0.286662
+    -0.0381,
+    3.2014,
+    -1.1053
   ],
   "TurretTurnSpeed": [
     5,
@@ -13,12 +13,12 @@
   ],
   "TurretPitchRange": [
     -10,
-    40
+    60
   ],
   "BarrelPos": [
-    0.010056,
-    0.567138,
-    0.066213
+    0.0568,
+    0.0224,
+    0.7702
   ],
   "TurretControllerIndex": 1,
   "OBB": [
@@ -153,7 +153,6 @@
       "Part": "Body"
     }
   ],
-  "PassengerRenderScale": 0.85,
   "Seats": [
     {
       "IsEnclosed": true,
@@ -181,7 +180,7 @@
       "IsEnclosed": true,
       "BanHand": true,
       "Weapons": [
-        "Coax"
+        "Cannon"
       ],
       "Transform": "Vehicle",
       "Position": [
@@ -402,17 +401,81 @@
     "ExplosionRadius": 7
   },
   "Weapons": {
+    "Cannon": {
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Projectile": "superbwarfare:small_cannon_shell",
+      "IsArmorPiercingProjectile": true,
+      "IsHighExplosiveProjectile": false,
+      "EmptyReloadTime": 180,
+      "DefaultZoom": 3,
+      "RPM": 200,
+      "Velocity": 20,
+      "Damage": 60,
+      "ExplosionDamage": 0,
+      "ExplosionRadius": 0,
+      "HeatPerShoot": 10,
+      "NaturalCooldown": 1,
+      "RecoilTime": 31,
+      "RecoilForce": 0.62,
+      "ShootAnimationTime": 3,
+      "Spread": 0.5,
+      "CrosshairColor": "0x66FF00",
+      "Crosshair": "@VehicleRuApc",
+      "Name": "weapon.fcp.stryker_30mm",
+      "SoundInfo": {
+        "Fire1P": "fcp:lav25_fire_1p",
+        "Fire3P": "fcp:lav25_fire_3p",
+        "Fire3PFar": "fcp:lav25_fire_3p_far"
+      },
+      "SoundRadius": 24,
+      "AmmoType": [
+        "superbwarfare:small_shell_ap",
+        {
+          "Ammo": "superbwarfare:small_shell_he",
+          "Override": {
+            "Icon": "fcp:textures/screens/vehicle_weapon/25mm_he.png",
+            "IsArmorPiercingProjectile": false,
+            "IsHighExplosiveProjectile": true,
+            "Velocity": 25,
+            "Damage": 15,
+            "ExplosionDamage": 20,
+            "ExplosionRadius": 3,
+            "Name": "weapon.fcp.m242_bushmaster_he"
+          }
+        }
+      ],
+      "Icon": "fcp:textures/screens/vehicle_weapon/25mm_ap.png",
+      "ShootPos": {
+        "Transform": "Barrel",
+        "Positions": [
+          [
+            0.011767,
+            0.012081,
+            2.115528
+          ]
+        ],
+        "Directions": [
+          "Barrel"
+        ]
+      }
+    },
+    "Empty": {
+      "Magazine": 0,
+      "RPM": 0,
+      "Crosshair": "@Empty",
+      "Damage": 0
+    },
     "Coax": {
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 500,
+      "RPM": 650,
       "EmptyReloadTime": 160,
-      "Magazine": 200,
       "Velocity": 25,
-      "Damage": 15,
-      "BypassesArmor": 2,
+      "Damage": 5,
+      "BypassesArmor": 0.2,
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "RecoilTime": 16,
@@ -421,31 +484,28 @@
       "Spread": 0.25,
       "Crosshair": "@VehicleCommonGun",
       "CrosshairColor": "0x66FF00",
-      "Name": "weapon.fcp.m2_hb",
+      "Name": "weapon.fcp.m240_coax",
       "SoundInfo": {
-        "Fire1P": "fcp:m2_fire_1p",
-        "Fire3P": "fcp:m2_fire_3p",
-        "Fire3PFar": "fcp:m2_fire_3p_far",
-        "VehicleReload": "fcp:m2_reload"
+        "Fire1P": "superbwarfare:coax_fire_1p",
+        "Fire3P": "superbwarfare:mg_17_fire_3p",
+        "Fire3PFar": "superbwarfare:mg_17_far",
+        "Fire3PVeryFar": "superbwarfare:mg_17_veryfar",
+        "Change": "fcp:coax_equip"
       },
       "SoundRadius": 16,
       "AmmoType": "superbwarfare:rifle_ammo",
-      "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png",
+      "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
           [
-            -0.006932,
-            0.155487,
-            1.059012
+            -0.199702,
+            0.01266,
+            0.595
           ]
         ],
         "Directions": [
-          [
-            0,
-            0,
-            1
-          ]
+          "Barrel"
         ]
       }
     }

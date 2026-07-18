@@ -44,6 +44,9 @@ public class LandVehicleHudStatsMixin {
             "fcp:t72av",
             "fcp:aavp",
             "fcp:matv_tow",
+            "fcp:stryker_tow",
+            "fcp:stryker_mortar",
+            "fcp:stryker_dragoon",
             "fcp:ural_grad",
             "fcp:toyota_hilux_bmp",
             "fcp:toyota_hilux_spg9",
@@ -63,6 +66,7 @@ public class LandVehicleHudStatsMixin {
     // vehicle to FCP_NO_FRAME_VEHICLES / FCP_GUNNER_FRAME_VEHICLES too if you want those.
     private static final Set<String> FCP_MORTAR_HUD_VEHICLES = Set.of(
             "fcp:ural_grad",
+            "fcp:stryker_mortar",
             "fcp:toyota_hilux_rocket_pod"
     );
 

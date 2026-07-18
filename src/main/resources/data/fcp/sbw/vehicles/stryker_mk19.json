@@ -1,24 +1,24 @@
 {
-  "ID": "fcp:stryker_m2",
+  "ID": "fcp:stryker_mk19",
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "TurretPos": [
-    -0.664887,
-    2.827731,
-    0.286662
+    -0.8063,
+    3.5906,
+    0.2609
   ],
   "TurretTurnSpeed": [
     5,
     5
   ],
   "TurretPitchRange": [
-    -10,
-    40
+    -7.5,
+    74
   ],
   "BarrelPos": [
-    0.010056,
-    0.567138,
-    0.066213
+    0.1414,
+    -0.7629,
+    0.0257
   ],
   "TurretControllerIndex": 1,
   "OBB": [
@@ -153,7 +153,6 @@
       "Part": "Body"
     }
   ],
-  "PassengerRenderScale": 0.85,
   "Seats": [
     {
       "IsEnclosed": true,
@@ -402,50 +401,53 @@
     "ExplosionRadius": 7
   },
   "Weapons": {
-    "Coax": {
+    "Nothing": {
+      "Name": "",
+      "Crosshair": "@Empty",
+      "RPM": 0,
+      "Magazine": 0,
+      "Damage": 0
+    },
+    "Grenade": {
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
-      "Projectile": "superbwarfare:projectile",
-      "DefaultZoom": 3,
-      "RPM": 500,
-      "EmptyReloadTime": 160,
-      "Magazine": 200,
-      "Velocity": 25,
-      "Damage": 15,
-      "BypassesArmor": 2,
+      "Projectile": "superbwarfare:small_cannon_shell",
+      "DefaultZoom": 2,
+      "RPM": 350,
+      "Magazine": 32,
+      "EmptyReloadTime": 200,
+      "Velocity": 7,
+      "Damage": 10,
+      "ExplosionDamage": 40,
+      "ExplosionRadius": 2.5,
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
-      "RecoilTime": 16,
-      "RecoilForce": 0.05,
-      "ShootAnimationTime": 1,
-      "Spread": 0.25,
-      "Crosshair": "@VehicleCommonGun",
+      "RecoilTime": 30,
+      "RecoilForce": 0.31,
+      "ShootAnimationTime": 3,
+      "Spread": 0.8,
+      "Crosshair": "@VehicleCommon",
       "CrosshairColor": "0x66FF00",
-      "Name": "weapon.fcp.m2_hb",
+      "Name": "weapon.fcp.mk_19",
       "SoundInfo": {
-        "Fire1P": "fcp:m2_fire_1p",
-        "Fire3P": "fcp:m2_fire_3p",
-        "Fire3PFar": "fcp:m2_fire_3p_far",
-        "VehicleReload": "fcp:m2_reload"
+        "Fire1P": "fcp:hk_gmg_1p",
+        "Fire3P": "fcp:hk_gmg_1p",
+        "Fire3PFar": "fcp:hk_gmg_3p"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
-      "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png",
+      "AmmoType": "fcp:item_40_mm",
+      "Icon": "fcp:textures/screens/vehicle_weapon/40_mm.png",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
           [
-            -0.006932,
-            0.155487,
-            1.059012
+            0.05,
+            -2.4,
+            0.0
           ]
         ],
         "Directions": [
-          [
-            0,
-            0,
-            1
-          ]
+          "Barrel"
         ]
       }
     }

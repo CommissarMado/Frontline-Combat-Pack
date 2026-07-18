@@ -1,0 +1,24 @@
+package frontline.combat.fcp.client.model.Stryker;
+
+import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
+import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.client.model.FCPVehicleModel;
+import frontline.combat.fcp.client.model.Util.WheelRotationTransforms;
+import frontline.combat.fcp.entity.vehicle.Stryker.StrykerMk19Entity;
+import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.Nullable;
+
+public class StrykerMk19Model extends FCPVehicleModel<StrykerMk19Entity> {
+
+    @Override public ResourceLocation getModelResource(StrykerMk19Entity a) { return new ResourceLocation(FCP.MODID, "geo/stryker_mk19.geo.json"); }
+    @Override public boolean hideForTurretControllerWhileZooming() { return false; }
+
+    @Override public @Nullable VehicleModel.TransformContext<StrykerMk19Entity> collectTransform(String boneName) {
+        VehicleModel.TransformContext<StrykerMk19Entity> wheels =
+                WheelRotationTransforms.matchAny(boneName, 0.6,
+                        "wheRR", "wheRR2", "wheRR3", "wheRR4", "wheRR5", "wheRR6", "wheRR7", "wheRR8");
+        if (wheels != null) return wheels;
+
+        return super.collectTransform(boneName);
+    }
+}

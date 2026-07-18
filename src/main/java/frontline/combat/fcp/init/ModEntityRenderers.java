@@ -40,6 +40,10 @@ import frontline.combat.fcp.client.renderer.Projectile.Malyutka.MalyutkaRenderer
 import frontline.combat.fcp.client.renderer.Projectile.Sidewinder.SidewinderRenderer;
 import frontline.combat.fcp.client.renderer.Stryker.StrykerM2Renderer;
 import frontline.combat.fcp.client.renderer.Stryker.StrykerMGSRenderer;
+import frontline.combat.fcp.client.renderer.Stryker.StrykerDragoonRenderer;
+import frontline.combat.fcp.client.renderer.Stryker.StrykerMk19Renderer;
+import frontline.combat.fcp.client.renderer.Stryker.StrykerTowRenderer;
+import frontline.combat.fcp.client.renderer.Stryker.StrykerMortarRenderer;
 import frontline.combat.fcp.client.renderer.T72av.T72AVRenderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxBMPRenderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxRenderer;
@@ -79,6 +83,10 @@ public class ModEntityRenderers {
 
         event.registerEntityRenderer(ModEntities.STRYKER_MGS.get(), StrykerMGSRenderer::new);
         event.registerEntityRenderer(ModEntities.STRYKER_M2.get(), StrykerM2Renderer::new);
+        event.registerEntityRenderer(ModEntities.STRYKER_DRAGOON.get(), StrykerDragoonRenderer::new);
+        event.registerEntityRenderer(ModEntities.STRYKER_MK19.get(), StrykerMk19Renderer::new);
+        event.registerEntityRenderer(ModEntities.STRYKER_TOW.get(), StrykerTowRenderer::new);
+        event.registerEntityRenderer(ModEntities.STRYKER_MORTAR.get(), StrykerMortarRenderer::new);
 
         event.registerEntityRenderer(ModEntities.LITTLEBIRD.get(), LittlebirdRenderer::new);
         event.registerEntityRenderer(ModEntities.LITTLEBIRD_ARMED.get(), LittlebirdArmedRenderer::new);

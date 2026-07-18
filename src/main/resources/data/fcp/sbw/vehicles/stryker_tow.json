@@ -1,24 +1,24 @@
 {
-  "ID": "fcp:stryker_m2",
+  "ID": "fcp:stryker_tow",
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "TurretPos": [
-    -0.664887,
-    2.827731,
-    0.286662
+    0.081,
+    3.2183,
+    -1.54
   ],
   "TurretTurnSpeed": [
     5,
     5
   ],
   "TurretPitchRange": [
-    -10,
+    -9,
     40
   ],
   "BarrelPos": [
-    0.010056,
-    0.567138,
-    0.066213
+    0.0,
+    -0.451,
+    -0.2344
   ],
   "TurretControllerIndex": 1,
   "OBB": [
@@ -153,7 +153,6 @@
       "Part": "Body"
     }
   ],
-  "PassengerRenderScale": 0.85,
   "Seats": [
     {
       "IsEnclosed": true,
@@ -402,42 +401,26 @@
     "ExplosionRadius": 7
   },
   "Weapons": {
-    "Coax": {
-      "DefaultFireMode": "Auto",
-      "AvailableFireModes": "Auto",
-      "Projectile": "superbwarfare:projectile",
+    "TOW": {
+      "DefaultFireMode": "Semi",
+      "AvailableFireModes": "Semi",
       "DefaultZoom": 3,
-      "RPM": 500,
-      "EmptyReloadTime": 160,
-      "Magazine": 200,
-      "Velocity": 25,
-      "Damage": 15,
-      "BypassesArmor": 2,
-      "HeatPerShoot": 5,
-      "NaturalCooldown": 1,
-      "RecoilTime": 16,
-      "RecoilForce": 0.05,
-      "ShootAnimationTime": 1,
-      "Spread": 0.25,
-      "Crosshair": "@VehicleCommonGun",
-      "CrosshairColor": "0x66FF00",
-      "Name": "weapon.fcp.m2_hb",
-      "SoundInfo": {
-        "Fire1P": "fcp:m2_fire_1p",
-        "Fire3P": "fcp:m2_fire_3p",
-        "Fire3PFar": "fcp:m2_fire_3p_far",
-        "VehicleReload": "fcp:m2_reload"
-      },
-      "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
-      "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png",
+      "Name": "weapon.fcp.tow_missile",
+      "AmmoType": "superbwarfare:medium_anti_ground_missile",
+      "Projectile": "superbwarfare:wire_guide_missile",
+      "Magazine": 1,
+      "EmptyReloadTime": 250,
+      "Damage": 600,
+      "ExplosionDamage": 70,
+      "ExplosionRadius": 7,
+      "Velocity": 3.5,
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
           [
-            -0.006932,
-            0.155487,
-            1.059012
+            0,
+            0,
+            0
           ]
         ],
         "Directions": [
@@ -447,7 +430,18 @@
             1
           ]
         ]
-      }
+      },
+      "Crosshair": "@VehicleCommonMissile",
+      "CrosshairColor": "0x00FF66",
+      "SoundRadius": 32,
+      "SoundInfo": {
+        "Fire1P": "superbwarfare:bmp_2_missile_fire_1p",
+        "Fire3P": "superbwarfare:bmp_2_missile_fire_3p",
+        "VehicleReload3p": "superbwarfare:medium_missile_reload",
+        "VehicleReloadSoundTime": 28,
+        "Change": "superbwarfare:into_missile"
+      },
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/missile_tow.png"
     }
   },
   "ThirdPersonCameraPos": [
