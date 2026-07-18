@@ -203,8 +203,10 @@ public final class FCPMuzzleEffects {
         send(level, new FCPMuzzleParticleOption(1f, 0.62f, 0.28f, 10, 0.88f, 1, 9f, 1.0f, 1,
                 FCPMuzzleParticleOption.LAYER_BLOOM), f2, jet);                               // orange, ~2.2 blocks out
 
-        // Animated flash frames on the muzzle itself.
-        send(level, new FCPMuzzleParticleOption(1f, 1f, 1f, 12, 0.88f, 2, 6f, 8f, 9,
+        // Muzzle flash frames on the shootpos itself. This is the flame at the rear of the
+        // blast — the Grad's backblast holds it for 12 ticks; a real muzzle just blinks,
+        // so keep it snappy (life 5) so it flashes and is gone, not a lingering flame.
+        send(level, new FCPMuzzleParticleOption(1f, 1f, 1f, 5, 0.88f, 2, 6f, 8f, 9,
                 FCPMuzzleParticleOption.LAYER_BANG_STATIC), pos, Vec3.ZERO);
 
         // Sparks thrown forward down-range, tight to the bore.
@@ -260,28 +262,39 @@ public final class FCPMuzzleEffects {
         }
 
         // Heavy rolling billow. Same particle the Grad backblast column uses
-        // (CAMPFIRE_COSY_SMOKE = what MediumRocketEntity's largeTrail lays down), so it
-        // reads like the Grad's smoke but piled DOWN-RANGE: stepped forward from the
-        // muzzle so it stacks along the bore instead of blooming at the sides. Placement
-        // carries it forward; the particle's own buoyancy then rolls it up into a body.
-        spawnBillow(level, pos, axes.forward(), initial);
+        // (CAMPFIRE_COSY_SMOKE), but instead of a random gaussian puff it's emitted
+        // directionally down-range so the body streams FORWARD along the bore and rolls
+        // up as it travels, rather than fanning out randomly at the muzzle.
+        spawnBillow(level, pos, axes, random, initial);
     }
 
-    private static void spawnBillow(ServerLevel level, Vec3 pos, Vec3 fwd, boolean initial) {
-        // (count, gaussian spread, drift speed) per step. Bigger + denser on the initial
-        // burst; a lighter continuation on the follow-up ticks.
-        Vec3 s0 = pos.add(fwd.scale(0.6));
-        ParticleTool.sendParticle(level, ParticleTypes.CAMPFIRE_COSY_SMOKE,
-                s0.x, s0.y, s0.z, initial ? 9 : 4, 0.28, 0.28, 0.28, 0.012, true);
+    private static void spawnBillow(ServerLevel level, Vec3 pos, GunAxes axes, RandomSource random, boolean initial) {
+        Vec3 fwd = axes.forward();
+        int puffs = initial ? 16 : 6;
+        double reach = initial ? 3.0 : 1.6;   // how far forward the column seeds
+        double drift = initial ? 0.15 : 0.11; // forward drift speed (blocks/tick)
 
-        Vec3 s1 = pos.add(fwd.scale(1.7));
-        ParticleTool.sendParticle(level, ParticleTypes.CAMPFIRE_COSY_SMOKE,
-                s1.x, s1.y, s1.z, initial ? 7 : 3, 0.42, 0.42, 0.42, 0.016, true);
+        for (int i = 0; i < puffs; i++) {
+            // Seed points stepped forward along the bore, kept tight to the line.
+            Vec3 spawn = pos
+                    .add(fwd.scale(0.4 + random.nextDouble() * reach))
+                    .add(axes.toWorld(new Vec3(
+                            (random.nextDouble() - 0.5) * 0.22,
+                            (random.nextDouble() - 0.5) * 0.22,
+                            0)));
 
-        if (initial) {
-            Vec3 s2 = pos.add(fwd.scale(3.0));
+            // Forward-dominant velocity: mostly down-range, a little perpendicular
+            // scatter, a touch of lift so it climbs into a body as it goes.
+            double spd = drift * (0.7 + random.nextDouble() * 0.6);
+            Vec3 vel = fwd.scale(spd).add(axes.toWorld(new Vec3(
+                    (random.nextDouble() - 0.5) * 0.03,
+                    (random.nextDouble() - 0.5) * 0.03 + 0.015,
+                    0)));
+
+            // count = 0 => a single DIRECTIONAL particle whose velocity is speed*(dx,dy,dz);
+            // count > 0 would instead scatter position and randomise velocity (the old look).
             ParticleTool.sendParticle(level, ParticleTypes.CAMPFIRE_COSY_SMOKE,
-                    s2.x, s2.y, s2.z, 5, 0.6, 0.6, 0.6, 0.02, true);
+                    spawn.x, spawn.y, spawn.z, 0, vel.x, vel.y, vel.z, 1.0, true);
         }
     }
 
