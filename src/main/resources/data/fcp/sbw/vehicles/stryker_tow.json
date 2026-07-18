@@ -180,7 +180,7 @@
       "IsEnclosed": true,
       "BanHand": true,
       "Weapons": [
-        "Coax"
+        "TOW"
       ],
       "Transform": "Vehicle",
       "Position": [
@@ -408,7 +408,7 @@
       "Name": "weapon.fcp.tow_missile",
       "AmmoType": "superbwarfare:medium_anti_ground_missile",
       "Projectile": "superbwarfare:wire_guide_missile",
-      "Magazine": 1,
+      "Magazine": 2,
       "EmptyReloadTime": 250,
       "Damage": 600,
       "ExplosionDamage": 70,
@@ -418,9 +418,9 @@
         "Transform": "Barrel",
         "Positions": [
           [
-            0.6624,
-            -0.084,
-            0.1638
+            0.0,
+            0.3,
+            1.3
           ]
         ],
         "Directions": [

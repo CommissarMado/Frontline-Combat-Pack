@@ -60,4 +60,13 @@ public class StrykerTowEntity extends CamoVehicleBase {
         if (moving && Math.abs(a) > 1f) setYRot(getYRot() + a*0.009f*(float)speed);
         prevWheelRotation = wheelRotation; wheelRotation += (float)(speed*20f);
     }
+
+    public boolean GetWeaponState(String WeaponName, int Count) {
+        if (getAmmoCount(WeaponName) == Count)
+            return true;
+        else if (getAmmoCount(WeaponName) < Count)
+            return true;
+        else
+            return false;
+    }
 }

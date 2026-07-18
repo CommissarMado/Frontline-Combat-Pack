@@ -19,6 +19,13 @@ public class StrykerTowModel extends FCPVehicleModel<StrykerTowEntity> {
                         "wheRR", "wheRR2", "wheRR3", "wheRR4", "wheRR5", "wheRR6", "wheRR7", "wheRR8");
         if (wheels != null) return wheels;
 
+        // Missiles disappear as they're fired (Viper-style). Magazine is 2: missile1 hides
+        // once one is gone (ammo <= 1), missile2 once both are gone (ammo <= 0).
+        if ("missile1".equals(boneName))
+            return (bone, vehicle, state) -> bone.setHidden(vehicle.GetWeaponState("TOW", 1));
+        if ("missile2".equals(boneName))
+            return (bone, vehicle, state) -> bone.setHidden(vehicle.GetWeaponState("TOW", 0));
+
         return super.collectTransform(boneName);
     }
 }

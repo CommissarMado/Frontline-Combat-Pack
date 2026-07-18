@@ -53,7 +53,8 @@ public abstract class VehicleBackblastMixin {
 
     private static final Map<String, Blast> FCP_BACKBLAST_VEHICLES = Map.of(
             "fcp:ural_grad",               new Blast(3.15, 1.00, false),
-            "fcp:toyota_hilux_rocket_pod", new Blast(1.5879, 0.40, true)
+            "fcp:toyota_hilux_rocket_pod", new Blast(1.5879, 0.40, true),
+            "fcp:stryker_tow",            new Blast(1.5, 0.40, true)
     );
 
 
