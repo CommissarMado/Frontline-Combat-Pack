@@ -23,12 +23,18 @@ public class StrykerMortarModel extends FCPVehicleModel<StrykerMortarEntity> {
         // M249 secondary MG: hull-independent of the 360 mortar turret. Driven by the
         // passenger weapon station gunner (gunYRot/gunXRot), clamped to a 180-deg forward
         // arc. No -turretYRot term (SBW's passengerWeaponStationYaw assumes a turret-nested
-        // station) because m249gun is parented to the hull, so its aim is already hull-relative.
-        if ("m249gun".equals(boneName)) {
+        // station) because turret2/barrel2 are parented to the hull, so the aim is already
+        // hull-relative. turret2 = yaw mount (clamped to the 180-deg forward arc), barrel2 =
+        // its pitch child. Driven by the passenger-weapon-station gunner (gunYRot/gunXRot).
+        if ("turret2".equals(boneName)) {
             return (bone, vehicle, state) -> {
                 float yaw = Mth.lerp((float) state.getPartialTick(), vehicle.getGunYRotO(), vehicle.getGunYRot());
-                float pitch = Mth.lerp((float) state.getPartialTick(), vehicle.getGunXRotO(), vehicle.getGunXRot());
                 bone.setRotY(Mth.clamp(yaw, -90f, 90f) * Mth.DEG_TO_RAD);
+            };
+        }
+        if ("barrel2".equals(boneName)) {
+            return (bone, vehicle, state) -> {
+                float pitch = Mth.lerp((float) state.getPartialTick(), vehicle.getGunXRotO(), vehicle.getGunXRot());
                 bone.setRotX(Mth.clamp(-pitch, -10f, 20f) * Mth.DEG_TO_RAD);
             };
         }

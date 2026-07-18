@@ -3221,6 +3221,11 @@
 				{
 					"name": "barrel",
 					"parent": "turret",
+					"pivot": [-10.04678, 57.33392, -4.24721]
+				},
+				{
+					"name": "barrel3",
+					"parent": "barrel",
 					"pivot": [-10.04678, 57.33392, -4.24721],
 					"rotation": [180, 0, 180],
 					"cubes": [

@@ -3,9 +3,9 @@
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "TurretPos": [
-    -0.8063,
-    3.5906,
-    0.2609
+    -0.6649,
+    2.8277,
+    0.2867
   ],
   "TurretTurnSpeed": [
     5,
@@ -16,9 +16,9 @@
     74
   ],
   "BarrelPos": [
-    0.1414,
-    -0.7629,
-    0.0257
+    0.037,
+    0.7556,
+    -0.0212
   ],
   "TurretControllerIndex": 1,
   "OBB": [
@@ -180,11 +180,11 @@
       "IsEnclosed": true,
       "BanHand": true,
       "Weapons": [
-        "Coax"
+        "Grenade"
       ],
       "Transform": "Vehicle",
       "Position": [
-        -0.40,
+        -0.4,
         0.9,
         -0.55
       ],
@@ -441,13 +441,17 @@
         "Transform": "Barrel",
         "Positions": [
           [
-            0.05,
-            -2.4,
-            0.0
+            0.0345,
+            0.0454,
+            0.8536
           ]
         ],
         "Directions": [
-          "Barrel"
+          [
+            0,
+            0,
+            1
+          ]
         ]
       }
     }
