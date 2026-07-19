@@ -16,9 +16,9 @@
     85
   ],
   "BarrelPos": [
-    -0.0067,
-    0.1465,
-    0.6626
+    0.0,
+    0.0,
+    -0.625
   ],
   "TurretControllerIndex": 1,
   "OBB": [
@@ -159,21 +159,25 @@
       "Transform": "Vehicle",
       "BanHand": true,
       "Position": [
-        0.5,
-        0.5625,
+        0.45,
+        0.6625,
         2.1875
       ],
       "CameraPos": {
         "UseFixedCameraPos": true,
-        "Transform": "Vehicle",
         "Position": [
-          0.5,
-          2.4,
-          2.6
+          0.549106,
+          2.59995,
+          2.838525
         ]
-      }
+      },
+      "MinYaw": -55,
+      "MaxYaw": 55,
+      "MinPitch": -3,
+      "MaxPitch": 15
     },
     {
+      "Sensitivity": [0.5, 0.3, 0.5],
       "IsEnclosed": true,
       "BanHand": true,
       "Weapons": [
@@ -181,18 +185,18 @@
       ],
       "Transform": "Vehicle",
       "Position": [
-        -0.45,
-        0.5625,
-        1.55
+        -0.4,
+        0.9,
+        -0.55
       ],
       "CanRotateHead": true,
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
         "Position": [
+          0.4,
           0.0,
-          0.5,
-          -1.0
+          1.5
         ],
         "Direction": "Barrel"
       },
@@ -218,13 +222,14 @@
       "MaxYaw": 95
     },
     {
+      "Orientation": 90.0,
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
       "Position": [
-        0,
-        0.3,
-        -0.9
+        0.75,
+        0.9,
+        -3.1
       ],
       "CameraPos": {},
       "MinPitch": -60,
@@ -233,66 +238,20 @@
       "MaxYaw": 95
     },
     {
-      "IsEnclosed": true,
-      "Transform": "Vehicle",
-      "BanHand": true,
-      "Position": [
-        -0.5,
-        0.3,
-        -0.9
-      ],
-      "CameraPos": {},
-      "MinPitch": -60,
-      "MaxPitch": 60,
-      "MinYaw": -95,
-      "MaxYaw": 95
-    },
-    {
-      "IsEnclosed": true,
-      "Transform": "Vehicle",
-      "BanHand": true,
-      "Position": [
-        0.75,
-        0.75,
-        -2.1
-      ],
-      "CameraPos": {},
-      "Orientation": 90,
-      "MinPitch": -60,
-      "MaxPitch": 60,
-      "MinYaw": -85,
-      "MaxYaw": 85
-    },
-    {
+      "Orientation": -90.0,
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
       "Position": [
         -0.75,
-        0.75,
-        -2.1
-      ],
-      "CameraPos": {},
-      "Orientation": -90,
-      "MinPitch": -60,
-      "MaxPitch": 60,
-      "MinYaw": -85,
-      "MaxYaw": 85
-    },
-    {
-      "IsEnclosed": true,
-      "Transform": "Vehicle",
-      "BanHand": true,
-      "Position": [
-        0,
-        0.5,
-        -3.25
+        0.9,
+        -3.1
       ],
       "CameraPos": {},
       "MinPitch": -60,
       "MaxPitch": 60,
-      "MinYaw": -85,
-      "MaxYaw": 85
+      "MinYaw": -95,
+      "MaxYaw": 95
     }
   ],
   "EngineType": "Wheel",
@@ -355,35 +314,36 @@
       "Damage": 0
     },
     "Mortar": {
-      "AmmoType": "superbwarfare:small_rocket",
-      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/small_rocket.png",
+      "AmmoType": "superbwarfare:mortar_shell",
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/mortar_shell.png",
       "DefaultZoom": 2,
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
-      "Magazine": 40,
-      "EmptyReloadTime": 2000,
+      "Magazine": 1,
+      "EmptyReloadTime": 40,
       "ShellType": "HE",
-      "Projectile": "superbwarfare:medium_rocket",
+      "Projectile": "superbwarfare:mortar_shell",
       "ProjectileLife": 1200,
-      "Spread": 1.5,
+      "Spread": 0.1,
       "Name": "weapon.fcp.stryker_mortar",
       "RPM": 120,
       "Damage": 60,
       "ExplosionDamage": 100,
       "ExplosionRadius": 8,
-      "Gravity": 0.122097,
-      "Velocity": 18,
+      "Gravity": 0.05,
+      "Velocity": 10,
       "SoundInfo": {
-        "Fire1P": "superbwarfare:small_rocket_fire_1p",
-        "Fire3P": "superbwarfare:small_rocket_fire_3p"
+        "Fire3P": "superbwarfare:mortar_fire",
+        "Fire3PFar": "superbwarfare:mortar_distant",
+        "VehicleReload": "superbwarfare:mortar_load"
       },
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
           [
-            0.0,
-            0.8,
-            0.5
+            -0.0067,
+            0.1,
+            2.0
           ]
         ],
         "Directions": [
@@ -395,7 +355,12 @@
         ]
       },
       "Crosshair": "@Empty",
-      "SoundRadius": 12
+      "SoundRadius": 32,
+      "ShootShake": [
+        8,
+        6,
+        14
+      ]
     }
   },
   "ThirdPersonCameraPos": [
