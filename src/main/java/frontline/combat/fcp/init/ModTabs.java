@@ -58,6 +58,8 @@ public class ModTabs {
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BTR82.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BTR80.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BTR80_COPE.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BTR82_COPE.get()));
             }).build());
 
     public static final RegistryObject<CreativeModeTab> AMERICAN_VEHICLE_TAB = TABS.register("american_tab", () -> CreativeModeTab.builder()
