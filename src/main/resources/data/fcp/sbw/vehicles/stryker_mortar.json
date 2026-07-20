@@ -3,9 +3,9 @@
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "TurretPos": [
-    0.0052,
-    1.0613,
-    -2.0625
+    0.00442,
+    0.902105,
+    -1.753125
   ],
   "TurretTurnSpeed": [
     5,
@@ -18,137 +18,138 @@
   "BarrelPos": [
     0.0,
     0.0,
-    -0.625
+    -0.53125
   ],
   "TurretControllerIndex": 1,
+  "PassengerRenderScale": 0.75,
   "OBB": [
     {
       "Size": [
-        0.2265625,
-        0.6328125,
-        0.625
+        0.192578,
+        0.537891,
+        0.53125
       ],
       "Position": [
-        1.35,
-        0.75,
-        2.525
+        1.1475,
+        0.6375,
+        2.14625
       ],
       "Part": "WheelLeft"
     },
     {
       "Size": [
-        0.2265625,
-        0.6328125,
-        0.625
+        0.192578,
+        0.537891,
+        0.53125
       ],
       "Position": [
-        1.35,
-        0.75,
-        1.15
+        1.1475,
+        0.6375,
+        0.9775
       ],
       "Part": "WheelLeft"
     },
     {
       "Size": [
-        0.2265625,
-        0.6328125,
-        0.625
+        0.192578,
+        0.537891,
+        0.53125
       ],
       "Position": [
-        1.35,
-        0.75,
-        -2.025
+        1.1475,
+        0.6375,
+        -1.72125
       ],
       "Part": "WheelLeft"
     },
     {
       "Size": [
-        0.2265625,
-        0.6328125,
-        0.625
+        0.192578,
+        0.537891,
+        0.53125
       ],
       "Position": [
-        1.35,
-        0.75,
-        -0.55
+        1.1475,
+        0.6375,
+        -0.4675
       ],
       "Part": "WheelLeft"
     },
     {
       "Size": [
-        0.2265625,
-        0.6328125,
-        0.625
+        0.192578,
+        0.537891,
+        0.53125
       ],
       "Position": [
-        -1.35,
-        0.75,
-        2.525
+        -1.1475,
+        0.6375,
+        2.14625
       ],
       "Part": "WheelRight"
     },
     {
       "Size": [
-        0.2265625,
-        0.6328125,
-        0.625
+        0.192578,
+        0.537891,
+        0.53125
       ],
       "Position": [
-        -1.35,
-        0.75,
-        1.15
+        -1.1475,
+        0.6375,
+        0.9775
       ],
       "Part": "WheelRight"
     },
     {
       "Size": [
-        0.2265625,
-        0.6328125,
-        0.625
+        0.192578,
+        0.537891,
+        0.53125
       ],
       "Position": [
-        -1.35,
-        0.75,
-        -2.025
+        -1.1475,
+        0.6375,
+        -1.72125
       ],
       "Part": "WheelRight"
     },
     {
       "Size": [
-        0.2265625,
-        0.6328125,
-        0.625
+        0.192578,
+        0.537891,
+        0.53125
       ],
       "Position": [
-        -1.35,
-        0.75,
-        -0.55
+        -1.1475,
+        0.6375,
+        -0.4675
       ],
       "Part": "WheelRight"
     },
     {
       "Size": [
-        1.5,
-        0.625,
-        4.25
+        1.275,
+        0.53125,
+        3.6125
       ],
       "Position": [
-        0,
-        1.15,
-        0.2
+        0.0,
+        0.9775,
+        0.17
       ],
       "Part": "Body"
     },
     {
       "Size": [
-        1.5,
-        0.425,
-        4.25
+        1.275,
+        0.36125,
+        3.6125
       ],
       "Position": [
-        0,
-        2.2,
-        0.2
+        0.0,
+        1.87,
+        0.17
       ],
       "Part": "Body"
     }
@@ -159,16 +160,16 @@
       "Transform": "Vehicle",
       "BanHand": true,
       "Position": [
-        0.45,
-        0.6625,
-        2.1875
+        0.3825,
+        0.563125,
+        1.859375
       ],
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Position": [
-          0.549106,
-          2.59995,
-          2.838525
+          0.46674,
+          2.209958,
+          2.412746
         ]
       },
       "MinYaw": -55,
@@ -177,7 +178,11 @@
       "MaxPitch": 15
     },
     {
-      "Sensitivity": [0.5, 0.3, 0.5],
+      "Sensitivity": [
+        0.5,
+        0.3,
+        0.5
+      ],
       "IsEnclosed": true,
       "BanHand": true,
       "Weapons": [
@@ -185,18 +190,18 @@
       ],
       "Transform": "Vehicle",
       "Position": [
-        -0.4,
-        0.9,
-        -0.55
+        -0.34,
+        0.765,
+        -0.4675
       ],
       "CanRotateHead": true,
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
         "Position": [
-          0.4,
+          0.34,
           0.0,
-          1.5
+          1.275
         ],
         "Direction": "Barrel"
       },
@@ -211,9 +216,9 @@
       "Transform": "Vehicle",
       "BanHand": true,
       "Position": [
-        0.75,
-        0.9,
-        -0.6
+        0.6375,
+        0.765,
+        -0.51
       ],
       "CameraPos": {},
       "MinPitch": -60,
@@ -227,9 +232,9 @@
       "Transform": "Vehicle",
       "BanHand": true,
       "Position": [
-        0.75,
-        0.9,
-        -3.1
+        0.6375,
+        0.765,
+        -2.635
       ],
       "CameraPos": {},
       "MinPitch": -60,
@@ -243,9 +248,9 @@
       "Transform": "Vehicle",
       "BanHand": true,
       "Position": [
-        -0.75,
-        0.9,
-        -3.1
+        -0.6375,
+        0.765,
+        -2.635
       ],
       "CameraPos": {},
       "MinPitch": -60,
@@ -254,6 +259,64 @@
       "MaxYaw": 95
     }
   ],
+  "Weapons": {
+    "Empty": {
+      "Name": "",
+      "Crosshair": "@Empty",
+      "RPM": 0,
+      "Magazine": 0,
+      "Damage": 0
+    },
+    "Mortar": {
+      "AmmoType": "superbwarfare:mortar_shell",
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/mortar_shell.png",
+      "DefaultZoom": 2,
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Magazine": 1,
+      "EmptyReloadTime": 0,
+      "ShellType": "HE",
+      "Projectile": "superbwarfare:mortar_shell",
+      "ProjectileLife": 1200,
+      "Spread": 0.1,
+      "Name": "weapon.fcp.stryker_mortar",
+      "RPM": 45,
+      "Damage": 60,
+      "ExplosionDamage": 100,
+      "ExplosionRadius": 8,
+      "Gravity": 0.05,
+      "Velocity": 10,
+      "SoundInfo": {
+        "Fire3P": "superbwarfare:mortar_fire",
+        "Fire3PFar": "superbwarfare:mortar_distant",
+        "VehicleReload": "superbwarfare:mortar_load"
+      },
+      "ShootPos": {
+        "Transform": "Barrel",
+        "Positions": [
+          [
+            -0.005695,
+            0.085,
+            1.7
+          ]
+        ],
+        "Directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "Crosshair": "@Empty",
+      "SoundRadius": 32,
+      "ShootShake": [
+        8,
+        6,
+        14
+      ]
+    }
+  },
   "EngineType": "Wheel",
   "EngineSound": "fcp:stryker_engine",
   "EngineInfo": {
@@ -305,64 +368,6 @@
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },
-  "Weapons": {
-    "Empty": {
-      "Name": "",
-      "Crosshair": "@Empty",
-      "RPM": 0,
-      "Magazine": 0,
-      "Damage": 0
-    },
-    "Mortar": {
-      "AmmoType": "superbwarfare:mortar_shell",
-      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/mortar_shell.png",
-      "DefaultZoom": 2,
-      "DefaultFireMode": "Auto",
-      "AvailableFireModes": "Auto",
-      "Magazine": 1,
-      "EmptyReloadTime": 0,
-      "ShellType": "HE",
-      "Projectile": "superbwarfare:mortar_shell",
-      "ProjectileLife": 1200,
-      "Spread": 0.1,
-      "Name": "weapon.fcp.stryker_mortar",
-      "RPM": 45,
-      "Damage": 60,
-      "ExplosionDamage": 100,
-      "ExplosionRadius": 8,
-      "Gravity": 0.05,
-      "Velocity": 10,
-      "SoundInfo": {
-        "Fire3P": "superbwarfare:mortar_fire",
-        "Fire3PFar": "superbwarfare:mortar_distant",
-        "VehicleReload": "superbwarfare:mortar_load"
-      },
-      "ShootPos": {
-        "Transform": "Barrel",
-        "Positions": [
-          [
-            -0.0067,
-            0.1,
-            2.0
-          ]
-        ],
-        "Directions": [
-          [
-            0,
-            0,
-            1
-          ]
-        ]
-      },
-      "Crosshair": "@Empty",
-      "SoundRadius": 32,
-      "ShootShake": [
-        8,
-        6,
-        14
-      ]
-    }
-  },
   "ThirdPersonCameraPos": [
     0,
     1,
@@ -393,24 +398,24 @@
   "HudType": "@Land",
   "TerrainCompat": [
     [
-      1.156,
+      0.9826,
       0,
-      1.594
+      1.3549
     ],
     [
-      -1.156,
+      -0.9826,
       0,
-      1.594
+      1.3549
     ],
     [
-      1.156,
+      0.9826,
       0,
-      -1.594
+      -1.3549
     ],
     [
-      -1.156,
+      -0.9826,
       0,
-      -1.594
+      -1.3549
     ]
   ],
   "InertiaRotateRate": 1.8
