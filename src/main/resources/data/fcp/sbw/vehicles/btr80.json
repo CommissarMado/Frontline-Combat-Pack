@@ -181,9 +181,9 @@
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
         "Position": [
-          0.2826125,
-          -0.21386875,
-          1.11259375
+          0.3,
+          0.0,
+          0.3
         ],
         "Direction": "Barrel"
       },
@@ -354,9 +354,9 @@
         "Transform": "Barrel",
         "Positions": [
           [
+            -0.0,
             0.0,
-            0.3,
-            1.0
+            1.3998
           ]
         ],
         "Directions": [
@@ -399,9 +399,9 @@
         "Transform": "Barrel",
         "Positions": [
           [
-            -0.404975,
-            0.0541625,
-            0.71119375
+            -0.15,
+            0.0,
+            0.25
           ]
         ],
         "Directions": [
@@ -440,7 +440,7 @@
   "BarrelPos": [
     0.02034,
     0.02782,
-    -0.57084
+    0.59791
   ],
   "ThirdPersonCameraPos": [
     0,

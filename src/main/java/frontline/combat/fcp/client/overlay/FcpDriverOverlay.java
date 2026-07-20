@@ -58,7 +58,8 @@ public class FcpDriverOverlay implements IGuiOverlay {
             "fcp:stryker_mk19",
             "fcp:stryker_tow",
             "fcp:stryker_dragoon",
-            "fcp:stryker_mortar"
+            "fcp:stryker_mortar",
+            "fcp:btr80"
     );
 
     @Override
