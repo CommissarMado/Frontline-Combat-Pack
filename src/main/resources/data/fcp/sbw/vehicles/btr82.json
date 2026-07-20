@@ -356,7 +356,7 @@
         {
           "Ammo": "superbwarfare:small_shell_he",
           "Override": {
-            "Icon": "fcp:textures/screens/vehicle_weapon/25mm_he.png",
+            "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/cannon_30mm_he.png",
             "IsArmorPiercingProjectile": false,
             "IsHighExplosiveProjectile": true,
             "Velocity": 25,
@@ -367,12 +367,12 @@
           }
         }
       ],
-      "Icon": "fcp:textures/screens/vehicle_weapon/25mm_ap.png",
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/cannon_30mm_ap.png",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
           [
-            0.05316875,
+            -0.06,
             -0.05079375,
             2.528125
           ]
@@ -413,9 +413,9 @@
         "Transform": "Barrel",
         "Positions": [
           [
-            -0.404975,
-            0.0541625,
-            0.71119375
+            -0.57,
+            0.055,
+            0.75
           ]
         ],
         "Directions": [
