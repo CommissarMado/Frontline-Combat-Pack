@@ -26,6 +26,7 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX_ROCKET_POD.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX_BMP.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX_SPG9.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX_MORTAR.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP1.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP1U.get()));

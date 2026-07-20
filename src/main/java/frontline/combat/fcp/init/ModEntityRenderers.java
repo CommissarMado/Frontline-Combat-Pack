@@ -49,6 +49,7 @@ import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxBMPRenderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxRenderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxRocketPodRenderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxSpg9Renderer;
+import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxMortarRenderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxZu23Renderer;
 import frontline.combat.fcp.client.renderer.Trailers.ExampleTrailer.ExampleTrailerRenderer;
 import frontline.combat.fcp.client.renderer.Uaz.UAZDSHKARenderer;
@@ -75,6 +76,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_ROCKET_POD.get(), ToyotaHiluxRocketPodRenderer::new);
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_BMP.get(), ToyotaHiluxBMPRenderer::new);
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_SPG9.get(), ToyotaHiluxSpg9Renderer::new);
+        event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_MORTAR.get(), ToyotaHiluxMortarRenderer::new);
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_ZU23.get(), ToyotaHiluxZu23Renderer::new);
 
         event.registerEntityRenderer(ModEntities.UAZ.get(), UAZRenderer::new);

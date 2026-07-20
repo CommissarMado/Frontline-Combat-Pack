@@ -48,7 +48,8 @@ public class LandVehicleHudStatsMixin {
             "fcp:ural_grad",
             "fcp:toyota_hilux_bmp",
             "fcp:toyota_hilux_spg9",
-            "fcp:uaz_spg9"
+            "fcp:uaz_spg9",
+            "fcp:toyota_hilux_mortar"
     );
 
     // Vehicles that suppress the TV frame entirely but show no replacement overlay
@@ -65,7 +66,8 @@ public class LandVehicleHudStatsMixin {
     private static final Set<String> FCP_MORTAR_HUD_VEHICLES = Set.of(
             "fcp:ural_grad",
             "fcp:stryker_mortar",
-            "fcp:toyota_hilux_rocket_pod"
+            "fcp:toyota_hilux_rocket_pod",
+            "fcp:toyota_hilux_mortar"
     );
 
     private static final ResourceLocation GUNNER_FRAME =
