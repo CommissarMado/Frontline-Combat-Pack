@@ -11,6 +11,7 @@ import frontline.combat.fcp.entity.vehicle.Bmp1.BMP1Entity;
 import frontline.combat.fcp.entity.vehicle.Bmp1.BMP1UEntity;
 import frontline.combat.fcp.entity.vehicle.Bmp2.BMP2Entity;
 import frontline.combat.fcp.entity.vehicle.Btr82.BTR82Entity;
+import frontline.combat.fcp.entity.vehicle.Btr80.BTR80Entity;
 import frontline.combat.fcp.entity.vehicle.Fmtv.FMTVEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrGLEntity;
@@ -180,6 +181,9 @@ public class ModEntities {
             EntityType.Builder.of(HumveeTOWEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<BTR82Entity>> BTR82 = register("btr82",
             EntityType.Builder.of(BTR82Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+
+    public static final RegistryObject<EntityType<BTR80Entity>> BTR80 = register("btr80",
+            EntityType.Builder.of(BTR80Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<FMTVEntity>> FMTV = register("fmtv",
             EntityType.Builder.of(FMTVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     // Projectiles

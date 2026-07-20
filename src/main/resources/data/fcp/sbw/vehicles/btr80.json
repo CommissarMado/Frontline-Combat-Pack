@@ -1,5 +1,5 @@
 {
-  "ID": "fcp:btr82",
+  "ID": "fcp:btr80",
   "MaxHealth": 250,
   "MaxEnergy": 5500000,
   "OBB": [
@@ -136,12 +136,12 @@
     {
       "Size": [
         0.75,
-        0.45,
+        0.225,
         0.75
       ],
       "Position": [
         0,
-        0.45,
+        0.225,
         0
       ],
       "Part": "Turret",
@@ -326,59 +326,45 @@
     "Cannon": {
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
-      "Projectile": "superbwarfare:small_cannon_shell",
-      "IsArmorPiercingProjectile": true,
-      "IsHighExplosiveProjectile": false,
-      "EmptyReloadTime": 180,
+      "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 330,
-      "Velocity": 20,
-      "Damage": 50,
-      "ExplosionDamage": 0,
-      "ExplosionRadius": 0,
-      "HeatPerShoot": 8,
+      "RPM": 450,
+      "Magazine": 100,
+      "EmptyReloadTime": 20,
+      "Velocity": 35,
+      "Damage": 20,
+      "BypassesArmor": 3,
+      "HeatPerShoot": 5,
       "NaturalCooldown": 1,
-      "RecoilTime": 31,
-      "RecoilForce": 0.62,
-      "ShootAnimationTime": 3,
-      "Spread": 0.5,
+      "RecoilTime": 16,
+      "RecoilForce": 0.05,
+      "ShootAnimationTime": 1,
+      "Spread": 0.25,
+      "Crosshair": "@Empty",
       "CrosshairColor": "0x66FF00",
-      "Crosshair": "@VehicleRuApc",
-      "Name": "weapon.fcp.2a72_30mm_ap",
+      "Name": "weapon.fcp.kpvt",
       "SoundInfo": {
-        "Fire1P": "fcp:lav25_fire_1p",
-        "Fire3P": "fcp:lav25_fire_3p",
-        "Fire3PFar": "fcp:lav25_fire_3p_far"
+        "Fire1P": "superbwarfare:coax_fire_1p",
+        "Fire3P": "superbwarfare:coax_fire_1p"
       },
-      "SoundRadius": 24,
-      "AmmoType": [
-        "superbwarfare:small_shell_ap",
-        {
-          "Ammo": "superbwarfare:small_shell_he",
-          "Override": {
-            "Icon": "fcp:textures/screens/vehicle_weapon/25mm_he.png",
-            "IsArmorPiercingProjectile": false,
-            "IsHighExplosiveProjectile": true,
-            "Velocity": 25,
-            "Damage": 15,
-            "ExplosionDamage": 16,
-            "ExplosionRadius": 3,
-            "Name": "weapon.fcp.2a72_30mm_he"
-          }
-        }
-      ],
-      "Icon": "fcp:textures/screens/vehicle_weapon/25mm_ap.png",
+      "SoundRadius": 16,
+      "AmmoType": "superbwarfare:rifle_ammo",
+      "Icon": "fcp:textures/screens/vehicle_weapon/12_7mm.png",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
           [
-            0.05316875,
-            -0.05079375,
-            2.528125
+            0.0,
+            0.3,
+            1.0
           ]
         ],
         "Directions": [
-          "Barrel"
+          [
+            0,
+            0,
+            1
+          ]
         ]
       }
     },
@@ -439,9 +425,9 @@
     "SteeringSpeed": 0.1
   },
   "TurretPos": [
-    0.03566,
-    2.08718,
-    1.23145
+    -0.00134,
+    2.2548,
+    0.3962
   ],
   "TurretTurnSpeed": [
     2.5,
@@ -452,9 +438,9 @@
     60
   ],
   "BarrelPos": [
-    0.04877,
-    0.60894,
-    -0.3707
+    0.02034,
+    0.02782,
+    -0.57084
   ],
   "ThirdPersonCameraPos": [
     0,

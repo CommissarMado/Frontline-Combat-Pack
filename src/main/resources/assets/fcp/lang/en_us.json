@@ -27,6 +27,8 @@
   "entity.fcp.gaz_tigr_gl": "Gaz Tigr With MK19",
   "entity.fcp.novator": "Novator",
   "entity.fcp.btr82": "BTR82A",
+  "entity.fcp.btr80": "BTR-80",
+  "weapon.fcp.kpvt": "KPVT 14.5mm",
 
   "//": "======================== Weapons ========================",
   "weapon.fcp.ub32": "UB-32",

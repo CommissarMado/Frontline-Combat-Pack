@@ -8,6 +8,7 @@ import frontline.combat.fcp.client.renderer.Bmp1.BMP1Renderer;
 import frontline.combat.fcp.client.renderer.Bmp1.BMP1URenderer;
 import frontline.combat.fcp.client.renderer.Bmp2.BMP2Renderer;
 import frontline.combat.fcp.client.renderer.Btr82.BTR82Renderer;
+import frontline.combat.fcp.client.renderer.Btr80.BTR80Renderer;
 import frontline.combat.fcp.client.renderer.Fmtv.FMTVRenderer;
 import frontline.combat.fcp.client.renderer.GazTigr.GazTigrGLRenderer;
 import frontline.combat.fcp.client.renderer.GazTigr.GazTigrMGRenderer;
@@ -134,6 +135,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.HUMVEE_TOW.get(), HumveeTOWRenderer::new);
 
         event.registerEntityRenderer(ModEntities.BTR82.get(), BTR82Renderer::new);
+        event.registerEntityRenderer(ModEntities.BTR80.get(), BTR80Renderer::new);
 
         event.registerEntityRenderer(ModEntities.MI17.get(), MI17Renderer::new);
 
