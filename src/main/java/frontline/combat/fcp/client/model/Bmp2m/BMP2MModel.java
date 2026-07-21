@@ -28,7 +28,7 @@ public class BMP2MModel extends FCPVehicleModel<BMP2MEntity> {
     @Override
     public @Nullable VehicleModel.TransformContext<BMP2MEntity> collectTransform(String boneName) {
         return switch (boneName) {
-            case "BarrelOccilator" -> barrelRecoil(0);
+            case "gun" -> barrelRecoil(0);
 
             case "WheelL0", "WheelR0", "WheelL1", "WheelR1", "WheelL2", "WheelR2", "WheelL3", "WheelR3",
                  "WheelL4", "WheelR4", "WheelL5", "WheelR5", "WheelL6", "WheelR6", "WheelL7", "WheelR7" -> (bone, vehicle, state) -> {

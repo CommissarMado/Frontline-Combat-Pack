@@ -110,8 +110,8 @@
         "UseFixedCameraPos": true,
         "Position": [
           0.557366,
-          0.221914,
-          -0.135272
+          0.321914,
+          0.135272
         ],
         "Direction": "Barrel"
       },
@@ -134,7 +134,7 @@
   "EngineType": "Track",
   "EngineSound": "fcp:bmp1_engine",
   "EngineInfo": {
-    "Buoyancy": 0,
+    "Buoyancy": 0.05,
     "EnergyCostRate": 96,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,

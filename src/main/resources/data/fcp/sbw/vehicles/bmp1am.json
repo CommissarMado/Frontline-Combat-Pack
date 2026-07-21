@@ -36,7 +36,11 @@
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
-        "Position": [-0.038139, 0.39992, 0.958322],
+        "Position": [
+          0.2826125,
+          -0.21386875,
+          1.31259375
+        ],
         "Direction": "Barrel"
       },
       "CanRotateHead": false,
@@ -50,7 +54,7 @@
   "EngineType": "Track",
   "EngineSound": "fcp:bmp1_engine",
   "EngineInfo": {
-    "Buoyancy": 0,
+    "Buoyancy": 0.05,
     "EnergyCostRate": 96,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,

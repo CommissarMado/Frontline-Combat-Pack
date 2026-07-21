@@ -37,7 +37,12 @@ public class LandVehicleHudStatsMixin {
     // Vehicles that replace the TV frame with gunner.png
     private static final Set<String> FCP_GUNNER_FRAME_VEHICLES = Set.of(
             "fcp:bmp1",
+            "fcp:bmp1p",
+            "fcp:bmp1am",
             "fcp:bmp2",
+            "fcp:bmp2d",
+            "fcp:bmp2m",
+            "fcp:bmp2_noatgm",
             "fcp:btr82",
             "fcp:lav25",
             "fcp:stryker_mgs",
