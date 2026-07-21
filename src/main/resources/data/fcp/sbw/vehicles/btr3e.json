@@ -1,5 +1,5 @@
 {
-  "ID": "fcp:btr80",
+  "ID": "fcp:btr3e",
   "MaxHealth": 250,
   "MaxEnergy": 5500000,
   "OBB": [
@@ -136,12 +136,12 @@
     {
       "Size": [
         0.75,
-        0.225,
+        0.45,
         0.75
       ],
       "Position": [
         0,
-        0.1,
+        0.45,
         0
       ],
       "Part": "Turret",
@@ -174,22 +174,22 @@
       "MaxPitch": 32.5
     },
     {
-      "BanHand": true,
       "HidePassenger": true,
       "IsEnclosed": true,
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
         "Position": [
-          0.3,
-          0.0,
-          0.3
+          -0.038139,
+          0.39992,
+          0.958322
         ],
         "Direction": "Barrel"
       },
       "CanRotateHead": false,
       "Weapons": [
         "Cannon",
+        "Konkurs",
         "Coax"
       ],
       "Transform": "Turret",
@@ -323,40 +323,31 @@
     }
   ],
   "Weapons": {
-    "Cannon": {
-      "DefaultFireMode": "Auto",
-      "AvailableFireModes": "Auto",
-      "Projectile": "superbwarfare:projectile",
+    "Konkurs": {
+      "DefaultFireMode": "Semi",
+      "AvailableFireModes": "Semi",
       "DefaultZoom": 3,
-      "RPM": 450,
-      "Magazine": 100,
-      "EmptyReloadTime": 20,
-      "Velocity": 35,
-      "Damage": 20,
-      "BypassesArmor": 3,
-      "HeatPerShoot": 5,
-      "NaturalCooldown": 1,
-      "RecoilTime": 16,
-      "RecoilForce": 0.05,
-      "ShootAnimationTime": 1,
-      "Spread": 0.25,
-      "Crosshair": "@VehicleCommonGun",
-      "CrosshairColor": "0x66FF00",
-      "Name": "weapon.fcp.kpvt",
-      "SoundInfo": {
-        "Fire1P": "superbwarfare:coax_fire_1p",
-        "Fire3P": "superbwarfare:coax_fire_1p"
-      },
-      "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
-      "Icon": "fcp:textures/screens/vehicle_weapon/12_7mm.png",
+      "Name": "weapon.fcp.9m113_konkurs",
+      "AmmoType": "superbwarfare:medium_anti_ground_missile",
+      "Projectile": "superbwarfare:wire_guide_missile",
+      "Magazine": 2,
+      "EmptyReloadTime": 250,
+      "Damage": 600,
+      "ExplosionDamage": 70,
+      "ExplosionRadius": 7,
+      "Velocity": 3.5,
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
           [
-            -0.0,
-            0.0,
-            1.3998
+            -0.75,
+            0.15,
+            0.8
+          ],
+          [
+            -0.75,
+            -0.075,
+            0.815
           ]
         ],
         "Directions": [
@@ -366,7 +357,85 @@
             1
           ]
         ]
+      },
+      "Crosshair": "@VehicleCommonMissile",
+      "CrosshairColor": "0x00FF66",
+      "SoundRadius": 32,
+      "SoundInfo": {
+        "Fire1P": "superbwarfare:bmp_2_missile_fire_1p",
+        "Fire3P": "superbwarfare:bmp_2_missile_fire_3p",
+        "VehicleReload3p": "superbwarfare:medium_missile_reload",
+        "VehicleReloadSoundTime": 28,
+        "Change": "superbwarfare:into_missile"
+      },
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/missile_9m113.png"
+    },
+    "Cannon": {
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Projectile": "superbwarfare:small_cannon_shell",
+      "IsArmorPiercingProjectile": true,
+      "IsHighExplosiveProjectile": false,
+      "EmptyReloadTime": 180,
+      "DefaultZoom": 3,
+      "RPM": 550,
+      "Velocity": 20,
+      "Damage": 57,
+      "ExplosionDamage": 0,
+      "ExplosionRadius": 0,
+      "HeatPerShoot": 5,
+      "NaturalCooldown": 1,
+      "RecoilTime": 31,
+      "RecoilForce": 0.31,
+      "ShootAnimationTime": 3,
+      "Spread": 0.5,
+      "CrosshairColor": "0xFFC700",
+      "Crosshair": "@VehicleRuApc",
+      "Name": "weapon.fcp.kba2_30mm_ap",
+      "SoundInfo": {
+        "Fire1P": "superbwarfare:bmp_2_cannon_fire_1p",
+        "Fire3P": "superbwarfare:bmp_2_cannon_fire_3p",
+        "Fire3PFar": "superbwarfare:mi_28_cannon_far",
+        "Fire3PVeryFar": "superbwarfare:mi_28_cannon_veryfar",
+        "Change": "superbwarfare:into_cannon"
+      },
+      "SoundRadius": 24,
+      "AmmoType": [
+        "superbwarfare:small_shell_ap",
+        {
+          "Ammo": "superbwarfare:small_shell_he",
+          "Override": {
+            "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/cannon_30mm_he.png",
+            "IsArmorPiercingProjectile": false,
+            "IsHighExplosiveProjectile": true,
+            "Velocity": 18,
+            "Damage": 15,
+            "ExplosionDamage": 15,
+            "ExplosionRadius": 3,
+            "Name": "weapon.fcp.kba2_30mm_he"
+          }
+        }
+      ],
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/cannon_30mm_ap.png",
+      "ShootPos": {
+        "Transform": "Barrel",
+        "Positions": [
+          [
+            -0.024512,
+            0.0,
+            2.65
+          ]
+        ],
+        "Directions": [
+          "Barrel"
+        ]
       }
+    },
+    "Empty": {
+      "Magazine": 0,
+      "RPM": 0,
+      "Crosshair": "@Empty",
+      "Damage": 0
     },
     "Coax": {
       "DefaultFireMode": "Auto",
@@ -374,12 +443,12 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 600,
-      "EmptyReloadTime": 160,
+      "HeatPerShoot": 5,
+      "NaturalCooldown": 1,
+      "EmptyReloadTime": 20,
       "Velocity": 25,
       "Damage": 4,
       "BypassesArmor": 0.2,
-      "HeatPerShoot": 5,
-      "NaturalCooldown": 1,
       "RecoilTime": 16,
       "RecoilForce": 0.05,
       "ShootAnimationTime": 1,
@@ -394,14 +463,14 @@
       },
       "SoundRadius": 16,
       "AmmoType": "superbwarfare:rifle_ammo",
-      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/gun_7_62mm.png",
+      "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
           [
-            -0.15,
+            0.1275,
             0.0,
-            0.25
+            0.8
           ]
         ],
         "Directions": [
@@ -425,9 +494,9 @@
     "SteeringSpeed": 0.1
   },
   "TurretPos": [
-    -0.00134,
-    2.25792,
-    1.25557
+    0.00316,
+    2.48023,
+    1.10265
   ],
   "TurretTurnSpeed": [
     2.5,
@@ -435,12 +504,12 @@
   ],
   "TurretPitchRange": [
     -10,
-    60
+    30
   ],
   "BarrelPos": [
-    0.02034,
-    0.02782,
-    0.59791
+    -0.08625,
+    0.28046,
+    -0.00777
   ],
   "ThirdPersonCameraPos": [
     0,
