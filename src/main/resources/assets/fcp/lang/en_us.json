@@ -10,6 +10,10 @@
   "entity.fcp.bmp1u": "BMP-1U",
   "entity.fcp.bmp1am": "BMP-1AM",
   "entity.fcp.bmp2": "BMP-2",
+  "entity.fcp.bmp1p": "BMP-1P",
+  "entity.fcp.bmp2d": "BMP-2D",
+  "entity.fcp.bmp2m": "BMP-2M",
+  "entity.fcp.bmp2_noatgm": "BMP-2",
   "entity.fcp.t72av": "T72-AV",
   "entity.fcp.lav25": "LAV-25",
 

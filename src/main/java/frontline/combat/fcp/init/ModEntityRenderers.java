@@ -7,6 +7,10 @@ import frontline.combat.fcp.client.renderer.Bmp1.BMP1AMRenderer;
 import frontline.combat.fcp.client.renderer.Bmp1.BMP1Renderer;
 import frontline.combat.fcp.client.renderer.Bmp1.BMP1URenderer;
 import frontline.combat.fcp.client.renderer.Bmp2.BMP2Renderer;
+import frontline.combat.fcp.client.renderer.Bmp1p.BMP1PRenderer;
+import frontline.combat.fcp.client.renderer.Bmp2d.BMP2DRenderer;
+import frontline.combat.fcp.client.renderer.Bmp2m.BMP2MRenderer;
+import frontline.combat.fcp.client.renderer.Bmp2Noatgm.BMP2NoAtgmRenderer;
 import frontline.combat.fcp.client.renderer.Btr82.BTR82Renderer;
 import frontline.combat.fcp.client.renderer.Btr3e.BTR3ERenderer;
 import frontline.combat.fcp.client.renderer.Btr80.BTR80Renderer;
@@ -102,6 +106,10 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.BMP1AM.get(), BMP1AMRenderer::new);
 
         event.registerEntityRenderer(ModEntities.BMP2.get(), BMP2Renderer::new);
+        event.registerEntityRenderer(ModEntities.BMP1P.get(), BMP1PRenderer::new);
+        event.registerEntityRenderer(ModEntities.BMP2D.get(), BMP2DRenderer::new);
+        event.registerEntityRenderer(ModEntities.BMP2M.get(), BMP2MRenderer::new);
+        event.registerEntityRenderer(ModEntities.BMP2_NOATGM.get(), BMP2NoAtgmRenderer::new);
 
         event.registerEntityRenderer(ModEntities.AAVP.get(), AAVPRenderer::new);
 

@@ -12,15 +12,53 @@ import net.minecraft.world.level.Level;
 public class BMP1Entity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
-            //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/bmp1/bmp1_1.png"),
-            new ResourceLocation("fcp", "textures/entity/bmp1/bmp1_2.png"),
-            //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/bmp1/bmp1_1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/bmp1/bmp1_2_wrecked.png")
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_1_1_1.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_1_afgan.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_1.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_2_ukr_1.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_2_ukr_2_kom_1.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_2_ukr_2_kom_2.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_2_ukr_2.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_2.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_fin_1.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_zov_1.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_zov_2.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_1_gdr_1.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_1_gdr_2.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_1_gdr_3.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_1_kom_1.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_1.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_2.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_3_v.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_3.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_4.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_5.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_c_kom_1.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_1_1_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_1_afgan_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_2_ukr_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_2_ukr_2_kom_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_2_ukr_2_kom_2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_2_ukr_2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_fin_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_zov_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_zov_2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_1_gdr_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_1_gdr_2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_1_gdr_3_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_1_kom_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_3_v_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_3_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_4_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_5_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_c_kom_1_wrecked.png")
     };
 
-    private static final String[] CAMO_NAMES = {"Flag", "No-Flag"};
+    private static final String[] CAMO_NAMES = {"T1 1 1", "T1 Afgan", "T1", "T2 Ukr 1", "T2 Ukr 2 Kom 1", "T2 Ukr 2 Kom 2", "T2 Ukr 2", "T2", "T3 Fin 1", "T3 Rus Zov 1", "T3 Rus Zov 2", "T3 Rus 1 Gdr 1", "T3 Rus 1 Gdr 2", "T3 Rus 1 Gdr 3", "T3 Rus 1 Kom 1", "T3 Rus 1", "T3 Rus 2", "T3 Rus 3 V", "T3 Rus 3", "T3 Rus 4", "T3 Rus 5", "Tc Kom 1"};
 
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(BMP1Entity.class, EntityDataSerializers.FLOAT);
 
