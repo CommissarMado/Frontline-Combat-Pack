@@ -16,6 +16,7 @@ import frontline.combat.fcp.entity.vehicle.Bmp2m.BMP2MEntity;
 import frontline.combat.fcp.entity.vehicle.Bmp2Noatgm.BMP2NoAtgmEntity;
 import frontline.combat.fcp.entity.vehicle.Btr82.BTR82Entity;
 import frontline.combat.fcp.entity.vehicle.Btr3e.BTR3EEntity;
+import frontline.combat.fcp.entity.vehicle.Btr4mv1.BTR4MV1Entity;
 import frontline.combat.fcp.entity.vehicle.Btr80.BTR80Entity;
 import frontline.combat.fcp.entity.vehicle.Btr80Cope.BTR80CopeEntity;
 import frontline.combat.fcp.entity.vehicle.Btr82Cope.BTR82CopeEntity;
@@ -200,6 +201,9 @@ public class ModEntities {
             EntityType.Builder.of(HumveeTOWEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<BTR3EEntity>> BTR3E = register("btr3e",
             EntityType.Builder.of(BTR3EEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+
+    public static final RegistryObject<EntityType<BTR4MV1Entity>> BTR4MV1 = register("btr4mv1",
+            EntityType.Builder.of(BTR4MV1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
 
     public static final RegistryObject<EntityType<BTR82Entity>> BTR82 = register("btr82",
             EntityType.Builder.of(BTR82Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
