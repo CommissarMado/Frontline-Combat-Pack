@@ -5,6 +5,11 @@ import com.atsuishio.superbwarfare.client.overlay.VehicleMainWeaponHudOverlay;
 import com.atsuishio.superbwarfare.client.overlay.weapon.LandVehicleHud;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import com.atsuishio.superbwarfare.entity.vehicle.utils.VehicleVecUtils;
+import frontline.combat.fcp.entity.vehicle.IndirectFireVehicleBase;
+import frontline.combat.fcp.firecontrol.FireControlComputation;
+import frontline.combat.fcp.firecontrol.FireControlSolution;
+import frontline.combat.fcp.firecontrol.FireControlStatus;
+import frontline.combat.fcp.firecontrol.IndirectFireBallistics;
 import com.atsuishio.superbwarfare.event.ClientEventHandler;
 import com.atsuishio.superbwarfare.tools.FormatTool;
 import com.atsuishio.superbwarfare.tools.MathTool;
@@ -16,6 +21,7 @@ import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -254,21 +260,6 @@ public class LandVehicleHudStatsMixin {
         }
     }
 
-    /**
-     * Mortar-style Pitch / Yaw / Range readout.
-     *
-     * The range is solved to GROUND level, not to launch height. SBW's own
-     * RangeTool.getRange() assumes the shell returns to the height it was fired from,
-     * but the muzzle sits several blocks above the ground (and climbs further as the
-     * barrel elevates), so the shell keeps falling past that point and lands long.
-     * On the Grad that is roughly +6% at minimum elevation.
-     *
-     *   h = muzzle height above the ground the vehicle is standing on
-     *   t = (vy + sqrt(vy^2 + 2*g*h)) / g     <- positive root = the descending branch
-     *   R = vx * t
-     *
-     * Layout mirrors SBW's MortarInfoOverlay: three lines from (centre - 90, centre - 26).
-     */
     private void renderMortarInfo(
             VehicleEntity vehicle,
             Player player,
@@ -279,32 +270,23 @@ public class LandVehicleHudStatsMixin {
             int screenHeight,
             int color
     ) {
-        // Actual launch vector (resolves the seat's GunData -> ShootPos.Directions), so
-        // this stays true even if a weapon's tubes are angled relative to the barrel.
-        // getXRotFromVector is atan2(y, horizontal): positive when elevated = theta.
+        if (vehicle instanceof IndirectFireVehicleBase indirect && indirect.isFireControlActive()) {
+            renderActiveFireControl(indirect, guiGraphics, mc, screenWidth, screenHeight, color);
+            return;
+        }
+
         Vec3 shootVec = vehicle.getShootVec(player, partialTick);
         double pitch = VehicleVecUtils.getXRotFromVector(shootVec);
-        double yaw = -VehicleVecUtils.getYRotFromVector(shootVec);
-
+        double displayYaw = -VehicleVecUtils.getYRotFromVector(shootVec);
         double velocity = vehicle.getProjectileVelocity(player);
         double gravity = vehicle.getProjectileGravity(player);
-
-        String rangeStr;
-        if (gravity <= 0 || velocity <= 0 || pitch <= 0) {
-            // Flat-trajectory weapon, or barrel level/depressed: no ballistic arc to solve
-            rangeStr = "---m";
-        } else {
-            Vec3 muzzle = vehicle.getShootPos(player, partialTick);
-            double h = Math.max(0.0, muzzle.y - vehicle.getY());
-
-            double rad = Math.toRadians(pitch);
-            double vy = velocity * Math.sin(rad);
-            double vx = velocity * Math.cos(rad);
-
-            double flightTime = (vy + Math.sqrt(vy * vy + 2 * gravity * h)) / gravity;
-            double range = vx * flightTime;
-            rangeStr = FormatTool.format1D(Math.floor(range), "m");
-        }
+        Vec3 muzzle = vehicle.getShootPos(player, partialTick);
+        double range = IndirectFireBallistics.rangeAtPitch(
+                velocity, gravity, muzzle.y, vehicle.getY(), pitch
+        );
+        String rangeStr = (gravity <= 0 || velocity <= 0 || pitch <= 0)
+                ? "---m"
+                : FormatTool.format0D(range, "m");
 
         int baseX = screenWidth / 2 - 90;
         int baseY = screenHeight / 2 - 26;
@@ -316,12 +298,63 @@ public class LandVehicleHudStatsMixin {
 
         guiGraphics.drawString(mc.font,
                 Component.translatable("tips.superbwarfare.mortar.yaw")
-                        .append(Component.literal(FormatTool.format1D(yaw, "\u00B0"))),
+                        .append(Component.literal(FormatTool.format1D(displayYaw, "\u00B0"))),
                 baseX, baseY + 10, color, false);
 
         guiGraphics.drawString(mc.font,
                 Component.translatable("tips.superbwarfare.mortar.range")
                         .append(Component.literal(rangeStr)),
                 baseX, baseY + 20, color, false);
+    }
+
+    private void renderActiveFireControl(
+            IndirectFireVehicleBase vehicle,
+            GuiGraphics guiGraphics,
+            Minecraft mc,
+            int screenWidth,
+            int screenHeight,
+            int color
+    ) {
+        int baseX = screenWidth / 2 - 90;
+        int baseY = screenHeight / 2 - 26;
+        BlockPos target = vehicle.getFireControlTarget();
+        FireControlComputation computation = vehicle.getFireControlComputation();
+
+        guiGraphics.drawString(mc.font,
+                Component.translatable("tips.fcp.firing_solution.target")
+                        .append(Component.literal(target.getX() + " / " + target.getY() + " / " + target.getZ())),
+                baseX, baseY, color, false);
+
+        guiGraphics.drawString(mc.font,
+                Component.translatable("tips.fcp.firing_solution.dispersion")
+                        .append(Component.literal(vehicle.getFireControlRadius() + "m")),
+                baseX, baseY + 10, color, false);
+
+        if (computation.isSuccess()) {
+            FireControlSolution solution = computation.solution();
+            guiGraphics.drawString(mc.font,
+                    Component.translatable("tips.superbwarfare.mortar.range")
+                            .append(Component.literal(FormatTool.format0D(solution.range(), "m"))),
+                    baseX, baseY + 20, color, false);
+            guiGraphics.drawString(mc.font,
+                    Component.translatable("tips.fcp.firing_solution.angles")
+                            .append(Component.literal(
+                                    FormatTool.format1D(solution.pitch(), "\u00B0")
+                                            + " / " + FormatTool.format1D(solution.yaw(), "\u00B0")
+                            )),
+                    baseX, baseY + 30, color, false);
+        }
+
+        FireControlStatus status = vehicle.getFireControlStatus();
+        int statusColor = switch (status) {
+            case READY -> 0xFF67D391;
+            case MOVING, ALIGNING -> 0xFFFFC857;
+            case INACTIVE -> 0xFF98A5AA;
+            default -> 0xFFFF665E;
+        };
+        guiGraphics.drawString(mc.font,
+                Component.translatable("tips.fcp.firing_solution.status")
+                        .append(Component.translatable(status.translationKey())),
+                baseX, baseY + 42, statusColor, false);
     }
 }
