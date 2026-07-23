@@ -4,10 +4,10 @@ import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.model.FCPVehicleModel;
 import frontline.combat.fcp.client.model.Util.CannonRecoilTransforms;
+import frontline.combat.fcp.client.model.Util.ModelBoneTransforms;
 import frontline.combat.fcp.client.model.Util.WheelRotationTransforms;
 import frontline.combat.fcp.entity.vehicle.Btr82at.BTR82ATEntity;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -17,13 +17,15 @@ import org.jetbrains.annotations.Nullable;
  * their own, while group2 does - it cancels the parent flip). Two consequences:
  *
  * 1. SuperbWarfare's turret handler assigns rotY absolutely, which would wipe the 180
- *    bind and leave the turret facing backwards. Here the base transform runs first and
- *    the bind rotation is composed back on top of it.
+ *    bind and leave the turret facing backwards. The base transform runs first and the
+ *    bind rotation is composed back on top of it.
  *
- * 2. Inside a 180 degree yaw the local X and Z axes are reversed, so barrel elevation and
- *    recoil come out backwards. Both are mirrored after the shared helper computes them.
+ * 2. Inside a 180 degree yaw the local X and Z axes are reversed, so gun elevation and
+ *    recoil come out backwards. Both are mirrored after the shared logic computes them.
  *
- * Everything else (wheels, wreck handling, hull) matches the base BTR-82 model.
+ * Recoil lives on "oscillator" (turret -> barrel -> gun1 -> oscillator), which holds the
+ * recoiling gun section only, mirroring how the base BTR-82 drives "BarrelOccilator".
+ * "barrel" therefore carries elevation alone.
  */
 public class BTR82ATModel extends FCPVehicleModel<BTR82ATEntity> {
 
@@ -41,15 +43,8 @@ public class BTR82ATModel extends FCPVehicleModel<BTR82ATEntity> {
 
     @Override
     public @Nullable VehicleModel.TransformContext<BTR82ATEntity> collectTransform(String boneName) {
-        if ("barrel".equals(boneName)) {
-            return (bone, vehicle, state) -> {
-                float turretXRot = Mth.lerp(state.getPartialTick(), vehicle.getTurretXRotO(), vehicle.getTurretXRot());
-                CannonRecoilTransforms.applyBarrelPitchAndRecoil(
-                        bone, vehicle, turretXRot, CannonRecoilTransforms.Profile.FORWARDBACK, CANNON_WEAPON);
-                // Mirror elevation and recoil slide into the flipped turret frame.
-                bone.setRotX(-bone.getRotX());
-                bone.setPosZ(-bone.getPosZ());
-            };
+        if ("oscillator".equals(boneName)) {
+            return barrelRecoil();
         }
 
         VehicleModel.TransformContext<BTR82ATEntity> turn =
@@ -63,8 +58,9 @@ public class BTR82ATModel extends FCPVehicleModel<BTR82ATEntity> {
         if (wheels != null) return wheels;
 
         VehicleModel.TransformContext<BTR82ATEntity> base = super.collectTransform(boneName);
+        if (base == null) return null;
 
-        if (base != null && "turret".equals(boneName)) {
+        if ("turret".equals(boneName)) {
             return (bone, vehicle, state) -> {
                 base.transform(bone, vehicle, state);
                 // Re-apply the bind-pose yaw the base transform overwrote.
@@ -72,6 +68,31 @@ public class BTR82ATModel extends FCPVehicleModel<BTR82ATEntity> {
             };
         }
 
+        if ("barrel".equals(boneName)) {
+            return (bone, vehicle, state) -> {
+                base.transform(bone, vehicle, state);
+                // Mirror elevation into the flipped turret frame.
+                bone.setRotX(-bone.getRotX());
+            };
+        }
+
         return base;
+    }
+
+    private VehicleModel.TransformContext<BTR82ATEntity> barrelRecoil() {
+        return (bone, vehicle, state) -> {
+            ModelBoneTransforms.clearRecoilOffsets(bone);
+            if (vehicle.getCannonRecoilTime() <= 0) {
+                return;
+            }
+            if (!CANNON_WEAPON.equals(vehicle.getGunName(1))) {
+                return;
+            }
+            CannonRecoilTransforms.apply(bone, vehicle, CannonRecoilTransforms.Profile.FORWARDBACK);
+            // Mirror the slide and kick into the flipped turret frame so the gun
+            // recoils rearward rather than out of the mantlet.
+            bone.setPosZ(-bone.getPosZ());
+            bone.setRotX(-bone.getRotX());
+        };
     }
 }
