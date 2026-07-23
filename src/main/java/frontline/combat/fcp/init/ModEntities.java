@@ -14,7 +14,9 @@ import frontline.combat.fcp.entity.vehicle.Bmp1p.BMP1PEntity;
 import frontline.combat.fcp.entity.vehicle.Bmp2d.BMP2DEntity;
 import frontline.combat.fcp.entity.vehicle.Bmp2m.BMP2MEntity;
 import frontline.combat.fcp.entity.vehicle.Bmp2Noatgm.BMP2NoAtgmEntity;
+import frontline.combat.fcp.entity.vehicle.Bmp2md.BMP2MDEntity;
 import frontline.combat.fcp.entity.vehicle.Btr82.BTR82Entity;
+import frontline.combat.fcp.entity.vehicle.Btr82at.BTR82ATEntity;
 import frontline.combat.fcp.entity.vehicle.Btr3e.BTR3EEntity;
 import frontline.combat.fcp.entity.vehicle.Btr4mv1.BTR4MV1Entity;
 import frontline.combat.fcp.entity.vehicle.Btr80.BTR80Entity;
@@ -150,6 +152,8 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<BMP2NoAtgmEntity>> BMP2_NOATGM = register("bmp2_noatgm",
             EntityType.Builder.of(BMP2NoAtgmEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<BMP2MDEntity>> BMP2MD = register("bmp2md",
+            EntityType.Builder.of(BMP2MDEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
 
     public static final RegistryObject<EntityType<AAVPEntity>> AAVP = register("aavp",
             EntityType.Builder.of(AAVPEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
@@ -207,6 +211,8 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<BTR82Entity>> BTR82 = register("btr82",
             EntityType.Builder.of(BTR82Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<BTR82ATEntity>> BTR82AT = register("btr82at",
+            EntityType.Builder.of(BTR82ATEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
 
     public static final RegistryObject<EntityType<BTR80Entity>> BTR80 = register("btr80",
             EntityType.Builder.of(BTR80Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));

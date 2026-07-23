@@ -37,6 +37,7 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP2D.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP2M.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP2_NOATGM.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BMP2MD.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.T72AV.get()));
             }).build());
@@ -63,6 +64,7 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BTR3E.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BTR4MV1.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BTR82.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BTR82AT.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BTR80.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BTR80_COPE.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BTR82_COPE.get()));
