@@ -13,6 +13,7 @@ import frontline.combat.fcp.client.renderer.Bmp2m.BMP2MRenderer;
 import frontline.combat.fcp.client.renderer.Bmp2Noatgm.BMP2NoAtgmRenderer;
 import frontline.combat.fcp.client.renderer.Btr82.BTR82Renderer;
 import frontline.combat.fcp.client.renderer.Btr3e.BTR3ERenderer;
+import frontline.combat.fcp.client.renderer.Btr4mv1.BTR4MV1Renderer;
 import frontline.combat.fcp.client.renderer.Btr80.BTR80Renderer;
 import frontline.combat.fcp.client.renderer.Btr80Cope.BTR80CopeRenderer;
 import frontline.combat.fcp.client.renderer.Btr82Cope.BTR82CopeRenderer;
@@ -147,6 +148,7 @@ public class ModEntityRenderers {
 
         event.registerEntityRenderer(ModEntities.BTR82.get(), BTR82Renderer::new);
         event.registerEntityRenderer(ModEntities.BTR3E.get(), BTR3ERenderer::new);
+        event.registerEntityRenderer(ModEntities.BTR4MV1.get(), BTR4MV1Renderer::new);
         event.registerEntityRenderer(ModEntities.BTR80.get(), BTR80Renderer::new);
         event.registerEntityRenderer(ModEntities.BTR80_COPE.get(), BTR80CopeRenderer::new);
         event.registerEntityRenderer(ModEntities.BTR82_COPE.get(), BTR82CopeRenderer::new);
