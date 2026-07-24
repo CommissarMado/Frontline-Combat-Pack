@@ -27,6 +27,21 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX_BMP.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX_SPG9.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX_MORTAR.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_AMBULANCE.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_ARMORED_M2.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_ARMORED_MK19.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_ARMORED_UNARMED.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_ASRAD.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_AVENGER.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_CARGO.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_SHELTER.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_SOFT_TOP.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_UNARMORED_M2.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_UNARMORED_M2_SHIELD.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_UNARMORED_M2_TURRET.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_UNARMORED_TOW.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_UNARMORED_TOW_TURRET.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_UNARMORED_UNARMED.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP1.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP1U.get()));

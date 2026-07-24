@@ -1,0 +1,7 @@
+{
+  "ID": "fcp:hmmwv_cargo",
+  "Model": {
+    "Model": "fcp:geo/hmmwv_cargo.geo.json",
+    "Texture": "fcp:textures/entity/humvee/hmww_tex_1.png"
+  }
+}

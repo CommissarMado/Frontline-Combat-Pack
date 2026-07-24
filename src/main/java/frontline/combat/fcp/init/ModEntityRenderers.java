@@ -31,6 +31,7 @@ import frontline.combat.fcp.client.renderer.Huey.VenomRenderer;
 import frontline.combat.fcp.client.renderer.Huey.HueyRocketsRenderer;
 import frontline.combat.fcp.client.renderer.Humvee.HumveeRenderer;
 import frontline.combat.fcp.client.renderer.Humvee.HumveeTOWRenderer;
+import frontline.combat.fcp.client.renderer.Humvee.HumveeUnarmedRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.JohnDeereRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.SeederRenderer;
 import frontline.combat.fcp.client.renderer.Kamaz.KamazRenderer;
@@ -148,6 +149,21 @@ public class ModEntityRenderers {
 
         event.registerEntityRenderer(ModEntities.HUMVEE.get(), HumveeRenderer::new);
         event.registerEntityRenderer(ModEntities.HUMVEE_TOW.get(), HumveeTOWRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_AMBULANCE.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_ARMORED_M2.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_ARMORED_MK19.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_ARMORED_UNARMED.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_ASRAD.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_AVENGER.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_CARGO.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_SHELTER.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_SOFT_TOP.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_M2.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_M2_SHIELD.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_M2_TURRET.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_TOW.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_TOW_TURRET.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_UNARMED.get(), HumveeUnarmedRenderer::new);
 
         event.registerEntityRenderer(ModEntities.BTR82.get(), BTR82Renderer::new);
         event.registerEntityRenderer(ModEntities.BTR82AT.get(), BTR82ATRenderer::new);

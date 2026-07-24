@@ -1,0 +1,7 @@
+{
+  "ID": "fcp:hmmwv_ambulance",
+  "Model": {
+    "Model": "fcp:geo/hmmwv_ambulance.geo.json",
+    "Texture": "fcp:textures/entity/humvee/hmww_tex_1.png"
+  }
+}
