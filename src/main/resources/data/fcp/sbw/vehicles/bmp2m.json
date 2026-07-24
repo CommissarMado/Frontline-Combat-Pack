@@ -119,6 +119,7 @@
       "Weapons": [
         "Cannon",
         "Konkurs",
+        "AGS",
         "Coax"
       ],
       "Transform": "Turret",
@@ -324,6 +325,52 @@
         "Change": "superbwarfare:into_missile"
       },
       "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/missile_9m113.png"
+    },
+    "AGS": {
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Projectile": "superbwarfare:gun_grenade",
+      "DefaultZoom": 2,
+      "RPM": 400,
+      "Magazine": 23,
+      "EmptyReloadTime": 200,
+      "Velocity": 7,
+      "Damage": 0,
+      "ExplosionDamage": 15,
+      "ExplosionRadius": 3,
+      "HeatPerShoot": 5,
+      "NaturalCooldown": 1,
+      "RecoilTime": 30,
+      "RecoilForce": 0.31,
+      "ShootAnimationTime": 3,
+      "Spread": 0.8,
+      "IsArmorPiercingProjectile": false,
+      "IsHighExplosiveProjectile": true,
+      "Crosshair": "@VehicleRuApc",
+      "CrosshairColor": "0x66FF00",
+      "Name": "weapon.fcp.ags30",
+      "SoundInfo": {
+        "Fire1P": "fcp:mk19_fire_1p",
+        "Fire3P": "fcp:mk19_fire_3p",
+        "Fire3PFar": "fcp:mk19_fire_3p_far",
+        "VehicleRelaod": "fcp:mk19_reload"
+      },
+      "SoundRadius": 16,
+      "AmmoType": "superbwarfare:grenade_40mm",
+      "Icon": "fcp:textures/screens/vehicle_weapon/40mm.png",
+      "ShootPos": {
+        "Transform": "AGS",
+        "Positions": [
+          [
+            0.00157,
+            0.02718,
+            1.2
+          ]
+        ],
+        "Directions": [
+          "Barrel"
+        ]
+      }
     },
     "Cannon": {
       "DefaultFireMode": "Auto",

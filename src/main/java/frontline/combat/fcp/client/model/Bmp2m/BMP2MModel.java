@@ -30,6 +30,14 @@ public class BMP2MModel extends FCPVehicleModel<BMP2MEntity> {
         return switch (boneName) {
             case "gun" -> barrelRecoil(0);
 
+            // The AGS-30 has its own mount, so it elevates about its own pivot rather than
+            // riding the 2A42 trunnion. Same angle and clamp as the barrel, matching the
+            // "AGS" position transform registered on the entity.
+            case "AGS" -> (bone, vehicle, state) -> {
+                float xRot = Mth.lerp(state.getPartialTick(), vehicle.getTurretXRotO(), vehicle.getTurretXRot());
+                bone.setRotX(Mth.clamp(-xRot, vehicle.getTurretMinPitch(), vehicle.getTurretMaxPitch()) * Mth.DEG_TO_RAD);
+            };
+
             case "WheelL0", "WheelR0", "WheelL1", "WheelR1", "WheelL2", "WheelR2", "WheelL3", "WheelR3",
                  "WheelL4", "WheelR4", "WheelL5", "WheelR5", "WheelL6", "WheelR6", "WheelL7", "WheelR7" -> (bone, vehicle, state) -> {
                 float wheelRot = Mth.lerp(state.getPartialTick(), vehicle.getPrevWheelRotation(), vehicle.getWheelRotation());

@@ -1,13 +1,16 @@
 package frontline.combat.fcp.entity.vehicle.Bmp2m;
 
 import com.atsuishio.superbwarfare.entity.vehicle.damage.DamageModifier;
+import com.mojang.math.Axis;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.util.Mth;
 import net.minecraft.world.level.Level;
+import org.joml.Matrix4d;
 
 public class BMP2MEntity extends CamoVehicleBase {
 
@@ -164,5 +167,33 @@ public class BMP2MEntity extends CamoVehicleBase {
 
         prevWheelRotation = wheelRotation;
         wheelRotation += (float) (speed * 20f);
+    }
+
+    /**
+     * The AGS-30 grenade launcher sits on the rear of the turret, on its own pivot, so it
+     * cannot ride the "Barrel" transform - firing from Barrel would trace the arc of the
+     * 2A42 trunnion instead of the launcher's own mount.
+     *
+     * This registers an extra "AGS" transform built exactly like SuperbWarfare's Barrel
+     * transform (turret transform -> translate to the mount -> pitch), but anchored on the
+     * AGS bone pivot. Weapons using "Transform": "AGS" therefore fire from the launcher and
+     * track it as it elevates.
+     *
+     * Offset is the AGS bone pivot relative to the turret pivot, in the same units and sign
+     * convention as TurretPos/BarrelPos (geo pixels / 16, Z negated).
+     */
+    private static final double AGS_X = 0.198577;
+    private static final double AGS_Y = 0.622469;
+    private static final double AGS_Z = -1.119981;
+
+    @Override
+    public Matrix4d getTransformFromString(String string, float ticks) {
+        if ("AGS".equals(string)) {
+            Matrix4d transform = this.getTurretTransform(ticks);
+            transform.translate(AGS_X, AGS_Y, AGS_Z);
+            transform.rotate(Axis.XP.rotationDegrees(Mth.lerp(ticks, this.getTurretXRotO(), this.getTurretXRot())));
+            return transform;
+        }
+        return super.getTransformFromString(string, ticks);
     }
 }
