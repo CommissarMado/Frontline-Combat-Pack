@@ -101,7 +101,7 @@
         {
           "Ammo": "superbwarfare:small_shell_he",
           "Override": {
-            "Icon": "fcp:textures/screens/vehicle_weapon/25mm_he.png",
+            "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/cannon_30mm_he.png",
             "IsArmorPiercingProjectile": false,
             "IsHighExplosiveProjectile": true,
             "Velocity": 25,
@@ -112,10 +112,10 @@
           }
         }
       ],
-      "Icon": "fcp:textures/screens/vehicle_weapon/25mm_ap.png",
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/cannon_30mm_ap.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[0.05316875, -0.05079375, 2.528125]],
+        "Positions": [[-0.02, -0.0, 2.728125]],
         "Directions": [
           "Barrel"
         ]
@@ -138,21 +138,28 @@
       "ShootAnimationTime": 1,
       "Spread": 0.25,
       "Crosshair": "@VehicleCommonGun",
-      "CrosshairColor": "0x66FF00",
-      "Name": "weapon.fcp.coaxial_pktm",
+      "CrosshairColor": "0xFFC700",
+      "Name": "weapon.fcp.coaxial_pkt",
       "SoundInfo": {
-        "Fire1P": "fcp:m2_fire_1p",
-        "Fire3P": "fcp:m2_fire_3p",
-        "Fire3PFar": "fcp:m2_fire_3p_far",
+        "Fire1P": "fcp:russian_coax_1p",
+        "Fire3P": "fcp:russian_coax_3p",
         "Change": "fcp:coax_equip"
       },
       "SoundRadius": 16,
       "AmmoType": "superbwarfare:rifle_ammo",
-      "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png",
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/gun_7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[-0.404975, 0.0541625, 0.71119375]],
-        "Directions": ["Barrel"]
+        "Positions": [
+          [
+            -0.57,
+            0.055,
+            0.75
+          ]
+        ],
+        "Directions": [
+          "Barrel"
+        ]
       }
     }
   },

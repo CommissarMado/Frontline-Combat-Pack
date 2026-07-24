@@ -291,7 +291,7 @@
       "Name": "weapon.fcp.9m113_konkurs",
       "AmmoType": "superbwarfare:medium_anti_ground_missile",
       "Projectile": "superbwarfare:wire_guide_missile",
-      "Magazine": 1,
+      "Magazine": 4,
       "EmptyReloadTime": 250,
       "Damage": 600,
       "ExplosionDamage": 70,
@@ -301,9 +301,24 @@
         "Transform": "Turret",
         "Positions": [
           [
-            0.08552,
-            0.787775,
-            -0.202343
+            -1.257669,
+            0.33871,
+            0.530545
+          ],
+          [
+            1.262956,
+            0.33871,
+            0.530545
+          ],
+          [
+            -1.055794,
+            0.33871,
+            0.530545
+          ],
+          [
+            1.061081,
+            0.33871,
+            0.530545
           ]
         ],
         "Directions": [
@@ -312,7 +327,13 @@
             0,
             1
           ]
-        ]
+        ],
+        "ShootPositionForHud": [
+          0.0,
+          0.33871,
+          0.530545
+        ],
+        "BoundUpWithAmmoAmount": true
       },
       "Crosshair": "@VehicleCommonMissile",
       "CrosshairColor": "0x00FF66",
@@ -332,7 +353,7 @@
       "Projectile": "superbwarfare:gun_grenade",
       "DefaultZoom": 2,
       "RPM": 400,
-      "Magazine": 23,
+      "Magazine": 30,
       "EmptyReloadTime": 200,
       "Velocity": 7,
       "Damage": 0,
