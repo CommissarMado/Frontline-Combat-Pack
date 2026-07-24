@@ -2,6 +2,8 @@ package frontline.combat.fcp.vehicle.humvee;
 
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.init.ModItems;
+import frontline.combat.fcp.init.ModSounds;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -16,7 +18,8 @@ import java.util.List;
 /**
  * Right-clicking a Humvee's attachment with the FCP spray cycles that attachment to its
  * next variant (including the empty "removed" variants). The spray is a tool and is never
- * consumed. Interaction is chosen by whichever attachment hitbox the click landed nearest.
+ * consumed. If the click does NOT land on an attachment hitbox the event is left alone, so
+ * the spray's default use on a vehicle (cycling the camo) still works everywhere else.
  */
 @Mod.EventBusSubscriber(modid = FCP.MODID)
 public final class HumveeAttachmentHandler {
@@ -28,35 +31,20 @@ public final class HumveeAttachmentHandler {
 
     @SubscribeEvent
     public static void onInteractSpecific(PlayerInteractEvent.EntityInteractSpecific event) {
-        handle(event, event.getTarget(), event.getEntity(), event.getItemStack(), event.getLocalPos());
-    }
+        Entity target = event.getTarget();
+        Player player = event.getEntity();
+        ItemStack stack = event.getItemStack();
 
-    @SubscribeEvent
-    public static void onInteract(PlayerInteractEvent.EntityInteract event) {
-        // No precise local position here; fall back to the eye->target vector.
-        Entity t = event.getTarget();
-        Vec3 approx = event.getEntity().getEyePosition().subtract(t.position());
-        handle(event, t, event.getEntity(), event.getItemStack(), approx);
-    }
-
-    private static void handle(PlayerInteractEvent event, Entity target, Player player,
-                               ItemStack stack, Vec3 localHit) {
         if (stack.isEmpty() || stack.getItem() != ModItems.SPRAY.get()) return;
         if (!(target instanceof HumveeVehicle humvee)) return;
 
         List<HumveeAttachments.Category> categories = HumveeAttachments.categories(humvee.humveeName());
         if (categories.isEmpty()) return;
 
-        // Always claim the interaction so the spray doesn't fall through to mounting etc.
-        event.setCanceled(true);
-        event.setCancellationResult(InteractionResult.SUCCESS);
-
-        if (player.level().isClientSide()) return;
-
-        // localHit is world-relative (hit - entity pos). Rotate into the vehicle's local
-        // frame (undoing the body yaw the model is drawn with) before comparing.
+        // event.getLocalPos() is the clicked point relative to the entity (world-aligned).
+        // Rotate it into the vehicle's local frame before comparing to the hitbox centres.
         double yawRad = Math.toRadians(target.getYRot());
-        Vec3 local = localHit.yRot((float) yawRad);
+        Vec3 local = event.getLocalPos().yRot((float) yawRad);
 
         HumveeAttachments.Category best = null;
         double bestDist = PICK_RADIUS * PICK_RADIUS;
@@ -70,8 +58,21 @@ public final class HumveeAttachmentHandler {
                 best = c;
             }
         }
-        if (best != null) {
+
+        // No attachment under the click: leave the event alone so the vehicle's own spray
+        // handler (camo repaint) runs as normal.
+        if (best == null) return;
+
+        // Claim the interaction so it doesn't fall through to repaint / mounting.
+        event.setCanceled(true);
+        event.setCancellationResult(InteractionResult.SUCCESS);
+
+        if (!player.level().isClientSide()) {
             humvee.cycleAttachment(best.name, best.variantCount);
+            // Same audio feedback as changing the camo.
+            player.level().playSound(null, target.blockPosition(),
+                    ModSounds.SPRAY.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
         }
+        player.swing(event.getHand());
     }
 }
