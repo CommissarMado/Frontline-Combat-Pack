@@ -4,7 +4,7 @@
   "MaxEnergy": 5000000,
   "TurretPos": [-0.002645, 1.762225, -0.554917],
   "TurretTurnSpeed": [2.5, 2.1],
-  "TurretPitchRange": [-10, 30],
+  "TurretPitchRange": [-6, 30],
   "TurretControllerIndex": 1,
   "BarrelPos": [-0.001541, 0.252041, 0.630945],
   "OBB": [
@@ -47,8 +47,107 @@
       "Weapons": ["Cannon", "Konkurs", "Coax"],
       "Transform": "Turret",
       "Position": [0, 0, 0],
-      "MinPitch": -15,
+      "MinPitch": -6,
       "MaxPitch": 32.5
+    },
+    {
+      "HidePassenger": true,
+      "IsEnclosed": true,
+      "BanHand": true,
+      "CameraPos": {
+        "UseSimulate3P": true
+      },
+      "CanRotateHead": true,
+      "Transform": "Vehicle",
+      "Position": [0, 1, 0]
+    },
+    {
+      "HidePassenger": true,
+      "IsEnclosed": true,
+      "BanHand": true,
+      "CameraPos": {
+        "UseSimulate3P": true
+      },
+      "CanRotateHead": true,
+      "Transform": "Vehicle",
+      "Position": [0, 1, 0]
+    },
+    {
+      "HidePassenger": true,
+      "IsEnclosed": true,
+      "BanHand": true,
+      "CameraPos": {
+        "UseSimulate3P": true
+      },
+      "CanRotateHead": true,
+      "Transform": "Vehicle",
+      "Position": [0, 1, 0]
+    },
+    {
+      "HidePassenger": true,
+      "IsEnclosed": true,
+      "BanHand": true,
+      "CameraPos": {
+        "UseSimulate3P": true
+      },
+      "CanRotateHead": true,
+      "Transform": "Vehicle",
+      "Position": [0, 1, 0]
+    },
+    {
+      "HidePassenger": true,
+      "IsEnclosed": true,
+      "BanHand": true,
+      "CameraPos": {
+        "UseSimulate3P": true
+      },
+      "CanRotateHead": true,
+      "Transform": "Vehicle",
+      "Position": [0, 1, 0]
+    },
+    {
+      "HidePassenger": true,
+      "IsEnclosed": true,
+      "BanHand": true,
+      "CameraPos": {
+        "UseSimulate3P": true
+      },
+      "CanRotateHead": true,
+      "Transform": "Vehicle",
+      "Position": [0, 1, 0]
+    },
+    {
+      "HidePassenger": true,
+      "IsEnclosed": true,
+      "BanHand": true,
+      "CameraPos": {
+        "UseSimulate3P": true
+      },
+      "CanRotateHead": true,
+      "Transform": "Vehicle",
+      "Position": [0, 1, 0]
+    },
+    {
+      "HidePassenger": true,
+      "IsEnclosed": true,
+      "BanHand": true,
+      "CameraPos": {
+        "UseSimulate3P": true
+      },
+      "CanRotateHead": true,
+      "Transform": "Vehicle",
+      "Position": [0, 1, 0]
+    },
+    {
+      "HidePassenger": true,
+      "IsEnclosed": true,
+      "BanHand": true,
+      "CameraPos": {
+        "UseSimulate3P": true
+      },
+      "CanRotateHead": true,
+      "Transform": "Vehicle",
+      "Position": [0, 1, 0]
     }
   ],
   "EngineType": "Track",
@@ -182,7 +281,7 @@
       "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/gun_7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[0.228044, -0.00068, 0.796806]],
+        "Positions": [[0.228044, -0.00068, 0.4]],
         "Directions": ["Barrel"]
       }
     }
