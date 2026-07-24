@@ -12,7 +12,7 @@
     2.1
   ],
   "TurretPitchRange": [
-    -10,
+    -6,
     30
   ],
   "TurretControllerIndex": 1,
@@ -126,7 +126,7 @@
         0,
         0
       ],
-      "MinPitch": -15,
+      "MinPitch": -6,
       "MaxPitch": 32.5
     }
   ],
@@ -247,7 +247,7 @@
           [
             0.228044,
             -0.00068,
-            0.796806
+            0.4
           ]
         ],
         "Directions": [

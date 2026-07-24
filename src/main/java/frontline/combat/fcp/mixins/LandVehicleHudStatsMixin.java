@@ -42,6 +42,7 @@ public class LandVehicleHudStatsMixin {
             "fcp:bmp2",
             "fcp:bmp2d",
             "fcp:bmp2m",
+            "fcp:bmp2md",
             "fcp:bmp2_noatgm",
             "fcp:btr82",
             "fcp:lav25",

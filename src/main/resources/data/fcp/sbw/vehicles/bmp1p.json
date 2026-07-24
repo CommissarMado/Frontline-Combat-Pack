@@ -118,7 +118,7 @@
       "Weapons": [
         "Cannon",
         "Coax",
-        "Malyutka"
+        "Konkurs"
       ],
       "Transform": "Turret",
       "Position": [
@@ -282,32 +282,32 @@
     "EngineSoundVolume": 1.0
   },
   "Weapons": {
-    "Malyutka": {
+    "Konkurs": {
       "DefaultFireMode": "Semi",
       "AvailableFireModes": "Semi",
       "DefaultZoom": 3,
-      "Name": "weapon.fcp.malyutka",
+      "Name": "weapon.fcp.9m113_konkurs",
       "AmmoType": "superbwarfare:medium_anti_ground_missile",
-      "Projectile": "fcp:malyutka",
+      "Projectile": "superbwarfare:wire_guide_missile",
       "Magazine": 1,
-      "EmptyReloadTime": 280,
-      "Damage": 500,
-      "ExplosionDamage": 65,
-      "ExplosionRadius": 6,
-      "Velocity": 2.5,
+      "EmptyReloadTime": 250,
+      "Damage": 600,
+      "ExplosionDamage": 70,
+      "ExplosionRadius": 7,
+      "Velocity": 3.5,
       "ShootPos": {
-        "Transform": "Barrel",
+        "Transform": "Turret",
         "Positions": [
           [
-            0.016368,
-            0.287364,
-            0.464961
+            -0.375,
+            0.8,
+            0.23
           ]
         ],
         "Directions": [
           [
             0,
-            0.1,
+            0,
             1
           ]
         ]
@@ -316,13 +316,13 @@
       "CrosshairColor": "0x00FF66",
       "SoundRadius": 32,
       "SoundInfo": {
-        "Fire1P": "fcp:bmp1_malyutka_fire_1p",
-        "Fire3P": "fcp:bmp1_malyutka_fire_3p",
-        "Fire3PFar": "fcp:bmp1_malyutka_fire_3p_far",
-        "VehicleReload": "fcp:bmp1_malyutka_reload",
-        "Change": "fcp:bmp1_into_malyutka"
+        "Fire1P": "superbwarfare:bmp_2_missile_fire_1p",
+        "Fire3P": "superbwarfare:bmp_2_missile_fire_3p",
+        "VehicleReload3p": "superbwarfare:medium_missile_reload",
+        "VehicleReloadSoundTime": 28,
+        "Change": "superbwarfare:into_missile"
       },
-      "Icon": "fcp:textures/screens/vehicle_weapon/malyutka.png"
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/missile_9m113.png"
     },
     "Cannon": {
       "Icon": "fcp:textures/screens/vehicle_weapon/73mm_ap.png",
