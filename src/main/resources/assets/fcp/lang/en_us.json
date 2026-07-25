@@ -82,9 +82,6 @@
   "weapon.fcp.mk19": "MK19 Grenade Launcher",
   "weapon.fcp.ags30": "AGS-30 Grenade Launcher",
   "weapon.fcp.m2a1_browning": "M2A1 Browning",
-  "weapon.fcp.stryker_30mm": "30mm",
-  "weapon.fcp.stryker_mortar": "120mm Mortar",
-  "weapon.fcp.m249": "M249",
   "weapon.fcp.m240_coax": "M240 Coaxial",
 
   "//": "========================= Foods =========================",
@@ -105,6 +102,9 @@
   "entity.fcp.stryker_mk19": "Stryker Mk-19",
   "entity.fcp.stryker_tow": "Stryker TOW",
   "entity.fcp.stryker_mortar": "Stryker Mortar",
+  "weapon.fcp.stryker_30mm": "30mm",
+  "weapon.fcp.stryker_mortar": "120mm Mortar",
+  "weapon.fcp.m249": "M249",
   "entity.fcp.viper": "Viper",
   "entity.fcp.huey": "Huey",
   "entity.fcp.huey_rockets": "Huey With Rockets",
@@ -155,4 +155,5 @@
   "//" : "====================== Gui =============================",
   "gui.fcp.bulk.empty": "Empty",
   "gui.fcp.sort": "Sort"
+
 }

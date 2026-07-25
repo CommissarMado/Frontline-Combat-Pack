@@ -15,13 +15,13 @@ import frontline.combat.fcp.entity.vehicle.Bmp2.BMP2DEntity;
 import frontline.combat.fcp.entity.vehicle.Bmp2.BMP2MEntity;
 import frontline.combat.fcp.entity.vehicle.Bmp2.BMP2NoAtgmEntity;
 import frontline.combat.fcp.entity.vehicle.Bmp2.BMP2MDEntity;
-import frontline.combat.fcp.entity.vehicle.Btr.BTR82Entity;
-import frontline.combat.fcp.entity.vehicle.Btr.BTR82ATEntity;
-import frontline.combat.fcp.entity.vehicle.Btr.BTR3EEntity;
-import frontline.combat.fcp.entity.vehicle.Btr.BTR4MV1Entity;
-import frontline.combat.fcp.entity.vehicle.Btr.BTR80Entity;
-import frontline.combat.fcp.entity.vehicle.Btr.BTR80CopeEntity;
-import frontline.combat.fcp.entity.vehicle.Btr.BTR82CopeEntity;
+import frontline.combat.fcp.entity.vehicle.Btr82.BTR82Entity;
+import frontline.combat.fcp.entity.vehicle.Btr82at.BTR82ATEntity;
+import frontline.combat.fcp.entity.vehicle.Btr3e.BTR3EEntity;
+import frontline.combat.fcp.entity.vehicle.Btr4mv1.BTR4MV1Entity;
+import frontline.combat.fcp.entity.vehicle.Btr80.BTR80Entity;
+import frontline.combat.fcp.entity.vehicle.Btr80Cope.BTR80CopeEntity;
+import frontline.combat.fcp.entity.vehicle.Btr82Cope.BTR82CopeEntity;
 import frontline.combat.fcp.entity.vehicle.Fmtv.FMTVEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrGLEntity;
@@ -32,9 +32,14 @@ import frontline.combat.fcp.entity.vehicle.Huey.HueyDoorGunnerM60Entity;
 import frontline.combat.fcp.entity.vehicle.Huey.HueyEntity;
 import frontline.combat.fcp.entity.vehicle.Huey.HueyRocketsEntity;
 import frontline.combat.fcp.entity.vehicle.Huey.VenomEntity;
+<<<<<<< HEAD
+import frontline.combat.fcp.entity.vehicle.Humvee.HumveeEntity;
+import frontline.combat.fcp.entity.vehicle.Humvee.HumveeTOWEntity;
 import frontline.combat.fcp.entity.vehicle.JohnDeere.CombineEntity;
 import frontline.combat.fcp.entity.vehicle.JohnDeere.CultivatorEntity;
+=======
 import frontline.combat.fcp.entity.vehicle.Humvee.HumveeUnarmedEntity;
+>>>>>>> origin/master
 import frontline.combat.fcp.entity.vehicle.JohnDeere.JohnDeereEntity;
 import frontline.combat.fcp.entity.vehicle.JohnDeere.SeederEntity;
 import frontline.combat.fcp.entity.vehicle.Kamaz.KamazEntity;
