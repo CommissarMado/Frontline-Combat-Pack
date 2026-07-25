@@ -1,7 +1,7 @@
-﻿{
+{
   "tow_x": 0,
   "tow_y": 1.2,
-  "tow_z": 4.95,
+  "tow_z": 6.8,
   "allowed_drivers": [
     "fcp:kamaz",
     "fcp:matv",

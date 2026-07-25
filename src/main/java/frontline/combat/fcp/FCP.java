@@ -7,10 +7,13 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
@@ -30,9 +33,12 @@ public class FCP {
         ModParticleTypes.PARTICLE_TYPES.register(modEventBus);
         ModSounds.REGISTRY.register(modEventBus);
         ModTabs.TABS.register(modEventBus);
+        ModMenus.MENUS.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::setup);
+        // Client-only setup (never fires on a dedicated server)
+        modEventBus.addListener(this::clientSetup);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -43,6 +49,22 @@ public class FCP {
         event.enqueueWork(() -> {
             FCPNetwork.register();
         });
+    }
+
+    /**
+     * Client-side setup.
+     *
+     * Registers the handler that redirects "open your inventory" to the vehicle's hold while
+     * you're riding one. It's also self-registering via @Mod.EventBusSubscriber, and the
+     * register() call is guarded, so doing it here as well is harmless — this is just the
+     * path that doesn't depend on annotation scanning.
+     *
+     * DistExecutor keeps the client-only class off the dedicated server entirely, so the
+     * server never even loads it.
+     */
+    private void clientSetup(final FMLClientSetupEvent event) {
+        event.enqueueWork(() -> DistExecutor.unsafeRunWhenOn(Dist.CLIENT,
+                () -> frontline.combat.fcp.client.VehicleInventoryKeyHandler::register));
     }
 
     private void onItemTooltip(ItemTooltipEvent event) {

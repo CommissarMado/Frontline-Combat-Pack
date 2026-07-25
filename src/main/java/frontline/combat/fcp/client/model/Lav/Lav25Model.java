@@ -28,6 +28,7 @@ public class Lav25Model extends FCPVehicleModel<Lav25Entity> {
 
     @Override
     public @Nullable VehicleModel.TransformContext<Lav25Entity> collectTransform(String boneName) {
+
         if ("BarrelOccilator".equals(boneName)) {
             return barrelRecoil(0);
         }
@@ -56,7 +57,7 @@ public class Lav25Model extends FCPVehicleModel<Lav25Entity> {
             if (!CANNON_WEAPON.equals(vehicle.getGunName(1))) {
                 return;
             }
-            CannonRecoilTransforms.apply(bone, vehicle, CannonRecoilTransforms.Profile.STANDARD);
+            CannonRecoilTransforms.apply(bone, vehicle, CannonRecoilTransforms.Profile.FORWARDBACK);
         };
     }
 }

@@ -93,8 +93,11 @@
   "entity.fcp.venom": "Venom",
   "entity.fcp.aavp": "AAVP",
 
-  "//": "==================== Other Vehicles =====================",
+  "//": "=================== Farming Equipment ===================",
   "entity.fcp.john_deere": "John Deere Tractor",
+  "entity.fcp.seeder": "Seeder",
+  "entity.fcp.cultivator": "Cultivator",
+  "entity.fcp.combine": "John Deere Combine",
 
   "//": "======================= Messages ========================",
   "message.fcp.camo_changed": "Camo changed to %s",
@@ -109,5 +112,9 @@
 
   "//" : "====================== Key =============================",
   "key.categories.fcp": "Frontline Combat Pack",
-  "key.fcp.vehicle_debug": "Toggle Vehicle Debug Overlay"
+  "key.fcp.vehicle_debug": "Toggle Vehicle Debug Overlay",
+
+  "//" : "====================== Gui =============================",
+  "gui.fcp.bulk.empty": "Empty",
+  "gui.fcp.sort": "Sort"
 }

@@ -4,21 +4,32 @@ import com.atsuishio.superbwarfare.entity.vehicle.base.GeoVehicleEntity;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import frontline.combat.fcp.init.ModItems;
 import frontline.combat.fcp.init.ModSounds;
+import frontline.combat.fcp.entity.vehicle.VehicleInventory.InventoryStyle;
+import frontline.combat.fcp.menu.VehicleInventoryMenu;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.minecraftforge.network.NetworkHooks;
+import org.jetbrains.annotations.Nullable;
 
-public abstract class CamoVehicleBase extends GeoVehicleEntity implements ICamoVehicle {
+public abstract class CamoVehicleBase extends GeoVehicleEntity implements ICamoVehicle, VehicleInventory {
 
     private static final EntityDataAccessor<Integer> CAMO_TYPE = SynchedEntityData.defineId(CamoVehicleBase.class, EntityDataSerializers.INT);
 
@@ -100,13 +111,266 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements ICamoV
             player.swing(hand);
             return InteractionResult.SUCCESS;
         }
+
+        // Vehicle hold: driveables open on SHIFT-click (standing) or E (driving); trailers
+        // override opensHoldOnPlainClick() to open on a plain click instead. Handled here in
+        // the core so no individual vehicle needs its own interact() for this.
+        InteractionResult hold = openHoldInteraction(player, hand);
+        if (hold != null) return hold;
+
         return super.interact(player, hand);
+    }
+
+    // ── Vehicle cargo ───────────────────────────────────────────────────────────
+    // Every FCP vehicle inherits this, but it stays dormant until a vehicle overrides
+    // inventorySize(). One menu + one screen + one texture serve all of them, at any size,
+    // with per-vehicle filtering via canStoreItem(). Adding cargo to a vehicle is:
+    //
+    //     @Override public int inventorySize() { return 81; }
+    //     @Override public boolean canStoreItem(ItemStack s) { return ...; }
+    //
+    // Opening is handled by the core interact() above — no per-vehicle interact() needed.
+
+    private SimpleContainer vehicleInventory;
+
+    /** No cargo by default. Override per vehicle. */
+    @Override
+    public int inventorySize() {
+        return 0;
+    }
+
+    /**
+     * Container size.
+     *
+     * GRID rounds up to whole 9-wide rows so it matches the drawn grid.
+     *
+     * BULK treats inventorySize() as the depth of EACH channel and multiplies: a hold that
+     * carries two crops at 8,000 apiece is 8,000-per-channel x 2, not 8,000 shared out.
+     * Adding a channel therefore adds capacity rather than halving what's already there.
+     * No multiple-of-9 rounding — there's no grid to line up with.
+     */
+    private int vehicleInventorySlots() {
+        if (inventoryStyle() == InventoryStyle.NONE) return 0; // screen only, no storage
+        int perChannel = Math.max(0, inventorySize());
+        if (perChannel == 0) return 0;
+        if (inventoryStyle() == InventoryStyle.BULK) {
+            return Math.max(1, bulkChannels()) * perChannel;
+        }
+        return ((perChannel + 8) / 9) * 9;
+    }
+
+    /**
+     * Created on first use, because the hooks above are overridden by subclasses and aren't
+     * reliable during construction.
+     */
+    @Override
+    public final SimpleContainer getVehicleInventory() {
+        if (this.vehicleInventory == null) {
+            this.vehicleInventory = new SimpleContainer(vehicleInventorySlots()) {
+                @Override
+                public boolean canPlaceItem(int slot, ItemStack stack) {
+                    return CamoVehicleBase.this.acceptsFromOutside(slot, stack);
+                }
+
+                /**
+                 * Vanilla's addItem does NOT consult canPlaceItem — it just walks the whole
+                 * container for the first empty slot and writes there. On a BULK hold that
+                 * drops an item straight into a channel already holding something else,
+                 * skipping the one-type rule entirely. Route it through the channel-aware
+                 * path instead so every insert obeys the same rule.
+                 */
+                @Override
+                public ItemStack addItem(ItemStack stack) {
+                    if (CamoVehicleBase.this.inventoryStyle() == InventoryStyle.BULK) {
+                        return CamoVehicleBase.this.storeItem(stack);
+                    }
+                    return super.addItem(stack);
+                }
+            };
+        }
+        return this.vehicleInventory;
+    }
+
+    /**
+     * The one rule deciding what may come in from OUTSIDE — hoppers land here, and the menu
+     * applies the same test to its slots, so players and automation can never diverge.
+     * The vehicle's own storeItem() bypasses all of this on purpose.
+     */
+    public boolean acceptsFromOutside(int slot, ItemStack stack) {
+        if (!canPlaceIntoStorage()) return false;
+        if (!canStoreItem(stack)) return false;
+        if (inventoryStyle() != InventoryStyle.BULK) return true;
+
+        // Bulk: a slot belongs to one channel, and a channel holds one type. An item that
+        // already lives in another channel can't start a second one.
+        int channel = slot / Math.max(1, bulkSlotsPerChannel());
+        ItemStack type = bulkTypeOf(channel);
+        if (!type.isEmpty()) return ItemStack.isSameItemSameTags(type, stack);
+        return bulkChannelOf(stack) < 0;
+    }
+
+    /**
+     * Open this vehicle's hold. The entity id and size are sent so the client can build a
+     * matching menu and apply the same rules locally.
+     */
+    public void openVehicleInventory(ServerPlayer player) {
+        // NONE has no storage but still shows a screen, so gate on the screen, not the hold.
+        if (!opensVehicleScreen()) return;
+        // Tidy any mixed channel before it's shown, so the player never looks at one.
+        normalizeBulkChannels();
+        SimpleContainer inventory = getVehicleInventory();
+        NetworkHooks.openScreen(player,
+                new SimpleMenuProvider(
+                        (id, playerInv, p) -> new VehicleInventoryMenu(id, playerInv, inventory, this,
+                                inventoryStyle(), Math.max(1, bulkChannels())),
+                        this.getDisplayName()),
+                buf -> {
+                    buf.writeVarInt(this.getId());
+                    buf.writeVarInt(inventory.getContainerSize());
+                    // Style and channel count decide the slot layout, so they must be known
+                    // before the client builds its menu — a mismatched layout would desync
+                    // every slot.
+                    buf.writeVarInt(inventoryStyle().ordinal());
+                    buf.writeVarInt(Math.max(1, bulkChannels()));
+                });
+    }
+
+    // ── Render culling ──────────────────────────────────────────────────────────
+
+    /**
+     * Extra reach (blocks) for RENDER CULLING only — nothing else. Default 0 = untouched.
+     *
+     * EntityType.sized(w, h) can only describe a SQUARE footprint (w x h x w), so a vehicle
+     * far wider than it is long has no hitbox that fits it: size it to the width and the
+     * collision box becomes absurdly long; size it to the body and the model overhangs the
+     * box. SBW's renderer frustum-tests boundingBoxForCulling inflated by 5, so an
+     * overhanging model vanishes as soon as the centre nears the edge of the screen even
+     * though half the vehicle is still on it.
+     *
+     * Set this to roughly half the model's LONGEST horizontal dimension. It's a single
+     * radius rather than per-axis on purpose: the vehicle yaws, so a 19-wide implement is
+     * 19 LONG once it turns 90 degrees, and an axis-aligned pad would break at some angles.
+     *
+     * Costs nothing but rendering the vehicle slightly more often than strictly needed.
+     * Does NOT affect collision, hitboxes, OBBs or physics.
+     */
+    protected double renderCullPadding() {
+        return 0.0;
+    }
+
+    @Override
+    public AABB getBoundingBoxForCulling() {
+        double padding = renderCullPadding();
+        AABB box = super.getBoundingBoxForCulling();
+        return padding <= 0.0 ? box : box.inflate(padding);
+    }
+
+    @Override
+    public boolean shouldRenderAtSqrDistance(double distanceSq) {
+        // Vanilla derives the render distance from the COLLISION box's size, so an
+        // undersized hitbox also makes a big model pop out early. Use the padded box.
+        if (renderCullPadding() <= 0.0) return super.shouldRenderAtSqrDistance(distanceSq);
+
+        double size = getBoundingBoxForCulling().getSize();
+        if (Double.isNaN(size)) size = 1.0;
+        size = size * 64.0 * getViewScale();
+        return distanceSq < size * size;
+    }
+
+    // ── Hold opening ────────────────────────────────────────────────────────────
+
+    /**
+     * True if this player is the one DRIVING (seat 0).
+     *
+     * Every other "who's the driver" check failed for a different reason:
+     *   - getControllingPassenger() is null (SBW never overrides it);
+     *   - getNthEntity(0) reads a private list populated SERVER-side only;
+     *   - getTagSeatIndex() reads persistentData, which does NOT sync to the client.
+     * The E-key handler runs client-side, so all three left isDriver wrong there and E kept
+     * opening the player inventory.
+     *
+     * The vanilla passengers list, though, IS synced (ClientboundSetPassengersPacket) and SBW
+     * fills it in seat order, so passenger 0 is the driver on both sides.
+     */
+    public boolean isDriver(Player player) {
+        java.util.List<net.minecraft.world.entity.Entity> riders = this.getPassengers();
+        return !riders.isEmpty() && riders.get(0) == player;
+    }
+
+    /**
+     * The core "open the hold" interaction, run from interact() for EVERY vehicle. It only
+     * consumes the click when it actually opens something, so mounting, crowbar, camo spray
+     * and the rest still fall through to super untouched.
+     *
+     * Empty-handed, and only if there's a screen to show. Then:
+     *   - DRIVING it — opens with no modifier; this is the path the E-key handler routes
+     *     through so E opens the hold while seated (you can't re-mount, so no ambiguity);
+     *   - standing beside a DRIVEABLE — needs SHIFT, because a plain click must still MOUNT;
+     *   - standing beside a TRAILER — opens on a plain click, since you don't mount a
+     *     trailer (AbstractTrailerEntity flips {@link #opensHoldOnPlainClick()} to true).
+     *
+     * @return a result to return from interact(), or null to fall through to super.
+     */
+    @Nullable
+    protected InteractionResult openHoldInteraction(Player player, InteractionHand hand) {
+        if (!player.getItemInHand(hand).isEmpty()) return null;
+        if (!opensVehicleScreen()) return null;
+
+        // A driveable opens ONLY on shift here. It must NOT open on a plain click even when
+        // isDriver is momentarily true: the click that seats you evaluates interact() again
+        // once you're in seat 0, and opening there is the "mounting also opens the hold"
+        // bug. Riding-opens comes through openHoldForRider() instead, never this path.
+        if (!opensHoldOnPlainClick() && !player.isShiftKeyDown()) {
+            return null; // plain click on a driveable -> let super mount, don't open
+        }
+
+        if (this.level().isClientSide()) return InteractionResult.SUCCESS;
+        if (player instanceof ServerPlayer serverPlayer) {
+            openVehicleInventory(serverPlayer);
+        }
+        return InteractionResult.SUCCESS;
+    }
+
+    /**
+     * Open the hold for a player RIDING this vehicle — the inventory-redirect handler's entry
+     * point, and the only way riding opens the hold. Kept separate from interact() so a plain
+     * mount click can never trigger it (interact() never checks who's riding, so seating you
+     * can't open the hold). Server-side only.
+     *
+     * Any occupant may open it, not just the driver: pinning this to seat 0 meant a check
+     * that kept resolving wrong and blocked the feature outright, and a passenger reaching
+     * the cargo is reasonable anyway.
+     */
+    public void openHoldForRider(ServerPlayer player) {
+        if (!opensVehicleScreen()) return;
+        if (player.getVehicle() != this && player.getRootVehicle() != this) return;
+        openVehicleInventory(player);
+    }
+
+    /**
+     * Whether a plain (non-shift) empty-handed click opens the hold. False for driveables
+     * (a plain click mounts them); trailers override to true, since you don't mount one.
+     */
+    protected boolean opensHoldOnPlainClick() {
+        return false;
+    }
+
+    @Override
+    public void remove(RemovalReason reason) {
+        // Spill cargo when destroyed — but NOT on chunk unload.
+        if (!this.level().isClientSide() && reason.shouldDestroy() && hasVehicleInventory()) {
+            Containers.dropContents(this.level(), this, getVehicleInventory());
+        }
+        super.remove(reason);
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         compound.putInt("CamoType", getCamoType());
+        if (hasVehicleInventory()) {
+            compound.put("VehicleInventory", getVehicleInventory().createTag());
+        }
     }
 
     @Override
@@ -115,6 +379,86 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements ICamoV
         if (compound.contains("CamoType")) {
             setCamoType(compound.getInt("CamoType"));
         }
+        if (hasVehicleInventory() && compound.contains("VehicleInventory", Tag.TAG_LIST)) {
+            getVehicleInventory().fromTag(compound.getList("VehicleInventory", Tag.TAG_COMPOUND));
+            // Saved contents were laid out against whatever the channel count and size were
+            // at the time. If either has changed since, the old stacks now fall across
+            // different boundaries and a channel can hold two types. Repair on load.
+            normalizeBulkChannels();
+        }
+    }
+
+    /**
+     * Enforce "one item type per bulk channel" across the whole hold.
+     *
+     * The insert guards only vet items arriving; this fixes a hold that is ALREADY mixed —
+     * which happens when bulkChannels() or inventorySize() changes between sessions, since
+     * the saved stacks then get re-sliced against new channel boundaries.
+     *
+     * A channel's type is whatever its first non-empty slot holds. Anything else in that
+     * channel is moved to the channel that already holds it, or to a free one. A stray with
+     * nowhere to go is LEFT WHERE IT IS rather than deleted — a mixed channel is better than
+     * silently eaten cargo, and it'll sort itself out once space frees up.
+     */
+    public void normalizeBulkChannels() {
+        if (inventoryStyle() != InventoryStyle.BULK || !hasVehicleInventory()) return;
+
+        SimpleContainer inventory = getVehicleInventory();
+        int channels = Math.max(1, bulkChannels());
+        int per = bulkSlotsPerChannel();
+        if (per <= 0) return;
+
+        for (int channel = 0; channel < channels; channel++) {
+            int start = channel * per;
+            int end = Math.min(start + per, inventory.getContainerSize());
+
+            ItemStack type = ItemStack.EMPTY;
+            for (int i = start; i < end; i++) {
+                ItemStack stack = inventory.getItem(i);
+                if (stack.isEmpty()) continue;
+
+                if (type.isEmpty()) {
+                    type = stack; // this channel's type is the first thing in it
+                    continue;
+                }
+                if (ItemStack.isSameItemSameTags(type, stack)) continue;
+
+                // A stray: belongs to some other channel.
+                int target = bulkChannelOf(stack);
+                if (target < 0) target = firstFreeBulkChannel();
+                if (target < 0 || target == channel) continue; // nowhere better to put it
+
+                ItemStack moving = stack.copy();
+                inventory.setItem(i, ItemStack.EMPTY);
+                ItemStack leftover = moveIntoChannel(target, moving);
+                if (!leftover.isEmpty()) {
+                    inventory.setItem(i, leftover); // put back whatever wouldn't fit
+                }
+            }
+        }
+        inventory.setChanged();
+    }
+
+    /** Push a stack into one specific channel; returns whatever didn't fit. */
+    private ItemStack moveIntoChannel(int channel, ItemStack stack) {
+        SimpleContainer inventory = getVehicleInventory();
+        int per = bulkSlotsPerChannel();
+        int start = channel * per;
+        int end = Math.min(start + per, inventory.getContainerSize());
+
+        for (int i = start; i < end && !stack.isEmpty(); i++) {
+            ItemStack slot = inventory.getItem(i);
+            if (slot.isEmpty()) {
+                inventory.setItem(i, stack.split(Math.min(stack.getCount(), stack.getMaxStackSize())));
+            } else if (ItemStack.isSameItemSameTags(slot, stack)) {
+                int space = slot.getMaxStackSize() - slot.getCount();
+                if (space <= 0) continue;
+                int moved = Math.min(space, stack.getCount());
+                slot.grow(moved);
+                stack.shrink(moved);
+            }
+        }
+        return stack;
     }
 
     @Override

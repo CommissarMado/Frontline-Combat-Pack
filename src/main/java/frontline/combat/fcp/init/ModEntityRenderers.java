@@ -20,6 +20,8 @@ import frontline.combat.fcp.client.renderer.Huey.VenomRenderer;
 import frontline.combat.fcp.client.renderer.Huey.HueyRocketsRenderer;
 import frontline.combat.fcp.client.renderer.Humvee.HumveeRenderer;
 import frontline.combat.fcp.client.renderer.Humvee.HumveeTOWRenderer;
+import frontline.combat.fcp.client.renderer.JohnDeere.CombineRenderer;
+import frontline.combat.fcp.client.renderer.JohnDeere.CultivatorRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.JohnDeereRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.SeederRenderer;
 import frontline.combat.fcp.client.renderer.Kamaz.KamazRenderer;
@@ -130,6 +132,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.FMTV.get(), FMTVRenderer::new);
 
         event.registerEntityRenderer(ModEntities.JOHN_DEERE.get(), JohnDeereRenderer::new);
+        event.registerEntityRenderer(ModEntities.COMBINE.get(), CombineRenderer::new);
 
         // Projectiles
         event.registerEntityRenderer(ModEntities.LOCK_ON_HELLFIRE.get(), LockOnHellfireRenderer::new);
@@ -146,6 +149,7 @@ public class ModEntityRenderers {
         // Trailers
         event.registerEntityRenderer(ModEntities.EXAMPLE_TRAILER.get(), ExampleTrailerRenderer::new);
         event.registerEntityRenderer(ModEntities.SEEDER.get(), SeederRenderer::new);
+        event.registerEntityRenderer(ModEntities.CULTIVATOR.get(), CultivatorRenderer::new);
     }
     @SubscribeEvent
     public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {

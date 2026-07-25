@@ -1,34 +1,41 @@
 package frontline.combat.fcp.network;
 
-import net.minecraft.network.FriendlyByteBuf;
+import frontline.combat.fcp.FCP;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.network.NetworkDirection;
-import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.Optional;
+/**
+ * FCP's one network channel. It exists for a single job right now: letting a DRIVING player
+ * ask the server to open their vehicle's hold when they press E.
+ *
+ * Why a packet at all: opening a container must happen server-side, and the only way to do
+ * that from a key press — without a channel — was to fake a vehicle right-click. That reused
+ * the mount path, and the click that seats you re-ran interact() while you were briefly the
+ * driver, so mounting also opened the hold. A dedicated one-way packet removes that entirely:
+ * E sends this, nothing else does, and it never touches the mount path.
+ *
+ * Register once from the FCP main class constructor:
+ *     FCPNetwork.register();
+ */
+public final class FCPNetwork {
 
-public class FCPNetwork {
+    private static final String PROTOCOL = "1";
 
-    public static final String MODID = "fcp";
-    private static final String PROTOCOL_VERSION = "1";
-    public static final SimpleChannel FCP_HANDLER = NetworkRegistry.newSimpleChannel(new ResourceLocation(MODID, MODID), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
-    private static int messageID = 0;
+    public static final SimpleChannel FCP_HANDLER = NetworkRegistry.ChannelBuilder
+            .named(new ResourceLocation(FCP.MODID, "main"))
+            .networkProtocolVersion(() -> PROTOCOL)
+            .clientAcceptedVersions(PROTOCOL::equals)
+            .serverAcceptedVersions(PROTOCOL::equals)
+            .simpleChannel();
 
-    public static <T> void addNetworkMessage(Class<T> messageType, BiConsumer<T, FriendlyByteBuf> encoder, Function<FriendlyByteBuf, T> decoder, BiConsumer<T, Supplier<NetworkEvent.Context>> messageConsumer) {
-        FCP_HANDLER.registerMessage(messageID, messageType, encoder, decoder, messageConsumer);
-        messageID++;
-    }
-
-    public static <T> void addNetworkMessage(Class<T> messageType, BiConsumer<T, FriendlyByteBuf> encoder, Function<FriendlyByteBuf, T> decoder, BiConsumer<T, Supplier<NetworkEvent.Context>> messageConsumer, Optional<NetworkDirection> direction) {
-        FCP_HANDLER.registerMessage(messageID, messageType, encoder, decoder, messageConsumer, direction);
-        messageID++;
+    private FCPNetwork() {
     }
 
     public static void register() {
+        int id = 0;
+        FCP_HANDLER.registerMessage(id++, OpenVehicleHoldPacket.class,
+                OpenVehicleHoldPacket::encode, OpenVehicleHoldPacket::decode,
+                OpenVehicleHoldPacket::handle);
     }
 }

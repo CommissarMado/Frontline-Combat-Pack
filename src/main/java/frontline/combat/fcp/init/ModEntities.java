@@ -23,6 +23,8 @@ import frontline.combat.fcp.entity.vehicle.Huey.HueyRocketsEntity;
 import frontline.combat.fcp.entity.vehicle.Huey.VenomEntity;
 import frontline.combat.fcp.entity.vehicle.Humvee.HumveeEntity;
 import frontline.combat.fcp.entity.vehicle.Humvee.HumveeTOWEntity;
+import frontline.combat.fcp.entity.vehicle.JohnDeere.CombineEntity;
+import frontline.combat.fcp.entity.vehicle.JohnDeere.CultivatorEntity;
 import frontline.combat.fcp.entity.vehicle.JohnDeere.JohnDeereEntity;
 import frontline.combat.fcp.entity.vehicle.JohnDeere.SeederEntity;
 import frontline.combat.fcp.entity.vehicle.Kamaz.KamazEntity;
@@ -182,8 +184,12 @@ public class ModEntities {
             EntityType.Builder.of(MI17Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<JohnDeereEntity>> JOHN_DEERE = register("john_deere",
             EntityType.Builder.of(JohnDeereEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f, 3f));
+    public static final RegistryObject<EntityType<CombineEntity>> COMBINE = register("combine",
+            EntityType.Builder.of(CombineEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f, 3f));
     public static final RegistryObject<EntityType<SeederEntity>> SEEDER = register("seeder",
             EntityType.Builder.of(SeederEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(4f, 3f));
+    public static final RegistryObject<EntityType<CultivatorEntity>> CULTIVATOR = register("cultivator",
+            EntityType.Builder.of(CultivatorEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(4f, 3f));
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> entityTypeBuilder) {
         return ENTITY_TYPES.register(name, () -> entityTypeBuilder.build(FCP.MODID + ":" + name));
     }

@@ -617,6 +617,17 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
      * behaviour — crowbar pickup, camo spray, and anything SBW does — and subclasses are
      * free to use plain clicks on the body (e.g. opening an inventory).
      */
+    /**
+     * A trailer is never mounted, so a plain empty-handed click on its BODY should open its
+     * hold directly — no shift needed (that's only to disambiguate from mounting, which
+     * trailers don't do). The tongue zone is claimed by interactAt() first for hitching, so
+     * this only affects clicks on the body.
+     */
+    @Override
+    protected boolean opensHoldOnPlainClick() {
+        return true;
+    }
+
     @Override
     public InteractionResult interactAt(Player player, Vec3 vec, InteractionHand hand) {
         if (!player.getItemInHand(hand).isEmpty()) return InteractionResult.PASS;
