@@ -1,0 +1,7 @@
+{
+  "ID": "fcp:hmmwv_unarmored_m2_shield",
+  "Model": {
+    "Model": "fcp:geo/hmmwv_unarmored_m2_shield.geo.json",
+    "Texture": "fcp:textures/entity/humvee/hmww_tex_1.png"
+  }
+}

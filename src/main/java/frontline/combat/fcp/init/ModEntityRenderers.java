@@ -7,7 +7,18 @@ import frontline.combat.fcp.client.renderer.Bmp1.BMP1AMRenderer;
 import frontline.combat.fcp.client.renderer.Bmp1.BMP1Renderer;
 import frontline.combat.fcp.client.renderer.Bmp1.BMP1URenderer;
 import frontline.combat.fcp.client.renderer.Bmp2.BMP2Renderer;
+import frontline.combat.fcp.client.renderer.Bmp1p.BMP1PRenderer;
+import frontline.combat.fcp.client.renderer.Bmp2d.BMP2DRenderer;
+import frontline.combat.fcp.client.renderer.Bmp2m.BMP2MRenderer;
+import frontline.combat.fcp.client.renderer.Bmp2Noatgm.BMP2NoAtgmRenderer;
+import frontline.combat.fcp.client.renderer.Bmp2md.BMP2MDRenderer;
 import frontline.combat.fcp.client.renderer.Btr82.BTR82Renderer;
+import frontline.combat.fcp.client.renderer.Btr82at.BTR82ATRenderer;
+import frontline.combat.fcp.client.renderer.Btr3e.BTR3ERenderer;
+import frontline.combat.fcp.client.renderer.Btr4mv1.BTR4MV1Renderer;
+import frontline.combat.fcp.client.renderer.Btr80.BTR80Renderer;
+import frontline.combat.fcp.client.renderer.Btr80Cope.BTR80CopeRenderer;
+import frontline.combat.fcp.client.renderer.Btr82Cope.BTR82CopeRenderer;
 import frontline.combat.fcp.client.renderer.Fmtv.FMTVRenderer;
 import frontline.combat.fcp.client.renderer.GazTigr.GazTigrGLRenderer;
 import frontline.combat.fcp.client.renderer.GazTigr.GazTigrMGRenderer;
@@ -18,10 +29,14 @@ import frontline.combat.fcp.client.renderer.Huey.HueyDoorGunnerM60Renderer;
 import frontline.combat.fcp.client.renderer.Huey.HueyRenderer;
 import frontline.combat.fcp.client.renderer.Huey.VenomRenderer;
 import frontline.combat.fcp.client.renderer.Huey.HueyRocketsRenderer;
+<<<<<<< HEAD
 import frontline.combat.fcp.client.renderer.Humvee.HumveeRenderer;
 import frontline.combat.fcp.client.renderer.Humvee.HumveeTOWRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.CombineRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.CultivatorRenderer;
+=======
+import frontline.combat.fcp.client.renderer.Humvee.HumveeUnarmedRenderer;
+>>>>>>> origin/master
 import frontline.combat.fcp.client.renderer.JohnDeere.JohnDeereRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.SeederRenderer;
 import frontline.combat.fcp.client.renderer.Kamaz.KamazRenderer;
@@ -33,7 +48,6 @@ import frontline.combat.fcp.client.renderer.Matv.MATVCrowsRenderer;
 import frontline.combat.fcp.client.renderer.Matv.MATVRenderer;
 import frontline.combat.fcp.client.renderer.Matv.MATVTOWRenderer;
 import frontline.combat.fcp.client.renderer.MemeVehicles.BigBirdRenderer;
-import frontline.combat.fcp.client.renderer.MemeVehicles.LaHumveeRenderer;
 import frontline.combat.fcp.client.renderer.MemeVehicles.WolfRenderer;
 import frontline.combat.fcp.client.renderer.Mi17.MI17Renderer;
 import frontline.combat.fcp.client.renderer.Novator.NovatorRenderer;
@@ -42,11 +56,16 @@ import frontline.combat.fcp.client.renderer.Projectile.Malyutka.MalyutkaRenderer
 import frontline.combat.fcp.client.renderer.Projectile.Sidewinder.SidewinderRenderer;
 import frontline.combat.fcp.client.renderer.Stryker.StrykerM2Renderer;
 import frontline.combat.fcp.client.renderer.Stryker.StrykerMGSRenderer;
+import frontline.combat.fcp.client.renderer.Stryker.StrykerDragoonRenderer;
+import frontline.combat.fcp.client.renderer.Stryker.StrykerMk19Renderer;
+import frontline.combat.fcp.client.renderer.Stryker.StrykerTowRenderer;
+import frontline.combat.fcp.client.renderer.Stryker.StrykerMortarRenderer;
 import frontline.combat.fcp.client.renderer.T72av.T72AVRenderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxBMPRenderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxRenderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxRocketPodRenderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxSpg9Renderer;
+import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxMortarRenderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxZu23Renderer;
 import frontline.combat.fcp.client.renderer.Trailers.ExampleTrailer.ExampleTrailerRenderer;
 import frontline.combat.fcp.client.renderer.Uaz.UAZDSHKARenderer;
@@ -73,6 +92,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_ROCKET_POD.get(), ToyotaHiluxRocketPodRenderer::new);
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_BMP.get(), ToyotaHiluxBMPRenderer::new);
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_SPG9.get(), ToyotaHiluxSpg9Renderer::new);
+        event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_MORTAR.get(), ToyotaHiluxMortarRenderer::new);
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_ZU23.get(), ToyotaHiluxZu23Renderer::new);
 
         event.registerEntityRenderer(ModEntities.UAZ.get(), UAZRenderer::new);
@@ -81,6 +101,10 @@ public class ModEntityRenderers {
 
         event.registerEntityRenderer(ModEntities.STRYKER_MGS.get(), StrykerMGSRenderer::new);
         event.registerEntityRenderer(ModEntities.STRYKER_M2.get(), StrykerM2Renderer::new);
+        event.registerEntityRenderer(ModEntities.STRYKER_DRAGOON.get(), StrykerDragoonRenderer::new);
+        event.registerEntityRenderer(ModEntities.STRYKER_MK19.get(), StrykerMk19Renderer::new);
+        event.registerEntityRenderer(ModEntities.STRYKER_TOW.get(), StrykerTowRenderer::new);
+        event.registerEntityRenderer(ModEntities.STRYKER_MORTAR.get(), StrykerMortarRenderer::new);
 
         event.registerEntityRenderer(ModEntities.LITTLEBIRD.get(), LittlebirdRenderer::new);
         event.registerEntityRenderer(ModEntities.LITTLEBIRD_ARMED.get(), LittlebirdArmedRenderer::new);
@@ -90,6 +114,11 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.BMP1AM.get(), BMP1AMRenderer::new);
 
         event.registerEntityRenderer(ModEntities.BMP2.get(), BMP2Renderer::new);
+        event.registerEntityRenderer(ModEntities.BMP1P.get(), BMP1PRenderer::new);
+        event.registerEntityRenderer(ModEntities.BMP2D.get(), BMP2DRenderer::new);
+        event.registerEntityRenderer(ModEntities.BMP2M.get(), BMP2MRenderer::new);
+        event.registerEntityRenderer(ModEntities.BMP2_NOATGM.get(), BMP2NoAtgmRenderer::new);
+        event.registerEntityRenderer(ModEntities.BMP2MD.get(), BMP2MDRenderer::new);
 
         event.registerEntityRenderer(ModEntities.AAVP.get(), AAVPRenderer::new);
 
@@ -122,10 +151,29 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.MATV_CROW.get(), MATVCrowsRenderer::new);
         event.registerEntityRenderer(ModEntities.MATV_9IN1.get(), MATV9In1Renderer::new);
 
-        event.registerEntityRenderer(ModEntities.HUMVEE.get(), HumveeRenderer::new);
-        event.registerEntityRenderer(ModEntities.HUMVEE_TOW.get(), HumveeTOWRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_AMBULANCE.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_ARMORED_M2.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_ARMORED_MK19.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_ARMORED_UNARMED.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_ASRAD.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_AVENGER.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_CARGO.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_SHELTER.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_SOFT_TOP.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_M2.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_M2_SHIELD.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_M2_TURRET.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_TOW.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_TOW_TURRET.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_UNARMED.get(), HumveeUnarmedRenderer::new);
 
         event.registerEntityRenderer(ModEntities.BTR82.get(), BTR82Renderer::new);
+        event.registerEntityRenderer(ModEntities.BTR82AT.get(), BTR82ATRenderer::new);
+        event.registerEntityRenderer(ModEntities.BTR3E.get(), BTR3ERenderer::new);
+        event.registerEntityRenderer(ModEntities.BTR4MV1.get(), BTR4MV1Renderer::new);
+        event.registerEntityRenderer(ModEntities.BTR80.get(), BTR80Renderer::new);
+        event.registerEntityRenderer(ModEntities.BTR80_COPE.get(), BTR80CopeRenderer::new);
+        event.registerEntityRenderer(ModEntities.BTR82_COPE.get(), BTR82CopeRenderer::new);
 
         event.registerEntityRenderer(ModEntities.MI17.get(), MI17Renderer::new);
 
@@ -144,7 +192,6 @@ public class ModEntityRenderers {
 
         // Meme Vehicles
         event.registerEntityRenderer(ModEntities.BIGBIRD.get(), BigBirdRenderer::new);
-        event.registerEntityRenderer(ModEntities.LA_HUMVEE.get(), LaHumveeRenderer::new);
         event.registerEntityRenderer(ModEntities.T14_ARMATA.get(), WolfRenderer::new);
         // Trailers
         event.registerEntityRenderer(ModEntities.EXAMPLE_TRAILER.get(), ExampleTrailerRenderer::new);

@@ -1,0 +1,7 @@
+{
+  "ID": "fcp:hmmwv_unarmored_tow",
+  "Model": {
+    "Model": "fcp:geo/hmmwv_unarmored_tow.geo.json",
+    "Texture": "fcp:textures/entity/humvee/hmww_tex_1.png"
+  }
+}

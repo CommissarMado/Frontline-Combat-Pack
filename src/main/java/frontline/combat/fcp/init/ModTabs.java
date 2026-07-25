@@ -26,12 +26,33 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX_ROCKET_POD.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX_BMP.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX_SPG9.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX_MORTAR.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_AMBULANCE.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_ARMORED_M2.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_ARMORED_MK19.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_ARMORED_UNARMED.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_ASRAD.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_AVENGER.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_CARGO.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_SHELTER.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_SOFT_TOP.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_UNARMORED_M2.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_UNARMORED_M2_SHIELD.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_UNARMORED_M2_TURRET.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_UNARMORED_TOW.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_UNARMORED_TOW_TURRET.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_UNARMORED_UNARMED.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP1.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP1U.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP1AM.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP2.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BMP1P.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BMP2D.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BMP2M.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BMP2_NOATGM.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BMP2MD.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.T72AV.get()));
             }).build());
@@ -55,7 +76,13 @@ public class ModTabs {
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.NOVATOR.get()));
 
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BTR3E.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BTR4MV1.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BTR82.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BTR82AT.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BTR80.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BTR80_COPE.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BTR82_COPE.get()));
             }).build());
 
     public static final RegistryObject<CreativeModeTab> AMERICAN_VEHICLE_TAB = TABS.register("american_tab", () -> CreativeModeTab.builder()
@@ -64,6 +91,10 @@ public class ModTabs {
             .displayItems((parameters, output) -> {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.STRYKER_MGS.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.STRYKER_M2.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.STRYKER_DRAGOON.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.STRYKER_MK19.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.STRYKER_TOW.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.STRYKER_MORTAR.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.LITTLEBIRD.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.LITTLEBIRD_ARMED.get()));

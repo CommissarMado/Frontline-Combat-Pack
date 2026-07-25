@@ -37,17 +37,28 @@ public class LandVehicleHudStatsMixin {
     // Vehicles that replace the TV frame with gunner.png
     private static final Set<String> FCP_GUNNER_FRAME_VEHICLES = Set.of(
             "fcp:bmp1",
+            "fcp:bmp1p",
+            "fcp:bmp1am",
             "fcp:bmp2",
+            "fcp:bmp2d",
+            "fcp:bmp2m",
+            "fcp:bmp2md",
+            "fcp:bmp2_noatgm",
             "fcp:btr82",
             "fcp:lav25",
             "fcp:stryker_mgs",
             "fcp:t72av",
             "fcp:aavp",
             "fcp:matv_tow",
+            "fcp:stryker_mortar",
             "fcp:ural_grad",
             "fcp:toyota_hilux_bmp",
             "fcp:toyota_hilux_spg9",
-            "fcp:uaz_spg9"
+            "fcp:uaz_spg9",
+            "fcp:toyota_hilux_mortar",
+            "fcp:btr80",
+            "fcp:btr80_cope",
+            "fcp:btr82_cope"
     );
 
     // Vehicles that suppress the TV frame entirely but show no replacement overlay
@@ -63,7 +74,9 @@ public class LandVehicleHudStatsMixin {
     // vehicle to FCP_NO_FRAME_VEHICLES / FCP_GUNNER_FRAME_VEHICLES too if you want those.
     private static final Set<String> FCP_MORTAR_HUD_VEHICLES = Set.of(
             "fcp:ural_grad",
-            "fcp:toyota_hilux_rocket_pod"
+            "fcp:stryker_mortar",
+            "fcp:toyota_hilux_rocket_pod",
+            "fcp:toyota_hilux_mortar"
     );
 
     private static final ResourceLocation GUNNER_FRAME =

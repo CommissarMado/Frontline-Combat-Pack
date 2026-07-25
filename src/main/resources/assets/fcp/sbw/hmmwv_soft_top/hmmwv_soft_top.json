@@ -1,0 +1,7 @@
+{
+  "ID": "fcp:hmmwv_soft_top",
+  "Model": {
+    "Model": "fcp:geo/hmmwv_soft_top.geo.json",
+    "Texture": "fcp:textures/entity/humvee/hmww_tex_1.png"
+  }
+}

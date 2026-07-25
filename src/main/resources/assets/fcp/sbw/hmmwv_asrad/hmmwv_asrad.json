@@ -1,0 +1,7 @@
+{
+  "ID": "fcp:hmmwv_asrad",
+  "Model": {
+    "Model": "fcp:geo/hmmwv_asrad.json",
+    "Texture": "fcp:textures/entity/humvee/hmww_tex_1.png"
+  }
+}

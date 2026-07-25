@@ -50,7 +50,7 @@
   "EngineType": "Track",
   "EngineSound": "fcp:bmp1_engine",
   "EngineInfo": {
-    "Buoyancy": 0,
+    "Buoyancy": 0.05,
     "EnergyCostRate": 96,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
@@ -139,7 +139,7 @@
       "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/cannon_30mm_ap.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[-0.024512, 0.169485, 2.9336]],
+        "Positions": [[-0.024512, 0.169485, 2.8336]],
         "Directions": ["Barrel"]
       }
     },
@@ -155,13 +155,12 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 600,
-      "Magazine": 100,
+      "HeatPerShoot": 5,
+      "NaturalCooldown": 1,
       "EmptyReloadTime": 20,
       "Velocity": 25,
       "Damage": 4,
       "BypassesArmor": 0.2,
-      "HeatPerShoot": 0,
-      "NaturalCooldown": 1,
       "RecoilTime": 16,
       "RecoilForce": 0.05,
       "ShootAnimationTime": 1,
@@ -179,7 +178,7 @@
       "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[0.1275, 0.173034, 1.275]],
+        "Positions": [[0.1275, 0.173034, 1.0]],
         "Directions": ["Barrel"]
       }
     }

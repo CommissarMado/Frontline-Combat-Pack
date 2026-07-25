@@ -1,0 +1,7 @@
+{
+  "ID": "fcp:btr82at",
+  "Model": {
+    "Model": "fcp:geo/btr82at.geo.json",
+    "Texture": "fcp:textures/entity/btr82at/stiched_texture.png"
+  }
+}

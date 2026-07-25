@@ -1,0 +1,7 @@
+{
+  "ID": "fcp:hmmwv_shelter",
+  "Model": {
+    "Model": "fcp:geo/hmmwv_shelter.geo.json",
+    "Texture": "fcp:textures/entity/humvee/hmww_tex_1.png"
+  }
+}

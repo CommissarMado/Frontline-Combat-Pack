@@ -15,12 +15,18 @@ public class StrykerM2Entity extends CamoVehicleBase {
             //Normal Texture
             new ResourceLocation("fcp", "textures/entity/stryker/stryker_1.png"),
             new ResourceLocation("fcp", "textures/entity/stryker/stryker_2.png"),
+            new ResourceLocation("fcp", "textures/entity/stryker/stryker_3.png"),
+            new ResourceLocation("fcp", "textures/entity/stryker/stryker_4.png"),
+            new ResourceLocation("fcp", "textures/entity/stryker/stryker_5.png"),
             //Wrecked Texture
             new ResourceLocation("fcp", "textures/entity/stryker/stryker_1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/stryker/stryker_2_wrecked.png")
+            new ResourceLocation("fcp", "textures/entity/stryker/stryker_2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/stryker/stryker_3_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/stryker/stryker_4_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/stryker/stryker_5_wrecked.png")
     };
 
-    private static final String[] CAMO_NAMES = {"Base", "Tan"};
+    private static final String[] CAMO_NAMES = {"Camo 1", "Camo 2", "Camo 3", "Camo 4", "Camo 5"};
 
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(StrykerM2Entity.class, EntityDataSerializers.FLOAT);
 
