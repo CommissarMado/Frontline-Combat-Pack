@@ -1,5 +1,6 @@
 package frontline.combat.fcp.network;
 
+import frontline.combat.fcp.network.message.SetFireControlMessage;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkDirection;
@@ -15,7 +16,7 @@ import java.util.Optional;
 public class FCPNetwork {
 
     public static final String MODID = "fcp";
-    private static final String PROTOCOL_VERSION = "1";
+    private static final String PROTOCOL_VERSION = "2";
     public static final SimpleChannel FCP_HANDLER = NetworkRegistry.newSimpleChannel(new ResourceLocation(MODID, MODID), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
     private static int messageID = 0;
 
@@ -30,5 +31,12 @@ public class FCPNetwork {
     }
 
     public static void register() {
+        addNetworkMessage(
+                SetFireControlMessage.class,
+                SetFireControlMessage::encode,
+                SetFireControlMessage::decode,
+                SetFireControlMessage::handle,
+                Optional.of(NetworkDirection.PLAY_TO_SERVER)
+        );
     }
 }

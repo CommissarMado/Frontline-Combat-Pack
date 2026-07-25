@@ -1,7 +1,7 @@
 package frontline.combat.fcp.entity.vehicle.Ural;
 
 import com.atsuishio.superbwarfare.entity.vehicle.damage.DamageModifier;
-import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
+import frontline.combat.fcp.entity.vehicle.IndirectFireVehicleBase;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -9,7 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 
-public class UralGradEntity extends CamoVehicleBase {
+public class UralGradEntity extends IndirectFireVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
             //Normal Texture
