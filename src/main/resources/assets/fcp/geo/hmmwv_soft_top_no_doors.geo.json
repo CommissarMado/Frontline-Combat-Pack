@@ -4660,6 +4660,11 @@
 					]
 				},
 				{
+					"name": "Trunk3",
+					"parent": "Trunks",
+					"pivot": [0, 0, 0]
+				},
+				{
 					"name": "Doors",
 					"parent": "anchors",
 					"pivot": [17.86231, 22.96591, 1.51772]
