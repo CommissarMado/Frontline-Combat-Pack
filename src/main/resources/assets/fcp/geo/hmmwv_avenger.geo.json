@@ -1732,7 +1732,7 @@
 				{
 					"name": "whell1",
 					"parent": "Wheels",
-					"pivot": [14.48371, 7.78821, -30.2326],
+					"pivot": [16.10654, 7.26792, -28.91123],
 					"cubes": [
 						{
 							"origin": [-16.81046, 30.63137, 39.09727],
@@ -1889,7 +1889,7 @@
 				{
 					"name": "whell2",
 					"parent": "Wheels",
-					"pivot": [-13.80371, 7.78821, -30.2326],
+					"pivot": [-15.42654, 7.26792, -28.91123],
 					"cubes": [
 						{
 							"origin": [12.11062, 30.63137, 39.09727],
@@ -2365,7 +2365,7 @@
 				{
 					"name": "Snorkels",
 					"parent": "Attachments",
-					"pivot": [0.30265, 25.13571, 1.24987]
+					"pivot": [-15.69735, 25.13571, -17.75013]
 				},
 				{
 					"name": "Snokel1",
@@ -2475,7 +2475,7 @@
 				{
 					"name": "FBumpers",
 					"parent": "Attachments",
-					"pivot": [0, 0, 0]
+					"pivot": [1, 11, -45]
 				},
 				{
 					"name": "Front1",
@@ -3626,7 +3626,7 @@
 				{
 					"name": "RBumpers",
 					"parent": "Attachments",
-					"pivot": [0, 0, 0]
+					"pivot": [0, 0, 42]
 				},
 				{
 					"name": "Rear1",
