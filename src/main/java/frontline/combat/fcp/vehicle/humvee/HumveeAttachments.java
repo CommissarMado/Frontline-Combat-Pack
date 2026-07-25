@@ -89,11 +89,6 @@ public final class HumveeAttachments {
         return DATA.getOrDefault(vehicle, List.of());
     }
 
-    /**
-     * Show only the selected variant of each category, hiding every other variant's whole
-     * sub-tree. Called every frame per instance (setHidden state is not per-instance on the
-     * shared baked model and does not cascade, so it must be re-applied exhaustively).
-     */
     public static void applyVisibility(GeoModel<?> model, HumveeVehicle vehicle) {
         model.getBone("Attachments").ifPresent(attachments -> {
             for (GeoBone category : attachments.getChildBones()) {

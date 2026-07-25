@@ -43,16 +43,6 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements ICamoV
         this.entityData.define(CAMO_TYPE, 0);
     }
 
-    /**
-     * The texture array is split into two halves:
-     * [0 .. camoCount-1] = normal camo textures
-     * [camoCount .. total-1] = wrecked variants, one per camo in the same order
-     *
-     * camoCount = ceil(totalTextures / 2)
-     *
-     * When wrecked, the modifier (camoCount) is added to the current camo index
-     * to land on the corresponding wrecked texture.
-     */
     public ResourceLocation getCurrentTexture() {
         ResourceLocation[] textures = getCamoTextures();
         int total = textures.length;
