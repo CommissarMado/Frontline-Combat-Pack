@@ -1,6 +1,7 @@
 {
   "ID": "fcp:hmmwv_unarmored_unarmed",
   "MaxHealth": 150,
+  "PassengerRenderScale": 0.85,
   "MaxEnergy": 5000000,
   "OBB": [
     {

@@ -28,15 +28,10 @@ import frontline.combat.fcp.client.renderer.Huey.HueyDoorGunnerM134Renderer;
 import frontline.combat.fcp.client.renderer.Huey.HueyDoorGunnerM60Renderer;
 import frontline.combat.fcp.client.renderer.Huey.HueyRenderer;
 import frontline.combat.fcp.client.renderer.Huey.VenomRenderer;
-import frontline.combat.fcp.client.renderer.Huey.HueyRocketsRenderer;
-<<<<<<< HEAD
-import frontline.combat.fcp.client.renderer.Humvee.HumveeRenderer;
-import frontline.combat.fcp.client.renderer.Humvee.HumveeTOWRenderer;
+import frontline.combat.fcp.client.renderer.Huey.HueyRocketsRenderer;;
 import frontline.combat.fcp.client.renderer.JohnDeere.CombineRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.CultivatorRenderer;
-=======
 import frontline.combat.fcp.client.renderer.Humvee.HumveeUnarmedRenderer;
->>>>>>> origin/master
 import frontline.combat.fcp.client.renderer.JohnDeere.JohnDeereRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.SeederRenderer;
 import frontline.combat.fcp.client.renderer.Kamaz.KamazRenderer;
@@ -160,6 +155,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.HMMWV_CARGO.get(), HumveeUnarmedRenderer::new);
         event.registerEntityRenderer(ModEntities.HMMWV_SHELTER.get(), HumveeUnarmedRenderer::new);
         event.registerEntityRenderer(ModEntities.HMMWV_SOFT_TOP.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.HMMWV_SOFT_TOP_NO_DOORS.get(), HumveeUnarmedRenderer::new);
         event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_M2.get(), HumveeUnarmedRenderer::new);
         event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_M2_SHIELD.get(), HumveeUnarmedRenderer::new);
         event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_M2_TURRET.get(), HumveeUnarmedRenderer::new);
