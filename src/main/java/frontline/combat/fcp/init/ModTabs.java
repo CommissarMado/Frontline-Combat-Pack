@@ -36,6 +36,7 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_CARGO.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_SHELTER.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_SOFT_TOP.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_SOFT_TOP_NO_DOORS.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_UNARMORED_M2.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_UNARMORED_M2_SHIELD.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_UNARMORED_M2_TURRET.get()));

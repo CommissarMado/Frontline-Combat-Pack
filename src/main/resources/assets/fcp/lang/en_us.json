@@ -41,6 +41,7 @@
   "entity.fcp.hmmwv_cargo": "HMMWV Cargo",
   "entity.fcp.hmmwv_shelter": "HMMWV Shelter",
   "entity.fcp.hmmwv_soft_top": "HMMWV Soft Top",
+  "entity.fcp.hmmwv_soft_top_no_doors": "HMMWV Soft Top No Doors",
   "entity.fcp.hmmwv_unarmored_m2": "HMMWV Unarmored M2",
   "entity.fcp.hmmwv_unarmored_m2_shield": "HMMWV Unarmored M2 Shield",
   "entity.fcp.hmmwv_unarmored_m2_turret": "HMMWV Unarmored M2 Turret",
@@ -150,12 +151,9 @@
   "//" : "====================== Key =============================",
   "key.categories.fcp": "Frontline Combat Pack",
   "key.fcp.vehicle_debug": "Toggle Vehicle Debug Overlay",
-<<<<<<< HEAD
 
   "//" : "====================== Gui =============================",
   "gui.fcp.bulk.empty": "Empty",
-  "gui.fcp.sort": "Sort"
-=======
+  "gui.fcp.sort": "Sort",
   "weapon.fcp.m240_coax": "M240 Coaxial"
->>>>>>> origin/master
 }

@@ -1,26 +1,7 @@
 {
-  "ID": "fcp:hmmwv_armored_mk19",
+  "ID": "fcp:hmmwv_soft_top_no_doors",
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
-  "TurretControllerIndex": 1,
-  "TurretPos": [
-    0.037596,
-    2.185349,
-    -0.083374
-  ],
-  "BarrelPos": [
-    -0.026652,
-    0.053757,
-    0.937887
-  ],
-  "TurretTurnSpeed": [
-    5,
-    5
-  ],
-  "TurretPitchRange": [
-    -15,
-    45
-  ],
   "OBB": [
     {
       "Size": [
@@ -137,23 +118,10 @@
         0.255,
         0.255
       ],
-      "MinPitch": -15,
-      "MaxPitch": 45,
+      "MinPitch": -60,
+      "MaxPitch": 60,
       "MinYaw": -95,
-      "MaxYaw": 95,
-      "Weapons": [
-        "Nothing"
-      ],
-      "CameraPos": {
-        "UseFixedCameraPos": true,
-        "Transform": "Barrel",
-        "Position": [
-          0,
-          0.2,
-          0.2
-        ],
-        "Direction": "Barrel"
-      }
+      "MaxYaw": 95
     },
     {
       "IsEnclosed": true,

@@ -32,14 +32,9 @@ import frontline.combat.fcp.entity.vehicle.Huey.HueyDoorGunnerM60Entity;
 import frontline.combat.fcp.entity.vehicle.Huey.HueyEntity;
 import frontline.combat.fcp.entity.vehicle.Huey.HueyRocketsEntity;
 import frontline.combat.fcp.entity.vehicle.Huey.VenomEntity;
-<<<<<<< HEAD
-import frontline.combat.fcp.entity.vehicle.Humvee.HumveeEntity;
-import frontline.combat.fcp.entity.vehicle.Humvee.HumveeTOWEntity;
 import frontline.combat.fcp.entity.vehicle.JohnDeere.CombineEntity;
 import frontline.combat.fcp.entity.vehicle.JohnDeere.CultivatorEntity;
-=======
 import frontline.combat.fcp.entity.vehicle.Humvee.HumveeUnarmedEntity;
->>>>>>> origin/master
 import frontline.combat.fcp.entity.vehicle.JohnDeere.JohnDeereEntity;
 import frontline.combat.fcp.entity.vehicle.JohnDeere.SeederEntity;
 import frontline.combat.fcp.entity.vehicle.Kamaz.KamazEntity;
@@ -221,6 +216,8 @@ public class ModEntities {
     public static final RegistryObject<EntityType<HumveeUnarmedEntity>> HMMWV_SHELTER = register("hmmwv_shelter",
             EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<HumveeUnarmedEntity>> HMMWV_SOFT_TOP = register("hmmwv_soft_top",
+            EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<HumveeUnarmedEntity>> HMMWV_SOFT_TOP_NO_DOORS = register("hmmwv_soft_top_no_doors",
             EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<HumveeUnarmedEntity>> HMMWV_UNARMORED_M2 = register("hmmwv_unarmored_m2",
             EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
