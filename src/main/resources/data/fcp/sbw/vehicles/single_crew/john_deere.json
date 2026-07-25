@@ -1,26 +1,36 @@
 {
-  "ID": "fcp:combine",
+  "ID": "fcp:john_deere",
   "MaxHealth": 175,
   "MaxEnergy": 5250000,
   "OBB": [
-    {"Size": [0.45, 1.1, 1.1], "Position": [2.4, 1.1, 1.65], "Part": "WheelLeft"},
-    {"Size": [0.45, 0.75, 0.7], "Position": [2.4, 0.75, -3.2], "Part": "WheelLeft"},
-    {"Size": [0.45, 1.1, 1.1], "Position": [-2.325, 1.1, 1.65], "Part": "WheelRight"}
+    {"Size": [0.45, 1.1, 1.1], "Position": [1.4, 1.1, 1.75], "Part": "WheelLeft"},
+    {"Size": [0.55, 1.35, 1.35], "Position": [1.35, 1.35, -2.6], "Part": "WheelLeft"},
+    {"Size": [0.45, 1.1, 1.1], "Position": [-1.4, 1.1, 1.75], "Part": "WheelRight"},
+    {"Size": [0.55, 1.35, 1.35], "Position": [-1.35, 1.35, -2.6], "Part": "WheelRight"},
+    {"Size": [0.9, 1.05, 2], "Position": [0, 1.95, 1.65], "Part": "MainEngine"},
+    {"Size": [1.35, 1.75, 1.25], "Position": [0, 2.7, -1.5], "Part": "Body"}
   ],
+  "PassengerRenderScale": 0.95,
   "Seats": [
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [0.45, 0.605, 0],
+      "Position": [0, 2.4, -1.75],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
       "MaxYaw": 95,
-      "BanHand": true,
-      "CameraPos": {
-        "UseFixedCameraPos": true,
-        "Position": [0.6, 2.3, 0.2]
-      }
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [0.65, 2.4, -1.75],
+      "MinPitch": -60,
+      "MaxPitch": 60,
+      "MinYaw": -95,
+      "MaxYaw": 95,
+      "BanHand": true
     }
   ],
   "EngineType": "Wheel",

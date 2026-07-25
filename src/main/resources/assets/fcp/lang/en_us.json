@@ -98,7 +98,6 @@
   "entity.fcp.stryker_mgs": "Stryker MGS",
   "entity.fcp.stryker_dragoon": "Stryker Dragoon",
   "entity.fcp.stryker_m2": "Stryker M2",
-  "entity.fcp.stryker_dragoon": "Stryker Dragoon",
   "entity.fcp.stryker_mk19": "Stryker Mk-19",
   "entity.fcp.stryker_tow": "Stryker TOW",
   "entity.fcp.stryker_mortar": "Stryker Mortar",
@@ -151,9 +150,20 @@
   "//" : "====================== Key =============================",
   "key.categories.fcp": "Frontline Combat Pack",
   "key.fcp.vehicle_debug": "Toggle Vehicle Debug Overlay",
+  "key.fcp.open_config": "Open FCP Config",
 
   "//" : "====================== Gui =============================",
   "gui.fcp.bulk.empty": "Empty",
   "gui.fcp.sort": "Sort",
-  "weapon.fcp.m240_coax": "M240 Coaxial"
+
+  "gui.fcp.config.title": "Frontline Combat Pack",
+  "gui.fcp.config.multicrew": "Multicrew Vehicles",
+  "gui.fcp.config.loading": "Fetching server settings...",
+  "gui.fcp.config.requires_op": "Requires operator permission to change",
+  "gui.fcp.config.server_hint": "Applies to the whole server immediately",
+  "gui.fcp.config.local_hint": "Applies to worlds loaded after this change",
+  "gui.fcp.config.denied": "You need operator permission to change FCP settings",
+  "gui.fcp.config.multicrew_on": "Multicrew vehicles enabled — reloading vehicle data",
+  "gui.fcp.config.multicrew_off": "Multicrew vehicles disabled — reloading vehicle data"
+
 }

@@ -28,6 +28,9 @@ public class FCP {
     public FCP() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        net.minecraftforge.fml.ModLoadingContext.get().registerConfig(
+                net.minecraftforge.fml.config.ModConfig.Type.COMMON, FCPConfig.SPEC);
+
         ModEntities.register(modEventBus);
         ModItems.REGISTRY.register(modEventBus);
         ModParticleTypes.PARTICLE_TYPES.register(modEventBus);
@@ -63,8 +66,10 @@ public class FCP {
      * server never even loads it.
      */
     private void clientSetup(final FMLClientSetupEvent event) {
-        event.enqueueWork(() -> DistExecutor.unsafeRunWhenOn(Dist.CLIENT,
-                () -> frontline.combat.fcp.client.VehicleInventoryKeyHandler::register));
+        event.enqueueWork(() -> DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+            frontline.combat.fcp.client.VehicleInventoryKeyHandler.register();
+            frontline.combat.fcp.client.screen.FCPConfigScreen.registerConfigScreen();
+        }));
     }
 
     private void onItemTooltip(ItemTooltipEvent event) {
