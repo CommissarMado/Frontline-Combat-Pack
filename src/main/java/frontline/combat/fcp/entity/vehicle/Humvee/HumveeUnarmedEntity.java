@@ -54,6 +54,9 @@ public class HumveeUnarmedEntity extends CamoVehicleBase implements HumveeVehicl
     private float prevSteeringAngle = 0f;
     private float wheelRotation = 0f;
     private float prevWheelRotation = 0f;
+    // Whether this vehicle's attachments have been rolled yet. Fresh spawns get a random
+    // set once; loaded vehicles keep whatever was saved.
+    private boolean attachmentsInitialized = false;
 
     public HumveeUnarmedEntity(EntityType<HumveeUnarmedEntity> type, Level world) {
         super(type, world);
@@ -113,6 +116,17 @@ public class HumveeUnarmedEntity extends CamoVehicleBase implements HumveeVehicl
         return parseAttachments().getOrDefault(category, 0);
     }
 
+    /** Pick a random variant for every category. Called once, on first spawn. */
+    private void randomizeAttachments() {
+        Map<String, Integer> map = new LinkedHashMap<>();
+        for (HumveeAttachments.Category c : HumveeAttachments.categories(humveeName())) {
+            if (c.variantCount > 0) {
+                map.put(c.name, this.random.nextInt(c.variantCount));
+            }
+        }
+        writeAttachments(map);
+    }
+
     @Override
     public void cycleAttachment(String category, int variantCount) {
         if (variantCount <= 0) return;
@@ -155,6 +169,7 @@ public class HumveeUnarmedEntity extends CamoVehicleBase implements HumveeVehicl
         super.addAdditionalSaveData(compound);
         compound.putFloat("SteeringAngle", this.getSteeringAngle());
         compound.putString("Attachments", this.entityData.get(ATTACHMENTS));
+        compound.putBoolean("AttachmentsInit", this.attachmentsInitialized);
     }
 
     @Override
@@ -166,11 +181,20 @@ public class HumveeUnarmedEntity extends CamoVehicleBase implements HumveeVehicl
         if (compound.contains("Attachments")) {
             this.entityData.set(ATTACHMENTS, compound.getString("Attachments"));
         }
+        // Absent flag = pre-existing/older vehicle; treat as already initialized so its
+        // (possibly empty) selection is kept rather than being re-rolled on load.
+        this.attachmentsInitialized = compound.getBoolean("AttachmentsInit")
+                || compound.contains("Attachments");
     }
 
     @Override
     public void baseTick() {
         super.baseTick();
+
+        if (!this.level().isClientSide() && !this.attachmentsInitialized) {
+            randomizeAttachments();
+            this.attachmentsInitialized = true;
+        }
 
         prevSteeringAngle = getSteeringAngle();
         float currentAngle = getSteeringAngle();

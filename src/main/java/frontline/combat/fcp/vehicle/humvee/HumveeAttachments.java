@@ -23,25 +23,33 @@ import java.util.Map;
  * category's children are the mutually-exclusive *variants* (including empty variants that
  * act as "removed"). Exactly one variant per category is shown at a time.
  *
- * The category list + per-category interaction hitbox is generated from the geos into
- * /fcp_humvee_attachments.json (see the build tooling). Visibility itself is applied by
- * walking the live GeckoLib bone tree, so it stays correct even if a geo changes.
+ * /fcp_humvee_attachments.json (generated from the geos) gives each category an axis-aligned
+ * interaction box (vehicle-local, in blocks) sized to the union of all its variants' cubes.
  */
 public final class HumveeAttachments {
 
     public static final class Category {
         public final String name;
-        public final float[] hitbox;   // vehicle-local offset (blocks): [x, y, z]
+        /** Vehicle-local AABB: [minX, minY, minZ, maxX, maxY, maxZ] in blocks. */
+        public final double[] aabb;
         public final int variantCount;
 
-        Category(String name, float[] hitbox, int variantCount) {
+        Category(String name, double[] aabb, int variantCount) {
             this.name = name;
-            this.hitbox = hitbox;
+            this.aabb = aabb;
             this.variantCount = variantCount;
+        }
+
+        /** The 8 corners of the local AABB. */
+        public double[][] corners() {
+            double[] a = aabb;
+            return new double[][]{
+                    {a[0], a[1], a[2]}, {a[0], a[1], a[5]}, {a[0], a[4], a[2]}, {a[0], a[4], a[5]},
+                    {a[3], a[1], a[2]}, {a[3], a[1], a[5]}, {a[3], a[4], a[2]}, {a[3], a[4], a[5]}
+            };
         }
     }
 
-    // vehicleName -> ordered categories
     private static final Map<String, List<Category>> DATA = new LinkedHashMap<>();
     private static boolean loaded = false;
 
@@ -59,15 +67,14 @@ public final class HumveeAttachments {
                 JsonObject catObj = veh.getValue().getAsJsonObject();
                 for (Map.Entry<String, com.google.gson.JsonElement> ce : catObj.entrySet()) {
                     JsonObject c = ce.getValue().getAsJsonObject();
-                    JsonArray hb = c.getAsJsonArray("hitbox");
-                    float[] hit = {hb.get(0).getAsFloat(), hb.get(1).getAsFloat(), hb.get(2).getAsFloat()};
-                    int count = c.getAsJsonArray("variants").size();
-                    cats.add(new Category(ce.getKey(), hit, count));
+                    JsonArray ja = c.getAsJsonArray("aabb");
+                    double[] box = new double[6];
+                    for (int i = 0; i < 6; i++) box[i] = ja.get(i).getAsDouble();
+                    cats.add(new Category(ce.getKey(), box, c.get("variants").getAsInt()));
                 }
                 DATA.put(veh.getKey(), cats);
             }
         } catch (Exception e) {
-            // Missing/broken data just means no attachments; never crash the vehicle.
             System.err.println("[FCP] Failed to load humvee attachment data: " + e);
         }
     }

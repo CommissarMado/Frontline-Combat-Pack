@@ -2365,7 +2365,7 @@
 				{
 					"name": "Snorkels",
 					"parent": "Attachments",
-					"pivot": [-15.69735, 25.13571, -17.75013]
+					"pivot": [0.30265, 25.13571, 1.24987]
 				},
 				{
 					"name": "Snokel1",
@@ -2475,7 +2475,7 @@
 				{
 					"name": "FBumpers",
 					"parent": "Attachments",
-					"pivot": [1, 11, -45]
+					"pivot": [0, 0, 0]
 				},
 				{
 					"name": "Front1",
@@ -3626,7 +3626,7 @@
 				{
 					"name": "RBumpers",
 					"parent": "Attachments",
-					"pivot": [0, 0, 42]
+					"pivot": [0, 0, 0]
 				},
 				{
 					"name": "Rear1",

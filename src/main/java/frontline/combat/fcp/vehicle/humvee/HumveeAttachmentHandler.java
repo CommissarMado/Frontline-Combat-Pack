@@ -1,5 +1,7 @@
 package frontline.combat.fcp.vehicle.humvee;
 
+import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
+import com.atsuishio.superbwarfare.entity.vehicle.utils.VehicleVecUtils;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.init.ModItems;
 import frontline.combat.fcp.init.ModSounds;
@@ -8,71 +10,94 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.joml.Matrix4d;
+import org.joml.Vector4d;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
- * Right-clicking a Humvee's attachment with the FCP spray cycles that attachment to its
- * next variant (including the empty "removed" variants). The spray is a tool and is never
- * consumed. If the click does NOT land on an attachment hitbox the event is left alone, so
- * the spray's default use on a vehicle (cycling the camo) still works everywhere else.
+ * Right-clicking a Humvee attachment with the FCP spray cycles it to the next variant
+ * (including empty "removed" variants). The spray is a tool and is never consumed, and if
+ * the look ray does not hit any attachment box the event is left alone so the spray's
+ * default use (cycling the camo) still works.
+ *
+ * Which attachment is hit is decided by ray-casting the player's view against each
+ * category's box, transformed into world space with SuperbWarfare's own vehicle transform
+ * (getVehicleYOffsetTransform). Using the vehicle's real transform is what makes this work
+ * at every angle rather than only when the vehicle faces a particular way.
  */
 @Mod.EventBusSubscriber(modid = FCP.MODID)
 public final class HumveeAttachmentHandler {
 
-    // A click counts for a category if it lands within this distance of its hitbox centre.
-    private static final double PICK_RADIUS = 0.8;
+    private static final double REACH = 5.0;
 
     private HumveeAttachmentHandler() {}
 
     @SubscribeEvent
     public static void onInteractSpecific(PlayerInteractEvent.EntityInteractSpecific event) {
-        Entity target = event.getTarget();
-        Player player = event.getEntity();
-        ItemStack stack = event.getItemStack();
+        cycle(event, event.getTarget(), event.getEntity(), event.getItemStack());
+    }
 
+    private static void cycle(PlayerInteractEvent event, Entity target, Player player, ItemStack stack) {
         if (stack.isEmpty() || stack.getItem() != ModItems.SPRAY.get()) return;
-        if (!(target instanceof HumveeVehicle humvee)) return;
+        if (!(target instanceof HumveeVehicle humvee) || !(target instanceof VehicleEntity vehicle)) return;
 
         List<HumveeAttachments.Category> categories = HumveeAttachments.categories(humvee.humveeName());
         if (categories.isEmpty()) return;
 
-        // event.getLocalPos() is the clicked point relative to the entity (world-aligned).
-        // Rotate it into the vehicle's local frame before comparing to the hitbox centres.
-        double yawRad = Math.toRadians(target.getYRot());
-        Vec3 local = event.getLocalPos().yRot((float) yawRad);
+        Vec3 eye = player.getEyePosition(1f);
+        Vec3 end = eye.add(player.getViewVector(1f).scale(REACH));
+        Matrix4d transform = VehicleVecUtils.INSTANCE.getVehicleYOffsetTransform(vehicle, 1f);
+        double root = vehicle.getRotateOffsetHeight();
 
         HumveeAttachments.Category best = null;
-        double bestDist = PICK_RADIUS * PICK_RADIUS;
+        double bestDist = Double.MAX_VALUE;
         for (HumveeAttachments.Category c : categories) {
-            double dx = local.x - c.hitbox[0];
-            double dy = local.y - c.hitbox[1];
-            double dz = local.z - c.hitbox[2];
-            double d2 = dx * dx + dy * dy + dz * dz;
-            if (d2 <= bestDist) {
-                bestDist = d2;
-                best = c;
+            AABB world = toWorldBox(c, transform, root);
+            Optional<Vec3> hit = world.clip(eye, end);
+            if (hit.isPresent()) {
+                double d = hit.get().distanceToSqr(eye);
+                if (d < bestDist) {
+                    bestDist = d;
+                    best = c;
+                }
             }
         }
 
-        // No attachment under the click: leave the event alone so the vehicle's own spray
-        // handler (camo repaint) runs as normal.
+        // Nothing hit: leave the event for the vehicle's own spray handler (camo repaint).
         if (best == null) return;
 
-        // Claim the interaction so it doesn't fall through to repaint / mounting.
         event.setCanceled(true);
         event.setCancellationResult(InteractionResult.SUCCESS);
 
         if (!player.level().isClientSide()) {
             humvee.cycleAttachment(best.name, best.variantCount);
-            // Same audio feedback as changing the camo.
             player.level().playSound(null, target.blockPosition(),
                     ModSounds.SPRAY.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
         }
         player.swing(event.getHand());
+    }
+
+    /**
+     * World-space AABB enclosing the category's local box run through the vehicle transform.
+     * The local Y is dropped by rotateOffsetHeight so the rotation happens about the same
+     * root the model uses (getVehicleYOffsetTransform rotates about pos+root, not the root).
+     */
+    private static AABB toWorldBox(HumveeAttachments.Category c, Matrix4d transform, double root) {
+        double minX = Double.MAX_VALUE, minY = Double.MAX_VALUE, minZ = Double.MAX_VALUE;
+        double maxX = -Double.MAX_VALUE, maxY = -Double.MAX_VALUE, maxZ = -Double.MAX_VALUE;
+        for (double[] corner : c.corners()) {
+            Vector4d w = transform.transform(new Vector4d(corner[0], corner[1] - root, corner[2], 1.0));
+            minX = Math.min(minX, w.x); maxX = Math.max(maxX, w.x);
+            minY = Math.min(minY, w.y); maxY = Math.max(maxY, w.y);
+            minZ = Math.min(minZ, w.z); maxZ = Math.max(maxZ, w.z);
+        }
+        return new AABB(minX, minY, minZ, maxX, maxY, maxZ);
     }
 }

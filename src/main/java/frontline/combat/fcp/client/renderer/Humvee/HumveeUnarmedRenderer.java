@@ -3,6 +3,7 @@ package frontline.combat.fcp.client.renderer.Humvee;
 import com.atsuishio.superbwarfare.client.renderer.entity.VehicleRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Axis;
 import frontline.combat.fcp.client.model.Humvee.HumveeUnarmedModel;
 import frontline.combat.fcp.entity.vehicle.Humvee.HumveeUnarmedEntity;
 import frontline.combat.fcp.vehicle.humvee.HumveeAttachments;
@@ -17,8 +18,6 @@ import net.minecraft.world.phys.AABB;
 
 public class HumveeUnarmedRenderer extends VehicleRenderer<HumveeUnarmedEntity> {
 
-    private static final double HITBOX_HALF = 0.5; // ~1 block cube
-
     public HumveeUnarmedRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new HumveeUnarmedModel());
     }
@@ -32,11 +31,15 @@ public class HumveeUnarmedRenderer extends VehicleRenderer<HumveeUnarmedEntity> 
     public void render(HumveeUnarmedEntity entity, float entityYaw, float partialTick,
                        PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
         super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
-        renderAttachmentHitboxes(entity, entityYaw, partialTick, poseStack, bufferSource);
+        renderAttachmentHitboxes(entity, partialTick, poseStack, bufferSource);
     }
 
-    /** Draws the per-attachment interaction boxes, matching vanilla hitbox visibility rules. */
-    private void renderAttachmentHitboxes(HumveeUnarmedEntity entity, float entityYaw, float partialTick,
+    /**
+     * Draws the per-attachment interaction boxes, matching vanilla hitbox visibility (F3+B,
+     * and off when reduced-debug-info is on). The pose is rebuilt to mirror SuperbWarfare's
+     * getVehicleYOffsetTransform so the boxes line up with the interaction ray-cast.
+     */
+    private void renderAttachmentHitboxes(HumveeUnarmedEntity entity, float partialTick,
                                           PoseStack poseStack, MultiBufferSource bufferSource) {
         Minecraft mc = Minecraft.getInstance();
         if (!mc.getEntityRenderDispatcher().shouldRenderHitBoxes()) return;
@@ -45,19 +48,26 @@ public class HumveeUnarmedRenderer extends VehicleRenderer<HumveeUnarmedEntity> 
         var categories = HumveeAttachments.categories(entity.humveeName());
         if (categories.isEmpty()) return;
 
-        VertexConsumer lines = bufferSource.getBuffer(RenderType.lines());
-        float bodyYaw = Mth.lerp(partialTick, entity.yRotO, entity.getYRot());
+        double root = entity.getRotateOffsetHeight();
+        float yaw = Mth.lerp(partialTick, entity.yRotO, entity.getYRot());
+        float pitch = Mth.lerp(partialTick, entity.xRotO, entity.getXRot());
+        float roll = entity.getRoll(partialTick);
 
+        VertexConsumer lines = bufferSource.getBuffer(RenderType.lines());
         poseStack.pushPose();
-        // Orient into the vehicle's local frame so the boxes ride the body as it turns.
-        poseStack.mulPose(com.mojang.math.Axis.YP.rotationDegrees(-bodyYaw));
+        // Rotate about the root point (translate to root, rotate, translate back), exactly
+        // as SuperbWarfare's vehicleAxis does - the translate-back is what keeps the boxes
+        // seated on the body instead of floating up by rotateOffsetHeight.
+        poseStack.translate(0, root, 0);
+        poseStack.mulPose(Axis.YP.rotationDegrees(-yaw));
+        poseStack.mulPose(Axis.XP.rotationDegrees(pitch));
+        poseStack.mulPose(Axis.ZP.rotationDegrees(roll));
+        poseStack.translate(0, -root, 0);
         for (HumveeAttachments.Category c : categories) {
-            double x = c.hitbox[0];
-            double y = c.hitbox[1];
-            double z = c.hitbox[2];
-            AABB box = new AABB(x - HITBOX_HALF, y - HITBOX_HALF, z - HITBOX_HALF,
-                    x + HITBOX_HALF, y + HITBOX_HALF, z + HITBOX_HALF);
-            LevelRenderer.renderLineBox(poseStack, lines, box, 0.25f, 1.0f, 0.35f, 1.0f);
+            double[] a = c.aabb;
+            LevelRenderer.renderLineBox(poseStack, lines,
+                    new AABB(a[0], a[1], a[2], a[3], a[4], a[5]),
+                    0.25f, 1.0f, 0.35f, 1.0f);
         }
         poseStack.popPose();
     }
