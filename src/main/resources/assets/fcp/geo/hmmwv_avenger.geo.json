@@ -4509,7 +4509,7 @@
 					]
 				},
 				{
-					"name": "jsnovaavecher",
+					"name": "turret",
 					"parent": "7AVENHER",
 					"pivot": [0.70678, 34.45831, 22.59764],
 					"cubes": [
@@ -4621,8 +4621,8 @@
 					]
 				},
 				{
-					"name": "PVOGUN",
-					"parent": "jsnovaavecher",
+					"name": "barrel",
+					"parent": "turret",
 					"pivot": [-5.02044, 37.68135, 25.5102],
 					"cubes": [
 						{
