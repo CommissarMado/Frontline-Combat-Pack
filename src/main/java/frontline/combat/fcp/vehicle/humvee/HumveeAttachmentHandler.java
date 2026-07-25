@@ -21,6 +21,17 @@ import org.joml.Vector4d;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Right-clicking a Humvee attachment with the FCP spray cycles it to the next variant
+ * (including empty "removed" variants). The spray is a tool and is never consumed, and if
+ * the look ray does not hit any attachment box the event is left alone so the spray's
+ * default use (cycling the camo) still works.
+ *
+ * Which attachment is hit is decided by ray-casting the player's view against each
+ * category's box, transformed into world space with SuperbWarfare's own vehicle transform
+ * (getVehicleYOffsetTransform). Using the vehicle's real transform is what makes this work
+ * at every angle rather than only when the vehicle faces a particular way.
+ */
 @Mod.EventBusSubscriber(modid = FCP.MODID)
 public final class HumveeAttachmentHandler {
 
@@ -73,6 +84,11 @@ public final class HumveeAttachmentHandler {
         player.swing(event.getHand());
     }
 
+    /**
+     * World-space AABB enclosing the category's local box run through the vehicle transform.
+     * The local Y is dropped by rotateOffsetHeight so the rotation happens about the same
+     * root the model uses (getVehicleYOffsetTransform rotates about pos+root, not the root).
+     */
     private static AABB toWorldBox(HumveeAttachments.Category c, Matrix4d transform, double root) {
         double minX = Double.MAX_VALUE, minY = Double.MAX_VALUE, minZ = Double.MAX_VALUE;
         double maxX = -Double.MAX_VALUE, maxY = -Double.MAX_VALUE, maxZ = -Double.MAX_VALUE;
