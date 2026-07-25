@@ -29,8 +29,6 @@ import frontline.combat.fcp.client.renderer.Huey.HueyDoorGunnerM60Renderer;
 import frontline.combat.fcp.client.renderer.Huey.HueyRenderer;
 import frontline.combat.fcp.client.renderer.Huey.VenomRenderer;
 import frontline.combat.fcp.client.renderer.Huey.HueyRocketsRenderer;
-import frontline.combat.fcp.client.renderer.Humvee.HumveeRenderer;
-import frontline.combat.fcp.client.renderer.Humvee.HumveeTOWRenderer;
 import frontline.combat.fcp.client.renderer.Humvee.HumveeUnarmedRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.JohnDeereRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.SeederRenderer;
@@ -43,7 +41,6 @@ import frontline.combat.fcp.client.renderer.Matv.MATVCrowsRenderer;
 import frontline.combat.fcp.client.renderer.Matv.MATVRenderer;
 import frontline.combat.fcp.client.renderer.Matv.MATVTOWRenderer;
 import frontline.combat.fcp.client.renderer.MemeVehicles.BigBirdRenderer;
-import frontline.combat.fcp.client.renderer.MemeVehicles.LaHumveeRenderer;
 import frontline.combat.fcp.client.renderer.MemeVehicles.WolfRenderer;
 import frontline.combat.fcp.client.renderer.Mi17.MI17Renderer;
 import frontline.combat.fcp.client.renderer.Novator.NovatorRenderer;
@@ -147,8 +144,6 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.MATV_CROW.get(), MATVCrowsRenderer::new);
         event.registerEntityRenderer(ModEntities.MATV_9IN1.get(), MATV9In1Renderer::new);
 
-        event.registerEntityRenderer(ModEntities.HUMVEE.get(), HumveeRenderer::new);
-        event.registerEntityRenderer(ModEntities.HUMVEE_TOW.get(), HumveeTOWRenderer::new);
         event.registerEntityRenderer(ModEntities.HMMWV_AMBULANCE.get(), HumveeUnarmedRenderer::new);
         event.registerEntityRenderer(ModEntities.HMMWV_ARMORED_M2.get(), HumveeUnarmedRenderer::new);
         event.registerEntityRenderer(ModEntities.HMMWV_ARMORED_MK19.get(), HumveeUnarmedRenderer::new);
@@ -189,7 +184,6 @@ public class ModEntityRenderers {
 
         // Meme Vehicles
         event.registerEntityRenderer(ModEntities.BIGBIRD.get(), BigBirdRenderer::new);
-        event.registerEntityRenderer(ModEntities.LA_HUMVEE.get(), LaHumveeRenderer::new);
         event.registerEntityRenderer(ModEntities.T14_ARMATA.get(), WolfRenderer::new);
         // Trailers
         event.registerEntityRenderer(ModEntities.EXAMPLE_TRAILER.get(), ExampleTrailerRenderer::new);

@@ -4,8 +4,6 @@ import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.model.FCPVehicleModel;
 import frontline.combat.fcp.client.model.Util.WheelRotationTransforms;
-import frontline.combat.fcp.entity.vehicle.Huey.HueyEntity;
-import frontline.combat.fcp.entity.vehicle.Humvee.HumveeTOWEntity;
 import frontline.combat.fcp.entity.vehicle.Kamaz.KamazEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
