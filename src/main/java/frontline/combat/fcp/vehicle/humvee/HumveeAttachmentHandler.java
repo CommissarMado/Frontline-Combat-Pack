@@ -53,13 +53,18 @@ public final class HumveeAttachmentHandler {
 
         Vec3 eye = player.getEyePosition(1f);
         Vec3 end = eye.add(player.getViewVector(1f).scale(REACH));
-        Matrix4d transform = VehicleVecUtils.INSTANCE.getVehicleYOffsetTransform(vehicle, 1f);
+        Matrix4d bodyTransform = VehicleVecUtils.INSTANCE.getVehicleYOffsetTransform(vehicle, 1f);
+        // Turret transform already bakes in the ride-height correction, so turret boxes use
+        // it directly (root = 0); body boxes drop the local Y by rotateOffsetHeight.
+        Matrix4d turretTransform = vehicle.getTurretTransform(1f);
         double root = vehicle.getRotateOffsetHeight();
 
         HumveeAttachments.Category best = null;
         double bestDist = Double.MAX_VALUE;
         for (HumveeAttachments.Category c : categories) {
-            AABB world = toWorldBox(c, transform, root);
+            AABB world = c.turret
+                    ? toWorldBox(c, turretTransform, 0.0)
+                    : toWorldBox(c, bodyTransform, root);
             Optional<Vec3> hit = world.clip(eye, end);
             if (hit.isPresent()) {
                 double d = hit.get().distanceToSqr(eye);

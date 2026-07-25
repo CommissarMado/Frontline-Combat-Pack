@@ -15,6 +15,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 
 public class HumveeUnarmedRenderer extends VehicleRenderer<HumveeUnarmedEntity> {
 
@@ -54,21 +55,48 @@ public class HumveeUnarmedRenderer extends VehicleRenderer<HumveeUnarmedEntity> 
         float roll = entity.getRoll(partialTick);
 
         VertexConsumer lines = bufferSource.getBuffer(RenderType.lines());
-        poseStack.pushPose();
+
+        // ---- body-frame boxes ----
         // Rotate about the root point (translate to root, rotate, translate back), exactly
         // as SuperbWarfare's vehicleAxis does - the translate-back is what keeps the boxes
         // seated on the body instead of floating up by rotateOffsetHeight.
+        poseStack.pushPose();
         poseStack.translate(0, root, 0);
         poseStack.mulPose(Axis.YP.rotationDegrees(-yaw));
         poseStack.mulPose(Axis.XP.rotationDegrees(pitch));
         poseStack.mulPose(Axis.ZP.rotationDegrees(roll));
         poseStack.translate(0, -root, 0);
         for (HumveeAttachments.Category c : categories) {
-            double[] a = c.aabb;
-            LevelRenderer.renderLineBox(poseStack, lines,
-                    new AABB(a[0], a[1], a[2], a[3], a[4], a[5]),
-                    0.25f, 1.0f, 0.35f, 1.0f);
+            if (c.turret) continue;
+            drawBox(poseStack, lines, c.aabb);
         }
         poseStack.popPose();
+
+        // ---- turret-frame boxes (e.g. "fd"): continue into the turret's rotation so the
+        // box tracks the turret. Boxes here are stored relative to the turret pivot. ----
+        Vec3 turretPos = entity.getTurretPos();
+        boolean anyTurret = categories.stream().anyMatch(c -> c.turret);
+        if (anyTurret && turretPos != null) {
+            float turretYaw = Mth.lerp(partialTick, entity.getTurretYRotO(), entity.getTurretYRot());
+            poseStack.pushPose();
+            poseStack.translate(0, root, 0);
+            poseStack.mulPose(Axis.YP.rotationDegrees(-yaw));
+            poseStack.mulPose(Axis.XP.rotationDegrees(pitch));
+            poseStack.mulPose(Axis.ZP.rotationDegrees(roll));
+            poseStack.translate(0, -root, 0);
+            poseStack.translate(turretPos.x, turretPos.y, turretPos.z);
+            poseStack.mulPose(Axis.YP.rotationDegrees(turretYaw));
+            for (HumveeAttachments.Category c : categories) {
+                if (!c.turret) continue;
+                drawBox(poseStack, lines, c.aabb);
+            }
+            poseStack.popPose();
+        }
+    }
+
+    private static void drawBox(PoseStack poseStack, VertexConsumer lines, double[] a) {
+        LevelRenderer.renderLineBox(poseStack, lines,
+                new AABB(a[0], a[1], a[2], a[3], a[4], a[5]),
+                0.25f, 1.0f, 0.35f, 1.0f);
     }
 }

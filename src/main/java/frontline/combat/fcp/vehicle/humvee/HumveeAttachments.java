@@ -33,11 +33,18 @@ public final class HumveeAttachments {
         /** Vehicle-local AABB: [minX, minY, minZ, maxX, maxY, maxZ] in blocks. */
         public final double[] aabb;
         public final int variantCount;
+        /**
+         * True for a single toggle bone that lives on the turret (e.g. "fd") rather than a
+         * folder under "Attachments". Its box is turret-relative and rotates with the turret,
+         * and it shows only at index 0 (index 1 = removed).
+         */
+        public final boolean turret;
 
-        Category(String name, double[] aabb, int variantCount) {
+        Category(String name, double[] aabb, int variantCount, boolean turret) {
             this.name = name;
             this.aabb = aabb;
             this.variantCount = variantCount;
+            this.turret = turret;
         }
 
         /** The 8 corners of the local AABB. */
@@ -70,7 +77,8 @@ public final class HumveeAttachments {
                     JsonArray ja = c.getAsJsonArray("aabb");
                     double[] box = new double[6];
                     for (int i = 0; i < 6; i++) box[i] = ja.get(i).getAsDouble();
-                    cats.add(new Category(ce.getKey(), box, c.get("variants").getAsInt()));
+                    boolean turret = c.has("turret") && c.get("turret").getAsBoolean();
+                    cats.add(new Category(ce.getKey(), box, c.get("variants").getAsInt(), turret));
                 }
                 DATA.put(veh.getKey(), cats);
             }
@@ -95,6 +103,7 @@ public final class HumveeAttachments {
      * shared baked model and does not cascade, so it must be re-applied exhaustively).
      */
     public static void applyVisibility(GeoModel<?> model, HumveeVehicle vehicle) {
+        // Folder categories under "Attachments": show only the selected variant subtree.
         model.getBone("Attachments").ifPresent(attachments -> {
             for (GeoBone category : attachments.getChildBones()) {
                 int selected = vehicle.getAttachmentIndex(category.getName());
@@ -104,6 +113,14 @@ public final class HumveeAttachments {
                 }
             }
         });
+        // Turret-mounted single-bone toggles (e.g. "fd"), which live outside "Attachments"
+        // so they rotate with the turret. Shown at index 0, hidden otherwise.
+        for (Category c : categories(vehicle.humveeName())) {
+            if (c.turret) {
+                boolean hidden = vehicle.getAttachmentIndex(c.name) != 0;
+                model.getBone(c.name).ifPresent(bone -> setHiddenDeep(bone, hidden));
+            }
+        }
     }
 
     private static void setHiddenDeep(GeoBone bone, boolean hidden) {
