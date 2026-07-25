@@ -7,45 +7,12 @@ import net.minecraft.resources.ResourceLocation;
 import java.util.List;
 
 /**
- * TrailerTowedData — the towed (tongue) point on a TRAILER, plus the rules for
- * which vehicles may tow it and how it articulates.
- *
- * One JSON file per trailer entity, placed at:
- *   data/<namespace>/trailer_towed/<entity_id>.json
- * where <entity_id> is the trailer's registry name (e.g. "example_trailer").
- *
- * The tongue point is expressed in the trailer's LOCAL space and is the point
- * that gets pinned to the driver's hitch point:
- *   tow_x = lateral offset  (+right, -left)        — usually 0
- *   tow_y = vertical offset (+up)
- *   tow_z = longitudinal    (+forward, -backward)  — usually positive (front tongue)
- *
- * Whitelist:
- *   allowed_drivers   = list of vehicle registry ids that may tow this trailer
- *   allow_any_driver  = if true, any vehicle with trailer_driver data may tow it
- *
- * Behaviour:
- *   max_articulation  = max angle (deg) the trailer may bend away from the
- *                       driver's heading; prevents violent jackknife flips.
- *   terrain_follow    = if true the trailer rides at hitch height; reserved for
- *                       future ground-snapping. Currently rides at the hitch.
- *   attach_search_radius = how close a towing vehicle's HITCH point must be to
- *                       this trailer's TONGUE point for it to be offered as a
- *                       driver, in blocks. Measured hitch-to-tongue, not
- *                       centre-to-centre, so it matches what actually gets
- *                       pinned. Small = must line up properly; large = lenient.
- *
- * Example (data/fcp/trailer_towed/example_trailer.json):
- * {
- *   "tow_x": 0.0,
- *   "tow_y": 0.4,
- *   "tow_z": 3.0,
- *   "allowed_drivers": [ "fcp:kamaz", "fcp:matv" ],
- *   "allow_any_driver": false,
- *   "max_articulation": 110.0,
- *   "terrain_follow": false,
- *   "attach_search_radius": 6.0
- * }
+ * Tongue point and tow rules for a trailer, from data/<ns>/trailer_towed/<entity_id>.json.
+ * tow_x/y/z: tongue in trailer-local space (front tongues use positive z).
+ * allowed_drivers / allow_any_driver: which vehicles may tow it.
+ * max_articulation: max bend (deg) from the driver's heading (anti-jackknife).
+ * attach_search_radius: max hitch-to-tongue distance (blocks) to offer a hitch.
+ * terrain_follow: reserved; currently rides at hitch height.
  */
 public record TrailerTowedData(
         double towX,

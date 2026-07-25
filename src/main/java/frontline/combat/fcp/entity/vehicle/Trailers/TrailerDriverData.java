@@ -4,25 +4,9 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 /**
- * TrailerDriverData — the hitch point on a TOWING (driver) vehicle.
- *
- * One JSON file per towing vehicle, placed at:
- *   data/<namespace>/trailer_driver/<entity_id>.json
- * where <entity_id> is the vehicle's registry name (e.g. "kamaz").
- *
- * The hitch point is expressed in the driver vehicle's LOCAL space:
- *   hitch_x = lateral offset  (+right, -left)
- *   hitch_y = vertical offset (+up)
- *   hitch_z = longitudinal    (+forward, -backward) — usually negative (rear)
- *
- * Example (data/fcp/trailer_driver/kamaz.json):
- * {
- *   "hitch_x":  0.0,
- *   "hitch_y":  0.7,
- *   "hitch_z": -3.6
- * }
- *
- * A vehicle WITHOUT one of these files simply cannot tow anything.
+ * Hitch point on a towing vehicle, in its local space (x right, y up, z forward — rear
+ * hitches use negative z). Read from data/<ns>/trailer_driver/<entity_id>.json; a vehicle
+ * without one cannot tow.
  */
 public record TrailerDriverData(
         double hitchX,

@@ -25,6 +25,11 @@ import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+/**
+ * Towed cultivator. While hitched, tills a strip across its width as it travels, using
+ * Forge's HOE_TILL tool action — so anything a hoe can till (vanilla or modded) works,
+ * grass and dirt included. No inventory; hitching comes from AbstractTrailerEntity.
+ */
 public class CultivatorEntity extends AbstractTrailerEntity {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
@@ -82,6 +87,7 @@ public class CultivatorEntity extends AbstractTrailerEntity {
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
     }
+
     @Override
     public void baseTick() {
         super.baseTick();
@@ -124,14 +130,12 @@ public class CultivatorEntity extends AbstractTrailerEntity {
     private void tillRow(double cx, double cz) {
         int count = (int) Math.floor((ROW_HALF_WIDTH * 2.0) / ROW_SPACING) + 1;
 
-        double theta = Math.toRadians(this.getYRot());
-        double cos = Math.cos(theta), sin = Math.sin(theta);
-
         for (int i = 0; i < count; i++) {
             double lx = -ROW_HALF_WIDTH + i * ROW_SPACING;
-            double wx = cx + (lx * cos - ROW_LOCAL_Z * sin);
-            double wz = cz + (lx * sin + ROW_LOCAL_Z * cos);
-            tillAt(wx, this.getY(), wz);
+            // Full body rotation (yaw AND pitch), so the tines work where the model shows
+            // them on a slope rather than at flat-ground positions.
+            var off = rotateBodyLocal(lx, 0, ROW_LOCAL_Z);
+            tillAt(cx + off.x, this.getY() + off.y, cz + off.z);
         }
     }
 
@@ -155,6 +159,8 @@ public class CultivatorEntity extends AbstractTrailerEntity {
             return;
         }
     }
+
+    /** Null-player hoe context so getToolModifiedState resolves grass/dirt/path -> farmland. */
     private BlockState tilledState(BlockState state, BlockPos pos) {
         UseOnContext context = new TillContext(this.level(), new ItemStack(Items.DIAMOND_HOE),
                 new BlockHitResult(Vec3.atCenterOf(pos), Direction.UP, pos, false));

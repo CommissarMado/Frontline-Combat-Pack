@@ -1,6 +1,7 @@
 package frontline.combat.fcp.entity.vehicle.Trailers;
 
 import com.atsuishio.superbwarfare.entity.vehicle.base.GeoVehicleEntity;
+import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import com.atsuishio.superbwarfare.tools.OBB;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
 import frontline.combat.fcp.init.TrailerDriverConfigs;
@@ -30,45 +31,20 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * AbstractTrailerEntity — base for every towed trailer in FCP.
- *
- * ── Two-point hitch ──────────────────────────────────────────────────────────
- * A trailer is an SBW vehicle with an "Empty" engine, so SBW applies no driving
- * forces of its own. Each tick the trailer's tongue point is pinned to the
- * driver's hitch point and the body trails and rotates around that pin:
- *
- *   driver hitch point   ← TrailerDriverData  (data/<ns>/trailer_driver/<driver>.json)
- *   trailer tongue point ← TrailerTowedData   (data/<ns>/trailer_towed/<trailer>.json)
- *
- *   1. Hitch world position H = driverPos + R(driverYaw)·driverHitchOffset
- *   2. Trailer yaw φ = heading from the trailer's CURRENT body position to H,
- *      clamped to ±max_articulation of the driver's heading (anti-jackknife).
- *   3. Trailer position so the tongue lands on H:  pos = H − R(φ)·trailerTongueOffset
+ * Base for towed trailers. An SBW vehicle with an "Empty" engine; each tick the tongue
+ * point is pinned to the driver's hitch point:
+ *   1. hitch H = driverPos + R(driverYaw)·hitchOffset      (from trailer_driver JSON)
+ *   2. yaw = heading from trailer body to H, clamped to ±max_articulation
+ *   3. pos = H − R(yaw)·tongueOffset                        (from trailer_towed JSON)
  * Applied with setPos/setYRot, never velocity (SBW clamps large velocity changes).
  *
- * ── Why the constraint also runs on the client ───────────────────────────────
- * SBW client-PREDICTS the vehicle a player drives (isControlledByLocalInstance),
- * rendering it at its immediate local position. Everything else — including this
- * trailer — is interpolated toward the SERVER position over several ticks. If the
- * trailer only solved on the server, then on the driver's screen the predicted
- * truck would surge ahead while the trailer chased a delayed server stream, and
- * the gap would grow with acceleration.
- *
- * So the constraint runs on BOTH sides. On the client it pins to the client-side
- * (predicted) driver, so the trailer tracks the truck exactly as it is rendered.
- * The hitch/tongue offsets and the driver's network id are synced for this; the
- * config datapacks themselves are only read server-side. While attached, SBW's
- * interpolation (handleClientSync / lerpTo) is suppressed so it can't fight the
- * constraint.
- *
- * ── Local → world transform ──────────────────────────────────────────────────
- * SBW positions with Axis.YP.rotationDegrees(-yaw); the matching local→world for
- * yaw θ (radians), local +Z forward, is:
- *   worldX = x + (lx·cosθ − lz·sinθ);  worldZ = z + (lx·sinθ + lz·cosθ)
+ * The constraint runs on BOTH sides: SBW client-predicts the driven vehicle, so a
+ * server-only trailer would visibly lag the truck. Offsets and the driver's network id
+ * are synced for this; datapack configs are only read server-side. While attached,
+ * SBW's interpolation is suppressed so it can't fight the constraint.
  */
 public abstract class AbstractTrailerEntity extends CamoVehicleBase {
 
-    // Synced so BOTH sides can solve the constraint against their own driver copy.
     private static final EntityDataAccessor<Integer> DRIVER_ID =
             SynchedEntityData.defineId(AbstractTrailerEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> ATTACHED =
@@ -88,36 +64,36 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
     private static final EntityDataAccessor<Float> MAX_ART =
             SynchedEntityData.defineId(AbstractTrailerEntity.class, EntityDataSerializers.FLOAT);
 
-    /**
-     * Extra reach added to the BROAD entity query only (not the accept test). A hitch point
-     * sits behind its vehicle's origin and can lie outside that vehicle's own bounding box,
-     * so the query has to look further than the configured radius to even see the vehicle.
-     */
+    /** Extra reach for broad entity queries only — a hitch can sit outside its vehicle's box. */
     private static final double HITCH_QUERY_MARGIN = 10.0;
 
-    // Anti-glitch guard. The hitch point should never move more than a vehicle can
-    // plausibly travel in one tick; a bigger jump is a transient (e.g. client
-    // prediction reconciliation throwing the driver's position/velocity for a tick)
-    // and snapping to it shows up as a ~90 deg yaw flip that immediately corrects.
-    // Jumps beyond this are skipped — invisible because they only last a tick —
-    // unless they persist, which means a real teleport that should be honoured.
-    private static final double MAX_HITCH_JUMP = 4.0;
-    private static final double MAX_HITCH_JUMP_SQ = MAX_HITCH_JUMP * MAX_HITCH_JUMP;
+    // Glitch guards: reject single-tick hitch jumps / yaw swings no real vehicle could
+    // produce (client prediction spikes), unless they persist — then it's a real
+    // teleport / fast reorientation and gets honoured.
+    private static final double MAX_HITCH_JUMP_SQ = 4.0 * 4.0;
+    private static final float MAX_YAW_STEP = 50.0f;
     private static final int MAX_GLITCH_TICKS = 5;
 
-    // A trailer physically cannot reorient this far in a single tick. Real sharp
-    // turns stay well under it; a larger demanded swing is the "look-at-hitch" yaw
-    // overshooting for one tick as the hitch sweeps sideways during a hard turn.
-    // Such ticks keep the previous yaw (so the body never flings out), unless the
-    // demand persists, which would be a legitimate fast reorientation.
-    private static final float MAX_YAW_STEP = 50.0f;
+    /** Server ticks to wait for a missing driver (chunk load order, dimension sync) before detaching. */
+    private static final int MISSING_DRIVER_GRACE_TICKS = 600;
 
-    /** Consecutive ticks the hitch has looked glitched; transient, not saved. */
+    // Terrain pitch: sampled fore/aft of the axle each tick, smoothed so single-block
+    // steps read as a bump rather than a snap.
+    private static final float MAX_TERRAIN_PITCH = 35.0f;
+    private static final float PITCH_SMOOTHING = 0.25f;
+    private static final int GROUND_PROBE_DEPTH = 8;
+
+    /** Ticks over which a fresh hitch eases into place instead of teleporting. */
+    private static final int ATTACH_LERP_TICKS = 10;
+
     private int hitchGlitchTicks = 0;
-    /** Consecutive ticks the demanded yaw swing looked glitched; transient. */
     private int yawGlitchTicks = 0;
+    private int missingDriverTicks = 0;
+    private float terrainPitch = 0.0f;
+    private int attachLerpTicks = 0;
+    private boolean wasAttached = false;
 
-    /** Server-side source of truth for the driver, survives save/load. */
+    /** Server-side source of truth for the driver; survives save/load. */
     @Nullable
     private UUID driverUUID;
 
@@ -139,7 +115,31 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
         this.entityData.define(MAX_ART, 110.0f);
     }
 
-    /** Tongue / tow rules for THIS trailer, resolved from its registry id (server). */
+    /** Rotate a local-space offset by yaw (degrees) and add the given origin. */
+    private static Vec3 localToWorld(double ox, double oy, double oz, float yawDeg,
+                                     double lx, double ly, double lz) {
+        return localToWorldTilted(ox, oy, oz, yawDeg, 0.0f, lx, ly, lz);
+    }
+
+    /**
+     * As localToWorld, but the offset is first pitched about X (vanilla xRot sign:
+     * positive = nose down). This is what puts a rear hitch HIGHER when the truck noses
+     * down a slope — yaw-only maths kept the hitch at flat-ground height, which is the
+     * desync this fixes. Roll is ignored: hitch/tongue offsets sit on the centreline
+     * (x ~ 0), so its contribution is negligible.
+     */
+    private static Vec3 localToWorldTilted(double ox, double oy, double oz, float yawDeg,
+                                           float pitchDeg, double lx, double ly, double lz) {
+        double pitch = Math.toRadians(pitchDeg);
+        double cp = Math.cos(pitch), sp = Math.sin(pitch);
+        double py = ly * cp - lz * sp;
+        double pz = ly * sp + lz * cp;
+
+        double theta = Math.toRadians(yawDeg);
+        double cos = Math.cos(theta), sin = Math.sin(theta);
+        return new Vec3(ox + (lx * cos - pz * sin), oy + py, oz + (lx * sin + pz * cos));
+    }
+
     @Nullable
     public TrailerTowedData getTowedData() {
         ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(this.getType());
@@ -150,27 +150,25 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
         return this.entityData.get(ATTACHED);
     }
 
-    /**
-     * The driver's hitch point in the DRIVER's local space, as synced at attach time.
-     * Only meaningful while attached. Synced, so it is valid on the client too.
-     */
+    /** True if this trailer is hitched to the given entity. Valid on both sides, no side effects. */
+    public boolean isDrivenBy(Entity candidate) {
+        if (!isAttached()) return false;
+        if (driverUUID != null) return candidate.getUUID().equals(driverUUID);
+        return candidate.getId() == this.entityData.get(DRIVER_ID);
+    }
+
     public Vec3 getHitchOffset() {
         return new Vec3(this.entityData.get(HITCH_X),
                 this.entityData.get(HITCH_Y),
                 this.entityData.get(HITCH_Z));
     }
 
-    /**
-     * This trailer's tongue point in the TRAILER's local space. Synced, so it is valid
-     * on the client too (getTowedData() resolves from datapack configs and is server-side).
-     */
     public Vec3 getTowOffset() {
         return new Vec3(this.entityData.get(TOW_X),
                 this.entityData.get(TOW_Y),
                 this.entityData.get(TOW_Z));
     }
 
-    /** Max articulation angle (degrees) between driver and trailer. Synced. */
     public float getMaxArticulation() {
         return this.entityData.get(MAX_ART);
     }
@@ -181,9 +179,8 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
     public void baseTick() {
         boolean attached = isAttached();
 
-        // Anchor render interpolation to last tick's pose before anything moves us,
-        // so the partial-tick lerp (xOld→x, yRotO→yRot) stays smooth even though we
-        // teleport into place at the end of the tick.
+        // Anchor render interpolation to last tick's pose; the constraint teleports us at
+        // the end of the tick and the partial-tick lerp must stay smooth.
         if (attached) {
             this.xOld = this.getX();
             this.yOld = this.getY();
@@ -194,123 +191,266 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
 
         super.baseTick();
 
-        // The tongue point is only pushed into synced data by attach(). Publish it from
-        // the config while detached, so the tongue is known (client included) BEFORE the
-        // first hitch — the hitch click zone and the debug overlay both need it. Re-read
-        // periodically rather than once, so /reload picks up edits to the JSON live.
+        // Publish the tongue point while detached so the hitch click zone and debug overlay
+        // know it before the first attach; periodic so /reload edits take effect live.
         if (!this.level().isClientSide() && !attached && this.tickCount % 20 == 0) {
             syncTowDataFromConfig();
         }
 
-        if (!attached) return;
+        if (attached && !this.wasAttached) {
+            this.attachLerpTicks = ATTACH_LERP_TICKS; // ease in on whichever side just learned
+        }
+        this.wasAttached = attached;
+        if (!attached) {
+            this.attachLerpTicks = 0;
+            return;
+        }
 
-        // Suppress SBW's vehicle pitch/bank/roll visuals while towed (see method).
         flattenCosmeticRotation();
 
         Entity driver = resolveDriver();
-        if (driver == null) return; // server may have detached if the driver is gone
+        if (driver == null) return;
 
         applyHitchConstraint(driver);
     }
 
     /**
-     * A trailer is a towed box, not a self-driven vehicle, so it should never bank,
-     * pitch, or roll from SBW's vehicle dynamics. On a setPos-driven follower those
-     * fields spike for a single render tick during sharp turns — the model flips
-     * ~90 deg "to the side" then corrects. Zeroing the pitch (xRot) and roll
-     * (roll / prevRoll) each tick leaves the renderer with only the yaw we drive.
-     * Only fields present in the SBW jar being built against are set here.
+     * Zero SBW's bank/roll each tick — on a setPos-driven follower they spike for a render
+     * tick during sharp turns, flipping the model sideways. Pitch is NOT zeroed: the
+     * constraint sets it from the terrain every tick, so SBW never gets a word in anyway.
      */
     private void flattenCosmeticRotation() {
-        this.setXRot(0.0f);
-        this.xRotO = 0.0f;
-        this.setZRot(0.0f);       // roll
+        this.setZRot(0.0f);
         this.setPrevRoll(0.0f);
     }
 
     private void applyHitchConstraint(Entity driver) {
-        // Tick-order compensation: if the driver hasn't run its own tick yet this
-        // game tick its reported position is last tick's, which would leave the
-        // trailer one tick behind. Anticipate its horizontal movement to cancel that.
+        // If the driver hasn't ticked yet this game tick, its position is one tick old;
+        // anticipate its horizontal movement so the trailer doesn't trail a tick behind.
         double antX = 0.0, antZ = 0.0;
         if (driver.tickCount < this.tickCount) {
             Vec3 dv = driver.getDeltaMovement();
             antX = dv.x;
             antZ = dv.z;
         }
-        double driverX = driver.getX() + antX;
-        double driverZ = driver.getZ() + antZ;
-        double driverY = driver.getY();
 
-        double hitchX = this.entityData.get(HITCH_X);
-        double hitchY = this.entityData.get(HITCH_Y);
-        double hitchZ = this.entityData.get(HITCH_Z);
-        double towX = this.entityData.get(TOW_X);
-        double towY = this.entityData.get(TOW_Y);
-        double towZ = this.entityData.get(TOW_Z);
+        Vec3 hitchOff = getHitchOffset();
+        Vec3 towOff = getTowOffset();
         float maxArt = this.entityData.get(MAX_ART);
 
-        // 1. Hitch world position from the driver.
-        double thetaD = Math.toRadians(driver.getYRot());
-        double cosD = Math.cos(thetaD), sinD = Math.sin(thetaD);
-        double hx = driverX + (hitchX * cosD - hitchZ * sinD);
-        double hz = driverZ + (hitchX * sinD + hitchZ * cosD);
-        double hy = driverY + hitchY;
+        // Where the hitch is DRAWN. SBW rotates a vehicle about a raised pivot
+        // (0, rotateOffsetHeight, 0), by roll+fakeRoll then xRot+fakePitch then yaw — not
+        // about the entity origin. Rotating the offset about the origin was the desync
+        // that appeared exactly (and only) when the towing vehicle tilted: the pivot term
+        // vanishes untilted, and yaw alone is pivot-agnostic since the pivot sits on the
+        // yaw axis.
+        Vec3 hitch = driverHitchWorld(driver, driver.getX() + antX, driver.getY(), driver.getZ() + antZ,
+                driver.getYRot(), hitchOff);
 
-        // Reject implausible single-tick hitch jumps (transient prediction spikes).
-        // Compare the new hitch to where the tongue currently sits; a real vehicle
-        // can't move it more than MAX_HITCH_JUMP in one tick. Skip the glitch tick
-        // entirely, but give up and accept it if it persists (a genuine teleport).
-        double thetaCur = Math.toRadians(this.getYRot());
-        double cosC = Math.cos(thetaCur), sinC = Math.sin(thetaCur);
-        double tongueX = this.getX() + (towX * cosC - towZ * sinC);
-        double tongueZ = this.getZ() + (towX * sinC + towZ * cosC);
-        double jx = hx - tongueX, jz = hz - tongueZ;
-        if (jx * jx + jz * jz > MAX_HITCH_JUMP_SQ && hitchGlitchTicks < MAX_GLITCH_TICKS) {
-            hitchGlitchTicks++;
-            this.setDeltaMovement(Vec3.ZERO);
-            return; // hold position this tick; the hitch is sane again next tick
-        }
-        hitchGlitchTicks = 0;
+        boolean easing = this.attachLerpTicks > 0;
 
-        // 2. Trailing yaw: aim the trailer's front from its current body to the hitch.
-        double dx = hx - this.getX();
-        double dz = hz - this.getZ();
-        float yaw;
-        if (dx * dx + dz * dz < 1.0e-6) {
-            yaw = this.getYRot();
-        } else {
-            yaw = (float) Math.toDegrees(Math.atan2(-dx, dz));
+        // Reject implausible single-tick hitch jumps (see glitch guards above). Not while
+        // easing in: a fresh hitch legitimately starts several blocks away — the guard
+        // would freeze exactly the gap the ease exists to close.
+        if (!easing) {
+            Vec3 tongue = getTongueWorldPos();
+            double jx = hitch.x - tongue.x, jz = hitch.z - tongue.z;
+            if (jx * jx + jz * jz > MAX_HITCH_JUMP_SQ && hitchGlitchTicks < MAX_GLITCH_TICKS) {
+                hitchGlitchTicks++;
+                this.setDeltaMovement(Vec3.ZERO);
+                return;
+            }
+            hitchGlitchTicks = 0;
         }
-        float rel = Mth.wrapDegrees(yaw - driver.getYRot());
-        if (rel > maxArt) rel = maxArt;
-        if (rel < -maxArt) rel = -maxArt;
+
+        // Trailing yaw: aim at the hitch, clamped to ±maxArt of the driver's heading.
+        double dx = hitch.x - this.getX();
+        double dz = hitch.z - this.getZ();
+        float yaw = dx * dx + dz * dz < 1.0e-6
+                ? this.getYRot()
+                : (float) Math.toDegrees(Math.atan2(-dx, dz));
+        float rel = Mth.clamp(Mth.wrapDegrees(yaw - driver.getYRot()), -maxArt, maxArt);
         yaw = Mth.wrapDegrees(driver.getYRot() + rel);
 
-        // Reject a physically-impossible single-tick yaw swing. During a hard turn
-        // the instantaneous look-at-hitch heading can spike for one tick and fling
-        // the whole body sideways (since position is derived from yaw below). Keep
-        // the previous heading on such a tick — invisible because it self-corrects
-        // next tick — but accept it if it persists (a real fast reorientation).
-        float yawStep = Mth.wrapDegrees(yaw - this.getYRot());
-        if (Math.abs(yawStep) > MAX_YAW_STEP && yawGlitchTicks < MAX_GLITCH_TICKS) {
-            yawGlitchTicks++;
-            yaw = this.getYRot();
-        } else {
-            yawGlitchTicks = 0;
+        // Reject an impossible single-tick yaw swing (position derives from yaw below,
+        // so a spike would fling the whole body sideways). Also skipped while easing —
+        // swinging round to the hitch heading IS the point then.
+        if (!easing) {
+            float yawStep = Mth.wrapDegrees(yaw - this.getYRot());
+            if (Math.abs(yawStep) > MAX_YAW_STEP && yawGlitchTicks < MAX_GLITCH_TICKS) {
+                yawGlitchTicks++;
+                yaw = this.getYRot();
+            } else {
+                yawGlitchTicks = 0;
+            }
         }
 
-        // 3. Position so the tongue lands on the hitch.
-        double thetaT = Math.toRadians(yaw);
-        double cosT = Math.cos(thetaT), sinT = Math.sin(thetaT);
-        double newX = hx - (towX * cosT - towZ * sinT);
-        double newZ = hz - (towX * sinT + towZ * cosT);
-        double newY = hy - towY;
+        updateTerrainPitch(yaw, hitch);
 
-        this.setPos(newX, newY, newZ);
+        if (easing) {
+            // Close 1/n of the remaining gap with n counting down — lands EXACTLY on the
+            // hitch on the final tick, and every step is an ordinary smooth move.
+            float alpha = 1.0f / this.attachLerpTicks;
+            this.attachLerpTicks--;
+
+            Vec3 tongueFromOrigin = localToWorldTilted(0, 0, 0, yaw, this.terrainPitch,
+                    towOff.x, towOff.y, towOff.z);
+            double tx = hitch.x - tongueFromOrigin.x;
+            double ty = hitch.y - tongueFromOrigin.y;
+            double tz = hitch.z - tongueFromOrigin.z;
+
+            this.setPos(Mth.lerp(alpha, this.getX(), tx),
+                    Mth.lerp(alpha, this.getY(), ty),
+                    Mth.lerp(alpha, this.getZ(), tz));
+            this.setYRot(Mth.rotLerp(alpha, this.getYRot(), yaw));
+            this.setXRot(Mth.rotLerp(alpha, this.getXRot(), this.terrainPitch));
+            this.setDeltaMovement(Vec3.ZERO);
+            return;
+        }
+
+        placeTongueOnHitch(hitch, yaw, this.terrainPitch, towOff);
+    }
+
+    /**
+     * The pitch a vehicle is DRAWN at: xRot plus SBW's inertia sway (fakePitch).
+     *
+     * fakePitch is read by REFLECTION, resolved once and cached: its Java-visible shape
+     * differs across SBW builds (a public field in the Java-era jars, a getter after the
+     * Kotlin conversion), so a direct reference compiles against one and breaks on the
+     * other. This works against either, and simply contributes 0 on a build without it.
+     */
+    /**
+     * A hitch offset carried through the DRIVER's full rendered orientation, exactly as
+     * SBW 0.8.9 draws it: rotate (offset − pivot) by roll, then pitch, then yaw, about the
+     * pivot (0, rotateOffsetHeight, 0), then translate back. Pitch is xRot + fakePitch,
+     * roll is roll + fakeRoll.
+     */
+    private static Vec3 driverHitchWorld(Entity driver, double ox, double oy, double oz,
+                                         float yawDeg, Vec3 offset) {
+        double pivotY = sbwFloat(driver, ROTATE_OFFSET_HEIGHT);
+        float pitchDeg = driver.getXRot() + sbwFloat(driver, FAKE_PITCH);
+        float rollDeg = sbwFloat(driver, ROLL) + sbwFloat(driver, FAKE_ROLL);
+
+        double lx = offset.x, ly = offset.y - pivotY, lz = offset.z;
+
+        double r = Math.toRadians(rollDeg);
+        double cr = Math.cos(r), sr = Math.sin(r);
+        double rx = lx * cr - ly * sr;
+        double ry = lx * sr + ly * cr;
+
+        Vec3 world = localToWorldTilted(ox, oy + pivotY, oz, yawDeg, pitchDeg, rx, ry, lz);
+        return world;
+    }
+
+    /** As driverHitchWorld, with the vanilla-synced pitch component frame-interpolated. */
+    private static Vec3 driverHitchWorldLerped(Entity driver, Vec3 pos, float yawDeg,
+                                               float partialTick, Vec3 offset) {
+        double pivotY = sbwFloat(driver, ROTATE_OFFSET_HEIGHT);
+        float pitchDeg = Mth.lerp(partialTick, driver.xRotO, driver.getXRot())
+                + sbwFloat(driver, FAKE_PITCH);
+        float rollDeg = sbwFloat(driver, ROLL) + sbwFloat(driver, FAKE_ROLL);
+
+        double lx = offset.x, ly = offset.y - pivotY, lz = offset.z;
+        double r = Math.toRadians(rollDeg);
+        double cr = Math.cos(r), sr = Math.sin(r);
+        double rx = lx * cr - ly * sr;
+        double ry = lx * sr + ly * cr;
+
+        return localToWorldTilted(pos.x, pos.y + pivotY, pos.z, yawDeg, pitchDeg, rx, ry, lz);
+    }
+
+    /** Read a float-valued SBW property through a cached handle; 0 when absent. */
+    private static float sbwFloat(Entity driver, @Nullable java.lang.invoke.MethodHandle handle) {
+        if (handle != null && driver instanceof VehicleEntity vehicle) {
+            try {
+                return ((Number) handle.invoke(vehicle)).floatValue();
+            } catch (Throwable ignored) {
+            }
+        }
+        return 0.0f;
+    }
+
+    // SBW symbols read by REFLECTION, resolved once: their Java-visible shape differs
+    // across SBW builds (fields in Java-era jars, getters after the Kotlin conversion),
+    // so a direct reference compiles against one and breaks on the other. Each degrades
+    // to 0 when a build lacks it.
+    @Nullable
+    private static final java.lang.invoke.MethodHandle FAKE_PITCH = resolveSbw("getFakePitch", "fakePitch");
+    @Nullable
+    private static final java.lang.invoke.MethodHandle FAKE_ROLL = resolveSbw("getFakeRoll", "fakeRoll");
+    @Nullable
+    private static final java.lang.invoke.MethodHandle ROLL = resolveSbw("getRoll", "roll");
+    @Nullable
+    private static final java.lang.invoke.MethodHandle ROTATE_OFFSET_HEIGHT =
+            resolveSbw("getRotateOffsetHeight", "rotateOffsetHeight");
+
+    @Nullable
+    private static java.lang.invoke.MethodHandle resolveSbw(String getter, String field) {
+        java.lang.invoke.MethodHandles.Lookup lookup = java.lang.invoke.MethodHandles.lookup();
+        try {
+            return lookup.unreflect(VehicleEntity.class.getMethod(getter));
+        } catch (Exception ignored) {
+        }
+        try {
+            return lookup.unreflectGetter(VehicleEntity.class.getField(field));
+        } catch (Exception ignored) {
+        }
+        return null;
+    }
+
+    /** Position the body so the tongue lands on the hitch at the given yaw and pitch. */
+    private void placeTongueOnHitch(Vec3 hitch, float yaw, float pitch, Vec3 towOff) {
+        Vec3 tongueFromOrigin = localToWorldTilted(0, 0, 0, yaw, pitch, towOff.x, towOff.y, towOff.z);
+        this.setPos(hitch.x - tongueFromOrigin.x, hitch.y - tongueFromOrigin.y, hitch.z - tongueFromOrigin.z);
         this.setYRot(yaw);
-        this.setXRot(0.0f);
+        this.setXRot(pitch);
         this.setDeltaMovement(Vec3.ZERO);
+    }
+
+    /**
+     * Pitch for a body that HANGS from the hitch at the front and rests on the ground at
+     * the rear: the angle of the hitch-to-rear-ground line.
+     *
+     * Terrain under the front half is deliberately not consulted — the front doesn't touch
+     * it. That was the long-tongue desync: with the truck up a slope and the trailer on
+     * flat ground, terrain-under-body said "level", so the trailer refused to tilt and the
+     * tongue solve floated the whole body to hitch height instead.
+     *
+     * tow.y is subtracted from the hitch height so a flat run reads as 0 (coupler and
+     * axle sit at comparable heights). Smoothed so a one-block step reads as a bump,
+     * clamped so a cliff edge can't fold the trailer.
+     */
+    private void updateTerrainPitch(float yaw, Vec3 hitch) {
+        Vec3 tow = getTowOffset();
+        double rearZ = -Math.max(1.5, Math.abs(tow.z)); // rear contact, mirroring the tongue
+        double run = Math.abs(tow.z - rearZ);
+
+        Vec3 rear = localToWorld(this.getX(), this.getY(), this.getZ(), yaw, 0, 0, rearZ);
+        double rearGround = groundYAt(rear);
+
+        double dy = (hitch.y - tow.y) - rearGround;
+        float target = (float) -Math.toDegrees(Math.atan2(dy, run));
+        target = Mth.clamp(target, -MAX_TERRAIN_PITCH, MAX_TERRAIN_PITCH);
+        this.terrainPitch = this.terrainPitch + (target - this.terrainPitch) * PITCH_SMOOTHING;
+    }
+
+    /** Top of the first block with collision at/below the given point; current Y if none found. */
+    private double groundYAt(Vec3 point) {
+        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(
+                Mth.floor(point.x), Mth.floor(point.y + 1.0), Mth.floor(point.z));
+        if (!this.level().hasChunkAt(pos)) return point.y;
+
+        for (int i = 0; i <= GROUND_PROBE_DEPTH; i++) {
+            BlockState state = this.level().getBlockState(pos);
+            if (!state.isAir()) {
+                var shape = state.getCollisionShape(this.level(), pos);
+                if (!shape.isEmpty()) {
+                    return pos.getY() + shape.max(net.minecraft.core.Direction.Axis.Y);
+                }
+            }
+            pos.move(0, -1, 0);
+        }
+        return point.y;
     }
 
     // ── Attach / detach ─────────────────────────────────────────────────────────
@@ -323,12 +463,11 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
         if (driverId == null) return false;
 
         TrailerDriverData drv = TrailerDriverConfigs.get(driverId);
-        if (drv == null) return false;                  // driver can't tow
-
+        if (drv == null) return false;
         TrailerTowedData towed = getTowedData();
-        if (towed == null) return false;                // trailer has no tow config
-        if (!towed.canBeTowedBy(driverId)) return false; // not whitelisted
-        if (isHitchTaken(driver, this)) return false;    // hitch already has a trailer on it
+        if (towed == null) return false;
+        if (!towed.canBeTowedBy(driverId)) return false;
+        if (isHitchTaken(driver, this)) return false;
 
         this.driverUUID = driver.getUUID();
         this.entityData.set(DRIVER_ID, driver.getId());
@@ -340,23 +479,13 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
         this.entityData.set(TOW_Y, (float) towed.towY());
         this.entityData.set(TOW_Z, (float) towed.towZ());
         this.entityData.set(MAX_ART, towed.maxArticulation());
+        this.hitchGlitchTicks = 0;
+        this.yawGlitchTicks = 0;
+        this.missingDriverTicks = 0;
 
-        // One-time snap: face the driver's heading, tongue on the hitch.
-        double thetaD = Math.toRadians(driver.getYRot());
-        double cosD = Math.cos(thetaD), sinD = Math.sin(thetaD);
-        double hx = driver.getX() + (drv.hitchX() * cosD - drv.hitchZ() * sinD);
-        double hz = driver.getZ() + (drv.hitchX() * sinD + drv.hitchZ() * cosD);
-        double hy = driver.getY() + drv.hitchY();
-        float yaw = driver.getYRot();
-        double newX = hx - (towed.towX() * cosD - towed.towZ() * sinD);
-        double newZ = hz - (towed.towX() * sinD + towed.towZ() * cosD);
-        double newY = hy - towed.towY();
-
-        this.setPos(newX, newY, newZ);
-        this.setYRot(yaw);
-        this.yRotO = yaw;
-        this.setXRot(0.0f);
-        this.setDeltaMovement(Vec3.ZERO);
+        // No snap here: the attach edge in baseTick starts an ease on BOTH sides (this
+        // method is server-only), so the trailer swings smoothly onto the hitch instead of
+        // teleporting.
         return true;
     }
 
@@ -364,6 +493,11 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
         this.driverUUID = null;
         this.entityData.set(DRIVER_ID, -1);
         this.entityData.set(ATTACHED, false);
+        this.hitchGlitchTicks = 0;
+        this.yawGlitchTicks = 0;
+        this.missingDriverTicks = 0;
+        this.terrainPitch = 0.0f;
+        this.attachLerpTicks = 0;
     }
 
     @Nullable
@@ -376,135 +510,139 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
         if (!isAttached()) return null;
 
         if (this.level() instanceof ServerLevel sl) {
-            // Server: resolve by UUID (robust across reload), keep the synced id fresh.
             Entity e = driverUUID == null ? null : sl.getEntity(driverUUID);
             if (e == null) {
-                detach();
+                // The driver's chunk may simply not be loaded yet (world load order,
+                // dimension sync). Give it time before concluding it's really gone.
+                if (driverUUID == null || ++missingDriverTicks > MISSING_DRIVER_GRACE_TICKS) {
+                    detach();
+                }
                 return null;
             }
+            missingDriverTicks = 0;
             if (this.entityData.get(DRIVER_ID) != e.getId()) {
-                this.entityData.set(DRIVER_ID, e.getId());
+                this.entityData.set(DRIVER_ID, e.getId()); // network id changes across reloads
             }
             return e;
         }
 
-        // Client: resolve purely by the synced network id.
         int id = this.entityData.get(DRIVER_ID);
-        if (id < 0) return null;
-        return this.level().getEntity(id);
+        return id < 0 ? null : this.level().getEntity(id);
     }
 
     /**
-     * This trailer's tongue point in WORLD space — the point that gets pinned to a hitch.
-     * Yaw-only rotation about the entity position, the same convention the hitch constraint
-     * uses.
+     * World-space correction to render the trailer with its tongue EXACTLY on the driver's
+     * rendered hitch this frame.
+     *
+     * The tick solve is exact at tick boundaries, but between them the trailer's pose is
+     * interpolated LINEARLY while the tongue is a rotating offset — so mid-frame the
+     * tongue drifts off the hitch by an error that grows with the offset lengths and the
+     * turn rate. This recomputes both attachment points from the interpolated render
+     * poses (driver sway included) and returns the difference for the renderer to
+     * translate by. Zero while detached or still easing on.
      */
-    public Vec3 getTongueWorldPos() {
+    public Vec3 renderPinCorrection(float partialTick) {
+        if (!isAttached() || this.attachLerpTicks > 0) return Vec3.ZERO;
+        Entity driver = resolveDriver();
+        if (driver == null) return Vec3.ZERO;
+
+        Vec3 hitchOff = getHitchOffset();
+        float driverYaw = Mth.rotLerp(partialTick, driver.yRotO, driver.getYRot());
+        Vec3 driverPos = driver.getPosition(partialTick);
+        // Full rendered orientation (pivot, roll, sway) — same transform the tick solve
+        // uses. xRot is lerped for the frame; the sway/roll terms decay smoothly enough
+        // that their current-tick values are visually exact.
+        Vec3 hitch = driverHitchWorldLerped(driver, driverPos, driverYaw, partialTick, hitchOff);
+
         Vec3 tow = getTowOffset();
-        double theta = Math.toRadians(this.getYRot());
-        double cos = Math.cos(theta), sin = Math.sin(theta);
-        return new Vec3(
-                this.getX() + (tow.x * cos - tow.z * sin),
-                this.getY() + tow.y,
-                this.getZ() + (tow.x * sin + tow.z * cos));
+        float myYaw = Mth.rotLerp(partialTick, this.yRotO, this.getYRot());
+        float myPitch = Mth.lerp(partialTick, this.xRotO, this.getXRot());
+        Vec3 myPos = this.getPosition(partialTick);
+        Vec3 tongue = localToWorldTilted(myPos.x, myPos.y, myPos.z,
+                myYaw, myPitch, tow.x, tow.y, tow.z);
+
+        Vec3 fix = hitch.subtract(tongue);
+        // A large correction means something upstream is wrong (teleport, glitch tick) —
+        // don't smear the model across the world for it.
+        return fix.lengthSqr() > 4.0 ? Vec3.ZERO : fix;
     }
 
-    /** A towing vehicle's hitch point in WORLD space, or null if it can't tow. */
+    /**
+     * Rotate a body-local offset by the trailer's CURRENT yaw and pitch (no origin added).
+     * For anything that follows the body — implement rows, attachment points — so a pitched
+     * trailer's working parts are where the model shows them, not at flat-ground positions.
+     */
+    protected Vec3 rotateBodyLocal(double lx, double ly, double lz) {
+        return localToWorldTilted(0, 0, 0, this.getYRot(), this.getXRot(), lx, ly, lz);
+    }
+
+    /** This trailer's tongue point in world space — the point that gets pinned to a hitch. */
+    public Vec3 getTongueWorldPos() {
+        Vec3 tow = getTowOffset();
+        return localToWorldTilted(this.getX(), this.getY(), this.getZ(),
+                this.getYRot(), this.getXRot(), tow.x, tow.y, tow.z);
+    }
+
+    /** A towing vehicle's hitch point in world space, or null if it can't tow. */
     @Nullable
     public static Vec3 getHitchWorldPos(Entity driver) {
         ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(driver.getType());
         if (id == null) return null;
         TrailerDriverData drv = TrailerDriverConfigs.get(id);
         if (drv == null) return null;
-
-        double theta = Math.toRadians(driver.getYRot());
-        double cos = Math.cos(theta), sin = Math.sin(theta);
-        return new Vec3(
-                driver.getX() + (drv.hitchX() * cos - drv.hitchZ() * sin),
-                driver.getY() + drv.hitchY(),
-                driver.getZ() + (drv.hitchX() * sin + drv.hitchZ() * cos));
+        return localToWorld(driver.getX(), driver.getY(), driver.getZ(),
+                driver.getYRot(), drv.hitchX(), drv.hitchY(), drv.hitchZ());
     }
 
-    /**
-     * Result of a driver search: the connectable vehicle if one was found, plus whether we
-     * rejected any candidate purely because its hitch was already in use — so the player
-     * can be told "that hitch is taken" instead of a misleading "nothing nearby".
-     */
     private record DriverSearch(@Nullable Entity driver, boolean sawTakenHitch) {
     }
 
-    /**
-     * True if some OTHER trailer is already hitched to this vehicle. A hitch is a single
-     * connection point — without this, two trailers happily pin to the same tractor and
-     * fight over the same position.
-     */
+    /** True if some OTHER trailer is already hitched to this vehicle — a hitch is one point. */
     private static boolean isHitchTaken(Entity driver, @Nullable AbstractTrailerEntity ignore) {
-        List<AbstractTrailerEntity> trailers = driver.level().getEntitiesOfClass(
+        return !driver.level().getEntitiesOfClass(
                 AbstractTrailerEntity.class,
                 driver.getBoundingBox().inflate(HITCH_QUERY_MARGIN),
-                t -> t != ignore && t.isAttached());
-        for (AbstractTrailerEntity trailer : trailers) {
-            if (trailer.getDriver() == driver) return true;
-        }
-        return false;
+                t -> t != ignore && t.isDrivenBy(driver)).isEmpty();
     }
 
     /**
-     * Find the best vehicle to hitch to.
-     *
-     * A candidate only counts if it offers a hitch we can actually connect to — it has a
-     * trailer_driver config (so a real hitch point exists), it's whitelisted for this
-     * trailer, its hitch is within reach of our tongue, and that hitch isn't already in use.
-     *
-     * Distance is measured HITCH-to-TONGUE, not centre-to-centre, so the radius means what
-     * you'd expect: how close the two connection points have to be. The nearest hitch wins,
-     * which is also the one that will move the least when it snaps.
+     * Find the nearest connectable hitch. Distance is measured HITCH-to-TONGUE, not
+     * centre-to-centre, so attach_search_radius means how close the two connection points
+     * must be. Tracks whether any candidate was rejected only because its hitch was in use,
+     * so the player gets "hitch taken" rather than a misleading "nothing nearby".
      */
     private DriverSearch findNearestDriver() {
         TrailerTowedData towed = getTowedData();
         if (towed == null) return new DriverSearch(null, false);
 
-        double radius = towed.attachSearchRadius();
-        double radiusSq = radius * radius;
+        double radiusSq = towed.attachSearchRadius() * towed.attachSearchRadius();
         Vec3 tongue = getTongueWorldPos();
 
-        // The broad query is deliberately wider than the radius: a hitch sits several
-        // blocks behind its vehicle's origin and can even fall outside that vehicle's own
-        // bounding box, so a tight query would miss vehicles whose hitch is right there.
-        // The real tests are the hitch checks below.
+        // Broad query is wider than the radius on purpose: a hitch sits behind its
+        // vehicle's origin and can fall outside that vehicle's own bounding box.
         List<Entity> candidates = this.level().getEntities(
                 this,
-                new AABB(tongue, tongue).inflate(radius + HITCH_QUERY_MARGIN),
+                new AABB(tongue, tongue).inflate(towed.attachSearchRadius() + HITCH_QUERY_MARGIN),
                 entity -> {
-                    if (entity == this) return false;
                     if (!(entity instanceof GeoVehicleEntity)) return false;
                     if (entity instanceof AbstractTrailerEntity) return false; // no chaining yet
-                    if (entity instanceof Player) return false;
                     ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(entity.getType());
-                    return id != null
-                            && TrailerDriverConfigs.has(id)
-                            && towed.canBeTowedBy(id);
-                }
-        );
-
-        if (candidates.isEmpty()) return new DriverSearch(null, false);
+                    return id != null && towed.canBeTowedBy(id);
+                });
 
         Entity best = null;
         double bestDistSq = Double.MAX_VALUE;
         boolean sawTakenHitch = false;
 
         for (Entity candidate : candidates) {
-            // A real, reachable hitch point — not merely a vehicle that happens to be near.
             Vec3 hitch = getHitchWorldPos(candidate);
-            if (hitch == null) continue;                    // no hitch to connect to
+            if (hitch == null) continue;                 // no trailer_driver config
             double distSq = hitch.distanceToSqr(tongue);
-            if (distSq > radiusSq) continue;                // hitch out of reach of the tongue
-
-            if (isHitchTaken(candidate, this)) {            // hitch exists but is occupied
+            if (distSq > radiusSq) continue;             // hitch out of reach of the tongue
+            if (isHitchTaken(candidate, this)) {
                 sawTakenHitch = true;
                 continue;
             }
-
             if (distSq < bestDistSq) {
                 bestDistSq = distSq;
                 best = candidate;
@@ -523,55 +661,33 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
 
     @Override
     public void lerpTo(double x, double y, double z, float yaw, float pitch, int steps, boolean teleport) {
-        if (isAttached()) return; // ignore the server position stream; we follow the driver locally
+        if (isAttached()) return;
         super.lerpTo(x, y, z, yaw, pitch, steps, teleport);
     }
 
-    // ── Interaction (single source of truth for attach/detach) ──────────────────
+    // ── Interaction ─────────────────────────────────────────────────────────────
 
-    /** Publish tongue + articulation from the datapack config into synced data. */
     private void syncTowDataFromConfig() {
         TrailerTowedData towed = getTowedData();
-        if (towed == null) return; // no config yet (or not loaded) — try again next tick
+        if (towed == null) return;
         this.entityData.set(TOW_X, (float) towed.towX());
         this.entityData.set(TOW_Y, (float) towed.towY());
         this.entityData.set(TOW_Z, (float) towed.towZ());
         this.entityData.set(MAX_ART, towed.maxArticulation());
     }
 
-    /**
-     * Fallback radius (blocks) around the tongue, used ONLY when the trailer defines no
-     * Interactive OBB. Prefer defining a tongue hitbox in the vehicle JSON instead.
-     */
+    /** Fallback click radius around the tongue when no Interactive OBB is defined. */
     protected double hitchZoneRadius() {
         return 1.0;
     }
 
-    /** Nudge a surface hit this far toward the box centre before testing containment. */
     private static final double OBB_CONTAINS_EPSILON = 0.01;
 
     /**
-     * True when a click landed on the tongue.
-     *
-     * Preferred: the trailer declares a tongue hitbox in its vehicle JSON as an OBB with
-     * {@code "Part": "Interactive"} — exactly like SBW's MainEngine/Turret part boxes. The
-     * click is then tested against that real, rotating box:
-     * <pre>
-     *   "OBB": [
-     *     { "Size": [0.2, 0.2, 0.5], "Position": [0, 0.6, 3.0], "Part": "Interactive" }
-     *   ]
-     * </pre>
-     * Size is HALF-extents, Position is trailer-local, and the box follows the body's
-     * rotation. Nothing else in SBW uses the Interactive part on vehicles, so it is free
-     * for this and takes no part damage.
-     *
-     * If no Interactive OBB exists, falls back to a sphere around the tongue point so
-     * existing trailers keep working.
-     *
-     * {@code vec} is the hit position RELATIVE to the entity position on WORLD axes (what
-     * interactAt receives). With SBW's OBB picking it is a point on an OBB SURFACE, so it
-     * is nudged slightly inward before the containment test — a surface point is otherwise
-     * a coin-flip against floating-point error.
+     * True when a click landed on the tongue. Preferred: an OBB with "Part": "Interactive"
+     * in the vehicle JSON (Size = half-extents, Position = trailer-local); falls back to a
+     * sphere around the tongue point. The hit vec is a point on an OBB SURFACE, so it's
+     * nudged slightly inward before the containment test.
      */
     protected boolean isInHitchZone(Vec3 vec) {
         Vec3 world = this.position().add(vec);
@@ -589,45 +705,30 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
             }
             if (obb.contains(probe)) return true;
         }
-        // A tongue box is defined and the click missed it — no hitch.
-        if (hasZoneBox) return false;
-
-        return isNearTonguePoint(vec);
+        return !hasZoneBox && isNearTonguePoint(vec);
     }
 
-    /** Sphere around the configured tongue point — the no-OBB fallback. */
     private boolean isNearTonguePoint(Vec3 vec) {
         double theta = Math.toRadians(this.getYRot());
         double cos = Math.cos(theta), sin = Math.sin(theta);
 
-        // Inverse of the yaw rotation used everywhere else (x = right, z = forward).
+        // Inverse of the yaw rotation used everywhere else.
         double lx = vec.x * cos + vec.z * sin;
         double lz = -vec.x * sin + vec.z * cos;
-        double ly = vec.y;
 
         Vec3 tow = getTowOffset();
-        double dx = lx - tow.x, dy = ly - tow.y, dz = lz - tow.z;
+        double dx = lx - tow.x, dy = vec.y - tow.y, dz = lz - tow.z;
         double r = hitchZoneRadius();
         return dx * dx + dy * dy + dz * dz <= r * r;
     }
 
-    /**
-     * Hitching is offered ONLY for an empty hand clicked near the tongue. Everything else
-     * falls through (PASS) to the normal vehicle interaction, so a held item keeps its own
-     * behaviour — crowbar pickup, camo spray, and anything SBW does — and subclasses are
-     * free to use plain clicks on the body (e.g. opening an inventory).
-     */
-    /**
-     * A trailer is never mounted, so a plain empty-handed click on its BODY should open its
-     * hold directly — no shift needed (that's only to disambiguate from mounting, which
-     * trailers don't do). The tongue zone is claimed by interactAt() first for hitching, so
-     * this only affects clicks on the body.
-     */
+    /** Trailers aren't mounted, so a plain body click opens the hold; the tongue zone is claimed first below. */
     @Override
     protected boolean opensHoldOnPlainClick() {
         return true;
     }
 
+    /** Empty hand near the tongue hitches/unhitches; everything else PASSes to normal interaction. */
     @Override
     public InteractionResult interactAt(Player player, Vec3 vec, InteractionHand hand) {
         if (!player.getItemInHand(hand).isEmpty()) return InteractionResult.PASS;

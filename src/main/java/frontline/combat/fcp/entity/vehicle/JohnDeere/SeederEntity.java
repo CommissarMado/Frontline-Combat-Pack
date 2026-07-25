@@ -5,14 +5,10 @@ import frontline.combat.fcp.entity.vehicle.VehicleInventory.InventoryStyle;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -28,6 +24,11 @@ import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+/**
+ * Towed seed drill. While hitched, sows a row of crops across its width as it travels,
+ * drawing from a single-channel bulk silo. Accepts anything Forge says farmland will grow
+ * (vanilla and modded alike). Hold opening and hitching come from AbstractTrailerEntity.
+ */
 public class SeederEntity extends AbstractTrailerEntity {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
@@ -38,14 +39,18 @@ public class SeederEntity extends AbstractTrailerEntity {
     };
 
     private static final String[] CAMO_NAMES = {"John Deere"};
+
     private static final int SEED_CAPACITY = 30600;
     private static final int INVENTORY_SIZE = SEED_CAPACITY / 64;
+
     private static final double ROW_HALF_WIDTH = 9;
     private static final double ROW_SPACING = 1.0;
     private static final double ROW_LOCAL_Z = -4.0;
     private static final int SEARCH_DEPTH = 2;
+    /** Travel between sown rows; also the interpolation step. */
     private static final double PLANT_STEP = 0.5;
     private static final int MAX_STEPS = 8;
+    /** Travel beyond this in one tick is a teleport, not driving — skip it. */
     private static final double TELEPORT_DISTANCE = 12.0;
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
@@ -82,6 +87,7 @@ public class SeederEntity extends AbstractTrailerEntity {
         return isPlantableOnFarmland(this.level(), stack);
     }
 
+    /** Asks the item itself whether farmland grows it, so modded seeds work with no list. */
     public static boolean isPlantableOnFarmland(BlockGetter level, ItemStack stack) {
         if (stack.isEmpty()) return false;
         if (!(stack.getItem() instanceof BlockItem blockItem)) return false;
@@ -110,7 +116,6 @@ public class SeederEntity extends AbstractTrailerEntity {
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
     }
-
 
     @Override
     public void baseTick() {
@@ -141,6 +146,7 @@ public class SeederEntity extends AbstractTrailerEntity {
         }
         if (dist < PLANT_STEP) return;
 
+        // Stamp rows along the path actually covered, so speed can't leave gaps.
         int steps = (int) Math.min(MAX_STEPS, Math.ceil(dist / PLANT_STEP));
         for (int s = 1; s <= steps; s++) {
             double t = (double) s / steps;
@@ -154,20 +160,21 @@ public class SeederEntity extends AbstractTrailerEntity {
     private void plantRow(double cx, double cz) {
         int count = (int) Math.floor((ROW_HALF_WIDTH * 2.0) / ROW_SPACING) + 1;
 
-        double theta = Math.toRadians(this.getYRot());
-        double cos = Math.cos(theta), sin = Math.sin(theta);
-
         for (int i = 0; i < count; i++) {
             double lx = -ROW_HALF_WIDTH + i * ROW_SPACING;
-            double wx = cx + (lx * cos - ROW_LOCAL_Z * sin);
-            double wz = cz + (lx * sin + ROW_LOCAL_Z * cos);
-            plantAt(wx, this.getY(), wz);
+            // Full body rotation (yaw AND pitch): on a slope the coulters sit above/below
+            // the body origin, and a flat-height ground search can miss them entirely.
+            var off = rotateBodyLocal(lx, 0, ROW_LOCAL_Z);
+            plantAt(cx + off.x, this.getY() + off.y, cz + off.z);
         }
     }
 
     private void plantAt(double wx, double wy, double wz) {
         Level level = this.level();
         BlockPos base = BlockPos.containing(wx, wy, wz);
+
+        // The row overhangs the trailer; touching an unloaded chunk would force-load it.
+        if (!level.hasChunkAt(base)) return;
 
         for (int dy = 1; dy >= -SEARCH_DEPTH; dy--) {
             BlockPos soil = base.offset(0, dy, 0);
@@ -178,6 +185,9 @@ public class SeederEntity extends AbstractTrailerEntity {
             if (!level.getBlockState(cropPos).isAir()) return;
 
             tryPlant(soilState, soil, cropPos);
+            // One coulter sows one block — without this, a terraced column with farmland
+            // at two depths takes a second seed.
+            return;
         }
     }
 
@@ -190,6 +200,7 @@ public class SeederEntity extends AbstractTrailerEntity {
             if (stack.isEmpty()) continue;
             if (!(stack.getItem() instanceof BlockItem blockItem)) continue;
 
+            // canStoreItem gates what's CARRIED; this asks what THIS soil grows.
             Block block = blockItem.getBlock();
             if (!(block instanceof IPlantable plantable)) continue;
             if (!soilState.canSustainPlant(level, soil, Direction.UP, plantable)) continue;
@@ -208,17 +219,4 @@ public class SeederEntity extends AbstractTrailerEntity {
         }
         return false;
     }
-
-    @Override
-    public InteractionResult interact(Player player, InteractionHand hand) {
-        if (!player.getItemInHand(hand).isEmpty()) {
-            return super.interact(player, hand);
-        }
-        if (this.level().isClientSide()) return InteractionResult.SUCCESS;
-        if (player instanceof ServerPlayer serverPlayer) {
-            openVehicleInventory(serverPlayer);
-        }
-        return InteractionResult.SUCCESS;
-    }
-
 }
