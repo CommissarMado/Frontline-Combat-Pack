@@ -1,7 +1,27 @@
 {
   "ID": "fcp:hmmwv_unarmored_m2",
   "MaxHealth": 150,
+  "PassengerRenderScale": 0.85,
   "MaxEnergy": 5000000,
+  "TurretControllerIndex": 1,
+  "TurretPos": [
+    0.021875,
+    1.953945,
+    -0.08125
+  ],
+  "BarrelPos": [
+    -0.008497,
+    0.347847,
+    0.435764
+  ],
+  "TurretTurnSpeed": [
+    5,
+    5
+  ],
+  "TurretPitchRange": [
+    -15,
+    40
+  ],
   "OBB": [
     {
       "Size": [
@@ -108,6 +128,30 @@
       "MaxPitch": 60,
       "MinYaw": -95,
       "MaxYaw": 95
+    },
+    {
+      "IsEnclosed": false,
+      "CameraPos": {
+        "UseFixedCameraPos": true,
+        "Transform": "Barrel",
+        "Position": [
+          0,
+          0.65,
+          0
+        ],
+        "Direction": "Barrel"
+      },
+      "Transform": "Turret",
+      "Position": [
+        0,
+        -1,
+        0
+      ],
+      "MinPitch": -15,
+      "MaxPitch": 40,
+      "Weapons": [
+        "Nothing"
+      ]
     },
     {
       "IsEnclosed": true,

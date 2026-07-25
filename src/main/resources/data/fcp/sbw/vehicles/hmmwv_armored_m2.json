@@ -1,6 +1,7 @@
 {
   "ID": "fcp:hmmwv_armored_m2",
   "MaxHealth": 150,
+  "PassengerRenderScale": 0.85,
   "MaxEnergy": 5000000,
   "TurretControllerIndex": 1,
   "TurretPos": [
@@ -8,13 +9,18 @@
     2.185349,
     -0.083374
   ],
+  "BarrelPos": [
+    0.0,
+    0.35,
+    0.44
+  ],
   "TurretTurnSpeed": [
     5,
     5
   ],
   "TurretPitchRange": [
     -15,
-    45
+    40
   ],
   "OBB": [
     {
@@ -124,6 +130,30 @@
       "MaxYaw": 95
     },
     {
+      "IsEnclosed": false,
+      "CameraPos": {
+        "UseFixedCameraPos": true,
+        "Transform": "Barrel",
+        "Position": [
+          0,
+          0.65,
+          0
+        ],
+        "Direction": "Barrel"
+      },
+      "Transform": "Turret",
+      "Position": [
+        0,
+        -1,
+        0
+      ],
+      "MinPitch": -15,
+      "MaxPitch": 40,
+      "Weapons": [
+        "Nothing"
+      ]
+    },
+    {
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
@@ -132,23 +162,10 @@
         0.255,
         0.255
       ],
-      "MinPitch": -15,
-      "MaxPitch": 45,
+      "MinPitch": -60,
+      "MaxPitch": 60,
       "MinYaw": -95,
-      "MaxYaw": 95,
-      "Weapons": [
-        "Nothing"
-      ],
-      "CameraPos": {
-        "UseFixedCameraPos": true,
-        "Transform": "Turret",
-        "Position": [
-          0,
-          0.2,
-          0.2
-        ],
-        "Direction": "Turret"
-      }
+      "MaxYaw": 95
     },
     {
       "IsEnclosed": true,
