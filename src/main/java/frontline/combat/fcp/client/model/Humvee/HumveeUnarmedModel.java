@@ -32,9 +32,13 @@ public class HumveeUnarmedModel extends VehicleModel<HumveeUnarmedEntity> {
 
     @Override
     public @Nullable VehicleModel.TransformContext<HumveeUnarmedEntity> collectTransform(String boneName) {
-        VehicleModel.TransformContext<HumveeUnarmedEntity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.6, "whell1", "whell2", "whell3", "whell4");
-        if (wheels != null) return wheels;
+        // Front wheels steer (pivot on Y) and roll; rear wheels only roll.
+        VehicleModel.TransformContext<HumveeUnarmedEntity> front =
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f, "whell1", "whell2");
+        if (front != null) return front;
+        VehicleModel.TransformContext<HumveeUnarmedEntity> rear =
+                WheelRotationTransforms.matchAny(boneName, 0.6, "whell3", "whell4");
+        if (rear != null) return rear;
 
         if ("barrel".equals(boneName)) {
             // The TOW launcher barrels are modelled pointing the opposite way (+Z) to the
@@ -57,5 +61,17 @@ public class HumveeUnarmedModel extends VehicleModel<HumveeUnarmedEntity> {
     public void setCustomAnimations(HumveeUnarmedEntity vehicle, long instanceId, AnimationState<HumveeUnarmedEntity> animationState) {
         super.setCustomAnimations(vehicle, instanceId, animationState);
         HumveeAttachments.applyVisibility(this, vehicle);
+
+        // The armored M2 has no separate barrel bone (the gun is baked into the turret), so
+        // SuperbWarfare has nothing to pitch. Elevate the whole rotating station instead -
+        // done after super so the base turret yaw (rotY) is preserved.
+        if ("hmmwv_armored_m2".equals(vehicle.humveeName())) {
+            this.getBone("turret").ifPresent(bone -> {
+                float xRot = Mth.lerp(animationState.getPartialTick(),
+                        vehicle.getTurretXRotO(), vehicle.getTurretXRot());
+                bone.setRotX(Mth.clamp(-xRot,
+                        vehicle.getTurretMinPitch(), vehicle.getTurretMaxPitch()) * Mth.DEG_TO_RAD);
+            });
+        }
     }
 }

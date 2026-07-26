@@ -3,6 +3,7 @@ package frontline.combat.fcp.entity.vehicle.Humvee;
 import com.atsuishio.superbwarfare.entity.vehicle.damage.DamageModifier;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
 import frontline.combat.fcp.vehicle.humvee.HumveeAttachments;
+import frontline.combat.fcp.entity.vehicle.SteerableVehicle;
 import frontline.combat.fcp.vehicle.humvee.HumveeVehicle;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -21,7 +22,7 @@ import java.util.Map;
  * registry name (see {@link #humveeName()}), which selects the geo, textures and
  * attachment data. Turret/weapon handling is intentionally omitted for now.
  */
-public class HumveeUnarmedEntity extends CamoVehicleBase implements HumveeVehicle {
+public class HumveeUnarmedEntity extends CamoVehicleBase implements HumveeVehicle, SteerableVehicle {
 
     // Shared camo skins (paint schemes over the common UV). Wrecked slots reuse the normal
     // skins as placeholders until dedicated wrecked textures exist. camoCount = 11.
