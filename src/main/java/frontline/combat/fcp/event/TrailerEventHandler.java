@@ -9,10 +9,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-/**
- * TrailerEventHandler — detaches trailers whose driver dies or leaves the level
- * (killed, unloaded, dimension change, etc.) so they don't snap to a stale point.
- */
+/** Detaches trailers whose driver is genuinely gone (killed, discarded, changed dimension). */
 @Mod.EventBusSubscriber(modid = FCP.MODID)
 public class TrailerEventHandler {
 
@@ -25,6 +22,15 @@ public class TrailerEventHandler {
 
     @SubscribeEvent
     public static void onEntityLeaveLevel(EntityLeaveLevelEvent event) {
+        // Leaving the level also happens on plain chunk unload, and that driver is coming
+        // back — detaching there would silently drop every hitch that crosses an unload
+        // boundary or a world save. The trailer's own grace period handles a driver that
+        // stays missing; only a real removal should hard-detach here.
+        Entity.RemovalReason reason = event.getEntity().getRemovalReason();
+        if (reason == Entity.RemovalReason.UNLOADED_TO_CHUNK
+                || reason == Entity.RemovalReason.UNLOADED_WITH_PLAYER) {
+            return;
+        }
         detachTrailersFor(event.getEntity());
     }
 
@@ -35,10 +41,7 @@ public class TrailerEventHandler {
         level.getEntitiesOfClass(
                 AbstractTrailerEntity.class,
                 leaving.getBoundingBox().inflate(SEARCH_RADIUS),
-                trailer -> {
-                    Entity driver = trailer.getDriver();
-                    return driver != null && driver.getUUID().equals(leaving.getUUID());
-                }
+                trailer -> trailer.isDrivenBy(leaving)
         ).forEach(AbstractTrailerEntity::detach);
     }
 }

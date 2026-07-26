@@ -37,5 +37,14 @@ public final class FCPNetwork {
         FCP_HANDLER.registerMessage(id++, OpenVehicleHoldPacket.class,
                 OpenVehicleHoldPacket::encode, OpenVehicleHoldPacket::decode,
                 OpenVehicleHoldPacket::handle);
+        FCP_HANDLER.registerMessage(id++, RequestFcpConfigStatePacket.class,
+                RequestFcpConfigStatePacket::encode, RequestFcpConfigStatePacket::decode,
+                RequestFcpConfigStatePacket::handle);
+        FCP_HANDLER.registerMessage(id++, SetMulticrewPacket.class,
+                SetMulticrewPacket::encode, SetMulticrewPacket::decode,
+                SetMulticrewPacket::handle);
+        FCP_HANDLER.registerMessage(id++, FcpConfigStatePacket.class,
+                FcpConfigStatePacket::encode, FcpConfigStatePacket::decode,
+                FcpConfigStatePacket::handle);
     }
 }

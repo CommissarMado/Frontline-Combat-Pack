@@ -9,8 +9,7 @@
     "SmallRocketChunkLoadMixin"
   ],
   "client": [
-    "LandVehicleHudStatsMixin",
-    "HideVehicleHitboxMixin"
+    "LandVehicleHudStatsMixin"
   ],
   "injectors": {
     "defaultRequire": 1
