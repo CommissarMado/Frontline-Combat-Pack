@@ -61,17 +61,5 @@ public class HumveeUnarmedModel extends VehicleModel<HumveeUnarmedEntity> {
     public void setCustomAnimations(HumveeUnarmedEntity vehicle, long instanceId, AnimationState<HumveeUnarmedEntity> animationState) {
         super.setCustomAnimations(vehicle, instanceId, animationState);
         HumveeAttachments.applyVisibility(this, vehicle);
-
-        // The armored M2 has no separate barrel bone (the gun is baked into the turret), so
-        // SuperbWarfare has nothing to pitch. Elevate the whole rotating station instead -
-        // done after super so the base turret yaw (rotY) is preserved.
-        if ("hmmwv_armored_m2".equals(vehicle.humveeName())) {
-            this.getBone("turret").ifPresent(bone -> {
-                float xRot = Mth.lerp(animationState.getPartialTick(),
-                        vehicle.getTurretXRotO(), vehicle.getTurretXRot());
-                bone.setRotX(Mth.clamp(-xRot,
-                        vehicle.getTurretMinPitch(), vehicle.getTurretMaxPitch()) * Mth.DEG_TO_RAD);
-            });
-        }
     }
 }
