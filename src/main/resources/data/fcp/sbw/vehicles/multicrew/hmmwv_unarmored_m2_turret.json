@@ -15,8 +15,8 @@
     0.411791
   ],
   "TurretTurnSpeed": [
-    5,
-    5
+    15,
+    15
   ],
   "TurretPitchRange": [
     -15,
@@ -224,9 +224,9 @@
         "Transform": "Barrel",
         "Positions": [
           [
-            0.4289,
-            -0.1542,
-            0.8109
+            0.0,
+            0.05,
+            1.40
           ]
         ],
         "Directions": [

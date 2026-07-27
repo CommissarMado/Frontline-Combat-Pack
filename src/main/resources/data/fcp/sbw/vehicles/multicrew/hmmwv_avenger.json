@@ -166,34 +166,6 @@
       "MaxPitch": 60,
       "MinYaw": -95,
       "MaxYaw": 95
-    },
-    {
-      "IsEnclosed": true,
-      "Transform": "Vehicle",
-      "BanHand": true,
-      "Position": [
-        0.6375,
-        0.255,
-        -0.595
-      ],
-      "MinPitch": -60,
-      "MaxPitch": 60,
-      "MinYaw": -95,
-      "MaxYaw": 95
-    },
-    {
-      "IsEnclosed": true,
-      "Transform": "Vehicle",
-      "BanHand": true,
-      "Position": [
-        -0.6375,
-        0.255,
-        -0.595
-      ],
-      "MinPitch": -60,
-      "MaxPitch": 60,
-      "MinYaw": -95,
-      "MaxYaw": 95
     }
   ],
   "Weapons": {
