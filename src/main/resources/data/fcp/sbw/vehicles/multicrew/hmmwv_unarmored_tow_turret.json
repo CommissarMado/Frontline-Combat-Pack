@@ -10,9 +10,9 @@
     -0.057278
   ],
   "BarrelPos": [
-    -0.222266,
+    -0.218803,
     0.3046,
-    0.727981
+    0.449074
   ],
   "TurretTurnSpeed": [
     5,
@@ -319,7 +319,7 @@
   },
   "EngineSound": "fcp:humvee_engine",
   "HornSound": "superbwarfare:truck_horn",
-  "HudType": "@Empty",
+  "HudType": "@Land",
   "TerrainCompat": [
     [
       0.9826,

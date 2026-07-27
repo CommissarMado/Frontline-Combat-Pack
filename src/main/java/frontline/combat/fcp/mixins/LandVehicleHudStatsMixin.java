@@ -50,6 +50,8 @@ public class LandVehicleHudStatsMixin {
             "fcp:t72av",
             "fcp:aavp",
             "fcp:matv_tow",
+            "fcp:hmmwv_unarmored_tow",
+            "fcp:hmmwv_unarmored_tow_turret",
             "fcp:stryker_mortar",
             "fcp:ural_grad",
             "fcp:toyota_hilux_bmp",

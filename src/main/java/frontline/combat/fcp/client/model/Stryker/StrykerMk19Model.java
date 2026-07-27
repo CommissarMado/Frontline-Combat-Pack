@@ -14,9 +14,14 @@ public class StrykerMk19Model extends FCPVehicleModel<StrykerMk19Entity> {
     @Override public boolean hideForTurretControllerWhileZooming() { return false; }
 
     @Override public @Nullable VehicleModel.TransformContext<StrykerMk19Entity> collectTransform(String boneName) {
+        // Front two axles steer (pivot on Y) and roll; rear two axles only roll.
+        VehicleModel.TransformContext<StrykerMk19Entity> steer =
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
+                        "wheRR", "wheRR2", "wheRR3", "wheRR4");
+        if (steer != null) return steer;
         VehicleModel.TransformContext<StrykerMk19Entity> wheels =
                 WheelRotationTransforms.matchAny(boneName, 0.6,
-                        "wheRR", "wheRR2", "wheRR3", "wheRR4", "wheRR5", "wheRR6", "wheRR7", "wheRR8");
+                        "wheRR5", "wheRR6", "wheRR7", "wheRR8");
         if (wheels != null) return wheels;
 
         return super.collectTransform(boneName);

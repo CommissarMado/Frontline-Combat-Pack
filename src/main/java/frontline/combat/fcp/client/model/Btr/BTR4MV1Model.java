@@ -64,11 +64,14 @@ public class BTR4MV1Model extends FCPVehicleModel<BTR4MV1Entity> {
             return (bone, vehicle, state) -> { };
         }
 
-        // The eight road wheels.
+        // The eight road wheels: front two axles steer (pivot on Y) and roll; rear two roll.
+        VehicleModel.TransformContext<BTR4MV1Entity> steer =
+                WheelRotationTransforms.matchAnyTurn(boneName, WHEEL_RADIUS, 30f,
+                        "wheelL1", "wheelR1", "wheelL2", "wheelR2");
+        if (steer != null) return steer;
         VehicleModel.TransformContext<BTR4MV1Entity> wheels =
                 WheelRotationTransforms.matchAny(boneName, WHEEL_RADIUS,
-                        "wheelL1", "wheelL2", "wheelL3", "wheelL4",
-                        "wheelR1", "wheelR2", "wheelR3", "wheelR4");
+                        "wheelL3", "wheelL4", "wheelR3", "wheelR4");
         if (wheels != null) return wheels;
 
         return super.collectTransform(boneName);
