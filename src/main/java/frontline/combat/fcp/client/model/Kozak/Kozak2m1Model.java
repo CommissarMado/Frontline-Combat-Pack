@@ -6,7 +6,6 @@ import frontline.combat.fcp.client.model.FCPVehicleModel;
 import frontline.combat.fcp.client.model.Util.WheelRotationTransforms;
 import frontline.combat.fcp.entity.vehicle.Kozak.Kozak2m1Entity;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
 
 public class Kozak2m1Model extends FCPVehicleModel<Kozak2m1Entity> {
@@ -17,14 +16,6 @@ public class Kozak2m1Model extends FCPVehicleModel<Kozak2m1Entity> {
         if (steer != null) return steer;
         VehicleModel.TransformContext<Kozak2m1Entity> wheels = WheelRotationTransforms.matchAny(boneName, 0.6, "whell3", "whell4");
         if (wheels != null) return wheels;
-        if ("barrel".equals(boneName)) {
-            // The turret subtree is flipped 180 by the Thehatch bone, which inverts the
-            // barrel pitch. Flip the sign so the gun elevates the correct way.
-            return (bone, vehicle, animationState) -> {
-                float xRot = Mth.lerp(animationState.getPartialTick(), vehicle.getTurretXRotO(), vehicle.getTurretXRot());
-                bone.setRotX(Mth.clamp(xRot, vehicle.getTurretMinPitch(), vehicle.getTurretMaxPitch()) * Mth.DEG_TO_RAD);
-            };
-        }
         return super.collectTransform(boneName);
     }
 }

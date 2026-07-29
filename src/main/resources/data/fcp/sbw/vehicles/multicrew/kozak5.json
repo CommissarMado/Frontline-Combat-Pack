@@ -127,7 +127,7 @@
         "Position": [
           0,
           0.65,
-          -0.85
+          -0.8
         ],
         "Direction": "Barrel"
       },
@@ -137,8 +137,8 @@
         -1,
         0
       ],
-      "MinPitch": -40,
-      "MaxPitch": 15,
+      "MinPitch": -15,
+      "MaxPitch": 40,
       "Weapons": [
         "PKM"
       ]
@@ -201,7 +201,8 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 600,
-      "EmptyReloadTime": 160,
+      "EmptyReloadTime": 200,
+      "Magazine": 200,
       "Velocity": 25,
       "Damage": 4,
       "BypassesArmor": 0.2,
@@ -211,13 +212,14 @@
       "RecoilForce": 0.05,
       "ShootAnimationTime": 1,
       "Spread": 0.25,
-      "Crosshair": "@VehicleCommonGun",
+      "Crosshair": "@Empty",
       "CrosshairColor": "0xFFC700",
       "Name": "weapon.fcp.pkm",
       "SoundInfo": {
         "Fire1P": "fcp:russian_coax_1p",
         "Fire3P": "fcp:russian_coax_3p",
-        "Change": "fcp:coax_equip"
+        "Change": "fcp:coax_equip",
+        "VehicleReload": "fcp:m2_reload"
       },
       "SoundRadius": 16,
       "AmmoType": "superbwarfare:rifle_ammo",
@@ -226,9 +228,9 @@
         "Transform": "Barrel",
         "Positions": [
           [
-            0,
-            0.1,
-            0.5
+            0.00,
+            0.12,
+            0.83
           ]
         ],
         "Directions": [
@@ -362,12 +364,12 @@
   ],
   "InertiaRotateRate": 1,
   "TurretPos": [
-    -0.001243,
+    0.000211,
     2.680278,
-    -0.092854
+    -0.103642
   ],
   "BarrelPos": [
-    0.000211,
+    -0.000211,
     -0.021622,
     0.716768
   ],
@@ -376,8 +378,8 @@
     15
   ],
   "TurretPitchRange": [
-    -40,
-    15
+    -15,
+    40
   ],
   "TurretControllerIndex": 1
 }
