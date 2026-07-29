@@ -59,6 +59,7 @@
     {"Size": [1.1375, 0.665625, 0.9375], "Position": [0, 1.93125, -2.265625], "Part": "Body"},
     {"Size": [1.2, 0.525, 0.86875], "Position": [0, 1.353125, 2.228125], "Part": "MainEngine"}
   ],
+  "PassengerRenderScale": 0.85,
   "Seats": [
     {
       "IsEnclosed": true,
@@ -66,7 +67,7 @@
       "Position": [
         0.45,
         0.605,
-        0
+        0.5
       ],
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -77,8 +78,8 @@
         "UseFixedCameraPos": true,
         "Position": [
           0.6,
-          2.3,
-          0.2
+          2.15,
+          0.7
         ]
       }
     },
@@ -112,7 +113,7 @@
       "Position": [
         -0.45,
         0.605,
-        0
+        0.5
       ],
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -123,8 +124,8 @@
         "UseFixedCameraPos": true,
         "Position": [
           -0.6,
-          2.3,
-          0.2
+          2.15,
+          0.7
         ]
       }
     },
@@ -134,7 +135,7 @@
       "Position": [
         0.45,
         0.605,
-        -0.75
+        -0.25
       ],
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -148,7 +149,7 @@
       "Position": [
         -0.45,
         0.605,
-        -0.75
+        -0.25
       ],
       "MinPitch": -60,
       "MaxPitch": 60,
