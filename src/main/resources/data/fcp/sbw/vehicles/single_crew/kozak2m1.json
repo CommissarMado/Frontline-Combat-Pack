@@ -126,7 +126,7 @@
         "Position": [
           0,
           0.65,
-          -0.84
+          -0.85
         ],
         "Direction": "Barrel"
       },
@@ -136,8 +136,8 @@
         -1,
         0
       ],
-      "MinPitch": -15,
-      "MaxPitch": 40,
+      "MinPitch": -40,
+      "MaxPitch": 15,
       "Weapons": [
         "KORD"
       ]
@@ -221,9 +221,9 @@
         "Transform": "Barrel",
         "Positions": [
           [
-            0.0763,
-            -0.0243,
-            0.6147
+            0,
+            0.1,
+            0.5
           ]
         ],
         "Directions": [
@@ -367,22 +367,22 @@
   ],
   "InertiaRotateRate": 0,
   "TurretPos": [
-    0.000211,
+    -0.001243,
     2.680278,
-    -0.058858
+    -0.092854
   ],
   "BarrelPos": [
-    -0.006039,
+    0.006039,
     0.124639,
-    -0.863471
+    0.863471
   ],
   "TurretTurnSpeed": [
     15,
     15
   ],
   "TurretPitchRange": [
-    -15,
-    40
+    -40,
+    15
   ],
   "TurretControllerIndex": 1
 }
