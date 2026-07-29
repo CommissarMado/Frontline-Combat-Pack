@@ -44,6 +44,9 @@ import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdEntity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATV9In1Entity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATVCrowsEntity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATVEntity;
+import frontline.combat.fcp.entity.vehicle.Kozak.Kozak5Entity;
+import frontline.combat.fcp.entity.vehicle.Kozak.Kozak2m1Entity;
+import frontline.combat.fcp.entity.vehicle.Kozak.KozakAmbulanceEntity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATVTOWEntity;
 import frontline.combat.fcp.entity.vehicle.MemeVehicles.BigBirdEntity;
 import frontline.combat.fcp.entity.vehicle.MemeVehicles.WolfEntity;
@@ -192,6 +195,12 @@ public class ModEntities {
             EntityType.Builder.of(NovatorEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<MATVEntity>> MATV = register("matv",
             EntityType.Builder.of(MATVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<Kozak5Entity>> KOZAK5 = register("kozak5",
+            EntityType.Builder.of(Kozak5Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<Kozak2m1Entity>> KOZAK2M1 = register("kozak2m1",
+            EntityType.Builder.of(Kozak2m1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<KozakAmbulanceEntity>> KOZAK_AMBULANCE = register("kozak_ambulance",
+            EntityType.Builder.of(KozakAmbulanceEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<MATVTOWEntity>> MATV_TOW = register("matv_tow",
             EntityType.Builder.of(MATVTOWEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<MATVCrowsEntity>> MATV_CROW = register("matv_crow",

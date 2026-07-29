@@ -1,6 +1,6 @@
 {
   "ID": "fcp:novator",
-  "MaxHealth": 200,
+  "MaxHealth": 175,
   "MaxEnergy": 5250000,
   "OBB": [
     {"Size": [0.2265625, 0.65625, 0.65625], "Position": [1.0796875, 0.65625, 2], "Part": "WheelLeft"},
@@ -164,7 +164,7 @@
       "AmmoType": "superbwarfare:rifle_ammo",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[-0.00654375, 0.048125, 2.01693125]],
+        "Positions": [[0.04, -0.06, 1.92]],
         "Directions": ["Barrel"]
       },
       "Crosshair": "@VehicleCommonGun",
@@ -200,7 +200,7 @@
   "HasDecoy": false,
   "UpStep": 2.2,
   "RotateOffsetHeight": 2.2,
-  "Mass": 9,
+  "Mass": 12,
   "DamageModifiers": [
     "All * 0.5",
     "minecraft:lava - -4",
@@ -210,10 +210,10 @@
     "minecraft:mob_attack * 0.4",
     "minecraft:mob_attack_no_aggro * 0.4",
     "minecraft:mob_projectile * 0.4",
-    "minecraft:explosion * 4",
-    "minecraft:player_explosion * 4",
+    "minecraft:explosion * 1",
+    "minecraft:player_explosion * 1",
     "superbwarfare:custom_explosion * 2.0",
-    "superbwarfare:projectile_explosion * 1",
+    "superbwarfare:projectile_explosion * 0.5",
     "superbwarfare:mine * 0.75",
     "superbwarfare:projectile_hit * 0.8",
     "superbwarfare:grapeshot_hit * 0.2",
@@ -250,5 +250,5 @@
   "HornSound": "superbwarfare:truck_horn",
   "HudType": "@Land",
   "TerrainCompat": [[1.156, 0.2, 1.594], [-1.156, 0.2, 1.594], [1.156, 0.2, -1.594], [-1.156, 0.2, -1.594]],
-  "InertiaRotateRate": 1.8
+  "InertiaRotateRate": 1.0
 }

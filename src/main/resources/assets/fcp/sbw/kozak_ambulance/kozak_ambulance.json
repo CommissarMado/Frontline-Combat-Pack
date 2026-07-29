@@ -1,0 +1,7 @@
+{
+  "ID": "fcp:kozak_ambulance",
+  "Model": {
+    "Model": "fcp:geo/kozak_ambulance.geo.json",
+    "Texture": "fcp:textures/entity/kozak/kozak_ambu.png"
+  }
+}

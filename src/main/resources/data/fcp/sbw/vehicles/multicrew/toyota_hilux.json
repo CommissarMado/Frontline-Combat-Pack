@@ -167,5 +167,5 @@
   },
   "HudType": "@Empty",
   "TerrainCompat": [[0.9826, 0, 1.3549], [-0.9826, 0, 1.3549], [0.9826, 0, -1.3549], [-0.9826, 0, -1.3549]],
-  "InertiaRotateRate": 1.8
+  "InertiaRotateRate": 1.0
 }

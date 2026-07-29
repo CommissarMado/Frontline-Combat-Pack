@@ -4356,7 +4356,7 @@
 					]
 				},
 				{
-					"name": "tawer2",
+					"name": "turret",
 					"parent": "Thehatch",
 					"pivot": [0.00338, 42.88445, 0.94172],
 					"cubes": [
@@ -4687,7 +4687,7 @@
 				},
 				{
 					"name": "luk2",
-					"parent": "tawer2",
+					"parent": "turret",
 					"pivot": [-0.00509, 41.0688, 12.55789],
 					"cubes": [
 						{
@@ -4813,7 +4813,7 @@
 					]
 				},
 				{
-					"name": "cord",
+					"name": "barrel",
 					"parent": "luk2",
 					"pivot": [-0.09324, 44.87868, 14.75725],
 					"cubes": [

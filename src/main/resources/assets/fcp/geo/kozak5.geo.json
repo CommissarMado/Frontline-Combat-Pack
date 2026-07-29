@@ -3398,7 +3398,7 @@
 					]
 				},
 				{
-					"name": "tawer2",
+					"name": "turret",
 					"parent": "Thehatch",
 					"pivot": [0.00338, 42.88445, 0.94172],
 					"cubes": [
@@ -3728,13 +3728,13 @@
 					]
 				},
 				{
-					"name": "PKM",
-					"parent": "tawer2",
+					"name": "barrel",
+					"parent": "turret",
 					"pivot": [0, 42.5385, 12.41]
 				},
 				{
 					"name": "luk",
-					"parent": "PKM",
+					"parent": "barrel",
 					"pivot": [-0.00509, 43.6188, 12.55789],
 					"cubes": [
 						{
@@ -3861,7 +3861,7 @@
 				},
 				{
 					"name": "body2",
-					"parent": "PKM",
+					"parent": "barrel",
 					"pivot": [0, 42.5385, 12.41],
 					"cubes": [
 						{
@@ -4350,7 +4350,7 @@
 				},
 				{
 					"name": "magazin",
-					"parent": "PKM",
+					"parent": "barrel",
 					"pivot": [0, 42.5385, 12.41],
 					"cubes": [
 						{

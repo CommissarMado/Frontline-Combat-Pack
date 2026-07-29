@@ -381,5 +381,5 @@
       -3
     ]
   ],
-  "InertiaRotateRate": 0.8
+  "InertiaRotateRate": 1.0
 }

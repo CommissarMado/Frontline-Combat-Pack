@@ -309,7 +309,7 @@
       -1.3549
     ]
   ],
-  "InertiaRotateRate": 1.8,
+  "InertiaRotateRate": 1.0,
   "TurretYawRange": [
     -95,
     95

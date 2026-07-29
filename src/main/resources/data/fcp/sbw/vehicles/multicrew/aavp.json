@@ -291,5 +291,5 @@
   "EngineSound": "fcp:lav25_engine",
   "HudType": "@Land",
   "TerrainCompat": [[0.9826, 0, 1.3549], [-0.9826, 0, 1.3549], [0.9826, 0, -1.3549], [-0.9826, 0, -1.3549]],
-  "InertiaRotateRate": 1.1
+  "InertiaRotateRate": 1.0
 }
