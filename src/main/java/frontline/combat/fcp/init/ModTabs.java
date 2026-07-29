@@ -112,6 +112,7 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.VENOM.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.M939.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.KOZAK5.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.KOZAK2M1.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.KOZAK_AMBULANCE.get()));

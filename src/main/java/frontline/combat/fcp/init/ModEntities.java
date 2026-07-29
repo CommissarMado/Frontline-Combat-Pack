@@ -44,6 +44,7 @@ import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdEntity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATV9In1Entity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATVCrowsEntity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATVEntity;
+import frontline.combat.fcp.entity.vehicle.M939.M939Entity;
 import frontline.combat.fcp.entity.vehicle.Kozak.Kozak5Entity;
 import frontline.combat.fcp.entity.vehicle.Kozak.Kozak2m1Entity;
 import frontline.combat.fcp.entity.vehicle.Kozak.KozakAmbulanceEntity;
@@ -195,6 +196,8 @@ public class ModEntities {
             EntityType.Builder.of(NovatorEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<MATVEntity>> MATV = register("matv",
             EntityType.Builder.of(MATVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<M939Entity>> M939 = register("m939",
+            EntityType.Builder.of(M939Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
     public static final RegistryObject<EntityType<Kozak5Entity>> KOZAK5 = register("kozak5",
             EntityType.Builder.of(Kozak5Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<Kozak2m1Entity>> KOZAK2M1 = register("kozak2m1",
