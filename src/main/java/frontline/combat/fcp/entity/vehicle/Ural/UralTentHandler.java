@@ -4,8 +4,10 @@ import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import com.atsuishio.superbwarfare.entity.vehicle.utils.VehicleVecUtils;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.init.ModItems;
+import frontline.combat.fcp.init.ModSounds;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -50,7 +52,11 @@ public final class UralTentHandler {
 
         event.setCanceled(true);
         event.setCancellationResult(InteractionResult.SUCCESS);
-        if (!player.level().isClientSide()) ural.toggleTent();
+        if (!player.level().isClientSide()) {
+            ural.toggleTent();
+            player.level().playSound(null, ural.blockPosition(),
+                    ModSounds.SPRAY.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+        }
         player.swing(event.getHand());
     }
 
