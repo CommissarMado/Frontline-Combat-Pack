@@ -121,6 +121,8 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.T72AV.get(), T72AVRenderer::new);
 
         event.registerEntityRenderer(ModEntities.URAL.get(), UralRenderer::new);
+        event.registerEntityRenderer(ModEntities.URAL_FUEL.get(), frontline.combat.fcp.client.renderer.Ural.UralFuelRenderer::new);
+        event.registerEntityRenderer(ModEntities.URAL_KUNG.get(), frontline.combat.fcp.client.renderer.Ural.UralKungRenderer::new);
         event.registerEntityRenderer(ModEntities.URAL_GRAD.get(), UralGradRenderer::new);
 
         event.registerEntityRenderer(ModEntities.KAMAZ.get(), KamazRenderer::new);

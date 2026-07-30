@@ -72,6 +72,8 @@ import frontline.combat.fcp.entity.vehicle.Uaz.UAZDSHKAEntity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZSPG9Entity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZEntity;
 import frontline.combat.fcp.entity.vehicle.Ural.UralEntity;
+import frontline.combat.fcp.entity.vehicle.Ural.UralFuelEntity;
+import frontline.combat.fcp.entity.vehicle.Ural.UralKungEntity;
 import frontline.combat.fcp.entity.vehicle.Ural.UralGradEntity;
 import frontline.combat.fcp.entity.vehicle.Viper.ViperEntity;
 import net.minecraft.world.entity.Entity;
@@ -169,6 +171,10 @@ public class ModEntities {
             EntityType.Builder.of(T72AVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<UralEntity>> URAL = register("ural",
             EntityType.Builder.of(UralEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<UralFuelEntity>> URAL_FUEL = register("ural_fuel",
+            EntityType.Builder.of(UralFuelEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
+    public static final RegistryObject<EntityType<UralKungEntity>> URAL_KUNG = register("ural_kung",
+            EntityType.Builder.of(UralKungEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
     public static final RegistryObject<EntityType<UralGradEntity>> URAL_GRAD = register("ural_grad",
             EntityType.Builder.of(UralGradEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<KamazEntity>> KAMAZ = register("kamaz",
