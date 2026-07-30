@@ -60,7 +60,8 @@ public class LandVehicleHudStatsMixin {
             "fcp:toyota_hilux_mortar",
             "fcp:btr80",
             "fcp:btr80_cope",
-            "fcp:btr82_cope"
+            "fcp:btr82_cope",
+            "fcp:brdm2"
     );
 
     // Vehicles that suppress the TV frame entirely but show no replacement overlay
