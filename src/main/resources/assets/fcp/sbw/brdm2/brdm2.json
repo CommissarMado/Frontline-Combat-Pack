@@ -1,0 +1,7 @@
+{
+  "ID": "fcp:brdm2",
+  "Model": {
+    "Model": "fcp:geo/brdm2.geo.json",
+    "Texture": "fcp:textures/entity/brdm/green.png"
+  }
+}
