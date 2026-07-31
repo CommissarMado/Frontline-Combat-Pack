@@ -88,6 +88,7 @@ public class UralEntity extends CamoVehicleBase {
                 .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
     }
 
+    private boolean tentInit = false;
     public boolean hasTent() {return this.entityData.get(TENT);}
     public void setTent(boolean v) {this.entityData.set(TENT, v);}
     public void toggleTent() {setTent(!hasTent());}
@@ -97,11 +98,13 @@ public class UralEntity extends CamoVehicleBase {
         super.addAdditionalSaveData(compound);
         compound.putFloat("SteeringAngle", getSteeringAngle());
         compound.putBoolean("Tent", hasTent());
+        compound.putBoolean("TentInit", tentInit);
     }
 
     @Override
     public void readAdditionalSaveData(net.minecraft.nbt.CompoundTag compound) {
         super.readAdditionalSaveData(compound);
+        if (compound.contains("TentInit")) tentInit = compound.getBoolean("TentInit");
         if (compound.contains("Tent")) setTent(compound.getBoolean("Tent"));
         if (compound.contains("SteeringAngle")) {
             setSteeringAngle(compound.getFloat("SteeringAngle"));
@@ -111,6 +114,12 @@ public class UralEntity extends CamoVehicleBase {
     @Override
     public void baseTick() {
         super.baseTick();
+
+        // Randomise the tent once on first spawn (like the humvee attachments), then persist it.
+        if (!this.level().isClientSide() && !tentInit) {
+            setTent(this.random.nextBoolean());
+            tentInit = true;
+        }
 
         prevSteeringAngle = getSteeringAngle();
         float currentAngle = getSteeringAngle();

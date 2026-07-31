@@ -126,6 +126,8 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.URAL_GRAD.get(), UralGradRenderer::new);
 
         event.registerEntityRenderer(ModEntities.KAMAZ.get(), KamazRenderer::new);
+        event.registerEntityRenderer(ModEntities.KAMAZ_KUNG.get(), frontline.combat.fcp.client.renderer.Kamaz.KamazKungRenderer::new);
+        event.registerEntityRenderer(ModEntities.KAMAZ_LONG.get(), frontline.combat.fcp.client.renderer.Kamaz.KamazLongRenderer::new);
 
         event.registerEntityRenderer(ModEntities.VIPER.get(), ViperRenderer::new);
 

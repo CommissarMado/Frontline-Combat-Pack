@@ -5085,7 +5085,7 @@
 					]
 				},
 				{
-					"name": "BASNIA",
+					"name": "turret",
 					"parent": "BodyPansirS1",
 					"pivot": [-0.01593, 48.75302, 25.67429],
 					"cubes": [
@@ -5517,8 +5517,13 @@
 					]
 				},
 				{
+					"name": "barrel",
+					"parent": "turret",
+					"pivot": [-0.01593, 51.52832, 27.17429]
+				},
+				{
 					"name": "radi",
-					"parent": "BASNIA",
+					"parent": "turret",
 					"pivot": [-0.01097, 61.78554, 27.21089],
 					"cubes": [
 						{
@@ -5549,7 +5554,7 @@
 				},
 				{
 					"name": "GUN",
-					"parent": "BASNIA",
+					"parent": "barrel",
 					"pivot": [0, 50.33792, 32.70248],
 					"cubes": [
 						{
@@ -5772,7 +5777,7 @@
 				},
 				{
 					"name": "REB",
-					"parent": "BASNIA",
+					"parent": "turret",
 					"pivot": [0.09926, 56.79833, 42.97261],
 					"cubes": [
 						{
@@ -5835,7 +5840,7 @@
 				},
 				{
 					"name": "MASHINGUN",
-					"parent": "BASNIA",
+					"parent": "barrel",
 					"pivot": [0.0078, 52.71873, 33.76226],
 					"cubes": [
 						{

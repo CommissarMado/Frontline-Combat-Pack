@@ -17,7 +17,7 @@ import net.minecraft.world.phys.AABB;
 
 public class UralRenderer extends VehicleRenderer<UralEntity> {
     // TENTY canopy hitbox, matching the interaction handler.
-    private static final AABB TENT_BOX = new AABB(-1.2112, 1.6203, -5.6877, 1.2113, 3.1535, 1.1694);
+    private static final AABB TENT_BOX = new AABB(-1.2112, 1.6203, -4.5, 1.2113, 3.1535, 0.0);
 
     public UralRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new UralModel());
