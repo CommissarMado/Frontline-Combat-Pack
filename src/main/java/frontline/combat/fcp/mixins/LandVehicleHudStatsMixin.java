@@ -63,7 +63,8 @@ public class LandVehicleHudStatsMixin {
             "fcp:btr82_cope",
             "fcp:brdm2",
             "fcp:empl_kornet",
-            "fcp:empl_tow"
+            "fcp:empl_tow",
+            "fcp:empl_zis3"
     );
 
     // Vehicles that suppress the TV frame entirely but show no replacement overlay
