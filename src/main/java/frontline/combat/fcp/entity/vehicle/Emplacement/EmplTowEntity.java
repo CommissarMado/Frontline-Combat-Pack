@@ -1,12 +1,11 @@
 package frontline.combat.fcp.entity.vehicle.Emplacement;
 
 import com.atsuishio.superbwarfare.entity.vehicle.damage.DamageModifier;
-import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 
-public class EmplTowEntity extends CamoVehicleBase {
+public class EmplTowEntity extends EmplacementEntity {
     private static final ResourceLocation[] CAMO_TEXTURES = {
             new ResourceLocation("fcp", "textures/entity/emplacements/tow.png"),
             new ResourceLocation("fcp", "textures/entity/emplacements/tow.png")

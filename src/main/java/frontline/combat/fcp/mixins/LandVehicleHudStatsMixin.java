@@ -68,7 +68,8 @@ public class LandVehicleHudStatsMixin {
 
     // Vehicles that suppress the TV frame entirely but show no replacement overlay
     private static final Set<String> FCP_NO_FRAME_VEHICLES = Set.of(
-            "fcp:toyota_hilux_zu23"
+            "fcp:toyota_hilux_zu23",
+            "fcp:empl_dshk"
     );
 
     // Vehicles whose gunner seat gets the mortar-style Pitch / Yaw / Range readout.

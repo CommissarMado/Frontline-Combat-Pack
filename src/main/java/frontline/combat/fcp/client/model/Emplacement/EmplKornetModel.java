@@ -11,6 +11,9 @@ public class EmplKornetModel extends FCPVehicleModel<EmplKornetEntity> {
     @Override public ResourceLocation getModelResource(EmplKornetEntity a) {return new ResourceLocation(FCP.MODID, "geo/empl_kornet.geo.json");}
     @Override public boolean hideForTurretControllerWhileZooming() {return false;}
     @Override public @Nullable VehicleModel.TransformContext<EmplKornetEntity> collectTransform(String boneName) {
+        if ("Magazine".equals(boneName)) {
+            return (bone, vehicle, animationState) -> bone.setHidden(!vehicle.isLoaded());
+        }
         return super.collectTransform(boneName);
     }
 }

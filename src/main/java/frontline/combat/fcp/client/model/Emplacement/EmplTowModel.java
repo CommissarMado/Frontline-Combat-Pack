@@ -11,6 +11,9 @@ public class EmplTowModel extends FCPVehicleModel<EmplTowEntity> {
     @Override public ResourceLocation getModelResource(EmplTowEntity a) {return new ResourceLocation(FCP.MODID, "geo/empl_tow.geo.json");}
     @Override public boolean hideForTurretControllerWhileZooming() {return false;}
     @Override public @Nullable VehicleModel.TransformContext<EmplTowEntity> collectTransform(String boneName) {
+        if ("Magazine".equals(boneName)) {
+            return (bone, vehicle, animationState) -> bone.setHidden(!vehicle.isLoaded());
+        }
         return super.collectTransform(boneName);
     }
 }

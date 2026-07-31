@@ -2,21 +2,6 @@
   "ID": "fcp:empl_kornet",
   "MaxHealth": 175,
   "MaxEnergy": 5250000,
-  "OBB": [
-    {
-      "Size": [
-        1.0065,
-        1.3073,
-        0.8661
-      ],
-      "Position": [
-        0.0034,
-        1.0286,
-        0.0534
-      ],
-      "Part": "Body"
-    }
-  ],
   "Seats": [
     {
       "IsEnclosed": false,
@@ -81,7 +66,8 @@
         "VehicleReloadSoundTime": 28,
         "Change": "superbwarfare:into_missile"
       },
-      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/missile_tow.png"
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/missile_tow.png",
+      "RPM": 8
     }
   },
   "TurretPos": [
@@ -148,7 +134,7 @@
   },
   "VehicleIcon": "superbwarfare:textures/vehicle_icon/lav_150_icon.png",
   "ContainerIcon": "fcp:textures/gui/vehicle/type/land_us.png",
-  "Type": "APC",
+  "Type": "Defense",
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
@@ -170,5 +156,6 @@
     ]
   },
   "HudType": "@Land",
-  "InertiaRotateRate": 1
+  "InertiaRotateRate": 1,
+  "EngineType": "Fixed"
 }

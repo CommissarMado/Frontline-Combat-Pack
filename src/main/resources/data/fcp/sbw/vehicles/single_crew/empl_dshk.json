@@ -2,21 +2,6 @@
   "ID": "fcp:empl_dshk",
   "MaxHealth": 175,
   "MaxEnergy": 5250000,
-  "OBB": [
-    {
-      "Size": [
-        0.4045,
-        0.8238,
-        1.4363
-      ],
-      "Position": [
-        -0.1338,
-        0.8166,
-        0.1088
-      ],
-      "Part": "Body"
-    }
-  ],
   "Seats": [
     {
       "IsEnclosed": false,
@@ -157,7 +142,7 @@
   },
   "VehicleIcon": "superbwarfare:textures/vehicle_icon/lav_150_icon.png",
   "ContainerIcon": "fcp:textures/gui/vehicle/type/land_us.png",
-  "Type": "APC",
+  "Type": "Defense",
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
@@ -179,5 +164,6 @@
     ]
   },
   "HudType": "@Land",
-  "InertiaRotateRate": 1
+  "InertiaRotateRate": 1,
+  "EngineType": "Fixed"
 }

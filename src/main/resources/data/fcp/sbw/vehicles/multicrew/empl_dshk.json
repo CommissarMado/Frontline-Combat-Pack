@@ -2,21 +2,6 @@
   "ID": "fcp:empl_dshk",
   "MaxHealth": 175,
   "MaxEnergy": 5250000,
-  "OBB": [
-    {
-      "Size": [
-        0.4045,
-        0.8238,
-        1.4363
-      ],
-      "Position": [
-        -0.1338,
-        0.8166,
-        0.1088
-      ],
-      "Part": "Body"
-    }
-  ],
   "Seats": [
     {
       "IsEnclosed": false,
@@ -24,17 +9,17 @@
         "UseFixedCameraPos": true,
         "Transform": "Barrel",
         "Position": [
-          0.5,
-          0.4,
-          0.3
+          0.0,
+          0.6,
+          -0.75
         ],
         "Direction": "Barrel"
       },
       "Transform": "Turret",
       "Position": [
-        0,
-        -1,
-        0
+        0.0,
+        -1.0,
+        -0.8
       ],
       "MinPitch": -15,
       "MaxPitch": 40,
@@ -46,7 +31,7 @@
   ],
   "Weapons": {
     "DShK": {
-      "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png",
+      "Icon": "fcp:textures/screens/vehicle_weapon/12_7mm.png",
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
       "Spread": 0.25,
@@ -157,7 +142,7 @@
   },
   "VehicleIcon": "superbwarfare:textures/vehicle_icon/lav_150_icon.png",
   "ContainerIcon": "fcp:textures/gui/vehicle/type/land_us.png",
-  "Type": "APC",
+  "Type": "Defense",
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
@@ -179,5 +164,6 @@
     ]
   },
   "HudType": "@Land",
-  "InertiaRotateRate": 1
+  "InertiaRotateRate": 1,
+  "EngineType": "Fixed"
 }
