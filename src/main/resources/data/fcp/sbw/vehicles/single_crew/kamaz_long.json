@@ -142,7 +142,7 @@
       "Position": [
         0.55,
         1.2,
-        2.65
+        3.92614
       ],
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -156,7 +156,7 @@
       "Position": [
         0,
         1.2,
-        2.65
+        3.92614
       ],
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -170,7 +170,7 @@
       "Position": [
         -0.55,
         1.2,
-        2.65
+        3.92614
       ],
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -183,7 +183,7 @@
       "Position": [
         0.85,
         1.25,
-        0.5
+        1.77614
       ],
       "Orientation": 90,
       "MinPitch": -50,
@@ -197,7 +197,7 @@
       "Position": [
         -0.85,
         1.25,
-        0.5
+        1.77614
       ],
       "Orientation": -90,
       "MinPitch": -50,
@@ -211,7 +211,7 @@
       "Position": [
         0.85,
         1.25,
-        -0.5
+        0.77614
       ],
       "Orientation": 90,
       "MinPitch": -50,
@@ -225,7 +225,7 @@
       "Position": [
         -0.85,
         1.25,
-        -0.5
+        0.77614
       ],
       "Orientation": -90,
       "MinPitch": -50,
@@ -239,7 +239,7 @@
       "Position": [
         0.85,
         1.25,
-        -1.5
+        -0.22386
       ],
       "Orientation": 90,
       "MinPitch": -50,
@@ -253,7 +253,7 @@
       "Position": [
         -0.85,
         1.25,
-        -1.5
+        -0.22386
       ],
       "Orientation": -90,
       "MinPitch": -50,
@@ -267,7 +267,7 @@
       "Position": [
         0.85,
         1.25,
-        -2.5
+        -1.22386
       ],
       "Orientation": 90,
       "MinPitch": -50,
@@ -281,7 +281,7 @@
       "Position": [
         -0.85,
         1.25,
-        -2.5
+        -1.22386
       ],
       "Orientation": -90,
       "MinPitch": -50,
@@ -295,7 +295,7 @@
       "Position": [
         0.85,
         1.25,
-        -3.25
+        -1.97386
       ],
       "Orientation": 90,
       "MinPitch": -50,
@@ -308,7 +308,7 @@
       "Position": [
         -0.85,
         1.25,
-        -3.25
+        -1.97386
       ],
       "Orientation": -90,
       "MinPitch": -50,
