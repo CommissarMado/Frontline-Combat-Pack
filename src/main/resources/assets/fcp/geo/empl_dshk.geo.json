@@ -563,7 +563,7 @@
 					]
 				},
 				{
-					"name": "magazin",
+					"name": "magazine",
 					"parent": "barrel",
 					"pivot": [2.04292, 76.89596, 7.70369],
 					"cubes": [

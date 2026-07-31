@@ -559,7 +559,7 @@
 					"pivot": [0, 22.35625, 0]
 				},
 				{
-					"name": "missile",
+					"name": "Magazine",
 					"parent": "barrel",
 					"pivot": [0.01063, 22.335, 0],
 					"cubes": [

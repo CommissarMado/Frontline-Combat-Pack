@@ -5346,6 +5346,11 @@
 				{
 					"name": "whell6",
 					"parent": "PODVESKA",
+					"pivot": [-16.08819, 9.51089, -60.41738]
+				},
+				{
+					"name": "whell11",
+					"parent": "whell6",
 					"pivot": [-16.08819, 9.51089, -60.41738],
 					"rotation": [0, 180, 0],
 					"cubes": [
@@ -5649,6 +5654,11 @@
 				{
 					"name": "whell8",
 					"parent": "PODVESKA",
+					"pivot": [-16.08819, 9.51089, -30.66738]
+				},
+				{
+					"name": "whell10",
+					"parent": "whell8",
 					"pivot": [-16.08819, 9.51089, -30.66738],
 					"rotation": [0, 180, 0],
 					"cubes": [

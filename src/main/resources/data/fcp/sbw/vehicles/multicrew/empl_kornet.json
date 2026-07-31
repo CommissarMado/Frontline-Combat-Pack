@@ -24,17 +24,17 @@
         "UseFixedCameraPos": true,
         "Transform": "Barrel",
         "Position": [
-          0.7,
-          0,
-          0.3
+          -0.2,
+          0,2,
+          0.4
         ],
         "Direction": "Barrel"
       },
       "Transform": "Turret",
       "Position": [
-        0,
-        -1,
-        0
+        0.2,
+        -1.55,
+        -0.5
       ],
       "MinPitch": -9,
       "MaxPitch": 40,

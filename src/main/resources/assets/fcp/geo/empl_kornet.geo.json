@@ -1010,7 +1010,7 @@
 					]
 				},
 				{
-					"name": "missile",
+					"name": "Magazine",
 					"parent": "barrel",
 					"pivot": [0.15432, 26.35428, -4.49613],
 					"rotation": [2, 0, 0],
@@ -1197,7 +1197,7 @@
 				},
 				{
 					"name": "Kryshki",
-					"parent": "missile",
+					"parent": "Magazine",
 					"pivot": [0.2728, 26.32065, -0.13818]
 				}
 			]
