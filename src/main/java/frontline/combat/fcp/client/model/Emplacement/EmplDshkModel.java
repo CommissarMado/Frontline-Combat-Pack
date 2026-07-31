@@ -18,8 +18,8 @@ public class EmplDshkModel extends FCPVehicleModel<EmplDshkEntity> {
                 float pt = (float) animationState.getPartialTick();
                 float yaw = Mth.lerp(pt, vehicle.getTurretYRotO(), vehicle.getTurretYRot());
                 float pitch = Mth.lerp(pt, vehicle.getTurretXRotO(), vehicle.getTurretXRot());
-                bone.setRotY(-yaw * Mth.DEG_TO_RAD);
-                bone.setRotX(Mth.clamp(pitch, vehicle.getTurretMinPitch(), vehicle.getTurretMaxPitch()) * Mth.DEG_TO_RAD);
+                bone.setRotY(yaw * Mth.DEG_TO_RAD);
+                bone.setRotX(-Mth.clamp(pitch, vehicle.getTurretMinPitch(), vehicle.getTurretMaxPitch()) * Mth.DEG_TO_RAD);
             };
         }
         return super.collectTransform(boneName);
