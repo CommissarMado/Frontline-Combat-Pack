@@ -11,7 +11,7 @@
       ],
       "Position": [
         0.98489,
-        0.54132,
+        0.59445,
         3.77614
       ],
       "Part": "WheelLeft"
@@ -24,7 +24,7 @@
       ],
       "Position": [
         -1.03386,
-        0.54132,
+        0.59445,
         3.77614
       ],
       "Part": "WheelRight"
@@ -37,7 +37,7 @@
       ],
       "Position": [
         0.98489,
-        0.54132,
+        0.59445,
         1.91676
       ],
       "Part": "WheelLeft"
@@ -50,7 +50,7 @@
       ],
       "Position": [
         -1.03386,
-        0.54132,
+        0.59445,
         1.91676
       ],
       "Part": "WheelRight"
@@ -63,7 +63,7 @@
       ],
       "Position": [
         0.98489,
-        0.54132,
+        0.59445,
         -1.53636
       ],
       "Part": "WheelLeft"
@@ -76,7 +76,7 @@
       ],
       "Position": [
         -1.03386,
-        0.54132,
+        0.59445,
         -1.53636
       ],
       "Part": "WheelRight"
@@ -89,7 +89,7 @@
       ],
       "Position": [
         0.98489,
-        0.54132,
+        0.59445,
         -2.81136
       ],
       "Part": "WheelLeft"
@@ -102,7 +102,7 @@
       ],
       "Position": [
         -1.03386,
-        0.54132,
+        0.59445,
         -2.81136
       ],
       "Part": "WheelRight"
@@ -115,7 +115,7 @@
       ],
       "Position": [
         0.0,
-        1.972,
+        2.02513,
         4
       ],
       "Part": "MainEngine"
@@ -128,7 +128,7 @@
       ],
       "Position": [
         0.0,
-        1.7,
+        1.75313,
         -1.05
       ],
       "Part": "Body"
@@ -141,7 +141,7 @@
       "Transform": "Vehicle",
       "Position": [
         0.55,
-        1.2,
+        1.25313,
         3.92614
       ],
       "MinPitch": -60,
@@ -155,7 +155,7 @@
       "Transform": "Vehicle",
       "Position": [
         0,
-        1.2,
+        1.25313,
         3.92614
       ],
       "MinPitch": -60,
@@ -169,7 +169,7 @@
       "Transform": "Vehicle",
       "Position": [
         -0.55,
-        1.2,
+        1.25313,
         3.92614
       ],
       "MinPitch": -60,
@@ -182,7 +182,7 @@
       "Transform": "Vehicle",
       "Position": [
         0.85,
-        1.25,
+        1.30313,
         1.77614
       ],
       "Orientation": 90,
@@ -196,7 +196,7 @@
       "Transform": "Vehicle",
       "Position": [
         -0.85,
-        1.25,
+        1.30313,
         1.77614
       ],
       "Orientation": -90,
@@ -210,7 +210,7 @@
       "Transform": "Vehicle",
       "Position": [
         0.85,
-        1.25,
+        1.30313,
         0.77614
       ],
       "Orientation": 90,
@@ -224,7 +224,7 @@
       "Transform": "Vehicle",
       "Position": [
         -0.85,
-        1.25,
+        1.30313,
         0.77614
       ],
       "Orientation": -90,
@@ -238,7 +238,7 @@
       "Transform": "Vehicle",
       "Position": [
         0.85,
-        1.25,
+        1.30313,
         -0.22386
       ],
       "Orientation": 90,
@@ -252,7 +252,7 @@
       "Transform": "Vehicle",
       "Position": [
         -0.85,
-        1.25,
+        1.30313,
         -0.22386
       ],
       "Orientation": -90,
@@ -266,7 +266,7 @@
       "Transform": "Vehicle",
       "Position": [
         0.85,
-        1.25,
+        1.30313,
         -1.22386
       ],
       "Orientation": 90,
@@ -280,7 +280,7 @@
       "Transform": "Vehicle",
       "Position": [
         -0.85,
-        1.25,
+        1.30313,
         -1.22386
       ],
       "Orientation": -90,
@@ -294,7 +294,7 @@
       "Transform": "Vehicle",
       "Position": [
         0.85,
-        1.25,
+        1.30313,
         -1.97386
       ],
       "Orientation": 90,
@@ -307,7 +307,7 @@
       "Transform": "Vehicle",
       "Position": [
         -0.85,
-        1.25,
+        1.30313,
         -1.97386
       ],
       "Orientation": -90,

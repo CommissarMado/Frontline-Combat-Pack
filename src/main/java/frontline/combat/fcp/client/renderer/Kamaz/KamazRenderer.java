@@ -25,7 +25,7 @@ public class KamazRenderer extends VehicleRenderer<KamazEntity> {
         return entity.getCurrentTexture();
     }
 
-    private static final AABB TENT_BOX = new AABB(-1.6292, 1.0268, -13.7643, 1.6335, 3.1423, 1.1424);
+    private static final AABB TENT_BOX = new AABB(-1.6292, 1.0268, -2.08, 1.6335, 3.1423, 2.39);
 
     @Override
     public void render(KamazEntity entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {

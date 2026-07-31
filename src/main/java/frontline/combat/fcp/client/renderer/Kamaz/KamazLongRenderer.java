@@ -19,7 +19,7 @@ public class KamazLongRenderer extends VehicleRenderer<KamazLongEntity> {
     public KamazLongRenderer(EntityRendererProvider.Context ctx) {super(ctx, new KamazLongModel());}
     @Override public ResourceLocation getTextureLocation(KamazLongEntity e) {return e.getCurrentTexture();}
 
-    private static final AABB TENT_BOX = new AABB(-1.6292, 1.0268, -14.2941, 1.6342, 3.1423, 2.4135);
+    private static final AABB TENT_BOX = new AABB(-1.6292, 1.0268, -3.52, 1.6342, 3.1423, 2.77);
 
     @Override
     public void render(KamazLongEntity entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {

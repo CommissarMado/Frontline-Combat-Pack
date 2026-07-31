@@ -22,8 +22,8 @@ import org.joml.Vector4d;
 public final class KamazTentHandler {
 
     private static final double REACH = 5.0;
-    private static final double[] TENT = {-1.6292, 1.0268, -13.7643, 1.6335, 3.1423, 1.1424};
-    private static final double[] TENT2 = {-1.6292, 1.0268, -14.2941, 1.6342, 3.1423, 2.4135};
+    private static final double[] TENT = {-1.6292, 1.0268, -2.08, 1.6335, 3.1423, 2.39};
+    private static final double[] TENT2 = {-1.6292, 1.0268, -3.52, 1.6342, 3.1423, 2.77};
 
     private KamazTentHandler() {}
 
