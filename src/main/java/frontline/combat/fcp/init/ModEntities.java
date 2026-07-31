@@ -49,6 +49,10 @@ import frontline.combat.fcp.entity.vehicle.Matv.MATVEntity;
 import frontline.combat.fcp.entity.vehicle.Emplacement.EmplTowEntity;
 import frontline.combat.fcp.entity.vehicle.Emplacement.EmplKornetEntity;
 import frontline.combat.fcp.entity.vehicle.Emplacement.EmplDshkEntity;
+import frontline.combat.fcp.entity.vehicle.Emplacement.EmplMk19Entity;
+import frontline.combat.fcp.entity.vehicle.Emplacement.EmplAgs17Entity;
+import frontline.combat.fcp.entity.vehicle.Emplacement.EmplM2Entity;
+import frontline.combat.fcp.entity.vehicle.Emplacement.EmplZis3Entity;
 import frontline.combat.fcp.entity.vehicle.Pantsir.PantsirEntity;
 import frontline.combat.fcp.entity.vehicle.Brdm.Brdm2Entity;
 import frontline.combat.fcp.entity.vehicle.M939.M939Entity;
@@ -219,6 +223,14 @@ public class ModEntities {
             EntityType.Builder.of(EmplKornetEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,1.4f));
     public static final RegistryObject<EntityType<EmplDshkEntity>> EMPL_DSHK = register("empl_dshk",
             EntityType.Builder.of(EmplDshkEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,1.4f));
+    public static final RegistryObject<EntityType<EmplMk19Entity>> EMPL_MK19 = register("empl_mk19",
+            EntityType.Builder.of(EmplMk19Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,1.4f));
+    public static final RegistryObject<EntityType<EmplAgs17Entity>> EMPL_AGS17 = register("empl_ags17",
+            EntityType.Builder.of(EmplAgs17Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,1.4f));
+    public static final RegistryObject<EntityType<EmplM2Entity>> EMPL_M2 = register("empl_m2",
+            EntityType.Builder.of(EmplM2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,1.4f));
+    public static final RegistryObject<EntityType<EmplZis3Entity>> EMPL_ZIS3 = register("empl_zis3",
+            EntityType.Builder.of(EmplZis3Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,1.4f));
     public static final RegistryObject<EntityType<PantsirEntity>> PANTSIR = register("pantsir",
             EntityType.Builder.of(PantsirEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(4f,4f));
     public static final RegistryObject<EntityType<Brdm2Entity>> BRDM2 = register("brdm2",

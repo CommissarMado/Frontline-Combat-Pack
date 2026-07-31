@@ -82,7 +82,8 @@ public class LandVehicleHudStatsMixin {
             "fcp:ural_grad",
             "fcp:stryker_mortar",
             "fcp:toyota_hilux_rocket_pod",
-            "fcp:toyota_hilux_mortar"
+            "fcp:toyota_hilux_mortar",
+            "fcp:empl_zis3"
     );
 
     private static final ResourceLocation GUNNER_FRAME =
