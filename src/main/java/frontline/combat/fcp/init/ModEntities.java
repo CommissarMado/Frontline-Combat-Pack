@@ -46,6 +46,9 @@ import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdEntity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATV9In1Entity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATVCrowsEntity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATVEntity;
+import frontline.combat.fcp.entity.vehicle.Emplacement.EmplTowEntity;
+import frontline.combat.fcp.entity.vehicle.Emplacement.EmplKornetEntity;
+import frontline.combat.fcp.entity.vehicle.Emplacement.EmplDshkEntity;
 import frontline.combat.fcp.entity.vehicle.Pantsir.PantsirEntity;
 import frontline.combat.fcp.entity.vehicle.Brdm.Brdm2Entity;
 import frontline.combat.fcp.entity.vehicle.M939.M939Entity;
@@ -210,6 +213,12 @@ public class ModEntities {
             EntityType.Builder.of(NovatorEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<MATVEntity>> MATV = register("matv",
             EntityType.Builder.of(MATVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<EmplTowEntity>> EMPL_TOW = register("empl_tow",
+            EntityType.Builder.of(EmplTowEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
+    public static final RegistryObject<EntityType<EmplKornetEntity>> EMPL_KORNET = register("empl_kornet",
+            EntityType.Builder.of(EmplKornetEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
+    public static final RegistryObject<EntityType<EmplDshkEntity>> EMPL_DSHK = register("empl_dshk",
+            EntityType.Builder.of(EmplDshkEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
     public static final RegistryObject<EntityType<PantsirEntity>> PANTSIR = register("pantsir",
             EntityType.Builder.of(PantsirEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(4f,4f));
     public static final RegistryObject<EntityType<Brdm2Entity>> BRDM2 = register("brdm2",
