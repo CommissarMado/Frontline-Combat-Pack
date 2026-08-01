@@ -32,7 +32,7 @@
   ],
   "Weapons": {
     "Cannon": {
-      "Icon": "fcp:textures/screens/vehicle_weapon/105mm_ap.png",
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/ap_shell.png",
       "DefaultFireMode": "Semi",
       "AvailableFireModes": "Semi",
       "Projectile": "superbwarfare:cannon_shell",
@@ -57,15 +57,53 @@
         {
           "Ammo": "superbwarfare:large_shell_he",
           "Override": {
-            "Icon": "fcp:textures/screens/vehicle_weapon/105mm_he.png",
+            "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/he_shell.png",
             "IsArmorPiercingProjectile": false,
             "IsHighExplosiveProjectile": true,
             "ShellType": "HE",
-            "Velocity": 25,
-            "Damage": 0,
             "ExplosionDamage": 120,
             "ExplosionRadius": 10,
-            "Name": "weapon.fcp.m68a2_105mm_he"
+            "Name": "weapon.fcp.zis3_he"
+          }
+        },
+        {
+          "Ammo": "superbwarfare:large_shell_cm",
+          "Override": {
+            "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/cm_shell.png",
+            "ShellType": "CM",
+            "SpreadAmount": 22,
+            "SpreadAngle": 8,
+            "Damage": 600,
+            "ExplosionDamage": 240,
+            "ExplosionRadius": 7,
+            "Name": "weapon.fcp.zis3_cm"
+          }
+        },
+        {
+          "Ammo": "superbwarfare:large_shell_gs",
+          "Override": {
+            "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/grape_shell.png",
+            "Projectile": "superbwarfare:grapeshot",
+            "Spread": 5,
+            "Damage": 18,
+            "ProjectileAmount": 36,
+            "Velocity": 15,
+            "ExplosionDamage": 0,
+            "ExplosionRadius": 0,
+            "Name": "weapon.fcp.zis3_gs"
+          }
+        },
+        {
+          "Ammo": "superbwarfare:large_shell_wp",
+          "Override": {
+            "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/wp_shell.png",
+            "ShellType": "WP",
+            "SpreadAmount": 128,
+            "SpreadAngle": 16,
+            "Damage": 300,
+            "ExplosionDamage": 40,
+            "ExplosionRadius": 11,
+            "Name": "weapon.fcp.zis3_wp"
           }
         }
       ],
@@ -90,7 +128,8 @@
           "Barrel"
         ]
       },
-      "RPM": 12
+      "RPM": 12,
+      "Gravity": 0.15
     }
   },
   "TurretPos": [
@@ -182,7 +221,7 @@
   "InertiaRotateRate": 1,
   "EngineType": "Fixed",
   "TurretYawRange": [
-    -75,
-    75
+    -25,
+    25
   ]
 }

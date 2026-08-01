@@ -81,12 +81,20 @@ public abstract class EmplacementEntity extends CamoVehicleBase {
                 return super.interact(player, hand);
             }
             if (!isLoaded()) {
-                if (!gunData.selectedAmmoConsumer().isAmmoItem(stack)) {
+                // Multi-ammo aware: find the consumer whose ammo item matches what's held (any accepted type).
+                java.util.List<com.atsuishio.superbwarfare.data.gun.AmmoConsumer> consumers =
+                        gunData.get(com.atsuishio.superbwarfare.data.gun.GunProp.AMMO_CONSUMER);
+                int matchIndex = -1;
+                for (int i = 0; i < consumers.size(); i++) {
+                    if (consumers.get(i).isAmmoItem(stack)) { matchIndex = i; break; }
+                }
+                if (matchIndex < 0) {
                     return super.interact(player, hand);
                 }
                 int coolDown = reloadCoolDownTicks();
                 if (level() instanceof ServerLevel serverLevel && getReloadCooldown() == 0) {
-                    modifyGunData(0, data -> data.reloadAmmo(player, false));
+                    final int idx = matchIndex;
+                    modifyGunData(0, data -> { data.changeAmmoConsumer(idx, player); data.reloadAmmo(player, false); });
                     setLoaded(true);
                     serverLevel.playSound(null, blockPosition(), ModSounds.TYPE_63_RELOAD.get(),
                             SoundSource.PLAYERS, 1f, this.random.nextFloat() * 0.1f + 0.9f);
