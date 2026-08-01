@@ -126,7 +126,7 @@
     "@superbwarfare:wire_guide_missile * 1.0",
     "All - 5"
   ],
-  "VehicleContainerType": "Medium",
+  "VehicleContainerType": "Empty",
   "DestroyInfo": {
     "ParticleType": "Medium",
     "ExplosionDamage": 120,
