@@ -224,13 +224,13 @@ public class ModEntities {
     public static final RegistryObject<EntityType<EmplDshkEntity>> EMPL_DSHK = register("empl_dshk",
             EntityType.Builder.of(EmplDshkEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,1.4f));
     public static final RegistryObject<EntityType<EmplMk19Entity>> EMPL_MK19 = register("empl_mk19",
-            EntityType.Builder.of(EmplMk19Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,1.4f));
+            EntityType.Builder.of(EmplMk19Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,0.84f));
     public static final RegistryObject<EntityType<EmplAgs17Entity>> EMPL_AGS17 = register("empl_ags17",
-            EntityType.Builder.of(EmplAgs17Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,1.4f));
+            EntityType.Builder.of(EmplAgs17Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,0.84f));
     public static final RegistryObject<EntityType<EmplM2Entity>> EMPL_M2 = register("empl_m2",
-            EntityType.Builder.of(EmplM2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,1.4f));
+            EntityType.Builder.of(EmplM2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,0.84f));
     public static final RegistryObject<EntityType<EmplZis3Entity>> EMPL_ZIS3 = register("empl_zis3",
-            EntityType.Builder.of(EmplZis3Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,1.4f));
+            EntityType.Builder.of(EmplZis3Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,0.84f));
     public static final RegistryObject<EntityType<PantsirEntity>> PANTSIR = register("pantsir",
             EntityType.Builder.of(PantsirEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(4f,4f));
     public static final RegistryObject<EntityType<Brdm2Entity>> BRDM2 = register("brdm2",

@@ -31,20 +31,24 @@ public abstract class ClampedTurretEntity extends EmplacementEntity {
     private static final EntityDataAccessor<Float> BODY_YAW =
             SynchedEntityData.defineId(ClampedTurretEntity.class, EntityDataSerializers.FLOAT);
 
-    public OBB body; // solid collision box (small, mortar-sized)
+    public OBB body; // solid collision box (the green box IS the collision in SBW's OBB system)
     public OBB leg1; // right rear leg (+X)
     public OBB leg2; // left rear leg (-X)
     private double interactionTick;
 
     public ClampedTurretEntity(EntityType<? extends VehicleEntity> type, Level world) {
         super(type, world);
-        this.body = new OBB(OBB.vec3ToVector3d(this.position()), new Vector3d(0.4, 0.7, 0.4), new Quaterniond(), OBB.Part.BODY);
+        double[] bb = bodyBox();
+        this.body = new OBB(OBB.vec3ToVector3d(this.position()), new Vector3d(bb[0], bb[1], bb[2]), new Quaterniond(), OBB.Part.BODY);
         this.leg1 = new OBB(OBB.vec3ToVector3d(this.position()), new Vector3d(0.2, 0.35, 0.2), new Quaterniond(), OBB.Part.INTERACTIVE);
         this.leg2 = new OBB(OBB.vec3ToVector3d(this.position()), new Vector3d(0.2, 0.35, 0.2), new Quaterniond(), OBB.Part.INTERACTIVE);
     }
 
     /** Local [x, y, z] of the right rear leg; the left leg mirrors -x. Bigger for the ZiS-3. */
     protected abstract double[] legOffset();
+
+    /** Collision box: {halfX, halfY, halfZ, centerX, centerY, centerZ}. Override for larger turrets. */
+    protected double[] bodyBox() { return new double[]{0.4, 0.42, 0.4, 0.0, 0.42, 0.0}; }
 
     @Override
     protected void defineSynchedData() {
@@ -86,7 +90,8 @@ public abstract class ClampedTurretEntity extends EmplacementEntity {
         super.updateOBB();
         if (leg1 == null || leg2 == null || body == null) return;
         Matrix4d transform = getVehicleTransform(1);
-        Vector4d wb = transformPosition(transform, 0, 0.7, 0);
+        double[] bb = bodyBox();
+        Vector4d wb = transformPosition(transform, bb[3], bb[4], bb[5]);
         this.body.center.set(new Vector3f((float) wb.x, (float) wb.y, (float) wb.z));
         this.body.updateRotation(VectorTool.combineRotations(1, this));
         double[] o = legOffset();

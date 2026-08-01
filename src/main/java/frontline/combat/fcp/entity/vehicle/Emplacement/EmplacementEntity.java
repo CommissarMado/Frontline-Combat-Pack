@@ -75,6 +75,25 @@ public abstract class EmplacementEntity extends CamoVehicleBase {
     @Override
     public boolean isPushable() { return false; }
 
+    @Override
+    public void push(double x, double y, double z) { /* fixed installation - ignore all external push */ }
+
+    @Override
+    public void push(net.minecraft.world.entity.Entity entity) { /* fixed installation - never shoved by entities */ }
+
+    private net.minecraft.world.phys.Vec3 lockPos;
+
+    @Override
+    public void tick() {
+        super.tick();
+        if (this.lockPos == null) {
+            this.lockPos = new net.minecraft.world.phys.Vec3(this.getX(), this.getY(), this.getZ());
+        } else if (this.getX() != this.lockPos.x || this.getZ() != this.lockPos.z) {
+            this.setPos(this.lockPos.x, this.getY(), this.lockPos.z);
+            this.setDeltaMovement(0, this.getDeltaMovement().y, 0);
+        }
+    }
+
     /** TOW-style get-out reload. Clamped MG/grenade turrets override this to false (normal inventory reload). */
     protected boolean needsManualReload() { return true; }
 

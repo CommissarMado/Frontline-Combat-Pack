@@ -18,4 +18,11 @@ public class EmplDshkEntity extends CamoVehicleBase {
     @Override public DamageModifier getDamageModifier() {return super.getDamageModifier().custom((s,dmg) -> getSourceAngle(s, 0.4f) * dmg);}
 
     @Override public boolean isPushable() { return false; }
+
+    private net.minecraft.world.phys.Vec3 lockPos;
+    @Override public void tick() {
+        super.tick();
+        if (this.lockPos == null) this.lockPos = new net.minecraft.world.phys.Vec3(this.getX(), this.getY(), this.getZ());
+        else if (this.getX() != this.lockPos.x || this.getZ() != this.lockPos.z) { this.setPos(this.lockPos.x, this.getY(), this.lockPos.z); this.setDeltaMovement(0, this.getDeltaMovement().y, 0); }
+    }
 }

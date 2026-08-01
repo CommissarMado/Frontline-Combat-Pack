@@ -15,4 +15,6 @@ public class EmplZis3Entity extends ClampedTurretEntity {
     @Override public String[] getCamoNames() {return CAMO_NAMES;}
 
     @Override protected double[] legOffset() { return new double[]{1.5, 0.1, -1.8}; }
+
+    @Override protected double[] bodyBox() { return new double[]{1.5, 0.9, 1.5, 0.0, 0.9, 0.0}; }
 }
