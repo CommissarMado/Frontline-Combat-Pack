@@ -71,8 +71,18 @@ public abstract class EmplacementEntity extends CamoVehicleBase {
         return (int) Math.ceil(20f / (rpm / 60f));
     }
 
+    /** Emplacements are fixed installations — nothing can shove them. */
+    @Override
+    public boolean isPushable() { return false; }
+
+    /** TOW-style get-out reload. Clamped MG/grenade turrets override this to false (normal inventory reload). */
+    protected boolean needsManualReload() { return true; }
+
     @Override
     public InteractionResult interact(Player player, InteractionHand hand) {
+        if (!needsManualReload()) {
+            return super.interact(player, hand);
+        }
         GunData gunData = getGunData(0);
         if (gunData != null) {
             ItemStack stack = player.getMainHandItem();

@@ -16,4 +16,6 @@ public class EmplDshkEntity extends CamoVehicleBase {
     @Override public ResourceLocation[] getCamoTextures() {return CAMO_TEXTURES;}
     @Override public String[] getCamoNames() {return CAMO_NAMES;}
     @Override public DamageModifier getDamageModifier() {return super.getDamageModifier().custom((s,dmg) -> getSourceAngle(s, 0.4f) * dmg);}
+
+    @Override public boolean isPushable() { return false; }
 }
