@@ -1,6 +1,6 @@
 {
   "ID": "fcp:empl_m2",
-  "MaxHealth": 175,
+  "MaxHealth": 40,
   "MaxEnergy": 5250000,
   "Seats": [
     {
@@ -107,34 +107,6 @@
   "UpStep": 2.2,
   "RotateOffsetHeight": 2.2,
   "Mass": 12,
-  "DamageModifiers": [
-    "All * 0.5",
-    "minecraft:lava - -4",
-    "minecraft:lava * 4",
-    "minecraft:arrow * 0.2",
-    "minecraft:trident * 0.4",
-    "minecraft:mob_attack * 0.4",
-    "minecraft:mob_attack_no_aggro * 0.4",
-    "minecraft:mob_projectile * 0.4",
-    "minecraft:explosion * 1",
-    "minecraft:player_explosion * 1",
-    "superbwarfare:custom_explosion * 2.0",
-    "superbwarfare:projectile_explosion * 0.5",
-    "superbwarfare:mine * 0.75",
-    "superbwarfare:projectile_hit * 0.8",
-    "superbwarfare:grapeshot_hit * 0.2",
-    "superbwarfare:laser * 1.0",
-    "@#superbwarfare:aerial_bomb * 1.4",
-    "#superbwarfare:projectile * 0.16",
-    "#superbwarfare:projectile_absolute * 0.9",
-    "superbwarfare:vehicle_strike * 0.7",
-    "@superbwarfare:mortar_shell * 2.0",
-    "@superbwarfare:gun_grenade * 0.5",
-    "@superbwarfare:javelin_missile * 1.0",
-    "@superbwarfare:igla_9k38_missile * 1.0",
-    "@superbwarfare:wire_guide_missile * 1.0",
-    "All - 5"
-  ],
   "VehicleContainerType": "Empty",
   "DestroyInfo": {
     "ParticleType": "Medium",
