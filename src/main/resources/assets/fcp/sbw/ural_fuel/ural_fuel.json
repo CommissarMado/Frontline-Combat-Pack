@@ -1,0 +1,7 @@
+{
+  "ID": "fcp:ural_fuel",
+  "Model": {
+    "Model": "fcp:geo/ural_fuel.geo.json",
+    "Texture": "fcp:textures/entity/ural/ural_1.png"
+  }
+}

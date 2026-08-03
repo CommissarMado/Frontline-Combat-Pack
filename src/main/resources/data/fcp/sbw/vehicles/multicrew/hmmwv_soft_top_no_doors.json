@@ -98,7 +98,7 @@
   ],
   "Seats": [
     {
-      "IsEnclosed": true,
+      "IsEnclosed": false,
       "Transform": "Vehicle",
       "Position": [
         0.6375,
@@ -111,7 +111,7 @@
       "MaxYaw": 95
     },
     {
-      "IsEnclosed": true,
+      "IsEnclosed": false,
       "Transform": "Vehicle",
       "BanHand": true,
       "Position": [
@@ -125,7 +125,7 @@
       "MaxYaw": 95
     },
     {
-      "IsEnclosed": true,
+      "IsEnclosed": false,
       "Transform": "Vehicle",
       "BanHand": true,
       "Position": [
@@ -139,7 +139,7 @@
       "MaxYaw": 95
     },
     {
-      "IsEnclosed": true,
+      "IsEnclosed": false,
       "Transform": "Vehicle",
       "BanHand": true,
       "Position": [
@@ -264,5 +264,5 @@
       -1.3549
     ]
   ],
-  "InertiaRotateRate": 1.8
+  "InertiaRotateRate": 1.0
 }

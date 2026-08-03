@@ -10,13 +10,13 @@
     -0.083374
   ],
   "BarrelPos": [
-    -0.026652,
-    0.053757,
-    0.937887
+    -0.024221,
+    0.053945,
+    0.937888
   ],
   "TurretTurnSpeed": [
-    5,
-    5
+    15,
+    15
   ],
   "TurretPitchRange": [
     -15,
@@ -137,7 +137,7 @@
         "Position": [
           0,
           0.65,
-          0
+          -0.8891
         ],
         "Direction": "Barrel"
       },
@@ -150,7 +150,7 @@
       "MinPitch": -15,
       "MaxPitch": 40,
       "Weapons": [
-        "Nothing"
+        "mk19"
       ]
     },
     {
@@ -197,12 +197,51 @@
     }
   ],
   "Weapons": {
-    "Nothing": {
-      "Name": "",
+    "mk19": {
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Projectile": "superbwarfare:gun_grenade",
+      "DefaultZoom": 2,
+      "RPM": 325,
+      "Magazine": 32,
+      "EmptyReloadTime": 200,
+      "Velocity": 7,
+      "Damage": 0,
+      "ExplosionDamage": 15,
+      "ExplosionRadius": 3,
+      "HeatPerShoot": 5,
+      "NaturalCooldown": 1,
+      "RecoilTime": 30,
+      "RecoilForce": 0.31,
+      "ShootAnimationTime": 3,
+      "Spread": 0.8,
+      "IsArmorPiercingProjectile": false,
+      "IsHighExplosiveProjectile": true,
       "Crosshair": "@Empty",
-      "RPM": 0,
-      "Magazine": 0,
-      "Damage": 0
+      "CrosshairColor": "0x66FF00",
+      "Name": "weapon.fcp.mk19",
+      "SoundInfo": {
+        "Fire1P": "fcp:mk19_fire_1p",
+        "Fire3P": "fcp:mk19_fire_3p",
+        "Fire3PFar": "fcp:mk19_fire_3p_far",
+        "VehicleRelaod": "fcp:mk19_reload"
+      },
+      "SoundRadius": 16,
+      "AmmoType": "superbwarfare:grenade_40mm",
+      "Icon": "fcp:textures/screens/vehicle_weapon/40mm.png",
+      "ShootPos": {
+        "Transform": "Barrel",
+        "Positions": [
+          [
+            0.0,
+            0.12,
+            0.3517
+          ]
+        ],
+        "Directions": [
+          "Barrel"
+        ]
+      }
     }
   },
   "EngineType": "Wheel",
@@ -307,5 +346,5 @@
       -1.3549
     ]
   ],
-  "InertiaRotateRate": 1.8
+  "InertiaRotateRate": 1.0
 }

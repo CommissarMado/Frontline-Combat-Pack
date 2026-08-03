@@ -1,0 +1,7 @@
+{
+  "ID": "fcp:m939",
+  "Model": {
+    "Model": "fcp:geo/m939.geo.json",
+    "Texture": "fcp:textures/entity/m939/m939_green.png"
+  }
+}

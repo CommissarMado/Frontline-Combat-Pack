@@ -1,0 +1,7 @@
+{
+  "ID": "fcp:empl_tow",
+  "Model": {
+    "Model": "fcp:geo/empl_tow.geo.json",
+    "Texture": "fcp:textures/entity/emplacements/tow.png"
+  }
+}

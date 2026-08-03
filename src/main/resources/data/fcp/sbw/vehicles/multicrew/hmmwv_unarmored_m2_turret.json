@@ -15,8 +15,8 @@
     0.411791
   ],
   "TurretTurnSpeed": [
-    5,
-    5
+    15,
+    15
   ],
   "TurretPitchRange": [
     -15,
@@ -137,7 +137,7 @@
         "Position": [
           0,
           0.65,
-          0
+          -0.6391
         ],
         "Direction": "Barrel"
       },
@@ -150,7 +150,7 @@
       "MinPitch": -15,
       "MaxPitch": 40,
       "Weapons": [
-        "Nothing"
+        "PassengerMachineGun"
       ]
     },
     {
@@ -197,12 +197,52 @@
     }
   ],
   "Weapons": {
-    "Nothing": {
-      "Name": "",
+    "PassengerMachineGun": {
+      "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png",
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Spread": 0.25,
       "Crosshair": "@Empty",
-      "RPM": 0,
-      "Magazine": 0,
-      "Damage": 0
+      "CrosshairColor": "0x00ff66",
+      "Projectile": "superbwarfare:projectile",
+      "DefaultZoom": 3,
+      "RPM": 500,
+      "Damage": 15,
+      "BypassesArmor": 2,
+      "IsArmorPiercingProjectile": true,
+      "IsHighExplosiveProjectile": false,
+      "Velocity": 25,
+      "RecoilTime": 32,
+      "EmptyReloadTime": 200,
+      "Magazine": 200,
+      "RecoilForce": 0.1,
+      "HeatPerShoot": 5,
+      "NaturalCooldown": 1,
+      "ShootAnimationTime": 1,
+      "AmmoType": "superbwarfare:rifle_ammo",
+      "ShootPos": {
+        "Transform": "Barrel",
+        "Positions": [
+          [
+            0.0,
+            0.05,
+            1.40
+          ]
+        ],
+        "Directions": [
+          "Barrel"
+        ]
+      },
+      "Name": "weapon.fcp.m2a1_browning",
+      "SoundInfo": {
+        "Fire1P": "superbwarfare:m_2_hb_fire_1p",
+        "Fire3P": "superbwarfare:m_2_hb_fire_3p",
+        "Fire3PFar": "superbwarfare:m_2_hb_far",
+        "Fire3PVeryFar": "superbwarfare:m_2_hb_veryfar",
+        "Change": "fcp:into_coax",
+        "VehicleReload": "fcp:m2_reload"
+      },
+      "SoundRadius": 16
     }
   },
   "EngineType": "Wheel",
@@ -307,5 +347,5 @@
       -1.3549
     ]
   ],
-  "InertiaRotateRate": 1.8
+  "InertiaRotateRate": 1.0
 }

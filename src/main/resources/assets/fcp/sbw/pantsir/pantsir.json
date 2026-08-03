@@ -1,0 +1,7 @@
+{
+  "ID": "fcp:pantsir",
+  "Model": {
+    "Model": "fcp:geo/pantsir_s1.geo.json",
+    "Texture": "fcp:textures/entity/kamaz/kamaz.png"
+  }
+}

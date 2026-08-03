@@ -1,0 +1,12 @@
+{
+  "type": "superbwarfare:vehicle_assembling",
+  "category": "land",
+  "inputs": [
+    "4 #superbwarfare:storage_blocks/steel",
+    "superbwarfare:light_armament_module",
+    "superbwarfare:small_battery_pack"
+  ],
+  "result": {
+    "entity": "fcp:empl_tow"
+  }
+}

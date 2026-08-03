@@ -10,9 +10,9 @@
     -0.08125
   ],
   "BarrelPos": [
-    0.229519,
+    -0.229519,
     0.394015,
-    -0.473047
+    0.473047
   ],
   "TurretTurnSpeed": [
     5,
@@ -135,9 +135,9 @@
         "UseFixedCameraPos": true,
         "Transform": "Barrel",
         "Position": [
+          0.7,
           0,
-          0.65,
-          0
+          0.3
         ],
         "Direction": "Barrel"
       },
@@ -150,7 +150,7 @@
       "MinPitch": -15,
       "MaxPitch": 40,
       "Weapons": [
-        "Nothing"
+        "TOW"
       ]
     },
     {
@@ -197,12 +197,47 @@
     }
   ],
   "Weapons": {
-    "Nothing": {
-      "Name": "",
-      "Crosshair": "@Empty",
-      "RPM": 0,
-      "Magazine": 0,
-      "Damage": 0
+    "TOW": {
+      "DefaultFireMode": "Semi",
+      "AvailableFireModes": "Semi",
+      "DefaultZoom": 3,
+      "Name": "weapon.fcp.tow_missile",
+      "AmmoType": "superbwarfare:medium_anti_ground_missile",
+      "Projectile": "superbwarfare:wire_guide_missile",
+      "Magazine": 1,
+      "EmptyReloadTime": 250,
+      "Damage": 600,
+      "ExplosionDamage": 70,
+      "ExplosionRadius": 7,
+      "Velocity": 3.5,
+      "ShootPos": {
+        "Transform": "Barrel",
+        "Positions": [
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "Directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "Crosshair": "@VehicleCommonMissile",
+      "CrosshairColor": "0x00FF66",
+      "SoundRadius": 32,
+      "SoundInfo": {
+        "Fire1P": "superbwarfare:bmp_2_missile_fire_1p",
+        "Fire3P": "superbwarfare:bmp_2_missile_fire_3p",
+        "VehicleReload3p": "superbwarfare:medium_missile_reload",
+        "VehicleReloadSoundTime": 28,
+        "Change": "superbwarfare:into_missile"
+      },
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/missile_tow.png"
     }
   },
   "EngineType": "Wheel",

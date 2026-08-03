@@ -97,6 +97,6 @@ public class HumveeUnarmedRenderer extends VehicleRenderer<HumveeUnarmedEntity> 
     private static void drawBox(PoseStack poseStack, VertexConsumer lines, double[] a) {
         LevelRenderer.renderLineBox(poseStack, lines,
                 new AABB(a[0], a[1], a[2], a[3], a[4], a[5]),
-                0.25f, 1.0f, 0.35f, 1.0f);
+                0.7f, 0.3f, 1.0f, 1.0f);
     }
 }

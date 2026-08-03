@@ -1,0 +1,7 @@
+{
+  "ID": "fcp:kamaz_kung",
+  "Model": {
+    "Model": "fcp:geo/kamaz_kung.geo.json",
+    "Texture": "fcp:textures/entity/kamaz/kamaz.png"
+  }
+}

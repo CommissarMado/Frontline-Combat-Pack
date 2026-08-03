@@ -6,7 +6,6 @@ import frontline.combat.fcp.client.model.Util.WheelRotationTransforms;
 import frontline.combat.fcp.entity.vehicle.Humvee.HumveeUnarmedEntity;
 import frontline.combat.fcp.vehicle.humvee.HumveeAttachments;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 import software.bernie.geckolib.core.animation.AnimationState;
 import org.jetbrains.annotations.Nullable;
 
@@ -32,23 +31,13 @@ public class HumveeUnarmedModel extends VehicleModel<HumveeUnarmedEntity> {
 
     @Override
     public @Nullable VehicleModel.TransformContext<HumveeUnarmedEntity> collectTransform(String boneName) {
-        VehicleModel.TransformContext<HumveeUnarmedEntity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.6, "whell1", "whell2", "whell3", "whell4");
-        if (wheels != null) return wheels;
-
-        if ("barrel".equals(boneName)) {
-            // The TOW launcher barrels are modelled pointing the opposite way (+Z) to the
-            // other stations (-Z), so SuperbWarfare's pitch comes out inverted on them.
-            // Flip the pitch sign for the TOW variants; everything else keeps the vanilla
-            // behaviour (sign -1, identical to the base handler).
-            return (bone, vehicle, animationState) -> {
-                float xRot = Mth.lerp(animationState.getPartialTick(),
-                        vehicle.getTurretXRotO(), vehicle.getTurretXRot());
-                float sign = vehicle.humveeName().contains("tow") ? 1f : -1f;
-                bone.setRotX(Mth.clamp(sign * xRot,
-                        vehicle.getTurretMinPitch(), vehicle.getTurretMaxPitch()) * Mth.DEG_TO_RAD);
-            };
-        }
+        // Front wheels steer (pivot on Y) and roll; rear wheels only roll.
+        VehicleModel.TransformContext<HumveeUnarmedEntity> front =
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f, "whell1", "whell2");
+        if (front != null) return front;
+        VehicleModel.TransformContext<HumveeUnarmedEntity> rear =
+                WheelRotationTransforms.matchAny(boneName, 0.6, "whell3", "whell4");
+        if (rear != null) return rear;
 
         return super.collectTransform(boneName);
     }

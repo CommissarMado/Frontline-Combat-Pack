@@ -4,12 +4,23 @@ import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.model.Util.WheelRotationTransforms;
 import frontline.combat.fcp.entity.vehicle.Ural.UralEntity;
-import frontline.combat.fcp.entity.vehicle.Ural.UralGradEntity;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.cache.object.GeoBone;
+import software.bernie.geckolib.core.animation.AnimationState;
 
 public class UralModel extends VehicleModel<UralEntity> {
+
+    @Override
+    public void setCustomAnimations(UralEntity vehicle, long instanceId, AnimationState<UralEntity> animationState) {
+        super.setCustomAnimations(vehicle, instanceId, animationState);
+        this.getBone("TENTY").ifPresent(bone -> setHiddenDeep(bone, !vehicle.hasTent()));
+    }
+
+    private static void setHiddenDeep(GeoBone bone, boolean hidden) {
+        bone.setHidden(hidden);
+        for (GeoBone child : bone.getChildBones()) setHiddenDeep(child, hidden);
+    }
 
     @Override
     public ResourceLocation getModelResource(UralEntity animatable) {

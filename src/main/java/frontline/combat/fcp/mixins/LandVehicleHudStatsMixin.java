@@ -50,6 +50,8 @@ public class LandVehicleHudStatsMixin {
             "fcp:t72av",
             "fcp:aavp",
             "fcp:matv_tow",
+            "fcp:hmmwv_unarmored_tow",
+            "fcp:hmmwv_unarmored_tow_turret",
             "fcp:stryker_mortar",
             "fcp:ural_grad",
             "fcp:toyota_hilux_bmp",
@@ -58,12 +60,17 @@ public class LandVehicleHudStatsMixin {
             "fcp:toyota_hilux_mortar",
             "fcp:btr80",
             "fcp:btr80_cope",
-            "fcp:btr82_cope"
+            "fcp:btr82_cope",
+            "fcp:brdm2",
+            "fcp:empl_kornet",
+            "fcp:empl_tow",
+            "fcp:empl_zis3"
     );
 
     // Vehicles that suppress the TV frame entirely but show no replacement overlay
     private static final Set<String> FCP_NO_FRAME_VEHICLES = Set.of(
-            "fcp:toyota_hilux_zu23"
+            "fcp:toyota_hilux_zu23",
+            "fcp:empl_dshk"
     );
 
     // Vehicles whose gunner seat gets the mortar-style Pitch / Yaw / Range readout.
@@ -76,7 +83,8 @@ public class LandVehicleHudStatsMixin {
             "fcp:ural_grad",
             "fcp:stryker_mortar",
             "fcp:toyota_hilux_rocket_pod",
-            "fcp:toyota_hilux_mortar"
+            "fcp:toyota_hilux_mortar",
+            "fcp:empl_zis3"
     );
 
     private static final ResourceLocation GUNNER_FRAME =

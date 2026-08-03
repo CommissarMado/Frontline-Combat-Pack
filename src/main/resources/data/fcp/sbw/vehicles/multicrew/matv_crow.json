@@ -205,5 +205,5 @@
     [1.0, 0, -1.55],
     [-1.0, 0, -1.55]
   ],
-  "InertiaRotateRate": 0
+  "InertiaRotateRate": 1
 }

@@ -24,9 +24,14 @@ public class StrykerTowModel extends VehicleModel<StrykerTowEntity> {
 
     @Override
     public @Nullable VehicleModel.TransformContext<StrykerTowEntity> collectTransform(String boneName) {
+        // Front two axles steer (pivot on Y) and roll; rear two axles only roll.
+        VehicleModel.TransformContext<StrykerTowEntity> steer =
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
+                        "wheRR", "wheRR2", "wheRR3", "wheRR4");
+        if (steer != null) return steer;
         VehicleModel.TransformContext<StrykerTowEntity> wheels =
                 WheelRotationTransforms.matchAny(boneName, 0.6,
-                        "wheRR", "wheRR2", "wheRR3", "wheRR4", "wheRR5", "wheRR6", "wheRR7", "wheRR8");
+                        "wheRR5", "wheRR6", "wheRR7", "wheRR8");
         if (wheels != null) return wheels;
 
         // Missiles disappear as they're fired (Viper-style). Magazine is 2: missile1 hides

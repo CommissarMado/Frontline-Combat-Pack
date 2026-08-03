@@ -7,8 +7,8 @@
 				"texture_width": 512,
 				"texture_height": 512,
 				"visible_bounds_width": 7,
-				"visible_bounds_height": 4.5,
-				"visible_bounds_offset": [0, 1.75, 0]
+				"visible_bounds_height": 6.5,
+				"visible_bounds_offset": [0, 2.75, 0]
 			},
 			"bones": [
 				{
@@ -6069,8 +6069,10 @@
 							}
 						},
 						{
-							"origin": [-1.2027, 35.38994, -14.53832],
+							"origin": [-1.2027, 33.38994, -14.53832],
 							"size": [2.805, 1.16886, 9.35],
+							"pivot": [0.1998, 33.97437, -9.86332],
+							"rotation": [-22.5, 0, 0],
 							"uv": {
 								"north": {"uv": [416, 270], "uv_size": [3, 1]},
 								"east": {"uv": [405, 271], "uv_size": [11, 1]},
@@ -6182,7 +6184,7 @@
 				{
 					"name": "barrel",
 					"parent": "turret",
-					"pivot": [0.1751, 35.82569, -13.6722]
+					"pivot": [0.214, 35.8287, -13.67222]
 				},
 				{
 					"name": "mk19",

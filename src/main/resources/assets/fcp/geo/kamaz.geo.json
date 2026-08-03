@@ -4762,7 +4762,12 @@
 				{
 					"name": "WheelR0Turn",
 					"parent": "WheelR",
-					"pivot": [-15.91819, 9.51089, -39.99429],
+					"pivot": [-15.91819, 9.51089, -39.99429]
+				},
+				{
+					"name": "WheelR0Turn2",
+					"parent": "WheelR0Turn",
+					"pivot": [-15.91818, 9.51089, -39.99429],
 					"rotation": [0, 180, 0],
 					"cubes": [
 						{

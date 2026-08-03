@@ -66,9 +66,13 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.UAZ_DSHKA.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.URAL.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.URAL_FUEL.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.URAL_KUNG.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.URAL_GRAD.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.KAMAZ.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.KAMAZ_KUNG.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.KAMAZ_LONG.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.GAZ_TIGR.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.GAZ_TIGR_RWS.get()));
@@ -112,6 +116,19 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.VENOM.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.EMPL_TOW.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.EMPL_KORNET.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.EMPL_DSHK.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.EMPL_MK19.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.EMPL_AGS17.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.EMPL_M2.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.EMPL_ZIS3.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.PANTSIR.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BRDM2.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.M939.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.KOZAK5.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.KOZAK2M1.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.KOZAK_AMBULANCE.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV_CROW.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV_TOW.get()));
 

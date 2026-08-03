@@ -1,0 +1,7 @@
+{
+  "ID": "fcp:empl_dshk",
+  "Model": {
+    "Model": "fcp:geo/empl_dshk.geo.json",
+    "Texture": "fcp:textures/entity/emplacements/dshk.png"
+  }
+}

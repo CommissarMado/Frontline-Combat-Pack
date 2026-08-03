@@ -38,6 +38,8 @@ import frontline.combat.fcp.entity.vehicle.Humvee.HumveeUnarmedEntity;
 import frontline.combat.fcp.entity.vehicle.JohnDeere.JohnDeereEntity;
 import frontline.combat.fcp.entity.vehicle.JohnDeere.SeederEntity;
 import frontline.combat.fcp.entity.vehicle.Kamaz.KamazEntity;
+import frontline.combat.fcp.entity.vehicle.Kamaz.KamazKungEntity;
+import frontline.combat.fcp.entity.vehicle.Kamaz.KamazLongEntity;
 import frontline.combat.fcp.entity.vehicle.Lav.Lav25Entity;
 import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdArmedEntity;
 import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdEntity;
@@ -45,6 +47,19 @@ import frontline.combat.fcp.entity.vehicle.M109.M109Entity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATV9In1Entity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATVCrowsEntity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATVEntity;
+import frontline.combat.fcp.entity.vehicle.Emplacement.EmplTowEntity;
+import frontline.combat.fcp.entity.vehicle.Emplacement.EmplKornetEntity;
+import frontline.combat.fcp.entity.vehicle.Emplacement.EmplDshkEntity;
+import frontline.combat.fcp.entity.vehicle.Emplacement.EmplMk19Entity;
+import frontline.combat.fcp.entity.vehicle.Emplacement.EmplAgs17Entity;
+import frontline.combat.fcp.entity.vehicle.Emplacement.EmplM2Entity;
+import frontline.combat.fcp.entity.vehicle.Emplacement.EmplZis3Entity;
+import frontline.combat.fcp.entity.vehicle.Pantsir.PantsirEntity;
+import frontline.combat.fcp.entity.vehicle.Brdm.Brdm2Entity;
+import frontline.combat.fcp.entity.vehicle.M939.M939Entity;
+import frontline.combat.fcp.entity.vehicle.Kozak.Kozak5Entity;
+import frontline.combat.fcp.entity.vehicle.Kozak.Kozak2m1Entity;
+import frontline.combat.fcp.entity.vehicle.Kozak.KozakAmbulanceEntity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATVTOWEntity;
 import frontline.combat.fcp.entity.vehicle.MemeVehicles.BigBirdEntity;
 import frontline.combat.fcp.entity.vehicle.MemeVehicles.WolfEntity;
@@ -68,6 +83,8 @@ import frontline.combat.fcp.entity.vehicle.Uaz.UAZDSHKAEntity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZSPG9Entity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZEntity;
 import frontline.combat.fcp.entity.vehicle.Ural.UralEntity;
+import frontline.combat.fcp.entity.vehicle.Ural.UralFuelEntity;
+import frontline.combat.fcp.entity.vehicle.Ural.UralKungEntity;
 import frontline.combat.fcp.entity.vehicle.Ural.UralGradEntity;
 import frontline.combat.fcp.entity.vehicle.Viper.ViperEntity;
 import net.minecraft.world.entity.Entity;
@@ -141,10 +158,18 @@ public class ModEntities {
             EntityType.Builder.of(T72AVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<UralEntity>> URAL = register("ural",
             EntityType.Builder.of(UralEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<UralFuelEntity>> URAL_FUEL = register("ural_fuel",
+            EntityType.Builder.of(UralFuelEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
+    public static final RegistryObject<EntityType<UralKungEntity>> URAL_KUNG = register("ural_kung",
+            EntityType.Builder.of(UralKungEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
     public static final RegistryObject<EntityType<UralGradEntity>> URAL_GRAD = register("ural_grad",
             EntityType.Builder.of(UralGradEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<KamazEntity>> KAMAZ = register("kamaz",
             EntityType.Builder.of(KamazEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<KamazKungEntity>> KAMAZ_KUNG = register("kamaz_kung",
+            EntityType.Builder.of(KamazKungEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
+    public static final RegistryObject<EntityType<KamazLongEntity>> KAMAZ_LONG = register("kamaz_long",
+            EntityType.Builder.of(KamazLongEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
     public static final RegistryObject<EntityType<ViperEntity>> VIPER = register("viper",
             EntityType.Builder.of(ViperEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<GazTigrEntity>> GAZ_TIGR = register("gaz_tigr",
@@ -169,6 +194,32 @@ public class ModEntities {
             EntityType.Builder.of(NovatorEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<MATVEntity>> MATV = register("matv",
             EntityType.Builder.of(MATVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<EmplTowEntity>> EMPL_TOW = register("empl_tow",
+            EntityType.Builder.of(EmplTowEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,1.4f));
+    public static final RegistryObject<EntityType<EmplKornetEntity>> EMPL_KORNET = register("empl_kornet",
+            EntityType.Builder.of(EmplKornetEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,1.4f));
+    public static final RegistryObject<EntityType<EmplDshkEntity>> EMPL_DSHK = register("empl_dshk",
+            EntityType.Builder.of(EmplDshkEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,1.4f));
+    public static final RegistryObject<EntityType<EmplMk19Entity>> EMPL_MK19 = register("empl_mk19",
+            EntityType.Builder.of(EmplMk19Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,0.84f));
+    public static final RegistryObject<EntityType<EmplAgs17Entity>> EMPL_AGS17 = register("empl_ags17",
+            EntityType.Builder.of(EmplAgs17Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,0.84f));
+    public static final RegistryObject<EntityType<EmplM2Entity>> EMPL_M2 = register("empl_m2",
+            EntityType.Builder.of(EmplM2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,0.84f));
+    public static final RegistryObject<EntityType<EmplZis3Entity>> EMPL_ZIS3 = register("empl_zis3",
+            EntityType.Builder.of(EmplZis3Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,0.84f));
+    public static final RegistryObject<EntityType<PantsirEntity>> PANTSIR = register("pantsir",
+            EntityType.Builder.of(PantsirEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(4f,4f));
+    public static final RegistryObject<EntityType<Brdm2Entity>> BRDM2 = register("brdm2",
+            EntityType.Builder.of(Brdm2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2.5f));
+    public static final RegistryObject<EntityType<M939Entity>> M939 = register("m939",
+            EntityType.Builder.of(M939Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
+    public static final RegistryObject<EntityType<Kozak5Entity>> KOZAK5 = register("kozak5",
+            EntityType.Builder.of(Kozak5Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<Kozak2m1Entity>> KOZAK2M1 = register("kozak2m1",
+            EntityType.Builder.of(Kozak2m1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<KozakAmbulanceEntity>> KOZAK_AMBULANCE = register("kozak_ambulance",
+            EntityType.Builder.of(KozakAmbulanceEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<MATVTOWEntity>> MATV_TOW = register("matv_tow",
             EntityType.Builder.of(MATVTOWEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<MATVCrowsEntity>> MATV_CROW = register("matv_crow",

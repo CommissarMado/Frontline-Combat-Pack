@@ -21,6 +21,8 @@ public class KamazEntity extends CamoVehicleBase {
     private static final String[] CAMO_NAMES = {"Standard", "Camo"};
 
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(KamazEntity.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Boolean> TENT = SynchedEntityData.defineId(KamazEntity.class, EntityDataSerializers.BOOLEAN);
+    private boolean tentInit = false;
 
     private float prevSteeringAngle = 0f;
     private float wheelRotation = 0f;
@@ -44,6 +46,7 @@ public class KamazEntity extends CamoVehicleBase {
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(STEERING_ANGLE, 0f);
+        this.entityData.define(TENT, true);
     }
 
     public float getSteeringAngle() {
@@ -66,6 +69,10 @@ public class KamazEntity extends CamoVehicleBase {
         return prevWheelRotation;
     }
 
+    public boolean hasTent(){return this.entityData.get(TENT);}
+    public void setTent(boolean v){this.entityData.set(TENT,v);}
+    public void toggleTent(){setTent(!hasTent());}
+
     @Override
     public DamageModifier getDamageModifier() {
         return super.getDamageModifier()
@@ -75,12 +82,14 @@ public class KamazEntity extends CamoVehicleBase {
     @Override
     public void addAdditionalSaveData(net.minecraft.nbt.CompoundTag compound) {
         super.addAdditionalSaveData(compound);
-        compound.putFloat("SteeringAngle", getSteeringAngle());
+        compound.putFloat("SteeringAngle", getSteeringAngle()); compound.putBoolean("Tent", hasTent()); compound.putBoolean("TentInit", tentInit);
     }
 
     @Override
     public void readAdditionalSaveData(net.minecraft.nbt.CompoundTag compound) {
         super.readAdditionalSaveData(compound);
+        if (compound.contains("Tent")) setTent(compound.getBoolean("Tent"));
+        if (compound.contains("TentInit")) tentInit = compound.getBoolean("TentInit");
         if (compound.contains("SteeringAngle")) {
             setSteeringAngle(compound.getFloat("SteeringAngle"));
         }
@@ -89,6 +98,7 @@ public class KamazEntity extends CamoVehicleBase {
     @Override
     public void baseTick() {
         super.baseTick();
+        if (!this.level().isClientSide() && !tentInit) { setTent(this.random.nextBoolean()); tentInit = true; }
 
         prevSteeringAngle = getSteeringAngle();
         float currentAngle = getSteeringAngle();

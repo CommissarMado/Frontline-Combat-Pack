@@ -150,7 +150,8 @@
       "MinPitch": -15,
       "MaxPitch": 40,
       "Weapons": [
-        "Nothing"
+        "Stinger",
+        "M3P"
       ]
     },
     {
@@ -197,12 +198,144 @@
     }
   ],
   "Weapons": {
-    "Nothing": {
-      "Name": "",
+    "Stinger": {
+      "AmmoType": "superbwarfare:medium_anti_air_missile",
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/fim_92.png",
+      "DefaultZoom": 3,
+      "DefaultFireMode": "Semi",
+      "AvailableFireModes": "Semi",
+      "Magazine": 8,
+      "EmptyReloadTime": 260,
+      "Projectile": "superbwarfare:ru_9m336_missile",
+      "Name": "weapon.superbwarfare.fim_92_missile",
+      "Damage": 260,
+      "RPM": 30,
+      "ExplosionDamage": 90,
+      "ExplosionRadius": 6,
+      "Velocity": 3,
+      "SeekWeaponInfo": {
+        "SeekDirection": "Barrel",
+        "CanGuidedByRadar": false,
+        "AffectedByStealthTarget": false,
+        "SeekRange": 384,
+        "SeekAngle": 20,
+        "SeekTime": 10,
+        "MinTargetHeight": 16,
+        "OnlyLockEntity": true
+      },
+      "ShootPos": {
+        "Transform": "Barrel",
+        "Directions": [
+          "Barrel"
+        ],
+        "ShootPositionForHud": [
+          -0.4,
+          0.2,
+          1.118
+        ],
+        "Positions": [
+          [
+            -0.4,
+            0.2,
+            1.118
+          ],
+          [
+            0.15,
+            0.2,
+            1.118
+          ],
+          [
+            0.7,
+            0.2,
+            1.118
+          ],
+          [
+            1.2,
+            0.2,
+            1.118
+          ],
+          [
+            -0.4,
+            -0.2,
+            1.118
+          ],
+          [
+            0.15,
+            -0.2,
+            1.118
+          ],
+          [
+            0.7,
+            -0.2,
+            1.118
+          ],
+          [
+            1.2,
+            -0.2,
+            1.118
+          ]
+        ],
+        "BoundUpWithAmmoAmount": true
+      },
+      "SoundInfo": {
+        "Fire1P": "superbwarfare:bmp_2_missile_fire_1p",
+        "Fire3P": "superbwarfare:bmp_2_missile_fire_3p",
+        "VehicleReload3p": "superbwarfare:bomb_reload",
+        "VehicleReloadSoundTime": 11,
+        "Change": "superbwarfare:into_missile",
+        "Locking": "superbwarfare:javelin_locking",
+        "Locked": "superbwarfare:javelin_locked"
+      },
+      "CrosshairColor": "0x66FF00",
+      "Crosshair": "@VehicleCommonSeekMissile",
+      "SoundRadius": 12
+    },
+    "M3P": {
+      "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png",
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Spread": 0.25,
       "Crosshair": "@Empty",
-      "RPM": 0,
-      "Magazine": 0,
-      "Damage": 0
+      "CrosshairColor": "0x00ff66",
+      "Projectile": "superbwarfare:projectile",
+      "DefaultZoom": 3,
+      "RPM": 1100,
+      "Damage": 15,
+      "BypassesArmor": 2,
+      "IsArmorPiercingProjectile": true,
+      "IsHighExplosiveProjectile": false,
+      "Velocity": 25,
+      "RecoilTime": 32,
+      "EmptyReloadTime": 200,
+      "Magazine": 200,
+      "RecoilForce": 0.1,
+      "HeatPerShoot": 5,
+      "NaturalCooldown": 1,
+      "ShootAnimationTime": 1,
+      "AmmoType": "superbwarfare:rifle_ammo",
+      "ShootPos": {
+        "Transform": "Barrel",
+        "Positions": [
+          [
+            0.3,
+            -0.35,
+            1.2
+          ]
+        ],
+        "Directions": [
+          "Barrel"
+        ]
+      },
+      "Name": "weapon.fcp.m3p",
+      "SoundInfo": {
+        "Fire1P": "superbwarfare:m_2_hb_fire_1p",
+        "Fire3P": "superbwarfare:m_2_hb_fire_3p",
+        "Fire3PFar": "superbwarfare:m_2_hb_far",
+        "Fire3PVeryFar": "superbwarfare:m_2_hb_veryfar",
+        "Change": "fcp:into_coax",
+        "VehicleReload": "fcp:m2_reload"
+      },
+      "SoundRadius": 16
     }
   },
   "EngineType": "Wheel",

@@ -6,8 +6,9 @@ import frontline.combat.fcp.client.model.FCPVehicleModel;
 import frontline.combat.fcp.client.model.Util.WheelRotationTransforms;
 import frontline.combat.fcp.entity.vehicle.Kamaz.KamazEntity;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.cache.object.GeoBone;
+import software.bernie.geckolib.core.animation.AnimationState;
 
 public class KamazModel extends FCPVehicleModel<KamazEntity> {
 
@@ -20,6 +21,17 @@ public class KamazModel extends FCPVehicleModel<KamazEntity> {
     public boolean hideForTurretControllerWhileZooming() {
         return true;
     }
+    @Override
+    public void setCustomAnimations(KamazEntity vehicle, long instanceId, AnimationState<KamazEntity> animationState) {
+        super.setCustomAnimations(vehicle, instanceId, animationState);
+        this.getBone("pehota2").ifPresent(b -> setHiddenDeep(b, !vehicle.hasTent()));
+    }
+
+    private static void setHiddenDeep(GeoBone bone, boolean hidden) {
+        bone.setHidden(hidden);
+        for (GeoBone child : bone.getChildBones()) setHiddenDeep(child, hidden);
+    }
+
 
     @Override
     public @Nullable TransformContext<KamazEntity> collectTransform(String boneName) {
