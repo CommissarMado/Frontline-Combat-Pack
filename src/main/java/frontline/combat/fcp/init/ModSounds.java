@@ -93,6 +93,8 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> FUNKY_TOWN = register("funky_town");
     public static final RegistryObject<SoundEvent> ERIKA_TRAP_REMIX = register("erika_trap_remix");
     public static final RegistryObject<SoundEvent> ERIKA = register("erika");
+
+    public static final RegistryObject<SoundEvent> SWORDS_AND_CROSSBOWS = register("swords_and_crossbows");
     private static RegistryObject<SoundEvent> register(String name) {
         return REGISTRY.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("fcp", name)));
     }

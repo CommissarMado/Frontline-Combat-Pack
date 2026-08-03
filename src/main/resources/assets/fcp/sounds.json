@@ -374,6 +374,14 @@
       }
     ]
   },
+  "summer_and_crossbows": {
+    "sounds": [
+      {
+        "name": "fcp:summer_and_crossbows",
+        "stream": true
+      }
+    ]
+  },
   "mk19_fire_1p": {
     "sounds": [
       {
