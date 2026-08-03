@@ -151,6 +151,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.EMPL_MK19.get(), frontline.combat.fcp.client.renderer.Emplacement.EmplMk19Renderer::new);
         event.registerEntityRenderer(ModEntities.EMPL_AGS17.get(), frontline.combat.fcp.client.renderer.Emplacement.EmplAgs17Renderer::new);
         event.registerEntityRenderer(ModEntities.EMPL_M2.get(), frontline.combat.fcp.client.renderer.Emplacement.EmplM2Renderer::new);
+        event.registerEntityRenderer(ModEntities.EMPL_MG3.get(), frontline.combat.fcp.client.renderer.Emplacement.EmplMg3Renderer::new);
         event.registerEntityRenderer(ModEntities.EMPL_ZIS3.get(), frontline.combat.fcp.client.renderer.Emplacement.EmplZis3Renderer::new);
         event.registerEntityRenderer(ModEntities.PANTSIR.get(), frontline.combat.fcp.client.renderer.Pantsir.PantsirRenderer::new);
         event.registerEntityRenderer(ModEntities.BRDM2.get(), frontline.combat.fcp.client.renderer.Brdm.Brdm2Renderer::new);

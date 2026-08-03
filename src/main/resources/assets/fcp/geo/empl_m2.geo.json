@@ -186,7 +186,7 @@
 					]
 				},
 				{
-					"name": "barrel2",
+					"name": "barrel",
 					"parent": "turret",
 					"pivot": [0.01425, 10.35088, -2.38261],
 					"cubes": [
@@ -614,7 +614,7 @@
 				},
 				{
 					"name": "body3",
-					"parent": "barrel2",
+					"parent": "barrel",
 					"pivot": [-0.34585, 11.12947, 9.73275],
 					"rotation": [0, 180, 0],
 					"cubes": [
@@ -695,7 +695,7 @@
 				},
 				{
 					"name": "action",
-					"parent": "barrel2",
+					"parent": "barrel",
 					"pivot": [-0.04785, 45.40251, -18.9],
 					"cubes": [
 						{
@@ -744,7 +744,7 @@
 				},
 				{
 					"name": "bullet_chain",
-					"parent": "barrel2",
+					"parent": "barrel",
 					"pivot": [1.51789, 11.52163, -2.89873],
 					"rotation": [0, 0, -7]
 				},

@@ -56,7 +56,7 @@ public final class VehicleInventoryKeyHandler {
      * Logs why a redirect didn't happen. Left ON while this is being brought up — it only
      * prints when you open your inventory and it declines to redirect. Set false once happy.
      */
-    public static boolean DEBUG = true;
+    public static boolean DEBUG = false;
 
     private static boolean registered = false;
 

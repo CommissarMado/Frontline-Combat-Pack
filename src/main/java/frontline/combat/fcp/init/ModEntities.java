@@ -52,6 +52,7 @@ import frontline.combat.fcp.entity.vehicle.Emplacement.EmplDshkEntity;
 import frontline.combat.fcp.entity.vehicle.Emplacement.EmplMk19Entity;
 import frontline.combat.fcp.entity.vehicle.Emplacement.EmplAgs17Entity;
 import frontline.combat.fcp.entity.vehicle.Emplacement.EmplM2Entity;
+import frontline.combat.fcp.entity.vehicle.Emplacement.EmplMg3Entity;
 import frontline.combat.fcp.entity.vehicle.Emplacement.EmplZis3Entity;
 import frontline.combat.fcp.entity.vehicle.Pantsir.PantsirEntity;
 import frontline.combat.fcp.entity.vehicle.Brdm.Brdm2Entity;
@@ -229,6 +230,8 @@ public class ModEntities {
             EntityType.Builder.of(EmplAgs17Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,0.84f));
     public static final RegistryObject<EntityType<EmplM2Entity>> EMPL_M2 = register("empl_m2",
             EntityType.Builder.of(EmplM2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,0.84f));
+    public static final RegistryObject<EntityType<EmplMg3Entity>> EMPL_MG3 = register("empl_mg3",
+            EntityType.Builder.of(EmplMg3Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,0.84f));
     public static final RegistryObject<EntityType<EmplZis3Entity>> EMPL_ZIS3 = register("empl_zis3",
             EntityType.Builder.of(EmplZis3Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,0.84f));
     public static final RegistryObject<EntityType<PantsirEntity>> PANTSIR = register("pantsir",
