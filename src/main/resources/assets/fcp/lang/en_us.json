@@ -88,6 +88,7 @@
   "weapon.fcp.m3p": "M3P",
   "weapon.fcp.ags30": "AGS-30 Grenade Launcher",
   "weapon.fcp.m2a1_browning": "M2A1 Browning",
+  "weapon.fcp.mg3": "MG3 Machine Gun",
   "weapon.fcp.m240_coax": "M240 Coaxial",
 
   "//": "========================= Foods =========================",
@@ -122,6 +123,7 @@
   "entity.fcp.empl_mk19": "Mk19 Emplacement",
   "entity.fcp.empl_ags17": "AGS-17 Emplacement",
   "entity.fcp.empl_m2": "M2 Emplacement",
+  "entity.fcp.empl_mg3": "MG3 Emplacement",
   "entity.fcp.empl_zis3": "ZiS-3 Emplacement",
   "weapon.fcp.ags17": "AGS-17",
   "weapon.fcp.zis3": "ZiS-3 76mm",

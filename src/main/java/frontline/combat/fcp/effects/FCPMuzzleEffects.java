@@ -37,7 +37,8 @@ public final class FCPMuzzleEffects {
      * triggers it — the coax/passenger MGs (MACHINE_GUN preset) are untouched.
      */
     private static final Set<String> FORWARD_CANNON_BLAST_VEHICLES = Set.of(
-            "fcp:stryker_mgs"
+            "fcp:stryker_mgs",
+            "fcp:empl_zis3"
     );
 
     private FCPMuzzleEffects() {

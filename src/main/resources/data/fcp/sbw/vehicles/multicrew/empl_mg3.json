@@ -1,5 +1,5 @@
 {
-  "ID": "fcp:empl_dshk",
+  "ID": "fcp:empl_mg3",
   "MaxHealth": 40,
   "MaxEnergy": 5250000,
   "Seats": [
@@ -10,46 +10,49 @@
         "Transform": "Barrel",
         "Position": [
           0.0,
-          0.6,
-          -0.75
+          0.4,
+          0.0
         ],
         "Direction": "Barrel"
       },
-      "Transform": "Turret",
+      "Transform": "Vehicle",
       "Position": [
-        0.0,
-        -1.0,
-        -0.8
+        0,
+        -0.6,
+        -1
       ],
-      "MinPitch": -15,
+      "MinPitch": -10,
       "MaxPitch": 40,
-      "Pose": "MachineGunStand",
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "Pose": "Default",
+      "CanRotateBody": false,
       "Weapons": [
-        "DShK"
+        "MachineGun"
       ]
     }
   ],
   "Weapons": {
-    "DShK": {
-      "Icon": "fcp:textures/screens/vehicle_weapon/12_7mm.png",
+    "MachineGun": {
+      "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
-      "Spread": 0.25,
+      "Spread": 0.5,
       "Crosshair": "@Empty",
       "CrosshairColor": "0x00ff66",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 500,
-      "Damage": 15,
-      "BypassesArmor": 2,
-      "IsArmorPiercingProjectile": true,
+      "RPM": 1200,
+      "Damage": 5.5,
+      "BypassesArmor": 0.2,
+      "IsArmorPiercingProjectile": false,
       "IsHighExplosiveProjectile": false,
       "Velocity": 25,
-      "RecoilTime": 32,
+      "RecoilTime": 16,
       "EmptyReloadTime": 200,
-      "Magazine": 200,
-      "RecoilForce": 0.1,
-      "HeatPerShoot": 5,
+      "Magazine": 250,
+      "RecoilForce": 0.05,
+      "HeatPerShoot": 3,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
       "AmmoType": "superbwarfare:rifle_ammo",
@@ -57,31 +60,31 @@
         "Transform": "Barrel",
         "Positions": [
           [
-            -0.0086,
-            0.3567,
-            1.257
+            0.00,
+            0.1,
+            1.05
           ]
         ],
         "Directions": [
           "Barrel"
         ]
       },
-      "Name": "weapon.fcp.dshk",
+      "Name": "weapon.fcp.mg3",
       "SoundInfo": {
-        "Fire1P": "superbwarfare:m_2_hb_fire_1p",
-        "Fire3P": "superbwarfare:m_2_hb_fire_3p",
-        "Fire3PFar": "superbwarfare:m_2_hb_far",
-        "Fire3PVeryFar": "superbwarfare:m_2_hb_veryfar",
-        "Change": "fcp:into_coax",
+        "Fire1P": "superbwarfare:coax_fire_1p",
+        "Fire3P": "superbwarfare:mg_17_fire_3p",
+        "Fire3PFar": "superbwarfare:mg_17_far",
+        "Fire3PVeryFar": "superbwarfare:mg_17_veryfar",
+        "Change": "fcp:coax_equip",
         "VehicleReload": "fcp:m2_reload"
       },
       "SoundRadius": 16
     }
   },
   "TurretPos": [
-    0.008448,
-    1.105147,
-    -0.044797
+    0.00234,
+    0.55133,
+    0.15333
   ],
   "BarrelPos": [
     0,
@@ -137,5 +140,9 @@
   },
   "HudType": "@Empty",
   "InertiaRotateRate": 1,
-  "EngineType": "Fixed"
+  "EngineType": "Fixed",
+  "TurretYawRange": [
+    -75,
+    75
+  ]
 }

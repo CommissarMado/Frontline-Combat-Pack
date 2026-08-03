@@ -25,6 +25,21 @@
   "OBB": [
     {
       "Size": [
+        1,
+        0.5,
+        1
+      ],
+      "Position": [
+        0,
+        0,
+        0
+      ],
+      "Part": "Turret",
+      "Transform": "Turret",
+      "Rotation": "Turret"
+    },
+    {
+      "Size": [
         0.192578,
         0.537891,
         0.53125
