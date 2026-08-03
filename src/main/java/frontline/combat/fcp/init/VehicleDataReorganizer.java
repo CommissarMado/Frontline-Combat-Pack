@@ -6,12 +6,14 @@ import com.atsuishio.superbwarfare.data.vehicle.VehicleData;
 import com.mojang.logging.LogUtils;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.FCPConfig;
+import frontline.combat.fcp.network.SetMulticrewPacket;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.server.ServerLifecycleHooks;
 import org.slf4j.Logger;
 
 import java.util.ArrayList;
@@ -50,6 +52,15 @@ public class VehicleDataReorganizer {
     private static final String DIRECTORY = "sbw/vehicles";
     private static final String SINGLE_CREW = "single_crew";
     private static final String MULTICREW = "multicrew";
+    /**
+     * Explicit home for vehicles identical in both modes. Behaviourally the same as any
+     * category folder, but reserved by name so it reads as intent and can never collide
+     * with a future crew-folder name. Categories nest inside it (shared/farm/seeder.json).
+     */
+    private static final String SHARED = "shared";
+
+    /** Mode last applied to the data map; null until the first load of this session. */
+    private static Boolean lastAppliedMode = null;
     private static final Object MARKER = new Object();
 
     @SubscribeEvent
@@ -73,6 +84,17 @@ public class VehicleDataReorganizer {
         HashMap<String, Object> map = general.getDataMap();
 
         boolean multicrew = FCPConfig.multicrewEnabled();
+
+        // Seat layouts change between modes: anyone still seated would be in a seat that
+        // may no longer exist (or now belongs to someone else), leaving them desynced or
+        // invisible-mounted. Eject BEFORE the new data lands, and only on a real change —
+        // this catches both the GUI toggle and a hand-edited config + /reload, since every
+        // path ends in this reload listener.
+        if (lastAppliedMode != null && lastAppliedMode != multicrew) {
+            ejectVehicleRiders();
+        }
+        lastAppliedMode = multicrew;
+
         String selected = multicrew ? MULTICREW : SINGLE_CREW;
         String rejected = multicrew ? SINGLE_CREW : MULTICREW;
 
@@ -99,7 +121,8 @@ public class VehicleDataReorganizer {
             } else if (firstFolder.equals(rejected)) {
                 dropped++;
             } else {
-                shared.put(finalKey, entry.getValue()); // organization-only folders
+                // shared/ and plain category folders alike: applies in both modes
+                shared.put(finalKey, entry.getValue());
             }
         }
 
@@ -119,7 +142,17 @@ public class VehicleDataReorganizer {
         // Same refresh SBW's own reload hook performs, so nothing serves stale data.
         VehicleData.dataCache.invalidateAll();
 
-        LOGGER.info("[FCP] vehicle data reorganized: mode={}, {} crew-specific, {} categorized, {} dropped ({})",
+        LOGGER.info("[FCP] vehicle data reorganized: mode={}, {} crew-specific, {} shared/categorized, {} dropped ({})",
                 selected, crew.size(), shared.size(), dropped, rejected);
+    }
+
+    /**
+     * Safety net for mode changes that DIDN'T come through the config screen — a
+     * hand-edited config plus /reload. The screen's own path ejects before the reload
+     * starts, which is the right moment; by the time this runs the new data is already
+     * live, so it's a late catch rather than the primary mechanism.
+     */
+    private static void ejectVehicleRiders() {
+        SetMulticrewPacket.ejectAllVehicleOccupants(ServerLifecycleHooks.getCurrentServer());
     }
 }

@@ -12,6 +12,8 @@ import net.minecraft.world.level.Level;
 public class BMP1Entity extends CamoVehicleBase {
 
     private static final ResourceLocation[] CAMO_TEXTURES = {
+
+            //Normal Textures
             new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_1_1_1.png"),
             new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_1_afgan.png"),
             new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_1.png"),
@@ -34,6 +36,8 @@ public class BMP1Entity extends CamoVehicleBase {
             new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_4.png"),
             new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_5.png"),
             new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_c_kom_1.png"),
+
+            // Wrecked Textures
             new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_1_1_1_wrecked.png"),
             new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_1_afgan_wrecked.png"),
             new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_1_wrecked.png"),

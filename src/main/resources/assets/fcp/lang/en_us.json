@@ -164,6 +164,7 @@
   "gui.fcp.config.local_hint": "Applies to worlds loaded after this change",
   "gui.fcp.config.denied": "You need operator permission to change FCP settings",
   "gui.fcp.config.multicrew_on": "Multicrew vehicles enabled — reloading vehicle data",
-  "gui.fcp.config.multicrew_off": "Multicrew vehicles disabled — reloading vehicle data"
+  "gui.fcp.config.multicrew_off": "Multicrew vehicles disabled — reloading vehicle data",
+  "gui.fcp.config.reseat": "Vehicle seats were reconfigured — please remount"
 
 }

@@ -4,6 +4,8 @@ import frontline.combat.fcp.FCPConfig;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.entity.Entity;
+import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.repository.PackRepository;
 import net.minecraftforge.network.NetworkEvent;
@@ -11,7 +13,9 @@ import net.minecraftforge.network.PacketDistributor;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Supplier;
 
 /**
@@ -50,6 +54,11 @@ public class SetMulticrewPacket {
                 return;
             }
 
+            // Seats differ between modes, so clear every vehicle FIRST — while the old
+            // layout is still live and dismounting is well-defined. Doing this after the
+            // reload leaves people seated in seats that no longer exist.
+            ejectAllVehicleOccupants(player.server);
+
             FCPConfig.setMulticrew(msg.multicrew);
             reloadDataPacks(player.server);
 
@@ -70,6 +79,32 @@ public class SetMulticrewPacket {
     static void sendStateTo(ServerPlayer player) {
         FCPNetwork.FCP_HANDLER.send(PacketDistributor.PLAYER.with(() -> player),
                 new FcpConfigStatePacket(FCPConfig.multicrewEnabled(), mayEdit(player)));
+    }
+
+    /**
+     * Force everyone out of any SBW vehicle, and take that vehicle's other passengers with
+     * them. Ejecting the VEHICLE is what actually clears it: a per-rider stopRiding() leans
+     * on seat bookkeeping that is exactly what's about to change.
+     */
+    public static void ejectAllVehicleOccupants(MinecraftServer server) {
+        if (server == null) return;
+
+        Set<Entity> vehicles = new HashSet<>();
+        for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+            Entity root = player.getRootVehicle();
+            if (root != player && root instanceof VehicleEntity) vehicles.add(root);
+        }
+
+        for (Entity vehicle : vehicles) {
+            List<Entity> riders = new ArrayList<>(vehicle.getPassengers());
+            vehicle.ejectPassengers();
+            for (Entity rider : riders) {
+                if (rider.isPassenger()) rider.stopRiding(); // belt and braces
+                if (rider instanceof ServerPlayer p) {
+                    p.displayClientMessage(Component.translatable("gui.fcp.config.reseat"), true);
+                }
+            }
+        }
     }
 
     /**
