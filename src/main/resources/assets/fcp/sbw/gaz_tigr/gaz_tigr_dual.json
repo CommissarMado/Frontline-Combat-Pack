@@ -1,0 +1,7 @@
+﻿{
+  "ID": "fcp:gaz_tigr_dual",
+  "Model": {
+    "Model": "fcp:geo/gaz_tigr_dual.geo.json",
+    "Texture": "fcp:textures/entity/toyota.png"
+  }
+}

@@ -78,6 +78,7 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.GAZ_TIGR_RWS.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.GAZ_TIGR_MG.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.GAZ_TIGR_GL.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.GAZ_TIGR_DUAL.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.NOVATOR.get()));
 

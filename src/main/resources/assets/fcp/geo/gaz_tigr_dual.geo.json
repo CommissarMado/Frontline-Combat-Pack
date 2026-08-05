@@ -2399,13 +2399,13 @@
 					]
 				},
 				{
-					"name": "Turret",
+					"name": "turret",
 					"parent": "BODY",
 					"pivot": [0.19, 37.64244, 11.7567]
 				},
 				{
 					"name": "AGS",
-					"parent": "Turret",
+					"parent": "turret",
 					"pivot": [-8.45568, 37.55957, 12.21482],
 					"cubes": [
 						{
@@ -2796,7 +2796,7 @@
 				},
 				{
 					"name": "barrel2",
-					"parent": "Turret",
+					"parent": "turret",
 					"pivot": [0, 39.71623, 2.8]
 				},
 				{
@@ -3513,7 +3513,7 @@
 				},
 				{
 					"name": "LUK2",
-					"parent": "Turret",
+					"parent": "turret",
 					"pivot": [0.19002, 35.65153, 18.9567],
 					"rotation": [-90, -17.5, -90],
 					"cubes": [
