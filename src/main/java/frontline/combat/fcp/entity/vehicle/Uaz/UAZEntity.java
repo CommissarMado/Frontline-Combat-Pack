@@ -12,6 +12,15 @@ import net.minecraft.world.level.Level;
 
 public class UAZEntity extends CamoVehicleBase {
 
+    public int INVENTORY_SIZE = 9;
+
+    @Override
+    public int inventorySize() {
+        return INVENTORY_SIZE;
+    }
+
+    @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
+
     private static final ResourceLocation[] CAMO_TEXTURES = {
             // Normal Camos
             new ResourceLocation("fcp", "textures/entity/uaz/uaz_1.png"),

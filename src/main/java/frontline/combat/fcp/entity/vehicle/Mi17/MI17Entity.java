@@ -11,6 +11,15 @@ import java.lang.reflect.Field;
 
 public class MI17Entity extends CamoVehicleBase {
 
+    public int INVENTORY_SIZE = 9;
+
+    @Override
+    public int inventorySize() {
+        return INVENTORY_SIZE;
+    }
+
+    @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
+
     private static final ResourceLocation[] CAMO_TEXTURES = {
             // Normal camos [0-2]
             new ResourceLocation("fcp", "textures/entity/mi17/mi17_1.png"),

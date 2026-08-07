@@ -34,7 +34,7 @@
       "MaxPitch": 60,
       "MinYaw": -95,
       "MaxYaw": 95,
-      "BanHand": true,
+      "BanHand": true
     }
   ],
   "EngineType": "Wheel",

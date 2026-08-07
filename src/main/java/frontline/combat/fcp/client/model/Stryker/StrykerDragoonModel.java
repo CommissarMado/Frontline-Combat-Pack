@@ -15,11 +15,11 @@ public class StrykerDragoonModel extends FCPVehicleModel<StrykerDragoonEntity> {
 
     @Override public @Nullable VehicleModel.TransformContext<StrykerDragoonEntity> collectTransform(String boneName) {
         VehicleModel.TransformContext<StrykerDragoonEntity> turn =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.534, 30f,
                         "WheelL0Turn", "WheelR0Turn", "WheelL1Turn", "WheelR1Turn");
         if (turn != null) return turn;
         VehicleModel.TransformContext<StrykerDragoonEntity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.6,
+                WheelRotationTransforms.matchAny(boneName, 0.534,
                         "WheelL0", "WheelR0", "WheelL1", "WheelR1");
         if (wheels != null) return wheels;
 

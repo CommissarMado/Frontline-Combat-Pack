@@ -28,13 +28,13 @@ public class GazTigrDualModel extends FCPVehicleModel<GazTigrDualEntity> {
         // vehicle's steering angle. The dual geo has no separate "...Turn" bones, so the wheel bones
         // themselves both roll and steer (as on the base chassis' front bones).
         VehicleModel.TransformContext<GazTigrDualEntity> turn =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.417, 30f,
                         "whell", "whell2");
         if (turn != null) return turn;
 
         // Rear wheels (rear axle, Z ~ +25) just roll.
         VehicleModel.TransformContext<GazTigrDualEntity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.6,
+                WheelRotationTransforms.matchAny(boneName, 0.417,
                         "whell3", "whell4");
         if (wheels != null) return wheels;
 

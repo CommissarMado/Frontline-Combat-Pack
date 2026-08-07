@@ -33,10 +33,10 @@ public class HumveeUnarmedModel extends VehicleModel<HumveeUnarmedEntity> {
     public @Nullable VehicleModel.TransformContext<HumveeUnarmedEntity> collectTransform(String boneName) {
         // Front wheels steer (pivot on Y) and roll; rear wheels only roll.
         VehicleModel.TransformContext<HumveeUnarmedEntity> front =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f, "whell1", "whell2");
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.462, 30f, "whell1", "whell2");
         if (front != null) return front;
         VehicleModel.TransformContext<HumveeUnarmedEntity> rear =
-                WheelRotationTransforms.matchAny(boneName, 0.6, "whell3", "whell4");
+                WheelRotationTransforms.matchAny(boneName, 0.462, "whell3", "whell4");
         if (rear != null) return rear;
 
         return super.collectTransform(boneName);

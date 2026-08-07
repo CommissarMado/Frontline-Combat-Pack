@@ -22,11 +22,11 @@ public class DpvM240Model extends VehicleModel<DpvM240Entity> {
 
         // Front wheels wheel1/wheel3 (Z ~ -1.40): steer + roll. Rear wheel2/wheel4 (Z ~ +2.01): roll only.
         VehicleModel.TransformContext<DpvM240Entity> turn =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.58, 30f, "wheel1", "wheel3");
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.726, 30f, "wheel1", "wheel3");
         if (turn != null) return turn;
 
         VehicleModel.TransformContext<DpvM240Entity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.58, "wheel2", "wheel4");
+                WheelRotationTransforms.matchAny(boneName, 0.726, "wheel2", "wheel4");
         if (wheels != null) return wheels;
 
         // Pintle weapon: the "barrel" bone is a root bone that both traverses (yaw) and elevates

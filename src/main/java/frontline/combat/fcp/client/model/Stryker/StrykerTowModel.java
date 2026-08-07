@@ -26,11 +26,11 @@ public class StrykerTowModel extends VehicleModel<StrykerTowEntity> {
     public @Nullable VehicleModel.TransformContext<StrykerTowEntity> collectTransform(String boneName) {
         // Front two axles steer (pivot on Y) and roll; rear two axles only roll.
         VehicleModel.TransformContext<StrykerTowEntity> steer =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.534, 30f,
                         "wheRR", "wheRR2", "wheRR3", "wheRR4");
         if (steer != null) return steer;
         VehicleModel.TransformContext<StrykerTowEntity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.6,
+                WheelRotationTransforms.matchAny(boneName, 0.534,
                         "wheRR5", "wheRR6", "wheRR7", "wheRR8");
         if (wheels != null) return wheels;
 

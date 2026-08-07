@@ -25,12 +25,12 @@ public class BTR80Model extends FCPVehicleModel<BTR80Entity> {
         // barrel is now a direct child of turret and points forward, so SBW's default barrel pitch
         // works and matches the shot at every elevation. No override needed.
         VehicleModel.TransformContext<BTR80Entity> turn =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.626, 30f,
                         "WheelTurnL1", "WheelTurnL2", "WheelTurnR1", "WheelTurnR2");
         if (turn != null) return turn;
 
         VehicleModel.TransformContext<BTR80Entity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.6,
+                WheelRotationTransforms.matchAny(boneName, 0.626,
                         "WheelL3", "WheelL4", "WheelR3", "WheelR2");
         if (wheels != null) return wheels;
 

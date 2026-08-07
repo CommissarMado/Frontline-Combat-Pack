@@ -10,6 +10,16 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 
 public class M939Entity extends CamoVehicleBase {
+
+    public int INVENTORY_SIZE = 9;
+
+    @Override
+    public int inventorySize() {
+        return INVENTORY_SIZE;
+    }
+
+    @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
+
     private static final ResourceLocation[] CAMO_TEXTURES = {
             //Normal
             new ResourceLocation("fcp", "textures/entity/m939/m939_green.png"),

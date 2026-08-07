@@ -5,7 +5,6 @@ import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.model.FCPVehicleModel;
 import frontline.combat.fcp.client.model.Util.WheelRotationTransforms;
 import frontline.combat.fcp.entity.vehicle.JohnDeere.CombineEntity;
-import frontline.combat.fcp.entity.vehicle.JohnDeere.JohnDeereEntity;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
@@ -23,14 +22,13 @@ public class CombineModel extends FCPVehicleModel<CombineEntity> {
 
     @Override
     public @Nullable VehicleModel.TransformContext<CombineEntity> collectTransform(String boneName) {
-        VehicleModel.TransformContext<CombineEntity> turn =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
-                        "WheelL0Turn", "WheelR0Turn", "WheelL1Turn", "WheelR1Turn");
-        if (turn != null) return turn;
-
-        VehicleModel.TransformContext<CombineEntity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.6,
-                        "WheelL0", "WheelR0", "WheelL1", "WheelR1");
+        // Combine: three wheel sizes. Radii in blocks, read from combine.geo.json (px / 16).
+        // "...Turn" bones are the steered wheels as authored in the geo; if they steer the
+        // wrong end in-game, move the Turn set to the other pair rather than editing here.
+        VehicleModel.TransformContext<CombineEntity> wheels = WheelRotationTransforms.matchWheels(boneName,
+                WheelRotationTransforms.steered(1.081, 30f, "WheelL0Turn", "WheelR0Turn"),
+                WheelRotationTransforms.rolling(0.813, "WheelL0", "WheelR0"),
+                WheelRotationTransforms.rolling(0.432, "WheelL1", "WheelR1"));
         if (wheels != null) return wheels;
 
         return super.collectTransform(boneName);

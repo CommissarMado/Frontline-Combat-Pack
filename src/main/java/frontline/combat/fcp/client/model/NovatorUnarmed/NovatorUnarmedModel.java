@@ -34,12 +34,12 @@ public class NovatorUnarmedModel extends FCPVehicleModel<NovatorUnarmedEntity> {
     @Override
     public @Nullable VehicleModel.TransformContext<NovatorUnarmedEntity> collectTransform(String boneName) {
         VehicleModel.TransformContext<NovatorUnarmedEntity> turn =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.621, 30f,
                         "WheelL0Turn", "WheelR0Turn", "WheelL1Turn", "WheelR1Turn");
         if (turn != null) return turn;
 
         VehicleModel.TransformContext<NovatorUnarmedEntity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.6,
+                WheelRotationTransforms.matchAny(boneName, 0.621,
                         "WheelL0", "WheelR0", "WheelL1", "WheelR1");
         if (wheels != null) return wheels;
 

@@ -28,12 +28,12 @@ public class MATVTOWModel extends FCPVehicleModel<MATVTOWEntity> {
     @Override
     public @Nullable VehicleModel.TransformContext<MATVTOWEntity> collectTransform(String boneName) {
         VehicleModel.TransformContext<MATVTOWEntity> turn =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.631, 30f,
                         "WheelL0Turn", "WheelR0Turn", "WheelL1Turn", "WheelR1Turn");
         if (turn != null) return turn;
 
         VehicleModel.TransformContext<MATVTOWEntity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.6,
+                WheelRotationTransforms.matchAny(boneName, 0.631,
                         "WheelL0", "WheelR0", "WheelL1", "WheelR1");
         if (wheels != null) return wheels;
 

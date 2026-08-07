@@ -31,12 +31,12 @@ public class BTR82Model extends FCPVehicleModel<BTR82Entity> {
         }
 
         VehicleModel.TransformContext<BTR82Entity> turn =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.626, 30f,
                         "WheelL0Turn", "WheelR0Turn", "WheelL1Turn", "WheelR1Turn");
         if (turn != null) return turn;
 
         VehicleModel.TransformContext<BTR82Entity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.6,
+                WheelRotationTransforms.matchAny(boneName, 0.626,
                         "WheelL0", "WheelR0", "WheelL1", "WheelR1");
         if (wheels != null) return wheels;
 

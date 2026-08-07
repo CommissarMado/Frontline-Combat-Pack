@@ -11,8 +11,15 @@ import net.minecraft.world.level.Level;
 
 public class BTR82ATEntity extends CamoVehicleBase {
 
-    // BTR-82AT uses a single dedicated texture. Index 0 = normal, index 1 = wrecked
-    // (placeholder = normal until a wrecked skin is authored). camoCount = ceil(2/2) = 1.
+    public int INVENTORY_SIZE = 9;
+
+    @Override
+    public int inventorySize() {
+        return INVENTORY_SIZE;
+    }
+
+    @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
+
     private static final ResourceLocation[] CAMO_TEXTURES = {
             new ResourceLocation("fcp", "textures/entity/btr82at/stiched_texture.png"),
             new ResourceLocation("fcp", "textures/entity/btr82at/stiched_texture.png")

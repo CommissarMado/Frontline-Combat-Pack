@@ -11,6 +11,15 @@ import net.minecraft.world.level.Level;
 
 public class MATVTOWEntity extends CamoVehicleBase {
 
+    public int INVENTORY_SIZE = 9;
+
+    @Override
+    public int inventorySize() {
+        return INVENTORY_SIZE;
+    }
+
+    @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
+
     private static final ResourceLocation[] CAMO_TEXTURES = {
             //Normal Texture
             new ResourceLocation("fcp", "textures/entity/matv/matv_1.png"),

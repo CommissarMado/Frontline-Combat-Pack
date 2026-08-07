@@ -25,12 +25,12 @@ public class ExampleTrailerModel extends FCPVehicleModel<ExampleTrailerEntity> {
     public @Nullable VehicleModel.TransformContext<ExampleTrailerEntity> collectTransform(String boneName) {
 
         VehicleModel.TransformContext<ExampleTrailerEntity> turn =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.5, 30f,
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.534, 30f,
                         "WheelL0Turn", "WheelR0Turn", "WheelL1Turn", "WheelR1Turn");
         if (turn != null) return turn;
 
         VehicleModel.TransformContext<ExampleTrailerEntity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.5,
+                WheelRotationTransforms.matchAny(boneName, 0.534,
                         "WheelL0", "WheelR0", "WheelL1", "WheelR1");
         if (wheels != null) return wheels;
 

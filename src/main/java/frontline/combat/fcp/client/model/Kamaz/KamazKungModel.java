@@ -12,9 +12,9 @@ public class KamazKungModel extends FCPVehicleModel<KamazKungEntity> {
     @Override public ResourceLocation getModelResource(KamazKungEntity a) {return new ResourceLocation(FCP.MODID, "geo/kamaz_kung.geo.json");}
     @Override public boolean hideForTurretControllerWhileZooming() {return false;}
     @Override public @Nullable VehicleModel.TransformContext<KamazKungEntity> collectTransform(String boneName) {
-        VehicleModel.TransformContext<KamazKungEntity> steer = WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f, "whell", "whell4");
+        VehicleModel.TransformContext<KamazKungEntity> steer = WheelRotationTransforms.matchAnyTurn(boneName, 0.494, 30f, "whell", "whell4");
         if (steer != null) return steer;
-        VehicleModel.TransformContext<KamazKungEntity> wheels = WheelRotationTransforms.matchAny(boneName, 0.6, "whell2", "whell5", "whell3", "whell6");
+        VehicleModel.TransformContext<KamazKungEntity> wheels = WheelRotationTransforms.matchAny(boneName, 0.494, "whell2", "whell5", "whell3", "whell6");
         if (wheels != null) return wheels;
         return super.collectTransform(boneName);
     }

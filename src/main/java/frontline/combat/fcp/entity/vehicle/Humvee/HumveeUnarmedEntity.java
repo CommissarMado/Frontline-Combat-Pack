@@ -24,6 +24,15 @@ import java.util.Map;
  */
 public class HumveeUnarmedEntity extends CamoVehicleBase implements HumveeVehicle, SteerableVehicle {
 
+    public int INVENTORY_SIZE = 9;
+
+    @Override
+    public int inventorySize() {
+        return INVENTORY_SIZE;
+    }
+
+    @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
+
     // Shared camo skins (paint schemes over the common UV). Wrecked slots reuse the normal
     // skins as placeholders until dedicated wrecked textures exist. camoCount = 11.
     private static final String[] SKINS = {

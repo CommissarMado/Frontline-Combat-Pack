@@ -25,9 +25,9 @@ public class KamazLongModel extends FCPVehicleModel<KamazLongEntity> {
     }
 
     @Override public @Nullable VehicleModel.TransformContext<KamazLongEntity> collectTransform(String boneName) {
-        VehicleModel.TransformContext<KamazLongEntity> steer = WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f, "whell2", "whell6", "whell7", "whell8");
+        VehicleModel.TransformContext<KamazLongEntity> steer = WheelRotationTransforms.matchAnyTurn(boneName, 0.494, 30f, "whell2", "whell6", "whell7", "whell8");
         if (steer != null) return steer;
-        VehicleModel.TransformContext<KamazLongEntity> wheels = WheelRotationTransforms.matchAny(boneName, 0.6, "whell3", "whell9", "whell4", "whell5");
+        VehicleModel.TransformContext<KamazLongEntity> wheels = WheelRotationTransforms.matchAny(boneName, 0.494, "whell3", "whell9", "whell4", "whell5");
         if (wheels != null) return wheels;
         return super.collectTransform(boneName);
     }
