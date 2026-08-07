@@ -48,6 +48,9 @@ import frontline.combat.fcp.client.renderer.MemeVehicles.BigBirdRenderer;
 import frontline.combat.fcp.client.renderer.MemeVehicles.WolfRenderer;
 import frontline.combat.fcp.client.renderer.Mi17.MI17Renderer;
 import frontline.combat.fcp.client.renderer.Novator.NovatorRenderer;
+import frontline.combat.fcp.client.renderer.NovatorUnarmed.NovatorUnarmedRenderer;
+import frontline.combat.fcp.client.renderer.Dpv.DpvM240Renderer;
+import frontline.combat.fcp.client.renderer.Dpv.DpvMinigunRenderer;
 import frontline.combat.fcp.client.renderer.Projectile.Hellfire.WireGuidedHellfireRenderer;
 import frontline.combat.fcp.client.renderer.Projectile.Malyutka.MalyutkaRenderer;
 import frontline.combat.fcp.client.renderer.Projectile.Sidewinder.SidewinderRenderer;
@@ -85,6 +88,8 @@ public class ModEntityRenderers {
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX.get(), ToyotaHiluxRenderer::new);
+        event.registerEntityRenderer(ModEntities.DPV_M240.get(), DpvM240Renderer::new);
+        event.registerEntityRenderer(ModEntities.DPV_MINIGUN.get(), DpvMinigunRenderer::new);
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_ROCKET_POD.get(), ToyotaHiluxRocketPodRenderer::new);
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_BMP.get(), ToyotaHiluxBMPRenderer::new);
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_SPG9.get(), ToyotaHiluxSpg9Renderer::new);
@@ -146,6 +151,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.VENOM.get(), VenomRenderer::new);
 
         event.registerEntityRenderer(ModEntities.NOVATOR.get(), NovatorRenderer::new);
+        event.registerEntityRenderer(ModEntities.NOVATOR_UNARMED.get(), NovatorUnarmedRenderer::new);
 
         event.registerEntityRenderer(ModEntities.MATV.get(), MATVRenderer::new);
         event.registerEntityRenderer(ModEntities.EMPL_TOW.get(), frontline.combat.fcp.client.renderer.Emplacement.EmplTowRenderer::new);

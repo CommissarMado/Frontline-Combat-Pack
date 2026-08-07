@@ -23,6 +23,8 @@ public class ModTabs {
             .title(Component.translatable("terroristtab.fc_terrorist_tab"))
             .displayItems((parameters, output) -> {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.DPV_M240.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.DPV_MINIGUN.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX_ROCKET_POD.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX_BMP.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX_SPG9.get()));
@@ -81,6 +83,7 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.GAZ_TIGR_DUAL.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.NOVATOR.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.NOVATOR_UNARMED.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BTR3E.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BTR4MV1.get()));
