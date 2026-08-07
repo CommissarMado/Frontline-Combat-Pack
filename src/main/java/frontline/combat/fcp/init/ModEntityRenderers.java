@@ -21,6 +21,7 @@ import frontline.combat.fcp.client.renderer.Btr.BTR80CopeRenderer;
 import frontline.combat.fcp.client.renderer.Btr.BTR82CopeRenderer;
 import frontline.combat.fcp.client.renderer.Fmtv.FMTVRenderer;
 import frontline.combat.fcp.client.renderer.GazTigr.GazTigrGLRenderer;
+import frontline.combat.fcp.client.renderer.GazTigr.GazTigrDualRenderer;
 import frontline.combat.fcp.client.renderer.GazTigr.GazTigrMGRenderer;
 import frontline.combat.fcp.client.renderer.GazTigr.GazTigrRWSRenderer;
 import frontline.combat.fcp.client.renderer.GazTigr.GazTigrRenderer;
@@ -136,6 +137,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.GAZ_TIGR_RWS.get(), GazTigrRWSRenderer::new);
         event.registerEntityRenderer(ModEntities.GAZ_TIGR_MG.get(), GazTigrMGRenderer::new);
         event.registerEntityRenderer(ModEntities.GAZ_TIGR_GL.get(), GazTigrGLRenderer::new);
+        event.registerEntityRenderer(ModEntities.GAZ_TIGR_DUAL.get(), GazTigrDualRenderer::new);
 
         event.registerEntityRenderer(ModEntities.HUEY.get(), HueyRenderer::new);
         event.registerEntityRenderer(ModEntities.HUEY_ROCKETS.get(), HueyRocketsRenderer::new);
