@@ -45,53 +45,53 @@
     },
     {
       "Size": [
-        0.24,
-        0.81,
-        0.81
+        0.1575,
+        0.5785,
+        0.5785
       ],
       "Position": [
-        -1.8296,
-        0.6701,
-        -2.001
+        -1.2807,
+        0.4691,
+        -1.4007
       ],
       "Part": "WheelLeft"
     },
     {
       "Size": [
-        0.24,
-        0.81,
-        0.81
+        0.1575,
+        0.5785,
+        0.5785
       ],
       "Position": [
-        1.7334,
-        0.6701,
-        2.874
+        1.2134,
+        0.4691,
+        2.0118
       ],
       "Part": "WheelRight"
     },
     {
       "Size": [
-        0.24,
-        0.81,
-        0.81
+        0.1575,
+        0.5785,
+        0.5785
       ],
       "Position": [
-        1.7334,
-        0.6701,
-        -2.001
+        1.2134,
+        0.4691,
+        -1.4007
       ],
       "Part": "WheelRight"
     },
     {
       "Size": [
-        0.24,
-        0.81,
-        0.81
+        0.1575,
+        0.5785,
+        0.5785
       ],
       "Position": [
-        -1.7334,
-        0.6701,
-        2.874
+        -1.2134,
+        0.4691,
+        2.0118
       ],
       "Part": "WheelLeft"
     }
@@ -103,9 +103,9 @@
       "Weapons": [],
       "BanHand": true,
       "Position": [
-        -0.5625,
+        0.4047,
         0.2,
-        0.8078
+        -0.75
       ],
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -118,8 +118,8 @@
       "Pose": "Default",
       "Position": [
         0.0,
-        0.1,
-        0.9
+        0.8,
+        -1.9
       ],
       "CameraPos": {
         "UseFixedCameraPos": true,
@@ -133,8 +133,8 @@
       },
       "MinPitch": -15,
       "MaxPitch": 45,
-      "MinYaw": -120,
-      "MaxYaw": 120,
+      "MinYaw": -90,
+      "MaxYaw": 90,
       "CanRotateBody": false,
       "Weapons": [
         "MachineGun"
@@ -143,16 +143,16 @@
     {
       "IsEnclosed": false,
       "Transform": "Vehicle",
-      "BanHand": true,
+      "BanHand": false,
       "Position": [
-        0.5781,
+        -0.4047,
         0.2,
-        0.8078
+        -0.75
       ],
       "MinPitch": -60,
       "MaxPitch": 60,
-      "MinYaw": -95,
-      "MaxYaw": 95
+      "MinYaw": -90,
+      "MaxYaw": 90
     }
   ],
   "Weapons": {
@@ -182,8 +182,8 @@
         "Positions": [
           [
             0.0,
-            0.0,
-            1.5
+            0.1,
+            0.6
           ]
         ],
         "Directions": [
@@ -195,8 +195,8 @@
         "Fire1P": "superbwarfare:coax_fire_1p",
         "Fire3P": "superbwarfare:mg_17_fire_3p",
         "Fire3PFar": "superbwarfare:mg_17_far",
-        "Fire3PVeryFar": "superbwarfare:mg_17_veryfar"
-      },
+        "Fire3PVeryFar": "superbwarfare:mg_17_veryfar",
+        "VehicleReload": "fcp:m2_reload"      },
       "SoundRadius": 16
     }
   },
@@ -303,9 +303,9 @@
   ],
   "InertiaRotateRate": 1.0,
   "TurretPos": [
-    0.005327,
-    2.567743,
-    -1.470273
+    0.003729,
+    1.79742,
+    -1.029191
   ],
   "BarrelPos": [
     0,
@@ -317,7 +317,7 @@
     15
   ],
   "TurretPitchRange": [
-    -15,
+    -45,
     45
   ],
   "TurretYawRange": [

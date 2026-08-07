@@ -20,13 +20,13 @@ public class DpvMinigunModel extends VehicleModel<DpvMinigunEntity> {
     @Override
     public @Nullable VehicleModel.TransformContext<DpvMinigunEntity> collectTransform(String boneName) {
 
-        // Front wheels (Z ~ +2.87): steer + roll. Rear (Z ~ -2.0): roll only.
+        // Front wheels wheel1/wheel3 (Z ~ -1.40): steer + roll. Rear wheel2/wheel4 (Z ~ +2.01): roll only.
         VehicleModel.TransformContext<DpvMinigunEntity> turn =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.8, 30f, "wheel2", "wheel4");
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.58, 30f, "wheel1", "wheel3");
         if (turn != null) return turn;
 
         VehicleModel.TransformContext<DpvMinigunEntity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.8, "wheel1", "wheel3");
+                WheelRotationTransforms.matchAny(boneName, 0.58, "wheel2", "wheel4");
         if (wheels != null) return wheels;
 
         // Pintle weapon: the "barrel" bone is a root bone that both traverses (yaw) and elevates
