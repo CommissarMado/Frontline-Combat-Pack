@@ -11,6 +11,15 @@ import net.minecraft.world.level.Level;
 
 public class BMP1PEntity extends CamoVehicleBase {
 
+    public int INVENTORY_SIZE = 9;
+
+    @Override
+    public int inventorySize() {
+        return INVENTORY_SIZE;
+    }
+
+    @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
+
     private static final ResourceLocation[] CAMO_TEXTURES = {
             new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_1_1_1.png"),
             new ResourceLocation("fcp", "textures/entity/bmp1_2/bmp_2_rem_tex_1_afgan.png"),

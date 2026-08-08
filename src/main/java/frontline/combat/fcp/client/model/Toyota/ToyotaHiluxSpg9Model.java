@@ -25,12 +25,12 @@ public class ToyotaHiluxSpg9Model extends VehicleModel<ToyotaHiluxSpg9Entity> {
     public @Nullable VehicleModel.TransformContext<ToyotaHiluxSpg9Entity> collectTransform(String boneName) {
 
         VehicleModel.TransformContext<ToyotaHiluxSpg9Entity> turn =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.392, 30f,
                         "WheelL0Turn", "WheelR0Turn", "WheelL1Turn", "WheelR1Turn");
         if (turn != null) return turn;
 
         VehicleModel.TransformContext<ToyotaHiluxSpg9Entity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.6,
+                WheelRotationTransforms.matchAny(boneName, 0.392,
                         "WheelL0", "WheelR0", "WheelL1", "WheelR1");
         if (wheels != null) return wheels;
 

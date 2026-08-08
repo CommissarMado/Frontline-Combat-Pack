@@ -26,7 +26,7 @@ public class StrykerMortarModel extends VehicleModel<StrykerMortarEntity> {
     @Override
     public @Nullable VehicleModel.TransformContext<StrykerMortarEntity> collectTransform(String boneName) {
         VehicleModel.TransformContext<StrykerMortarEntity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.6,
+                WheelRotationTransforms.matchAny(boneName, 0.534,
                         "wheRR", "wheRR2", "wheRR3", "wheRR4", "wheRR5", "wheRR6", "wheRR7", "wheRR8");
         if (wheels != null) return wheels;
         return super.collectTransform(boneName);

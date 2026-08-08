@@ -13,10 +13,10 @@ public class BTR3EModel extends FCPVehicleModel<BTR3EEntity> {
     @Override public boolean hideForTurretControllerWhileZooming() { return false; }
     @Override public @Nullable VehicleModel.TransformContext<BTR3EEntity> collectTransform(String boneName) {
         VehicleModel.TransformContext<BTR3EEntity> turn =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f, "WheelTurnL1","WheelTurnL2","WheelTurnR1","WheelTurnR2");
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.626, 30f, "WheelTurnL1","WheelTurnL2","WheelTurnR1","WheelTurnR2");
         if (turn != null) return turn;
         VehicleModel.TransformContext<BTR3EEntity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.6, "WheelL3","WheelL4","WheelR3","WheelR2");
+                WheelRotationTransforms.matchAny(boneName, 0.626, "WheelL3","WheelL4","WheelR3","WheelR2");
         if (wheels != null) return wheels;
         return super.collectTransform(boneName);
     }

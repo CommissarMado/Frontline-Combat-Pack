@@ -11,9 +11,15 @@ import net.minecraft.world.level.Level;
 
 public class BTR4MV1Entity extends CamoVehicleBase {
 
-    // [0..camoCount-1] = normal skins, [camoCount..] = wrecked variants (same order).
-    // No dedicated wrecked art yet, so the wrecked slots fall back to the normal skins
-    // to avoid missing-texture rendering. Drop in *_wrecked.png later and repoint these.
+    public int INVENTORY_SIZE = 9;
+
+    @Override
+    public int inventorySize() {
+        return INVENTORY_SIZE;
+    }
+
+    @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
+
     private static final ResourceLocation[] CAMO_TEXTURES = {
             new ResourceLocation("fcp", "textures/entity/btr4/btr4mv1.png"),
             new ResourceLocation("fcp", "textures/entity/btr4/btr4mv1camo.png"),

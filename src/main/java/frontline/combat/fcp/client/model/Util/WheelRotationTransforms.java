@@ -64,7 +64,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * The internal accumulator stores signed <i>distance travelled</i> (radius-independent),
  * and each bone converts that to its own angle from its own radius at sample time. A
  * vehicle can therefore have large rear wheels and small front wheels and both stay
- * correct — just pass each set the right radius.
+ * correct. Declare each size group with {@link #matchWheels(String, WheelSet...)} plus
+ * {@link #rolling} / {@link #steered} — see that method for an example. Single-size
+ * vehicles can keep using {@link #matchAny} / {@link #matchAnyTurn}.
  *
  * <h2>Steering source</h2>
  * "...Turn" bones pivot on Y from the vehicle's steering angle. The angle is resolved,
@@ -327,5 +329,63 @@ public final class WheelRotationTransforms {
     public static <T extends VehicleEntity & GeoAnimatable> VehicleModel.TransformContext<T> matchAnyTurn(
             String boneName, String... turnBones) {
         return matchAnyTurn(boneName, DEFAULT_RADIUS, DEFAULT_MAX_STEER, turnBones);
+    }
+
+    // ── Multiple wheel sizes on one vehicle (tractors, combines, ...) ──────────
+
+    /**
+     * A group of wheel bones that share one radius, optionally steered. Build with
+     * {@link #rolling} or {@link #steered} and hand several to {@link #matchWheels}.
+     */
+    public static final class WheelSet {
+        private final double radius;
+        private final boolean steered;
+        private final float maxSteerDeg;
+        private final String[] bones;
+
+        private WheelSet(double radius, boolean steered, float maxSteerDeg, String[] bones) {
+            this.radius = radius;
+            this.steered = steered;
+            this.maxSteerDeg = maxSteerDeg;
+            this.bones = bones;
+        }
+    }
+
+    /** Plain rolling wheels of one size (radius in blocks). */
+    public static WheelSet rolling(double radius, String... bones) {
+        return new WheelSet(radius, false, DEFAULT_MAX_STEER, bones);
+    }
+
+    /** Steering wheels of one size: roll on X + pivot on Y (radius in blocks). */
+    public static WheelSet steered(double radius, float maxSteerDeg, String... bones) {
+        return new WheelSet(radius, true, maxSteerDeg, bones);
+    }
+
+    /**
+     * Resolves a bone against several differently-sized wheel groups — the reusable way
+     * to drive a vehicle whose wheels aren't all one radius. Returns the transform for
+     * the first set that contains the bone, else null (so the caller falls through to
+     * super.collectTransform). Each set carries its own radius, so every group stays
+     * speed-matched to the ground independently:
+     * <pre>
+     *   var wheels = WheelRotationTransforms.matchWheels(boneName,
+     *           WheelRotationTransforms.steered(1.081, 30f, "WheelL0Turn", "WheelR0Turn"),
+     *           WheelRotationTransforms.rolling(1.363, "WheelL0", "WheelR0"));
+     *   if (wheels != null) return wheels;
+     * </pre>
+     */
+    @Nullable
+    public static <T extends VehicleEntity & GeoAnimatable> VehicleModel.TransformContext<T> matchWheels(
+            String boneName, WheelSet... sets) {
+        for (WheelSet set : sets) {
+            for (String bone : set.bones) {
+                if (bone.equals(boneName)) {
+                    return set.steered
+                            ? matchTurn(boneName, bone, set.radius, set.maxSteerDeg)
+                            : match(boneName, bone, set.radius);
+                }
+            }
+        }
+        return null;
     }
 }

@@ -3,12 +3,16 @@
   "MaxHealth": 290,
   "MaxEnergy": 5500000,
   "OBB": [
-    {"Size": [0.255, 0.527, 3.1], "Position": [1.2155, 0.53125, -0.5], "Part": "WheelLeft"},
-    {"Size": [0.255, 0.527, 3.1], "Position": [-1.2155, 0.53125, -0.5], "Part": "WheelRight"},
-    {"Size": [1, 0.35, 3.25], "Position": [0.0, 0.9, -0.5], "Part": "Body"},
-    {"Size": [1.5, 0.65, 3.75], "Position": [0.0, 1.775, 0], "Part": "Body"},
-    {"Size": [1.6, 0.35, 1.15], "Position": [0.0, 1, 1.5], "Part": "Body"},
-    {"Size": [0.7, 0.35, 0.8], "Position": [0.0, 0, 0], "Part": "Turret", "Transform": "Turret", "Rotation": "Turret"}
+    {"Size": [1.8984, 0.5, 3.6484], "Position": [0.1016, 1.5, 0.2734]},
+    {"Size": [1.375, 0.3438, 3.5625], "Position": [0.0625, 0.6562, 0.1875]},
+    {"Size": [0.2422, 0.5, 3.5938], "Position": [-1.5547, 0.5, 0.1562], "Part": "WheelRight"},
+    {"Size": [0.2656, 0.5, 3.5938], "Position": [1.6875, 0.5, 0.1562], "Part": "WheelLeft"},
+    {"Size": [1.8984, 0.7188, 1.9609], "Position": [0, 0.8188, -1.10228], "Transform": "Turret", "Rotation": "Turret", "Part": "Turret"},
+    {"Size": [1.4922, 0.5938, 0.5859], "Position": [0, 0.8188, -3.60912], "Transform": "Turret", "Rotation": "Turret", "Part": "Turret"},
+    {"Size": [1.8984, 0.5, 0.6484], "Position": [0, 0.6, 1.443192], "Transform": "Turret", "Rotation": "Turret", "Part": "Turret"},
+    {"Size": [0.4844, 0.4062, 0.875], "Position": [0, 0.2031, 0.63525], "Transform": "Barrel", "Rotation": "Barrel", "Part": "Turret"},
+    {"Size": [0.2188, 0.2109, 2.4375], "Position": [0, 0.2031, 3.9375], "Transform": "Barrel", "Rotation": "Barrel", "Part": "Turret"},
+    {"Size": [0.3125, 0.2891, 0.5], "Position": [0, 0.2031, 6.875], "Transform": "Barrel", "Rotation": "Barrel", "Part": "Turret"}
   ],
   "Seats": [
     {
@@ -32,15 +36,15 @@
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
-        "Position": [-0.305, 0.4, 0.05],
+        "Position": [-0.2944, 0.85976875, 1.21913125],
         "Direction": "Barrel"
       },
       "CanRotateHead": false,
-      "Weapons": ["Cannon", "Coax"],
+      "Weapons": ["Main"],
       "Transform": "Turret",
       "Position": [0, 0, 0],
-      "MinPitch": -15,
-      "MaxPitch": 25
+      "MinPitch": -3,
+      "MaxPitch": 75
     }
   ,
     {
@@ -133,86 +137,83 @@
     }
   ],
   "Weapons": {
-    "Coax": {
-      "DefaultFireMode": "Auto",
-      "AvailableFireModes": "Auto",
-      "Projectile": "superbwarfare:projectile",
+    "Main": {
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/ap_shell.png",
+      "DefaultFireMode": "Semi",
+      "AvailableFireModes": "Semi",
+      "Projectile": "superbwarfare:cannon_shell",
+      "Magazine": 1,
+      "EmptyReloadTime": 120,
       "DefaultZoom": 3,
-      "RPM": 500,
-      "Damage": 15,
-      "BypassesArmor": 2,
-      "IsArmorPiercingProjectile": true,
-      "IsHighExplosiveProjectile": false,
-      "Velocity": 25,
-      "RecoilTime": 32,
-      "EmptyReloadTime": 200,
-      "Magazine": 200,
-      "RecoilForce": 0.1,
-      "HeatPerShoot": 5,
-      "NaturalCooldown": 1,
-      "ShootAnimationTime": 1,
-      "Spread": 0.25,
-      "CrosshairColor": "0x66FF00",
+      "Velocity": 18,
+      "Gravity": 0.06,
+      "ApDurability": 200,
+      "Damage": 1050,
+      "ExplosionDamage": 140,
+      "ExplosionRadius": 5,
+      "RecoilTime": 42,
+      "RecoilForce": 1.1,
+      "ShootShake": [12, 14, 80],
+      "Spread": 0.06,
+      "ProjectileLife": 800,
+      "ShootAnimationTime": 30,
       "Crosshair": "@VehicleRuApc",
-      "Name": "weapon.fcp.m2a1_browning",
+      "CrosshairColor": "0x00ff66",
+      "Name": "weapon.superbwarfare.cannon_ap",
       "SoundInfo": {
-        "Fire1P": "superbwarfare:m_2_hb_fire_1p",
-        "Fire3P": "superbwarfare:m_2_hb_fire_3p",
-        "Fire3PFar": "superbwarfare:m_2_hb_far",
-        "Fire3PVeryFar": "superbwarfare:m_2_hb_veryfar",
-        "Change": "fcp:into_coax",
-        "VehicleReload": "fcp:m2_reload"
+        "Fire1P": "superbwarfare:plz_05_fire_1p",
+        "Fire3P": "superbwarfare:plz_05_fire_3p",
+        "Fire3PFar": "superbwarfare:plz_05_far",
+        "Fire3PVeryFar": "superbwarfare:plz_05_veryfar",
+        "VehicleReload": "superbwarfare:plz_05_reload",
+        "CancellableSounds": [
+          "superbwarfare:plz_05_reload"
+        ]
       },
-      "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
-      "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png",
+      "SoundRadius": 32,
+      "AmmoType": [
+        "superbwarfare:large_shell_ap",
+        {
+          "Ammo": "superbwarfare:large_shell_he",
+          "Override": {
+            "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/he_shell.png",
+            "ShellType": "HE",
+            "Damage": 450,
+            "ExplosionDamage": 260,
+            "ExplosionRadius": 14,
+            "Name": "weapon.superbwarfare.cannon_he"
+          }
+        },
+        {
+          "Ammo": "superbwarfare:large_shell_cm",
+          "Override": {
+            "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/cm_shell.png",
+            "ShellType": "CM",
+            "SpreadAmount": 22,
+            "SpreadAngle": 8,
+            "Damage": 600,
+            "ExplosionDamage": 240,
+            "ExplosionRadius": 7,
+            "Name": "weapon.superbwarfare.cannon_cm"
+          }
+        },
+        {
+          "Ammo": "superbwarfare:large_shell_wp",
+          "Override": {
+            "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/wp_shell.png",
+            "ShellType": "WP",
+            "SpreadAmount": 128,
+            "SpreadAngle": 16,
+            "Damage": 300,
+            "ExplosionDamage": 40,
+            "ExplosionRadius": 11,
+            "Name": "weapon.superbwarfare.cannon_wp"
+          }
+        }
+      ],
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[-0.61, 0.01, 0.9]],
-        "Directions": ["Barrel"]
-      }
-    },
-    "Empty": {
-      "Magazine": 0,
-      "RPM": 0,
-      "Crosshair": "@Empty",
-      "Damage": 0
-    },
-    "Cannon": {
-      "DefaultFireMode": "Auto",
-      "AvailableFireModes": "Auto",
-      "Projectile": "superbwarfare:gun_grenade",
-      "DefaultZoom": 2,
-      "RPM": 325,
-      "Magazine": 32,
-      "EmptyReloadTime": 200,
-      "Velocity": 7,
-      "Damage": 0,
-      "ExplosionDamage": 15,
-      "ExplosionRadius": 3,
-      "HeatPerShoot": 5,
-      "NaturalCooldown": 1,
-      "RecoilTime": 30,
-      "RecoilForce": 0.31,
-      "ShootAnimationTime": 3,
-      "Spread": 0.8,
-      "IsArmorPiercingProjectile": false,
-      "IsHighExplosiveProjectile": true,
-      "Crosshair": "@VehicleRuApc",
-      "CrosshairColor": "0x66FF00",
-      "Name": "weapon.fcp.mk19",
-      "SoundInfo": {
-        "Fire1P": "fcp:mk19_fire_1p",
-        "Fire3P": "fcp:mk19_fire_3p",
-        "Fire3PFar": "fcp:mk19_fire_3p_far",
-        "VehicleRelaod": "fcp:mk19_reload"
-      },
-      "SoundRadius": 16,
-      "AmmoType": "superbwarfare:grenade_40mm",
-      "Icon": "fcp:textures/screens/vehicle_weapon/40mm.png",
-      "ShootPos": {
-        "Transform": "Barrel",
-        "Positions": [[0, 0, 0.9]],
+        "Positions": [[0, 0.15, 7.5]],
         "Directions": ["Barrel"]
       }
     }
@@ -231,10 +232,10 @@
     "Decrement": 0.014,
     "SteeringSpeed": 0.085
   },
-  "TurretPos": [-0.5805, 2.72, 1.04058125],
+  "TurretPos": [0.06506875, 1.86333125, -1.00135625],
   "TurretTurnSpeed": [2.5, 1.8],
-  "TurretPitchRange": [-10, 60],
-  "BarrelPos": [0.32395625, 0, 0.466575],
+  "TurretPitchRange": [-3, 75],
+  "BarrelPos": [0.0, 0.3573562499999998, 0.96701875],
   "ThirdPersonCameraPos": [0, 3, 5],
   "TurretControllerIndex": 1,
   "HasDecoy": true,

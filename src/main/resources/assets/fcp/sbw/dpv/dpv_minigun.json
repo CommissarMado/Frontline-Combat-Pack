@@ -1,0 +1,7 @@
+{
+  "ID": "fcp:dpv_minigun",
+  "Model": {
+    "Model": "fcp:geo/dpv_minigun.json",
+    "Texture": "fcp:textures/entity/dpv/dpv_sand.png"
+  }
+}

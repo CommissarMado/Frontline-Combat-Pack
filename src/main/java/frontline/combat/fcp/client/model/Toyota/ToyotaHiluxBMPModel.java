@@ -27,12 +27,12 @@ public class ToyotaHiluxBMPModel extends VehicleModel<ToyotaHiluxBMPEntity>{
     public @Nullable VehicleModel.TransformContext<ToyotaHiluxBMPEntity> collectTransform(String boneName) {
 
         VehicleModel.TransformContext<ToyotaHiluxBMPEntity> turn =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.392, 30f,
                         "WheelL0Turn", "WheelR0Turn", "WheelL1Turn", "WheelR1Turn");
         if (turn != null) return turn;
 
         VehicleModel.TransformContext<ToyotaHiluxBMPEntity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.6,
+                WheelRotationTransforms.matchAny(boneName, 0.392,
                         "WheelL0", "WheelR0", "WheelL1", "WheelR1");
         if (wheels != null) return wheels;
 

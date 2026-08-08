@@ -23,12 +23,12 @@ public class CultivatorModel extends FCPVehicleModel<CultivatorEntity> {
     @Override
     public @Nullable VehicleModel.TransformContext<CultivatorEntity> collectTransform(String boneName) {
         VehicleModel.TransformContext<CultivatorEntity> turn =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.659, 30f,
                         "WheelL0Turn", "WheelR0Turn", "WheelL1Turn", "WheelR1Turn");
         if (turn != null) return turn;
 
         VehicleModel.TransformContext<CultivatorEntity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.6,
+                WheelRotationTransforms.matchAny(boneName, 0.659,
                         "WheelL0", "WheelR0");
         if (wheels != null) return wheels;
 

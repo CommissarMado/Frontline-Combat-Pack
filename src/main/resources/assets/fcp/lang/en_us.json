@@ -1,5 +1,5 @@
 {
-  "//": "===================== Terrorist Tab =====================",
+  "//": "====================== Gui =============================",
   "terroristtab.fc_terrorist_tab": "[FC] Terrorist Vehicles",
   "entity.fcp.toyota_hilux": "Toyota Hilux",
   "entity.fcp.toyota_hilux_rocket_pod": "Toyota Hilux With Rocket Pod",
@@ -16,8 +16,6 @@
   "entity.fcp.bmp2_noatgm": "BMP-2",
   "entity.fcp.t72av": "T72-AV",
   "entity.fcp.lav25": "LAV-25",
-
-  "//": "====================== Russian Tab ======================",
   "russiantab.fc_russian_tab": "[FC] Russian Vehicles",
   "entity.fcp.uaz": "UAZ",
   "entity.fcp.mi17": "MI-17",
@@ -33,6 +31,7 @@
   "entity.fcp.gaz_tigr_rws": "Gaz Tigr RWS",
   "entity.fcp.gaz_tigr_mg": "Gaz Tigr With Machine Gun",
   "entity.fcp.gaz_tigr_gl": "Gaz Tigr With MK19",
+  "entity.fcp.gaz_tigr_dual": "Gaz Tigr With PKM & AGS",
   "entity.fcp.novator": "Novator",
   "entity.fcp.btr82": "BTR82A",
   "entity.fcp.btr3e": "BTR-3E",
@@ -43,8 +42,6 @@
   "entity.fcp.btr82_cope": "BTR-82A (Cope Cage)",
   "entity.fcp.btr80": "BTR-80",
   "weapon.fcp.kpvt": "KPVT 14.5mm",
-
-  "//": "======================== Weapons ========================",
   "weapon.fcp.ub32": "UB-32",
   "weapon.fcp.sidewinder": "Sidewinder",
   "weapon.fcp.hydra_rocket": "Hydra Rocket",
@@ -90,15 +87,11 @@
   "weapon.fcp.m2a1_browning": "M2A1 Browning",
   "weapon.fcp.mg3": "MG3 Machine Gun",
   "weapon.fcp.m240_coax": "M240 Coaxial",
-
-  "//": "========================= Foods =========================",
   "item.fcp.delicious_snack": "Box of Crayons",
   "item.fcp.redbull": "Red Bull",
   "item.fcp.spray": "Spray Can",
   "des.fcp.spray": "Right-click on a vehicle to change its camo.",
   "des.fcp.spray.usage": "Right-click on vehicle to change camo",
-
-  "//": "===================== American Tab ======================",
   "americantab.fc_american_tab": "[FC] American Vehicles",
   "entity.fcp.littlebird": "MH-6 Littlebird",
   "entity.fcp.littlebird_armed": "AH-6 Littlebird",
@@ -161,33 +154,22 @@
   "entity.fcp.hmmwv_unarmored_tow": "HMMWV Unarmored TOW",
   "entity.fcp.hmmwv_unarmored_tow_turret": "HMMWV Unarmored TOW Turret",
   "entity.fcp.hmmwv_unarmored_unarmed": "HMMWV Unarmored Unarmed",
-
-  "//": "=================== Farming Equipment ===================",
   "entity.fcp.john_deere": "John Deere Tractor",
   "entity.fcp.seeder": "Seeder",
   "entity.fcp.cultivator": "Cultivator",
   "entity.fcp.combine": "John Deere Combine",
-
-  "//": "======================= Messages ========================",
   "message.fcp.camo_changed": "Camo changed to %s",
-
-  "//" : "====================== Trailer =========================",
   "fcp.trailer.attached": "Trailer attached.",
   "fcp.trailer.detached": "Trailer detached.",
   "fcp.trailer.not_attached": "This trailer is not attached to anything.",
   "fcp.trailer.no_vehicle_nearby": "No vehicle nearby to attach to.",
   "fcp.trailer.cannot_attach": "That vehicle can't tow this trailer.",
   "fcp.trailer.hitch_taken": "That vehicle's hitch already has a trailer on it.",
-
-  "//" : "====================== Key =============================",
   "key.categories.fcp": "Frontline Combat Pack",
   "key.fcp.vehicle_debug": "Toggle Vehicle Debug Overlay",
   "key.fcp.open_config": "Open FCP Config",
-
-  "//" : "====================== Gui =============================",
   "gui.fcp.bulk.empty": "Empty",
   "gui.fcp.sort": "Sort",
-
   "gui.fcp.config.title": "Frontline Combat Pack",
   "gui.fcp.config.multicrew": "Multicrew Vehicles",
   "gui.fcp.config.loading": "Fetching server settings...",
@@ -197,6 +179,10 @@
   "gui.fcp.config.denied": "You need operator permission to change FCP settings",
   "gui.fcp.config.multicrew_on": "Multicrew vehicles enabled — reloading vehicle data",
   "gui.fcp.config.multicrew_off": "Multicrew vehicles disabled — reloading vehicle data",
-  "gui.fcp.config.reseat": "Vehicle seats were reconfigured — please remount"
-
+  "gui.fcp.config.reseat": "Vehicle seats were reconfigured — please remount",
+  "entity.fcp.dpv_m240": "DPV with M240",
+  "entity.fcp.dpv_minigun": "DPV with Minigun",
+  "entity.fcp.novator_unarmed": "Novator (Unarmed)",
+  "fcptab.fcp_tab": "Frontline Combat Pack",
+  "item.fcp.fc_tab_icon": "FCP"
 }

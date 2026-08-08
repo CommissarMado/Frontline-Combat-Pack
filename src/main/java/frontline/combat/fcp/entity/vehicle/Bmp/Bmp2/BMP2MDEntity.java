@@ -11,6 +11,15 @@ import net.minecraft.world.level.Level;
 
 public class BMP2MDEntity extends CamoVehicleBase {
 
+    public int INVENTORY_SIZE = 9;
+
+    @Override
+    public int inventorySize() {
+        return INVENTORY_SIZE;
+    }
+
+    @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
+
     // BMP-2MD uses a single dedicated texture. Index 0 = normal, index 1 = wrecked
     // (placeholder = normal until a wrecked skin is authored). camoCount = ceil(2/2) = 1.
     private static final ResourceLocation[] CAMO_TEXTURES = {

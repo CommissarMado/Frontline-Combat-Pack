@@ -25,6 +25,7 @@ import frontline.combat.fcp.entity.vehicle.Btr.BTR82CopeEntity;
 import frontline.combat.fcp.entity.vehicle.Fmtv.FMTVEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrGLEntity;
+import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrDualEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrMGEntity;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrRWSEntity;
 import frontline.combat.fcp.entity.vehicle.Huey.HueyDoorGunnerM134Entity;
@@ -66,6 +67,9 @@ import frontline.combat.fcp.entity.vehicle.MemeVehicles.BigBirdEntity;
 import frontline.combat.fcp.entity.vehicle.MemeVehicles.WolfEntity;
 import frontline.combat.fcp.entity.vehicle.Mi17.MI17Entity;
 import frontline.combat.fcp.entity.vehicle.Novator.NovatorEntity;
+import frontline.combat.fcp.entity.vehicle.NovatorUnarmed.NovatorUnarmedEntity;
+import frontline.combat.fcp.entity.vehicle.Dpv.DpvM240Entity;
+import frontline.combat.fcp.entity.vehicle.Dpv.DpvMinigunEntity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerM2Entity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerMGSEntity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerDragoonEntity;
@@ -101,6 +105,10 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<ToyotaHiluxEntity>> TOYOTA_HILUX = register("toyota_hilux",
             EntityType.Builder.of(ToyotaHiluxEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<DpvM240Entity>> DPV_M240 = register("dpv_m240",
+            EntityType.Builder.of(DpvM240Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<DpvMinigunEntity>> DPV_MINIGUN = register("dpv_minigun",
+            EntityType.Builder.of(DpvMinigunEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<ToyotaHiluxRocketPodEntity>> TOYOTA_HILUX_ROCKET_POD = register("toyota_hilux_rocket_pod",
             EntityType.Builder.of(ToyotaHiluxRocketPodEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<ToyotaHiluxBMPEntity>> TOYOTA_HILUX_BMP = register("toyota_hilux_bmp",
@@ -181,6 +189,8 @@ public class ModEntities {
             EntityType.Builder.of(GazTigrMGEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<GazTigrGLEntity>> GAZ_TIGR_GL = register("gaz_tigr_gl",
             EntityType.Builder.of(GazTigrGLEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<GazTigrDualEntity>> GAZ_TIGR_DUAL = register("gaz_tigr_dual",
+            EntityType.Builder.of(GazTigrDualEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<HueyEntity>> HUEY = register("huey",
             EntityType.Builder.of(HueyEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<HueyRocketsEntity>> HUEY_ROCKETS = register("huey_rockets",
@@ -193,6 +203,8 @@ public class ModEntities {
             EntityType.Builder.of(VenomEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<NovatorEntity>> NOVATOR = register("novator",
             EntityType.Builder.of(NovatorEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<NovatorUnarmedEntity>> NOVATOR_UNARMED = register("novator_unarmed",
+            EntityType.Builder.of(NovatorUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<MATVEntity>> MATV = register("matv",
             EntityType.Builder.of(MATVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<EmplTowEntity>> EMPL_TOW = register("empl_tow",

@@ -3,11 +3,8 @@ package frontline.combat.fcp.client.model.JohnDeere;
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.model.FCPVehicleModel;
-import frontline.combat.fcp.client.model.Util.CannonRecoilTransforms;
-import frontline.combat.fcp.client.model.Util.ModelBoneTransforms;
 import frontline.combat.fcp.client.model.Util.WheelRotationTransforms;
 import frontline.combat.fcp.entity.vehicle.JohnDeere.JohnDeereEntity;
-import frontline.combat.fcp.entity.vehicle.Matv.MATVEntity;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
@@ -25,14 +22,11 @@ public class JohnDeereModel extends FCPVehicleModel<JohnDeereEntity> {
 
     @Override
     public @Nullable VehicleModel.TransformContext<JohnDeereEntity> collectTransform(String boneName) {
-        VehicleModel.TransformContext<JohnDeereEntity> turn =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
-                        "WheelL0Turn", "WheelR0Turn", "WheelL1Turn", "WheelR1Turn");
-        if (turn != null) return turn;
-
-        VehicleModel.TransformContext<JohnDeereEntity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.6,
-                        "WheelL0", "WheelR0", "WheelL1", "WheelR1");
+        // Tractor: small steering front wheels + large drive rear wheels.
+        // Radii in blocks, read from john_deere.geo.json (px / 16).
+        VehicleModel.TransformContext<JohnDeereEntity> wheels = WheelRotationTransforms.matchWheels(boneName,
+                WheelRotationTransforms.steered(1.081, 30f, "WheelL0Turn", "WheelR0Turn"),
+                WheelRotationTransforms.rolling(1.363, "WheelL0", "WheelR0"));
         if (wheels != null) return wheels;
 
         return super.collectTransform(boneName);

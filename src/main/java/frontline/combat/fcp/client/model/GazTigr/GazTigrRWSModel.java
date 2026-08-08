@@ -27,13 +27,13 @@ public class GazTigrRWSModel extends FCPVehicleModel<GazTigrRWSEntity> {
     public @Nullable TransformContext<GazTigrRWSEntity> collectTransform(String boneName) {
 
         VehicleModel.TransformContext<GazTigrRWSEntity> turn =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
-                        "WheelL0Turn", "WheelR0Turn", "WheelL1Turn", "WheelR1Turn");
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.5155, 30f,
+                        "wheelL0Turn", "wheelR0Turn");
         if (turn != null) return turn;
 
         VehicleModel.TransformContext<GazTigrRWSEntity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.6,
-                        "WheelL0", "WheelR0", "WheelL1", "WheelR1");
+                WheelRotationTransforms.matchAny(boneName, 0.5155,
+                        "wheelL0", "wheelR0");
         if (wheels != null) return wheels;
 
         return super.collectTransform(boneName);

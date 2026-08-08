@@ -26,12 +26,12 @@ public class UAZSPG9Model extends VehicleModel<UAZSPG9Entity> {
     public @Nullable VehicleModel.TransformContext<UAZSPG9Entity> collectTransform(String boneName) {
 
         VehicleModel.TransformContext<UAZSPG9Entity> turn =
-                WheelRotationTransforms.matchAnyTurn(boneName, 0.6, 30f,
+                WheelRotationTransforms.matchAnyTurn(boneName, 0.406, 30f,
                         "WheelL0Turn", "WheelR0Turn", "WheelL1Turn", "WheelR1Turn");
         if (turn != null) return turn;
 
         VehicleModel.TransformContext<UAZSPG9Entity> wheels =
-                WheelRotationTransforms.matchAny(boneName, 0.6,
+                WheelRotationTransforms.matchAny(boneName, 0.406,
                         "WheelL0", "WheelR0", "WheelL1", "WheelR1");
         if (wheels != null) return wheels;
 

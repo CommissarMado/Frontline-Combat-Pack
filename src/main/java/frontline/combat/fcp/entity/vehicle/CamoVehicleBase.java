@@ -26,7 +26,15 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.core.Direction;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.energy.IEnergyStorage;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.wrapper.InvWrapper;
 import net.minecraftforge.network.NetworkHooks;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class CamoVehicleBase extends GeoVehicleEntity implements ICamoVehicle, VehicleInventory {
@@ -133,6 +141,15 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements ICamoV
 
     private SimpleContainer vehicleInventory;
 
+    /**
+     * Exposes {@link #getVehicleInventory()} as the entity's ITEM_HANDLER capability, so
+     * SBW's ammo system (count, reload, consume — all via getCapability(ITEM_HANDLER)) reads
+     * and consumes ammo straight from the SAME container the GUI edits. One source of truth,
+     * no mirroring. InvWrapper honours the container's canPlaceItem (our filter) on insert;
+     * extraction (firing) is unrestricted. Created lazily, invalidated in invalidateCaps().
+     */
+    private LazyOptional<IItemHandler> ammoItemHandler = LazyOptional.empty();
+
     /** No cargo by default. Override per vehicle. */
     @Override
     public int inventorySize() {
@@ -189,6 +206,62 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements ICamoV
             };
         }
         return this.vehicleInventory;
+    }
+
+    /**
+     * Route the vehicle's ITEM_HANDLER capability to our own cargo/ammo container. SBW's
+     * ammo pipeline resolves ammo through ammoSupplier.getCapability(ITEM_HANDLER); pointing
+     * that at getVehicleInventory() means the gun sees exactly what the player loads in the
+     * GUI. Any other capability (energy, etc.) falls through to SBW.
+     */
+    @Override
+    public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+        if (cap == ForgeCapabilities.ITEM_HANDLER && hasVehicleInventory()) {
+            if (!ammoItemHandler.isPresent()) {
+                ammoItemHandler = LazyOptional.of(() -> new InvWrapper(getVehicleInventory()));
+            }
+            return ammoItemHandler.cast();
+        }
+        return super.getCapability(cap, side);
+    }
+
+    @Override
+    public void invalidateCaps() {
+        super.invalidateCaps();
+        ammoItemHandler.invalidate();
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        chargeFromInventoryEnergyItems();
+    }
+
+    /**
+     * Reimplements base SBW's behaviour: every 20 ticks, pull FE from any energy-bearing item
+     * in the hold into the vehicle's battery — so a creative charging station (an infinite
+     * energy source item) dropped into the inventory charges the vehicle for you. SBW's own
+     * loop scans its native container, which FCP vehicles don't use, so we run the same scan
+     * over getVehicleInventory(). Server-side, energy vehicles only.
+     */
+    private void chargeFromInventoryEnergyItems() {
+        if (this.level().isClientSide() || !hasEnergyStorage() || !hasVehicleInventory()) return;
+        if (this.tickCount % 20 != 0) return;
+
+        SimpleContainer inventory = getVehicleInventory();
+        for (int i = 0; i < inventory.getContainerSize(); i++) {
+            int needed = getMaxEnergy() - getEnergy();
+            if (needed <= 0) break;
+
+            ItemStack stack = inventory.getItem(i);
+            if (stack.isEmpty()) continue;
+
+            IEnergyStorage source = stack.getCapability(ForgeCapabilities.ENERGY).resolve().orElse(null);
+            if (source == null || source.getEnergyStored() <= 0) continue;
+
+            int extracted = source.extractEnergy(Math.min(source.getEnergyStored(), needed), false);
+            if (extracted > 0) setEnergy(getEnergy() + extracted);
+        }
     }
 
     /**
