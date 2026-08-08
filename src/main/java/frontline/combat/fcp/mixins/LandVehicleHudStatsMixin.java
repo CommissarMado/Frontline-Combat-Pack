@@ -64,7 +64,8 @@ public class LandVehicleHudStatsMixin {
             "fcp:brdm2",
             "fcp:empl_kornet",
             "fcp:empl_tow",
-            "fcp:empl_zis3"
+            "fcp:empl_zis3",
+            "fcp:m109"
     );
 
     // Vehicles that suppress the TV frame entirely but show no replacement overlay
@@ -83,7 +84,8 @@ public class LandVehicleHudStatsMixin {
             "fcp:ural_grad",
             "fcp:stryker_mortar",
             "fcp:toyota_hilux_rocket_pod",
-            "fcp:toyota_hilux_mortar"
+            "fcp:toyota_hilux_mortar",
+            "fcp:m109"
     );
 
     private static final ResourceLocation GUNNER_FRAME =
