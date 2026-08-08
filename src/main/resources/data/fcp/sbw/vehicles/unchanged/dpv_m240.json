@@ -1,5 +1,5 @@
 {
-  "ID": "fcp:dpv_minigun",
+  "ID": "fcp:dpv_m240",
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "PassengerRenderScale": 0.85,
@@ -157,27 +157,26 @@
   ],
   "Weapons": {
     "MachineGun": {
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
+      "Spread": 0.5,
+      "Crosshair": "@Empty",
+      "CrosshairColor": "0x00ff66",
       "Projectile": "superbwarfare:projectile",
-      "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "DefaultZoom": 3,
-      "RPM": 1000,
+      "RPM": 750,
+      "Damage": 5,
+      "BypassesArmor": 0.2,
+      "Velocity": 25,
+      "RecoilTime": 16,
       "EmptyReloadTime": 200,
-      "Velocity": 30,
-      "Damage": 2.5,
-      "Magazine": 1000,
-      "HeatPerShoot": 1.5,
+      "Magazine": 200,
+      "RecoilForce": 0.05,
+      "HeatPerShoot": 3,
       "NaturalCooldown": 1,
-      "Spread": 1.2,
-      "Name": "weapon.fcp.m134_minigun",
-      "SoundInfo": {
-        "Fire1P": "fcp:m134_fire_1p",
-        "Fire3P": "fcp:m134_fire_3p",
-        "Fire3PFar": "fcp:m134_fire_3p_far",
-        "VehicleReload": "fcp:m2_reload"
-      },
+      "ShootAnimationTime": 1,
+      "AmmoType": "superbwarfare:rifle_ammo",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
@@ -191,8 +190,14 @@
           "Barrel"
         ]
       },
-      "Crosshair": "@VehicleCommonGun",
-      "SoundRadius": 12
+      "Name": "weapon.fcp.m240",
+      "SoundInfo": {
+        "Fire1P": "superbwarfare:coax_fire_1p",
+        "Fire3P": "superbwarfare:mg_17_fire_3p",
+        "Fire3PFar": "superbwarfare:mg_17_far",
+        "Fire3PVeryFar": "superbwarfare:mg_17_veryfar",
+        "VehicleReload": "fcp:m2_reload"      },
+      "SoundRadius": 16
     }
   },
   "EngineType": "Wheel",
@@ -273,7 +278,7 @@
       ]
     ]
   },
-  "HudType": "@Land",
+  "HudType": "@Empty",
   "TerrainCompat": [
     [
       0.9826,
@@ -298,7 +303,7 @@
   ],
   "InertiaRotateRate": 1.0,
   "TurretPos": [
-    0.0,
+    0.003729,
     1.79742,
     -1.029191
   ],
