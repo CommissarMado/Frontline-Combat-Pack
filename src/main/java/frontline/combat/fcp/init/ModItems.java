@@ -17,6 +17,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> AMERICAN_TAB_ICON = REGISTRY.register("american_tab_icon", () -> new Item(new Item.Properties()));
 
+    // Animated creative-tab icon (cycles the 3 old tab icons via an animated texture)
+    public static final RegistryObject<Item> FC_TAB_ICON = REGISTRY.register("fc_tab_icon", () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> DELICIOUS_SNACK = REGISTRY.register("delicious_snack",
             () -> new Item(new Item.Properties().food(ModFoods.DELICIOUS_SNACK)));
     public static final RegistryObject<Item> REDBULL = REGISTRY.register("redbull",

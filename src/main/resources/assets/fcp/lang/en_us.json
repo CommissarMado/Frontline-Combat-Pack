@@ -182,5 +182,7 @@
   "gui.fcp.config.reseat": "Vehicle seats were reconfigured — please remount",
   "entity.fcp.dpv_m240": "DPV with M240",
   "entity.fcp.dpv_minigun": "DPV with Minigun",
-  "entity.fcp.novator_unarmed": "Novator (Unarmed)"
+  "entity.fcp.novator_unarmed": "Novator (Unarmed)",
+  "fcptab.fcp_tab": "Frontline Combat Pack",
+  "item.fcp.fc_tab_icon": "FCP"
 }
