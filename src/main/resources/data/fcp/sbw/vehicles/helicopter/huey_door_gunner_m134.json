@@ -151,7 +151,7 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 1000,
-      "Damage": 3,
+      "Damage": 4,
       "BypassesArmor": 0.2,
       "Velocity": 25,
       "RecoilTime": 16,

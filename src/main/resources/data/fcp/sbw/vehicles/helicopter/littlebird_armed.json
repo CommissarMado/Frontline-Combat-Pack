@@ -106,7 +106,7 @@
       "DefaultZoom": 3,
       "RPM": 1000,
       "Velocity": 30,
-      "Damage": 2.5,
+      "Damage": 4,
       "Magazine": 1000,
       "HeatPerShoot": 1,
       "NaturalCooldown": 1,

@@ -285,3 +285,36 @@ publishing {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
+
+// ============================================================================
+// Vehicle creative-tab icon renderer (build-time, isometric).
+// Renders each vehicle's .geo.json model to a tightly-cropped isometric PNG at
+// assets/superbwarfare/textures/vehicle_icon/container/<id>.png, which SBW's
+// ContainerItemDecorator auto-detects (no code/JSON changes needed).
+//
+// The generated icons are committed to the repo, so a normal build needs nothing
+// extra. Re-run this ONLY when vehicle models/textures change:
+//     ./gradlew renderVehicleIcons
+// Requires python3 with numpy + Pillow  (pip install numpy Pillow).
+// To run it automatically as part of the build, uncomment the dependsOn line below.
+// ============================================================================
+tasks.register('renderVehicleIcons', Exec) {
+    group = 'fcp'
+    description = 'Render isometric creative-tab icons for all vehicles from their geo models.'
+    def script = file('tools/render_icons.py')
+    def outDir = file('src/main/resources/assets/superbwarfare/textures/vehicle_icon/container')
+    inputs.file script
+    inputs.file file('tools/icon_overrides.json')
+    inputs.dir file('src/main/resources/assets/fcp/geo')
+    inputs.files fileTree(file('src/main/resources/assets/fcp/textures/entity'))
+    inputs.files fileTree(file('src/main/resources/assets/fcp/sbw'))
+    outputs.dir outDir
+    // resolve a python launcher available on the build machine
+    def py = System.getenv('PYTHON') ?: (org.gradle.internal.os.OperatingSystem.current().isWindows() ? 'python' : 'python3')
+    commandLine py, script.absolutePath, '--batch', projectDir.absolutePath
+}
+
+// Uncomment to regenerate icons automatically whenever a model/texture changes
+// (Gradle skips it when nothing changed). Leaves builds working on machines
+// without python because the icons are already committed.
+// processResources.dependsOn 'renderVehicleIcons'
