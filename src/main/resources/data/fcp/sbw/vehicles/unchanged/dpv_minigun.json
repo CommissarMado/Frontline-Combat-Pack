@@ -103,9 +103,9 @@
       "Weapons": [],
       "BanHand": true,
       "Position": [
-        -0.3937,
+        0.4047,
         0.2,
-        0.5655
+        -0.75
       ],
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -118,8 +118,8 @@
       "Pose": "Default",
       "Position": [
         0.0,
-        0.1,
-        0.9
+        0.8,
+        -1.9
       ],
       "CameraPos": {
         "UseFixedCameraPos": true,
@@ -133,8 +133,8 @@
       },
       "MinPitch": -15,
       "MaxPitch": 45,
-      "MinYaw": -120,
-      "MaxYaw": 120,
+      "MinYaw": -90,
+      "MaxYaw": 90,
       "CanRotateBody": false,
       "Weapons": [
         "MachineGun"
@@ -143,16 +143,16 @@
     {
       "IsEnclosed": false,
       "Transform": "Vehicle",
-      "BanHand": true,
+      "BanHand": false,
       "Position": [
-        0.4047,
+        -0.4047,
         0.2,
-        0.5655
+        -0.75
       ],
       "MinPitch": -60,
       "MaxPitch": 60,
-      "MinYaw": -95,
-      "MaxYaw": 95
+      "MinYaw": -90,
+      "MaxYaw": 90
     }
   ],
   "Weapons": {
@@ -164,32 +164,34 @@
       "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "DefaultZoom": 3,
       "RPM": 1000,
+      "EmptyReloadTime": 200,
       "Velocity": 30,
       "Damage": 2.5,
       "Magazine": 1000,
-      "HeatPerShoot": 1,
+      "HeatPerShoot": 1.5,
       "NaturalCooldown": 1,
       "Spread": 1.2,
       "Name": "weapon.fcp.m134_minigun",
       "SoundInfo": {
         "Fire1P": "fcp:m134_fire_1p",
         "Fire3P": "fcp:m134_fire_3p",
-        "Fire3PFar": "fcp:m134_fire_3p_far"
+        "Fire3PFar": "fcp:m134_fire_3p_far",
+        "VehicleReload": "fcp:m2_reload"
       },
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
           [
             0.0,
-            0.0,
-            1.8
+            0.1,
+            0.6
           ]
         ],
         "Directions": [
           "Barrel"
         ]
       },
-      "Crosshair": "@VehicleCommonGun",
+      "Crosshair": "@Empty",
       "SoundRadius": 12
     }
   },
@@ -271,7 +273,7 @@
       ]
     ]
   },
-  "HudType": "@Land",
+  "HudType": "@Empty",
   "TerrainCompat": [
     [
       0.9826,
@@ -294,7 +296,7 @@
       -1.3549
     ]
   ],
-  "InertiaRotateRate": 1.8,
+  "InertiaRotateRate": 1.0,
   "TurretPos": [
     0.0,
     1.79742,
@@ -310,7 +312,7 @@
     15
   ],
   "TurretPitchRange": [
-    -15,
+    -45,
     45
   ],
   "TurretYawRange": [
