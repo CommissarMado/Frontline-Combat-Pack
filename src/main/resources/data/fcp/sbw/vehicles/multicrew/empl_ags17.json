@@ -1,0 +1,147 @@
+{
+  "ID": "fcp:empl_ags17",
+  "MaxHealth": 40,
+  "MaxEnergy": 5250000,
+  "Seats": [
+    {
+      "IsEnclosed": false,
+      "CameraPos": {
+        "UseFixedCameraPos": true,
+        "Transform": "Barrel",
+        "Position": [
+          0.0,
+          0.4,
+          0.0
+        ],
+        "Direction": "Barrel"
+      },
+      "Transform": "Vehicle",
+      "Position": [
+        0,
+        -0.6,
+        -1
+      ],
+      "MinPitch": -5,
+      "MaxPitch": 40,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "Pose": "Default",
+      "CanRotateBody": false,
+      "Weapons": [
+        "Grenade"
+      ]
+    }
+  ],
+  "Weapons": {
+    "Grenade": {
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Projectile": "superbwarfare:gun_grenade",
+      "DefaultZoom": 2,
+      "RPM": 325,
+      "Magazine": 32,
+      "EmptyReloadTime": 200,
+      "Velocity": 7,
+      "Damage": 0,
+      "ExplosionDamage": 15,
+      "ExplosionRadius": 3,
+      "HeatPerShoot": 5,
+      "NaturalCooldown": 1,
+      "RecoilTime": 30,
+      "RecoilForce": 0.31,
+      "ShootAnimationTime": 3,
+      "Spread": 0.8,
+      "IsArmorPiercingProjectile": false,
+      "IsHighExplosiveProjectile": true,
+      "Crosshair": "@Empty",
+      "CrosshairColor": "0x66FF00",
+      "Name": "weapon.fcp.ags17",
+      "SoundInfo": {
+        "Fire1P": "fcp:mk19_fire_1p",
+        "Fire3P": "fcp:mk19_fire_3p",
+        "Fire3PFar": "fcp:mk19_fire_3p_far",
+        "VehicleReload": "fcp:m2_reload"
+      },
+      "SoundRadius": 16,
+      "AmmoType": "superbwarfare:grenade_40mm",
+      "Icon": "fcp:textures/screens/vehicle_weapon/40mm.png",
+      "ShootPos": {
+        "Transform": "Barrel",
+        "Positions": [
+          [
+            -0.02,
+            0.1,
+            0.93
+          ]
+        ],
+        "Directions": [
+          "Barrel"
+        ]
+      }
+    }
+  },
+  "TurretPos": [
+    0.04184,
+    0.55198,
+    0.03044
+  ],
+  "BarrelPos": [
+    0,
+    0,
+    0
+  ],
+  "TurretTurnSpeed": [
+    15,
+    15
+  ],
+  "TurretPitchRange": [
+    -40,
+    45
+  ],
+  "TurretControllerIndex": 0,
+  "ThirdPersonCameraPos": [
+    0,
+    1,
+    3
+  ],
+  "HasDecoy": false,
+  "UpStep": 2.2,
+  "RotateOffsetHeight": 2.2,
+  "Mass": 12,
+  "VehicleContainerType": "Empty",
+  "DestroyInfo": {
+    "ParticleType": "Medium",
+    "ExplosionDamage": 120,
+    "ExplosionRadius": 7
+  },
+  "VehicleIcon": "superbwarfare:textures/vehicle_icon/lav_150_icon.png",
+  "ContainerIcon": "fcp:textures/gui/vehicle/type/land_us.png",
+  "Type": "Defense",
+  "CollisionLevel": {
+    "Level": 3,
+    "PowerLimits": [
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0.15,
+        0.09,
+        false
+      ]
+    ]
+  },
+  "HudType": "@Empty",
+  "InertiaRotateRate": 1,
+  "EngineType": "Fixed",
+  "TurretYawRange": [
+    -75,
+    75
+  ]
+}
