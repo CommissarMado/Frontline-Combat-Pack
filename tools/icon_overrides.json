@@ -16,20 +16,5 @@
   },
   "matv_9in1": {
     "geo": "src/main/resources/assets/fcp/geo/matv9in1.geo.json"
-  },
-  "gaz_tigr": {
-    "texture": "src/main/resources/assets/fcp/textures/entity/gaz_tigr/gaz_tigr_2.png"
-  },
-  "gaz_tigr_dual": {
-    "texture": "src/main/resources/assets/fcp/textures/entity/gaz_tigr/gaz_tigr_2.png"
-  },
-  "gaz_tigr_gl": {
-    "texture": "src/main/resources/assets/fcp/textures/entity/gaz_tigr/gaz_tigr_2.png"
-  },
-  "gaz_tigr_mg": {
-    "texture": "src/main/resources/assets/fcp/textures/entity/gaz_tigr/gaz_tigr_2.png"
-  },
-  "gaz_tigr_rws": {
-    "texture": "src/main/resources/assets/fcp/textures/entity/gaz_tigr/gaz_tigr_2.png"
   }
 }
