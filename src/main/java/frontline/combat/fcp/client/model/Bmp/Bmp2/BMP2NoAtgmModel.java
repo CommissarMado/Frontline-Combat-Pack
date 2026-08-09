@@ -46,7 +46,7 @@ public class BMP2NoAtgmModel extends FCPVehicleModel<BMP2NoAtgmEntity> {
             if (vehicle.getCannonRecoilTime() <= 0) {
                 return;
             }
-            if (!CANNON_WEAPON.equals(vehicle.getGunName(1))) {
+            if (!CANNON_WEAPON.equals(CannonRecoilTransforms.gunnerGunName(vehicle))) {
                 return;
             }
             CannonRecoilTransforms.apply(bone, vehicle, CannonRecoilTransforms.Profile.STANDARD);

@@ -40,7 +40,7 @@ public class BMP1AMModel extends VehicleModel<BMP1AMEntity> {
                 float bindRotX = bone.getInitialSnapshot().getRotX();
 
                 ModelBoneTransforms.clearRecoilOffsets(bone);
-                if (vehicle.getCannonRecoilTime() > 0 && CANNON_WEAPON.equals(vehicle.getGunName(1))) {
+                if (vehicle.getCannonRecoilTime() > 0 && CANNON_WEAPON.equals(CannonRecoilTransforms.gunnerGunName(vehicle))) {
                     CannonRecoilTransforms.apply(bone, vehicle, CannonRecoilTransforms.Profile.FORWARDBACK);
                 }
 

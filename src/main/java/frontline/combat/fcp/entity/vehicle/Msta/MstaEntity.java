@@ -1,4 +1,4 @@
-package frontline.combat.fcp.entity.vehicle.M109;
+package frontline.combat.fcp.entity.vehicle.Msta;
 
 import com.atsuishio.superbwarfare.entity.vehicle.damage.DamageModifier;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
@@ -9,7 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 
-public class M109Entity extends CamoVehicleBase {
+public class MstaEntity extends CamoVehicleBase {
 
     public int INVENTORY_SIZE = 9;
 
@@ -23,15 +23,31 @@ public class M109Entity extends CamoVehicleBase {
     private static final ResourceLocation[] CAMO_TEXTURES = {
 
             //Normal Textures
-            new ResourceLocation("fcp", "textures/entity/m109/m109_1.png"),
+            new ResourceLocation("fcp", "textures/entity/msta/msta_1.png"),
+            new ResourceLocation("fcp", "textures/entity/msta/msta_2.png"),
+            new ResourceLocation("fcp", "textures/entity/msta/msta_3.png"),
+            new ResourceLocation("fcp", "textures/entity/msta/msta_4.png"),
+            new ResourceLocation("fcp", "textures/entity/msta/msta_5.png"),
+            new ResourceLocation("fcp", "textures/entity/msta/msta_6.png"),
+            new ResourceLocation("fcp", "textures/entity/msta/msta_7.png"),
+            new ResourceLocation("fcp", "textures/entity/msta/msta_8.png"),
+            new ResourceLocation("fcp", "textures/entity/msta/msta_9.png"),
 
             // Wrecked Textures
-            new ResourceLocation("fcp", "textures/entity/m109/m109_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/msta/msta_1_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/msta/msta_2_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/msta/msta_3_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/msta/msta_4_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/msta/msta_5_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/msta/msta_6_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/msta/msta_7_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/msta/msta_8_wrecked.png"),
+            new ResourceLocation("fcp", "textures/entity/msta/msta_9_wrecked.png"),
     };
 
     private static final String[] CAMO_NAMES = {"Base"};
 
-    private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(M109Entity.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(MstaEntity.class, EntityDataSerializers.FLOAT);
 
     private float prevSteeringAngle = 0f;
 
@@ -39,7 +55,7 @@ public class M109Entity extends CamoVehicleBase {
 
     private float prevWheelRotation = 0f;
 
-    public M109Entity(EntityType<M109Entity> type, Level world) {super(type, world);}
+    public MstaEntity(EntityType<MstaEntity> type, Level world) {super(type, world);}
 
     @Override
     public ResourceLocation[] getCamoTextures() {return CAMO_TEXTURES;}

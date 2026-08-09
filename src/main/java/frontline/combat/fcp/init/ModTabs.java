@@ -120,6 +120,7 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BRDM2.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.PANTSIR.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MI17.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.MSTA.get()));
 
                 // ---- Terrorist / Civilian Vehicles ----
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX.get()));

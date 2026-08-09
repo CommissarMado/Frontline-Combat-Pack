@@ -56,6 +56,7 @@ import frontline.combat.fcp.entity.vehicle.Emplacement.EmplAgs17Entity;
 import frontline.combat.fcp.entity.vehicle.Emplacement.EmplM2Entity;
 import frontline.combat.fcp.entity.vehicle.Emplacement.EmplMg3Entity;
 import frontline.combat.fcp.entity.vehicle.Emplacement.EmplZis3Entity;
+import frontline.combat.fcp.entity.vehicle.Msta.MstaEntity;
 import frontline.combat.fcp.entity.vehicle.Pantsir.PantsirEntity;
 import frontline.combat.fcp.entity.vehicle.Brdm.Brdm2Entity;
 import frontline.combat.fcp.entity.vehicle.M939.M939Entity;
@@ -305,6 +306,8 @@ public class ModEntities {
             EntityType.Builder.of(WolfEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.5f,0.5f));
     public static final RegistryObject<EntityType<M109Entity>> M109 = register("m109",
             EntityType.Builder.of(M109Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<MstaEntity>> MSTA = register("msta",
+            EntityType.Builder.of(MstaEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(4f, 3f));
     public static final RegistryObject<EntityType<MI17Entity>> MI17 = register("mi17",
             EntityType.Builder.of(MI17Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<JohnDeereEntity>> JOHN_DEERE = register("john_deere",
@@ -315,6 +318,7 @@ public class ModEntities {
             EntityType.Builder.of(SeederEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(4f, 3f));
     public static final RegistryObject<EntityType<CultivatorEntity>> CULTIVATOR = register("cultivator",
             EntityType.Builder.of(CultivatorEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(4f, 3f));
+
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> entityTypeBuilder) {
         return ENTITY_TYPES.register(name, () -> entityTypeBuilder.build(FCP.MODID + ":" + name));
     }

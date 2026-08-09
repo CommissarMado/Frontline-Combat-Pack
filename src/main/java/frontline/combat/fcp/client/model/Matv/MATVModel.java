@@ -48,7 +48,7 @@ public class MATVModel extends FCPVehicleModel<MATVEntity> {
             if (vehicle.getCannonRecoilTime() <= 0) {
                 return;
             }
-            if (!CANNON_WEAPON.equals(vehicle.getGunName(1))) {
+            if (!CANNON_WEAPON.equals(CannonRecoilTransforms.gunnerGunName(vehicle))) {
                 return;
             }
             CannonRecoilTransforms.apply(bone, vehicle, CannonRecoilTransforms.Profile.SIDETOSIDE);

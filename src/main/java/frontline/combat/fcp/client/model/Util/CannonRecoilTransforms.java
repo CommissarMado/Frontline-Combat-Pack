@@ -11,6 +11,17 @@ public final class CannonRecoilTransforms {
 
     private static final float REFERENCE_TICKS = 42f;
 
+    /**
+     * Gun name equipped at the crew's GUNNER seat, resolved from the vehicle's current
+     * (single- or multi-crew) configuration via getTurretControllerIndex() instead of a
+     * hardcoded seat index. Recoil gates compare this against their cannon's weapon id, so
+     * the barrel kicks for whoever is actually manning the gun in either crew mode.
+     */
+    public static String gunnerGunName(VehicleEntity vehicle) {
+        return vehicle.getGunName(vehicle.computed().getTurretControllerIndex());
+    }
+
+
     public enum Profile {
 
         STANDARD(12f, 3f),
@@ -21,7 +32,13 @@ public final class CannonRecoilTransforms {
 
         FORWARDBACK(12f, 0.8f),
 
-        LIGHT(3f, 0.8f);
+        LIGHT(3f, 0.8f),
+
+        ARTILLERY(40f, 0f),
+
+        M109(-40f, 0f),
+
+        MSTA(-20f, 0f);
 
         private final float slideMax;
 
@@ -135,7 +152,7 @@ public final class CannonRecoilTransforms {
 
         bone.setPosZ(0f);
 
-        if (requiredWeapon != null && !requiredWeapon.equals(vehicle.getGunName(1))) {
+        if (requiredWeapon != null && !requiredWeapon.equals(gunnerGunName(vehicle))) {
 
             return;
 
@@ -265,7 +282,7 @@ public final class CannonRecoilTransforms {
 
             }
 
-            if (!weaponName.equals(vehicle.getGunName(1))) {
+            if (!weaponName.equals(gunnerGunName(vehicle))) {
 
                 return;
 

@@ -47,6 +47,7 @@ import frontline.combat.fcp.client.renderer.Matv.MATVTOWRenderer;
 import frontline.combat.fcp.client.renderer.MemeVehicles.BigBirdRenderer;
 import frontline.combat.fcp.client.renderer.MemeVehicles.WolfRenderer;
 import frontline.combat.fcp.client.renderer.Mi17.MI17Renderer;
+import frontline.combat.fcp.client.renderer.Msta.MstaRenderer;
 import frontline.combat.fcp.client.renderer.Novator.NovatorRenderer;
 import frontline.combat.fcp.client.renderer.NovatorUnarmed.NovatorUnarmedRenderer;
 import frontline.combat.fcp.client.renderer.Dpv.DpvM240Renderer;
@@ -202,6 +203,8 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.FMTV.get(), FMTVRenderer::new);
 
         event.registerEntityRenderer(ModEntities.M109.get(), M109Renderer::new);
+
+        event.registerEntityRenderer(ModEntities.MSTA.get(), MstaRenderer::new);
 
         event.registerEntityRenderer(ModEntities.JOHN_DEERE.get(), JohnDeereRenderer::new);
         event.registerEntityRenderer(ModEntities.COMBINE.get(), CombineRenderer::new);
