@@ -4,8 +4,6 @@ import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.model.Util.CannonRecoilTransforms;
 import frontline.combat.fcp.client.model.Util.ModelBoneTransforms;
-import frontline.combat.fcp.client.model.Util.WheelRotationTransforms;
-import frontline.combat.fcp.entity.vehicle.Lav.Lav25Entity;
 import frontline.combat.fcp.entity.vehicle.M109.M109Entity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -27,6 +25,19 @@ public class M109Model extends VehicleModel<M109Entity> {
 
     @Override
     public @Nullable VehicleModel.TransformContext<M109Entity> collectTransform(String boneName) {
+
+        // Road wheels are lowercase wheelL# (both sides use the L name). SBW's base drives them
+        // with +1.5 * leftWheelRot, which rolls them toward +Z for forward travel on this model.
+        // Reproduce SBW's exact (interpolated) value with the sign flipped so forward rolls toward
+        // -Z. Returning a transform here bypasses SBW's default for these bones. NOTE: lowercase
+        // wheelL — the bones really are lowercase, which is why capital-W overrides never fired.
+        if (boneName.matches("wheelL\\d+")) {
+            return (bone, vehicle, state) -> {
+                float wheelRot = Mth.lerp(state.getPartialTick(),
+                        vehicle.getLeftWheelRotO(), vehicle.getLeftWheelRot());
+                bone.setRotX(-1.5f * wheelRot);
+            };
+        }
 
         if ("BarrelOccilator".equals(boneName)) {
             return barrelRecoil(0);
