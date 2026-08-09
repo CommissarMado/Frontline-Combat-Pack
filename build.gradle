@@ -311,10 +311,18 @@ tasks.register('renderVehicleIcons', Exec) {
     outputs.dir outDir
     // resolve a python launcher available on the build machine
     def py = System.getenv('PYTHON') ?: (org.gradle.internal.os.OperatingSystem.current().isWindows() ? 'python' : 'python3')
+    // Only run if python is actually available, so a machine without it never breaks the build
+    // (the committed icons are used as-is). Delete an icon + rebuild to regenerate it.
+    onlyIf {
+        try {
+            def p = ["${py}", '--version'].execute()
+            p.waitFor() == 0
+        } catch (ignored) { false }
+    }
     commandLine py, script.absolutePath, '--batch', projectDir.absolutePath
 }
 
-// Uncomment to regenerate icons automatically whenever a model/texture changes
-// (Gradle skips it when nothing changed). Leaves builds working on machines
-// without python because the icons are already committed.
-// processResources.dependsOn 'renderVehicleIcons'
+// Regenerate icons as part of the build. Gradle skips it when nothing changed (up-to-date),
+// and the onlyIf above skips it when python isn't installed.
+tasks.named('processResources').configure { dependsOn 'renderVehicleIcons' }
+
