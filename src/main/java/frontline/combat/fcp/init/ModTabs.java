@@ -72,7 +72,6 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.M109.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.KOZAK5.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.KOZAK2M1.get()));
-                output.accept(ContainerBlockItem.createInstance(ModEntities.KOZAK_AMBULANCE.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.LITTLEBIRD.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.LITTLEBIRD_ARMED.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY.get()));
@@ -81,6 +80,12 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY_DOOR_GUNNER_M134.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.VENOM.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.VIPER.get()));
+
+                // ---- Civilian Vehicles ----
+                output.accept(ContainerBlockItem.createInstance(ModEntities.COMBINE.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.JOHN_DEERE.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.CULTIVATOR.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.SEEDER.get()));
 
                 // ---- Russian Vehicles ----
                 output.accept(ContainerBlockItem.createInstance(ModEntities.UAZ.get()));
@@ -107,6 +112,12 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BTR82_COPE.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BTR3E.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BTR4MV1.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BRDM2.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.PANTSIR.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.MI17.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.MSTA.get()));
+
+                // ---- Terrorist Vehicles ----
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP1.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP1U.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP1AM.get()));
@@ -117,12 +128,6 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP2MD.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP2_NOATGM.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.T72AV.get()));
-                output.accept(ContainerBlockItem.createInstance(ModEntities.BRDM2.get()));
-                output.accept(ContainerBlockItem.createInstance(ModEntities.PANTSIR.get()));
-                output.accept(ContainerBlockItem.createInstance(ModEntities.MI17.get()));
-                output.accept(ContainerBlockItem.createInstance(ModEntities.MSTA.get()));
-
-                // ---- Terrorist / Civilian Vehicles ----
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX_ZU23.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX_BMP.get()));
@@ -131,10 +136,7 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HILUX_MORTAR.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.DPV_M240.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.DPV_MINIGUN.get()));
-                output.accept(ContainerBlockItem.createInstance(ModEntities.COMBINE.get()));
-                output.accept(ContainerBlockItem.createInstance(ModEntities.CULTIVATOR.get()));
-                output.accept(ContainerBlockItem.createInstance(ModEntities.JOHN_DEERE.get()));
-                output.accept(ContainerBlockItem.createInstance(ModEntities.SEEDER.get()));
+
             }).build());
 
     @Mod.EventBusSubscriber(modid = FCP.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)

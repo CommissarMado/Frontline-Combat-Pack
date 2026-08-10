@@ -373,7 +373,7 @@
     "SympatheticDetonationForce": 1.5,
     "SympatheticDetonationChance": 0.0
   },
-  "ContainerIcon": "fcp:textures/gui/vehicle/type/land_us.png",
+  "ContainerIcon": "fcp:textures/gui/vehicle/type/land_rus.png",
   "Type": "APC",
   "CollisionLevel": {
     "Level": 3,

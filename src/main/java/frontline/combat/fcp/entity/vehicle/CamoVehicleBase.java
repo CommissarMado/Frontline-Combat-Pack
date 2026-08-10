@@ -429,7 +429,7 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements ICamoV
     protected boolean opensHoldOnPlainClick() {
         return false;
     }
-    
+
     /**
      * Spill the hold BEFORE the entity is serialised into the container item.
      *

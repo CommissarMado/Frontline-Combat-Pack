@@ -5,7 +5,7 @@
   "TurretPos": [0.023438, 1.782469, -0.638431],
   "TurretTurnSpeed": [2.5, 2.5],
   "TurretPitchRange": [-10, 30],
-  "TurretControllerIndex": 1,
+  "TurretControllerIndex": 0,
   "BarrelPos": [0.008838, 0.251681, 1.465037],
   "OBB": [
     {"Size": [0.3, 0.75, 3.85], "Position": [1.7, 0.75, -0.25], "Part": "WheelLeft"},
@@ -14,21 +14,6 @@
     {"Size": [1.0, 0.25, 1], "Position": [0, 0.25, 0], "Part": "Turret", "Transform": "Turret", "Rotation": "Turret"}
   ],
   "Seats": [
-    {
-      "IsEnclosed": true,
-      "Transform": "Vehicle",
-      "BanHand": true,
-      "CameraPos": {
-        "UseFixedCameraPos": true,
-        "Transform": "Vehicle",
-        "Position": [0.000606, 1.678919, 1.780312]
-      },
-      "Position": [0.50, 0.30, 0.25],
-      "MinYaw": -65,
-      "MaxYaw": 65,
-      "MinPitch": -10,
-      "MaxPitch": 30
-    },
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",

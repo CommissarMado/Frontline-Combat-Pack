@@ -89,7 +89,7 @@
     "ExplosionRadius": 7
   },
   "VehicleIcon": "superbwarfare:textures/vehicle_icon/lav_150_icon.png",
-  "ContainerIcon": "fcp:textures/gui/vehicle/type/land_us.png",
+  "ContainerIcon": "fcp:textures/gui/vehicle/type/civ_us.png",
   "Type": "APC",
   "CollisionLevel": {
     "Level": 3,

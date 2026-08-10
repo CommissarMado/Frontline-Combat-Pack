@@ -112,29 +112,6 @@
     {
       "BanHand": true,
       "HidePassenger": true,
-      "CameraPos": {
-        "Transform": "Vehicle",
-        "UseFixedCameraPos": true,
-        "Position": [
-          0.523556,
-          2.48535,
-          2.220112
-        ]
-      },
-      "Transform": "Vehicle",
-      "Position": [
-        0,
-        0,
-        0
-      ],
-      "MinYaw": -65,
-      "MaxYaw": 65,
-      "MinPitch": -15,
-      "MaxPitch": 32.5
-    },
-    {
-      "BanHand": true,
-      "HidePassenger": true,
       "IsEnclosed": true,
       "CameraPos": {
         "Transform": "Barrel",
@@ -410,7 +387,7 @@
     3,
     5
   ],
-  "TurretControllerIndex": 1,
+  "TurretControllerIndex": 0,
   "HasDecoy": true,
   "UpStep": 1.5,
   "RotateOffsetHeight": 2.2,

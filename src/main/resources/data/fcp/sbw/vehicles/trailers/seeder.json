@@ -2,6 +2,7 @@
   "ID": "fcp:seeder",
   "MaxHealth": 250,
   "MaxEnergy": 0,
+  "ContainerIcon": "fcp:textures/gui/vehicle/type/civ_us.png",
   "OBB": [
     {"Size": [10.1562, 0.6484, 0.3125], "Position": [0.0938, 1.5078, -1.8594]},
     {"Size": [0.6328, 0.875, 0.2969], "Position": [9.1953, 3.0312, -1.8438]},

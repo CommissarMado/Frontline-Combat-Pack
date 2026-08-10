@@ -186,5 +186,6 @@
   "fcptab.fcp_tab": "Frontline Combat Pack",
   "item.fcp.fc_tab_icon": "FCP",
   "entity.fcp.msta": "2S19 Msta-S",
-  "entity.fcp.m109": "M109 Paladin"
+  "entity.fcp.m109": "M109 Paladin",
+  "entity.fcp.fmtv": "FMTV"
 }
