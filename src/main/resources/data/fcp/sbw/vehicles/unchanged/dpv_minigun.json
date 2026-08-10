@@ -83,7 +83,7 @@
       "RPM": 1000,
       "EmptyReloadTime": 200,
       "Velocity": 30,
-      "Damage": 2.5,
+      "Damage": 4,
       "Magazine": 1000,
       "HeatPerShoot": 1.5,
       "NaturalCooldown": 1,

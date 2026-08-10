@@ -31,6 +31,7 @@
       "MaxPitch": 32.5
     },
     {
+      "Sensitivity": [0.5, 0.3, 0.5],
       "HidePassenger": true,
       "IsEnclosed": true,
       "CameraPos": {

@@ -111,8 +111,8 @@
   "VehicleContainerType": "Empty",
   "DestroyInfo": {
     "ParticleType": "Medium",
-    "ExplosionDamage": 120,
-    "ExplosionRadius": 7
+    "ExplosionDamage": 0,
+    "ExplosionRadius": 0
   },
   "VehicleIcon": "superbwarfare:textures/vehicle_icon/lav_150_icon.png",
   "ContainerIcon": "fcp:textures/gui/vehicle/type/land_us.png",
@@ -137,6 +137,8 @@
       ]
     ]
   },
+  "HasLowHealthWarning": false,
+  "SelfHurtPercent": 0,
   "HudType": "@Empty",
   "InertiaRotateRate": 1,
   "EngineType": "Fixed",
