@@ -10,7 +10,6 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.loading.FMLPaths;
 import org.slf4j.Logger;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -21,9 +20,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-
 public final class VpbIntegrationConfig {
-
     private static final Logger LOGGER = LogUtils.getLogger();
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final String FILE_NAME = "fcp-vpb-integration.json";
@@ -33,11 +30,9 @@ public final class VpbIntegrationConfig {
     public final Map<ResourceLocation, WarheadStats> projectileWarheads;
     public final Set<ResourceLocation> muzzleSmokeProjectiles;
     public final boolean debugLogging;
-
     private VpbIntegrationConfig() {
         this(new HashMap<>(), new HashSet<>(), false);
     }
-
     private VpbIntegrationConfig(Map<ResourceLocation, WarheadStats> projectileWarheads,
                                  Set<ResourceLocation> muzzleSmokeProjectiles,
                                  boolean debugLogging) {
@@ -46,11 +41,9 @@ public final class VpbIntegrationConfig {
         this.debugLogging = debugLogging;
     }
 
-
     public static VpbIntegrationConfig get() {
         return INSTANCE;
     }
-
 
     public static synchronized void load() {
         Path path = FMLPaths.CONFIGDIR.get().resolve(FILE_NAME);
@@ -59,7 +52,6 @@ public final class VpbIntegrationConfig {
                 writeDefault(path);
                 LOGGER.info("[FCP/VPB] Created default integration config at {}", path);
             }
-
             String json = Files.readString(path, StandardCharsets.UTF_8);
             JsonObject root = GSON.fromJson(json, JsonObject.class);
             if (root == null) {
@@ -67,7 +59,6 @@ public final class VpbIntegrationConfig {
             }
 
             boolean debug = root.has("debugLogging") && root.get("debugLogging").getAsBoolean();
-
             Map<ResourceLocation, WarheadStats> warheads = new HashMap<>();
             if (root.has("projectileWarheads") && root.get("projectileWarheads").isJsonObject()) {
                 JsonObject obj = root.getAsJsonObject("projectileWarheads");
@@ -81,7 +72,6 @@ public final class VpbIntegrationConfig {
                     float explosionRadius = s.has("explosionRadius") ? s.get("explosionRadius").getAsFloat() : 0f;
                     int fireTime = s.has("fireTime") ? s.get("fireTime").getAsInt() : 0;
                     boolean destroy = !s.has("destroyBlocks") || s.get("destroyBlocks").getAsBoolean();
-
                     ParticleTool.ParticleType particle = null;
                     if (s.has("explosionParticle") && !s.get("explosionParticle").getAsString().isBlank()) {
                         String raw = s.get("explosionParticle").getAsString().trim().toUpperCase(java.util.Locale.ROOT);
@@ -92,7 +82,6 @@ public final class VpbIntegrationConfig {
                                     id, raw);
                         }
                     }
-
                     WarheadStats stats = new WarheadStats(directDamage, explosionDamage, explosionRadius, particle, fireTime, destroy);
                     if (!stats.hasDirectHit() && !stats.hasExplosion()) {
                         LOGGER.warn("[FCP/VPB] Skipping '{}': needs directDamage > 0 and/or (explosionDamage > 0 and explosionRadius > 0)", id);
@@ -101,7 +90,6 @@ public final class VpbIntegrationConfig {
                     warheads.put(id, stats);
                 }
             }
-
             Set<ResourceLocation> smokeProjectiles = new HashSet<>();
             if (root.has("muzzleSmokeProjectiles") && root.get("muzzleSmokeProjectiles").isJsonArray()) {
                 JsonArray arr = root.getAsJsonArray("muzzleSmokeProjectiles");
@@ -110,7 +98,6 @@ public final class VpbIntegrationConfig {
                     if (id != null) smokeProjectiles.add(id);
                 }
             }
-
             INSTANCE = new VpbIntegrationConfig(warheads, smokeProjectiles, debug);
             LOGGER.info("[FCP/VPB] Loaded {} warhead mapping(s) and {} muzzle-smoke projectile(s).",
                     warheads.size(), smokeProjectiles.size());
@@ -120,7 +107,6 @@ public final class VpbIntegrationConfig {
             INSTANCE = new VpbIntegrationConfig();
         }
     }
-
     private static ResourceLocation parseId(String raw) {
         if (raw == null) return null;
         ResourceLocation id = ResourceLocation.tryParse(raw.trim());
@@ -132,30 +118,306 @@ public final class VpbIntegrationConfig {
 
     private static void writeDefault(Path path) throws IOException {
         JsonObject root = new JsonObject();
-        root.addProperty("comment",
-                "FCP  Point Blank integration. Keys are registry ids. projectileWarheads maps a VPB "
-                        + "projectile ENTITY id to the SBW warhead it is replaced by on impact: directDamage is "
-                        + "a flat hit on the struck entity (runs through SBW vehicle DamageModifiers/armor), "
-                        + "explosionDamage/explosionRadius are the AoE blast. AP = direct only; HE = explosion "
-                        + "only; HEAT = both. muzzleSmokeProjectiles lists VPB projectile ENTITY ids that emit "
-                        + "the SBW-RPG muzzle + downrange smoke when fired. Enable debugLogging to print unmapped "
-                        + "pointblank ids "
-                        + "to the log so you can discover the exact strings for your installed content packs.");
+        root.addProperty("comment", "FCP  Point Blank integration. Keys are registry ids. projectileWarheads maps a VPB projectile ENTITY id to the SBW warhead it is replaced by on impact: directDamage is a flat hit on the struck entity (runs through SBW vehicle DamageModifiers/armor), explosionDamage/explosionRadius are the AoE blast. AP = direct only; HE = explosion only; HEAT = both. muzzleSmokeProjectiles lists VPB projectile ENTITY ids that emit the SBW-RPG muzzle + downrange smoke when fired. Enable debugLogging to print unmapped pointblank ids to the log so you can discover the exact strings for your installed content packs.");
         root.addProperty("debugLogging", false);
-
         JsonObject warheads = new JsonObject();
-        JsonObject example = new JsonObject();
-        example.addProperty("directDamage", 200.0);
-        example.addProperty("explosionDamage", 90.0);
-        example.addProperty("explosionRadius", 6.0);
-        example.addProperty("explosionParticle", "MEDIUM");
-        example.addProperty("fireTime", 0);
-        example.addProperty("destroyBlocks", true);
-        warheads.add("pointblank:example_rocket", example);
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 200.0);
+            entry.addProperty("explosionDamage", 90.0);
+            entry.addProperty("explosionRadius", 6.0);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", true);
+            warheads.add("pointblank:example_rocket", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 250.0);
+            entry.addProperty("explosionDamage", 35.0);
+            entry.addProperty("explosionRadius", 5.2);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", false);
+            warheads.add("pointblank:fcl_rpg7v2_pg7vm", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 400.0);
+            entry.addProperty("explosionDamage", 28.0);
+            entry.addProperty("explosionRadius", 5.6);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", true);
+            warheads.add("pointblank:fcl_rpg7v2_pg7vr", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 0.0);
+            entry.addProperty("explosionDamage", 50.0);
+            entry.addProperty("explosionRadius", 5.6);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", false);
+            warheads.add("pointblank:fcl_rpg7v2_og7v", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 400.0);
+            entry.addProperty("explosionDamage", 28.0);
+            entry.addProperty("explosionRadius", 5.6);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", true);
+            warheads.add("pointblank:fcl_smaw_heaa", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 200.0);
+            entry.addProperty("explosionDamage", 70.0);
+            entry.addProperty("explosionRadius", 7);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", true);
+            warheads.add("pointblank:fcl_smaw_hedm", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 250.0);
+            entry.addProperty("explosionDamage", 35.0);
+            entry.addProperty("explosionRadius", 5.2);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", false);
+            warheads.add("pointblank:fcl_rpg26_rocket", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 250.0);
+            entry.addProperty("explosionDamage", 35.0);
+            entry.addProperty("explosionRadius", 5.2);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", false);
+            warheads.add("pointblank:fcl_m72_rocket", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 400.0);
+            entry.addProperty("explosionDamage", 28.0);
+            entry.addProperty("explosionRadius", 5.6);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", true);
+            warheads.add("pointblank:fcl_rpg28_rocket", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 250.0);
+            entry.addProperty("explosionDamage", 35.0);
+            entry.addProperty("explosionRadius", 5.2);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", false);
+            warheads.add("pointblank:fcl_at4_rocket", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 250.0);
+            entry.addProperty("explosionDamage", 35.0);
+            entry.addProperty("explosionRadius", 5.2);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", false);
+            warheads.add("pointblank:fcl_dzj08_round", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 0.0);
+            entry.addProperty("explosionDamage", 100.0);
+            entry.addProperty("explosionRadius", 5);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", true);
+            warheads.add("pointblank:grenade40mm", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 0.0);
+            entry.addProperty("explosionDamage", 100.0);
+            entry.addProperty("explosionRadius", 5);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", true);
+            warheads.add("pointblank:cs_grenade30mm", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 0.0);
+            entry.addProperty("explosionDamage", 100.0);
+            entry.addProperty("explosionRadius", 5);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", true);
+            warheads.add("pointblank:cs_grenade7g23", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 0.0);
+            entry.addProperty("explosionDamage", 100.0);
+            entry.addProperty("explosionRadius", 7);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", true);
+            warheads.add("pointblank:fcl_carlgustaf_he448", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 250.0);
+            entry.addProperty("explosionDamage", 35.0);
+            entry.addProperty("explosionRadius", 5.2);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", false);
+            warheads.add("pointblank:fcl_carlgustaf_heat551crs", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 400.0);
+            entry.addProperty("explosionDamage", 28.0);
+            entry.addProperty("explosionRadius", 5.6);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", true);
+            warheads.add("pointblank:fcl_carlgustaf_heat758", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 200.0);
+            entry.addProperty("explosionDamage", 70.0);
+            entry.addProperty("explosionRadius", 5);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", true);
+            warheads.add("pointblank:fcl_carlgustaf_hedp502", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 0.0);
+            entry.addProperty("explosionDamage", 100.0);
+            entry.addProperty("explosionRadius", 7);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", true);
+            warheads.add("pointblank:fcl_rpg29_og29", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 400.0);
+            entry.addProperty("explosionDamage", 28.0);
+            entry.addProperty("explosionRadius", 5.6);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", true);
+            warheads.add("pointblank:fcl_rpg29_pg29v", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 200.0);
+            entry.addProperty("explosionDamage", 70.0);
+            entry.addProperty("explosionRadius", 5);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", true);
+            warheads.add("pointblank:fcl_rpg29_mg29", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 0.0);
+            entry.addProperty("explosionDamage", 100.0);
+            entry.addProperty("explosionRadius", 7);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", true);
+            warheads.add("pointblank:fcl_panzerfaust3_bunkerfaust", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 400.0);
+            entry.addProperty("explosionDamage", 28.0);
+            entry.addProperty("explosionRadius", 5.6);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", true);
+            warheads.add("pointblank:fcl_panzerfaust3_tandem", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 250.0);
+            entry.addProperty("explosionDamage", 35.0);
+            entry.addProperty("explosionRadius", 5.2);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", false);
+            warheads.add("pointblank:fcl_panzerfaust3_heat", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 0.0);
+            entry.addProperty("explosionDamage", 100.0);
+            entry.addProperty("explosionRadius", 7);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", true);
+            warheads.add("pointblank:fcl_pf98_he", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 400.0);
+            entry.addProperty("explosionDamage", 28.0);
+            entry.addProperty("explosionRadius", 5.6);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", true);
+            warheads.add("pointblank:fcl_pf98_heat", entry);
+        }
+        {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("directDamage", 200.0);
+            entry.addProperty("explosionDamage", 70.0);
+            entry.addProperty("explosionRadius", 7);
+            entry.addProperty("explosionParticle", "MEDIUM");
+            entry.addProperty("fireTime", 0);
+            entry.addProperty("destroyBlocks", true);
+            warheads.add("pointblank:fcl_pf98_hei", entry);
+        }
         root.add("projectileWarheads", warheads);
-
         JsonArray smokeProjectiles = new JsonArray();
         smokeProjectiles.add("pointblank:example_rocket");
+        smokeProjectiles.add("pointblank:fcl_at4_rocket");
+        smokeProjectiles.add("pointblank:fcl_rpg26_rocket");
+        smokeProjectiles.add("pointblank:fcl_smaw_hedm");
+        smokeProjectiles.add("pointblank:fcl_smaw_heaa");
+        smokeProjectiles.add("pointblank:fcl_rpg7v2_pg7vm");
+        smokeProjectiles.add("pointblank:fcl_rpg7v2_pg7vr");
+        smokeProjectiles.add("pointblank:fcl_rpg7v2_og7v");
+        smokeProjectiles.add("pointblank:fcl_rpg28_rocket");
+        smokeProjectiles.add("pointblank:fcl_m72_rocket");
+        smokeProjectiles.add("pointblank:fcl_dzj08_round");
+        smokeProjectiles.add("pointblank:fcl_carlgustaf_he448");
+        smokeProjectiles.add("pointblank:fcl_carlgustaf_heat551crs");
+        smokeProjectiles.add("pointblank:fcl_carlgustaf_heat758");
+        smokeProjectiles.add("pointblank:fcl_carlgustaf_hedp502");
+        smokeProjectiles.add("pointblank:fcl_rpg29_og29");
+        smokeProjectiles.add("pointblank:fcl_rpg29_pg29v");
+        smokeProjectiles.add("pointblank:fcl_rpg29_mg29");
+        smokeProjectiles.add("pointblank:fcl_panzerfaust3_bunkerfaust");
+        smokeProjectiles.add("pointblank:fcl_panzerfaust3_tandem");
+        smokeProjectiles.add("pointblank:fcl_panzerfaust3_heat");
+        smokeProjectiles.add("pointblank:fcl_pf98_he");
+        smokeProjectiles.add("pointblank:fcl_pf98_heat");
+        smokeProjectiles.add("pointblank:fcl_pf98_hei");
+        smokeProjectiles.add("pointblank:cs_m202_rocket");
         root.add("muzzleSmokeProjectiles", smokeProjectiles);
 
         Files.createDirectories(path.getParent());
