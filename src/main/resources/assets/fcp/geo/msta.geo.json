@@ -3491,8 +3491,14 @@
 					"pivot": [0.17298, 35.50071, -2.08863]
 				},
 				{
-					"name": "BarrelCollator",
+					"name": "BarrelCollator2",
 					"parent": "barrel",
+					"pivot": [-0.03799, 35.50068, -2.08862],
+					"rotation": [0, 0, -180]
+				},
+				{
+					"name": "BarrelCollator",
+					"parent": "BarrelCollator2",
 					"pivot": [-0.03799, 35.50068, -2.08862],
 					"rotation": [180, 0, 0]
 				},
