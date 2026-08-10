@@ -13,23 +13,11 @@ import software.bernie.geckolib.core.animation.AnimationState;
 public class NovatorUnarmedModel extends FCPVehicleModel<NovatorUnarmedEntity> {
     @Override
     public ResourceLocation getModelResource(NovatorUnarmedEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/novator.geo.json");
+        return new ResourceLocation(FCP.MODID, "geo/novator_unarmed.geo.json");
     }
 
     @Override
     public boolean hideForTurretControllerWhileZooming() {return false;}
-
-    // Unarmed variant: hide the remote weapon station ("rws" -> turret -> barrel -> gun) entirely.
-    @Override
-    public void setCustomAnimations(NovatorUnarmedEntity vehicle, long instanceId, AnimationState<NovatorUnarmedEntity> animationState) {
-        super.setCustomAnimations(vehicle, instanceId, animationState);
-        this.getBone("rws").ifPresent(b -> setHiddenDeep(b, true));
-    }
-
-    private static void setHiddenDeep(GeoBone bone, boolean hidden) {
-        bone.setHidden(hidden);
-        for (GeoBone child : bone.getChildBones()) setHiddenDeep(child, hidden);
-    }
 
     @Override
     public @Nullable VehicleModel.TransformContext<NovatorUnarmedEntity> collectTransform(String boneName) {

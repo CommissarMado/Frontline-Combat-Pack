@@ -2,191 +2,30 @@
   "ID": "fcp:stryker_mgs",
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
-  "TurretPos": [
-    0.014944,
-    1.974566,
-    -0.719551
-  ],
-  "TurretTurnSpeed": [
-    2.5,
-    1.8
-  ],
-  "TurretPitchRange": [
-    -3,
-    40
-  ],
-  "BarrelPos": [
-    -0.052509,
-    0.567157,
-    -0.804536
-  ],
-  "PassengerWeaponStationPos": [
-    -0.82999,
-    0.549611,
-    0.014115
-  ],
-  "PassengerWeaponStationBarrelPos": [
-    -0.017681,
-    0.056714,
-    0.80917
-  ],
-  "PassengerWeaponStationTurnSpeed": [
-    15,
-    15
-  ],
-  "PassengerWeaponStationPitchRange": [
-    -10,
-    20
-  ],
+  "TurretPos": [0.014944, 1.974566, -0.719551],
+  "TurretTurnSpeed": [2.5, 1.8],
+  "TurretPitchRange": [-3, 40],
+  "BarrelPos": [-0.052509, 0.567157, -0.804536],
+  "PassengerWeaponStationPos": [-0.82999, 0.549611, 0.014115],
+  "PassengerWeaponStationBarrelPos": [-0.017681, 0.056714, 0.80917],
+  "PassengerWeaponStationTurnSpeed": [15, 15],
+  "PassengerWeaponStationPitchRange": [-10, 20],
   "TurretControllerIndex": 0,
   "PassengerWeaponStationControllerIndex": 1,
   "PassengerRenderScale": 0.75,
   "OBB": [
-    {
-      "Size": [
-        0.192578,
-        0.537891,
-        0.53125
-      ],
-      "Position": [
-        1.1475,
-        0.6375,
-        2.14625
-      ],
-      "Part": "WheelLeft"
-    },
-    {
-      "Size": [
-        0.192578,
-        0.537891,
-        0.53125
-      ],
-      "Position": [
-        1.1475,
-        0.6375,
-        0.9775
-      ],
-      "Part": "WheelLeft"
-    },
-    {
-      "Size": [
-        0.192578,
-        0.537891,
-        0.53125
-      ],
-      "Position": [
-        1.1475,
-        0.6375,
-        -1.72125
-      ],
-      "Part": "WheelLeft"
-    },
-    {
-      "Size": [
-        0.192578,
-        0.537891,
-        0.53125
-      ],
-      "Position": [
-        1.1475,
-        0.6375,
-        -0.4675
-      ],
-      "Part": "WheelLeft"
-    },
-    {
-      "Size": [
-        0.192578,
-        0.537891,
-        0.53125
-      ],
-      "Position": [
-        -1.1475,
-        0.6375,
-        2.14625
-      ],
-      "Part": "WheelRight"
-    },
-    {
-      "Size": [
-        0.192578,
-        0.537891,
-        0.53125
-      ],
-      "Position": [
-        -1.1475,
-        0.6375,
-        0.9775
-      ],
-      "Part": "WheelRight"
-    },
-    {
-      "Size": [
-        0.192578,
-        0.537891,
-        0.53125
-      ],
-      "Position": [
-        -1.1475,
-        0.6375,
-        -1.72125
-      ],
-      "Part": "WheelRight"
-    },
-    {
-      "Size": [
-        0.192578,
-        0.537891,
-        0.53125
-      ],
-      "Position": [
-        -1.1475,
-        0.6375,
-        -0.4675
-      ],
-      "Part": "WheelRight"
-    },
-    {
-      "Size": [
-        1.275,
-        0.53125,
-        3.6125
-      ],
-      "Position": [
-        0.0,
-        0.9775,
-        0.17
-      ],
-      "Part": "Body"
-    },
-    {
-      "Size": [
-        1.275,
-        0.36125,
-        3.6125
-      ],
-      "Position": [
-        0.0,
-        1.87,
-        0.17
-      ],
-      "Part": "Body"
-    },
-    {
-      "Size": [
-        0.425,
-        0.36125,
-        3.4
-      ],
-      "Position": [
-        0.0,
-        0.19125,
-        2.3375
-      ],
-      "Transform": "Barrel",
-      "Part": "Turret",
-      "Rotation": "Barrel"
-    }
+    {"Size": [0.192578, 0.537891, 0.53125], "Position": [1.1475, 0.6375, 2.14625], "Part": "WheelLeft"},
+    {"Size": [0.192578, 0.537891, 0.53125], "Position": [1.1475, 0.6375, 0.9775], "Part": "WheelLeft"},
+    {"Size": [0.192578, 0.537891, 0.53125], "Position": [1.1475, 0.6375, -1.72125], "Part": "WheelLeft"},
+    {"Size": [0.192578, 0.537891, 0.53125], "Position": [1.1475, 0.6375, -0.4675], "Part": "WheelLeft"},
+    {"Size": [0.192578, 0.537891, 0.53125], "Position": [-1.1475, 0.6375, 2.14625], "Part": "WheelRight"},
+    {"Size": [0.192578, 0.537891, 0.53125], "Position": [-1.1475, 0.6375, 0.9775], "Part": "WheelRight"},
+    {"Size": [0.192578, 0.537891, 0.53125], "Position": [-1.1475, 0.6375, -1.72125], "Part": "WheelRight"},
+    {"Size": [0.192578, 0.537891, 0.53125], "Position": [-1.1475, 0.6375, -0.4675], "Part": "WheelRight"},
+    {"Size": [1.275, 0.53125, 3.6125], "Position": [0.0, 0.9775, 0.17], "Part": "Body"},
+    {"Size": [1.275, 0.36125, 3.6125], "Position": [0.0, 1.87, 0.17], "Part": "Body"},
+    {"Size": [0.6875, 0.75, 1.0625], "Position": [-0.6875, 1.5625, 1.5], "Part": "MainEngine"},
+    {"Size": [0.425, 0.36125, 3.4], "Position": [0.0, 0.19125, 2.3375], "Transform": "Barrel", "Part": "Turret", "Rotation": "Barrel"}
   ],
   "Seats": [
     {
@@ -514,5 +353,5 @@
       -1.3549
     ]
   ],
-  "InertiaRotateRate": 1.8
+  "InertiaRotateRate": 1.0
 }

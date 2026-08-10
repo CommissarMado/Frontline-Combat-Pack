@@ -39,6 +39,21 @@ public class M109Model extends VehicleModel<M109Entity> {
             };
         }
 
+        // Right road wheels: handled explicitly (not via SBW's default) so they read rightWheelRot
+        // DIRECTLY, the same way the left wheels read leftWheelRot -- otherwise the per-side
+        // steering differential never reaches this side.
+        // Sign is -1.5 (SAME as the left wheels), which gives the correct behaviour on both axes:
+        //   driving   -> leftWheelRot and rightWheelRot move together, so both sides spin the SAME way
+        //   steering  -> baseTick applies opposite offsets (left -d, right +d), so the sides go INVERSE
+        // Using +1.5 here inverted that: flipped while driving, matched while steering.
+        if (boneName.matches("wheelR\\d+")) {
+            return (bone, vehicle, state) -> {
+                float wheelRot = Mth.lerp(state.getPartialTick(),
+                        vehicle.getRightWheelRotO(), vehicle.getRightWheelRot());
+                bone.setRotX(-1.5f * wheelRot);
+            };
+        }
+
         if ("BarrelOccilator".equals(boneName)) {
             return barrelRecoil(0);
         }

@@ -4874,7 +4874,7 @@
 					]
 				},
 				{
-					"name": "Tube",
+					"name": "BarrelOccilator",
 					"parent": "barrel",
 					"pivot": [1.81734, 41.05891, -12.55753],
 					"cubes": [

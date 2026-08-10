@@ -43,6 +43,13 @@ public class DpvMinigunModel extends VehicleModel<DpvMinigunEntity> {
             };
         }
 
+        if ("BarrelRotationController".equals(boneName)) {
+            return (bone, vehicle, state) -> {
+
+                bone.setRotX(-Mth.lerp(state.getPartialTick(), vehicle.getBarrelRot0(), vehicle.getBarrelRot()));
+            };
+        }
+
         return super.collectTransform(boneName);
     }
 }

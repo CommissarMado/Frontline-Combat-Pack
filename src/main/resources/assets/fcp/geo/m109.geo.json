@@ -10296,7 +10296,7 @@
 					]
 				},
 				{
-					"name": "wheelR0",
+					"name": "wheelR8",
 					"parent": "WheelR",
 					"pivot": [24.75856, 10.0374, -48.8943],
 					"cubes": [
