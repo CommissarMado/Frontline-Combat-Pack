@@ -40,6 +40,8 @@ public final class CannonRecoilTransforms {
 
         MSTA(-20f, 0f);
 
+
+
         private final float slideMax;
 
         private final float kickMaxDeg;

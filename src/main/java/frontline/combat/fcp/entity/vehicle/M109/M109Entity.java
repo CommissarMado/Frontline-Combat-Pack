@@ -133,6 +133,32 @@ public class M109Entity extends CamoVehicleBase {
             this.setYRot(this.getYRot() + turnAmount);
         }
 
+        // Track steering: this vehicle turns via the yaw steering above, so SBW's trackEngine
+        // differential (which comes from its own turn rate, deltaRot) never engages and both
+        // tracks scroll identically. Drive the visible differential from the steering angle here:
+        // outer track scrolls faster, inner slower. TRACK_STEER_DIFF is the tuning knob; flip its
+        // sign if the tracks steer the wrong way, raise it for a stronger effect.
+        // The road wheels take the SAME-sign offset as the tracks: leftTrack/leftWheelRot share
+        // SBW's sign convention, and the wheel render already agrees with the tracks for forward
+        // travel, so the same structure differentiates them the same way. WHEEL_STEER_DIFF is a
+        // separate magnitude (wheels spin at a different rate than the track scrolls) — tune it so
+        // the wheels visually match the track differential.
+        final float TRACK_STEER_DIFF = 0.15f;
+        final float WHEEL_STEER_DIFF = 0.05f;
+        if (isMoving && Math.abs(currentAngle) > 1f) {
+            float dTrack = currentAngle * TRACK_STEER_DIFF * (float) speed;
+            setLeftTrack(getLeftTrack() - dTrack);
+            setRightTrack(getRightTrack() + dTrack);
+
+            // Wheels render mirrored (left = -1.5*leftWheelRot, right = +1.5*rightWheelRot), so
+            // SAME-sign offsets here become OPPOSITE visual rotation = the differential. (Opposite
+            // signs cancelled and both wheels moved together.) If the differential ends up on the
+            // wrong side, flip both to + dWheel.
+            float dWheel = currentAngle * WHEEL_STEER_DIFF * (float) speed;
+            setLeftWheelRot(getLeftWheelRot() - dWheel);
+            setRightWheelRot(getRightWheelRot() + dWheel);
+        }
+
         prevWheelRotation = wheelRotation;
         wheelRotation += (float) (speed * 20f);
     }

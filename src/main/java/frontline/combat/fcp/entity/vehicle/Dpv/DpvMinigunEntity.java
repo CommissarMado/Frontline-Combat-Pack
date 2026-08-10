@@ -39,6 +39,10 @@ public class DpvMinigunEntity extends CamoVehicleBase {
 
     public DpvMinigunEntity(EntityType<DpvMinigunEntity> type, Level world) {super(type, world);}
 
+    private int previousCannonAmmo = -1;
+    private float barrelRotation = 0f;
+    private float barrelRotationOld = 0f;
+
     @Override public ResourceLocation[] getCamoTextures() {return CAMO_TEXTURES;}
     @Override public String[] getCamoNames() {return CAMO_NAMES;}
 
@@ -83,5 +87,45 @@ public class DpvMinigunEntity extends CamoVehicleBase {
         if (isMoving && Math.abs(currentAngle) > 1f) {float turnAmount = currentAngle * 0.009f * (float) speed; this.setYRot(this.getYRot() + turnAmount);}
         prevWheelRotation = wheelRotation;
         wheelRotation += (float) (speed * 20f);
+
+        // Store previous barrel rotation for smooth interpolation
+        barrelRotationOld = barrelRotation;
+
+        // Check if cannon ammo has changed (meaning it was fired)
+        int currentAmmo = getAmmoCount("MachineGun");
+
+        // Initialize on first tick
+        if (previousCannonAmmo == -1) {
+            previousCannonAmmo = currentAmmo;
+        }
+
+        // If ammo decreased, increment barrel rotation
+        if (currentAmmo < previousCannonAmmo) {
+            barrelRotation += 20f; // Increment by 20 degrees per shot
+            if (barrelRotation >= 360f) {
+                barrelRotation -= 360f; // Wrap around at 360 degrees
+            }
+        }
+
+        // Update stored ammo count for next tick
+        previousCannonAmmo = currentAmmo;
+    }
+
+    public boolean GetWeaponState(String WeaponName, int Count) {
+        if (getAmmoCount(WeaponName) == Count)
+            return true;
+        else if (getAmmoCount(WeaponName) < Count)
+            return true;
+        else
+            return false;
+
+    }
+
+    public float getBarrelRot() {
+        return barrelRotation;
+    }
+
+    public float getBarrelRot0() {
+        return barrelRotationOld;
     }
 }

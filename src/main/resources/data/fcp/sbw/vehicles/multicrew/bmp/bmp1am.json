@@ -11,6 +11,7 @@
     {"Size": [0.2125, 0.6375, 2.975], "Position": [1.36, 0.6375, -0.0425], "Part": "WheelLeft"},
     {"Size": [0.2125, 0.6375, 2.975], "Position": [-1.36, 0.6375, -0.0425], "Part": "WheelRight"},
     {"Size": [1.36, 0.6375, 3.5275], "Position": [0.0, 1.0625, 0.2125], "Part": "Body"},
+    {"Size": [1.3125, 0.375, 0.5625], "Position": [0.0, 1.375, 2.5625], "Part": "MainEngine"},
     {"Size": [0.85, 0.6375, 0.85], "Position": [0.0, 0.2125, 0.0], "Part": "Turret", "Transform": "Turret", "Rotation": "Turret"}
   ],
   "Seats": [
