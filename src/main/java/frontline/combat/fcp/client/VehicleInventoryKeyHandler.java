@@ -3,7 +3,7 @@ package frontline.combat.fcp.client;
 import com.mojang.logging.LogUtils;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.screen.VehicleInventoryScreen;
-import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
+import frontline.combat.fcp.entity.vehicle.VehicleInventory;
 import frontline.combat.fcp.network.FCPNetwork;
 import frontline.combat.fcp.network.OpenVehicleHoldPacket;
 import net.minecraft.client.Minecraft;
@@ -186,7 +186,7 @@ public final class VehicleInventoryKeyHandler {
         Player player = mc.player;
         if (player == null) return false;
 
-        CamoVehicleBase vehicle = findVehicle(player);
+        VehicleInventory vehicle = findVehicle(player);
         if (vehicle == null) {
             // Riding nothing at all is the ordinary case for opening your inventory on foot,
             // so stay quiet — logging it just buries the line that actually matters. Only
@@ -213,12 +213,12 @@ public final class VehicleInventoryKeyHandler {
     }
 
     /** The FCP vehicle being ridden, directly or through anything it's attached to. */
-    private static CamoVehicleBase findVehicle(Player player) {
+    private static VehicleInventory findVehicle(Player player) {
         Entity vehicle = player.getVehicle();
-        if (vehicle instanceof CamoVehicleBase camo) return camo;
+        if (vehicle instanceof VehicleInventory camo) return camo;
         // Fall back to the root, in case anything ever seats players on a proxy entity.
         Entity root = player.getRootVehicle();
-        return root instanceof CamoVehicleBase camo ? camo : null;
+        return root instanceof VehicleInventory camo ? camo : null;
     }
 
     private void openHold() {

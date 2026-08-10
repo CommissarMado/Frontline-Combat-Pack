@@ -1,6 +1,7 @@
 package frontline.combat.fcp.entity.vehicle;
 
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 
 /**
@@ -23,6 +24,15 @@ import net.minecraft.world.item.ItemStack;
  * </pre>
  */
 public interface VehicleInventory {
+
+    /**
+     * Opens this vehicle's hold for a player already aboard. Declared here (rather than only on
+     * the base class) so callers can gate on the INTERFACE: FCP now has two vehicle bases —
+     * CamoVehicleBase and the artillery-rooted CamoArtilleryBase — and an `instanceof
+     * CamoVehicleBase` check silently misses every artillery vehicle, dropping it through to
+     * SBW's default container screen.
+     */
+    void openHoldForRider(ServerPlayer player);
 
     /** Which UI a hold uses. GRID and BULK are ordinary containers underneath — hoppers,
      *  shift-click and drop-on-destroy behave the same either way; only the presentation

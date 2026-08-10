@@ -1,6 +1,6 @@
 package frontline.combat.fcp.network;
 
-import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
+import frontline.combat.fcp.entity.vehicle.VehicleInventory;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -35,10 +35,10 @@ public class OpenVehicleHoldPacket {
             ServerPlayer player = context.getSender();
             if (player == null) return;
             Entity vehicle = player.getVehicle();
-            if (!(vehicle instanceof CamoVehicleBase)) {
+            if (!(vehicle instanceof VehicleInventory)) {
                 vehicle = player.getRootVehicle(); // in case of a proxy seat entity
             }
-            if (vehicle instanceof CamoVehicleBase camo) {
+            if (vehicle instanceof VehicleInventory camo) {
                 // openHoldForRider re-checks riding + opensVehicleScreen server-side, so a
                 // spoofed packet can only open a hold you're actually aboard.
                 camo.openHoldForRider(player);
