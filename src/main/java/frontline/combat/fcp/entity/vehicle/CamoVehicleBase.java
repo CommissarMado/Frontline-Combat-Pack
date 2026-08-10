@@ -24,6 +24,8 @@ import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+
+import java.util.List;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.core.Direction;
@@ -426,6 +428,33 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements ICamoV
      */
     protected boolean opensHoldOnPlainClick() {
         return false;
+    }
+    
+    /**
+     * Spill the hold BEFORE the entity is serialised into the container item.
+     *
+     * The crowbar pickup path is: getRetrieveItems() -> ContainerBlockItem.createInstance(this)
+     * -> entity.serializeNBT() (which captures our "VehicleInventory" tag), and only THEN
+     * remove(DISCARDED). Since DISCARDED.shouldDestroy() is true, remove() also dropped the
+     * contents - so every stack ended up BOTH inside the picked-up container item AND on the
+     * ground: an item dupe. Dropping and clearing here means the NBT snapshot taken a moment
+     * later sees an empty hold, so the cargo exists in exactly one place.
+     *
+     * Guarded to the server: getPickResult() (creative middle-click) also calls this, but only
+     * client-side, so pick-block never spills a vehicle's cargo.
+     */
+    @Override
+    public List<ItemStack> getRetrieveItems() {
+        if (!this.level().isClientSide() && hasVehicleInventory()) {
+            SimpleContainer inventory = getVehicleInventory();
+            if (!inventory.isEmpty()) {
+                Containers.dropContents(this.level(), this, inventory);
+                // dropContents does NOT empty the container, so clear it explicitly - this is
+                // what keeps the copy out of the container item's NBT.
+                inventory.clearContent();
+            }
+        }
+        return super.getRetrieveItems();
     }
 
     @Override
