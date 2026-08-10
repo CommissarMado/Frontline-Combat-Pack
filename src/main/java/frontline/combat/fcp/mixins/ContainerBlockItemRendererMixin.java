@@ -17,10 +17,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * require = 0: if this can't apply on some SBW build, the mod still loads (icon just draws over
  * the crate instead of replacing it). Only FCP vehicles are affected; SBW containers are untouched.
  */
-@Mixin(value = ContainerBlockItemRenderer.class, remap = false)
+@Mixin(ContainerBlockItemRenderer.class)
 public class ContainerBlockItemRendererMixin {
 
-    @Inject(method = "renderByItem", at = @At("HEAD"), cancellable = true, require = 0, remap = true)
+    @Inject(method = "renderByItem", at = @At("HEAD"), cancellable = true, require = 0)
     private void fcp$hideCrateForFcpIcon(ItemStack stack, ItemDisplayContext transformType,
                                          PoseStack poseStack, MultiBufferSource bufferSource,
                                          int packedLight, int packedOverlay, CallbackInfo ci) {
