@@ -6,9 +6,11 @@
   "refmap": "fcp.refmap.json",
   "mixins": [
     "VehicleBackblastMixin",
+    "VehicleBackupAmmoMixin",
     "SmallRocketChunkLoadMixin"
   ],
   "client": [
+    "AmmoCountOverlayMixin",
     "LandVehicleHudStatsMixin",
     "ContainerBlockItemRendererMixin"
   ],

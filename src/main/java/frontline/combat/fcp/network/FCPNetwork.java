@@ -46,5 +46,8 @@ public final class FCPNetwork {
         FCP_HANDLER.registerMessage(id++, FcpConfigStatePacket.class,
                 FcpConfigStatePacket::encode, FcpConfigStatePacket::decode,
                 FcpConfigStatePacket::handle);
+        FCP_HANDLER.registerMessage(id++, ReloadEmplacementPacket.class,
+                ReloadEmplacementPacket::encode, ReloadEmplacementPacket::decode,
+                ReloadEmplacementPacket::handle);
     }
 }

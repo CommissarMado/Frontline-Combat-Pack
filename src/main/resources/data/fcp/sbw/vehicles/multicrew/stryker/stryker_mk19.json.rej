@@ -1,0 +1,10 @@
+diff a/src/main/resources/data/fcp/sbw/vehicles/multicrew/stryker/stryker_mk19.json b/src/main/resources/data/fcp/sbw/vehicles/multicrew/stryker/stryker_mk19.json	(rejected hunks)
+@@ -254,7 +254,7 @@
+         "VehicleReload": "fcp:m2_reload"
+       },
+       "SoundRadius": 16,
+-      "AmmoType": "fcp:item_40_mm",
++      "AmmoType": "superbwarfare:grenade_40mm",
+       "Icon": "fcp:textures/screens/vehicle_weapon/40mm.png",
+       "ShootPos": {
+         "Transform": "Barrel",

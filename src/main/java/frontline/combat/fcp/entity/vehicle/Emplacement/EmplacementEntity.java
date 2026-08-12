@@ -3,7 +3,7 @@ package frontline.combat.fcp.entity.vehicle.Emplacement;
 import com.atsuishio.superbwarfare.data.gun.GunData;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import com.atsuishio.superbwarfare.init.ModSounds;
-import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
+import frontline.combat.fcp.entity.vehicle.CamoEmplacementEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
@@ -13,6 +13,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -29,7 +30,7 @@ import java.util.UUID;
  * has elapsed, right-clicking with the ammo item reloads (LOADED=true, Magazine bone reappears).
  * Unlike the base TOW there is NO cooldown countdown message and NO reload sound.
  */
-public abstract class EmplacementEntity extends CamoVehicleBase {
+public abstract class EmplacementEntity extends CamoEmplacementEntity {
     public static final EntityDataAccessor<Boolean> LOADED =
             SynchedEntityData.defineId(EmplacementEntity.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Integer> RELOAD_COOLDOWN =
@@ -86,6 +87,7 @@ public abstract class EmplacementEntity extends CamoVehicleBase {
     @Override
     public void tick() {
         super.tick();
+        tickEmplacementReload(0);
         if (this.lockPos == null) {
             this.lockPos = new net.minecraft.world.phys.Vec3(this.getX(), this.getY(), this.getZ());
         } else if (this.getX() != this.lockPos.x || this.getZ() != this.lockPos.z) {
@@ -103,6 +105,16 @@ public abstract class EmplacementEntity extends CamoVehicleBase {
             return super.interact(player, hand);
         }
         GunData gunData = getGunData(0);
+        // Magazine-fed guns (M2, MG3, Mk19, AGS-17, DShK) reload automatically on a timer via
+        // tickEmplacementReload(). Sending them down this manual path made a single right-click
+        // call reloadAmmo() directly, which instantly swallowed a whole magazine's worth of ammo
+        // from the player (up to 200 rounds) with no reload time. Only the single-shot weapons
+        // (TOW, Kornet, ZiS-3) use the load-a-round-by-hand flow below.
+        if (gunData != null
+                && !gunData.useBackpackAmmo()
+                && gunData.get(com.atsuishio.superbwarfare.data.gun.GunProp.MAGAZINE) > 1) {
+            return super.interact(player, hand);
+        }
         if (gunData != null) {
             ItemStack stack = player.getMainHandItem();
             if (gunData.hasEnoughAmmoToShoot(player)) {

@@ -423,5 +423,12 @@
         "name": "fcp:tigr/tigr_engine"
       }
     ]
+  },
+  "hmmwv_engine": {
+    "sounds": [
+      {
+        "name": "fcp:hmmwv/hmmwv_engine"
+      }
+    ]
   }
 }

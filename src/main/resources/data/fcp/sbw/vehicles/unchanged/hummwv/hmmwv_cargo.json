@@ -216,7 +216,7 @@
       ]
     ]
   },
-  "EngineSound": "fcp:humvee_engine",
+  "EngineSound": "fcp:hmmwv_engine",
   "HornSound": "superbwarfare:truck_horn",
   "HudType": "@Empty",
   "TerrainCompat": [
