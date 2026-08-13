@@ -1,16 +1,17 @@
 {
-  "required": false,
+  "required": true,
   "minVersion": "0.8",
   "package": "frontline.combat.fcp.mixins",
   "compatibilityLevel": "JAVA_17",
   "refmap": "fcp.refmap.json",
   "mixins": [
+    "AmmoSupplierItemMixin",
     "VehicleBackblastMixin",
-    "VehicleBackupAmmoMixin",
     "SmallRocketChunkLoadMixin"
   ],
   "client": [
     "AmmoCountOverlayMixin",
+    "VehicleHudMagazineMixin",
     "LandVehicleHudStatsMixin",
     "ContainerBlockItemRendererMixin"
   ],

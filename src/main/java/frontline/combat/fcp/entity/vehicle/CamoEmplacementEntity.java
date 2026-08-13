@@ -4,6 +4,14 @@ import com.atsuishio.superbwarfare.data.gun.GunData;
 import com.atsuishio.superbwarfare.data.gun.GunProp;
 import com.atsuishio.superbwarfare.data.gun.value.ReloadState;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
+import net.minecraft.core.Direction;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.wrapper.InvWrapper;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
@@ -53,11 +61,54 @@ public abstract class CamoEmplacementEntity extends CamoVehicleBase {
         return gunner();
     }
 
+    private Player cachedGunner;
+    private LazyOptional<IItemHandler> gunnerHandler = LazyOptional.empty();
+
+    /**
+     * Report the GUNNER's inventory as this emplacement's item handler.
+     *
+     * SBW resolves ammo — for counting, for the HUD's reserve figure, and for reloading — through
+     * {@code entity.getCapability(ITEM_HANDLER)} on the VEHICLE. An emplacement has no container
+     * and no hold, so that came back empty and everything downstream read zero: the HUD showed
+     * "200 / 0" no matter what the player carried.
+     *
+     * Pointing the capability at the seated player makes every one of those paths work with no
+     * changes to SBW at all — the vehicle IS the ammo supplier, it just happens to draw from the
+     * crew. Note this is NOT the same as overriding ammoSupplier: that must stay the vehicle,
+     * because VehicleGun.canShoot() starts with {@code if (shooter !is VehicleEntity) return false}.
+     */
+    @Override
+    public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+        if (cap == ForgeCapabilities.ITEM_HANDLER) {
+            Player player = gunner();
+            if (player != null) {
+                if (player != cachedGunner || !gunnerHandler.isPresent()) {
+                    cachedGunner = player;
+                    final Player p = player;
+                    gunnerHandler = LazyOptional.of(() -> new InvWrapper(p.getInventory()));
+                }
+                return gunnerHandler.cast();
+            }
+            cachedGunner = null;
+            gunnerHandler = LazyOptional.empty();
+        }
+        return super.getCapability(cap, side);
+    }
+
     /** The player manning this emplacement, or null. */
     protected Player gunner() {
         Entity controller = getNthEntity(getTurretControllerIndex());
         if (controller instanceof Player p) return p;
-        return getFirstPassenger() instanceof Player p ? p : null;
+        if (getFirstPassenger() instanceof Player p) return p;
+
+        // Client-side fallback. SBW tracks seats in its own orderedPassengers list, which is
+        // populated on the SERVER; on the client it can be empty even while the player is visibly
+        // riding. The HUD renders client-side, so without this the reserve figure resolves to no
+        // gunner and reads 0. Vanilla's passenger list IS synced, so use it as the backstop.
+        for (Entity passenger : getPassengers()) {
+            if (passenger instanceof Player p) return p;
+        }
+        return null;
     }
 
     /** True for guns that use a magazine and so need this reload cycle at all. */
@@ -121,7 +172,22 @@ public abstract class CamoEmplacementEntity extends CamoVehicleBase {
         int toReserve = unlimited ? needed : Math.min(needed, available);
         // Take the rounds now so the reload is visible and refundable.
         modifyGunData(seatIndex, d -> d.consumeBackupAmmo(player, toReserve));
-        reservedAmmo = toReserve;
+
+        if (unlimited) {
+            reservedAmmo = toReserve;
+        } else {
+            // Only load what was ACTUALLY taken. countBackupAmmo() can report rounds that
+            // consumeBackupAmmo() then declines to remove (different ammo item, a stale count,
+            // an empty pool), and trusting the pre-check alone let an empty-handed player reload a
+            // full magazine for free. Measuring the difference makes that impossible.
+            int remaining = gunData.countBackupAmmo(player);
+            int actuallyTaken = Math.max(0, available - remaining);
+            if (actuallyTaken <= 0) {
+                reservedAmmo = 0;
+                return;                     // nothing was consumed - no reload
+            }
+            reservedAmmo = actuallyTaken;
+        }
 
         reloadTicks = Math.max(20, gunData.get(GunProp.EMPTY_RELOAD_TIME));
         final int total = reloadTicks;
