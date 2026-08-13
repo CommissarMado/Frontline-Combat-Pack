@@ -5,6 +5,12 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 
 public class EmplZis3Entity extends ClampedTurretEntity {
+
+    /** Loaded shell by shell: each right-click consumes the round in hand, nothing else. */
+    @Override
+    protected boolean usesInventoryReload() {
+        return false;
+    }
     private static final ResourceLocation[] CAMO_TEXTURES = {
             new ResourceLocation("fcp", "textures/entity/emplacements/zis3.png"),
             new ResourceLocation("fcp", "textures/entity/emplacements/zis3.png")

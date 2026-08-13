@@ -6,6 +6,12 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 
 public class EmplTowEntity extends EmplacementEntity {
+
+    /** Manual loading only - never pulls ammo from the gunner's inventory. */
+    @Override
+    protected boolean usesInventoryReload() {
+        return false;
+    }
     private static final ResourceLocation[] CAMO_TEXTURES = {
             new ResourceLocation("fcp", "textures/entity/emplacements/tow.png"),
             new ResourceLocation("fcp", "textures/entity/emplacements/tow.png")

@@ -99,6 +99,17 @@ public abstract class EmplacementEntity extends CamoEmplacementEntity {
     /** TOW-style get-out reload. Clamped MG/grenade turrets override this to false (normal inventory reload). */
     protected boolean needsManualReload() { return true; }
 
+    /**
+     * Whether a hand-loaded gun takes its round from the HELD stack only.
+     *
+     * The default path uses reloadAmmo(), which draws from anywhere in the player's inventory.
+     * For a gun that is loaded shell by shell, that is the wrong feel - and it means ammo the
+     * player is not holding gets consumed.
+     */
+    protected boolean loadsFromHeldItemOnly() {
+        return false;
+    }
+
     @Override
     public InteractionResult interact(Player player, InteractionHand hand) {
         if (!needsManualReload()) {
@@ -135,7 +146,18 @@ public abstract class EmplacementEntity extends CamoEmplacementEntity {
                 int coolDown = reloadCoolDownTicks();
                 if (level() instanceof ServerLevel serverLevel && getReloadCooldown() == 0) {
                     final int idx = matchIndex;
-                    modifyGunData(0, data -> { data.changeAmmoConsumer(idx, player); data.reloadAmmo(player, false); });
+                    if (loadsFromHeldItemOnly()) {
+                        // Consume exactly the round being held, rather than reloadAmmo() sweeping
+                        // the whole inventory. Keeps hand-loaded guns to "one right-click, one
+                        // round out of your hand".
+                        modifyGunData(0, data -> {
+                            data.changeAmmoConsumer(idx, player);
+                            data.ammo.set(data.get(com.atsuishio.superbwarfare.data.gun.GunProp.MAGAZINE));
+                        });
+                        if (!player.isCreative()) stack.shrink(1);
+                    } else {
+                        modifyGunData(0, data -> { data.changeAmmoConsumer(idx, player); data.reloadAmmo(player, false); });
+                    }
                     setLoaded(true);
                     serverLevel.playSound(null, blockPosition(), ModSounds.TYPE_63_RELOAD.get(),
                             SoundSource.PLAYERS, 1f, this.random.nextFloat() * 0.1f + 0.9f);

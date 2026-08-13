@@ -79,7 +79,11 @@ public abstract class CamoEmplacementEntity extends CamoVehicleBase {
      */
     @Override
     public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (cap == ForgeCapabilities.ITEM_HANDLER) {
+        // Gate on usesInventoryReload(): this capability is what makes SBW resolve the vehicle's
+        // ammo to the gunner's inventory, so leaving it on for the manual-loading emplacements
+        // (ZiS-3, TOW, Kornet) let them keep drawing from the player through SBW's own paths even
+        // after the reload cycle was disabled for them.
+        if (cap == ForgeCapabilities.ITEM_HANDLER && usesInventoryReload()) {
             Player player = gunner();
             if (player != null) {
                 if (player != cachedGunner || !gunnerHandler.isPresent()) {
@@ -111,9 +115,22 @@ public abstract class CamoEmplacementEntity extends CamoVehicleBase {
         return null;
     }
 
+    /**
+     * Whether this emplacement is fed from the gunner's inventory at all.
+     *
+     * The ZiS-3, TOW and Kornet have their own manual loading systems (load a round by hand, then
+     * fire) and must NOT pull ammo from the player automatically. They are excluded explicitly
+     * rather than relying on their Magazine being 1, so retuning that value in the data files
+     * cannot quietly switch inventory feeding back on for them.
+     */
+    protected boolean usesInventoryReload() {
+        return true;
+    }
+
     /** True for guns that use a magazine and so need this reload cycle at all. */
     protected boolean isMagazineFed(GunData data) {
-        return data != null && !data.useBackpackAmmo() && data.get(GunProp.MAGAZINE) > 1;
+        return usesInventoryReload()
+                && data != null && !data.useBackpackAmmo() && data.get(GunProp.MAGAZINE) > 1;
     }
 
     /**
@@ -157,34 +174,37 @@ public abstract class CamoEmplacementEntity extends CamoVehicleBase {
         int needed = gunData.get(GunProp.MAGAZINE) - gunData.ammo.get();
         if (needed <= 0) return;
 
-        // Creative (or a creative ammo box) is an unlimited supply: reserve a FULL magazine
-        // rather than being capped by what happens to be in the stack. consumeBackupAmmo() is
-        // already a no-op for creative, so nothing is actually taken.
-        boolean unlimited = player.isCreative()
-                || com.atsuishio.superbwarfare.tools.InventoryTool.hasCreativeAmmoBox(player);
+        // A creative ammo box is a genuine unlimited supply: always fills, consumes nothing.
+        boolean creativeBox =
+                com.atsuishio.superbwarfare.tools.InventoryTool.hasCreativeAmmoBox(player);
 
-        // countBackupAmmo() is READ-ONLY. Do NOT use AmmoConsumer.count(): for a PLAYER_AMMO
-        // consumer that call converts the player's ammo ITEMS into their ammo pool as a side
-        // effect, so merely inspecting the count consumes the stack.
-        int available = gunData.countBackupAmmo(player);
-        if (!unlimited && available <= 0) return;
+        // Count the ACTUAL ammo items carried. countBackupAmmo() short-circuits to Int.MAX_VALUE
+        // for a creative player, which is why creative used to reload from literally nothing -
+        // countBackupAmmoItem() reports what is really in the inventory either way.
+        int carried = gunData.countBackupAmmoItem(player);
 
-        int toReserve = unlimited ? needed : Math.min(needed, available);
-        // Take the rounds now so the reload is visible and refundable.
-        modifyGunData(seatIndex, d -> d.consumeBackupAmmo(player, toReserve));
+        // Creative still needs to be HOLDING ammo to reload; it just isn't charged for it, so a
+        // single stack fills the whole magazine instead of being capped at what it contains.
+        boolean unlimited = creativeBox || (player.isCreative() && carried > 0);
+
+        if (!unlimited && carried <= 0) return;
+
+        int toReserve = unlimited ? needed : Math.min(needed, gunData.countBackupAmmo(player));
+        if (toReserve <= 0) return;
 
         if (unlimited) {
-            reservedAmmo = toReserve;
+            reservedAmmo = toReserve;                 // nothing consumed
         } else {
-            // Only load what was ACTUALLY taken. countBackupAmmo() can report rounds that
-            // consumeBackupAmmo() then declines to remove (different ammo item, a stale count,
-            // an empty pool), and trusting the pre-check alone let an empty-handed player reload a
-            // full magazine for free. Measuring the difference makes that impossible.
+            int available = gunData.countBackupAmmo(player);
+            modifyGunData(seatIndex, d -> d.consumeBackupAmmo(player, toReserve));
+
+            // Only load what was ACTUALLY taken: a count that reports rounds consumeBackupAmmo()
+            // then declines to remove would otherwise be a free magazine.
             int remaining = gunData.countBackupAmmo(player);
             int actuallyTaken = Math.max(0, available - remaining);
             if (actuallyTaken <= 0) {
                 reservedAmmo = 0;
-                return;                     // nothing was consumed - no reload
+                return;
             }
             reservedAmmo = actuallyTaken;
         }
