@@ -187,17 +187,19 @@
     {
       "HidePassenger": true,
       "IsEnclosed": true,
-      "BanHand": true,
       "CameraPos": {
-        "UseSimulate3P": true
+        "Transform": "WeaponStationBarrel",
+        "UseFixedCameraPos": true,
+        "Position": [0, 0.6, -0.6],
+        "Direction": "WeaponStationBarrel"
       },
-      "CanRotateHead": true,
-      "Transform": "Vehicle",
-      "Position": [
-        0.0,
-        0.85,
-        0.0
-      ]
+      "CanRotateHead": false,
+      "Weapons": ["PassengerMachineGun"],
+      "Transform": "WeaponStation",
+      "Pose": "MachineGunStand",
+      "Position": [0.0, -1, 0],
+      "MinPitch": -30,
+      "MaxPitch": 25
     }
   ],
   "Weapons": {
@@ -292,6 +294,41 @@
           "Barrel"
         ]
       }
+    },
+    "PassengerMachineGun": {
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Projectile": "superbwarfare:projectile",
+      "DefaultZoom": 3,
+      "RPM": 500,
+      "EmptyReloadTime": 160,
+      "Magazine": 200,
+      "Velocity": 25,
+      "Damage": 15,
+      "BypassesArmor": 2,
+      "HeatPerShoot": 5,
+      "NaturalCooldown": 1,
+      "RecoilTime": 16,
+      "RecoilForce": 0.05,
+      "ShootAnimationTime": 1,
+      "Spread": 0.25,
+      "Crosshair": "@VehicleCommonGun",
+      "CrosshairColor": "0x66FF00",
+      "Name": "weapon.fcp.m2_hb",
+      "SoundInfo": {
+        "Fire1P": "fcp:m2_fire_1p",
+        "Fire3P": "fcp:m2_fire_3p",
+        "Fire3PFar": "fcp:m2_fire_3p_far",
+        "VehicleReload": "fcp:m2_reload"
+      },
+      "ShootPos": {
+        "Transform": "WeaponStationBarrel",
+        "Positions": [[0, 0.3, 1.6]],
+        "Directions": [[0, 0, 1]]
+      },
+      "SoundRadius": 16,
+      "AmmoType": "superbwarfare:rifle_ammo",
+      "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png"
     }
   },
   "EngineType": "Track",
@@ -308,29 +345,16 @@
     "Decrement": 0.014,
     "SteeringSpeed": 0.085
   },
-  "TurretPos": [
-    -0.010811,
-    2.218792,
-    -0.479044
-  ],
-  "TurretTurnSpeed": [
-    2.5,
-    1.8
-  ],
-  "TurretPitchRange": [
-    -3,
-    75
-  ],
-  "BarrelPos": [
-    0.0,
-    0.0,
-    0.609583
-  ],
-  "ThirdPersonCameraPos": [
-    0,
-    3,
-    5
-  ],
+  "TurretPos": [-0.010811, 2.218792, -0.479044],
+  "TurretTurnSpeed": [2.5, 1.8],
+  "TurretPitchRange": [-3, 75],
+  "BarrelPos": [0.0, 0.0, 0.609583],
+  "ThirdPersonCameraPos": [0, 3, 5],
+  "PassengerWeaponStationPos": [-0.728025, 0.6709, 0.363725],
+  "PassengerWeaponStationBarrelPos": [0.0, 0.35791875, 0.31280625],
+  "PassengerWeaponStationTurnSpeed": [15, 15],
+  "PassengerWeaponStationPitchRange": [-30, 25],
+  "PassengerWeaponStationControllerIndex": 2,
   "TurretControllerIndex": 1,
   "HasDecoy": true,
   "UpStep": 1.5,
