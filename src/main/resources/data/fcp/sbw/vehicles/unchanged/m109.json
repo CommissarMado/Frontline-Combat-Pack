@@ -54,16 +54,16 @@
       "CameraPos": {
         "Transform": "WeaponStationBarrel",
         "UseFixedCameraPos": true,
-        "Position": [-0.25024, 0.730803, 1.036262],
+        "Position": [0, 0.6, -0.6],
         "Direction": "WeaponStationBarrel"
       },
       "CanRotateHead": false,
       "Weapons": ["PassengerMachineGun"],
       "Transform": "WeaponStation",
       "Pose": "MachineGunStand",
-      "Position": [0.0, -0.5, 0],
-      "MinPitch": -3,
-      "MaxPitch": 75
+      "Position": [0.0, -1, 0],
+      "MinPitch": -30,
+      "MaxPitch": 25
     }
   ],
   "Weapons": {
@@ -187,20 +187,8 @@
       },
       "ShootPos": {
         "Transform": "WeaponStationBarrel",
-        "Positions": [
-          [
-            -0.006273,
-            0.156468,
-            1.135812
-          ]
-        ],
-        "Directions": [
-          [
-            0,
-            0,
-            1
-          ]
-        ]
+        "Positions": [[0, 0.3, 1.6]],
+        "Directions": [[0, 0, 1]]
       },
       "SoundRadius": 16,
       "AmmoType": "superbwarfare:rifle_ammo",
@@ -229,7 +217,7 @@
   "PassengerWeaponStationPos": [-0.88049375, 1.39490625, -0.2178375],
   "PassengerWeaponStationBarrelPos": [0.0, 0.0984625, 0.50634375],
   "PassengerWeaponStationTurnSpeed": [15, 15],
-  "PassengerWeaponStationPitchRange": [-10, 20],
+  "PassengerWeaponStationPitchRange": [-30, 25],
   "PassengerWeaponStationControllerIndex": 2,
   "TurretControllerIndex": 1,
   "HasDecoy": true,

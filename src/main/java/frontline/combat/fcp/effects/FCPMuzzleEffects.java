@@ -18,6 +18,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Set;
+import java.util.Map;
 
 /**
  * MTS / QMP / OfficialPack muzzle burst: bloom + bang + layered smoke with spawnEveryTick emulation.
@@ -51,8 +52,27 @@ public final class FCPMuzzleEffects {
         return id != null && FCP.MODID.equals(id.getNamespace());
     }
 
-    private static boolean isForwardCannonBlast(Entity supplier) {
+    /**
+     * Weapon names that may fire the dedicated forward cannon blast.
+     *
+     * The vehicle allowlist alone is not enough: it lets EVERY gun on that vehicle trigger the
+     * effect, so the M109's passenger M2 was setting off the 155mm blast. Gating on the fired
+     * weapon's own name is exact, where inferring "is this a cannon?" from the projectile id was
+     * evidently not.
+     */
+    private static boolean isMainCannonWeapon(GunData gunData) {
+        if (gunData == null) {
+            return false;
+        }
+        String name = gunData.get(GunProp.NAME);
+        return name != null && name.contains("cannon");
+    }
+
+    private static boolean isForwardCannonBlast(Entity supplier, GunData gunData) {
         if (!(supplier instanceof VehicleEntity vehicle)) {
+            return false;
+        }
+        if (!isMainCannonWeapon(gunData)) {
             return false;
         }
         ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(vehicle.getType());
@@ -101,7 +121,7 @@ public final class FCPMuzzleEffects {
 
         // Dedicated forward cannon blast (Stryker MGS 105mm etc.) replaces the generic
         // TANK muzzle so the two flashes don't stack.
-        if (preset == MuzzleEffectPreset.TANK && isForwardCannonBlast(parameters.ammoSupplier)) {
+        if (preset == MuzzleEffectPreset.TANK && isForwardCannonBlast(parameters.ammoSupplier, parameters.data)) {
             spawnForwardCannonBlast(level, anchor, pos, axes, level.getRandom());
             return;
         }

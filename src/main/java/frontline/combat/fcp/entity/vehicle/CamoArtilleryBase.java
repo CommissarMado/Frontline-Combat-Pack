@@ -64,6 +64,31 @@ public abstract class CamoArtilleryBase extends ArtilleryEntity implements ICamo
         return true;
     }
 
+    /**
+     * Only let the MAIN gun throw the big cannon muzzle particles.
+     *
+     * SBW's ArtilleryEntity.beforeShoot() runs on every vehicleShoot call, whichever weapon fired,
+     * and unconditionally spawns spawnBigCannonMuzzleParticles() at getShootPos("Main") - the
+     * weapon name is hardcoded. On a vehicle whose only gun IS the main gun that is invisible, but
+     * the M109 and Msta also carry a passenger machine gun, so firing the M2 produced the 155mm
+     * blast out of the cannon barrel.
+     *
+     * Skipping super for any other weapon keeps the effect on the cannon. The barrel animation it
+     * also sets is likewise Main-only, so nothing else is lost.
+     */
+    @Override
+    public void beforeShoot(net.minecraft.world.entity.LivingEntity living) {
+        if (living != null && !isFiringMainGun(living)) return;
+        super.beforeShoot(living);
+    }
+
+    /** True when the weapon this shooter has selected is the main gun. */
+    private boolean isFiringMainGun(net.minecraft.world.entity.LivingEntity living) {
+        GunData selected = getGunData(living);
+        GunData main = getGunData("Main");
+        return selected != null && main != null && selected == main;
+    }
+
     @Override
     public void baseTick() {
         super.baseTick();
