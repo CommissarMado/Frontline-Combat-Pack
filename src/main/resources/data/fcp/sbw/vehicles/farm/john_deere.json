@@ -41,7 +41,7 @@
     "WheelDifferential": 0.5,
     "MaxForwardSpeedRate": 1.1,
     "MaxBackwardSpeedRate": 0.2,
-    "Increment": 0.025,
+    "Increment": 0.01875,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1
   },

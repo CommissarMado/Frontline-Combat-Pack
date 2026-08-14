@@ -323,7 +323,7 @@
       },
       "ShootPos": {
         "Transform": "WeaponStationBarrel",
-        "Positions": [[0, 0.3, 1.6]],
+        "Positions": [[0.01, 0.075, 1.6]],
         "Directions": [[0, 0, 1]]
       },
       "SoundRadius": 16,

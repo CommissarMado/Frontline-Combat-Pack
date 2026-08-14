@@ -1,0 +1,12 @@
+{
+  "type": "superbwarfare:vehicle_assembling",
+  "category": "civilian",
+  "inputs": [
+    "3 #superbwarfare:storage_blocks/steel",
+    "minecraft:chest",
+    "2 superbwarfare:wheel"
+  ],
+  "result": {
+    "entity": "fcp:seeder"
+  }
+}
