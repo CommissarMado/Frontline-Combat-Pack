@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Ambulance",
+      "Texture": "fcp:textures/entity/kozak/kozak_ambu.png",
+      "Priority": 1
+    }
+  ]
+}

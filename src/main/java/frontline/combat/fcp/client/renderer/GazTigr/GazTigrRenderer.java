@@ -5,6 +5,7 @@ import frontline.combat.fcp.client.model.GazTigr.GazTigrModel;
 import frontline.combat.fcp.entity.vehicle.GazTigr.GazTigrEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class GazTigrRenderer extends VehicleRenderer<GazTigrEntity> {
     public GazTigrRenderer(EntityRendererProvider.Context renderManager) {
@@ -13,6 +14,6 @@ public class GazTigrRenderer extends VehicleRenderer<GazTigrEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(GazTigrEntity entity) {
-        return entity.getCurrentTexture();
+        return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 }

@@ -5,12 +5,13 @@ import frontline.combat.fcp.client.model.Huey.HueyDoorGunnerM134Model;
 import frontline.combat.fcp.entity.vehicle.Huey.HueyDoorGunnerM134Entity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class HueyDoorGunnerM134Renderer extends VehicleRenderer<HueyDoorGunnerM134Entity> {
     public HueyDoorGunnerM134Renderer(EntityRendererProvider.Context renderManager) {super(renderManager, new HueyDoorGunnerM134Model());}
 
     @Override
     public ResourceLocation getTextureLocation(HueyDoorGunnerM134Entity entity) {
-        return entity.getCurrentTexture();
+        return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 }

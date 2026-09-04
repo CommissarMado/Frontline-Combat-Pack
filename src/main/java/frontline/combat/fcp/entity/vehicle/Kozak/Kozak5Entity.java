@@ -20,35 +20,18 @@ public class Kozak5Entity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            //Normal
-            new ResourceLocation("fcp", "textures/entity/kozak/kozak_0.png"),
-            new ResourceLocation("fcp", "textures/entity/kozak/kozak_1.png"),
-            new ResourceLocation("fcp", "textures/entity/kozak/kozak_2.png"),
-            new ResourceLocation("fcp", "textures/entity/kozak/kozak_3.png"),
-            new ResourceLocation("fcp", "textures/entity/kozak/kozak_4.png"),
-            //Wrecked
-            new ResourceLocation("fcp", "textures/entity/kozak/kozak_0.png"),
-            new ResourceLocation("fcp", "textures/entity/kozak/kozak_1.png"),
-            new ResourceLocation("fcp", "textures/entity/kozak/kozak_2.png"),
-            new ResourceLocation("fcp", "textures/entity/kozak/kozak_3.png"),
-            new ResourceLocation("fcp", "textures/entity/kozak/kozak_4.png")
-    };
-    private static final String[] CAMO_NAMES = {"Camo 1", "Camo 2", "Camo 3", "Camo 4", "Camo 5"};
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(Kozak5Entity.class, EntityDataSerializers.FLOAT);
     private float prevSteeringAngle = 0f;
     private float wheelRotation = 0f;
     private float prevWheelRotation = 0f;
     public Kozak5Entity(EntityType<Kozak5Entity> type, Level world) {super(type, world);}
-    @Override public ResourceLocation[] getCamoTextures() {return CAMO_TEXTURES;}
-    @Override public String[] getCamoNames() {return CAMO_NAMES;}
     @Override protected void defineSynchedData() {super.defineSynchedData(); this.entityData.define(STEERING_ANGLE, 0f);}
     public float getSteeringAngle() {return this.entityData.get(STEERING_ANGLE);}
     public void setSteeringAngle(float angle) {this.entityData.set(STEERING_ANGLE, angle);}
     public float getPrevSteeringAngle(){return prevSteeringAngle;}
     public float getWheelRotation(){return wheelRotation;}
     public float getPrevWheelRotation(){return prevWheelRotation;}
-    @Override public DamageModifier getDamageModifier() {return super.getDamageModifier().custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);}
+    @Override public DamageModifier getDamageModifier() {return super.getDamageModifier().custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);}
     @Override public void addAdditionalSaveData(net.minecraft.nbt.CompoundTag compound) {super.addAdditionalSaveData(compound); compound.putFloat("SteeringAngle", this.getSteeringAngle());}
     @Override public void readAdditionalSaveData(net.minecraft.nbt.CompoundTag compound) {super.readAdditionalSaveData(compound); if (compound.contains("SteeringAngle")) setSteeringAngle(compound.getFloat("SteeringAngle"));}
     @Override public void baseTick() {

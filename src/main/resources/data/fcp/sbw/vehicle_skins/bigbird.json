@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "BIGBIRD!",
+      "Texture": "fcp:textures/entity/meme_vehicles/bigbird.png",
+      "Priority": 1
+    }
+  ]
+}

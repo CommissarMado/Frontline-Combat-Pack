@@ -1,0 +1,136 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "T1 1 1",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_1_1_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "t1_afgan",
+      "Name": "T1 Afgan",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_1_afgan.png",
+      "Priority": 2
+    },
+    {
+      "Id": "t1",
+      "Name": "T1",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_1.png",
+      "Priority": 3
+    },
+    {
+      "Id": "t2_ukr_1",
+      "Name": "T2 Ukr 1",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_2_ukr_1.png",
+      "Priority": 4
+    },
+    {
+      "Id": "t2_ukr_2_kom_1",
+      "Name": "T2 Ukr 2 Kom 1",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_2_ukr_2_kom_1.png",
+      "Priority": 5
+    },
+    {
+      "Id": "t2_ukr_2_kom_2",
+      "Name": "T2 Ukr 2 Kom 2",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_2_ukr_2_kom_2.png",
+      "Priority": 6
+    },
+    {
+      "Id": "t2_ukr_2",
+      "Name": "T2 Ukr 2",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_2_ukr_2.png",
+      "Priority": 7
+    },
+    {
+      "Id": "t2",
+      "Name": "T2",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_2.png",
+      "Priority": 8
+    },
+    {
+      "Id": "t3_fin_1",
+      "Name": "T3 Fin 1",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_3_fin_1.png",
+      "Priority": 9
+    },
+    {
+      "Id": "t3_rus_zov_1",
+      "Name": "T3 Rus Zov 1",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_zov_1.png",
+      "Priority": 10
+    },
+    {
+      "Id": "t3_rus_zov_2",
+      "Name": "T3 Rus Zov 2",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_zov_2.png",
+      "Priority": 11
+    },
+    {
+      "Id": "t3_rus_1_gdr_1",
+      "Name": "T3 Rus 1 Gdr 1",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_1_gdr_1.png",
+      "Priority": 12
+    },
+    {
+      "Id": "t3_rus_1_gdr_2",
+      "Name": "T3 Rus 1 Gdr 2",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_1_gdr_2.png",
+      "Priority": 13
+    },
+    {
+      "Id": "t3_rus_1_gdr_3",
+      "Name": "T3 Rus 1 Gdr 3",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_1_gdr_3.png",
+      "Priority": 14
+    },
+    {
+      "Id": "t3_rus_1_kom_1",
+      "Name": "T3 Rus 1 Kom 1",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_1_kom_1.png",
+      "Priority": 15
+    },
+    {
+      "Id": "t3_rus_1",
+      "Name": "T3 Rus 1",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_1.png",
+      "Priority": 16
+    },
+    {
+      "Id": "t3_rus_2",
+      "Name": "T3 Rus 2",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_2.png",
+      "Priority": 17
+    },
+    {
+      "Id": "t3_rus_3_v",
+      "Name": "T3 Rus 3 V",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_3_v.png",
+      "Priority": 18
+    },
+    {
+      "Id": "t3_rus_3",
+      "Name": "T3 Rus 3",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_3.png",
+      "Priority": 19
+    },
+    {
+      "Id": "t3_rus_4",
+      "Name": "T3 Rus 4",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_4.png",
+      "Priority": 20
+    },
+    {
+      "Id": "t3_rus_5",
+      "Name": "T3 Rus 5",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_3_rus_5.png",
+      "Priority": 21
+    },
+    {
+      "Id": "tc_kom_1",
+      "Name": "Tc Kom 1",
+      "Texture": "fcp:textures/entity/bmp1_2/bmp_2_rem_tex_c_kom_1.png",
+      "Priority": 22
+    }
+  ]
+}

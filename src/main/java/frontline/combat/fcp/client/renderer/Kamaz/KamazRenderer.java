@@ -14,6 +14,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.AABB;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class KamazRenderer extends VehicleRenderer<KamazEntity> {
     public KamazRenderer(EntityRendererProvider.Context renderManager) {
@@ -22,7 +23,7 @@ public class KamazRenderer extends VehicleRenderer<KamazEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(KamazEntity entity) {
-        return entity.getCurrentTexture();
+        return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 
     private static final AABB TENT_BOX = new AABB(-1.6292, 1.0268, -2.08, 1.6335, 3.1423, 2.39);

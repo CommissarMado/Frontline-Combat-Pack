@@ -20,41 +20,18 @@ public class UralKungEntity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/ural/ural_1.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_2.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_3.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_4.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_5.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_6.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_7.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_8.png"),
-            //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/ural/ural_1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_2_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_3_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_4_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_5_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_6_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_7_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/ural/ural_8_wrecked.png")
-    };
-    private static final String[] CAMO_NAMES = {"Standard", "Camo"};
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(UralKungEntity.class, EntityDataSerializers.FLOAT);
     private float prevSteeringAngle = 0f;
     private float wheelRotation = 0f;
     private float prevWheelRotation = 0f;
     public UralKungEntity(EntityType<UralKungEntity> type, Level world) {super(type, world);}
-    @Override public ResourceLocation[] getCamoTextures() {return CAMO_TEXTURES;}
-    @Override public String[] getCamoNames() {return CAMO_NAMES;}
     @Override protected void defineSynchedData() {super.defineSynchedData(); this.entityData.define(STEERING_ANGLE, 0f);}
     public float getSteeringAngle() {return this.entityData.get(STEERING_ANGLE);}
     public void setSteeringAngle(float angle) {this.entityData.set(STEERING_ANGLE, angle);}
     public float getPrevSteeringAngle(){return prevSteeringAngle;}
     public float getWheelRotation(){return wheelRotation;}
     public float getPrevWheelRotation(){return prevWheelRotation;}
-    @Override public DamageModifier getDamageModifier() {return super.getDamageModifier().custom((s,dmg) -> getSourceAngle(s, 0.4f) * dmg);}
+    @Override public DamageModifier getDamageModifier() {return super.getDamageModifier().custom((entity, s, dmg) -> getSourceAngle(s, 0.4f) * dmg);}
     @Override public void addAdditionalSaveData(net.minecraft.nbt.CompoundTag c) {super.addAdditionalSaveData(c); c.putFloat("SteeringAngle", getSteeringAngle());}
     @Override public void readAdditionalSaveData(net.minecraft.nbt.CompoundTag c) {super.readAdditionalSaveData(c); if (c.contains("SteeringAngle")) setSteeringAngle(c.getFloat("SteeringAngle"));}
     @Override public void baseTick() {

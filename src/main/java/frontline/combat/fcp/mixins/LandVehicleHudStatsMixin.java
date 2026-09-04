@@ -239,7 +239,7 @@ public class LandVehicleHudStatsMixin {
                     ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, player));
             double blockRange = player.getEyePosition(1f).distanceTo(result.getLocation());
 
-            var lookingEntity = TraceTool.camerafFindLookingEntity(player, cameraPos, viewVec, 512.0);
+            var lookingEntity = TraceTool.cameraFindLookingEntity(player, cameraPos, viewVec, 512.0);
             String rangeStr;
             if (lookingEntity != null) {
                 rangeStr = FormatTool.format0D(player.distanceTo(lookingEntity), " m");

@@ -37,86 +37,11 @@ public class WireGuidedHellfireEntity  extends MissileProjectile implements GeoE
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    private static java.lang.reflect.Field damageField;
-    private static java.lang.reflect.Field explosionDamageField;
-    private static java.lang.reflect.Field explosionRadiusField;
-    private static java.lang.reflect.Field durabilityField;
-
-    static {
-        try {
-            Class<?> parentClass = MissileProjectile.class;
-            damageField = parentClass.getDeclaredField("damage");
-            damageField.setAccessible(true);
-
-            explosionDamageField = parentClass.getDeclaredField("explosionDamage");
-            explosionDamageField.setAccessible(true);
-
-            explosionRadiusField = parentClass.getDeclaredField("explosionRadius");
-            explosionRadiusField.setAccessible(true);
-
-            durabilityField = parentClass.getDeclaredField("durability");
-            durabilityField.setAccessible(true);
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
-    }
-
     public UUID launcherVehicle;
 
     public WireGuidedHellfireEntity(EntityType<? extends WireGuidedHellfireEntity> type, Level level) {
         super(type, level);
         this.noCulling = true;
-    }
-
-    private void setDamage(int value) {
-        try {
-            if (damageField != null) damageField.setInt(this, value);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void setExplosionDamage(int value) {
-        try {
-            if (explosionDamageField != null) explosionDamageField.setInt(this, value);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void setExplosionRadius(int value) {
-        try {
-            if (explosionRadiusField != null) explosionRadiusField.setInt(this, value);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private int getDamage() {
-        try {
-            if (damageField != null) return damageField.getInt(this);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
-    private int getExplosionDamage() {
-        try {
-            if (explosionDamageField != null) return explosionDamageField.getInt(this);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
-    private int getExplosionRadius() {
-        try {
-            if (explosionRadiusField != null) return explosionRadiusField.getInt(this);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return 0;
     }
 
     @Override
@@ -148,7 +73,7 @@ public class WireGuidedHellfireEntity  extends MissileProjectile implements GeoE
     }
 
     @Override
-    protected void onHitEntity(@NotNull EntityHitResult result) {
+    public void onHitEntity(@NotNull EntityHitResult result) {
         super.onHitEntity(result);
         Entity entity = result.getEntity();
         if (this.getOwner() != null && this.getOwner().getVehicle() != null && entity == this.getOwner().getVehicle() || entity instanceof WireGuidedHellfireEntity)

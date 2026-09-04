@@ -14,6 +14,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.AABB;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class UralRenderer extends VehicleRenderer<UralEntity> {
     // TENTY canopy hitbox, matching the interaction handler.
@@ -25,7 +26,7 @@ public class UralRenderer extends VehicleRenderer<UralEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(UralEntity entity) {
-        return entity.getCurrentTexture();
+        return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 
     @Override

@@ -20,13 +20,6 @@ public class BTR82ATEntity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            new ResourceLocation("fcp", "textures/entity/btr82at/stiched_texture.png"),
-            new ResourceLocation("fcp", "textures/entity/btr82at/stiched_texture.png")
-    };
-
-    private static final String[] CAMO_NAMES = {"Default"};
-
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(BTR82ATEntity.class, EntityDataSerializers.FLOAT);
 
     private float prevSteeringAngle = 0f;
@@ -36,12 +29,6 @@ public class BTR82ATEntity extends CamoVehicleBase {
     private float prevWheelRotation = 0f;
 
     public BTR82ATEntity(EntityType<BTR82ATEntity> type, Level world) {super(type, world);}
-
-    @Override
-    public ResourceLocation[] getCamoTextures() {return CAMO_TEXTURES;}
-
-    @Override
-    public String[] getCamoNames() {return CAMO_NAMES;}
 
     @Override
     protected void defineSynchedData() {
@@ -71,7 +58,7 @@ public class BTR82ATEntity extends CamoVehicleBase {
     @Override
     public DamageModifier getDamageModifier() {
         return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+                .custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);
     }
 
     @Override

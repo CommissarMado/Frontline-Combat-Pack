@@ -1,0 +1,16 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Standard",
+      "Texture": "fcp:textures/entity/gaz_tigr/gaz_tigr_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "camo",
+      "Name": "Camo",
+      "Texture": "fcp:textures/entity/gaz_tigr/gaz_tigr_2.png",
+      "Priority": 2
+    }
+  ]
+}

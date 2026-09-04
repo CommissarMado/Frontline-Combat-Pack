@@ -5,8 +5,9 @@ import frontline.combat.fcp.client.model.Emplacement.EmplMg3Model;
 import frontline.combat.fcp.entity.vehicle.Emplacement.EmplMg3Entity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class EmplMg3Renderer extends VehicleRenderer<EmplMg3Entity> {
     public EmplMg3Renderer(EntityRendererProvider.Context ctx) {super(ctx, new EmplMg3Model());}
-    @Override public ResourceLocation getTextureLocation(EmplMg3Entity e) {return e.getCurrentTexture();}
+    @Override public ResourceLocation getTextureLocation(EmplMg3Entity e) {return FcpVehicleTexture.resolve(e, e.getCurrentTexture());}
 }

@@ -1,0 +1,22 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Sand",
+      "Texture": "fcp:textures/entity/dpv/dpv_sand.png",
+      "Priority": 1
+    },
+    {
+      "Id": "green",
+      "Name": "Green",
+      "Texture": "fcp:textures/entity/dpv/dpv_green.png",
+      "Priority": 2
+    },
+    {
+      "Id": "black",
+      "Name": "Black",
+      "Texture": "fcp:textures/entity/dpv/dpv_black.png",
+      "Priority": 3
+    }
+  ]
+}

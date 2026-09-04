@@ -20,15 +20,6 @@ public class M939Entity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            //Normal
-            new ResourceLocation("fcp", "textures/entity/m939/m939_green.png"),
-            new ResourceLocation("fcp", "textures/entity/m939/m939_sand.png"),
-            //Wrecked
-            new ResourceLocation("fcp", "textures/entity/m939/m939_green.png"),
-            new ResourceLocation("fcp", "textures/entity/m939/m939_sand.png")
-    };
-    private static final String[] CAMO_NAMES = {"Green", "Sand"};
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(M939Entity.class, EntityDataSerializers.FLOAT);
     private static final EntityDataAccessor<Boolean> TENT = SynchedEntityData.defineId(M939Entity.class, EntityDataSerializers.BOOLEAN);
     private boolean tentInit = false;
@@ -36,8 +27,6 @@ public class M939Entity extends CamoVehicleBase {
     private float wheelRotation = 0f;
     private float prevWheelRotation = 0f;
     public M939Entity(EntityType<M939Entity> type, Level world) {super(type, world);}
-    @Override public ResourceLocation[] getCamoTextures() {return CAMO_TEXTURES;}
-    @Override public String[] getCamoNames() {return CAMO_NAMES;}
     @Override protected void defineSynchedData() {super.defineSynchedData(); this.entityData.define(STEERING_ANGLE, 0f); this.entityData.define(TENT, true);}
     public boolean hasTent() {return this.entityData.get(TENT);}
     public void setTent(boolean v) {this.entityData.set(TENT, v);}
@@ -47,7 +36,7 @@ public class M939Entity extends CamoVehicleBase {
     public float getPrevSteeringAngle(){return prevSteeringAngle;}
     public float getWheelRotation(){return wheelRotation;}
     public float getPrevWheelRotation(){return prevWheelRotation;}
-    @Override public DamageModifier getDamageModifier() {return super.getDamageModifier().custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);}
+    @Override public DamageModifier getDamageModifier() {return super.getDamageModifier().custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);}
     @Override public void addAdditionalSaveData(net.minecraft.nbt.CompoundTag compound) {super.addAdditionalSaveData(compound); compound.putFloat("SteeringAngle", this.getSteeringAngle()); compound.putBoolean("Tent", hasTent()); compound.putBoolean("TentInit", tentInit);}
     @Override public void readAdditionalSaveData(net.minecraft.nbt.CompoundTag compound) {super.readAdditionalSaveData(compound); if (compound.contains("TentInit")) tentInit = compound.getBoolean("TentInit"); if (compound.contains("Tent")) setTent(compound.getBoolean("Tent")); if (compound.contains("SteeringAngle")) setSteeringAngle(compound.getFloat("SteeringAngle"));}
     @Override public void baseTick() {

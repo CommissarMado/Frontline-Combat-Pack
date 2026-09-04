@@ -32,14 +32,6 @@ import software.bernie.geckolib.util.GeckoLibUtil;
  */
 public class CultivatorEntity extends AbstractTrailerEntity {
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            // Normal
-            new ResourceLocation("fcp", "textures/entity/tractor/john_deere_cultivator.png"),
-            // Wrecked
-            new ResourceLocation("fcp", "textures/entity/tractor/john_deere_cultivator_wrecked.png")
-    };
-
-    private static final String[] CAMO_NAMES = {"John Deere"};
     private static final double ROW_HALF_WIDTH = 4.5;
     /** Lateral gap between tines. 1.0 = one block column each. */
     private static final double ROW_SPACING = 1.0;
@@ -66,16 +58,6 @@ public class CultivatorEntity extends AbstractTrailerEntity {
     @Override
     protected double renderCullPadding() {
         return 10.0;
-    }
-
-    @Override
-    public ResourceLocation[] getCamoTextures() {
-        return CAMO_TEXTURES;
-    }
-
-    @Override
-    public String[] getCamoNames() {
-        return CAMO_NAMES;
     }
 
     @Override

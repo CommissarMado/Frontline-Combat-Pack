@@ -20,17 +20,6 @@ public class M109Entity extends CamoArtilleryBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-
-            //Normal Textures
-            new ResourceLocation("fcp", "textures/entity/m109/m109_1.png"),
-
-            // Wrecked Textures
-            new ResourceLocation("fcp", "textures/entity/m109/m109_1_wrecked.png"),
-    };
-
-    private static final String[] CAMO_NAMES = {"Base"};
-
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(M109Entity.class, EntityDataSerializers.FLOAT);
 
     private float prevSteeringAngle = 0f;
@@ -40,12 +29,6 @@ public class M109Entity extends CamoArtilleryBase {
     private float prevWheelRotation = 0f;
 
     public M109Entity(EntityType<M109Entity> type, Level world) {super(type, world);}
-
-    @Override
-    public ResourceLocation[] getCamoTextures() {return CAMO_TEXTURES;}
-
-    @Override
-    public String[] getCamoNames() {return CAMO_NAMES;}
 
     @Override
     protected void defineSynchedData() {
@@ -75,7 +58,7 @@ public class M109Entity extends CamoArtilleryBase {
     @Override
     public DamageModifier getDamageModifier() {
         return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+                .custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);
     }
 
     @Override

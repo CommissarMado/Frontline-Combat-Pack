@@ -5,8 +5,9 @@ import frontline.combat.fcp.client.model.Ural.UralFuelModel;
 import frontline.combat.fcp.entity.vehicle.Ural.UralFuelEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class UralFuelRenderer extends VehicleRenderer<UralFuelEntity> {
     public UralFuelRenderer(EntityRendererProvider.Context ctx) {super(ctx, new UralFuelModel());}
-    @Override public ResourceLocation getTextureLocation(UralFuelEntity e) {return e.getCurrentTexture();}
+    @Override public ResourceLocation getTextureLocation(UralFuelEntity e) {return FcpVehicleTexture.resolve(e, e.getCurrentTexture());}
 }

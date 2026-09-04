@@ -1,0 +1,40 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Default",
+      "Texture": "fcp:textures/entity/btr82a/btr_82.png",
+      "Priority": 1
+    },
+    {
+      "Id": "camo",
+      "Name": "Camo",
+      "Texture": "fcp:textures/entity/btr82a/btr_82_camo.png",
+      "Priority": 2
+    },
+    {
+      "Id": "desert",
+      "Name": "Desert",
+      "Texture": "fcp:textures/entity/btr82a/btr_82_desert.png",
+      "Priority": 3
+    },
+    {
+      "Id": "ukrainian",
+      "Name": "Ukrainian",
+      "Texture": "fcp:textures/entity/btr82a/btr_82_ukr.png",
+      "Priority": 4
+    },
+    {
+      "Id": "winter_1",
+      "Name": "Winter 1",
+      "Texture": "fcp:textures/entity/btr82a/btr_82_winter_1.png",
+      "Priority": 5
+    },
+    {
+      "Id": "winter_2",
+      "Name": "Winter 2",
+      "Texture": "fcp:textures/entity/btr82a/btr_82_winter_2.png",
+      "Priority": 6
+    }
+  ]
+}

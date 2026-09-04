@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Flag",
+      "Texture": "fcp:textures/entity/t72av/t72av.png",
+      "Priority": 1
+    }
+  ]
+}

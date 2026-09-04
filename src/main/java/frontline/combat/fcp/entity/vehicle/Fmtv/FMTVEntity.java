@@ -21,17 +21,6 @@ public class FMTVEntity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/fmtv/fmtv_green.png"),
-            new ResourceLocation("fcp", "textures/entity/fmtv/fmtv_iraq.png"),
-            //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/fmtv/fmtv_green_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/fmtv/fmtv_iraq_wrecked.png")
-    };
-
-    private static final String[] CAMO_NAMES = {"Standard", "Camo"};
-
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(FMTVEntity.class, EntityDataSerializers.FLOAT);
 
     private float prevSteeringAngle = 0f;
@@ -40,16 +29,6 @@ public class FMTVEntity extends CamoVehicleBase {
 
     public FMTVEntity(EntityType<FMTVEntity> type, Level world) {
         super(type, world);
-    }
-
-    @Override
-    public ResourceLocation[] getCamoTextures() {
-        return CAMO_TEXTURES;
-    }
-
-    @Override
-    public String[] getCamoNames() {
-        return CAMO_NAMES;
     }
 
     @Override
@@ -81,7 +60,7 @@ public class FMTVEntity extends CamoVehicleBase {
     @Override
     public DamageModifier getDamageModifier() {
         return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+                .custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);
     }
 
     @Override

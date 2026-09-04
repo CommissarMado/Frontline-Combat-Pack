@@ -42,88 +42,13 @@ public class SidewinderEntity extends MissileProjectile implements GeoEntity {
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    private static java.lang.reflect.Field damageField;
-    private static java.lang.reflect.Field explosionDamageField;
-    private static java.lang.reflect.Field explosionRadiusField;
-    private static java.lang.reflect.Field durabilityField;
-
-    static {
-        try {
-            Class<?> parentClass = MissileProjectile.class;
-            damageField = parentClass.getDeclaredField("damage");
-            damageField.setAccessible(true);
-
-            explosionDamageField = parentClass.getDeclaredField("explosionDamage");
-            explosionDamageField.setAccessible(true);
-
-            explosionRadiusField = parentClass.getDeclaredField("explosionRadius");
-            explosionRadiusField.setAccessible(true);
-
-            durabilityField = parentClass.getDeclaredField("durability");
-            durabilityField.setAccessible(true);
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
-    }
-
     public SidewinderEntity(EntityType<? extends SidewinderEntity> type, Level level) {
         super(type, level);
         this.noCulling = true;
         setDamage(1100);
         setExplosionDamage(180);
         setExplosionRadius(12);
-        this.distracted = false;
-    }
-
-    private void setDamage(int value) {
-        try {
-            if (damageField != null) damageField.setInt(this, value);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void setExplosionDamage(int value) {
-        try {
-            if (explosionDamageField != null) explosionDamageField.setInt(this, value);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void setExplosionRadius(int value) {
-        try {
-            if (explosionRadiusField != null) explosionRadiusField.setInt(this, value);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private int getDamage() {
-        try {
-            if (damageField != null) return damageField.getInt(this);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
-    private int getExplosionDamage() {
-        try {
-            if (explosionDamageField != null) return explosionDamageField.getInt(this);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
-    private int getExplosionRadius() {
-        try {
-            if (explosionRadiusField != null) return explosionRadiusField.getInt(this);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return 0;
+        this.setDistracted(false);
     }
 
     @Override
@@ -132,7 +57,7 @@ public class SidewinderEntity extends MissileProjectile implements GeoEntity {
     }
 
     @Override
-    protected void onHitEntity(@NotNull EntityHitResult result) {
+    public void onHitEntity(@NotNull EntityHitResult result) {
         super.onHitEntity(result);
         Entity entity = result.getEntity();
         if (entity == this.getOwner() || (this.getOwner() != null && entity == this.getOwner().getVehicle()) || entity instanceof SidewinderEntity)
@@ -182,16 +107,16 @@ public class SidewinderEntity extends MissileProjectile implements GeoEntity {
         List<Entity> decoy = SeekTool.seekLivingEntities(this, 32, 90);
 
         for (var e : decoy) {
-            if (e.getType().is(ModTags.EntityTypes.DECOY) && !this.distracted) {
+            if (e.getType().is(ModTags.EntityTypes.DECOY) && !this.isDistracted()) {
                 this.entityData.set(TARGET_UUID, e.getStringUUID());
-                this.distracted = true;
+                this.setDistracted(true);
                 break;
             }
         }
 
         Vec3 toVec = getLookAngle();
 
-        if (guideType == 0) {
+        if (getGuideType() == 0) {
             if (!entityData.get(TARGET_UUID).equals("none")) {
                 if (entity != null) {
                     if (level() instanceof ServerLevel) {
@@ -207,9 +132,9 @@ public class SidewinderEntity extends MissileProjectile implements GeoEntity {
             }
         } else {
             if (level() instanceof ServerLevel) {
-                double dis = targetPos.vectorTo(position()).horizontalDistance();
+                double dis = getTargetPos().vectorTo(position()).horizontalDistance();
                 double height = dis > 30 ? 0.4 * (dis - 30) : 0;
-                Vec3 targetPos = this.targetPos.add(0, height, 0);
+                Vec3 targetPos = getTargetPos().add(0, height, 0);
                 toVec = RangeTool.calculateFiringSolution(position(), targetPos, Vec3.ZERO, getDeltaMovement().length(), 0);
             }
         }

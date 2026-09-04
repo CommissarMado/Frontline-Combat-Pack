@@ -290,7 +290,6 @@
   ],
   "VehicleContainerType": "Medium",
   "DestroyInfo": {
-    "ParticleType": "Medium",
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },

@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Default",
+      "Texture": "fcp:textures/entity/emplacements/kornet.png",
+      "Priority": 1
+    }
+  ]
+}

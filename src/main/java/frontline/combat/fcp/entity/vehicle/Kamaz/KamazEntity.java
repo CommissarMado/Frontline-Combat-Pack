@@ -20,15 +20,6 @@ public class KamazEntity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/kamaz/kamaz.png"),
-            //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/kamaz/kamaz_wrecked.png")
-    };
-
-    private static final String[] CAMO_NAMES = {"Standard", "Camo"};
-
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(KamazEntity.class, EntityDataSerializers.FLOAT);
     private static final EntityDataAccessor<Boolean> TENT = SynchedEntityData.defineId(KamazEntity.class, EntityDataSerializers.BOOLEAN);
     private boolean tentInit = false;
@@ -39,16 +30,6 @@ public class KamazEntity extends CamoVehicleBase {
 
     public KamazEntity(EntityType<KamazEntity> type, Level world) {
         super(type, world);
-    }
-
-    @Override
-    public ResourceLocation[] getCamoTextures() {
-        return CAMO_TEXTURES;
-    }
-
-    @Override
-    public String[] getCamoNames() {
-        return CAMO_NAMES;
     }
 
     @Override
@@ -85,7 +66,7 @@ public class KamazEntity extends CamoVehicleBase {
     @Override
     public DamageModifier getDamageModifier() {
         return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+                .custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);
     }
 
     @Override

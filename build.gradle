@@ -198,7 +198,7 @@ dependencies {
 
     implementation fg.deobf("curse.maven:geckolib-388172:6658942")
     // implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.20.1:4.4.6')
-    implementation fg.deobf("curse.maven:superb-warfare-1218165:8104849")
+    implementation fg.deobf("curse.maven:superb-warfare-1218165:8689629")
     implementation fg.deobf("curse.maven:jei-238222:6600311")
     implementation fg.deobf("curse.maven:embeddium-908741:5681725")
 
@@ -303,7 +303,10 @@ tasks.register('renderVehicleIcons', Exec) {
     description = 'Render isometric creative-tab icons for all vehicles from their geo models.'
     def script = file('tools/render_icons.py')
     def outDir = file('src/main/resources/assets/superbwarfare/textures/vehicle_icon/container')
-    inputs.file script
+    // optional(true): tools/render_icons.py is matched by '*.py' in .gitignore and so is not in
+    // the repo. Declaring it as a required input makes Gradle fail validation before onlyIf is
+    // ever consulted, which breaks 'build' on any clone that lacks the script.
+    inputs.file(script).optional(true)
     inputs.file file('tools/icon_overrides.json')
     inputs.dir file('src/main/resources/assets/fcp/geo')
     inputs.files fileTree(file('src/main/resources/assets/fcp/textures/entity'))
@@ -311,9 +314,11 @@ tasks.register('renderVehicleIcons', Exec) {
     outputs.dir outDir
     // resolve a python launcher available on the build machine
     def py = System.getenv('PYTHON') ?: (org.gradle.internal.os.OperatingSystem.current().isWindows() ? 'python' : 'python3')
-    // Only run if python is actually available, so a machine without it never breaks the build
-    // (the committed icons are used as-is). Delete an icon + rebuild to regenerate it.
+    // Only run if the script is present AND python is actually available, so a machine missing
+    // either never breaks the build (the committed icons are used as-is). Delete an icon +
+    // rebuild to regenerate it.
     onlyIf {
+        if (!script.exists()) return false
         try {
             def p = ["${py}", '--version'].execute()
             p.waitFor() == 0

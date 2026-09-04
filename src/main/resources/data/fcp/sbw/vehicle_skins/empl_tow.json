@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Default",
+      "Texture": "fcp:textures/entity/emplacements/tow.png",
+      "Priority": 1
+    }
+  ]
+}

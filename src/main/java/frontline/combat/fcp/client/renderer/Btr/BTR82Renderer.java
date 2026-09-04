@@ -5,6 +5,7 @@ import frontline.combat.fcp.client.model.Btr.BTR82Model;
 import frontline.combat.fcp.entity.vehicle.Btr.BTR82Entity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class BTR82Renderer extends VehicleRenderer<BTR82Entity> {
 
@@ -12,6 +13,6 @@ public class BTR82Renderer extends VehicleRenderer<BTR82Entity> {
 
     @Override
     public ResourceLocation getTextureLocation(BTR82Entity entity) {
-        return entity.getCurrentTexture();
+        return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 }

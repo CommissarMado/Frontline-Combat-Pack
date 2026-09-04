@@ -5,6 +5,7 @@ import frontline.combat.fcp.client.model.Aavp.AAVPModel;
 import frontline.combat.fcp.entity.vehicle.Aavp.AAVPEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class AAVPRenderer extends VehicleRenderer<AAVPEntity> {
 
@@ -12,6 +13,6 @@ public class AAVPRenderer extends VehicleRenderer<AAVPEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(AAVPEntity entity) {
-        return entity.getCurrentTexture();
+        return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 }

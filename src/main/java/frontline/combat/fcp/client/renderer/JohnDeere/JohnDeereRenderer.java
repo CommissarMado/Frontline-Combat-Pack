@@ -7,6 +7,7 @@ import frontline.combat.fcp.entity.vehicle.JohnDeere.JohnDeereEntity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATVEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class JohnDeereRenderer extends VehicleRenderer<JohnDeereEntity> {
 
@@ -14,6 +15,6 @@ public class JohnDeereRenderer extends VehicleRenderer<JohnDeereEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(JohnDeereEntity entity) {
-        return entity.getCurrentTexture();
+        return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 }

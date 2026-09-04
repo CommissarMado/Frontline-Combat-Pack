@@ -212,7 +212,8 @@ public class FcpPilotOverlay implements IGuiOverlay {
 
         // --- Flare / decoy status ---
         if (ve.hasDecoy()) {
-            if (ve.getDecoyReady()) {
+            // 0.8.9.1 dropped the synced DecoyReady flag; readiness is now just the reload cooldown.
+            if (ve.getDecoyReloadCoolDown() <= 0) {
                 guiGraphics.drawString(mc.font,
                         Component.translatable("tips.superbwarfare.flare.ready").append(
                                 Component.literal(" [" + ModKeyMappings.RELEASE_DECOY.getKey().getDisplayName().getString() + "]")),

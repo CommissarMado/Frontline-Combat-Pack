@@ -5,6 +5,7 @@ import frontline.combat.fcp.client.model.Uaz.UAZModel;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class UAZRenderer extends VehicleRenderer<UAZEntity> {
 
@@ -12,6 +13,6 @@ public class UAZRenderer extends VehicleRenderer<UAZEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(UAZEntity entity) {
-        return entity.getCurrentTexture();
+        return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 }

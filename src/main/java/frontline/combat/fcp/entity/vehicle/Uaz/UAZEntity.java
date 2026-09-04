@@ -21,25 +21,6 @@ public class UAZEntity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            // Normal Camos
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_1.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_2.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_3.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_4.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_5.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_6.png"),
-            // Wrecked Variants
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_2_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_3_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_4_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_5_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/uaz/uaz_6_wrecked.png"),
-    };
-
-    private static final String[] CAMO_NAMES = {"Base", "Z", "Ukraine", "Ukraine Medic", "Blue", "Orange", "Ruined"};
-
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(UAZEntity.class, EntityDataSerializers.FLOAT);
 
     private float prevSteeringAngle = 0f;
@@ -49,12 +30,6 @@ public class UAZEntity extends CamoVehicleBase {
     private float prevWheelRotation = 0f;
 
     public UAZEntity(EntityType<UAZEntity> type, Level world) {super(type, world);}
-
-    @Override
-    public ResourceLocation[] getCamoTextures() {return CAMO_TEXTURES;}
-
-    @Override
-    public String[] getCamoNames() {return CAMO_NAMES;}
 
     @Override
     protected void defineSynchedData() {
@@ -84,7 +59,7 @@ public class UAZEntity extends CamoVehicleBase {
     @Override
     public DamageModifier getDamageModifier() {
         return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+                .custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);
     }
 
     @Override

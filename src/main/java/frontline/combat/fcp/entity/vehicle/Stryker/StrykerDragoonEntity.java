@@ -20,29 +20,10 @@ public class StrykerDragoonEntity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/stryker/stryker_1.png"),
-            new ResourceLocation("fcp", "textures/entity/stryker/stryker_2.png"),
-            new ResourceLocation("fcp", "textures/entity/stryker/stryker_3.png"),
-            new ResourceLocation("fcp", "textures/entity/stryker/stryker_4.png"),
-            new ResourceLocation("fcp", "textures/entity/stryker/stryker_5.png"),
-            //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/stryker/stryker_1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/stryker/stryker_2_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/stryker/stryker_3_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/stryker/stryker_4_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/stryker/stryker_5_wrecked.png")
-    };
-    private static final String[] CAMO_NAMES = {"Camo 1", "Camo 2", "Camo 3", "Camo 4", "Camo 5"};
-
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(StrykerDragoonEntity.class, EntityDataSerializers.FLOAT);
     private float prevSteeringAngle = 0f, wheelRotation = 0f, prevWheelRotation = 0f;
 
     public StrykerDragoonEntity(EntityType<StrykerDragoonEntity> type, Level world) { super(type, world); }
-
-    @Override public ResourceLocation[] getCamoTextures() { return CAMO_TEXTURES; }
-    @Override public String[] getCamoNames() { return CAMO_NAMES; }
 
     @Override protected void defineSynchedData() { super.defineSynchedData(); this.entityData.define(STEERING_ANGLE, 0f); }
     public float getSteeringAngle() { return this.entityData.get(STEERING_ANGLE); }
@@ -52,7 +33,7 @@ public class StrykerDragoonEntity extends CamoVehicleBase {
     public float getPrevWheelRotation(){ return prevWheelRotation; }
 
     @Override public DamageModifier getDamageModifier() {
-        return super.getDamageModifier().custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+        return super.getDamageModifier().custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);
     }
     @Override public void addAdditionalSaveData(net.minecraft.nbt.CompoundTag c) { super.addAdditionalSaveData(c); c.putFloat("SteeringAngle", getSteeringAngle()); }
     @Override public void readAdditionalSaveData(net.minecraft.nbt.CompoundTag c) { super.readAdditionalSaveData(c); if (c.contains("SteeringAngle")) setSteeringAngle(c.getFloat("SteeringAngle")); }

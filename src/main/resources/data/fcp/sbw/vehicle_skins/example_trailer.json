@@ -1,0 +1,34 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Camo Variant 1",
+      "Texture": "fcp:textures/entity/lav/lav25_camo1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "camo_variant_2",
+      "Name": "Camo Variant 2",
+      "Texture": "fcp:textures/entity/lav/lav25_camo2.png",
+      "Priority": 2
+    },
+    {
+      "Id": "camo_variant_3",
+      "Name": "Camo Variant 3",
+      "Texture": "fcp:textures/entity/lav/lav25_camo3.png",
+      "Priority": 3
+    },
+    {
+      "Id": "no_camo",
+      "Name": "No-Camo",
+      "Texture": "fcp:textures/entity/lav/lav25_od.png",
+      "Priority": 4
+    },
+    {
+      "Id": "tan",
+      "Name": "Tan",
+      "Texture": "fcp:textures/entity/lav/lav25_tan.png",
+      "Priority": 5
+    }
+  ]
+}

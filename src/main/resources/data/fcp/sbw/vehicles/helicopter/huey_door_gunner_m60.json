@@ -209,7 +209,7 @@
     "All * 0.8",
     "All - 8"
   ],
-  "DestroyInfo": {"ParticleType": "Medium", "ExplosionDamage": 350, "ExplosionRadius": 12, "CrashPassengers": true},
+  "DestroyInfo": {"ExplosionDamage": 350, "ExplosionRadius": 12, "CrashPassengers": true},
   "ContainerIcon": "fcp:textures/gui/vehicle/type/air_us.png",
   "Type": "Helicopter",
   "HudType": "@Helicopter",

@@ -13,7 +13,8 @@
     "AmmoCountOverlayMixin",
     "VehicleHudMagazineMixin",
     "LandVehicleHudStatsMixin",
-    "ContainerBlockItemRendererMixin"
+    "ContainerBlockItemRendererMixin",
+    "VehicleSkinScreenPagingMixin"
   ],
   "injectors": {
     "defaultRequire": 1

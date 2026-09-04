@@ -5,8 +5,9 @@ import frontline.combat.fcp.client.model.Emplacement.EmplTowModel;
 import frontline.combat.fcp.entity.vehicle.Emplacement.EmplTowEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class EmplTowRenderer extends VehicleRenderer<EmplTowEntity> {
     public EmplTowRenderer(EntityRendererProvider.Context ctx) {super(ctx, new EmplTowModel());}
-    @Override public ResourceLocation getTextureLocation(EmplTowEntity e) {return e.getCurrentTexture();}
+    @Override public ResourceLocation getTextureLocation(EmplTowEntity e) {return FcpVehicleTexture.resolve(e, e.getCurrentTexture());}
 }

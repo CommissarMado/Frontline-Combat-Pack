@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Standard",
+      "Texture": "fcp:textures/entity/kamaz/kamaz.png",
+      "Priority": 1
+    }
+  ]
+}

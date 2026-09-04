@@ -22,12 +22,6 @@ public class BMP2MDEntity extends CamoVehicleBase {
 
     // BMP-2MD uses a single dedicated texture. Index 0 = normal, index 1 = wrecked
     // (placeholder = normal until a wrecked skin is authored). camoCount = ceil(2/2) = 1.
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            new ResourceLocation("fcp", "textures/entity/bmp2md/1.png"),
-            new ResourceLocation("fcp", "textures/entity/bmp2md/1.png")
-    };
-
-    private static final String[] CAMO_NAMES = {"Default"};
 
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(BMP2MDEntity.class, EntityDataSerializers.FLOAT);
 
@@ -38,12 +32,6 @@ public class BMP2MDEntity extends CamoVehicleBase {
     private float prevWheelRotation = 0f;
 
     public BMP2MDEntity(EntityType<BMP2MDEntity> type, Level world) {super(type, world);}
-
-    @Override
-    public ResourceLocation[] getCamoTextures() {return CAMO_TEXTURES;}
-
-    @Override
-    public String[] getCamoNames() {return CAMO_NAMES;}
 
     @Override
     protected void defineSynchedData() {
@@ -73,7 +61,7 @@ public class BMP2MDEntity extends CamoVehicleBase {
     @Override
     public DamageModifier getDamageModifier() {
         return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+                .custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);
     }
 
     @Override

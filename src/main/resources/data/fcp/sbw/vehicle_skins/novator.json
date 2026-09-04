@@ -1,0 +1,34 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Base",
+      "Texture": "fcp:textures/entity/novator/novator.png",
+      "Priority": 1
+    },
+    {
+      "Id": "tent",
+      "Name": "Tent",
+      "Texture": "fcp:textures/entity/novator/novator_1.png",
+      "Priority": 2
+    },
+    {
+      "Id": "camo",
+      "Name": "Camo",
+      "Texture": "fcp:textures/entity/novator/novator_2.png",
+      "Priority": 3
+    },
+    {
+      "Id": "camo_tent",
+      "Name": "Camo + Tent",
+      "Texture": "fcp:textures/entity/novator/novator_3.png",
+      "Priority": 4
+    },
+    {
+      "Id": "pink",
+      "Name": "PINK",
+      "Texture": "fcp:textures/entity/novator/novator_pink.png",
+      "Priority": 5
+    }
+  ]
+}

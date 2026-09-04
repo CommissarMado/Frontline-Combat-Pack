@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 /**
  * Base renderer for trailers, the counterpart of SBW's VehicleRenderer for driveables.
@@ -50,6 +51,6 @@ public abstract class TrailerRenderer<T extends AbstractTrailerEntity> extends G
 
     @Override
     public ResourceLocation getTextureLocation(T entity) {
-        return entity.getCurrentTexture();
+        return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 }

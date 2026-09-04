@@ -5,6 +5,7 @@ import frontline.combat.fcp.client.model.T72av.T72AVModel;
 import frontline.combat.fcp.entity.vehicle.T72av.T72AVEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class T72AVRenderer extends VehicleRenderer<T72AVEntity> {
 
@@ -12,6 +13,6 @@ public class T72AVRenderer extends VehicleRenderer<T72AVEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(T72AVEntity entity) {
-        return entity.getCurrentTexture();
+        return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 }

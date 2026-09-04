@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Wolf",
+      "Texture": "fcp:textures/entity/meme_vehicles/wolf.png",
+      "Priority": 1
+    }
+  ]
+}

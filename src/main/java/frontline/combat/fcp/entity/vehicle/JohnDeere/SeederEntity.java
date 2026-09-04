@@ -31,15 +31,6 @@ import software.bernie.geckolib.util.GeckoLibUtil;
  */
 public class SeederEntity extends AbstractTrailerEntity {
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            // Normal
-            new ResourceLocation("fcp", "textures/entity/tractor/john_deere.png"),
-            // Wrecked
-            new ResourceLocation("fcp", "textures/entity/tractor/john_deere_wrecked.png")
-    };
-
-    private static final String[] CAMO_NAMES = {"John Deere"};
-
     private static final int SEED_CAPACITY = 30600;
     private static final int INVENTORY_SIZE = SEED_CAPACITY / 64;
 
@@ -95,16 +86,6 @@ public class SeederEntity extends AbstractTrailerEntity {
         if (!(block instanceof IPlantable plantable)) return false;
         return Blocks.FARMLAND.defaultBlockState()
                 .canSustainPlant(level, BlockPos.ZERO, Direction.UP, plantable);
-    }
-
-    @Override
-    public ResourceLocation[] getCamoTextures() {
-        return CAMO_TEXTURES;
-    }
-
-    @Override
-    public String[] getCamoNames() {
-        return CAMO_NAMES;
     }
 
     @Override

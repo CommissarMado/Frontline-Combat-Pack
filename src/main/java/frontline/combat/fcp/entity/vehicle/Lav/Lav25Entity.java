@@ -21,23 +21,6 @@ public class Lav25Entity extends CamoVehicleBase implements SteerableVehicle {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo1.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo2.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo3.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_od.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_tan.png"),
-            //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo2_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo3_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_od_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_tan_wrecked.png")
-    };
-
-    private static final String[] CAMO_NAMES = {"Camo Variant 1", "Camo Variant 2", "Camo Variant 3", "No-Camo", "Tan"};
-
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(Lav25Entity.class, EntityDataSerializers.FLOAT);
 
     private float prevSteeringAngle = 0f;
@@ -48,16 +31,6 @@ public class Lav25Entity extends CamoVehicleBase implements SteerableVehicle {
 
     public Lav25Entity(EntityType<Lav25Entity> type, Level world) {
         super(type, world);
-    }
-
-    @Override
-    public ResourceLocation[] getCamoTextures() {
-        return CAMO_TEXTURES;
-    }
-
-    @Override
-    public String[] getCamoNames() {
-        return CAMO_NAMES;
     }
 
     @Override
@@ -89,7 +62,7 @@ public class Lav25Entity extends CamoVehicleBase implements SteerableVehicle {
     @Override
     public DamageModifier getDamageModifier() {
         return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+                .custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);
     }
 
     @Override

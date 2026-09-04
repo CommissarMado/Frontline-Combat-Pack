@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 /**
  * ExampleTrailerRenderer — a plain GeckoLib renderer, deliberately NOT SBW's
@@ -41,6 +42,6 @@ public class ExampleTrailerRenderer extends GeoEntityRenderer<ExampleTrailerEnti
 
     @Override
     public ResourceLocation getTextureLocation(ExampleTrailerEntity entity) {
-        return entity.getCurrentTexture();
+        return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 }

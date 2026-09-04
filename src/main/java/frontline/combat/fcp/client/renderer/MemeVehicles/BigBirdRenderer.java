@@ -7,12 +7,13 @@ import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdEntity;
 import frontline.combat.fcp.entity.vehicle.MemeVehicles.BigBirdEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class BigBirdRenderer extends VehicleRenderer<BigBirdEntity> {
     public BigBirdRenderer(EntityRendererProvider.Context renderManager) {super(renderManager, new BigBirdModel());}
 
     @Override
     public ResourceLocation getTextureLocation(BigBirdEntity entity) {
-        return entity.getCurrentTexture();
+        return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 }

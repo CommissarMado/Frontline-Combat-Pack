@@ -2,6 +2,7 @@ package frontline.combat.fcp.entity.vehicle;
 
 import com.atsuishio.superbwarfare.data.gun.GunData;
 import com.atsuishio.superbwarfare.entity.vehicle.base.ArtilleryEntity;
+import com.atsuishio.superbwarfare.entity.vehicle.base.GeckoArtilleryEntity;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import frontline.combat.fcp.init.ModItems;
 import frontline.combat.fcp.init.ModSounds;
@@ -50,13 +51,19 @@ import org.jetbrains.annotations.Nullable;
  * inheritance and the two SBW bases are siblings, so an artillery-capable FCP vehicle cannot
  * simply extend CamoVehicleBase.
  *
+ * Extends {@link GeckoArtilleryEntity} rather than ArtilleryEntity directly: as of SBW 0.8.9.1
+ * ArtilleryEntity descends from VehicleEntity and no longer implements GeoAnimatable, so the
+ * GeckoLib subclass is what keeps M109Model/MstaModel (VehicleModel&lt;T extends VehicleEntity
+ * &amp; GeoAnimatable&gt;) satisfiable. It still IS-A ArtilleryEntity, so indicator binding is unaffected.
+ *
  * Inheriting ArtilleryEntity also brings: firing-parameters targeting, trajectory solving
- * (calculateLaunchVector), barrel recoil animation state, turret lock while moving, and the
- * auto-reload that tops up the gun from the turret controller's own inventory.
+ * (calculateLaunchVector), turret lock while moving, and the auto-reload that tops up the gun
+ * from the turret controller's own inventory. (Barrel recoil animation state was dropped
+ * upstream in 0.8.9.1 along with getBarrelAnim/getMaxBarrel.)
  *
  * canBind() is true here, which is what actually exposes these vehicles to the indicator.
  */
-public abstract class CamoArtilleryBase extends ArtilleryEntity implements ICamoVehicle, VehicleInventory {
+public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements VehicleInventory {
 
     /** Allows the Artillery Indicator to bind to this vehicle for remote aiming. */
     @Override
@@ -73,20 +80,16 @@ public abstract class CamoArtilleryBase extends ArtilleryEntity implements ICamo
      * the M109 and Msta also carry a passenger machine gun, so firing the M2 produced the 155mm
      * blast out of the cannon barrel.
      *
-     * Skipping super for any other weapon keeps the effect on the cannon. The barrel animation it
-     * also sets is likewise Main-only, so nothing else is lost.
+     * Skipping super for any other weapon keeps the effect on the cannon.
+     *
+     * Since 0.8.9.1 SBW passes the firing weapon's name in, so we can gate on that directly
+     * instead of comparing GunData instances. Upstream still ignores the parameter and hardcodes
+     * "Main" for the particles, so this override is still required.
      */
     @Override
-    public void beforeShoot(net.minecraft.world.entity.LivingEntity living) {
-        if (living != null && !isFiringMainGun(living)) return;
-        super.beforeShoot(living);
-    }
-
-    /** True when the weapon this shooter has selected is the main gun. */
-    private boolean isFiringMainGun(net.minecraft.world.entity.LivingEntity living) {
-        GunData selected = getGunData(living);
-        GunData main = getGunData("Main");
-        return selected != null && main != null && selected == main;
+    public void beforeShoot(net.minecraft.world.entity.LivingEntity living, String weapon) {
+        if (!"Main".equals(weapon)) return;
+        super.beforeShoot(living, weapon);
     }
 
     @Override
@@ -140,87 +143,21 @@ public abstract class CamoArtilleryBase extends ArtilleryEntity implements ICamo
     }
 
 
-    private static final EntityDataAccessor<Integer> CAMO_TYPE = SynchedEntityData.defineId(CamoArtilleryBase.class, EntityDataSerializers.INT);
-
     public CamoArtilleryBase(EntityType<? extends VehicleEntity> type, Level world) {
         super(type, world);
     }
 
-    @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(CAMO_TYPE, 0);
-    }
-
     /**
-     * The texture array is split into two halves:
-     * [0 .. camoCount-1] = normal camo textures
-     * [camoCount .. total-1] = wrecked variants, one per camo in the same order
-     *
-     * camoCount = ceil(totalTextures / 2)
-     *
-     * When wrecked, the modifier (camoCount) is added to the current camo index
-     * to land on the corresponding wrecked texture.
+     * The skin comes from SBW, declared in {@code data/fcp/sbw/vehicle_skins/<entity id>.json} and
+     * chosen with SBW's skin spray. Wrecked appearance is derived from it at runtime - see
+     * {@link frontline.combat.fcp.client.renderer.FcpVehicleTexture}.
      */
     public ResourceLocation getCurrentTexture() {
-        ResourceLocation[] textures = getCamoTextures();
-        int total = textures.length;
-        // Round up so an odd total always favours the camo side
-        int camoCount = (int) Math.ceil(total / 2.0);
-        int index = getCamoType();
-        if (index < 0 || index >= camoCount) index = 0;
-
-        if (this.isWreck()) {
-            int wreckedIndex = index + camoCount;
-            // Safety clamp in case of an odd total leaving one fewer wrecked texture
-            if (wreckedIndex >= total) wreckedIndex = total - 1;
-            return textures[wreckedIndex];
-        }
-
-        return textures[index];
-    }
-
-    @Override
-    public int getCamoType() {
-        return this.entityData.get(CAMO_TYPE);
-    }
-
-    @Override
-    public void setCamoType(int camoType) {
-        this.entityData.set(CAMO_TYPE, camoType);
-    }
-
-    @Override
-    public void cycleCamo() {
-        int total = getCamoTextures().length;
-        int camoCount = (int) Math.ceil(total / 2.0);
-        int current = getCamoType();
-        // Only cycle within the normal camo range, never into the wrecked half
-        setCamoType((current + 1) % camoCount);
+        return VehicleSkins.currentTexture(this);
     }
 
     @Override
     public InteractionResult interact(Player player, InteractionHand hand) {
-        if (player.getItemInHand(hand).is(ModItems.SPRAY.get())) {
-            if (!this.level().isClientSide) {
-                cycleCamo();
-                String[] camoNames = getCamoNames();
-                int camoType = getCamoType();
-                String camoName = (camoType >= 0 && camoType < camoNames.length)
-                        ? camoNames[camoType]
-                        : "Unknown";
-
-                player.displayClientMessage(
-                        Component.translatable("message.fcp.camo_changed", camoName).withStyle(ChatFormatting.GREEN),
-                        true
-                );
-                this.level().playSound(null, this.blockPosition(),
-                        ModSounds.SPRAY.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
-            }
-            player.swing(hand);
-            return InteractionResult.SUCCESS;
-        }
-
         // Vehicle hold: driveables open on SHIFT-click (standing) or E (driving); trailers
         // override opensHoldOnPlainClick() to open on a plain click instead. Handled here in
         // the core so no individual vehicle needs its own interact() for this.
@@ -568,7 +505,6 @@ public abstract class CamoArtilleryBase extends ArtilleryEntity implements ICamo
     @Override
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
-        compound.putInt("CamoType", getCamoType());
         if (hasVehicleInventory()) {
             compound.put("VehicleInventory", getVehicleInventory().createTag());
         }
@@ -577,9 +513,7 @@ public abstract class CamoArtilleryBase extends ArtilleryEntity implements ICamo
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        if (compound.contains("CamoType")) {
-            setCamoType(compound.getInt("CamoType"));
-        }
+        VehicleSkins.migrateLegacyCamo(this, compound);
         if (hasVehicleInventory() && compound.contains("VehicleInventory", Tag.TAG_LIST)) {
             getVehicleInventory().fromTag(compound.getList("VehicleInventory", Tag.TAG_COMPOUND));
             // Saved contents were laid out against whatever the channel count and size were
@@ -661,10 +595,4 @@ public abstract class CamoArtilleryBase extends ArtilleryEntity implements ICamo
         }
         return stack;
     }
-
-    @Override
-    public abstract ResourceLocation[] getCamoTextures();
-
-    @Override
-    public abstract String[] getCamoNames();
 }

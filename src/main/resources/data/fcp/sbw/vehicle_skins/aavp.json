@@ -1,0 +1,28 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Flag",
+      "Texture": "fcp:textures/entity/aavp/aavp_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "no_flag",
+      "Name": "No-Flag",
+      "Texture": "fcp:textures/entity/aavp/aavp_2.png",
+      "Priority": 2
+    },
+    {
+      "Id": "camo_3",
+      "Name": "Camo 3",
+      "Texture": "fcp:textures/entity/aavp/aavp_3.png",
+      "Priority": 3
+    },
+    {
+      "Id": "camo_4",
+      "Name": "Camo 4",
+      "Texture": "fcp:textures/entity/aavp/aavp_4.png",
+      "Priority": 4
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Default",
+      "Texture": "fcp:textures/entity/emplacements/mk19.png",
+      "Priority": 1
+    }
+  ]
+}

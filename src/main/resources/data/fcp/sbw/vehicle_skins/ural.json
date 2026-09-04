@@ -1,0 +1,52 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Standard",
+      "Texture": "fcp:textures/entity/ural/ural_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "camo",
+      "Name": "Camo",
+      "Texture": "fcp:textures/entity/ural/ural_2.png",
+      "Priority": 2
+    },
+    {
+      "Id": "camo_3",
+      "Name": "Camo 3",
+      "Texture": "fcp:textures/entity/ural/ural_3.png",
+      "Priority": 3
+    },
+    {
+      "Id": "camo_4",
+      "Name": "Camo 4",
+      "Texture": "fcp:textures/entity/ural/ural_4.png",
+      "Priority": 4
+    },
+    {
+      "Id": "camo_5",
+      "Name": "Camo 5",
+      "Texture": "fcp:textures/entity/ural/ural_5.png",
+      "Priority": 5
+    },
+    {
+      "Id": "camo_6",
+      "Name": "Camo 6",
+      "Texture": "fcp:textures/entity/ural/ural_6.png",
+      "Priority": 6
+    },
+    {
+      "Id": "camo_7",
+      "Name": "Camo 7",
+      "Texture": "fcp:textures/entity/ural/ural_7.png",
+      "Priority": 7
+    },
+    {
+      "Id": "camo_8",
+      "Name": "Camo 8",
+      "Texture": "fcp:textures/entity/ural/ural_8.png",
+      "Priority": 8
+    }
+  ]
+}

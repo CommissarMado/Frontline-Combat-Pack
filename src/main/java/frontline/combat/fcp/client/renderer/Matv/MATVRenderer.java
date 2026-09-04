@@ -5,6 +5,7 @@ import frontline.combat.fcp.client.model.Matv.MATVModel;
 import frontline.combat.fcp.entity.vehicle.Matv.MATVEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class MATVRenderer extends VehicleRenderer<MATVEntity> {
 
@@ -12,6 +13,6 @@ public class MATVRenderer extends VehicleRenderer<MATVEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(MATVEntity entity) {
-        return entity.getCurrentTexture();
+        return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 }

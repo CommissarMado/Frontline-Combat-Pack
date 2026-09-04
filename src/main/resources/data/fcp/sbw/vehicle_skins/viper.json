@@ -1,0 +1,22 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Standard",
+      "Texture": "fcp:textures/entity/viper/viper_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "white",
+      "Name": "White",
+      "Texture": "fcp:textures/entity/viper/viper_2.png",
+      "Priority": 2
+    },
+    {
+      "Id": "shark",
+      "Name": "Shark",
+      "Texture": "fcp:textures/entity/viper/viper_3.png",
+      "Priority": 3
+    }
+  ]
+}

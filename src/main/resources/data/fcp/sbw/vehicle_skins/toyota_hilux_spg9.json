@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Toyota",
+      "Texture": "fcp:textures/entity/toyota/toyota_hilux.png",
+      "Priority": 1
+    }
+  ]
+}

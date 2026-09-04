@@ -21,15 +21,6 @@ public class WolfEntity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/meme_vehicles/wolf.png"),
-            //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/meme_vehicles/wolf_wrecked.png")
-    };
-
-    private static final String[] CAMO_NAMES = {"Wolf"};
-
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(WolfEntity.class, EntityDataSerializers.FLOAT);
 
     private float prevSteeringAngle = 0f;
@@ -40,16 +31,6 @@ public class WolfEntity extends CamoVehicleBase {
 
     public WolfEntity(EntityType<WolfEntity> type, Level world) {
         super(type, world);
-    }
-
-    @Override
-    public ResourceLocation[] getCamoTextures () {
-        return CAMO_TEXTURES;
-    }
-
-    @Override
-    public String[] getCamoNames () {
-        return CAMO_NAMES;
     }
 
     @Override
@@ -81,7 +62,7 @@ public class WolfEntity extends CamoVehicleBase {
     @Override
     public DamageModifier getDamageModifier () {
         return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+                .custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);
     }
 
     @Override

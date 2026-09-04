@@ -20,33 +20,6 @@ public class MstaEntity extends CamoArtilleryBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-
-            //Normal Textures
-            new ResourceLocation("fcp", "textures/entity/msta/msta_1.png"),
-            new ResourceLocation("fcp", "textures/entity/msta/msta_2.png"),
-            new ResourceLocation("fcp", "textures/entity/msta/msta_3.png"),
-            new ResourceLocation("fcp", "textures/entity/msta/msta_4.png"),
-            new ResourceLocation("fcp", "textures/entity/msta/msta_5.png"),
-            new ResourceLocation("fcp", "textures/entity/msta/msta_6.png"),
-            new ResourceLocation("fcp", "textures/entity/msta/msta_7.png"),
-            new ResourceLocation("fcp", "textures/entity/msta/msta_8.png"),
-            new ResourceLocation("fcp", "textures/entity/msta/msta_9.png"),
-
-            // Wrecked Textures
-            new ResourceLocation("fcp", "textures/entity/msta/msta_1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/msta/msta_2_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/msta/msta_3_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/msta/msta_4_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/msta/msta_5_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/msta/msta_6_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/msta/msta_7_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/msta/msta_8_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/msta/msta_9_wrecked.png"),
-    };
-
-    private static final String[] CAMO_NAMES = {"Base"};
-
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(MstaEntity.class, EntityDataSerializers.FLOAT);
 
     private float prevSteeringAngle = 0f;
@@ -56,12 +29,6 @@ public class MstaEntity extends CamoArtilleryBase {
     private float prevWheelRotation = 0f;
 
     public MstaEntity(EntityType<MstaEntity> type, Level world) {super(type, world);}
-
-    @Override
-    public ResourceLocation[] getCamoTextures() {return CAMO_TEXTURES;}
-
-    @Override
-    public String[] getCamoNames() {return CAMO_NAMES;}
 
     @Override
     protected void defineSynchedData() {
@@ -91,7 +58,7 @@ public class MstaEntity extends CamoArtilleryBase {
     @Override
     public DamageModifier getDamageModifier() {
         return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+                .custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);
     }
 
     @Override

@@ -7,6 +7,7 @@ import frontline.combat.fcp.client.model.Stryker.StrykerMGSModel;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerMGSEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class StrykerMGSRenderer extends VehicleRenderer<StrykerMGSEntity> {
 
@@ -14,6 +15,6 @@ public class StrykerMGSRenderer extends VehicleRenderer<StrykerMGSEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(StrykerMGSEntity entity) {
-        return entity.getCurrentTexture();
+        return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 }

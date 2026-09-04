@@ -5,6 +5,7 @@ import frontline.combat.fcp.client.model.Mi17.MI17Model;
 import frontline.combat.fcp.entity.vehicle.Mi17.MI17Entity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class MI17Renderer extends VehicleRenderer<MI17Entity> {
 
@@ -14,6 +15,6 @@ public class MI17Renderer extends VehicleRenderer<MI17Entity> {
 
     @Override
     public ResourceLocation getTextureLocation(MI17Entity entity) {
-        return entity.getCurrentTexture();
+        return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 }

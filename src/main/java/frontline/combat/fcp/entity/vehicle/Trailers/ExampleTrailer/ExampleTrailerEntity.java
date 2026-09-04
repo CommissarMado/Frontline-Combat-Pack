@@ -31,37 +31,10 @@ import software.bernie.geckolib.util.GeckoLibUtil;
  */
 public class ExampleTrailerEntity extends AbstractTrailerEntity {
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            // Normal
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo1.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo2.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo3.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_od.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_tan.png"),
-            // Wrecked
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo2_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_camo3_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_od_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/lav/lav25_tan_wrecked.png")
-    };
-
-    private static final String[] CAMO_NAMES = {"Camo Variant 1", "Camo Variant 2", "Camo Variant 3", "No-Camo", "Tan"};
-
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public ExampleTrailerEntity(EntityType<ExampleTrailerEntity> type, Level world) {
         super(type, world);
-    }
-
-    @Override
-    public ResourceLocation[] getCamoTextures() {
-        return CAMO_TEXTURES;
-    }
-
-    @Override
-    public String[] getCamoNames() {
-        return CAMO_NAMES;
     }
 
     @Override

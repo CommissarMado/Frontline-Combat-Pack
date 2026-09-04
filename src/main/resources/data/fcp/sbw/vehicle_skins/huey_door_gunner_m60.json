@@ -1,0 +1,22 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Standard",
+      "Texture": "fcp:textures/entity/huey/huey_1_m60.png",
+      "Priority": 1
+    },
+    {
+      "Id": "white",
+      "Name": "White",
+      "Texture": "fcp:textures/entity/huey/huey_2_m60.png",
+      "Priority": 2
+    },
+    {
+      "Id": "shark",
+      "Name": "Shark",
+      "Texture": "fcp:textures/entity/huey/huey_3_m60.png",
+      "Priority": 3
+    }
+  ]
+}

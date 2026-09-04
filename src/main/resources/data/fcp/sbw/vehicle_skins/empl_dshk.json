@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Default",
+      "Texture": "fcp:textures/entity/emplacements/dshk.png",
+      "Priority": 1
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import frontline.combat.fcp.client.model.MemeVehicles.WolfModel;
 import frontline.combat.fcp.entity.vehicle.MemeVehicles.WolfEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class WolfRenderer extends VehicleRenderer<WolfEntity> {
 
@@ -12,6 +13,6 @@ public class WolfRenderer extends VehicleRenderer<WolfEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(WolfEntity entity) {
-        return entity.getCurrentTexture();
+        return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 }

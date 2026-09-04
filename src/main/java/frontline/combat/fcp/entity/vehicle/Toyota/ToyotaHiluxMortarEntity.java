@@ -28,14 +28,6 @@ public class ToyotaHiluxMortarEntity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/toyota/toyota_hilux_mortar.png"),
-            //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/toyota/toyota_hilux_mortar_wrecked.png")
-    };
-    private static final String[] CAMO_NAMES = {"Toyota"};
-
     // Ticks between the fire sounds and the round leaving the tube (matches SBW's deployable
     // mortar: FIRE_TIME 25 -> spawn at 5). Tune to line the launch up with the boom.
     private static final int MORTAR_FIRE_DELAY = 20;
@@ -49,9 +41,6 @@ public class ToyotaHiluxMortarEntity extends CamoVehicleBase {
 
     public ToyotaHiluxMortarEntity(EntityType<ToyotaHiluxMortarEntity> type, Level world) { super(type, world); }
 
-    @Override public ResourceLocation[] getCamoTextures() { return CAMO_TEXTURES; }
-    @Override public String[] getCamoNames() { return CAMO_NAMES; }
-
     @Override protected void defineSynchedData() { super.defineSynchedData(); this.entityData.define(STEERING_ANGLE, 0f); }
     public float getSteeringAngle() { return this.entityData.get(STEERING_ANGLE); }
     public void setSteeringAngle(float a) { this.entityData.set(STEERING_ANGLE, a); }
@@ -60,7 +49,7 @@ public class ToyotaHiluxMortarEntity extends CamoVehicleBase {
     public float getPrevWheelRotation(){ return prevWheelRotation; }
 
     @Override public DamageModifier getDamageModifier() {
-        return super.getDamageModifier().custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+        return super.getDamageModifier().custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);
     }
     @Override public void addAdditionalSaveData(net.minecraft.nbt.CompoundTag c) { super.addAdditionalSaveData(c); c.putFloat("SteeringAngle", getSteeringAngle()); }
     @Override public void readAdditionalSaveData(net.minecraft.nbt.CompoundTag c) { super.readAdditionalSaveData(c); if (c.contains("SteeringAngle")) setSteeringAngle(c.getFloat("SteeringAngle")); }

@@ -111,7 +111,6 @@
   "Mass": 12,
   "VehicleContainerType": "Empty",
   "DestroyInfo": {
-    "ParticleType": "Medium",
     "ExplosionDamage": 0,
     "ExplosionRadius": 0
   },

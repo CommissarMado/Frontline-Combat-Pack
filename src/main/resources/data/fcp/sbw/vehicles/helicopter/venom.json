@@ -371,7 +371,6 @@
     "All - 8"
   ],
   "DestroyInfo": {
-    "ParticleType": "Medium",
     "ExplosionDamage": 350,
     "ExplosionRadius": 12,
     "CrashPassengers": true

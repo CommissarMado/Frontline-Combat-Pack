@@ -58,15 +58,6 @@ import java.util.List;
  */
 public class CombineEntity extends CamoVehicleBase {
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            // Normal
-            new ResourceLocation("fcp", "textures/entity/tractor/combine.png"),
-            // Wrecked
-            new ResourceLocation("fcp", "textures/entity/tractor/combine_wrecked.png")
-    };
-
-    private static final String[] CAMO_NAMES = {"John Deere"};
-
     // ── Cargo ───────────────────────────────────────────────────────────────────
     /** Yield inventory size in slots. Rounded up to a multiple of 9; scrolls past 63. */
 
@@ -122,16 +113,6 @@ public class CombineEntity extends CamoVehicleBase {
     }
 
     // ── Vehicle plumbing ────────────────────────────────────────────────────────
-
-    @Override
-    public ResourceLocation[] getCamoTextures() {
-        return CAMO_TEXTURES;
-    }
-
-    @Override
-    public String[] getCamoNames() {
-        return CAMO_NAMES;
-    }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar reg) {

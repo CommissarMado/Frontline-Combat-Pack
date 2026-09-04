@@ -16,6 +16,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class HumveeUnarmedRenderer extends VehicleRenderer<HumveeUnarmedEntity> {
 
@@ -25,7 +26,7 @@ public class HumveeUnarmedRenderer extends VehicleRenderer<HumveeUnarmedEntity> 
 
     @Override
     public ResourceLocation getTextureLocation(HumveeUnarmedEntity entity) {
-        return entity.getCurrentTexture();
+        return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 
     @Override

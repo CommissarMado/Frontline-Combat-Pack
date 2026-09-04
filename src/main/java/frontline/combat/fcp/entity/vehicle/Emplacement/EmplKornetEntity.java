@@ -12,13 +12,6 @@ public class EmplKornetEntity extends EmplacementEntity {
     protected boolean usesInventoryReload() {
         return false;
     }
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            new ResourceLocation("fcp", "textures/entity/emplacements/kornet.png"),
-            new ResourceLocation("fcp", "textures/entity/emplacements/kornet.png")
-    };
-    private static final String[] CAMO_NAMES = {"Default"};
     public EmplKornetEntity(EntityType<EmplKornetEntity> type, Level world) {super(type, world);}
-    @Override public ResourceLocation[] getCamoTextures() {return CAMO_TEXTURES;}
-    @Override public String[] getCamoNames() {return CAMO_NAMES;}
-    @Override public DamageModifier getDamageModifier() {return super.getDamageModifier().custom((s,dmg) -> getSourceAngle(s, 0.4f) * dmg);}
+    @Override public DamageModifier getDamageModifier() {return super.getDamageModifier().custom((entity, s, dmg) -> getSourceAngle(s, 0.4f) * dmg);}
 }

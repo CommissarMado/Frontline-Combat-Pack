@@ -20,25 +20,6 @@ public class BTR80Entity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82.png"),
-            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_camo.png"),
-            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_desert.png"),
-            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_ukr.png"),
-            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_winter_1.png"),
-            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_winter_2.png"),
-            //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_camo_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_desert_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_ukr_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_winter_1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/btr82a/btr_82_winter_2_wrecked.png"),
-    };
-
-    private static final String[] CAMO_NAMES = {"Default", "Camo", "Desert", "Ukrainian", "Winter 1", "Winter 2"};
-
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(BTR80Entity.class, EntityDataSerializers.FLOAT);
 
     private float prevSteeringAngle = 0f;
@@ -48,12 +29,6 @@ public class BTR80Entity extends CamoVehicleBase {
     private float prevWheelRotation = 0f;
 
     public BTR80Entity(EntityType<BTR80Entity> type, Level world) {super(type, world);}
-
-    @Override
-    public ResourceLocation[] getCamoTextures() {return CAMO_TEXTURES;}
-
-    @Override
-    public String[] getCamoNames() {return CAMO_NAMES;}
 
     @Override
     protected void defineSynchedData() {
@@ -83,7 +58,7 @@ public class BTR80Entity extends CamoVehicleBase {
     @Override
     public DamageModifier getDamageModifier() {
         return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+                .custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);
     }
 
     @Override

@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "John Deere",
+      "Texture": "fcp:textures/entity/tractor/combine.png",
+      "Priority": 1
+    }
+  ]
+}

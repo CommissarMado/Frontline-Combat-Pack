@@ -1,0 +1,34 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Base",
+      "Texture": "fcp:textures/entity/uaz/uaz_dshka_2.png",
+      "Priority": 1
+    },
+    {
+      "Id": "z",
+      "Name": "Z",
+      "Texture": "fcp:textures/entity/uaz/uaz_dshka_1.png",
+      "Priority": 2
+    },
+    {
+      "Id": "ukraine_medic",
+      "Name": "Ukraine Medic",
+      "Texture": "fcp:textures/entity/uaz/uaz_dshka_3.png",
+      "Priority": 3
+    },
+    {
+      "Id": "ukraine",
+      "Name": "Ukraine",
+      "Texture": "fcp:textures/entity/uaz/uaz_dshka_4.png",
+      "Priority": 4
+    },
+    {
+      "Id": "ukraine_striped",
+      "Name": "Ukraine Striped",
+      "Texture": "fcp:textures/entity/uaz/uaz_dshka_5.png",
+      "Priority": 5
+    }
+  ]
+}

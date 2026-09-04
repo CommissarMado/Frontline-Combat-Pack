@@ -5,8 +5,9 @@ import frontline.combat.fcp.client.model.Pantsir.PantsirModel;
 import frontline.combat.fcp.entity.vehicle.Pantsir.PantsirEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class PantsirRenderer extends VehicleRenderer<PantsirEntity> {
     public PantsirRenderer(EntityRendererProvider.Context ctx) {super(ctx, new PantsirModel());}
-    @Override public ResourceLocation getTextureLocation(PantsirEntity e) {return e.getCurrentTexture();}
+    @Override public ResourceLocation getTextureLocation(PantsirEntity e) {return FcpVehicleTexture.resolve(e, e.getCurrentTexture());}
 }

@@ -20,15 +20,6 @@ public class T72AVEntity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/t72av/t72av.png"),
-            //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/t72av/t72av_wrecked.png")
-    };
-
-    private static final String[] CAMO_NAMES = {"Flag", "No-Flag"};
-
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(T72AVEntity.class, EntityDataSerializers.FLOAT);
 
     private float prevSteeringAngle = 0f;
@@ -38,12 +29,6 @@ public class T72AVEntity extends CamoVehicleBase {
     private float prevWheelRotation = 0f;
 
     public T72AVEntity(EntityType<T72AVEntity> type, Level world) {super(type, world);}
-
-    @Override
-    public ResourceLocation[] getCamoTextures() {return CAMO_TEXTURES;}
-
-    @Override
-    public String[] getCamoNames() {return CAMO_NAMES;}
 
     @Override
     protected void defineSynchedData() {
@@ -73,7 +58,7 @@ public class T72AVEntity extends CamoVehicleBase {
     @Override
     public DamageModifier getDamageModifier() {
         return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+                .custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);
     }
 
     @Override

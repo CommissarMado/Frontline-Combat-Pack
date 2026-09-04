@@ -7,6 +7,7 @@ import frontline.combat.fcp.entity.vehicle.M109.M109Entity;
 import frontline.combat.fcp.entity.vehicle.Msta.MstaEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class MstaRenderer extends VehicleRenderer<MstaEntity> {
 
@@ -14,6 +15,6 @@ public class MstaRenderer extends VehicleRenderer<MstaEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(MstaEntity entity) {
-        return entity.getCurrentTexture();
+        return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 }

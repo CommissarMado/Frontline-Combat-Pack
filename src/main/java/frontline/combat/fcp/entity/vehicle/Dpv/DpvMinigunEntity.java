@@ -20,18 +20,6 @@ public class DpvMinigunEntity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            // Normal
-            new ResourceLocation("fcp", "textures/entity/dpv/dpv_sand.png"),
-            new ResourceLocation("fcp", "textures/entity/dpv/dpv_green.png"),
-            new ResourceLocation("fcp", "textures/entity/dpv/dpv_black.png"),
-            // Wrecked (no dedicated wrecked skins yet; reuse normals)
-            new ResourceLocation("fcp", "textures/entity/dpv/dpv_sand.png"),
-            new ResourceLocation("fcp", "textures/entity/dpv/dpv_green.png"),
-            new ResourceLocation("fcp", "textures/entity/dpv/dpv_black.png")
-    };
-    private static final String[] CAMO_NAMES = {"Sand", "Green", "Black"};
-
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(DpvMinigunEntity.class, EntityDataSerializers.FLOAT);
     private float prevSteeringAngle = 0f;
     private float wheelRotation = 0f;
@@ -42,9 +30,6 @@ public class DpvMinigunEntity extends CamoVehicleBase {
     private int previousCannonAmmo = -1;
     private float barrelRotation = 0f;
     private float barrelRotationOld = 0f;
-
-    @Override public ResourceLocation[] getCamoTextures() {return CAMO_TEXTURES;}
-    @Override public String[] getCamoNames() {return CAMO_NAMES;}
 
     @Override
     protected void defineSynchedData() {super.defineSynchedData(); this.entityData.define(STEERING_ANGLE, 0f);}
@@ -57,7 +42,7 @@ public class DpvMinigunEntity extends CamoVehicleBase {
 
     @Override
     public DamageModifier getDamageModifier() {
-        return super.getDamageModifier().custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+        return super.getDamageModifier().custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);
     }
 
     @Override

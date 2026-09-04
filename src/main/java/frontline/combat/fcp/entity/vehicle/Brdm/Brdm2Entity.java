@@ -20,25 +20,18 @@ public class Brdm2Entity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            new ResourceLocation("fcp", "textures/entity/brdm/green.png"),
-            new ResourceLocation("fcp", "textures/entity/brdm/green.png")
-    };
-    private static final String[] CAMO_NAMES = {"Green"};
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(Brdm2Entity.class, EntityDataSerializers.FLOAT);
     private float prevSteeringAngle = 0f;
     private float wheelRotation = 0f;
     private float prevWheelRotation = 0f;
     public Brdm2Entity(EntityType<Brdm2Entity> type, Level world) {super(type, world);}
-    @Override public ResourceLocation[] getCamoTextures() {return CAMO_TEXTURES;}
-    @Override public String[] getCamoNames() {return CAMO_NAMES;}
     @Override protected void defineSynchedData() {super.defineSynchedData(); this.entityData.define(STEERING_ANGLE, 0f);}
     public float getSteeringAngle() {return this.entityData.get(STEERING_ANGLE);}
     public void setSteeringAngle(float angle) {this.entityData.set(STEERING_ANGLE, angle);}
     public float getPrevSteeringAngle(){return prevSteeringAngle;}
     public float getWheelRotation(){return wheelRotation;}
     public float getPrevWheelRotation(){return prevWheelRotation;}
-    @Override public DamageModifier getDamageModifier() {return super.getDamageModifier().custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);}
+    @Override public DamageModifier getDamageModifier() {return super.getDamageModifier().custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);}
     @Override public void addAdditionalSaveData(net.minecraft.nbt.CompoundTag c) {super.addAdditionalSaveData(c); c.putFloat("SteeringAngle", getSteeringAngle());}
     @Override public void readAdditionalSaveData(net.minecraft.nbt.CompoundTag c) {super.readAdditionalSaveData(c); if (c.contains("SteeringAngle")) setSteeringAngle(c.getFloat("SteeringAngle"));}
     @Override public void baseTick() {

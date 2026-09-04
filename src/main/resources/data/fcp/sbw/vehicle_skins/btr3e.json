@@ -1,0 +1,16 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Green",
+      "Texture": "fcp:textures/entity/btr3e/btr3e_green.png",
+      "Priority": 1
+    },
+    {
+      "Id": "tan",
+      "Name": "Tan",
+      "Texture": "fcp:textures/entity/btr3e/btr3e_tan.png",
+      "Priority": 2
+    }
+  ]
+}

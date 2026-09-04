@@ -33,28 +33,6 @@ public class HumveeUnarmedEntity extends CamoVehicleBase implements HumveeVehicl
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    // Shared camo skins (paint schemes over the common UV). Wrecked slots reuse the normal
-    // skins as placeholders until dedicated wrecked textures exist. camoCount = 11.
-    private static final String[] SKINS = {
-            "hmww_tex_1", "hmww_tex_1_1", "hmww_tex_2", "hmww_tex_2_1", "hmww_tex_3_1",
-            "hmww_tex_5", "hmww_tex_6", "hmww_tex_6_1", "hmww_tex_6_2",
-            "hmww_tex_7_komuf_1", "hmww_tex_7_komuf_2"
-    };
-    private static final ResourceLocation[] CAMO_TEXTURES = buildTextures();
-    private static final String[] CAMO_NAMES = {
-            "Tex 1", "Tex 1-1", "Tex 2", "Tex 2-1", "Tex 3-1", "Tex 5",
-            "Tex 6", "Tex 6-1", "Tex 6-2", "Komuf 1", "Komuf 2"
-    };
-
-    private static ResourceLocation[] buildTextures() {
-        ResourceLocation[] out = new ResourceLocation[SKINS.length * 2];
-        for (int i = 0; i < SKINS.length; i++) {
-            out[i] = new ResourceLocation("fcp", "textures/entity/humvee/" + SKINS[i] + ".png");
-            out[i + SKINS.length] = out[i]; // wrecked placeholder = normal
-        }
-        return out;
-    }
-
     private static final EntityDataAccessor<Float> STEERING_ANGLE =
             SynchedEntityData.defineId(HumveeUnarmedEntity.class, EntityDataSerializers.FLOAT);
     // Selected attachment variants, encoded as "Category=idx;Category=idx;...".
@@ -70,16 +48,6 @@ public class HumveeUnarmedEntity extends CamoVehicleBase implements HumveeVehicl
 
     public HumveeUnarmedEntity(EntityType<HumveeUnarmedEntity> type, Level world) {
         super(type, world);
-    }
-
-    @Override
-    public ResourceLocation[] getCamoTextures() {
-        return CAMO_TEXTURES;
-    }
-
-    @Override
-    public String[] getCamoNames() {
-        return CAMO_NAMES;
     }
 
     @Override
@@ -171,7 +139,7 @@ public class HumveeUnarmedEntity extends CamoVehicleBase implements HumveeVehicl
     @Override
     public DamageModifier getDamageModifier() {
         return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+                .custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);
     }
 
     @Override

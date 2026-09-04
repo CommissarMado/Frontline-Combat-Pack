@@ -14,6 +14,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.AABB;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class M939Renderer extends VehicleRenderer<M939Entity> {
     // "tent" canopy hitbox, matching the interaction handler (M939TentHandler). Already accounts for
@@ -23,7 +24,7 @@ public class M939Renderer extends VehicleRenderer<M939Entity> {
     public M939Renderer(EntityRendererProvider.Context ctx) {super(ctx, new M939Model());}
 
     @Override
-    public ResourceLocation getTextureLocation(M939Entity entity) {return entity.getCurrentTexture();}
+    public ResourceLocation getTextureLocation(M939Entity entity) {return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());}
 
     @Override
     public void render(M939Entity entity, float entityYaw, float partialTick,

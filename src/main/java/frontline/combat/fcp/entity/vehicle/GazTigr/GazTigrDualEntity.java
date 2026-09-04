@@ -23,17 +23,6 @@ public class GazTigrDualEntity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final ResourceLocation[] CAMO_TEXTURES = {
-            //Normal Texture
-            new ResourceLocation("fcp", "textures/entity/gaz_tigr/gaz_tigr_1.png"),
-            new ResourceLocation("fcp", "textures/entity/gaz_tigr/gaz_tigr_2.png"),
-            //Wrecked Texture
-            new ResourceLocation("fcp", "textures/entity/gaz_tigr/gaz_tigr_1_wrecked.png"),
-            new ResourceLocation("fcp", "textures/entity/gaz_tigr/gaz_tigr_2_wrecked.png")
-    };
-
-    private static final String[] CAMO_NAMES = {"Standard", "Camo"};
-
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(GazTigrDualEntity.class, EntityDataSerializers.FLOAT);
 
     private float prevSteeringAngle = 0f;
@@ -42,16 +31,6 @@ public class GazTigrDualEntity extends CamoVehicleBase {
 
     public GazTigrDualEntity(EntityType<GazTigrDualEntity> type, Level world) {
         super(type, world);
-    }
-
-    @Override
-    public ResourceLocation[] getCamoTextures() {
-        return CAMO_TEXTURES;
-    }
-
-    @Override
-    public String[] getCamoNames() {
-        return CAMO_NAMES;
     }
 
     @Override
@@ -83,7 +62,7 @@ public class GazTigrDualEntity extends CamoVehicleBase {
     @Override
     public DamageModifier getDamageModifier() {
         return super.getDamageModifier()
-                .custom((source, damage) -> getSourceAngle(source, 0.4f) * damage);
+                .custom((entity, source, damage) -> getSourceAngle(source, 0.4f) * damage);
     }
 
     @Override

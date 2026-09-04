@@ -5,12 +5,13 @@ import frontline.combat.fcp.client.model.Huey.HueyRocketsModel;
 import frontline.combat.fcp.entity.vehicle.Huey.HueyRocketsEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class HueyRocketsRenderer extends VehicleRenderer<HueyRocketsEntity> {
     public HueyRocketsRenderer(EntityRendererProvider.Context renderManager) {super(renderManager, new HueyRocketsModel());}
 
     @Override
     public ResourceLocation getTextureLocation(HueyRocketsEntity entity) {
-        return entity.getCurrentTexture();
+        return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 }
