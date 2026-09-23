@@ -104,12 +104,13 @@
   "PassengerRenderScale": 0.85,
   "Seats": [
     {
+      "BanHand": true,
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "Position": [
         -0.75,
-        1.25,
-        4.6
+        1.15,
+        3.1
       ],
       "Sensitivity": [
         0,
@@ -121,8 +122,8 @@
         "UseFixedCameraPos": true,
         "Position": [
           -0.75,
-          2.45,
-          4.6
+          2.5,
+          3.5
         ],
         "UseAircraftCamera": true,
         "AircraftCameraPos": [
@@ -138,20 +139,21 @@
       ]
     },
     {
+      "HasThermalImaging": true,
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "Position": [
         0.75,
-        1.25,
-        4.6
+        1.15,
+        3.1
       ],
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
         "Position": [
           0,
-          0.3,
-          -0.3
+          0.0,
+          0.0
         ],
         "Direction": "Barrel"
       },
@@ -168,18 +170,12 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "Position": [
-        -1.1,
-        1.1,
-        2.4
+        0.7,
+        0.9,
+        1.9
       ],
       "CameraPos": {
-        "Transform": "Vehicle",
-        "UseFixedCameraPos": true,
-        "Position": [
-          -1.1,
-          2.3,
-          2.4
-        ]
+        "Transform": "Vehicle"
       },
       "Orientation": -90,
       "MinPitch": -50,
@@ -192,18 +188,12 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "Position": [
-        1.1,
-        1.1,
-        2.4
+        -0.7,
+        0.9,
+        1.9
       ],
       "CameraPos": {
-        "Transform": "Vehicle",
-        "UseFixedCameraPos": true,
-        "Position": [
-          1.1,
-          2.3,
-          2.4
-        ]
+        "Transform": "Vehicle"
       },
       "Orientation": 90,
       "MinPitch": -50,
@@ -216,20 +206,14 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "Position": [
-        -1.1,
-        1.1,
-        -2.4
+        0.0,
+        0.9,
+        1.9
       ],
       "CameraPos": {
-        "Transform": "Vehicle",
-        "UseFixedCameraPos": true,
-        "Position": [
-          -1.1,
-          2.3,
-          -2.4
-        ]
+        "Transform": "Vehicle"
       },
-      "Orientation": -90,
+      "Orientation": 180,
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
@@ -240,20 +224,140 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "Position": [
-        1.1,
-        1.1,
-        -2.4
+        0.9,
+        0.9,
+        0.3
       ],
       "CameraPos": {
-        "Transform": "Vehicle",
-        "UseFixedCameraPos": true,
-        "Position": [
-          1.1,
-          2.3,
-          -2.4
-        ]
+        "Transform": "Vehicle"
       },
-      "Orientation": 90,
+      "Orientation": 180,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        -0.9,
+        0.9,
+        0.3
+      ],
+      "CameraPos": {
+        "Transform": "Vehicle"
+      },
+      "Orientation": 180,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        0.9,
+        0.9,
+        -1.45
+      ],
+      "CameraPos": {
+        "Transform": "Vehicle"
+      },
+      "Orientation": 0,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        -0.9,
+        0.9,
+        -1.45
+      ],
+      "CameraPos": {
+        "Transform": "Vehicle"
+      },
+      "Orientation": 0,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        0.3,
+        0.9,
+        0.3
+      ],
+      "CameraPos": {
+        "Transform": "Vehicle"
+      },
+      "Orientation": 180,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        -0.3,
+        0.9,
+        0.3
+      ],
+      "CameraPos": {
+        "Transform": "Vehicle"
+      },
+      "Orientation": 180,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        0.3,
+        0.9,
+        -1.45
+      ],
+      "CameraPos": {
+        "Transform": "Vehicle"
+      },
+      "Orientation": 180,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        -0.3,
+        0.9,
+        -1.45
+      ],
+      "CameraPos": {
+        "Transform": "Vehicle"
+      },
+      "Orientation": 180,
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
@@ -316,22 +420,22 @@
         ],
         "Positions": [
           [
-            2.77794,
-            1.52794,
+            -2.28419,
+            1.09044,
             0.99375
           ],
           [
-            2.28419,
-            1.52794,
-            0.99375
-          ],
-          [
-            2.77794,
+            -2.77794,
             1.09044,
             0.99375
           ],
           [
             2.28419,
+            1.09044,
+            0.99375
+          ],
+          [
+            2.77794,
             1.09044,
             0.99375
           ]
@@ -352,81 +456,46 @@
       "SoundRadius": 8
     },
     "Hellfire2": {
-      "Icon": "fcp:textures/screens/vehicle_weapon/hellfire.png",
-      "DefaultZoom": 2,
       "DefaultFireMode": "Semi",
       "AvailableFireModes": "Semi",
+      "DefaultZoom": 3,
+      "Name": "weapon.fcp.hellfire_wire",
+      "AmmoType": "superbwarfare:large_anti_ground_missile",
+      "Projectile": "fcp:wire_guided_hellfire",
       "Magazine": 4,
       "EmptyReloadTime": 200,
-      "Projectile": "fcp:lock_on_hellfire",
-      "Name": "weapon.fcp.hellfire_missile_entity",
-      "Damage": 1100,
-      "ExplosionDamage": 180,
-      "ExplosionRadius": 4,
-      "AddShooterDeltaMovement": true,
-      "Velocity": 1.05,
-      "SeekWeaponInfo": {
-        "SeekDirection": "Default",
-        "SeekRange": 384,
-        "SeekAngle": 20,
-        "SeekTime": 20,
-        "MaxTargetHeight": 32,
-        "MinTargetSize": 0.9,
-        "OnlyLockEntity": true
-      },
-      "AmmoType": [
-        {
-          "Ammo": "superbwarfare:large_anti_ground_missile",
-          "ShouldUnload": false
-        },
-        {
-          "Ammo": "superbwarfare:large_anti_ground_missile",
-          "ShouldUnload": false,
-          "Override": {
-            "Name": "weapon.fcp.hellfire_missile_block",
-            "SeekWeaponInfo": {
-              "SeekDirection": "Default",
-              "SeekRange": 384,
-              "SeekAngle": 60,
-              "SeekTime": 20,
-              "MaxTargetHeight": 32,
-              "MinTargetSize": 0.9,
-              "OnlyLockBlock": true
-            }
-          }
-        }
-      ],
+      "Damage": 400,
+      "ExplosionDamage": 80,
+      "ExplosionRadius": 6,
+      "Velocity": 3,
       "ShootPos": {
         "Transform": "Vehicle",
-        "ShootPositionForHud": [
-          0,
-          1.1475,
-          0
-        ],
         "Positions": [
           [
-            -2.77794,
-            1.52794,
-            0.99375
-          ],
-          [
             -2.28419,
             1.52794,
             0.99375
           ],
           [
             -2.77794,
-            1.09044,
+            1.52794,
             0.99375
           ],
           [
-            -2.28419,
-            1.09044,
+            2.28419,
+            1.52794,
+            0.99375
+          ],
+          [
+            2.77794,
+            1.52794,
             0.99375
           ]
         ],
         "BoundUpWithAmmoAmount": true
       },
+      "Crosshair": "@VehicleCommonMissile",
+      "CrosshairColor": "0x00FF66",
       "SoundInfo": {
         "Fire1P": "superbwarfare:bomb_release",
         "Fire3P": "superbwarfare:bomb_release",
@@ -436,9 +505,7 @@
         "Locking": "superbwarfare:missile_locking",
         "Locked": "superbwarfare:missile_locked"
       },
-      "Crosshair": "@AirCraftMissile",
-      "CrosshairColor": "0x66FF00",
-      "SoundRadius": 8
+      "Icon": "fcp:textures/screens/vehicle_weapon/hellfire.png"
     },
     "Rocket": {
       "AmmoType": "superbwarfare:small_rocket",
@@ -515,6 +582,7 @@
   "Mass": 1.0,
   "AllowFreeCam": true,
   "HasDecoy": true,
+  "SmokeDecoy": false,
   "DamageModifiers": [
     "minecraft:arrow * 0.15",
     "minecraft:explosion * 4",

@@ -3,35 +3,20 @@
   "MaxHealth": 300,
   "MaxEnergy": 8000000,
   "TurretPos": [
-    1.75,
-    1.83514,
-    1.93753
+    1.95673,
+    1.89468,
+    1.91293
   ],
   "TurretPitchRange": [
     -60,
     60
   ],
   "BarrelPos": [
-    0.02548,
-    -0.00296,
-    0.1004
+    -0.0031,
+    0.0569,
+    0.14245
   ],
-  "TurretControllerIndex": 2,
-  "PassengerWeaponStationPos": [
-    -1.75,
-    1.83514,
-    1.93753
-  ],
-  "PassengerWeaponStationBarrelPos": [
-    -0.02548,
-    -0.00296,
-    0.1004
-  ],
-  "PassengerWeaponStationPitchRange": [
-    -60,
-    60
-  ],
-  "PassengerWeaponStationControllerIndex": 3,
+  "TurretControllerIndex": 3,
   "OBB": [
     {
       "Size": [
@@ -102,12 +87,13 @@
   "PassengerRenderScale": 0.85,
   "Seats": [
     {
+      "BanHand": true,
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "Position": [
         -0.75,
-        1.25,
-        4.6
+        1.15,
+        3.1
       ],
       "Sensitivity": [
         0,
@@ -119,8 +105,8 @@
         "UseFixedCameraPos": true,
         "Position": [
           -0.75,
-          2.45,
-          4.6
+          2.5,
+          3.5
         ],
         "UseAircraftCamera": true,
         "AircraftCameraPos": [
@@ -136,16 +122,16 @@
       "Transform": "Vehicle",
       "Position": [
         0.75,
-        1.25,
-        4.6
+        1.15,
+        3.1
       ],
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
         "Position": [
           0.75,
-          2.45,
-          4.6
+          2.5,
+          3.5
         ]
       },
       "BanHand": true
@@ -154,9 +140,9 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "Position": [
-        1.42879,
-        1.8551,
-        -0.02647
+        0.7,
+        0.9,
+        1.9
       ],
       "CameraPos": {
         "Transform": "Barrel",
@@ -167,35 +153,6 @@
           -0.5
         ],
         "Direction": "Barrel"
-      },
-      "Weapons": [
-        "MinigunRight"
-      ],
-      "Crosshair": "@Empty",
-      "Orientation": 90,
-      "MinPitch": -50,
-      "MaxPitch": 15,
-      "MinYaw": -75,
-      "MaxYaw": 75,
-      "BanHand": true
-    },
-    {
-      "IsEnclosed": true,
-      "Transform": "WeaponStation",
-      "Position": [
-        0,
-        -0.5,
-        0
-      ],
-      "CameraPos": {
-        "Transform": "WeaponStationBarrel",
-        "UseFixedCameraPos": true,
-        "Position": [
-          0,
-          0.5,
-          -0.5
-        ],
-        "Direction": "WeaponStationBarrel"
       },
       "Weapons": [
         "MinigunLeft"
@@ -212,43 +169,24 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "Position": [
-        -1.1,
-        1.1,
-        2.6
+        -0.7,
+        0.9,
+        1.9
       ],
       "CameraPos": {
-        "Transform": "Vehicle",
+        "Transform": "Barrel2",
         "UseFixedCameraPos": true,
         "Position": [
-          -1.1,
-          2.3,
-          2.6
-        ]
+          0,
+          0.5,
+          -0.5
+        ],
+        "Direction": "Barrel2"
       },
-      "Orientation": -90,
-      "MinPitch": -50,
-      "MaxPitch": 15,
-      "MinYaw": -75,
-      "MaxYaw": 75,
-      "BanHand": true
-    },
-    {
-      "IsEnclosed": true,
-      "Transform": "Vehicle",
-      "Position": [
-        1.1,
-        1.1,
-        2.6
+      "Weapons": [
+        "MinigunRight"
       ],
-      "CameraPos": {
-        "Transform": "Vehicle",
-        "UseFixedCameraPos": true,
-        "Position": [
-          1.1,
-          2.3,
-          2.6
-        ]
-      },
+      "Crosshair": "@Empty",
       "Orientation": 90,
       "MinPitch": -50,
       "MaxPitch": 15,
@@ -260,20 +198,14 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "Position": [
-        -1.1,
-        1.1,
-        -2.6
+        0.0,
+        0.9,
+        1.9
       ],
       "CameraPos": {
-        "Transform": "Vehicle",
-        "UseFixedCameraPos": true,
-        "Position": [
-          -1.1,
-          2.3,
-          -2.6
-        ]
+        "Transform": "Vehicle"
       },
-      "Orientation": -90,
+      "Orientation": 180,
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
@@ -284,20 +216,140 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "Position": [
-        1.1,
-        1.1,
-        -2.6
+        0.9,
+        0.9,
+        0.3
       ],
       "CameraPos": {
-        "Transform": "Vehicle",
-        "UseFixedCameraPos": true,
-        "Position": [
-          1.1,
-          2.3,
-          -2.6
-        ]
+        "Transform": "Vehicle"
       },
-      "Orientation": 90,
+      "Orientation": 180,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        -0.9,
+        0.9,
+        0.3
+      ],
+      "CameraPos": {
+        "Transform": "Vehicle"
+      },
+      "Orientation": 180,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        0.9,
+        0.9,
+        -1.45
+      ],
+      "CameraPos": {
+        "Transform": "Vehicle"
+      },
+      "Orientation": 0,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        -0.9,
+        0.9,
+        -1.45
+      ],
+      "CameraPos": {
+        "Transform": "Vehicle"
+      },
+      "Orientation": 0,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        0.3,
+        0.9,
+        0.3
+      ],
+      "CameraPos": {
+        "Transform": "Vehicle"
+      },
+      "Orientation": 180,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        -0.3,
+        0.9,
+        0.3
+      ],
+      "CameraPos": {
+        "Transform": "Vehicle"
+      },
+      "Orientation": 180,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        0.3,
+        0.9,
+        -1.45
+      ],
+      "CameraPos": {
+        "Transform": "Vehicle"
+      },
+      "Orientation": 180,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        -0.3,
+        0.9,
+        -1.45
+      ],
+      "CameraPos": {
+        "Transform": "Vehicle"
+      },
+      "Orientation": 180,
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
@@ -328,9 +380,9 @@
         "Transform": "Barrel",
         "Positions": [
           [
-            0.9409,
-            0.29522,
-            0.00179
+            0.88775,
+            0.23832,
+            0.04684
           ]
         ],
         "Directions": [
@@ -366,16 +418,16 @@
       "ShootAnimationTime": 1,
       "AmmoType": "superbwarfare:rifle_ammo",
       "ShootPos": {
-        "Transform": "WeaponStationBarrel",
+        "Transform": "Barrel2",
         "Positions": [
           [
-            -0.9409,
-            0.29522,
-            0.00179
+            -0.88775,
+            0.23832,
+            0.04684
           ]
         ],
         "Directions": [
-          "WeaponStationBarrel"
+          "Barrel2"
         ]
       },
       "Crosshair": "@Empty",
@@ -412,6 +464,7 @@
   "Mass": 1.0,
   "AllowFreeCam": true,
   "HasDecoy": true,
+  "SmokeDecoy": false,
   "DamageModifiers": [
     "minecraft:arrow * 0.15",
     "minecraft:explosion * 4",
@@ -461,5 +514,20 @@
       0,
       2
     ]
-  ]
+  ],
+  "Turret2Pos": [
+    -1.95673,
+    1.89468,
+    1.91293
+  ],
+  "Turret2PitchRange": [
+    -60,
+    60
+  ],
+  "Barrel2Pos": [
+    0.0031,
+    0.0569,
+    0.14245
+  ],
+  "Turret2ControllerIndex": 2
 }

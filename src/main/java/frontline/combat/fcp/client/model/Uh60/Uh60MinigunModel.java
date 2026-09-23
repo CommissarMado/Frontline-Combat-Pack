@@ -21,11 +21,13 @@ public class Uh60MinigunModel extends VehicleModel<Uh60MinigunEntity> {
                     (bone, vehicle, state) -> bone.setRotY(-Mth.lerp(state.getPartialTick(), vehicle.getPropellerRotO(), vehicle.getPropellerRot()));
             case "vint2" ->
                     (bone, vehicle, state) -> bone.setRotX(6 * Mth.lerp(state.getPartialTick(), vehicle.getPropellerRotO(), vehicle.getPropellerRot()));
-            // "turret" / "barrel" (right door gun) are auto-driven by the base
-            // VehicleModel from TurretYaw/BarrelPitch, and "passengerWeaponStationYaw"
-            // / "passengerWeaponStationPitch" (left door gun) are likewise auto-driven
-            // from the PassengerWeaponStation system - both intentionally left to the
-            // default case below. Only the two guns' independent barrel-spin needs a
+            // "turret" / "barrel" (right door gun) and "turret2" / "barrel2" (left door
+            // gun) are each auto-driven by the base VehicleModel as independent main
+            // turrets (TurretPos/BarrelPos and Turret2Pos/Barrel2Pos in
+            // uh60_minigun.json) - both intentionally left to the default case below.
+            // "bone" / "bone2" carry a static rest-pose rotation baked into the geo
+            // file itself (correcting the imported mesh to face forward) and need no
+            // Java handling either. Only the two guns' independent barrel-spin needs a
             // custom case here, since that's driven by each side's own ammo tracker.
             case "GUN" ->
                     (bone, vehicle, state) -> bone.setRotZ(-Mth.lerp(state.getPartialTick(), vehicle.getBarrelRotRightOld(), vehicle.getBarrelRotRight()));
