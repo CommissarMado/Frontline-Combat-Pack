@@ -79,6 +79,9 @@ import frontline.combat.fcp.client.renderer.Oh1.Oh1Renderer;
 import frontline.combat.fcp.client.renderer.Ch53.Ch53aRenderer;
 import frontline.combat.fcp.client.renderer.Ch53.Ch53eRenderer;
 import frontline.combat.fcp.client.renderer.Ch53.Mh53Renderer;
+import frontline.combat.fcp.client.renderer.Uh60.Uh60Renderer;
+import frontline.combat.fcp.client.renderer.Uh60.Uh60MinigunRenderer;
+import frontline.combat.fcp.client.renderer.Uh60.Mh60lRenderer;
 import frontline.combat.fcp.client.renderer.Projectile.Hellfire.LockOnHellfireRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -146,6 +149,9 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.CH53A.get(), Ch53aRenderer::new);
         event.registerEntityRenderer(ModEntities.CH53E.get(), Ch53eRenderer::new);
         event.registerEntityRenderer(ModEntities.MH53.get(), Mh53Renderer::new);
+        event.registerEntityRenderer(ModEntities.UH60.get(), Uh60Renderer::new);
+        event.registerEntityRenderer(ModEntities.UH60_MINIGUN.get(), Uh60MinigunRenderer::new);
+        event.registerEntityRenderer(ModEntities.MH60L.get(), Mh60lRenderer::new);
 
         event.registerEntityRenderer(ModEntities.GAZ_TIGR.get(), GazTigrRenderer::new);
         event.registerEntityRenderer(ModEntities.GAZ_TIGR_RWS.get(), GazTigrRWSRenderer::new);
