@@ -75,6 +75,7 @@ import frontline.combat.fcp.client.renderer.Uaz.UAZRenderer;
 import frontline.combat.fcp.client.renderer.Ural.UralGradRenderer;
 import frontline.combat.fcp.client.renderer.Ural.UralRenderer;
 import frontline.combat.fcp.client.renderer.Viper.ViperRenderer;
+import frontline.combat.fcp.client.renderer.Oh1.Oh1Renderer;
 import frontline.combat.fcp.client.renderer.Projectile.Hellfire.LockOnHellfireRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -138,6 +139,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.KAMAZ_LONG.get(), frontline.combat.fcp.client.renderer.Kamaz.KamazLongRenderer::new);
 
         event.registerEntityRenderer(ModEntities.VIPER.get(), ViperRenderer::new);
+        event.registerEntityRenderer(ModEntities.OH1.get(), Oh1Renderer::new);
 
         event.registerEntityRenderer(ModEntities.GAZ_TIGR.get(), GazTigrRenderer::new);
         event.registerEntityRenderer(ModEntities.GAZ_TIGR_RWS.get(), GazTigrRWSRenderer::new);

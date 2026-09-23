@@ -1,0 +1,22 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "JGSDF Gray",
+      "Texture": "fcp:textures/entity/oh1/oh1_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "dark_gray",
+      "Name": "Dark Gray",
+      "Texture": "fcp:textures/entity/oh1/oh1_2.png",
+      "Priority": 2
+    },
+    {
+      "Id": "woodland",
+      "Name": "Woodland",
+      "Texture": "fcp:textures/entity/oh1/oh1_3.png",
+      "Priority": 3
+    }
+  ]
+}

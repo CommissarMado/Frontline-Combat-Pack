@@ -81,6 +81,9 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.VENOM.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.VIPER.get()));
 
+                // ---- Japanese Vehicles ----
+                output.accept(ContainerBlockItem.createInstance(ModEntities.OH1.get()));
+
                 // ---- Civilian Vehicles ----
                 output.accept(ContainerBlockItem.createInstance(ModEntities.COMBINE.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.JOHN_DEERE.get()));

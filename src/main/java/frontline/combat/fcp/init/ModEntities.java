@@ -93,6 +93,7 @@ import frontline.combat.fcp.entity.vehicle.Ural.UralFuelEntity;
 import frontline.combat.fcp.entity.vehicle.Ural.UralKungEntity;
 import frontline.combat.fcp.entity.vehicle.Ural.UralGradEntity;
 import frontline.combat.fcp.entity.vehicle.Viper.ViperEntity;
+import frontline.combat.fcp.entity.vehicle.Oh1.Oh1Entity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -182,6 +183,8 @@ public class ModEntities {
             EntityType.Builder.of(KamazLongEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
     public static final RegistryObject<EntityType<ViperEntity>> VIPER = register("viper",
             EntityType.Builder.of(ViperEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<Oh1Entity>> OH1 = register("oh1",
+            EntityType.Builder.of(Oh1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<GazTigrEntity>> GAZ_TIGR = register("gaz_tigr",
             EntityType.Builder.of(GazTigrEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<GazTigrRWSEntity>> GAZ_TIGR_RWS = register("gaz_tigr_rws",
