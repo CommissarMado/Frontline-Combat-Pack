@@ -2,21 +2,6 @@
   "ID": "fcp:uh60_minigun",
   "MaxHealth": 300,
   "MaxEnergy": 8000000,
-  "TurretPos": [
-    1.95673,
-    1.89468,
-    1.91293
-  ],
-  "TurretPitchRange": [
-    -60,
-    60
-  ],
-  "BarrelPos": [
-    -0.0031,
-    0.0569,
-    0.14245
-  ],
-  "TurretControllerIndex": 3,
   "OBB": [
     {
       "Size": [
@@ -137,28 +122,29 @@
       "BanHand": true
     },
     {
-      "IsEnclosed": true,
+      "Pose": "MachineGunStand",
+      "IsEnclosed": false,
       "Transform": "Vehicle",
       "Position": [
-        0.7,
-        0.9,
+        -1.2,
+        1.15,
         1.9
       ],
       "CameraPos": {
-        "Transform": "Barrel",
+        "Transform": "LeftTurret",
         "UseFixedCameraPos": true,
         "Position": [
           0,
           0.5,
-          -0.5
+          0.5
         ],
-        "Direction": "Barrel"
+        "Direction": "Passenger"
       },
       "Weapons": [
         "MinigunLeft"
       ],
       "Crosshair": "@Empty",
-      "Orientation": -90,
+      "Orientation": 90,
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
@@ -166,28 +152,29 @@
       "BanHand": true
     },
     {
+      "Pose": "MachineGunStand",
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "Position": [
-        -0.7,
-        0.9,
+        1.2,
+        1.15,
         1.9
       ],
       "CameraPos": {
-        "Transform": "Barrel2",
+        "Transform": "RightTurret",
         "UseFixedCameraPos": true,
         "Position": [
           0,
           0.5,
-          -0.5
+          0.5
         ],
-        "Direction": "Barrel2"
+        "Direction": "Passenger"
       },
       "Weapons": [
         "MinigunRight"
       ],
       "Crosshair": "@Empty",
-      "Orientation": 90,
+      "Orientation": -90,
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
@@ -377,16 +364,21 @@
       "ShootAnimationTime": 1,
       "AmmoType": "superbwarfare:rifle_ammo",
       "ShootPos": {
-        "Transform": "Barrel",
+        "Transform": "RightBarrel",
         "Positions": [
           [
-            0.88775,
-            0.23832,
-            0.04684
+            0.00256,
+            0.18433,
+            0.94745
           ]
         ],
         "Directions": [
-          "Barrel"
+          "Passenger"
+        ],
+        "DefaultBarrelDirection": [
+          0,
+          0,
+          1
         ]
       },
       "Crosshair": "@Empty",
@@ -418,16 +410,21 @@
       "ShootAnimationTime": 1,
       "AmmoType": "superbwarfare:rifle_ammo",
       "ShootPos": {
-        "Transform": "Barrel2",
+        "Transform": "LeftBarrel",
         "Positions": [
           [
-            -0.88775,
-            0.23832,
-            0.04684
+            -0.00256,
+            0.18433,
+            0.94745
           ]
         ],
         "Directions": [
-          "Barrel2"
+          "Passenger"
+        ],
+        "DefaultBarrelDirection": [
+          0,
+          0,
+          1
         ]
       },
       "Crosshair": "@Empty",
@@ -514,20 +511,5 @@
       0,
       2
     ]
-  ],
-  "Turret2Pos": [
-    -1.95673,
-    1.89468,
-    1.91293
-  ],
-  "Turret2PitchRange": [
-    -60,
-    60
-  ],
-  "Barrel2Pos": [
-    0.0031,
-    0.0569,
-    0.14245
-  ],
-  "Turret2ControllerIndex": 2
+  ]
 }

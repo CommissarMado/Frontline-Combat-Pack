@@ -22,7 +22,6 @@
   "PassengerRenderScale": 0.85,
   "Seats": [
     {
-      "HasThermalImaging": true,
       "BanHand": true,
       "Transform": "Vehicle",
       "Position": [0.0, 0.75, 1.15],
@@ -36,6 +35,7 @@
       "CanRotateHead": false
     },
     {
+      "HasThermalImaging": true,
       "Transform": "Vehicle",
       "Position": [0.0, 0.5, 2.25],
       "Weapons": ["Type91"],
