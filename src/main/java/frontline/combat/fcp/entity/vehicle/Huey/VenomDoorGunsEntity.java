@@ -98,7 +98,7 @@ public class VenomDoorGunsEntity extends CamoVehicleBase {
         // rotation). Confirmed numerically via forward kinematics against the actual geo file,
         // not just carried over from UH-60 - this was the "muzzle flash elevates in the wrong
         // direction" bug.
-        transform.rotate(Axis.XP.rotationDegrees(getGunPitchDeg(seatIndex, partialTicks)));
+        transform.rotate(Axis.XP.rotationDegrees(-getGunPitchDeg(seatIndex, partialTicks)));
         return transform;
     }
 

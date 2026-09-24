@@ -130,7 +130,7 @@ public class VenomGunshipEntity extends CamoVehicleBase {
         // negated version (the literal UH-60 copy) moved the ShootPos/muzzle-flash point the
         // opposite way from the visible barrel, which is exactly the "muzzle flash elevates in
         // the wrong direction" bug this was fixing.
-        transform.rotate(Axis.XP.rotationDegrees(getGunPitchDeg(seatIndex, partialTicks)));
+        transform.rotate(Axis.XP.rotationDegrees(-getGunPitchDeg(seatIndex, partialTicks)));
         return transform;
     }
 
