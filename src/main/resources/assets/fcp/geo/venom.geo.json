@@ -5243,15 +5243,21 @@
 					]
 				},
 				{
-					"name": "barrel",
+					"name": "barrelMount",
 					"parent": "turret",
-					"pivot": [47.4822, 9.46842, -4.93828],
+					"pivot": [47.4822, 11.03092, -4.93828],
+					"rotation": [0, 0, 180]
+				},
+				{
+					"name": "barrel",
+					"parent": "barrelMount",
+					"pivot": [47.4822, 13.09342, -4.93828],
 					"cubes": [
 						{
 							"origin": [45.2322, 6.71842, -7.18828],
 							"size": [4.5, 4.5, 4.5],
 							"pivot": [47.4822, 11.03092, -4.93828],
-							"rotation": [0, -90, 0],
+							"rotation": [-180, -90, 0],
 							"uv": {
 								"north": {"uv": [670, 789], "uv_size": [6, 6]},
 								"east": {"uv": [681, 785], "uv_size": [6, 6]},

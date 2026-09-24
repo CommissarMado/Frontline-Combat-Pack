@@ -65,25 +65,29 @@ public class VenomGunshipModel extends VehicleModel<VenomGunshipEntity> {
             // instead, matching every other turreted FCP vehicle.
             //
             // The engine hardcodes barrel pitch as a local-X rotation (VehicleModel.kt's
-            // "barrel" -> bone.rotX = ...), with zero per-vehicle configurability. "turret"'s
-            // ancestor chain here (Uh-1's baked [0,180,0] plus group8's own [0,-90,0]) composes
-            // to a net Ry(90 deg) arriving at "turret"'s frame - and a 90-degree Y rotation is
-            // exactly the case where local X stops being a sideways/pitch axis and becomes the
-            // BORESIGHT axis instead (verified via full forward kinematics: mapped local X/Y/Z
-            // unit vectors through the composed chain into vehicle space). That's why the sensor
-            // was twisting/rolling in place instead of tilting up-down - it wasn't a small rest-
-            // rotation problem, the engine was rotating around the barrel's own forward axis.
-            // Fixed at the geo level (not here) by inserting a static "turretMount" bone between
-            // "not mirrored" and "turret" with rotation [0,-90,0], which cancels group8's -90
-            // contribution and brings the cumulative rotation at "turret"'s frame back to
-            // identity - restoring local X as a true sideways/pitch axis, matching every other
-            // working turret in this pack. Barrel's pivot and both bones' cube geometry were
-            // counter-rotated by the inverse so the rest-pose appearance is pixel-identical to
-            // before; TurretPos/BarrelPos in venom_gunship.json were recomputed against the new
-            // geo (numerically confirmed unchanged, since the visual pose was preserved exactly).
-            // This has NOT been visually confirmed in-game/Blockbench - please check that the
-            // sensor now elevates instead of twisting, and that up/down isn't inverted (if it is,
-            // that's a one-line sign fix: flip turretMount's rotation to [0,90,0] instead).
+            // "barrel" -> bone.rotX = ...) and turret yaw as local-Y ("turret" -> bone.rotY = ...),
+            // with zero per-vehicle configurability. "turret"'s ancestor chain here (Uh-1's baked
+            // [0,180,0] plus "not mirrored"'s own effective [0,-90,0], inherited from group8)
+            // composes to a net Ry(90 deg) arriving at "turret"'s frame - and a 90-degree Y
+            // rotation is exactly the case where local X stops being a sideways/pitch axis and
+            // becomes the BORESIGHT axis instead (verified via full forward kinematics). That's
+            // why the sensor was twisting/rolling instead of tilting up-down.
+            //
+            // Fixed at the geo level (not here), matching the same technique used to fix the
+            // unarmed venom's camera by hand in Blockbench: a static "mount" bone (rotation
+            // [0,90,0]) is inserted between "not mirrored" and "turret" to cancel that Ry(90),
+            // and a second static "barrelMount" bone (rotation [0,0,180]) is inserted between
+            // "turret" and "barrel" to flip the sign of barrel's local-X pitch response (needed
+            // because "mount"'s [0,90,0] - the sign that also fixes the twist - happens to leave
+            // elevation inverted; [0,0,180] on "barrelMount" corrects that without touching
+            // "turret"'s yaw). Unlike an earlier attempt at this fix, the rest-pose geometry is
+            // preserved via PER-CUBE pivot/rotation (the same mechanism Blockbench itself uses),
+            // not by recomputing cube origin/size - recomputing origin/size discards which box
+            // face is which, which corrupts the UV texture mapping. Both bone insertions and the
+            // cube-level compensations were verified numerically (rest-pose corner positions
+            // matched to zero, and the live-pitch response confirmed to invert). TurretPos/
+            // BarrelPos in venom_gunship.json are unaffected since the rest-pose pivots don't
+            // move. Still worth a quick in-game glance to confirm the sensor tilts correctly now.
             default -> super.collectTransform(boneName);
         };
     }
