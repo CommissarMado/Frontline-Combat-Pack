@@ -3,9 +3,9 @@
   "MaxHealth": 320,
   "MaxEnergy": 8000000,
   "TurretPos": [
-    -0.13737,
-    0.46678,
-    3.9246
+    0.00325,
+    0.65428,
+    4.44664
   ],
   "TurretPitchRange": [
     -50,
@@ -17,7 +17,7 @@
   ],
   "BarrelPos": [
     0,
-    0,
+    -0.0625,
     0
   ],
   "TurretControllerIndex": 1,

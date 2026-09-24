@@ -127,11 +127,11 @@ public class VenomDoorGunsEntity extends CamoVehicleBase {
         super.baseTick();
         barrelRotationLeftOld = barrelRotationLeft;
         if (isWeaponFiring("MinigunLeft")) {
-            barrelRotationLeft += 20f;
+            barrelRotationLeft += 80f;
         }
         barrelRotationRightOld = barrelRotationRight;
         if (isWeaponFiring("MinigunRight")) {
-            barrelRotationRight += 20f;
+            barrelRotationRight += 80f;
         }
     }
 

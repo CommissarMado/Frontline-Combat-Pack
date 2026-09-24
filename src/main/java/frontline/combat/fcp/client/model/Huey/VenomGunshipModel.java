@@ -34,15 +34,20 @@ public class VenomGunshipModel extends VehicleModel<VenomGunshipEntity> {
             // versus a naive reading of the two bones' raw, unposed model-space X sign).
             //
             // Both guns rest facing forward like the UH-60's, so elevation/pitch is a plain X
-            // rotation, same as Uh60MinigunModel's "barrel"/"barrel2" cases.
+            // rotation - but NEGATED here, unlike Uh60MinigunModel's "barrel"/"barrel2" cases.
+            // Confirmed in-game: the ShootPos/muzzle-flash transform (VenomGunshipEntity's
+            // getGunBarrelTransform) was already elevating the correct way; this bone posing was
+            // the one that was inverted, showing the barrel visually tilting opposite to where it
+            // was actually shooting. Negating here (instead of touching the already-correct
+            // Matrix4d transform) brings the two back into agreement.
             case "turret1" ->
                     (bone, vehicle, state) -> bone.setRotY(vehicle.getGunYawDeg(3, state.getPartialTick()) * Mth.DEG_TO_RAD);
             case "barrel1" ->
-                    (bone, vehicle, state) -> bone.setRotX(vehicle.getGunPitchDeg(3, state.getPartialTick()) * Mth.DEG_TO_RAD);
+                    (bone, vehicle, state) -> bone.setRotX(-vehicle.getGunPitchDeg(3, state.getPartialTick()) * Mth.DEG_TO_RAD);
             case "turret2" ->
                     (bone, vehicle, state) -> bone.setRotY(vehicle.getGunYawDeg(2, state.getPartialTick()) * Mth.DEG_TO_RAD);
             case "barrel2" ->
-                    (bone, vehicle, state) -> bone.setRotX(vehicle.getGunPitchDeg(2, state.getPartialTick()) * Mth.DEG_TO_RAD);
+                    (bone, vehicle, state) -> bone.setRotX(-vehicle.getGunPitchDeg(2, state.getPartialTick()) * Mth.DEG_TO_RAD);
             // Barrel-cluster spin, same pattern as the UH-60's GUN/GUN2 (local X boresight,
             // driven by isWeaponFiring). GUN2 is part of the turret1/barrel1 (LEFT) chain, GUN3
             // is part of the turret2/barrel2 (RIGHT) chain.

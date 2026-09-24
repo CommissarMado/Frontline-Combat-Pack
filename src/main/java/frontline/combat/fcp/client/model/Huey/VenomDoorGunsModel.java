@@ -26,15 +26,17 @@ public class VenomDoorGunsModel extends VehicleModel<VenomDoorGunsEntity> {
             // See VenomGunshipModel for the full derivation - "turret1"/"barrel1" (renamed from
             // "turret"/"barrel" to free those names up for the native turret below) is the LEFT
             // gun (seat 3), "turret2"/"barrel2" is the RIGHT gun (seat 2), and GUN2/GUN3 match.
-            // Both guns rest facing forward, so pitch is a plain X rotation.
+            // Both guns rest facing forward, so pitch is a plain X rotation - NEGATED here, same
+            // fix as VenomGunshipModel (the muzzle/ShootPos transform was already correct; this
+            // bone posing was the one inverted).
             case "turret1" ->
                     (bone, vehicle, state) -> bone.setRotY(vehicle.getGunYawDeg(3, state.getPartialTick()) * Mth.DEG_TO_RAD);
             case "barrel1" ->
-                    (bone, vehicle, state) -> bone.setRotX(vehicle.getGunPitchDeg(3, state.getPartialTick()) * Mth.DEG_TO_RAD);
+                    (bone, vehicle, state) -> bone.setRotX(-vehicle.getGunPitchDeg(3, state.getPartialTick()) * Mth.DEG_TO_RAD);
             case "turret2" ->
                     (bone, vehicle, state) -> bone.setRotY(vehicle.getGunYawDeg(2, state.getPartialTick()) * Mth.DEG_TO_RAD);
             case "barrel2" ->
-                    (bone, vehicle, state) -> bone.setRotX(vehicle.getGunPitchDeg(2, state.getPartialTick()) * Mth.DEG_TO_RAD);
+                    (bone, vehicle, state) -> bone.setRotX(-vehicle.getGunPitchDeg(2, state.getPartialTick()) * Mth.DEG_TO_RAD);
             case "GUN2" ->
                     (bone, vehicle, state) -> bone.setRotX(-Mth.lerp(state.getPartialTick(), vehicle.getBarrelRotLeftOld(), vehicle.getBarrelRotLeft()) * Mth.DEG_TO_RAD);
             case "GUN3" ->

@@ -23,14 +23,11 @@ public class VenomModel extends VehicleModel<VenomEntity> {
                     (bone, vehicle, state) -> bone.setRotY(-Mth.lerp(state.getPartialTick(), vehicle.getPropellerRotO(), vehicle.getPropellerRot()));
             case "tailPropeller" ->
                     (bone, vehicle, state) -> bone.setRotX(6 * Mth.lerp(state.getPartialTick(), vehicle.getPropellerRotO(), vehicle.getPropellerRot()));
-            // Front camera bone, same as VenomGunshipModel/VenomDoorGunsModel - see
-            // VenomEntity's comment: venom.geo.json has no "camera" bone yet, so this case never
-            // actually matches anything, but it's here so the mesh just starts animating the day
-            // a camera bone gets added to this geo file too, with no code changes needed.
-            case "camera" -> (bone, vehicle, state) -> {
-                bone.setRotY(vehicle.getCameraYawDeg(state.getPartialTick()) * Mth.DEG_TO_RAD);
-                bone.setRotZ(vehicle.getCameraPitchDeg(state.getPartialTick()) * Mth.DEG_TO_RAD);
-            };
+            // "turret"/"barrel" (the front sensor) are intentionally NOT handled here, same as
+            // VenomGunshipModel/VenomDoorGunsModel - the base VehicleModel drives them natively
+            // from venom.json's TurretPos/BarrelPos/TurretControllerIndex/TurretPitchRange/
+            // TurretYawRange. No more single hand-rolled "camera" bone (which also had pitch on
+            // the wrong axis - Z instead of the engine's hardcoded local X for "barrel").
             default -> super.collectTransform(boneName);
         };
     }
