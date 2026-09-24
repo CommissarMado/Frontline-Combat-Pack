@@ -62,11 +62,28 @@ public class VenomGunshipModel extends VehicleModel<VenomGunshipEntity> {
             // TurretPos/BarrelPos/TurretControllerIndex/TurretPitchRange/TurretYawRange). The
             // front sensor bone used to be a single hand-rolled "camera" bone driven by custom
             // Java code; it's now split into this native turret("turret")/barrel("barrel") pair
-            // instead, matching every other turreted FCP vehicle. The barrel's pitch axis is
-            // whatever the base VehicleModel always uses (local X) - unverified in-game for this
-            // specific bone; if the sensor spins/rolls instead of tilting up-down, or tilts the
-            // wrong way, that's a Blockbench-side fix (give the new "barrel" bone in the geo file
-            // a small rest rotation to realign its local X with true up/down), not a Java one.
+            // instead, matching every other turreted FCP vehicle.
+            //
+            // The engine hardcodes barrel pitch as a local-X rotation (VehicleModel.kt's
+            // "barrel" -> bone.rotX = ...), with zero per-vehicle configurability. "turret"'s
+            // ancestor chain here (Uh-1's baked [0,180,0] plus group8's own [0,-90,0]) composes
+            // to a net Ry(90 deg) arriving at "turret"'s frame - and a 90-degree Y rotation is
+            // exactly the case where local X stops being a sideways/pitch axis and becomes the
+            // BORESIGHT axis instead (verified via full forward kinematics: mapped local X/Y/Z
+            // unit vectors through the composed chain into vehicle space). That's why the sensor
+            // was twisting/rolling in place instead of tilting up-down - it wasn't a small rest-
+            // rotation problem, the engine was rotating around the barrel's own forward axis.
+            // Fixed at the geo level (not here) by inserting a static "turretMount" bone between
+            // "not mirrored" and "turret" with rotation [0,-90,0], which cancels group8's -90
+            // contribution and brings the cumulative rotation at "turret"'s frame back to
+            // identity - restoring local X as a true sideways/pitch axis, matching every other
+            // working turret in this pack. Barrel's pivot and both bones' cube geometry were
+            // counter-rotated by the inverse so the rest-pose appearance is pixel-identical to
+            // before; TurretPos/BarrelPos in venom_gunship.json were recomputed against the new
+            // geo (numerically confirmed unchanged, since the visual pose was preserved exactly).
+            // This has NOT been visually confirmed in-game/Blockbench - please check that the
+            // sensor now elevates instead of twisting, and that up/down isn't inverted (if it is,
+            // that's a one-line sign fix: flip turretMount's rotation to [0,90,0] instead).
             default -> super.collectTransform(boneName);
         };
     }

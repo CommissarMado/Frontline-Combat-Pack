@@ -487,9 +487,9 @@
         "Transform": "RightBarrel",
         "Positions": [
           [
-            -0.08587,
-            0.1732,
-            0.76058
+            -0.76245,
+            0.06137,
+            0.17539
           ]
         ],
         "Directions": [
@@ -533,9 +533,9 @@
         "Transform": "LeftBarrel",
         "Positions": [
           [
+            0.76058,
             0.08131,
-            0.17539,
-            0.76058
+            0.17539
           ]
         ],
         "Directions": [

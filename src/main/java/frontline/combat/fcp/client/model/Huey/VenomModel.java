@@ -26,8 +26,12 @@ public class VenomModel extends VehicleModel<VenomEntity> {
             // "turret"/"barrel" (the front sensor) are intentionally NOT handled here, same as
             // VenomGunshipModel/VenomDoorGunsModel - the base VehicleModel drives them natively
             // from venom.json's TurretPos/BarrelPos/TurretControllerIndex/TurretPitchRange/
-            // TurretYawRange. No more single hand-rolled "camera" bone (which also had pitch on
-            // the wrong axis - Z instead of the engine's hardcoded local X for "barrel").
+            // TurretYawRange. No more single hand-rolled "camera" bone. See VenomGunshipModel's
+            // comment for the "turretMount" geo fix - "turret"'s ancestor chain here (Uh-1's
+            // [0,180,0] plus group8's own [0,-90,0]) composed to a net 90-degree Y rotation,
+            // which made the engine's hardcoded local-X barrel pitch twist the sensor around its
+            // own boresight instead of elevating it. A static "turretMount" bone (rotation
+            // [0,-90,0], inserted between group8 and turret) cancels that out.
             default -> super.collectTransform(boneName);
         };
     }

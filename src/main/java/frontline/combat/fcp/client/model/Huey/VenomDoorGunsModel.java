@@ -42,8 +42,11 @@ public class VenomDoorGunsModel extends VehicleModel<VenomDoorGunsEntity> {
             case "GUN3" ->
                     (bone, vehicle, state) -> bone.setRotX(-Mth.lerp(state.getPartialTick(), vehicle.getBarrelRotRightOld(), vehicle.getBarrelRotRight()) * Mth.DEG_TO_RAD);
             // "turret"/"barrel" (the front sensor, formerly a single hand-rolled "camera" bone)
-            // are intentionally NOT handled here - see VenomGunshipModel's comment. The base
-            // VehicleModel drives them natively from venom_door_guns.json's TurretPos/BarrelPos/
+            // are intentionally NOT handled here - see VenomGunshipModel's comment for the full
+            // derivation of the "turretMount" geo fix (a baked ancestor rotation was making the
+            // engine's hardcoded local-X barrel pitch twist the sensor around its own boresight
+            // instead of elevating it; fixed at the geo level, not here). The base VehicleModel
+            // drives turret/barrel natively from venom_door_guns.json's TurretPos/BarrelPos/
             // TurretControllerIndex/TurretPitchRange/TurretYawRange.
             default -> super.collectTransform(boneName);
         };

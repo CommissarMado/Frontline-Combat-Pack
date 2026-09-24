@@ -3,9 +3,9 @@
   "MaxHealth": 320,
   "MaxEnergy": 8000000,
   "TurretPos": [
-    -0.13737,
-    0.46678,
-    3.9246
+    0.00325,
+    0.59178,
+    4.44664
   ],
   "TurretPitchRange": [
     -50,
@@ -17,7 +17,7 @@
   ],
   "BarrelPos": [
     0,
-    -0.0625,
+    0,
     0
   ],
   "TurretControllerIndex": 1,
@@ -183,7 +183,10 @@
         ]
       },
       "CanRotateHead": false,
-      "IsEnclosed": true
+      "IsEnclosed": true,
+      "Weapons": [
+        "Rocket"
+      ]
     },
     {
       "Transform": "Vehicle",
@@ -487,9 +490,9 @@
         "Transform": "RightBarrel",
         "Positions": [
           [
-            -0.08587,
-            0.1732,
-            0.76058
+            -0.76245,
+            0.06137,
+            0.17539
           ]
         ],
         "Directions": [
@@ -533,9 +536,9 @@
         "Transform": "LeftBarrel",
         "Positions": [
           [
+            0.76058,
             0.08131,
-            0.17539,
-            0.76058
+            0.17539
           ]
         ],
         "Directions": [
@@ -547,6 +550,57 @@
           1
         ]
       }
+    },
+    "Rocket": {
+      "AmmoType": "superbwarfare:small_rocket",
+      "Icon": "fcp:textures/screens/vehicle_weapon/hydra_70.png",
+      "DefaultZoom": 2,
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Magazine": 20,
+      "EmptyReloadTime": 180,
+      "Projectile": "superbwarfare:small_rocket",
+      "Spread": 0.3,
+      "Name": "weapon.fcp.hydra_rocket",
+      "RPM": 400,
+      "Damage": 80,
+      "ExplosionDamage": 40,
+      "ExplosionRadius": 5,
+      "Gravity": 0.02,
+      "Velocity": 16,
+      "ShootPos": {
+        "Transform": "Vehicle",
+        "Positions": [
+          [
+            1.97683,
+            0.65571,
+            0.54892
+          ],
+          [
+            -1.96413,
+            0.65571,
+            0.54892
+          ]
+        ],
+        "Directions": [
+          [
+            0,
+            0.02,
+            1
+          ],
+          [
+            0,
+            0.02,
+            1
+          ]
+        ]
+      },
+      "SoundInfo": {
+        "Fire1P": "superbwarfare:small_rocket_fire_1p",
+        "Fire3P": "superbwarfare:small_rocket_fire_3p"
+      },
+      "Crosshair": "@Empty",
+      "SoundRadius": 12
     }
   }
 }
