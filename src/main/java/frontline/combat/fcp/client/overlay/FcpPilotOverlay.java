@@ -67,6 +67,8 @@ public class FcpPilotOverlay implements IGuiOverlay {
             Map.entry("littlebird",       List.of(0, 1)),
             Map.entry("littlebird_armed", List.of(1)),
             Map.entry("venom", List.of(0, 1)),
+            Map.entry("venom_door_guns", List.of(0, 1)),
+            Map.entry("venom_gunship", List.of(0, 1)),
             Map.entry("huey", List.of(0, 1)),
             Map.entry("huey_rockets", List.of(1)),
             Map.entry("huey_door_gunner_m60", List.of(0, 2)),

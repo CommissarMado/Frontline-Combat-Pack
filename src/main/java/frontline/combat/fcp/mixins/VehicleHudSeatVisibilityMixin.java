@@ -45,7 +45,18 @@ public abstract class VehicleHudSeatVisibilityMixin {
     // e.g. "uh60_minigun" matches fcp:uh60_minigun - same convention
     // FcpPilotOverlay.PILOT_OVERLAY_VEHICLES uses.
     private static final Map<String, List<Integer>> NO_WEAPON_PANEL_SEATS = Map.of(
-            "uh60_minigun", List.of(2, 3)
+            "uh60_minigun", List.of(2, 3),
+            // Seat 1 on these three is the copilot - it now carries an inert "CameraTrack"
+            // weapon purely so the front camera bone can read the copilot's aim (see
+            // VenomEntity/VenomGunshipEntity/VenomDoorGunsEntity.getCameraYawDeg), not a real
+            // gun, so it should keep looking like a normal unarmed copilot seat.
+            "venom", List.of(1),
+            // Seats 2/3 are the door gunners (MinigunRight/MinigunLeft) - same treatment as the
+            // Black Hawk's own gunner seats above, for the same reason: they have a real weapon,
+            // but they're a fixed door gun, not the pilot, so they shouldn't show the vehicle's
+            // main weapon/ammo panel either.
+            "venom_gunship", List.of(1, 2, 3),
+            "venom_door_guns", List.of(1, 2, 3)
     );
 
     @Inject(method = "renderWeaponInfo", at = @At("HEAD"), cancellable = true)

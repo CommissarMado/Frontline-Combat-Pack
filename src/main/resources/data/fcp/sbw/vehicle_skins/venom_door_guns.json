@@ -1,0 +1,16 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Standard",
+      "Texture": "fcp:textures/entity/huey/venom_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "thanos",
+      "Name": "Thanos",
+      "Texture": "fcp:textures/entity/huey/venom_2.png",
+      "Priority": 2
+    }
+  ]
+}

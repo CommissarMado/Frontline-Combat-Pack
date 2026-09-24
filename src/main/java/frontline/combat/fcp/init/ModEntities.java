@@ -33,6 +33,8 @@ import frontline.combat.fcp.entity.vehicle.Huey.HueyDoorGunnerM60Entity;
 import frontline.combat.fcp.entity.vehicle.Huey.HueyEntity;
 import frontline.combat.fcp.entity.vehicle.Huey.HueyRocketsEntity;
 import frontline.combat.fcp.entity.vehicle.Huey.VenomEntity;
+import frontline.combat.fcp.entity.vehicle.Huey.VenomGunshipEntity;
+import frontline.combat.fcp.entity.vehicle.Huey.VenomDoorGunsEntity;
 import frontline.combat.fcp.entity.vehicle.JohnDeere.CombineEntity;
 import frontline.combat.fcp.entity.vehicle.JohnDeere.CultivatorEntity;
 import frontline.combat.fcp.entity.vehicle.Humvee.HumveeUnarmedEntity;
@@ -223,6 +225,10 @@ public class ModEntities {
             EntityType.Builder.of(HueyDoorGunnerM134Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<VenomEntity>> VENOM = register("venom",
             EntityType.Builder.of(VenomEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<VenomGunshipEntity>> VENOM_GUNSHIP = register("venom_gunship",
+            EntityType.Builder.of(VenomGunshipEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<VenomDoorGunsEntity>> VENOM_DOOR_GUNS = register("venom_door_guns",
+            EntityType.Builder.of(VenomDoorGunsEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<NovatorEntity>> NOVATOR = register("novator",
             EntityType.Builder.of(NovatorEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<NovatorUnarmedEntity>> NOVATOR_UNARMED = register("novator_unarmed",

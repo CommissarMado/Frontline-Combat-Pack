@@ -29,6 +29,8 @@ import frontline.combat.fcp.client.renderer.Huey.HueyDoorGunnerM134Renderer;
 import frontline.combat.fcp.client.renderer.Huey.HueyDoorGunnerM60Renderer;
 import frontline.combat.fcp.client.renderer.Huey.HueyRenderer;
 import frontline.combat.fcp.client.renderer.Huey.VenomRenderer;
+import frontline.combat.fcp.client.renderer.Huey.VenomGunshipRenderer;
+import frontline.combat.fcp.client.renderer.Huey.VenomDoorGunsRenderer;
 import frontline.combat.fcp.client.renderer.Huey.HueyRocketsRenderer;;
 import frontline.combat.fcp.client.renderer.JohnDeere.CombineRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.CultivatorRenderer;
@@ -164,6 +166,8 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.HUEY_DOOR_GUNNER_M60.get(), HueyDoorGunnerM60Renderer::new);
         event.registerEntityRenderer(ModEntities.HUEY_DOOR_GUNNER_M134.get(), HueyDoorGunnerM134Renderer::new);
         event.registerEntityRenderer(ModEntities.VENOM.get(), VenomRenderer::new);
+        event.registerEntityRenderer(ModEntities.VENOM_GUNSHIP.get(), VenomGunshipRenderer::new);
+        event.registerEntityRenderer(ModEntities.VENOM_DOOR_GUNS.get(), VenomDoorGunsRenderer::new);
 
         event.registerEntityRenderer(ModEntities.NOVATOR.get(), NovatorRenderer::new);
         event.registerEntityRenderer(ModEntities.NOVATOR_UNARMED.get(), NovatorUnarmedRenderer::new);

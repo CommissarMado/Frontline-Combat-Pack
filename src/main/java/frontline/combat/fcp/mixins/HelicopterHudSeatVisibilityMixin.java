@@ -42,7 +42,15 @@ public abstract class HelicopterHudSeatVisibilityMixin {
     // overlay] ]. Keys are the entity id path (no namespace), e.g. "uh60_minigun" matches
     // fcp:uh60_minigun - same convention FcpPilotOverlay.PILOT_OVERLAY_VEHICLES uses.
     private static final Map<String, List<Integer>> NO_HELICOPTER_HUD_SEATS = Map.of(
-            "uh60_minigun", List.of(2, 3)
+            "uh60_minigun", List.of(2, 3),
+            // Same reason as VehicleHudSeatVisibilityMixin's map: seat 1 (copilot) on these three
+            // now has an inert "CameraTrack" weapon just to drive the front camera bone, not a
+            // real gun, so it shouldn't suddenly gain the flight-instrument gunner HUD either.
+            "venom", List.of(1),
+            // Seats 2/3 are the door gunners - same treatment as the Black Hawk's own gunner
+            // seats above, so they don't get the pilot's flight-instrument overlay either.
+            "venom_gunship", List.of(1, 2, 3),
+            "venom_door_guns", List.of(1, 2, 3)
     );
 
     @Inject(method = "render", at = @At("HEAD"), cancellable = true)

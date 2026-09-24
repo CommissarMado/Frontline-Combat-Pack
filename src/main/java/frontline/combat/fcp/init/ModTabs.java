@@ -79,6 +79,8 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY_DOOR_GUNNER_M60.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY_DOOR_GUNNER_M134.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.VENOM.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.VENOM_GUNSHIP.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.VENOM_DOOR_GUNS.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.VIPER.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.CH53A.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.CH53E.get()));

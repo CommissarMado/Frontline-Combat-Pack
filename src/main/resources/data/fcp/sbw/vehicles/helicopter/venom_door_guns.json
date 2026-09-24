@@ -1,7 +1,26 @@
 {
-  "ID": "fcp:venom",
+  "ID": "fcp:venom_door_guns",
   "MaxHealth": 320,
   "MaxEnergy": 8000000,
+  "TurretPos": [
+    -0.13737,
+    0.46678,
+    3.9246
+  ],
+  "TurretPitchRange": [
+    -50,
+    15
+  ],
+  "TurretYawRange": [
+    -75,
+    75
+  ],
+  "BarrelPos": [
+    0,
+    0,
+    0
+  ],
+  "TurretControllerIndex": 1,
   "OBB": [
     {
       "Size": [
@@ -174,23 +193,77 @@
         2.8
       ],
       "CameraPos": {
+        "Transform": "Barrel",
         "UseFixedCameraPos": true,
         "Position": [
-          0.45,
-          2.15,
-          2.7
-        ]
+          0,
+          0,
+          0
+        ],
+        "Direction": "Barrel"
       },
-      "CanRotateHead": true,
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
       "MaxYaw": 75,
       "BanHand": true,
-      "IsEnclosed": true,
+      "IsEnclosed": true
+    },
+    {
+      "Transform": "Vehicle",
+      "Position": [
+        -0.8,
+        0.9,
+        -0.4
+      ],
+      "CameraPos": {
+        "Transform": "RightTurret",
+        "UseFixedCameraPos": true,
+        "Position": [
+          0,
+          0.5,
+          0
+        ],
+        "Direction": "Passenger"
+      },
+      "Orientation": 90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
       "Weapons": [
-        "CameraTrack"
-      ]
+        "MinigunRight"
+      ],
+      "Crosshair": "@Empty",
+      "BanHand": true
+    },
+    {
+      "Transform": "Vehicle",
+      "Position": [
+        0.8,
+        0.9,
+        -0.4
+      ],
+      "CameraPos": {
+        "Transform": "LeftTurret",
+        "UseFixedCameraPos": true,
+        "Position": [
+          0,
+          0.5,
+          0
+        ],
+        "Direction": "Passenger"
+      },
+      "Orientation": -90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "Weapons": [
+        "MinigunLeft"
+      ],
+      "Crosshair": "@Empty",
+      "BanHand": true
     },
     {
       "Transform": "Vehicle",
@@ -306,38 +379,6 @@
       "MaxPitch": 15,
       "MinYaw": -75,
       "MaxYaw": 75
-    },
-    {
-      "Transform": "Vehicle",
-      "Position": [
-        -0.8,
-        0.9,
-        -0.4
-      ],
-      "CameraPos": {
-        "UseFixedCameraPos": false
-      },
-      "Orientation": 90,
-      "MinPitch": -50,
-      "MaxPitch": 15,
-      "MinYaw": -75,
-      "MaxYaw": 75
-    },
-    {
-      "Transform": "Vehicle",
-      "Position": [
-        0.8,
-        0.9,
-        -0.4
-      ],
-      "CameraPos": {
-        "UseFixedCameraPos": false
-      },
-      "Orientation": -90,
-      "MinPitch": -50,
-      "MaxPitch": 15,
-      "MinYaw": -75,
-      "MaxYaw": 75
     }
   ],
   "EngineType": "Helicopter",
@@ -415,21 +456,95 @@
     ]
   ],
   "Weapons": {
-    "CameraTrack": {
-      "RPM": 0,
-      "Damage": 0,
+    "MinigunRight": {
+      "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Spread": 0.75,
+      "CrosshairColor": "0x00ff66",
+      "Projectile": "superbwarfare:projectile",
+      "DefaultZoom": 3,
+      "RPM": 1000,
+      "Damage": 4,
+      "BypassesArmor": 0.2,
+      "Velocity": 25,
+      "RecoilTime": 16,
+      "RecoilForce": 0.05,
+      "HeatPerShoot": 2.5,
+      "NaturalCooldown": 1,
+      "ShootAnimationTime": 1,
+      "AmmoType": "superbwarfare:rifle_ammo",
       "Crosshair": "@Empty",
+      "Name": "weapon.fcp.m134_minigun",
+      "SoundInfo": {
+        "Fire1P": "fcp:m134_fire_1p",
+        "Fire3P": "fcp:m134_fire_3p",
+        "Fire3PFar": "fcp:m134_fire_3p_far",
+        "Change": "fcp:into_coax"
+      },
+      "SoundRadius": 16,
       "ShootPos": {
-        "Transform": "Vehicle",
+        "Transform": "RightBarrel",
         "Positions": [
           [
-            0,
-            0,
-            0
+            -0.08587,
+            0.1732,
+            0.76058
           ]
         ],
         "Directions": [
           "Passenger"
+        ],
+        "DefaultBarrelDirection": [
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    "MinigunLeft": {
+      "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Spread": 0.75,
+      "CrosshairColor": "0x00ff66",
+      "Projectile": "superbwarfare:projectile",
+      "DefaultZoom": 3,
+      "RPM": 1000,
+      "Damage": 4,
+      "BypassesArmor": 0.2,
+      "Velocity": 25,
+      "RecoilTime": 16,
+      "RecoilForce": 0.05,
+      "HeatPerShoot": 2.5,
+      "NaturalCooldown": 1,
+      "ShootAnimationTime": 1,
+      "AmmoType": "superbwarfare:rifle_ammo",
+      "Crosshair": "@Empty",
+      "Name": "weapon.fcp.m134_minigun",
+      "SoundInfo": {
+        "Fire1P": "fcp:m134_fire_1p",
+        "Fire3P": "fcp:m134_fire_3p",
+        "Fire3PFar": "fcp:m134_fire_3p_far",
+        "Change": "fcp:into_coax"
+      },
+      "SoundRadius": 16,
+      "ShootPos": {
+        "Transform": "LeftBarrel",
+        "Positions": [
+          [
+            0.08131,
+            0.17539,
+            0.76058
+          ]
+        ],
+        "Directions": [
+          "Passenger"
+        ],
+        "DefaultBarrelDirection": [
+          0,
+          0,
+          1
         ]
       }
     }

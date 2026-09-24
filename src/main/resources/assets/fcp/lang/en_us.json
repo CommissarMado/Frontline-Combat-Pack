@@ -146,6 +146,8 @@
   "entity.fcp.matv_crow": "MATV With CROWS",
   "entity.fcp.matv_tow": "MATV With TOW",
   "entity.fcp.venom": "Venom",
+  "entity.fcp.venom_gunship": "Venom (Gunship)",
+  "entity.fcp.venom_door_guns": "Venom (Door Guns)",
   "entity.fcp.aavp": "AAVP",
   "entity.fcp.hmmwv_ambulance": "HMMWV Ambulance",
   "entity.fcp.hmmwv_armored_m2": "HMMWV Armored M2",
