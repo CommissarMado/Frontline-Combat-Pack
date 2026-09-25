@@ -6,8 +6,22 @@ import frontline.combat.fcp.entity.vehicle.Oh1.Oh1Entity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.cache.object.GeoBone;
+import software.bernie.geckolib.core.animation.AnimationState;
 
 public class Oh1Model extends VehicleModel<Oh1Entity> {
+
+    @Override
+    public void setCustomAnimations(Oh1Entity vehicle, long instanceId, AnimationState<Oh1Entity> animationState) {
+        super.setCustomAnimations(vehicle, instanceId, animationState);
+        this.getBone("toggle1").ifPresent(bone -> setHiddenDeep(bone, !vehicle.hasToggle1()));
+        this.getBone("toggle2").ifPresent(bone -> setHiddenDeep(bone, !vehicle.hasToggle2()));
+    }
+
+    private static void setHiddenDeep(GeoBone bone, boolean hidden) {
+        bone.setHidden(hidden);
+        for (GeoBone child : bone.getChildBones()) setHiddenDeep(child, hidden);
+    }
 
     @Override
     public ResourceLocation getModelResource(Oh1Entity animatable) {
