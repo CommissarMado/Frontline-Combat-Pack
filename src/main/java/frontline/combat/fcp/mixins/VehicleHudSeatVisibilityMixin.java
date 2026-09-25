@@ -56,7 +56,14 @@ public abstract class VehicleHudSeatVisibilityMixin {
             // but they're a fixed door gun, not the pilot, so they shouldn't show the vehicle's
             // main weapon/ammo panel either.
             "venom_gunship", List.of(1, 2, 3),
-            "venom_door_guns", List.of(1, 2, 3)
+            "venom_door_guns", List.of(1, 2, 3),
+            // Huey armed variants: seats 2/3 are the door gunners (M60/M134 left/right), same
+            // treatment as the UH-60's own gunner seats. Seat 1 (copilot) carries no weapon on
+            // these variants, so it never shows this panel in the first place.
+            "huey_m60_door_guns", List.of(2, 3),
+            "huey_m60_gunship", List.of(2, 3),
+            "huey_m134_door_guns", List.of(2, 3),
+            "huey_m134_gunship", List.of(2, 3)
     );
 
     @Inject(method = "renderWeaponInfo", at = @At("HEAD"), cancellable = true)

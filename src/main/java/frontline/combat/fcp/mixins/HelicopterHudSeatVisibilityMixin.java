@@ -50,7 +50,15 @@ public abstract class HelicopterHudSeatVisibilityMixin {
             // Seats 2/3 are the door gunners - same treatment as the Black Hawk's own gunner
             // seats above, so they don't get the pilot's flight-instrument overlay either.
             "venom_gunship", List.of(1, 2, 3),
-            "venom_door_guns", List.of(1, 2, 3)
+            "venom_door_guns", List.of(1, 2, 3),
+            // Huey armed variants: seats 2/3 are the door gunners (M60/M134 left/right), same
+            // treatment as the UH-60's own gunner seats. Seat 1 (copilot) carries no weapon at
+            // all on these variants (no CameraTrack-style trick needed - the Huey has no front
+            // sensor), so it never triggers this HUD in the first place and doesn't need an entry.
+            "huey_m60_door_guns", List.of(2, 3),
+            "huey_m60_gunship", List.of(2, 3),
+            "huey_m134_door_guns", List.of(2, 3),
+            "huey_m134_gunship", List.of(2, 3)
     );
 
     @Inject(method = "render", at = @At("HEAD"), cancellable = true)

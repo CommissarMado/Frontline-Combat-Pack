@@ -189,6 +189,7 @@
       ]
     },
     {
+      "HasThermalImaging": true,
       "Transform": "Vehicle",
       "Position": [
         0.55,

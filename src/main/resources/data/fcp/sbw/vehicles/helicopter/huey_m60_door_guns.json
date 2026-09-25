@@ -1,5 +1,5 @@
 {
-  "ID": "fcp:huey",
+  "ID": "fcp:huey_m60_door_guns",
   "MaxHealth": 280,
   "MaxEnergy": 8000000,
   "OBB": [
@@ -39,6 +39,42 @@
       "MaxPitch": 15,
       "MinYaw": -75,
       "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "Transform": "Vehicle",
+      "Position": [-0.7, 0.7, -0.4],
+      "CameraPos": {
+        "Transform": "RightTurret",
+        "UseFixedCameraPos": true,
+        "Position": [0, 0.5, 0],
+        "Direction": "Passenger"
+      },
+      "Orientation": 90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "Weapons": ["M60Right"],
+      "Crosshair": "@Empty",
+      "BanHand": true
+    },
+    {
+      "Transform": "Vehicle",
+      "Position": [0.7, 0.7, -0.4],
+      "CameraPos": {
+        "Transform": "LeftTurret",
+        "UseFixedCameraPos": true,
+        "Position": [0, 0.5, 0],
+        "Direction": "Passenger"
+      },
+      "Orientation": -90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "Weapons": ["M60Left"],
+      "Crosshair": "@Empty",
       "BanHand": true
     },
     {
@@ -85,7 +121,7 @@
       "Position": [-0.7, 0.7, 0.35],
       "CameraPos": {
         "UseFixedCameraPos": true,
-        "Position": [-0.7, 1.79, 0.35]
+        "Position": [-0.75, 1.79, 0.35]
       },
       "Orientation": 90,
       "MinPitch": -50,
@@ -98,33 +134,7 @@
       "Position": [0.7, 0.7, 0.35],
       "CameraPos": {
         "UseFixedCameraPos": true,
-        "Position": [0.7, 1.79, 0.35]
-      },
-      "Orientation": -90,
-      "MinPitch": -50,
-      "MaxPitch": 15,
-      "MinYaw": -75,
-      "MaxYaw": 75
-    },
-    {
-      "Transform": "Vehicle",
-      "Position": [-0.7, 0.7, -0.4],
-      "CameraPos": {
-        "UseFixedCameraPos": true,
-        "Position": [-0.7, 1.79, -0.4]
-      },
-      "Orientation": 90,
-      "MinPitch": -50,
-      "MaxPitch": 15,
-      "MinYaw": -75,
-      "MaxYaw": 75
-    },
-    {
-      "Transform": "Vehicle",
-      "Position": [0.7, 0.7, -0.4],
-      "CameraPos": {
-        "UseFixedCameraPos": true,
-        "Position": [0.7, 1.79, -0.4]
+        "Position": [0.75, 1.79, 0.35]
       },
       "Orientation": -90,
       "MinPitch": -50,
@@ -135,11 +145,78 @@
   ],
   "Weapons": {
     "Empty": {
-      "Name": "",
-      "Crosshair": "@Empty",
       "RPM": 0,
-      "Magazine": 0,
       "Damage": 0
+    },
+    "M60Left": {
+      "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Spread": 0.25,
+      "CrosshairColor": "0x00ff66",
+      "Projectile": "superbwarfare:projectile",
+      "DefaultZoom": 3,
+      "RPM": 550,
+      "Damage": 5.5,
+      "BypassesArmor": 0.2,
+      "Velocity": 25,
+      "RecoilTime": 16,
+      "RecoilForce": 0.05,
+      "HeatPerShoot": 5,
+      "NaturalCooldown": 1,
+      "ShootAnimationTime": 1,
+      "AmmoType": "superbwarfare:rifle_ammo",
+      "ShootPos": {
+        "Transform": "LeftBarrel",
+        "Positions": [[0.00029, 0.09442, 0.79481]],
+        "Directions": ["Passenger"],
+        "DefaultBarrelDirection": [0, 0, 1]
+      },
+      "Crosshair": "@Empty",
+      "Name": "weapon.fcp.m60",
+      "SoundInfo": {
+        "Fire1P": "superbwarfare:mg_17_fire_1p",
+        "Fire3P": "superbwarfare:mg_17_fire_3p",
+        "Fire3PFar": "superbwarfare:mg_17_far",
+        "Fire3PVeryFar": "superbwarfare:mg_17_veryfar",
+        "Change": "fcp:into_coax"
+      },
+      "SoundRadius": 16
+    },
+    "M60Right": {
+      "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Spread": 0.25,
+      "CrosshairColor": "0x00ff66",
+      "Projectile": "superbwarfare:projectile",
+      "DefaultZoom": 3,
+      "RPM": 550,
+      "Damage": 5.5,
+      "BypassesArmor": 0.2,
+      "Velocity": 25,
+      "RecoilTime": 16,
+      "RecoilForce": 0.05,
+      "HeatPerShoot": 5,
+      "NaturalCooldown": 1,
+      "ShootAnimationTime": 1,
+      "AmmoType": "superbwarfare:rifle_ammo",
+      "ShootPos": {
+        "Transform": "RightBarrel",
+        "Positions": [[-0.00029, 0.09442, 0.79481]],
+        "Directions": ["Passenger"],
+        "DefaultBarrelDirection": [0, 0, 1]
+      },
+      "Crosshair": "@Empty",
+      "Name": "weapon.fcp.m60",
+      "SoundInfo": {
+        "Fire1P": "superbwarfare:mg_17_fire_1p",
+        "Fire3P": "superbwarfare:mg_17_fire_3p",
+        "Fire3PFar": "superbwarfare:mg_17_far",
+        "Fire3PVeryFar": "superbwarfare:mg_17_veryfar",
+        "Change": "fcp:into_coax"
+      },
+      "SoundRadius": 16
     }
   },
   "EngineType": "Helicopter",
