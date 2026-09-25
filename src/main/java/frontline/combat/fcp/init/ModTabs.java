@@ -103,6 +103,7 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.UAZ.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.UAZ_DSHKA.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.UAZ_SPG9.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.UAZ_452.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.URAL.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.URAL_FUEL.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.URAL_KUNG.get()));

@@ -91,6 +91,7 @@ import frontline.combat.fcp.entity.vehicle.Trailers.ExampleTrailer.ExampleTraile
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZDSHKAEntity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZSPG9Entity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZEntity;
+import frontline.combat.fcp.entity.vehicle.Uaz.UAZ452Entity;
 import frontline.combat.fcp.entity.vehicle.Ural.UralEntity;
 import frontline.combat.fcp.entity.vehicle.Ural.UralFuelEntity;
 import frontline.combat.fcp.entity.vehicle.Ural.UralKungEntity;
@@ -136,6 +137,8 @@ public class ModEntities {
             EntityType.Builder.of(UAZDSHKAEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
     public static final RegistryObject<EntityType<UAZSPG9Entity>> UAZ_SPG9 = register("uaz_spg9",
             EntityType.Builder.of(UAZSPG9Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
+    public static final RegistryObject<EntityType<UAZ452Entity>> UAZ_452 = register("uaz_452",
+            EntityType.Builder.of(UAZ452Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
     public static final RegistryObject<EntityType<StrykerMGSEntity>> STRYKER_MGS = register("stryker_mgs",
             EntityType.Builder.of(StrykerMGSEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<StrykerM2Entity>> STRYKER_M2 = register("stryker_m2",
