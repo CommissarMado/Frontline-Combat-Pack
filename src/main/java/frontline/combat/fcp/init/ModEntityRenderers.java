@@ -76,6 +76,7 @@ import frontline.combat.fcp.client.renderer.Uaz.UAZDSHKARenderer;
 import frontline.combat.fcp.client.renderer.Uaz.UAZSPG9Renderer;
 import frontline.combat.fcp.client.renderer.Uaz.UAZRenderer;
 import frontline.combat.fcp.client.renderer.Uaz.UAZ452Renderer;
+import frontline.combat.fcp.client.renderer.Uaz.UAZ3303Renderer;
 import frontline.combat.fcp.client.renderer.Ural.UralGradRenderer;
 import frontline.combat.fcp.client.renderer.Ural.UralRenderer;
 import frontline.combat.fcp.client.renderer.Viper.ViperRenderer;
@@ -112,6 +113,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.UAZ_DSHKA.get(), UAZDSHKARenderer::new);
         event.registerEntityRenderer(ModEntities.UAZ_SPG9.get(), UAZSPG9Renderer::new);
         event.registerEntityRenderer(ModEntities.UAZ_452.get(), UAZ452Renderer::new);
+        event.registerEntityRenderer(ModEntities.UAZ_3303.get(), UAZ3303Renderer::new);
 
         event.registerEntityRenderer(ModEntities.STRYKER_MGS.get(), StrykerMGSRenderer::new);
         event.registerEntityRenderer(ModEntities.STRYKER_M2.get(), StrykerM2Renderer::new);

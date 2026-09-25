@@ -1,0 +1,7 @@
+{
+  "ID": "fcp:uaz_3303",
+  "Model": {
+    "Model": "fcp:geo/uaz_3303.geo.json",
+    "Texture": "fcp:textures/entity/uaz_3303/uaz_3303_1.png"
+  }
+}
