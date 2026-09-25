@@ -12,6 +12,7 @@
   "client": [
     "AmmoCountOverlayMixin",
     "VehicleHudMagazineMixin",
+    "VehicleHudFuelIconMixin",
     "LandVehicleHudStatsMixin",
     "ContainerBlockItemRendererMixin",
     "VehicleSkinScreenPagingMixin"

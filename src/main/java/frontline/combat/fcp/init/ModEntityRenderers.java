@@ -3,6 +3,8 @@ package frontline.combat.fcp.init;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.overlay.FcpPilotOverlay;
 import frontline.combat.fcp.client.renderer.Aavp.AAVPRenderer;
+import frontline.combat.fcp.client.renderer.Abrams.M1a1Renderer;
+import frontline.combat.fcp.client.renderer.Abrams.M1a2Renderer;
 import frontline.combat.fcp.client.renderer.Bmp.Bmp1.BMP1AMRenderer;
 import frontline.combat.fcp.client.renderer.Bmp.Bmp1.BMP1Renderer;
 import frontline.combat.fcp.client.renderer.Bmp.Bmp1.BMP1URenderer;
@@ -208,6 +210,9 @@ public class ModEntityRenderers {
 
         event.registerEntityRenderer(ModEntities.JOHN_DEERE.get(), JohnDeereRenderer::new);
         event.registerEntityRenderer(ModEntities.COMBINE.get(), CombineRenderer::new);
+
+        event.registerEntityRenderer(ModEntities.M1A1.get(), M1a1Renderer::new);
+        event.registerEntityRenderer(ModEntities.M1A2.get(), M1a2Renderer::new);
 
         // Projectiles
         event.registerEntityRenderer(ModEntities.LOCK_ON_HELLFIRE.get(), LockOnHellfireRenderer::new);

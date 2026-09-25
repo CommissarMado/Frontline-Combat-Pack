@@ -3,9 +3,6 @@
   "tow_y": 1.2,
   "tow_z": 6.8,
   "allowed_drivers": [
-    "fcp:kamaz",
-    "fcp:matv",
-    "fcp:lav25",
     "fcp:wolf",
     "fcp:john_deere"
   ],

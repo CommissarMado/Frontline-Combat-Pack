@@ -6,6 +6,8 @@ import frontline.combat.fcp.entity.projectile.Hellfire.WireGuidedHellfireEntity;
 import frontline.combat.fcp.entity.projectile.Malyutka.MalyutkaEntity;
 import frontline.combat.fcp.entity.projectile.Sidewinder.SidewinderEntity;
 import frontline.combat.fcp.entity.vehicle.Aavp.AAVPEntity;
+import frontline.combat.fcp.entity.vehicle.Abrams.M1a1Entity;
+import frontline.combat.fcp.entity.vehicle.Abrams.M1a2Entity;
 import frontline.combat.fcp.entity.vehicle.Bmp.Bmp1.BMP1AMEntity;
 import frontline.combat.fcp.entity.vehicle.Bmp.Bmp1.BMP1Entity;
 import frontline.combat.fcp.entity.vehicle.Bmp.Bmp1.BMP1UEntity;
@@ -290,6 +292,10 @@ public class ModEntities {
             EntityType.Builder.of(BTR82CopeEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<FMTVEntity>> FMTV = register("fmtv",
             EntityType.Builder.of(FMTVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<M1a1Entity>> M1A1 = register("m1a1",
+            EntityType.Builder.of(M1a1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<M1a2Entity>> M1A2 = register("m1a2",
+            EntityType.Builder.of(M1a2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     // Projectiles
     public static final RegistryObject<EntityType<LockOnHellfireEntity>> LOCK_ON_HELLFIRE = register("lock_on_hellfire",
             EntityType.Builder.<LockOnHellfireEntity>of(LockOnHellfireEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f, 0.5f));

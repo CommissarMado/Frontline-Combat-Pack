@@ -72,6 +72,10 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.M109.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.KOZAK5.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.KOZAK2M1.get()));
+
+                output.accept(ContainerBlockItem.createInstance(ModEntities.M1A1.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.M1A2.get()));
+
                 output.accept(ContainerBlockItem.createInstance(ModEntities.LITTLEBIRD.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.LITTLEBIRD_ARMED.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY.get()));
