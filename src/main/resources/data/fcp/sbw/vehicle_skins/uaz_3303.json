@@ -1,0 +1,46 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Base",
+      "Texture": "fcp:textures/entity/uaz_3303/uaz_3303_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "skin_2",
+      "Name": "Skin 2",
+      "Texture": "fcp:textures/entity/uaz_3303/uaz_3303_2.png",
+      "Priority": 2
+    },
+    {
+      "Id": "skin_3",
+      "Name": "Skin 3",
+      "Texture": "fcp:textures/entity/uaz_3303/uaz_3303_3.png",
+      "Priority": 3
+    },
+    {
+      "Id": "skin_4",
+      "Name": "Skin 4",
+      "Texture": "fcp:textures/entity/uaz_3303/uaz_3303_4.png",
+      "Priority": 4
+    },
+    {
+      "Id": "skin_5",
+      "Name": "Skin 5",
+      "Texture": "fcp:textures/entity/uaz_3303/uaz_3303_5.png",
+      "Priority": 5
+    },
+    {
+      "Id": "skin_6",
+      "Name": "Skin 6",
+      "Texture": "fcp:textures/entity/uaz_3303/uaz_3303_6.png",
+      "Priority": 6
+    },
+    {
+      "Id": "skin_7",
+      "Name": "Skin 7",
+      "Texture": "fcp:textures/entity/uaz_3303/uaz_3303_7.png",
+      "Priority": 7
+    }
+  ]
+}

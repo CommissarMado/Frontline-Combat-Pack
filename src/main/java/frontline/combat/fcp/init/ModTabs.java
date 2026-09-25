@@ -79,11 +79,23 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.LITTLEBIRD.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.LITTLEBIRD_ARMED.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY.get()));
-                output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY_ROCKETS.get()));
-                output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY_DOOR_GUNNER_M60.get()));
-                output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY_DOOR_GUNNER_M134.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY_M60_DOOR_GUNS.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY_M60_GUNSHIP.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY_M134_DOOR_GUNS.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY_M134_GUNSHIP.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.VENOM.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.VENOM_GUNSHIP.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.VENOM_DOOR_GUNS.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.VIPER.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.CH53A.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.CH53E.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.MH53.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.UH60.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.UH60_MINIGUN.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.MH60L.get()));
+
+                // ---- Japanese Vehicles ----
+                output.accept(ContainerBlockItem.createInstance(ModEntities.OH1.get()));
 
                 // ---- Civilian Vehicles ----
                 output.accept(ContainerBlockItem.createInstance(ModEntities.COMBINE.get()));
@@ -95,6 +107,8 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.UAZ.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.UAZ_DSHKA.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.UAZ_SPG9.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.UAZ_452.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.UAZ_3303.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.URAL.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.URAL_FUEL.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.URAL_KUNG.get()));

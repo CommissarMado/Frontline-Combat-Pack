@@ -67,11 +67,21 @@ public class FcpPilotOverlay implements IGuiOverlay {
             Map.entry("littlebird",       List.of(0, 1)),
             Map.entry("littlebird_armed", List.of(1)),
             Map.entry("venom", List.of(0, 1)),
+            Map.entry("venom_door_guns", List.of(0, 1)),
+            Map.entry("venom_gunship", List.of(0, 1)),
             Map.entry("huey", List.of(0, 1)),
-            Map.entry("huey_rockets", List.of(1)),
-            Map.entry("huey_door_gunner_m60", List.of(0, 2)),
-            Map.entry("huey_door_gunner_m134", List.of(2)),
-            Map.entry("mi17", List.of(0, 1))
+            Map.entry("huey_m60_door_guns", List.of(0, 1)),
+            Map.entry("huey_m60_gunship", List.of(0, 1)),
+            Map.entry("huey_m134_door_guns", List.of(0, 1)),
+            Map.entry("huey_m134_gunship", List.of(0, 1)),
+            Map.entry("mi17", List.of(0, 1)),
+            Map.entry("oh1", List.of(0, 1)),
+            Map.entry("ch53a", List.of(0, 1)),
+            Map.entry("ch53e", List.of(0, 1)),
+            Map.entry("mh53", List.of(0, 1)),
+            Map.entry("uh60", List.of(0, 1)),
+            Map.entry("mh60l", List.of(0, 1)),
+            Map.entry("uh60_minigun", List.of(0, 1))
     );
 
     // Smoothed HUD state (matches the default helicopter HUD's lerped values).

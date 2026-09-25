@@ -78,7 +78,7 @@
       },
       "Crosshair": "@VehicleCommonGun",
       "CrosshairColor": "0x00FF66",
-      "AmmoType": "superbwarfare:grenade_40mm",
+      "AmmoType": "superbwarfare:small_shell_he",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
@@ -234,7 +234,7 @@
       },
       "AmmoType": [
         {
-          "Ammo": "superbwarfare:medium_anti_ground_missile",
+          "Ammo": "superbwarfare:medium_anti_air_missile",
           "ShouldUnload": false
         }
       ],
@@ -277,6 +277,7 @@
   "Mass": 1.0,
   "AllowFreeCam": true,
   "HasDecoy": true,
+  "SmokeDecoy": false,
   "DamageModifiers": [
     "minecraft:arrow * 0.15",
     "minecraft:explosion * 4",

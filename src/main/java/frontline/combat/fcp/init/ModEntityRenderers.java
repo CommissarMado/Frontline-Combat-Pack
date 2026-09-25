@@ -27,11 +27,14 @@ import frontline.combat.fcp.client.renderer.GazTigr.GazTigrDualRenderer;
 import frontline.combat.fcp.client.renderer.GazTigr.GazTigrMGRenderer;
 import frontline.combat.fcp.client.renderer.GazTigr.GazTigrRWSRenderer;
 import frontline.combat.fcp.client.renderer.GazTigr.GazTigrRenderer;
-import frontline.combat.fcp.client.renderer.Huey.HueyDoorGunnerM134Renderer;
-import frontline.combat.fcp.client.renderer.Huey.HueyDoorGunnerM60Renderer;
 import frontline.combat.fcp.client.renderer.Huey.HueyRenderer;
+import frontline.combat.fcp.client.renderer.Huey.HueyM60DoorGunsRenderer;
+import frontline.combat.fcp.client.renderer.Huey.HueyM60GunshipRenderer;
+import frontline.combat.fcp.client.renderer.Huey.HueyM134DoorGunsRenderer;
+import frontline.combat.fcp.client.renderer.Huey.HueyM134GunshipRenderer;
 import frontline.combat.fcp.client.renderer.Huey.VenomRenderer;
-import frontline.combat.fcp.client.renderer.Huey.HueyRocketsRenderer;;
+import frontline.combat.fcp.client.renderer.Huey.VenomGunshipRenderer;
+import frontline.combat.fcp.client.renderer.Huey.VenomDoorGunsRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.CombineRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.CultivatorRenderer;
 import frontline.combat.fcp.client.renderer.Humvee.HumveeUnarmedRenderer;
@@ -74,9 +77,18 @@ import frontline.combat.fcp.client.renderer.Trailers.ExampleTrailer.ExampleTrail
 import frontline.combat.fcp.client.renderer.Uaz.UAZDSHKARenderer;
 import frontline.combat.fcp.client.renderer.Uaz.UAZSPG9Renderer;
 import frontline.combat.fcp.client.renderer.Uaz.UAZRenderer;
+import frontline.combat.fcp.client.renderer.Uaz.UAZ452Renderer;
+import frontline.combat.fcp.client.renderer.Uaz.UAZ3303Renderer;
 import frontline.combat.fcp.client.renderer.Ural.UralGradRenderer;
 import frontline.combat.fcp.client.renderer.Ural.UralRenderer;
 import frontline.combat.fcp.client.renderer.Viper.ViperRenderer;
+import frontline.combat.fcp.client.renderer.Oh1.Oh1Renderer;
+import frontline.combat.fcp.client.renderer.Ch53.Ch53aRenderer;
+import frontline.combat.fcp.client.renderer.Ch53.Ch53eRenderer;
+import frontline.combat.fcp.client.renderer.Ch53.Mh53Renderer;
+import frontline.combat.fcp.client.renderer.Uh60.Uh60Renderer;
+import frontline.combat.fcp.client.renderer.Uh60.Uh60MinigunRenderer;
+import frontline.combat.fcp.client.renderer.Uh60.Mh60lRenderer;
 import frontline.combat.fcp.client.renderer.Projectile.Hellfire.LockOnHellfireRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -102,6 +114,8 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.UAZ.get(), UAZRenderer::new);
         event.registerEntityRenderer(ModEntities.UAZ_DSHKA.get(), UAZDSHKARenderer::new);
         event.registerEntityRenderer(ModEntities.UAZ_SPG9.get(), UAZSPG9Renderer::new);
+        event.registerEntityRenderer(ModEntities.UAZ_452.get(), UAZ452Renderer::new);
+        event.registerEntityRenderer(ModEntities.UAZ_3303.get(), UAZ3303Renderer::new);
 
         event.registerEntityRenderer(ModEntities.STRYKER_MGS.get(), StrykerMGSRenderer::new);
         event.registerEntityRenderer(ModEntities.STRYKER_M2.get(), StrykerM2Renderer::new);
@@ -140,6 +154,13 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.KAMAZ_LONG.get(), frontline.combat.fcp.client.renderer.Kamaz.KamazLongRenderer::new);
 
         event.registerEntityRenderer(ModEntities.VIPER.get(), ViperRenderer::new);
+        event.registerEntityRenderer(ModEntities.OH1.get(), Oh1Renderer::new);
+        event.registerEntityRenderer(ModEntities.CH53A.get(), Ch53aRenderer::new);
+        event.registerEntityRenderer(ModEntities.CH53E.get(), Ch53eRenderer::new);
+        event.registerEntityRenderer(ModEntities.MH53.get(), Mh53Renderer::new);
+        event.registerEntityRenderer(ModEntities.UH60.get(), Uh60Renderer::new);
+        event.registerEntityRenderer(ModEntities.UH60_MINIGUN.get(), Uh60MinigunRenderer::new);
+        event.registerEntityRenderer(ModEntities.MH60L.get(), Mh60lRenderer::new);
 
         event.registerEntityRenderer(ModEntities.GAZ_TIGR.get(), GazTigrRenderer::new);
         event.registerEntityRenderer(ModEntities.GAZ_TIGR_RWS.get(), GazTigrRWSRenderer::new);
@@ -148,10 +169,13 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.GAZ_TIGR_DUAL.get(), GazTigrDualRenderer::new);
 
         event.registerEntityRenderer(ModEntities.HUEY.get(), HueyRenderer::new);
-        event.registerEntityRenderer(ModEntities.HUEY_ROCKETS.get(), HueyRocketsRenderer::new);
-        event.registerEntityRenderer(ModEntities.HUEY_DOOR_GUNNER_M60.get(), HueyDoorGunnerM60Renderer::new);
-        event.registerEntityRenderer(ModEntities.HUEY_DOOR_GUNNER_M134.get(), HueyDoorGunnerM134Renderer::new);
+        event.registerEntityRenderer(ModEntities.HUEY_M60_DOOR_GUNS.get(), HueyM60DoorGunsRenderer::new);
+        event.registerEntityRenderer(ModEntities.HUEY_M60_GUNSHIP.get(), HueyM60GunshipRenderer::new);
+        event.registerEntityRenderer(ModEntities.HUEY_M134_DOOR_GUNS.get(), HueyM134DoorGunsRenderer::new);
+        event.registerEntityRenderer(ModEntities.HUEY_M134_GUNSHIP.get(), HueyM134GunshipRenderer::new);
         event.registerEntityRenderer(ModEntities.VENOM.get(), VenomRenderer::new);
+        event.registerEntityRenderer(ModEntities.VENOM_GUNSHIP.get(), VenomGunshipRenderer::new);
+        event.registerEntityRenderer(ModEntities.VENOM_DOOR_GUNS.get(), VenomDoorGunsRenderer::new);
 
         event.registerEntityRenderer(ModEntities.NOVATOR.get(), NovatorRenderer::new);
         event.registerEntityRenderer(ModEntities.NOVATOR_UNARMED.get(), NovatorUnarmedRenderer::new);

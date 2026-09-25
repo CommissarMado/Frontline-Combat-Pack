@@ -2,6 +2,25 @@
   "ID": "fcp:venom",
   "MaxHealth": 320,
   "MaxEnergy": 8000000,
+  "TurretPos": [
+    0.00325,
+    0.65428,
+    4.44664
+  ],
+  "TurretPitchRange": [
+    -50,
+    15
+  ],
+  "TurretYawRange": [
+    -75,
+    75
+  ],
+  "BarrelPos": [
+    0,
+    -0.0625,
+    0
+  ],
+  "TurretControllerIndex": 1,
   "OBB": [
     {
       "Size": [
@@ -167,6 +186,7 @@
       "IsEnclosed": true
     },
     {
+      "HasThermalImaging": true,
       "Transform": "Vehicle",
       "Position": [
         0.55,
@@ -174,14 +194,15 @@
         2.8
       ],
       "CameraPos": {
+        "Transform": "Barrel",
         "UseFixedCameraPos": true,
         "Position": [
-          0.45,
-          2.15,
-          2.7
-        ]
+          0,
+          0,
+          0.3
+        ],
+        "Direction": "Barrel"
       },
-      "CanRotateHead": true,
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
@@ -360,6 +381,7 @@
   "Mass": 1.0,
   "AllowFreeCam": true,
   "HasDecoy": true,
+  "SmokeDecoy": false,
   "DamageModifiers": [
     "minecraft:arrow * 0.15",
     "minecraft:explosion * 4",

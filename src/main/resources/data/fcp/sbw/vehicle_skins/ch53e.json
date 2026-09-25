@@ -1,0 +1,16 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Gunship Gray",
+      "Texture": "fcp:textures/entity/ch53/ch53_2.png",
+      "Priority": 1
+    },
+    {
+      "Id": "flat_black",
+      "Name": "Flat Black",
+      "Texture": "fcp:textures/entity/ch53/ch53_1.png",
+      "Priority": 2
+    }
+  ]
+}

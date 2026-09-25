@@ -12,6 +12,8 @@
   "client": [
     "AmmoCountOverlayMixin",
     "VehicleHudMagazineMixin",
+    "VehicleHudSeatVisibilityMixin",
+    "HelicopterHudSeatVisibilityMixin",
     "VehicleHudFuelIconMixin",
     "LandVehicleHudStatsMixin",
     "ContainerBlockItemRendererMixin",

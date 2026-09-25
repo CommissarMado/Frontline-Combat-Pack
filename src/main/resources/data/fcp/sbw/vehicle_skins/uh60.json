@@ -1,0 +1,34 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Gray",
+      "Texture": "fcp:textures/entity/uh60/uh60_gray.png",
+      "Priority": 1
+    },
+    {
+      "Id": "black",
+      "Name": "Flat Black",
+      "Texture": "fcp:textures/entity/uh60/uh60_black.png",
+      "Priority": 2
+    },
+    {
+      "Id": "desert_tan",
+      "Name": "Desert Tan",
+      "Texture": "fcp:textures/entity/uh60/uh60_tan.png",
+      "Priority": 3
+    },
+    {
+      "Id": "medevac",
+      "Name": "Medevac",
+      "Texture": "fcp:textures/entity/uh60/uh60_medevac.png",
+      "Priority": 4
+    },
+    {
+      "Id": "heisenberg",
+      "Name": "Heisenberg",
+      "Texture": "fcp:textures/entity/uh60/uh60_heisenberg.png",
+      "Priority": 5
+    }
+  ]
+}

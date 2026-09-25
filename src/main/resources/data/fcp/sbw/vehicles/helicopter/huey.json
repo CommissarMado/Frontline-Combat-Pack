@@ -24,7 +24,8 @@
         "UseAircraftCamera": true,
         "AircraftCameraPos": [-3, 3, -10]
       },
-      "CanRotateHead": false
+      "CanRotateHead": false,
+      "BanHand": true
     },
     {
       "Transform": "Vehicle",
@@ -160,6 +161,7 @@
   "Mass": 1.0,
   "AllowFreeCam": true,
   "HasDecoy": true,
+  "SmokeDecoy": false,
   "DamageModifiers": [
     "minecraft:arrow * 0.15",
     "minecraft:explosion * 4",
