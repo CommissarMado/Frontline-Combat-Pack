@@ -15,7 +15,7 @@
     "VehicleHudSeatVisibilityMixin",
     "HelicopterHudSeatVisibilityMixin",
     "VehicleHudFuelIconMixin",
-    "LandVehicleHudStatsMixin",
+    "LandVehicleHudStatsMixin", 
     "ContainerBlockItemRendererMixin",
     "VehicleSkinScreenPagingMixin"
   ],
