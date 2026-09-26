@@ -47,6 +47,7 @@ import frontline.combat.fcp.entity.vehicle.Kamaz.KamazEntity;
 import frontline.combat.fcp.entity.vehicle.Kamaz.KamazKungEntity;
 import frontline.combat.fcp.entity.vehicle.Kamaz.KamazLongEntity;
 import frontline.combat.fcp.entity.vehicle.Lav.Lav25Entity;
+import frontline.combat.fcp.entity.vehicle.Littlebird.Ah6mLittlebirdEntity;
 import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdArmedEntity;
 import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdEntity;
 import frontline.combat.fcp.entity.vehicle.M109.M109Entity;
@@ -161,6 +162,8 @@ public class ModEntities {
             EntityType.Builder.of(LittlebirdEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
     public static final RegistryObject<EntityType<LittlebirdArmedEntity>> LITTLEBIRD_ARMED = register("littlebird_armed",
             EntityType.Builder.of(LittlebirdArmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
+    public static final RegistryObject<EntityType<Ah6mLittlebirdEntity>> AH6M_LITTLEBIRD = register("ah6m_littlebird",
+            EntityType.Builder.of(Ah6mLittlebirdEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
     public static final RegistryObject<EntityType<BMP1Entity>> BMP1 = register("bmp1",
             EntityType.Builder.of(BMP1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<BMP1UEntity>> BMP1U = register("bmp1u",

@@ -9,7 +9,15 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 
-public class LittlebirdArmedEntity extends CamoVehicleBase {
+/**
+ * "AH-6M Littlebird" - the heavy-attack Littlebird variant. Very similar to the normal
+ * littlebird_armed, but the right-hand minigun/rocket pod pair has been replaced with a fixed
+ * "roketa" rack carrying two wire-guided Hellfire missiles (HELFIRE/HELFIRE2), fired by the
+ * co-pilot through the new camera turret/barrel bones - the same "Hellfire2" pattern the
+ * Blackhawk (MH-60L) uses for its co-pilot-fired missiles, and the same native
+ * turret/barrel bone pair the Venom uses for its front sensor.
+ */
+public class Ah6mLittlebirdEntity extends CamoVehicleBase {
 
     public int INVENTORY_SIZE = 9;
 
@@ -25,13 +33,13 @@ public class LittlebirdArmedEntity extends CamoVehicleBase {
     private float barrelRotationOld = 0f;
 
     // "door toggle" is the shared parent bone of both "door" and "door2" in
-    // littlebird_armed.geo.json - hiding it hides both side doors at once, the same
+    // ah6m_littlebird.geo.json - hiding it hides both side doors at once, the same
     // toggle-cosmetic pattern as the UAZ-3303's tent.
-    private static final EntityDataAccessor<Boolean> DOORS = SynchedEntityData.defineId(LittlebirdArmedEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DOORS = SynchedEntityData.defineId(Ah6mLittlebirdEntity.class, EntityDataSerializers.BOOLEAN);
 
     private boolean doorsInit = false;
 
-    public LittlebirdArmedEntity(EntityType<LittlebirdArmedEntity> type, Level world) {
+    public Ah6mLittlebirdEntity(EntityType<Ah6mLittlebirdEntity> type, Level world) {
         super(type, world);
     }
 
@@ -78,7 +86,8 @@ public class LittlebirdArmedEntity extends CamoVehicleBase {
         // Store previous barrel rotation for smooth interpolation
         barrelRotationOld = barrelRotation;
 
-        // Check if cannon ammo has changed (meaning it was fired)
+        // Check if cannon ammo has changed (meaning it was fired) - only one minigun barrel
+        // survives on this variant (BarrelRotationController1), unlike littlebird_armed's two.
         int currentAmmo = getAmmoCount("Cannon");
 
         // Initialize on first tick
@@ -98,6 +107,9 @@ public class LittlebirdArmedEntity extends CamoVehicleBase {
         previousCannonAmmo = currentAmmo;
     }
 
+    // Same "hide the missile once it's been fired" mechanism as the Blackhawk (Mh60lEntity):
+    // each Hellfire2 bone (HELFIRE/HELFIRE2) is toggled off individually as the Hellfire2
+    // ammo count counts down from Magazine-1 to 0. See Ah6mLittlebirdModel for the bone wiring.
     public boolean GetWeaponState(String WeaponName, int Count) {
         if (getAmmoCount(WeaponName) == Count)
             return true;
@@ -105,7 +117,6 @@ public class LittlebirdArmedEntity extends CamoVehicleBase {
             return true;
         else
             return false;
-
     }
 
     public float getBarrelRot() {
