@@ -69,6 +69,7 @@ import frontline.combat.fcp.entity.vehicle.Kozak.Kozak5Entity;
 import frontline.combat.fcp.entity.vehicle.Kozak.Kozak2m1Entity;
 import frontline.combat.fcp.entity.vehicle.Kozak.KozakAmbulanceEntity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATVTOWEntity;
+import frontline.combat.fcp.entity.vehicle.Rg33.RG33Entity;
 import frontline.combat.fcp.entity.vehicle.MemeVehicles.BigBirdEntity;
 import frontline.combat.fcp.entity.vehicle.MemeVehicles.WolfEntity;
 import frontline.combat.fcp.entity.vehicle.Mi17.MI17Entity;
@@ -246,6 +247,8 @@ public class ModEntities {
             EntityType.Builder.of(NovatorUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<MATVEntity>> MATV = register("matv",
             EntityType.Builder.of(MATVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<RG33Entity>> RG_33 = register("rg_33",
+            EntityType.Builder.of(RG33Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<EmplTowEntity>> EMPL_TOW = register("empl_tow",
             EntityType.Builder.of(EmplTowEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,1.4f));
     public static final RegistryObject<EntityType<EmplKornetEntity>> EMPL_KORNET = register("empl_kornet",

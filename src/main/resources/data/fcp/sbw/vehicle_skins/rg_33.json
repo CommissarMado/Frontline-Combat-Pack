@@ -1,0 +1,16 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Green Camo",
+      "Texture": "fcp:textures/entity/rg_33/rg_33_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "skin_2",
+      "Name": "Desert Camo",
+      "Texture": "fcp:textures/entity/rg_33/rg_33_2.png",
+      "Priority": 2
+    }
+  ]
+}

@@ -49,6 +49,7 @@ import frontline.combat.fcp.client.renderer.Matv.MATV9In1Renderer;
 import frontline.combat.fcp.client.renderer.Matv.MATVCrowsRenderer;
 import frontline.combat.fcp.client.renderer.Matv.MATVRenderer;
 import frontline.combat.fcp.client.renderer.Matv.MATVTOWRenderer;
+import frontline.combat.fcp.client.renderer.Rg33.RG33Renderer;
 import frontline.combat.fcp.client.renderer.MemeVehicles.BigBirdRenderer;
 import frontline.combat.fcp.client.renderer.MemeVehicles.WolfRenderer;
 import frontline.combat.fcp.client.renderer.Mi17.MI17Renderer;
@@ -181,6 +182,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.NOVATOR_UNARMED.get(), NovatorUnarmedRenderer::new);
 
         event.registerEntityRenderer(ModEntities.MATV.get(), MATVRenderer::new);
+        event.registerEntityRenderer(ModEntities.RG_33.get(), RG33Renderer::new);
         event.registerEntityRenderer(ModEntities.EMPL_TOW.get(), frontline.combat.fcp.client.renderer.Emplacement.EmplTowRenderer::new);
         event.registerEntityRenderer(ModEntities.EMPL_KORNET.get(), frontline.combat.fcp.client.renderer.Emplacement.EmplKornetRenderer::new);
         event.registerEntityRenderer(ModEntities.EMPL_DSHK.get(), frontline.combat.fcp.client.renderer.Emplacement.EmplDshkRenderer::new);

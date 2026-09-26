@@ -65,6 +65,7 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_SOFT_TOP.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_SOFT_TOP_NO_DOORS.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.RG_33.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV_CROW.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV_TOW.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.M939.get()));
