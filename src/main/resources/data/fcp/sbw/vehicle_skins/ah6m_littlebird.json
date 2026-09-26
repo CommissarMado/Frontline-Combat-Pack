@@ -1,0 +1,28 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Dark",
+      "Texture": "fcp:textures/entity/littlebird/littlebird_armed_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "light",
+      "Name": "Light",
+      "Texture": "fcp:textures/entity/littlebird/littlebird_armed_2.png",
+      "Priority": 2
+    },
+    {
+      "Id": "green",
+      "Name": "Green",
+      "Texture": "fcp:textures/entity/littlebird/littlebird_armed_3.png",
+      "Priority": 3
+    },
+    {
+      "Id": "tan",
+      "Name": "Tan",
+      "Texture": "fcp:textures/entity/littlebird/littlebird_armed_4.png",
+      "Priority": 4
+    }
+  ]
+}
