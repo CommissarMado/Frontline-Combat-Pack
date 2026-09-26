@@ -17,7 +17,7 @@ import net.minecraft.world.level.Level;
  * Blackhawk (MH-60L) uses for its co-pilot-fired missiles, and the same native
  * turret/barrel bone pair the Venom uses for its front sensor.
  */
-public class Ah6mLittlebirdEntity extends CamoVehicleBase {
+public class LittlebirdHeavyEntity extends CamoVehicleBase {
 
     public int INVENTORY_SIZE = 9;
 
@@ -33,13 +33,13 @@ public class Ah6mLittlebirdEntity extends CamoVehicleBase {
     private float barrelRotationOld = 0f;
 
     // "door toggle" is the shared parent bone of both "door" and "door2" in
-    // ah6m_littlebird.geo.json - hiding it hides both side doors at once, the same
+    // littlebird_heavy.geo.json - hiding it hides both side doors at once, the same
     // toggle-cosmetic pattern as the UAZ-3303's tent.
-    private static final EntityDataAccessor<Boolean> DOORS = SynchedEntityData.defineId(Ah6mLittlebirdEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DOORS = SynchedEntityData.defineId(LittlebirdHeavyEntity.class, EntityDataSerializers.BOOLEAN);
 
     private boolean doorsInit = false;
 
-    public Ah6mLittlebirdEntity(EntityType<Ah6mLittlebirdEntity> type, Level world) {
+    public LittlebirdHeavyEntity(EntityType<LittlebirdHeavyEntity> type, Level world) {
         super(type, world);
     }
 
@@ -109,7 +109,7 @@ public class Ah6mLittlebirdEntity extends CamoVehicleBase {
 
     // Same "hide the missile once it's been fired" mechanism as the Blackhawk (Mh60lEntity):
     // each Hellfire2 bone (HELFIRE/HELFIRE2) is toggled off individually as the Hellfire2
-    // ammo count counts down from Magazine-1 to 0. See Ah6mLittlebirdModel for the bone wiring.
+    // ammo count counts down from Magazine-1 to 0. See LittlebirdHeavyModel for the bone wiring.
     public boolean GetWeaponState(String WeaponName, int Count) {
         if (getAmmoCount(WeaponName) == Count)
             return true;

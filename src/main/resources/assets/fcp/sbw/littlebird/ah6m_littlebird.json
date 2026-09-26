@@ -1,7 +1,0 @@
-{
-  "ID": "fcp:ah6m_littlebird",
-  "Model": {
-    "Model": "fcp:geo/ah6m_littlebird.geo.json",
-    "Texture": "fcp:textures/entity/toyota.png"
-  }
-}

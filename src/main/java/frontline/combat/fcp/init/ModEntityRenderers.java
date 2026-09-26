@@ -42,7 +42,7 @@ import frontline.combat.fcp.client.renderer.JohnDeere.JohnDeereRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.SeederRenderer;
 import frontline.combat.fcp.client.renderer.Kamaz.KamazRenderer;
 import frontline.combat.fcp.client.renderer.Lav.Lav25Renderer;
-import frontline.combat.fcp.client.renderer.Littlebird.Ah6mLittlebirdRenderer;
+import frontline.combat.fcp.client.renderer.Littlebird.LittlebirdHeavyRenderer;
 import frontline.combat.fcp.client.renderer.Littlebird.LittlebirdArmedRenderer;
 import frontline.combat.fcp.client.renderer.Littlebird.LittlebirdRenderer;
 import frontline.combat.fcp.client.renderer.M109.M109Renderer;
@@ -128,7 +128,7 @@ public class ModEntityRenderers {
 
         event.registerEntityRenderer(ModEntities.LITTLEBIRD.get(), LittlebirdRenderer::new);
         event.registerEntityRenderer(ModEntities.LITTLEBIRD_ARMED.get(), LittlebirdArmedRenderer::new);
-        event.registerEntityRenderer(ModEntities.AH6M_LITTLEBIRD.get(), Ah6mLittlebirdRenderer::new);
+        event.registerEntityRenderer(ModEntities.LITTLEBIRD_HEAVY.get(), LittlebirdHeavyRenderer::new);
 
         event.registerEntityRenderer(ModEntities.BMP1.get(), BMP1Renderer::new);
         event.registerEntityRenderer(ModEntities.BMP1U.get(), BMP1URenderer::new);

@@ -4,8 +4,8 @@ import com.atsuishio.superbwarfare.client.renderer.entity.VehicleRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import frontline.combat.fcp.client.model.Littlebird.LittlebirdArmedModel;
-import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdArmedEntity;
+import frontline.combat.fcp.client.model.Littlebird.LittlebirdHeavyModel;
+import frontline.combat.fcp.entity.vehicle.Littlebird.LittlebirdHeavyEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -16,20 +16,20 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.phys.AABB;
 import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
-public class LittlebirdArmedRenderer extends VehicleRenderer<LittlebirdArmedEntity> {
-    // "door"/"door2" toggle hitboxes, matching LittlebirdArmedDoorHandler's click boxes.
+public class LittlebirdHeavyRenderer extends VehicleRenderer<LittlebirdHeavyEntity> {
+    // "door"/"door2" toggle hitboxes, matching LittlebirdHeavyDoorHandler's click boxes.
     private static final AABB DOOR_BOX = new AABB(0.6764, 0.7167, -0.5263, 0.8667, 2.1095, 0.6759);
     private static final AABB DOOR2_BOX = new AABB(-0.8594, 0.7167, -0.5263, -0.6692, 2.1095, 0.6759);
 
-    public LittlebirdArmedRenderer(EntityRendererProvider.Context renderManager) {super(renderManager, new LittlebirdArmedModel());}
+    public LittlebirdHeavyRenderer(EntityRendererProvider.Context renderManager) {super(renderManager, new LittlebirdHeavyModel());}
 
     @Override
-    public ResourceLocation getTextureLocation(LittlebirdArmedEntity entity) {
+    public ResourceLocation getTextureLocation(LittlebirdHeavyEntity entity) {
         return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 
     @Override
-    public void render(LittlebirdArmedEntity entity, float entityYaw, float partialTick,
+    public void render(LittlebirdHeavyEntity entity, float entityYaw, float partialTick,
                        PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
         super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
         Minecraft mc = Minecraft.getInstance();
