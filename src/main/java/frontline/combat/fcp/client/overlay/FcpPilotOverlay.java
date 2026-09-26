@@ -66,7 +66,7 @@ public class FcpPilotOverlay implements IGuiOverlay {
     private static final Map<String, List<Integer>> PILOT_OVERLAY_VEHICLES = Map.ofEntries(
             Map.entry("littlebird",       List.of(0, 1)),
             Map.entry("littlebird_armed", List.of(1)),
-            Map.entry("ah6m_littlebird", List.of(1)),
+            Map.entry("littlebird_heavy", List.of(1)),
             Map.entry("venom", List.of(0, 1)),
             Map.entry("venom_door_guns", List.of(0, 1)),
             Map.entry("venom_gunship", List.of(0, 1)),

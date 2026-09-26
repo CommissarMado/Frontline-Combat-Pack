@@ -27,12 +27,12 @@ import java.util.Optional;
  * camo repaint still works.
  */
 @Mod.EventBusSubscriber(modid = FCP.MODID)
-public final class Ah6mLittlebirdDoorHandler {
+public final class LittlebirdHeavyDoorHandler {
 
     private static final double REACH = 5.0;
 
     // "door" (right side) hitbox, min/max in SuperbWarfare's vehicle-local space (derived from
-    // ah6m_littlebird.geo.json's "door" bone - identical to littlebird_armed's, since the door
+    // littlebird_heavy.geo.json's "door" bone - identical to littlebird_armed's, since the door
     // geometry is unchanged between the two variants).
     private static final double[] MIN_DOOR = {0.6764, 0.7167, -0.5263};
     private static final double[] MAX_DOOR = {0.8667, 2.1095, 0.6759};
@@ -41,14 +41,14 @@ public final class Ah6mLittlebirdDoorHandler {
     private static final double[] MIN_DOOR2 = {-0.8594, 0.7167, -0.5263};
     private static final double[] MAX_DOOR2 = {-0.6692, 2.1095, 0.6759};
 
-    private Ah6mLittlebirdDoorHandler() {}
+    private LittlebirdHeavyDoorHandler() {}
 
     @SubscribeEvent
     public static void onInteract(PlayerInteractEvent.EntityInteractSpecific event) {
         Player player = event.getEntity();
         ItemStack stack = event.getItemStack();
         if (stack.isEmpty() || stack.getItem() != ModItems.SPRAY.get()) return;
-        if (!(event.getTarget() instanceof Ah6mLittlebirdEntity heli)) return;
+        if (!(event.getTarget() instanceof LittlebirdHeavyEntity heli)) return;
 
         VehicleEntity vehicle = heli;
         Vec3 eye = player.getEyePosition(1f);
