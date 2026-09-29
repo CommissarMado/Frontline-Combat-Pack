@@ -1,4 +1,4 @@
-package frontline.combat.fcp.entity.vehicle.Mi17;
+package frontline.combat.fcp.entity.vehicle.Mi8;
 
 import com.atsuishio.superbwarfare.entity.vehicle.damage.DamageModifier;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
@@ -9,7 +9,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 
-public class MI17Entity extends CamoVehicleBase {
+public class MI8AMTShEntity extends CamoVehicleBase {
 
     public int INVENTORY_SIZE = 9;
 
@@ -20,17 +20,17 @@ public class MI17Entity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final EntityDataAccessor<Boolean> TOGGLE6 = SynchedEntityData.defineId(MI17Entity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Boolean> TOGGLE4 = SynchedEntityData.defineId(MI17Entity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Boolean> TOGGLE5 = SynchedEntityData.defineId(MI17Entity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Boolean> TOGGLE2 = SynchedEntityData.defineId(MI17Entity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Boolean> TOGGLE1 = SynchedEntityData.defineId(MI17Entity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Boolean> TOGGLE3 = SynchedEntityData.defineId(MI17Entity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Boolean> TOGGLE = SynchedEntityData.defineId(MI17Entity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> TOGGLE6 = SynchedEntityData.defineId(MI8AMTShEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> TOGGLE4 = SynchedEntityData.defineId(MI8AMTShEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> TOGGLE5 = SynchedEntityData.defineId(MI8AMTShEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> TOGGLE2 = SynchedEntityData.defineId(MI8AMTShEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> TOGGLE1 = SynchedEntityData.defineId(MI8AMTShEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> TOGGLE3 = SynchedEntityData.defineId(MI8AMTShEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> TOGGLE = SynchedEntityData.defineId(MI8AMTShEntity.class, EntityDataSerializers.BOOLEAN);
 
     private boolean toggleInit = false;
 
-    public MI17Entity(EntityType<MI17Entity> type, Level world) {
+    public MI8AMTShEntity(EntityType<MI8AMTShEntity> type, Level world) {
         super(type, world);
 
     }
@@ -118,5 +118,17 @@ public class MI17Entity extends CamoVehicleBase {
             toggleInit = true;
         }
 
+    }
+
+    // Hides the FAB-500 model once it's been dropped - same GetWeaponState(name, count) pattern
+    // as LittlebirdHeavyEntity's Hellfire2 rack (getAmmoCount(weaponName) is inherited from
+    // VehicleEntity). See MI8AMTShModel for the "FAB_500" bone wiring.
+    public boolean GetWeaponState(String WeaponName, int Count) {
+        if (getAmmoCount(WeaponName) == Count)
+            return true;
+        else if (getAmmoCount(WeaponName) < Count)
+            return true;
+        else
+            return false;
     }
 }

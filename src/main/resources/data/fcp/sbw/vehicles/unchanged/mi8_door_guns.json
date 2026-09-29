@@ -1,5 +1,5 @@
 {
-  "ID": "fcp:mi17",
+  "ID": "fcp:mi8_door_guns",
   "MaxHealth": 420,
   "MaxEnergy": 8000000,
   "OBB": [
@@ -26,19 +26,6 @@
         -0.025,
         1.8,
         3.525
-      ],
-      "Part": "Body"
-    },
-    {
-      "Size": [
-        0.65,
-        0.325,
-        0.275
-      ],
-      "Position": [
-        0.0,
-        1.375,
-        4.425
       ],
       "Part": "Body"
     },
@@ -150,21 +137,53 @@
         2.86
       ],
       "CameraPos": {
-        "Transform": "Barrel",
         "UseFixedCameraPos": true,
+        "Transform": "Barrel",
         "Position": [
           0,
-          0,
-          0.3
+          0.4,
+          -0.6
         ],
         "Direction": "Barrel"
       },
       "BanHand": true,
-      "HasThermalImaging": true,
-      "MinPitch": -65,
+      "Weapons": [
+        "NoseGun"
+      ],
+      "MinPitch": -30,
+      "MaxPitch": 30,
+      "MinYaw": -30,
+      "MaxYaw": 30
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        0.68,
+        0.8,
+        1.5375
+      ],
+      "CameraPos": {
+        "Transform": "LeftTurret",
+        "UseFixedCameraPos": true,
+        "Position": [
+          0,
+          0.5,
+          0
+        ],
+        "Direction": "Passenger"
+      },
+      "Orientation": -90,
+      "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
-      "MaxYaw": 75
+      "MaxYaw": 75,
+      "BanHand": true,
+      "Pose": "MachineGunStand",
+      "Weapons": [
+        "PKMLeft"
+      ],
+      "Crosshair": "@Empty"
     },
     {
       "IsEnclosed": true,
@@ -184,30 +203,6 @@
         ]
       },
       "Orientation": -90,
-      "MinPitch": -50,
-      "MaxPitch": 15,
-      "MinYaw": -75,
-      "MaxYaw": 75,
-      "BanHand": true
-    },
-    {
-      "IsEnclosed": true,
-      "Transform": "Vehicle",
-      "Position": [
-        0.68,
-        0.8,
-        0.4
-      ],
-      "CameraPos": {
-        "Transform": "Vehicle",
-        "UseFixedCameraPos": true,
-        "Position": [
-          0.68,
-          2.0,
-          0.4
-        ]
-      },
-      "Orientation": 90,
       "MinPitch": -50,
       "MaxPitch": 15,
       "MinYaw": -75,
@@ -480,20 +475,112 @@
       1.6
     ]
   ],
-  "SmokeDecoy": false,
+  "Weapons": {
+    "NoseGun": {
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/gun_7_62mm.png",
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Spread": 0.25,
+      "CrosshairColor": "0xFFC700",
+      "Projectile": "superbwarfare:projectile",
+      "RPM": 600,
+      "Damage": 4,
+      "BypassesArmor": 0.2,
+      "Velocity": 25,
+      "RecoilTime": 16,
+      "RecoilForce": 0.05,
+      "HeatPerShoot": 5,
+      "NaturalCooldown": 1,
+      "ShootAnimationTime": 1,
+      "EmptyReloadTime": 200,
+      "Magazine": 200,
+      "AmmoType": "superbwarfare:rifle_ammo",
+      "ShootPos": {
+        "Transform": "Barrel",
+        "Positions": [
+          [
+            0.0453,
+            -0.0330,
+            0.6527
+          ]
+        ],
+        "Directions": [
+          "Barrel"
+        ]
+      },
+      "Crosshair": "@Empty",
+      "Name": "weapon.fcp.pkm",
+      "SoundInfo": {
+        "Fire1P": "fcp:russian_coax_1p",
+        "Fire3P": "fcp:russian_coax_3p",
+        "Change": "fcp:coax_equip",
+        "VehicleReload": "fcp:m2_reload"
+      },
+      "SoundRadius": 16
+    },
+    "PKMLeft": {
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/gun_7_62mm.png",
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Spread": 0.25,
+      "CrosshairColor": "0xFFC700",
+      "Projectile": "superbwarfare:projectile",
+      "DefaultZoom": 3,
+      "RPM": 600,
+      "Damage": 4,
+      "BypassesArmor": 0.2,
+      "Velocity": 25,
+      "RecoilTime": 16,
+      "RecoilForce": 0.05,
+      "HeatPerShoot": 5,
+      "NaturalCooldown": 1,
+      "ShootAnimationTime": 1,
+      "EmptyReloadTime": 200,
+      "Magazine": 200,
+      "AmmoType": "superbwarfare:rifle_ammo",
+      "ShootPos": {
+        "Transform": "LeftBarrel",
+        "Positions": [
+          [
+            0.62,
+            0.075,
+            0.0035
+          ]
+        ],
+        "Directions": [
+          "Passenger"
+        ],
+        "DefaultBarrelDirection": [
+          1,
+          0,
+          0
+        ]
+      },
+      "Crosshair": "@Empty",
+      "Name": "weapon.fcp.pkm",
+      "SoundInfo": {
+        "Fire1P": "fcp:russian_coax_1p",
+        "Fire3P": "fcp:russian_coax_3p",
+        "Change": "fcp:coax_equip",
+        "VehicleReload": "fcp:m2_reload"
+      },
+      "SoundRadius": 16
+    }
+  },
   "TurretPos": [
-    0.81081,
-    0.56921,
-    3.27431
+    -0.0463281,
+    1.5912688,
+    4.2808212
   ],
   "BarrelPos": [
     0.0,
-    -0.0649,
+    0.0,
     0.0
   ],
   "TurretControllerIndex": 1,
   "TurretPitchRange": [
-    -50,
+    -25,
     30
-  ]
+  ],
+  "SmokeDecoy": false
 }

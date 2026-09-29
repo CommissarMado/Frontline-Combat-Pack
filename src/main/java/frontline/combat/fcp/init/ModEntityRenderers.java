@@ -54,6 +54,11 @@ import frontline.combat.fcp.client.renderer.Rg33.RG33Renderer;
 import frontline.combat.fcp.client.renderer.MemeVehicles.BigBirdRenderer;
 import frontline.combat.fcp.client.renderer.MemeVehicles.WolfRenderer;
 import frontline.combat.fcp.client.renderer.Mi17.MI17Renderer;
+import frontline.combat.fcp.client.renderer.Mi17.MI17DoorGunsRenderer;
+import frontline.combat.fcp.client.renderer.Mi8.MI8Renderer;
+import frontline.combat.fcp.client.renderer.Mi8.MI8DoorGunsRenderer;
+import frontline.combat.fcp.client.renderer.Mi8.MI8MTVRenderer;
+import frontline.combat.fcp.client.renderer.Mi8.MI8AMTShRenderer;
 import frontline.combat.fcp.client.renderer.Msta.MstaRenderer;
 import frontline.combat.fcp.client.renderer.Novator.NovatorRenderer;
 import frontline.combat.fcp.client.renderer.NovatorUnarmed.NovatorUnarmedRenderer;
@@ -229,6 +234,11 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.BTR82_COPE.get(), BTR82CopeRenderer::new);
 
         event.registerEntityRenderer(ModEntities.MI17.get(), MI17Renderer::new);
+        event.registerEntityRenderer(ModEntities.MI8.get(), MI8Renderer::new);
+        event.registerEntityRenderer(ModEntities.MI17_DOOR_GUNS.get(), MI17DoorGunsRenderer::new);
+        event.registerEntityRenderer(ModEntities.MI8_DOOR_GUNS.get(), MI8DoorGunsRenderer::new);
+        event.registerEntityRenderer(ModEntities.MI8_MTV.get(), MI8MTVRenderer::new);
+        event.registerEntityRenderer(ModEntities.MI8_AMTSH.get(), MI8AMTShRenderer::new);
 
         event.registerEntityRenderer(ModEntities.FMTV.get(), FMTVRenderer::new);
 

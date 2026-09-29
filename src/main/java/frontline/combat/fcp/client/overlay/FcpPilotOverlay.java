@@ -76,6 +76,19 @@ public class FcpPilotOverlay implements IGuiOverlay {
             Map.entry("huey_m134_door_guns", List.of(0, 1)),
             Map.entry("huey_m134_gunship", List.of(0, 1)),
             Map.entry("mi17", List.of(0, 1)),
+            Map.entry("mi8", List.of(0, 1)),
+            Map.entry("mi17_door_guns", List.of(0, 1)),
+            // Unlike mi17_door_guns' seat 1 (a plain unarmed copilot, which keeps the pilot HUD),
+            // mi8_door_guns' seat 1 is the armed nose gunner ("NoseGun") - a fixed-gun seat like
+            // the door gunners, not the pilot, so it's excluded here too. Suppressing it in
+            // HelicopterHudSeatVisibilityMixin/VehicleHudSeatVisibilityMixin alone isn't enough:
+            // those two only cancel SBW's OWN stock overlays, but this class is FCP's separate,
+            // independently-rendered replacement HUD, and this map is what decides which seats it
+            // draws for - leaving seat 1 in this list means it still gets the full flight-
+            // instrument overlay regardless of what the mixins suppress.
+            Map.entry("mi8_door_guns", List.of(0)),
+            Map.entry("mi8_mtv", List.of(0, 1)),
+            Map.entry("mi8_amtsh", List.of(0, 1)),
             Map.entry("oh1", List.of(0, 1)),
             Map.entry("ch53a", List.of(0, 1)),
             Map.entry("ch53e", List.of(0, 1)),

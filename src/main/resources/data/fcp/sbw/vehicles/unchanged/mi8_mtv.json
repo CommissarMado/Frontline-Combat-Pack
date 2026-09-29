@@ -1,5 +1,5 @@
 {
-  "ID": "fcp:mi17",
+  "ID": "fcp:mi8_mtv",
   "MaxHealth": 420,
   "MaxEnergy": 8000000,
   "OBB": [
@@ -31,14 +31,14 @@
     },
     {
       "Size": [
-        0.65,
-        0.325,
-        0.275
+        3.0,
+        0.4,
+        0.825
       ],
       "Position": [
         0.0,
-        1.375,
-        4.425
+        1.2,
+        -0.675
       ],
       "Part": "Body"
     },
@@ -54,19 +54,6 @@
         -7.725
       ],
       "Part": "Body"
-    },
-    {
-      "Size": [
-        0.4,
-        0.825,
-        0.95
-      ],
-      "Position": [
-        0.3,
-        4.325,
-        -12.8
-      ],
-      "Part": "SubEngine"
     },
     {
       "Size": [
@@ -106,6 +93,19 @@
         -0.8
       ],
       "Part": "MainEngine"
+    },
+    {
+      "Size": [
+        0.4,
+        0.825,
+        0.95
+      ],
+      "Position": [
+        0.3,
+        4.325,
+        -12.8
+      ],
+      "Part": "SubEngine"
     }
   ],
   "PassengerRenderScale": 0.85,
@@ -139,7 +139,10 @@
           -10
         ]
       },
-      "CanRotateHead": false
+      "CanRotateHead": false,
+      "Weapons": [
+        "Rocket"
+      ]
     },
     {
       "IsEnclosed": true,
@@ -150,21 +153,15 @@
         2.86
       ],
       "CameraPos": {
-        "Transform": "Barrel",
+        "Transform": "Vehicle",
         "UseFixedCameraPos": true,
         "Position": [
-          0,
-          0,
-          0.3
-        ],
-        "Direction": "Barrel"
+          0.56,
+          2.0,
+          2.86
+        ]
       },
-      "BanHand": true,
-      "HasThermalImaging": true,
-      "MinPitch": -65,
-      "MaxPitch": 15,
-      "MinYaw": -75,
-      "MaxYaw": 75
+      "BanHand": true
     },
     {
       "IsEnclosed": true,
@@ -480,20 +477,63 @@
       1.6
     ]
   ],
-  "SmokeDecoy": false,
-  "TurretPos": [
-    0.81081,
-    0.56921,
-    3.27431
-  ],
-  "BarrelPos": [
-    0.0,
-    -0.0649,
-    0.0
-  ],
-  "TurretControllerIndex": 1,
-  "TurretPitchRange": [
-    -50,
-    30
-  ]
+  "Weapons": {
+    "Rocket": {
+      "AmmoType": "superbwarfare:small_rocket",
+      "Icon": "fcp:textures/screens/vehicle_weapon/hydra_70.png",
+      "DefaultZoom": 2,
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Magazine": 4,
+      "EmptyReloadTime": 160,
+      "Projectile": "superbwarfare:small_rocket",
+      "Spread": 0.3,
+      "Name": "weapon.fcp.hydra_rocket",
+      "RPM": 400,
+      "Damage": 80,
+      "ExplosionDamage": 40,
+      "ExplosionRadius": 5,
+      "Gravity": 0.02,
+      "Velocity": 16,
+      "SoundInfo": {
+        "Fire1P": "superbwarfare:small_rocket_fire_1p",
+        "Fire3P": "superbwarfare:small_rocket_fire_3p"
+      },
+      "ShootPos": {
+        "Transform": "Vehicle",
+        "Positions": [
+          [
+            2.75326,
+            0.91178,
+            -0.43855
+          ],
+          [
+            2.19217,
+            0.91178,
+            -0.43855
+          ],
+          [
+            -2.75664,
+            0.91178,
+            -0.43855
+          ],
+          [
+            -2.19555,
+            0.91178,
+            -0.43855
+          ]
+        ],
+        "Directions": [
+          [
+            0,
+            0.02,
+            1
+          ]
+        ]
+      },
+      "Crosshair": "@Empty",
+      "SoundRadius": 12
+    }
+  },
+  "SmokeDecoy": false
 }

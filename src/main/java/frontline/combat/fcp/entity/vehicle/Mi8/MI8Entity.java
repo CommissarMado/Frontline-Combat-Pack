@@ -1,4 +1,4 @@
-package frontline.combat.fcp.entity.vehicle.Mi17;
+package frontline.combat.fcp.entity.vehicle.Mi8;
 
 import com.atsuishio.superbwarfare.entity.vehicle.damage.DamageModifier;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
@@ -9,7 +9,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 
-public class MI17Entity extends CamoVehicleBase {
+public class MI8Entity extends CamoVehicleBase {
 
     public int INVENTORY_SIZE = 9;
 
@@ -20,17 +20,19 @@ public class MI17Entity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final EntityDataAccessor<Boolean> TOGGLE6 = SynchedEntityData.defineId(MI17Entity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Boolean> TOGGLE4 = SynchedEntityData.defineId(MI17Entity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Boolean> TOGGLE5 = SynchedEntityData.defineId(MI17Entity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Boolean> TOGGLE2 = SynchedEntityData.defineId(MI17Entity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Boolean> TOGGLE1 = SynchedEntityData.defineId(MI17Entity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Boolean> TOGGLE3 = SynchedEntityData.defineId(MI17Entity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Boolean> TOGGLE = SynchedEntityData.defineId(MI17Entity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> TOGGLE6 = SynchedEntityData.defineId(MI8Entity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> TOGGLE4 = SynchedEntityData.defineId(MI8Entity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> TOGGLE5 = SynchedEntityData.defineId(MI8Entity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> TOGGLE2 = SynchedEntityData.defineId(MI8Entity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> TOGGLE1 = SynchedEntityData.defineId(MI8Entity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> TOGGLE3 = SynchedEntityData.defineId(MI8Entity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> TOGGLE = SynchedEntityData.defineId(MI8Entity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> TOGGLE7 = SynchedEntityData.defineId(MI8Entity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> TOGGLE8 = SynchedEntityData.defineId(MI8Entity.class, EntityDataSerializers.BOOLEAN);
 
     private boolean toggleInit = false;
 
-    public MI17Entity(EntityType<MI17Entity> type, Level world) {
+    public MI8Entity(EntityType<MI8Entity> type, Level world) {
         super(type, world);
 
     }
@@ -45,6 +47,8 @@ public class MI17Entity extends CamoVehicleBase {
         this.entityData.define(TOGGLE1, true);
         this.entityData.define(TOGGLE3, true);
         this.entityData.define(TOGGLE, true);
+        this.entityData.define(TOGGLE7, true);
+        this.entityData.define(TOGGLE8, true);
     }
 
     public boolean hasToggle6() {return this.entityData.get(TOGGLE6);}
@@ -68,6 +72,12 @@ public class MI17Entity extends CamoVehicleBase {
     public boolean hasToggle() {return this.entityData.get(TOGGLE);}
     public void setToggle(boolean v) {this.entityData.set(TOGGLE, v);}
     public void toggleToggle() {setToggle(!hasToggle());}
+    public boolean hasToggle7() {return this.entityData.get(TOGGLE7);}
+    public void setToggle7(boolean v) {this.entityData.set(TOGGLE7, v);}
+    public void toggleToggle7() {setToggle7(!hasToggle7());}
+    public boolean hasToggle8() {return this.entityData.get(TOGGLE8);}
+    public void setToggle8(boolean v) {this.entityData.set(TOGGLE8, v);}
+    public void toggleToggle8() {setToggle8(!hasToggle8());}
 
     @Override
     public DamageModifier getDamageModifier() {
@@ -85,6 +95,8 @@ public class MI17Entity extends CamoVehicleBase {
         compound.putBoolean("Toggle1", hasToggle1());
         compound.putBoolean("Toggle3", hasToggle3());
         compound.putBoolean("Toggle", hasToggle());
+        compound.putBoolean("Toggle7", hasToggle7());
+        compound.putBoolean("Toggle8", hasToggle8());
         compound.putBoolean("ToggleInit", toggleInit);
     }
 
@@ -99,6 +111,8 @@ public class MI17Entity extends CamoVehicleBase {
         if (compound.contains("Toggle1")) setToggle1(compound.getBoolean("Toggle1"));
         if (compound.contains("Toggle3")) setToggle3(compound.getBoolean("Toggle3"));
         if (compound.contains("Toggle")) setToggle(compound.getBoolean("Toggle"));
+        if (compound.contains("Toggle7")) setToggle7(compound.getBoolean("Toggle7"));
+        if (compound.contains("Toggle8")) setToggle8(compound.getBoolean("Toggle8"));
     }
 
     @Override
@@ -115,6 +129,8 @@ public class MI17Entity extends CamoVehicleBase {
             setToggle1(this.random.nextBoolean());
             setToggle3(this.random.nextBoolean());
             setToggle(this.random.nextBoolean());
+            setToggle7(this.random.nextBoolean());
+            setToggle8(this.random.nextBoolean());
             toggleInit = true;
         }
 

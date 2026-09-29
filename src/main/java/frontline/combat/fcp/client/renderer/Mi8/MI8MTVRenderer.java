@@ -1,11 +1,11 @@
-package frontline.combat.fcp.client.renderer.Mi17;
+package frontline.combat.fcp.client.renderer.Mi8;
 
 import com.atsuishio.superbwarfare.client.renderer.entity.VehicleRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import frontline.combat.fcp.client.model.Mi17.MI17Model;
-import frontline.combat.fcp.entity.vehicle.Mi17.MI17Entity;
+import frontline.combat.fcp.client.model.Mi8.MI8MTVModel;
+import frontline.combat.fcp.entity.vehicle.Mi8.MI8MTVEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -16,33 +16,37 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.phys.AABB;
 import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
-public class MI17Renderer extends VehicleRenderer<MI17Entity> {
-    // "toggle6" toggle hitbox, matching MI17ToggleHandler's click box.
-    private static final AABB BOX_TOGGLE6 = new AABB(-1.717, 0.135, 1.2675, 1.7138, 0.9858, 1.8678);
-    // "toggle4" toggle hitbox, matching MI17ToggleHandler's click box.
+public class MI8MTVRenderer extends VehicleRenderer<MI8MTVEntity> {
+    // toggle6
+    private static final AABB BOX_TOGGLE6 = new AABB(1.0484, 0.135, 1.2675, 1.7138, 0.9858, 1.8678);
+    // toggle4
     private static final AABB BOX_TOGGLE4 = new AABB(-0.5917, 3.5214, -2.8323, 0.5754, 3.8131, -2.3835);
-    // "toggle5" toggle hitbox, matching MI17ToggleHandler's click box.
+    // toggle5
     private static final AABB BOX_TOGGLE5 = new AABB(-1.3499, 2.4833, 0.4569, -0.7963, 2.7826, 2.4368);
-    // "toggle2" toggle hitbox, matching MI17ToggleHandler's click box.
+    // toggle2
     private static final AABB BOX_TOGGLE2 = new AABB(-1.4139, 2.9696, -1.1291, 1.4106, 3.7178, 0.2773);
-    // "Toggle1" toggle hitbox, matching MI17ToggleHandler's click box.
+    // Toggle1
     private static final AABB BOX_TOGGLE1 = new AABB(-1.2384, 1.0169, 2.8223, 1.2352, 1.6741, 3.9245);
-    // "toggle3" toggle hitbox, matching MI17ToggleHandler's click box.
+    // toggle3
     private static final AABB BOX_TOGGLE3 = new AABB(-1.2942, 2.431, -3.0443, 1.2909, 2.7452, -1.9072);
-    // "toggle" toggle hitbox, matching MI17ToggleHandler's click box.
+    // toggle
     private static final AABB BOX_TOGGLE = new AABB(-0.5151, 3.0335, 2.1715, 0.513, 3.3328, 2.3209);
+    // toggle7
+    private static final AABB BOX_TOGGLE7 = new AABB(-0.2512, 0.9011, 3.1684, 0.2491, 1.3098, 4.6888);
+    // toggle8
+    private static final AABB BOX_TOGGLE8 = new AABB(-0.2104, 1.7419, 4.3103, 0.2058, 1.8069, 4.6292);
 
-    public MI17Renderer(EntityRendererProvider.Context renderManager) {
-        super(renderManager, new MI17Model());
+    public MI8MTVRenderer(EntityRendererProvider.Context renderManager) {
+        super(renderManager, new MI8MTVModel());
     }
 
     @Override
-    public ResourceLocation getTextureLocation(MI17Entity entity) {
+    public ResourceLocation getTextureLocation(MI8MTVEntity entity) {
         return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 
     @Override
-    public void render(MI17Entity entity, float entityYaw, float partialTick,
+    public void render(MI8MTVEntity entity, float entityYaw, float partialTick,
                        PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
         super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
         Minecraft mc = Minecraft.getInstance();
@@ -67,6 +71,8 @@ public class MI17Renderer extends VehicleRenderer<MI17Entity> {
         LevelRenderer.renderLineBox(poseStack, lines, BOX_TOGGLE1, 0.7f, 0.3f, 1.0f, 1.0f);
         LevelRenderer.renderLineBox(poseStack, lines, BOX_TOGGLE3, 0.7f, 0.3f, 1.0f, 1.0f);
         LevelRenderer.renderLineBox(poseStack, lines, BOX_TOGGLE, 0.7f, 0.3f, 1.0f, 1.0f);
+        LevelRenderer.renderLineBox(poseStack, lines, BOX_TOGGLE7, 0.7f, 0.3f, 1.0f, 1.0f);
+        LevelRenderer.renderLineBox(poseStack, lines, BOX_TOGGLE8, 0.7f, 0.3f, 1.0f, 1.0f);
         poseStack.popPose();
     }
 }

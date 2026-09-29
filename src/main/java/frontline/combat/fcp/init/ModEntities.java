@@ -74,6 +74,11 @@ import frontline.combat.fcp.entity.vehicle.Rg33.RG33Entity;
 import frontline.combat.fcp.entity.vehicle.MemeVehicles.BigBirdEntity;
 import frontline.combat.fcp.entity.vehicle.MemeVehicles.WolfEntity;
 import frontline.combat.fcp.entity.vehicle.Mi17.MI17Entity;
+import frontline.combat.fcp.entity.vehicle.Mi17.MI17DoorGunsEntity;
+import frontline.combat.fcp.entity.vehicle.Mi8.MI8Entity;
+import frontline.combat.fcp.entity.vehicle.Mi8.MI8DoorGunsEntity;
+import frontline.combat.fcp.entity.vehicle.Mi8.MI8MTVEntity;
+import frontline.combat.fcp.entity.vehicle.Mi8.MI8AMTShEntity;
 import frontline.combat.fcp.entity.vehicle.Novator.NovatorEntity;
 import frontline.combat.fcp.entity.vehicle.NovatorUnarmed.NovatorUnarmedEntity;
 import frontline.combat.fcp.entity.vehicle.Dpv.DpvM240Entity;
@@ -358,6 +363,16 @@ public class ModEntities {
             EntityType.Builder.of(MstaEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(4f, 3f));
     public static final RegistryObject<EntityType<MI17Entity>> MI17 = register("mi17",
             EntityType.Builder.of(MI17Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<MI8Entity>> MI8 = register("mi8",
+            EntityType.Builder.of(MI8Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<MI17DoorGunsEntity>> MI17_DOOR_GUNS = register("mi17_door_guns",
+            EntityType.Builder.of(MI17DoorGunsEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<MI8DoorGunsEntity>> MI8_DOOR_GUNS = register("mi8_door_guns",
+            EntityType.Builder.of(MI8DoorGunsEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<MI8MTVEntity>> MI8_MTV = register("mi8_mtv",
+            EntityType.Builder.of(MI8MTVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<MI8AMTShEntity>> MI8_AMTSH = register("mi8_amtsh",
+            EntityType.Builder.of(MI8AMTShEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<JohnDeereEntity>> JOHN_DEERE = register("john_deere",
             EntityType.Builder.of(JohnDeereEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f, 3f));
     public static final RegistryObject<EntityType<CombineEntity>> COMBINE = register("combine",

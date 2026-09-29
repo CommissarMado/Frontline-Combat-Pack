@@ -1,5 +1,5 @@
 {
-  "ID": "fcp:mi17",
+  "ID": "fcp:mi8_amtsh",
   "MaxHealth": 420,
   "MaxEnergy": 8000000,
   "OBB": [
@@ -44,6 +44,19 @@
     },
     {
       "Size": [
+        3.5,
+        0.4,
+        0.825
+      ],
+      "Position": [
+        0.0,
+        1.2,
+        -0.675
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
         0.5,
         0.35,
         4.575
@@ -54,19 +67,6 @@
         -7.725
       ],
       "Part": "Body"
-    },
-    {
-      "Size": [
-        0.4,
-        0.825,
-        0.95
-      ],
-      "Position": [
-        0.3,
-        4.325,
-        -12.8
-      ],
-      "Part": "SubEngine"
     },
     {
       "Size": [
@@ -106,6 +106,19 @@
         -0.8
       ],
       "Part": "MainEngine"
+    },
+    {
+      "Size": [
+        0.4,
+        0.825,
+        0.95
+      ],
+      "Position": [
+        0.3,
+        4.325,
+        -12.8
+      ],
+      "Part": "SubEngine"
     }
   ],
   "PassengerRenderScale": 0.85,
@@ -139,7 +152,12 @@
           -10
         ]
       },
-      "CanRotateHead": false
+      "CanRotateHead": false,
+      "Weapons": [
+        "Rocket",
+        "Cannon",
+        "Bomb"
+      ]
     },
     {
       "IsEnclosed": true,
@@ -480,7 +498,6 @@
       1.6
     ]
   ],
-  "SmokeDecoy": false,
   "TurretPos": [
     0.81081,
     0.56921,
@@ -495,5 +512,186 @@
   "TurretPitchRange": [
     -50,
     30
-  ]
+  ],
+  "Weapons": {
+    "Rocket": {
+      "AmmoType": "superbwarfare:small_rocket",
+      "Icon": "fcp:textures/screens/vehicle_weapon/hydra_70.png",
+      "DefaultZoom": 2,
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Magazine": 4,
+      "EmptyReloadTime": 160,
+      "Projectile": "superbwarfare:small_rocket",
+      "Spread": 0.3,
+      "Name": "weapon.fcp.hydra_rocket",
+      "RPM": 400,
+      "Damage": 80,
+      "ExplosionDamage": 40,
+      "ExplosionRadius": 5,
+      "Gravity": 0.02,
+      "Velocity": 16,
+      "SoundInfo": {
+        "Fire1P": "superbwarfare:small_rocket_fire_1p",
+        "Fire3P": "superbwarfare:small_rocket_fire_3p"
+      },
+      "ShootPos": {
+        "Transform": "Vehicle",
+        "Positions": [
+          [
+            3.25326,
+            0.91178,
+            -0.43855
+          ],
+          [
+            2.69217,
+            0.91178,
+            -0.43855
+          ],
+          [
+            -3.25664,
+            0.91178,
+            -0.43855
+          ],
+          [
+            -2.69555,
+            0.91178,
+            -0.43855
+          ]
+        ],
+        "Directions": [
+          [
+            0,
+            0.02,
+            1
+          ]
+        ]
+      },
+      "Crosshair": "@Empty",
+      "SoundRadius": 12
+    },
+    "Cannon": {
+      "Name": "weapon.fcp.zu23",
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/cannon_30mm_he.png",
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Projectile": "superbwarfare:small_cannon_shell",
+      "AmmoType": "superbwarfare:small_shell_he",
+      "IsHighExplosiveProjectile": true,
+      "DefaultZoom": 2,
+      "RPM": 900,
+      "Magazine": 100,
+      "EmptyReloadTime": 200,
+      "Velocity": 22,
+      "Damage": 30,
+      "ExplosionDamage": 12,
+      "ExplosionRadius": 2,
+      "Spread": 0.8,
+      "RecoilTime": 24,
+      "RecoilForce": 0.7,
+      "HeatPerShoot": 3,
+      "NaturalCooldown": 1,
+      "ShootAnimationTime": 1,
+      "Crosshair": "@Empty",
+      "CrosshairColor": "0x00FF66",
+      "SoundRadius": 24,
+      "SoundInfo": {
+        "Fire1P": "superbwarfare:bmp_2_cannon_fire_1p",
+        "Fire3P": "superbwarfare:bmp_2_cannon_fire_3p",
+        "Fire3PFar": "superbwarfare:mi_28_cannon_far",
+        "Fire3PVeryFar": "superbwarfare:mi_28_cannon_veryfar",
+        "Change": "superbwarfare:into_cannon",
+        "VehicleReload": "fcp:m2_reload"
+      },
+      "ShootPos": {
+        "Transform": "Vehicle",
+        "Positions": [
+          [
+            2.12681,
+            1.01044,
+            0.15874
+          ]
+        ],
+        "Directions": [
+          [
+            0,
+            0.02,
+            1
+          ]
+        ]
+      }
+    },
+    "Bomb": {
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/mk_84.png",
+      "AmmoType": "superbwarfare:large_aerial_bomb",
+      "DefaultZoom": 2,
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Semi",
+      "Magazine": 1,
+      "EmptyReloadTime": 300,
+      "Projectile": "superbwarfare:mk_84",
+      "Gravity": 0.06,
+      "Spread": 0.5,
+      "Name": "weapon.fcp.fab_500_bomb",
+      "ExplosionDamage": 1000,
+      "ExplosionRadius": 30,
+      "AddShooterDeltaMovement": true,
+      "Velocity": 0.98,
+      "ShootPos": {
+        "Transform": "Vehicle",
+        "ShootPositionForHud": [
+          -2.125,
+          0.95,
+          -0.83873
+        ],
+        "ShootDirectionForHud": "Bomb",
+        "Positions": [
+          [
+            -2.125,
+            0.95,
+            -0.83873
+          ]
+        ],
+        "BoundUpWithAmmoAmount": true,
+        "Directions": [
+          "DeltaMovement"
+        ],
+        "ViewPosition": [
+          -2.125,
+          0.95,
+          -0.83873
+        ],
+        "ViewDirection": "Bomb"
+      },
+      "ProjectileDummyInfo": {
+        "Offset": [
+          0,
+          -0.59,
+          0.125
+        ],
+        "Rotate": [
+          0,
+          0,
+          0
+        ],
+        "Scale": [
+          0.85,
+          0.85,
+          0.85
+        ],
+        "HideDummyWhileZooming": true
+      },
+      "SoundInfo": {
+        "Fire1P": "superbwarfare:bomb_release",
+        "Fire3P": "superbwarfare:bomb_release",
+        "VehicleReload3p": "superbwarfare:bomb_reload",
+        "VehicleReloadSoundTime": 11,
+        "Change": "superbwarfare:into_missile"
+      },
+      "Crosshair": "@Empty",
+      "CrosshairColor": "0x66FF00",
+      "SoundRadius": 8
+    }
+  },
+  "SmokeDecoy": false
 }

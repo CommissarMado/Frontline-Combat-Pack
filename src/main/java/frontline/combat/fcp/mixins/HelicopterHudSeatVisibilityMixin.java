@@ -58,7 +58,14 @@ public abstract class HelicopterHudSeatVisibilityMixin {
             "huey_m60_door_guns", List.of(2, 3),
             "huey_m60_gunship", List.of(2, 3),
             "huey_m134_door_guns", List.of(2, 3),
-            "huey_m134_gunship", List.of(2, 3)
+            "huey_m134_gunship", List.of(2, 3),
+            // Mi-17 door-gun variant: seats 2/3 are the pintle-mounted PKM door gunners
+            // (PKMRight/PKMLeft), same treatment as the UH-60/Huey/Venom gunner seats above.
+            "mi17_door_guns", List.of(2, 3),
+            // Mi-8 door-gun variant only has the one pintle PKM (seat 2, "PKMLeft"). Seat 1 is
+            // the nose gunner (real "NoseGun" weapon, copilot position) - left OUT of this list
+            // deliberately, since that seat is meant to keep the pilot-style flight HUD.
+            "mi8_door_guns", List.of(2)
     );
 
     @Inject(method = "render", at = @At("HEAD"), cancellable = true)
