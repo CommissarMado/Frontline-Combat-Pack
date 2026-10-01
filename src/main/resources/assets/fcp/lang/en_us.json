@@ -146,6 +146,8 @@
   "weapon.fcp.pantsir_missile": "57E6 Missile",
   "entity.fcp.brdm2": "BRDM-2",
   "entity.fcp.m939": "M939 Truck",
+  "entity.fcp.man_hx58": "MAN HX58",
+  "entity.fcp.man_hx58_mg3": "MAN HX58 MG3",
   "entity.fcp.kozak5": "Kozak-5",
   "entity.fcp.kozak2m1": "Kozak-2M1",
   "entity.fcp.kozak_ambulance": "Kozak Ambulance",
