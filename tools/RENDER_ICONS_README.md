@@ -55,15 +55,19 @@ changed), uncomment this line at the bottom of `build.gradle`:
 
 ## How a vehicle is resolved to geo + texture
 
+The vehicle list comes from `ModEntities.java`: every registered entity that has a
+`data/fcp/sbw/vehicle_skins/<id>.json` (or an SBW item JSON). Missiles and other
+non-vehicle entities are skipped automatically.
+
 For each entity id the tool finds:
 
-* **Geometry** — from the SBW item JSON (`Model.Model`) if present, otherwise
+* **Geometry**: the geo that entity's GeckoLib model class actually returns from
+  `getModelResource` (e.g. `huey_m60_door_guns` -> `huey_m60.geo.json`). If that
+  can't be found, it falls back to the SBW item JSON (`Model.Model`), then
   `assets/fcp/geo/<id>.geo.json`.
-* **Texture** — the vehicle's **assigned default skin**: the tool reads
-  `ModEntities.java` to map the id to its entity class, then takes the first
-  entry of that class's `CAMO_TEXTURES` array (e.g. `m939` -> `m939_green.png`,
-  `bmp2` -> `bmp1_2/bmp_2_rem_tex_1_1_1.png`). Exactly one texture per model, and
-  always one actually assigned to it. If that can't be read it falls back to a
+* **Texture**: the vehicle's **default skin**, meaning the entry with the lowest
+  `Priority` in `data/fcp/sbw/vehicle_skins/<id>.json`. If there is no skins file,
+  it falls back to the legacy `CAMO_TEXTURES[0]` in the entity class, then a
   folder/name heuristic, then the item-JSON `Texture`. (Models that layer two
   textures in-game are rendered with the primary skin only.)
 
