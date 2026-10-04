@@ -1,0 +1,40 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Olive",
+      "Texture": "fcp:textures/entity/man_hx58/man_hx58_olive.png",
+      "Priority": 1
+    },
+    {
+      "Id": "olive_light",
+      "Name": "Olive Light",
+      "Texture": "fcp:textures/entity/man_hx58/man_hx58_olive_light.png",
+      "Priority": 2
+    },
+    {
+      "Id": "woodland",
+      "Name": "Woodland",
+      "Texture": "fcp:textures/entity/man_hx58/man_hx58_woodland.png",
+      "Priority": 3
+    },
+    {
+      "Id": "nato_grey",
+      "Name": "NATO Grey",
+      "Texture": "fcp:textures/entity/man_hx58/man_hx58_nato_grey.png",
+      "Priority": 4
+    },
+    {
+      "Id": "desert",
+      "Name": "Desert",
+      "Texture": "fcp:textures/entity/man_hx58/man_hx58_desert.png",
+      "Priority": 5
+    },
+    {
+      "Id": "desert_man",
+      "Name": "Desert (MAN Livery)",
+      "Texture": "fcp:textures/entity/man_hx58/man_hx58_desert_man.png",
+      "Priority": 6
+    }
+  ]
+}

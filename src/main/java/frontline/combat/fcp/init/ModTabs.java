@@ -65,6 +65,7 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_SOFT_TOP.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_SOFT_TOP_NO_DOORS.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.RG_33.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV_CROW.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV_TOW.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.M939.get()));
@@ -78,6 +79,7 @@ public class ModTabs {
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.LITTLEBIRD.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.LITTLEBIRD_ARMED.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.LITTLEBIRD_HEAVY.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY_M60_DOOR_GUNS.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HUEY_M60_GUNSHIP.get()));
@@ -133,6 +135,11 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BRDM2.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.PANTSIR.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MI17.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.MI8.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.MI17_DOOR_GUNS.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.MI8_DOOR_GUNS.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.MI8_MTV.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.MI8_AMTSH.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MSTA.get()));
 
                 // ---- Terrorist Vehicles ----

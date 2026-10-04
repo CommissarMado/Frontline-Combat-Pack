@@ -4,12 +4,12 @@
   "MaxEnergy": 5000000,
   "PassengerRenderScale": 0.85,
   "OBB": [
-    {"Size": [0.190625, 0.375, 0.40625], "Position": [0.815625, 0.375, 0.40625], "Part": "WheelLeft"},
-    {"Size": [0.190625, 0.375, 0.40625], "Position": [-0.815625, 0.375, 0.40625], "Part": "WheelRight"},
-    {"Size": [0.190625, 0.375, 0.40625], "Position": [0.815625, 0.375, -2.15625], "Part": "WheelLeft"},
-    {"Size": [0.190625, 0.375, 0.40625], "Position": [-0.815625, 0.375, -2.15625], "Part": "WheelRight"},
-    {"Size": [1.0, 0.84375, 2.0625], "Position": [0.0, 1.34375, -1.0625], "Part": "Body"},
-    {"Size": [1.0, 0.5, 0.25], "Position": [0.0, 1.0, 1.25], "Part": "MainEngine"}
+    {"Size": [0.190625, 0.375, 0.40625], "Position": [0.815625, 0.375, 1.28125], "Part": "WheelLeft"},
+    {"Size": [0.190625, 0.375, 0.40625], "Position": [-0.815625, 0.375, 1.28125], "Part": "WheelRight"},
+    {"Size": [0.190625, 0.375, 0.40625], "Position": [0.815625, 0.375, -1.28125], "Part": "WheelLeft"},
+    {"Size": [0.190625, 0.375, 0.40625], "Position": [-0.815625, 0.375, -1.28125], "Part": "WheelRight"},
+    {"Size": [1.0, 0.84375, 2.0625], "Position": [0.0, 1.34375, -0.1875], "Part": "Body"},
+    {"Size": [1.0, 0.5, 0.25], "Position": [0.0, 1.0, 2.125], "Part": "MainEngine"}
   ],
   "Seats": [
     {
@@ -17,7 +17,7 @@
       "Transform": "Vehicle",
       "Weapons": [],
       "BanHand": true,
-      "Position": [0.45, 0.4, 0.2],
+      "Position": [0.45, 0.4, 1.075],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -27,7 +27,7 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [-0.45, 0.4, 0.2],
+      "Position": [-0.45, 0.4, 1.075],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -92,7 +92,7 @@
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },
-  "ThirdPersonCameraPos": [0, 1.3, 5.5],
+  "ThirdPersonCameraPos": [0, 1.3, 6.375],
   "ContainerIcon": "fcp:textures/gui/vehicle/type/civ_rus.png",
   "Type": "Car",
   "CollisionLevel": {
@@ -105,6 +105,6 @@
   },
   "EngineSound": "superbwarfare:truck_engine",
   "HudType": "@Empty",
-  "TerrainCompat": [[0.815625, 0, 0.40625], [-0.815625, 0, 0.40625], [0.815625, 0, -2.15625], [-0.815625, 0, -2.15625]],
+  "TerrainCompat": [[0.815625, 0, 1.28125], [-0.815625, 0, 1.28125], [0.815625, 0, -1.28125], [-0.815625, 0, -1.28125]],
   "InertiaRotateRate": 1.0
 }

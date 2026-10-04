@@ -29,8 +29,9 @@ public final class UAZ3303TentHandler {
 
     private static final double REACH = 5.0;
     // "tent" canopy hitbox, min/max in SuperbWarfare's vehicle-local space (derived from the geo).
-    private static final double[] MIN = {-1.1132, 0.3965, -3.2905};
-    private static final double[] MAX = {1.1132, 2.5468, -0.1899};
+    // Z shifted +0.8125 to match the model being re-centred on the wheelbase (see uaz_3303.geo.json).
+    private static final double[] MIN = {-1.1132, 0.3965, -2.4780};
+    private static final double[] MAX = {1.1132, 2.5468, 0.6226};
 
     private UAZ3303TentHandler() {}
 

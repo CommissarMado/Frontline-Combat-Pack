@@ -18,7 +18,8 @@ import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
 public class UAZ3303Renderer extends VehicleRenderer<UAZ3303Entity> {
     // "tent" canopy hitbox, matching UAZ3303TentHandler's click box.
-    private static final AABB TENT_BOX = new AABB(-1.1132, 0.3965, -3.2905, 1.1132, 2.5468, -0.1899);
+    // Z shifted +0.8125 to match the model being re-centred on the wheelbase (see uaz_3303.geo.json).
+    private static final AABB TENT_BOX = new AABB(-1.1132, 0.3965, -2.4780, 1.1132, 2.5468, 0.6226);
 
     public UAZ3303Renderer(EntityRendererProvider.Context renderManager) { super(renderManager, new UAZ3303Model());}
 

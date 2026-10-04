@@ -77,6 +77,18 @@
       "Name": "Skin 13",
       "Texture": "fcp:textures/entity/uaz_452/uaz_452_13.png",
       "Priority": 13
+    },
+    {
+      "Id": "skin_14",
+      "Name": "Military",
+      "Texture": "fcp:textures/entity/uaz_452/uaz_452_14.png",
+      "Priority": 14
+    },
+    {
+      "Id": "skin_15",
+      "Name": "ZOV PAPEDA GOYDA",
+      "Texture": "fcp:textures/entity/uaz_452/uaz_452_15.png",
+      "Priority": 15
     }
   ]
 }
