@@ -1,0 +1,40 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Default",
+      "Texture": "fcp:textures/entity/m1a1/m1_default.png",
+      "Priority": 1
+    },
+    {
+      "Id": "dark",
+      "Name": "Dark",
+      "Texture": "fcp:textures/entity/m1a1/m1_dark.png",
+      "Priority": 2
+    },
+    {
+      "Id": "sand",
+      "Name": "Sand",
+      "Texture": "fcp:textures/entity/m1a1/m1_sand.png",
+      "Priority": 3
+    },
+    {
+      "Id": "green",
+      "Name": "Green",
+      "Texture": "fcp:textures/entity/m1a1/m1_green.png",
+      "Priority": 4
+    },
+    {
+      "Id": "default_var1",
+      "Name": "Default Variant 1",
+      "Texture": "fcp:textures/entity/m1a1/m1_default_var_1.png",
+      "Priority": 5
+    },
+    {
+      "Id": "default_var2",
+      "Name": "Default Variant 2",
+      "Texture": "fcp:textures/entity/m1a1/m1_default_var_2.png",
+      "Priority": 6
+    }
+  ]
+}

@@ -144,6 +144,7 @@ public class ModEntities {
             EntityType.Builder.of(ToyotaHiluxMortarEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<ToyotaHiluxZu23Entity>> TOYOTA_HILUX_ZU23 = register("toyota_hilux_zu23",
             EntityType.Builder.of(ToyotaHiluxZu23Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+
     public static final RegistryObject<EntityType<UAZEntity>> UAZ = register("uaz",
             EntityType.Builder.of(UAZEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
     public static final RegistryObject<EntityType<UAZDSHKAEntity>> UAZ_DSHKA = register("uaz_dshka",
@@ -154,6 +155,7 @@ public class ModEntities {
             EntityType.Builder.of(UAZ452Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
     public static final RegistryObject<EntityType<UAZ3303Entity>> UAZ_3303 = register("uaz_3303",
             EntityType.Builder.of(UAZ3303Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
+
     public static final RegistryObject<EntityType<StrykerMGSEntity>> STRYKER_MGS = register("stryker_mgs",
             EntityType.Builder.of(StrykerMGSEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<StrykerM2Entity>> STRYKER_M2 = register("stryker_m2",
@@ -166,6 +168,7 @@ public class ModEntities {
             EntityType.Builder.of(StrykerTowEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<StrykerMortarEntity>> STRYKER_MORTAR = register("stryker_mortar",
             EntityType.Builder.of(StrykerMortarEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+
     public static final RegistryObject<EntityType<LittlebirdEntity>> LITTLEBIRD = register("littlebird",
             EntityType.Builder.of(LittlebirdEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2f,2f));
     public static final RegistryObject<EntityType<LittlebirdArmedEntity>> LITTLEBIRD_ARMED = register("littlebird_armed",
@@ -190,6 +193,7 @@ public class ModEntities {
             EntityType.Builder.of(BMP2NoAtgmEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<BMP2MDEntity>> BMP2MD = register("bmp2md",
             EntityType.Builder.of(BMP2MDEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+
     public static final RegistryObject<EntityType<AAVPEntity>> AAVP = register("aavp",
             EntityType.Builder.of(AAVPEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<Lav25Entity>> LAV25 = register("lav25",
