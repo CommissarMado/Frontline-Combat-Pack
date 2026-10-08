@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Default",
+      "Texture": "fcp:textures/entity/generic_suv/generic_suv.png",
+      "Priority": 1
+    }
+  ]
+}

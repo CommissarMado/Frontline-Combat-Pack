@@ -1,13 +1,11 @@
-package frontline.combat.fcp.client.renderer.Fmtv;
+package frontline.combat.fcp.client.renderer.Fmtv4x4;
 
 import com.atsuishio.superbwarfare.client.renderer.entity.VehicleRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import frontline.combat.fcp.client.model.Fmtv.FMTVModel;
-import frontline.combat.fcp.client.model.Ural.UralModel;
-import frontline.combat.fcp.entity.vehicle.Fmtv.FMTVEntity;
-import frontline.combat.fcp.entity.vehicle.Ural.UralEntity;
+import frontline.combat.fcp.client.model.Fmtv4x4.FMTV4x4Model;
+import frontline.combat.fcp.entity.vehicle.Fmtv4x4.FMTV4x4Entity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -18,23 +16,23 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.phys.AABB;
 import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
 
-public class FMTVRenderer extends VehicleRenderer<FMTVEntity> {
-    // "tent" canopy hitbox, matching the interaction handler (FMTVTentHandler). The "tent" bone
-    // carries no local rotation (unlike MAN HX58's TENT bone), so this is a direct geo->entity
-    // conversion of its cubes' bounding box, no rotation-matrix correction needed.
-    private static final AABB TENT_BOX = new AABB(-1.2428, 2.0679, -3.5525, 1.2428, 3.2390, 0.7819);
+public class FMTV4x4Renderer extends VehicleRenderer<FMTV4x4Entity> {
+    // "tent" canopy hitbox, matching the interaction handler (FMTV4x4TentHandler). Shrunk from
+    // the 6x6 FMTV's tent box to match this chassis's shorter rear overhang (measured directly
+    // from the uploaded 4x4 geo's "tent" bone, which carries no local rotation either).
+    private static final AABB TENT_BOX = new AABB(-1.2428, 2.0679, -3.2869, 1.2428, 3.2390, 0.7819);
 
-    public FMTVRenderer(EntityRendererProvider.Context renderManager) {
-        super(renderManager, new FMTVModel());
+    public FMTV4x4Renderer(EntityRendererProvider.Context renderManager) {
+        super(renderManager, new FMTV4x4Model());
     }
 
     @Override
-    public ResourceLocation getTextureLocation(FMTVEntity entity) {
+    public ResourceLocation getTextureLocation(FMTV4x4Entity entity) {
         return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
     }
 
     @Override
-    public void render(FMTVEntity entity, float entityYaw, float partialTick,
+    public void render(FMTV4x4Entity entity, float entityYaw, float partialTick,
                        PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
         super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
         Minecraft mc = Minecraft.getInstance();

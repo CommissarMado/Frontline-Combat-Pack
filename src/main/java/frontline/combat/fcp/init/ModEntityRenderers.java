@@ -204,6 +204,8 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.MAN_HX58.get(), frontline.combat.fcp.client.renderer.ManHx58.ManHx58Renderer::new);
         event.registerEntityRenderer(ModEntities.MAN_HX58_MG3.get(), frontline.combat.fcp.client.renderer.ManHx58.ManHx58Mg3Renderer::new);
         event.registerEntityRenderer(ModEntities.MAN_HX60.get(), frontline.combat.fcp.client.renderer.ManHx60.ManHx60Renderer::new);
+        event.registerEntityRenderer(ModEntities.GENERIC_SUV.get(), frontline.combat.fcp.client.renderer.GenericSuv.GenericSuvRenderer::new);
+        event.registerEntityRenderer(ModEntities.FMTV_4X4.get(), frontline.combat.fcp.client.renderer.Fmtv4x4.FMTV4x4Renderer::new);
         event.registerEntityRenderer(ModEntities.KOZAK5.get(), frontline.combat.fcp.client.renderer.Kozak.Kozak5Renderer::new);
         event.registerEntityRenderer(ModEntities.KOZAK2M1.get(), frontline.combat.fcp.client.renderer.Kozak.Kozak2m1Renderer::new);
         event.registerEntityRenderer(ModEntities.KOZAK_AMBULANCE.get(), frontline.combat.fcp.client.renderer.Kozak.KozakAmbulanceRenderer::new);

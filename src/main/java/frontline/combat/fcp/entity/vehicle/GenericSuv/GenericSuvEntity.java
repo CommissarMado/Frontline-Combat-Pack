@@ -1,16 +1,14 @@
-package frontline.combat.fcp.entity.vehicle.Fmtv;
+package frontline.combat.fcp.entity.vehicle.GenericSuv;
 
 import com.atsuishio.superbwarfare.entity.vehicle.damage.DamageModifier;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
-import frontline.combat.fcp.entity.vehicle.Ural.UralEntity;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 
-public class FMTVEntity extends CamoVehicleBase {
+public class GenericSuvEntity extends CamoVehicleBase {
 
     public int INVENTORY_SIZE = 9;
 
@@ -21,28 +19,21 @@ public class FMTVEntity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(FMTVEntity.class, EntityDataSerializers.FLOAT);
-    private static final EntityDataAccessor<Boolean> TENT = SynchedEntityData.defineId(FMTVEntity.class, EntityDataSerializers.BOOLEAN);
-    private boolean tentInit = false;
+    private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(GenericSuvEntity.class, EntityDataSerializers.FLOAT);
 
     private float prevSteeringAngle = 0f;
+
     private float wheelRotation = 0f;
+
     private float prevWheelRotation = 0f;
 
-    public FMTVEntity(EntityType<FMTVEntity> type, Level world) {
-        super(type, world);
-    }
+    public GenericSuvEntity(EntityType<GenericSuvEntity> type, Level world) {super(type, world);}
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(STEERING_ANGLE, 0f);
-        this.entityData.define(TENT, true);
     }
-
-    public boolean hasTent() {return this.entityData.get(TENT);}
-    public void setTent(boolean v) {this.entityData.set(TENT, v);}
-    public void toggleTent() {setTent(!hasTent());}
 
     public float getSteeringAngle() {
         return this.entityData.get(STEERING_ANGLE);
@@ -52,15 +43,15 @@ public class FMTVEntity extends CamoVehicleBase {
         this.entityData.set(STEERING_ANGLE, angle);
     }
 
-    public float getPrevSteeringAngle() {
+    public float getPrevSteeringAngle(){
         return prevSteeringAngle;
     }
 
-    public float getWheelRotation() {
+    public float getWheelRotation(){
         return wheelRotation;
     }
 
-    public float getPrevWheelRotation() {
+    public float getPrevWheelRotation(){
         return prevWheelRotation;
     }
 
@@ -73,9 +64,7 @@ public class FMTVEntity extends CamoVehicleBase {
     @Override
     public void addAdditionalSaveData(net.minecraft.nbt.CompoundTag compound) {
         super.addAdditionalSaveData(compound);
-        compound.putFloat("SteeringAngle", getSteeringAngle());
-        compound.putBoolean("Tent", hasTent());
-        compound.putBoolean("TentInit", tentInit);
+        compound.putFloat("SteeringAngle", this.getSteeringAngle());
     }
 
     @Override
@@ -84,30 +73,22 @@ public class FMTVEntity extends CamoVehicleBase {
         if (compound.contains("SteeringAngle")) {
             setSteeringAngle(compound.getFloat("SteeringAngle"));
         }
-        if (compound.contains("TentInit")) tentInit = compound.getBoolean("TentInit");
-        if (compound.contains("Tent")) setTent(compound.getBoolean("Tent"));
     }
 
     @Override
     public void baseTick() {
         super.baseTick();
 
-        // Randomise the tent once on first spawn (like the Ural/M939/HX58), then persist it.
-        if (!this.level().isClientSide() && !tentInit) {setTent(this.random.nextBoolean()); tentInit = true;}
-
         prevSteeringAngle = getSteeringAngle();
         float currentAngle = getSteeringAngle();
 
-        // Проверяем движется ли машина
-        double speed = Math.sqrt(this.getDeltaMovement().x * this.getDeltaMovement().x +
-                this.getDeltaMovement().z * this.getDeltaMovement().z);
+        double speed = Math.sqrt(this.getDeltaMovement().x * this.getDeltaMovement().x + this.getDeltaMovement().z * this.getDeltaMovement().z);
+
         boolean isMoving = speed > 0.05;
 
-        // Ловим нажатие клавиш A/D напрямую
         boolean turningLeft = this.leftInputDown();
         boolean turningRight = this.rightInputDown();
 
-        // Если жмём клавиши поворота - крутим колёса
         if (turningLeft && !turningRight) {
             currentAngle += 2.0f;
             currentAngle = Math.min(45f, currentAngle);
@@ -117,20 +98,16 @@ public class FMTVEntity extends CamoVehicleBase {
             currentAngle = Math.max(-45f, currentAngle);
             setSteeringAngle(currentAngle);
         } else if (isMoving && Math.abs(currentAngle) > 0.5f) {
-            // Быстрое центрирование при движении
             currentAngle *= 0.9f;
             setSteeringAngle(currentAngle);
         }
-        // Если стоим - колёса остаются на месте!
 
-        // Если машина движется и колёса повёрнуты - поворачиваем машину
         if (isMoving && Math.abs(currentAngle) > 1f) {
-            float turnAmount = currentAngle * 0.008f * (float)speed;
+            float turnAmount = currentAngle * 0.009f * (float)speed;
             this.setYRot(this.getYRot() + turnAmount);
         }
 
-        // Вращение колёс на основе скорости движения
         prevWheelRotation = wheelRotation;
-        wheelRotation += (float) (speed * 20);
+        wheelRotation += (float) (speed * 20f);
     }
 }

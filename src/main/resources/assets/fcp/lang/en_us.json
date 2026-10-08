@@ -149,6 +149,7 @@
   "entity.fcp.man_hx58": "MAN HX58",
   "entity.fcp.man_hx58_mg3": "MAN HX58 MG3",
   "entity.fcp.man_hx60": "MAN HX60",
+  "entity.fcp.generic_suv": "SUV",
   "entity.fcp.kozak5": "Kozak-5",
   "entity.fcp.kozak2m1": "Kozak-2M1",
   "entity.fcp.kozak_ambulance": "Kozak Ambulance",
@@ -207,5 +208,6 @@
   "item.fcp.fc_tab_icon": "FCP",
   "entity.fcp.msta": "2S19 Msta-S",
   "entity.fcp.m109": "M109 Paladin",
-  "entity.fcp.fmtv": "FMTV"
+  "entity.fcp.fmtv": "FMTV",
+  "entity.fcp.fmtv_4x4": "FMTV 4x4"
 }

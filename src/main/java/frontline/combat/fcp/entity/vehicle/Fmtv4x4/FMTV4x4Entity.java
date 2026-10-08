@@ -1,16 +1,14 @@
-package frontline.combat.fcp.entity.vehicle.Fmtv;
+package frontline.combat.fcp.entity.vehicle.Fmtv4x4;
 
 import com.atsuishio.superbwarfare.entity.vehicle.damage.DamageModifier;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
-import frontline.combat.fcp.entity.vehicle.Ural.UralEntity;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 
-public class FMTVEntity extends CamoVehicleBase {
+public class FMTV4x4Entity extends CamoVehicleBase {
 
     public int INVENTORY_SIZE = 9;
 
@@ -21,15 +19,15 @@ public class FMTVEntity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(FMTVEntity.class, EntityDataSerializers.FLOAT);
-    private static final EntityDataAccessor<Boolean> TENT = SynchedEntityData.defineId(FMTVEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(FMTV4x4Entity.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Boolean> TENT = SynchedEntityData.defineId(FMTV4x4Entity.class, EntityDataSerializers.BOOLEAN);
     private boolean tentInit = false;
 
     private float prevSteeringAngle = 0f;
     private float wheelRotation = 0f;
     private float prevWheelRotation = 0f;
 
-    public FMTVEntity(EntityType<FMTVEntity> type, Level world) {
+    public FMTV4x4Entity(EntityType<FMTV4x4Entity> type, Level world) {
         super(type, world);
     }
 
@@ -98,16 +96,13 @@ public class FMTVEntity extends CamoVehicleBase {
         prevSteeringAngle = getSteeringAngle();
         float currentAngle = getSteeringAngle();
 
-        // Проверяем движется ли машина
         double speed = Math.sqrt(this.getDeltaMovement().x * this.getDeltaMovement().x +
                 this.getDeltaMovement().z * this.getDeltaMovement().z);
         boolean isMoving = speed > 0.05;
 
-        // Ловим нажатие клавиш A/D напрямую
         boolean turningLeft = this.leftInputDown();
         boolean turningRight = this.rightInputDown();
 
-        // Если жмём клавиши поворота - крутим колёса
         if (turningLeft && !turningRight) {
             currentAngle += 2.0f;
             currentAngle = Math.min(45f, currentAngle);
@@ -117,19 +112,15 @@ public class FMTVEntity extends CamoVehicleBase {
             currentAngle = Math.max(-45f, currentAngle);
             setSteeringAngle(currentAngle);
         } else if (isMoving && Math.abs(currentAngle) > 0.5f) {
-            // Быстрое центрирование при движении
             currentAngle *= 0.9f;
             setSteeringAngle(currentAngle);
         }
-        // Если стоим - колёса остаются на месте!
 
-        // Если машина движется и колёса повёрнуты - поворачиваем машину
         if (isMoving && Math.abs(currentAngle) > 1f) {
             float turnAmount = currentAngle * 0.008f * (float)speed;
             this.setYRot(this.getYRot() + turnAmount);
         }
 
-        // Вращение колёс на основе скорости движения
         prevWheelRotation = wheelRotation;
         wheelRotation += (float) (speed * 20);
     }

@@ -1,0 +1,16 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Standard",
+      "Texture": "fcp:textures/entity/fmtv/fmtv_green.png",
+      "Priority": 1
+    },
+    {
+      "Id": "camo",
+      "Name": "Camo",
+      "Texture": "fcp:textures/entity/fmtv/fmtv_iraq.png",
+      "Priority": 2
+    }
+  ]
+}
