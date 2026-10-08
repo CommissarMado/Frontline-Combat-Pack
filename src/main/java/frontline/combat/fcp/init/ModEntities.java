@@ -68,6 +68,7 @@ import frontline.combat.fcp.entity.vehicle.Brdm.Brdm2Entity;
 import frontline.combat.fcp.entity.vehicle.M939.M939Entity;
 import frontline.combat.fcp.entity.vehicle.ManHx58.ManHx58Entity;
 import frontline.combat.fcp.entity.vehicle.ManHx58.ManHx58Mg3Entity;
+import frontline.combat.fcp.entity.vehicle.ManHx60.ManHx60Entity;
 import frontline.combat.fcp.entity.vehicle.Kozak.Kozak5Entity;
 import frontline.combat.fcp.entity.vehicle.Kozak.Kozak2m1Entity;
 import frontline.combat.fcp.entity.vehicle.Kozak.KozakAmbulanceEntity;
@@ -285,6 +286,8 @@ public class ModEntities {
             EntityType.Builder.of(ManHx58Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
     public static final RegistryObject<EntityType<ManHx58Mg3Entity>> MAN_HX58_MG3 = register("man_hx58_mg3",
             EntityType.Builder.of(ManHx58Mg3Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
+    public static final RegistryObject<EntityType<ManHx60Entity>> MAN_HX60 = register("man_hx60",
+            EntityType.Builder.of(ManHx60Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
     public static final RegistryObject<EntityType<Kozak5Entity>> KOZAK5 = register("kozak5",
             EntityType.Builder.of(Kozak5Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<Kozak2m1Entity>> KOZAK2M1 = register("kozak2m1",
