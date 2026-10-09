@@ -2,6 +2,8 @@ package frontline.combat.fcp.client.model.Bmp.Bmp2;
 
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.client.model.Bmp.BmpTrackPaths;
+import frontline.combat.fcp.client.model.Util.FCPTrackPath;
 import frontline.combat.fcp.client.model.FCPVehicleModel;
 import frontline.combat.fcp.client.model.Util.CannonRecoilTransforms;
 import frontline.combat.fcp.client.model.Util.ModelBoneTransforms;
@@ -52,115 +54,10 @@ public class BMP2Model extends FCPVehicleModel<BMP2Entity> {
         };
     }
 
-    private static final int TRACK_COUNT = 67;
-    // The entity keeps SBW's default getTrackAnimationLength() of 100 - no entity changes needed.
-    private static final int TRACK_LENGTH = 100;
-    private static final float TRACK_DISTANCE = (float) TRACK_LENGTH / TRACK_COUNT;
-    private static final int MAX_IDX = 67; // 1 keyframe per link; last row closes the loop
-
-    // {rotX, y, z} - rotation runs continuously through one full turn, so no +-180 correction is needed
-    private static final float[][] KEYFRAMES = {
-            {3.54f, 18.32f, 41.45f},
-            {9.96f, 17.65f, 38.52f},
-            {3.71f, 17.29f, 35.54f},
-            {-2.68f, 17.26f, 32.54f},
-            {-8.98f, 17.57f, 29.55f},
-            {-0.75f, 18.12f, 26.61f},
-            {7.06f, 17.68f, 23.64f},
-            {4.64f, 17.38f, 20.65f},
-            {2.20f, 17.20f, 17.65f},
-            {-0.26f, 17.15f, 14.65f},
-            {-2.72f, 17.23f, 11.64f},
-            {-5.16f, 17.43f, 8.65f},
-            {-7.58f, 17.77f, 5.66f},
-            {1.88f, 18.08f, 2.69f},
-            {6.26f, 17.71f, -0.29f},
-            {4.43f, 17.43f, -3.28f},
-            {2.59f, 17.24f, -6.28f},
-            {0.75f, 17.15f, -9.29f},
-            {-1.10f, 17.16f, -12.29f},
-            {-2.94f, 17.27f, -15.29f},
-            {-4.78f, 17.47f, -18.29f},
-            {-6.60f, 17.77f, -21.28f},
-            {1.21f, 18.13f, -24.26f},
-            {4.44f, 17.73f, -27.23f},
-            {-1.83f, 17.66f, -30.24f},
-            {-8.05f, 17.93f, -33.23f},
-            {-14.00f, 18.50f, -36.18f},
-            {-5.96f, 19.33f, -39.06f},
-            {28.06f, 18.69f, -41.95f},
-            {59.42f, 16.64f, -44.10f},
-            {90.75f, 13.77f, -44.86f},
-            {121.95f, 10.93f, -44.03f},
-            {146.12f, 8.90f, -41.85f},
-            {147.76f, 7.30f, -39.31f},
-            {147.76f, 5.70f, -36.76f},
-            {147.76f, 4.10f, -34.22f},
-            {147.76f, 2.49f, -31.68f},
-            {154.24f, 0.91f, -29.13f},
-            {177.55f, 0.27f, -26.23f},
-            {180.00f, 0.27f, -23.23f},
-            {180.00f, 0.27f, -20.22f},
-            {180.00f, 0.27f, -17.22f},
-            {180.00f, 0.27f, -14.21f},
-            {180.00f, 0.27f, -11.21f},
-            {180.00f, 0.27f, -8.20f},
-            {180.00f, 0.27f, -5.20f},
-            {180.00f, 0.27f, -2.20f},
-            {180.00f, 0.27f, 0.81f},
-            {180.00f, 0.27f, 3.81f},
-            {180.00f, 0.27f, 6.82f},
-            {180.00f, 0.27f, 9.82f},
-            {180.00f, 0.27f, 12.83f},
-            {180.00f, 0.27f, 15.83f},
-            {180.00f, 0.27f, 18.84f},
-            {180.00f, 0.27f, 21.84f},
-            {180.00f, 0.27f, 24.84f},
-            {180.00f, 0.27f, 27.85f},
-            {187.03f, 0.29f, 30.85f},
-            {210.13f, 1.33f, 33.63f},
-            {212.29f, 2.94f, 36.17f},
-            {212.29f, 4.55f, 38.71f},
-            {212.29f, 6.15f, 41.25f},
-            {213.29f, 7.76f, 43.79f},
-            {235.41f, 9.71f, 46.04f},
-            {266.77f, 12.51f, 47.01f},
-            {298.11f, 15.41f, 46.36f},
-            {329.34f, 17.55f, 44.31f},
-            {363.54f, 18.32f, 41.45f}
-    };
-
-    private static final float START_Y = 18.32f;
-    private static final float START_Z = 41.45f;
-
-    private float getKeyframeValue(float t, int component) {
-        float wrapped = t % TRACK_LENGTH;
-        if (wrapped < 0) {
-            wrapped += TRACK_LENGTH;
-        }
-        float normalized = (wrapped / TRACK_LENGTH) * MAX_IDX;
-        int idx1 = Mth.clamp((int) normalized, 0, MAX_IDX - 1);
-        float frac = normalized - idx1;
-        return Mth.lerp(frac, KEYFRAMES[idx1][component], KEYFRAMES[idx1 + 1][component]);
-    }
-
     @Override
-    public float getBoneRotX(float t) {
-        return getKeyframeValue(t, 0);
-    }
-
-    @Override
-    public float getBoneMoveY(float t) {
-        return getKeyframeValue(t, 1) - START_Y;
-    }
-
-    @Override
-    public float getBoneMoveZ(float t) {
-        return getKeyframeValue(t, 2) - START_Z;
-    }
-
-    @Override
-    public float getTrackDistance() {
-        return TRACK_DISTANCE;
+    protected FCPTrackPath getTrackPath() {
+        // Shared with every other BMP variant. Flip just this vehicle with .reversed(),
+        // .rotationInverted() or .rotationOffset(180) - no table changes needed.
+        return BmpTrackPaths.BMP.reversed();
     }
 }

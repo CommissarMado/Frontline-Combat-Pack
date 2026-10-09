@@ -102,6 +102,7 @@ import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxSpg9Entity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxMortarEntity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxZu23Entity;
 import frontline.combat.fcp.entity.vehicle.Trailers.ExampleTrailer.ExampleTrailerEntity;
+import frontline.combat.fcp.entity.vehicle.Type10.Type10Entity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZDSHKAEntity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZSPG9Entity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZEntity;
@@ -358,6 +359,9 @@ public class ModEntities {
             EntityType.Builder.of(M1a1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<M1a2Entity>> M1A2 = register("m1a2",
             EntityType.Builder.of(M1a2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+
+    public static final RegistryObject<EntityType<Type10Entity>> TYPE10 = register("type10",
+            EntityType.Builder.of(Type10Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     // Projectiles
     public static final RegistryObject<EntityType<LockOnHellfireEntity>> LOCK_ON_HELLFIRE = register("lock_on_hellfire",
             EntityType.Builder.<LockOnHellfireEntity>of(LockOnHellfireEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f, 0.5f));

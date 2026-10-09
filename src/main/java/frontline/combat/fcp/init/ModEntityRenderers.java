@@ -81,6 +81,7 @@ import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxSpg9Renderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxMortarRenderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxZu23Renderer;
 import frontline.combat.fcp.client.renderer.Trailers.ExampleTrailer.ExampleTrailerRenderer;
+import frontline.combat.fcp.client.renderer.Type10.Type10Renderer;
 import frontline.combat.fcp.client.renderer.Uaz.UAZDSHKARenderer;
 import frontline.combat.fcp.client.renderer.Uaz.UAZSPG9Renderer;
 import frontline.combat.fcp.client.renderer.Uaz.UAZRenderer;
@@ -256,6 +257,8 @@ public class ModEntityRenderers {
 
         event.registerEntityRenderer(ModEntities.M1A1.get(), M1a1Renderer::new);
         event.registerEntityRenderer(ModEntities.M1A2.get(), M1a2Renderer::new);
+
+        event.registerEntityRenderer(ModEntities.TYPE10.get(), Type10Renderer::new);
 
         // Projectiles
         event.registerEntityRenderer(ModEntities.LOCK_ON_HELLFIRE.get(), LockOnHellfireRenderer::new);

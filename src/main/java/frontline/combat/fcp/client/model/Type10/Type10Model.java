@@ -1,18 +1,18 @@
-package frontline.combat.fcp.client.model.Abrams;
+package frontline.combat.fcp.client.model.Type10;
 
-import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.client.model.Abrams.M1a1TrackPaths;
 import frontline.combat.fcp.client.model.FCPVehicleModel;
 import frontline.combat.fcp.client.model.Util.FCPTrackPath;
 import frontline.combat.fcp.entity.vehicle.Abrams.M1a1Entity;
+import frontline.combat.fcp.entity.vehicle.Type10.Type10Entity;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 
-public class M1a1Model extends FCPVehicleModel<M1a1Entity> {
+public class Type10Model extends FCPVehicleModel<Type10Entity> {
 
     @Override
-    public ResourceLocation getModelResource(M1a1Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/m1a1.geo.json");
+    public ResourceLocation getModelResource(Type10Entity animatable) {
+        return new ResourceLocation(FCP.MODID, "geo/type10.geo.json");
     }
 
     @Override
@@ -22,6 +22,6 @@ public class M1a1Model extends FCPVehicleModel<M1a1Entity> {
 
     @Override
     protected FCPTrackPath getTrackPath() {
-        return M1a1TrackPaths.M1A1.reversed();
+        return Type10TrackPaths.TYPE10;
     }
 }
