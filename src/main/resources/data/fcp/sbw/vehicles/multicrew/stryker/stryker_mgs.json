@@ -34,18 +34,10 @@
       "Transform": "Vehicle",
       "BanHand": true,
       "HidePassenger": true,
-      "Position": [
-        0.425,
-        0.478125,
-        1.859375
-      ],
+      "Position": [0.425, 0.478125, 1.859375],
       "CameraPos": {
         "UseFixedCameraPos": true,
-        "Position": [
-          0.46674,
-          2.209958,
-          2.412746
-        ]
+        "Position": [0.46674, 2.209958, 2.412746]
       },
       "MinYaw": -55,
       "MaxYaw": 55,
@@ -58,11 +50,7 @@
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
-        "Position": [
-          -0.428012,
-          1.111805,
-          0.0
-        ],
+        "Position": [-0.428012, 1.111805, 0.0],
         "Direction": "Barrel"
       },
       "CanRotateHead": false,
@@ -71,11 +59,7 @@
         "Coax"
       ],
       "Transform": "Turret",
-      "Position": [
-        0,
-        0,
-        0
-      ],
+      "Position": [0, 0, 0],
       "MinPitch": -3,
       "MaxPitch": 32.5
     },
@@ -86,19 +70,11 @@
         "PassengerMachineGun"
       ],
       "BanHand": true,
-      "Position": [
-        0.0,
-        -1.105,
-        -1.02
-      ],
+      "Position": [0.0, -1.105, -1.02],
       "CameraPos": {
         "Transform": "WeaponStationBarrel",
         "UseFixedCameraPos": true,
-        "Position": [
-          0.0,
-          0.6375,
-          -0.85
-        ],
+        "Position": [0.0, 0.6375, -0.85],
         "Direction": "WeaponStationBarrel"
       },
       "MinPitch": -10,
@@ -212,20 +188,8 @@
       },
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [
-          [
-            0.0425,
-            0.068,
-            5.82522
-          ]
-        ],
-        "Directions": [
-          [
-            0,
-            0,
-            1
-          ]
-        ]
+        "Positions": [[0.0425, 0.068, 5.82522]],
+        "Directions": [[0, 0, 1]]
       }
     },
     "PassengerMachineGun": {
@@ -258,20 +222,8 @@
       },
       "ShootPos": {
         "Transform": "WeaponStationBarrel",
-        "Positions": [
-          [
-            -0.006273,
-            0.156468,
-            1.135812
-          ]
-        ],
-        "Directions": [
-          [
-            0,
-            0,
-            1
-          ]
-        ]
+        "Positions": [[-0.006273, 0.156468, 1.135812]],
+        "Directions": [[0, 0, 1]]
       },
       "SoundRadius": 16,
       "AmmoType": "superbwarfare:rifle_ammo",
@@ -297,20 +249,8 @@
       "AmmoType": "superbwarfare:rifle_ammo",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [
-          [
-            0.331644,
-            0.354991,
-            1.434769
-          ]
-        ],
-        "Directions": [
-          [
-            0,
-            0,
-            1
-          ]
-        ]
+        "Positions": [[0.331644, 0.354991, 1.434769]],
+        "Directions": [[0, 0, 1]]
       },
       "Crosshair": "@VehicleCommonGun",
       "Name": "weapon.fcp.m240_coax",
@@ -333,55 +273,23 @@
       "RPM": 0
     }
   },
-  "ThirdPersonCameraPos": [
-    0,
-    1,
-    5
-  ],
+  "ThirdPersonCameraPos": [0, 1, 5],
   "ContainerIcon": "fcp:textures/gui/vehicle/type/land_us.png",
   "Type": "APC",
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0.15,
-        0.09,
-        false
-      ]
+      [0, 0, true],
+      [0, 0, true],
+      [0.15, 0.09, false]
     ]
   },
   "HudType": "@Land",
   "TerrainCompat": [
-    [
-      0.9826,
-      0,
-      1.3549
-    ],
-    [
-      -0.9826,
-      0,
-      1.3549
-    ],
-    [
-      0.9826,
-      0,
-      -1.3549
-    ],
-    [
-      -0.9826,
-      0,
-      -1.3549
-    ]
+    [0.9826, 0, 1.3549],
+    [-0.9826, 0, 1.3549],
+    [0.9826, 0, -1.3549],
+    [-0.9826, 0, -1.3549]
   ],
   "InertiaRotateRate": 1.0
 }

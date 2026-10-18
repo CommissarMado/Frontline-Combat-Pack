@@ -41,11 +41,7 @@
       },
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [
-        0,
-        1,
-        0
-      ]
+      "Position": [0, 1, 0]
     },
     {
       "HidePassenger": true,
@@ -56,11 +52,7 @@
       },
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [
-        0,
-        1,
-        0
-      ]
+      "Position": [0, 1, 0]
     },
     {
       "HidePassenger": true,
@@ -71,11 +63,7 @@
       },
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [
-        0,
-        1,
-        0
-      ]
+      "Position": [0, 1, 0]
     },
     {
       "HidePassenger": true,
@@ -86,11 +74,7 @@
       },
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [
-        0,
-        1,
-        0
-      ]
+      "Position": [0, 1, 0]
     },
     {
       "HidePassenger": true,
@@ -101,11 +85,7 @@
       },
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [
-        0,
-        1,
-        0
-      ]
+      "Position": [0, 1, 0]
     },
     {
       "HidePassenger": true,
@@ -116,11 +96,7 @@
       },
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [
-        0,
-        1,
-        0
-      ]
+      "Position": [0, 1, 0]
     },
     {
       "HidePassenger": true,
@@ -131,11 +107,7 @@
       },
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [
-        0,
-        1,
-        0
-      ]
+      "Position": [0, 1, 0]
     },
     {
       "HidePassenger": true,
@@ -146,11 +118,7 @@
       },
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [
-        0,
-        1,
-        0
-      ]
+      "Position": [0, 1, 0]
     },
     {
       "HidePassenger": true,
@@ -161,11 +129,7 @@
       },
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [
-        0,
-        1,
-        0
-      ]
+      "Position": [0, 1, 0]
     }
   ],
   "EngineType": "Track",

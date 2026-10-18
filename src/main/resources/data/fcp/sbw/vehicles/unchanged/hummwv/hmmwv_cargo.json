@@ -16,11 +16,7 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [
-        0.6375,
-        0.255,
-        0.255
-      ],
+      "Position": [0.6375, 0.255, 0.255],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -30,11 +26,7 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        -0.6375,
-        0.255,
-        0.255
-      ],
+      "Position": [-0.6375, 0.255, 0.255],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -45,11 +37,7 @@
       "IsEnclosed": false,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        0.9,
-        0.8,
-        -0.5
-      ],
+      "Position": [0.9, 0.8, -0.5],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -60,11 +48,7 @@
       "IsEnclosed": false,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        -0.9,
-        0.8,
-        -0.5
-      ],
+      "Position": [-0.9, 0.8, -0.5],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -74,11 +58,7 @@
       "IsEnclosed": false,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        0.9,
-        0.8,
-        -1.3
-      ],
+      "Position": [0.9, 0.8, -1.3],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -89,11 +69,7 @@
       "IsEnclosed": false,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        -0.9,
-        0.8,
-        -1.3
-      ],
+      "Position": [-0.9, 0.8, -1.3],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -104,11 +80,7 @@
       "IsEnclosed": false,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        0.9,
-        0.8,
-        -2.1
-      ],
+      "Position": [0.9, 0.8, -2.1],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -119,11 +91,7 @@
       "IsEnclosed": false,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        -0.9,
-        0.8,
-        -2.1
-      ],
+      "Position": [-0.9, 0.8, -2.1],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -187,58 +155,26 @@
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },
-  "ThirdPersonCameraPos": [
-    0.0,
-    0.85,
-    4.25
-  ],
+  "ThirdPersonCameraPos": [0.0, 0.85, 4.25],
   "VehicleIcon": "superbwarfare:textures/vehicle_icon/humvee_icon.png",
   "ContainerIcon": "fcp:textures/gui/vehicle/type/civ_us.png",
   "Type": "APC",
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0.15,
-        0.09,
-        false
-      ]
+      [0, 0, true],
+      [0, 0, true],
+      [0.15, 0.09, false]
     ]
   },
   "EngineSound": "fcp:hmmwv_engine",
   "HornSound": "superbwarfare:truck_horn",
   "HudType": "@Empty",
   "TerrainCompat": [
-    [
-      0.9826,
-      0.0,
-      1.3549
-    ],
-    [
-      -0.9826,
-      0.0,
-      1.3549
-    ],
-    [
-      0.9826,
-      0.0,
-      -1.3549
-    ],
-    [
-      -0.9826,
-      0.0,
-      -1.3549
-    ]
+    [0.9826, 0.0, 1.3549],
+    [-0.9826, 0.0, 1.3549],
+    [0.9826, 0.0, -1.3549],
+    [-0.9826, 0.0, -1.3549]
   ],
   "InertiaRotateRate": 1.0
 }

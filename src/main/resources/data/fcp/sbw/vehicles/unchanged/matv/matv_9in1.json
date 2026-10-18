@@ -16,11 +16,7 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [
-        0.45,
-        0.605,
-        0
-      ],
+      "Position": [0.45, 0.605, 0],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -32,19 +28,11 @@
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Transform": "Barrel",
-        "Position": [
-          0,
-          0.65,
-          0
-        ],
+        "Position": [0, 0.65, 0],
         "Direction": "Barrel"
       },
       "Transform": "Turret",
-      "Position": [
-        0,
-        -1,
-        0
-      ],
+      "Position": [0, -1, 0],
       "MinPitch": -9,
       "MaxPitch": 40,
       "Weapons": [
@@ -54,11 +42,7 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [
-        -0.45,
-        0.605,
-        0
-      ],
+      "Position": [-0.45, 0.605, 0],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -68,11 +52,7 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [
-        0.45,
-        0.605,
-        -0.75
-      ],
+      "Position": [0.45, 0.605, -0.75],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -82,11 +62,7 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [
-        -0.45,
-        0.605,
-        -0.75
-      ],
+      "Position": [-0.45, 0.605, -0.75],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -120,9 +96,7 @@
       "AmmoType": "superbwarfare:rifle_ammo",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [
-          [0, 0.37521375, 1.55]
-        ],
+        "Positions": [[0, 0.37521375, 1.55]],
         "Directions": [
           "Barrel"
         ]
@@ -201,21 +175,9 @@
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0.15,
-        0.09,
-        false
-      ]
+      [0, 0, true],
+      [0, 0, true],
+      [0.15, 0.09, false]
     ]
   },
   "EngineSound": "superbwarfare:lav_150_engine",

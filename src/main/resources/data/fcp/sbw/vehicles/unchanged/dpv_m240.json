@@ -19,11 +19,7 @@
       "Transform": "Vehicle",
       "Weapons": [],
       "BanHand": true,
-      "Position": [
-        0.4047,
-        0.2,
-        -0.75
-      ],
+      "Position": [0.4047, 0.2, -0.75],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -33,19 +29,11 @@
       "IsEnclosed": false,
       "Transform": "Vehicle",
       "Pose": "Default",
-      "Position": [
-        0.0,
-        0.8,
-        -1.9
-      ],
+      "Position": [0.0, 0.8, -1.9],
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Transform": "Barrel",
-        "Position": [
-          0.0,
-          0.4,
-          0.0
-        ],
+        "Position": [0.0, 0.4, 0.0],
         "Direction": "Barrel"
       },
       "MinPitch": -15,
@@ -61,11 +49,7 @@
       "IsEnclosed": false,
       "Transform": "Vehicle",
       "BanHand": false,
-      "Position": [
-        -0.4047,
-        0.2,
-        -0.75
-      ],
+      "Position": [-0.4047, 0.2, -0.75],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -90,
@@ -96,13 +80,7 @@
       "AmmoType": "superbwarfare:rifle_ammo",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [
-          [
-            0.0,
-            0.1,
-            0.6
-          ]
-        ],
+        "Positions": [[0.0, 0.1, 0.6]],
         "Directions": [
           "Barrel"
         ]
@@ -170,79 +148,30 @@
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },
-  "ThirdPersonCameraPos": [
-    0,
-    1,
-    5
-  ],
+  "ThirdPersonCameraPos": [0, 1, 5],
   "ContainerIcon": "fcp:textures/gui/vehicle/type/civ_ter.png",
   "Type": "Car",
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0.15,
-        0.09,
-        false
-      ]
+      [0, 0, true],
+      [0, 0, true],
+      [0.15, 0.09, false]
     ]
   },
   "HudType": "@Empty",
   "TerrainCompat": [
-    [
-      0.9826,
-      0,
-      1.3549
-    ],
-    [
-      -0.9826,
-      0,
-      1.3549
-    ],
-    [
-      0.9826,
-      0,
-      -1.3549
-    ],
-    [
-      -0.9826,
-      0,
-      -1.3549
-    ]
+    [0.9826, 0, 1.3549],
+    [-0.9826, 0, 1.3549],
+    [0.9826, 0, -1.3549],
+    [-0.9826, 0, -1.3549]
   ],
   "InertiaRotateRate": 1.0,
-  "TurretPos": [
-    0.003729,
-    1.79742,
-    -1.029191
-  ],
-  "BarrelPos": [
-    0,
-    0,
-    0
-  ],
-  "TurretTurnSpeed": [
-    15,
-    15
-  ],
-  "TurretPitchRange": [
-    -45,
-    45
-  ],
-  "TurretYawRange": [
-    -120,
-    120
-  ],
+  "TurretPos": [0.003729, 1.79742, -1.029191],
+  "BarrelPos": [0, 0, 0],
+  "TurretTurnSpeed": [15, 15],
+  "TurretPitchRange": [-45, 45],
+  "TurretYawRange": [-120, 120],
   "TurretControllerIndex": 1,
   "VehicleIcon": "superbwarfare:textures/vehicle_icon/lav_150_icon.png"
 }

@@ -3,110 +3,14 @@
   "MaxHealth": 420,
   "MaxEnergy": 8000000,
   "OBB": [
-    {
-      "Size": [
-        1.25,
-        1.1,
-        3.825
-      ],
-      "Position": [
-        0.0,
-        1.85,
-        -0.925
-      ],
-      "Part": "Body"
-    },
-    {
-      "Size": [
-        0.975,
-        0.95,
-        0.625
-      ],
-      "Position": [
-        -0.025,
-        1.8,
-        3.525
-      ],
-      "Part": "Body"
-    },
-    {
-      "Size": [
-        3.0,
-        0.4,
-        0.825
-      ],
-      "Position": [
-        0.0,
-        1.2,
-        -0.675
-      ],
-      "Part": "Body"
-    },
-    {
-      "Size": [
-        0.5,
-        0.35,
-        4.575
-      ],
-      "Position": [
-        0.0,
-        3.15,
-        -7.725
-      ],
-      "Part": "Body"
-    },
-    {
-      "Size": [
-        0.8,
-        0.275,
-        2.7
-      ],
-      "Position": [
-        0.0,
-        3.225,
-        -0.45
-      ],
-      "Part": "MainEngine"
-    },
-    {
-      "Size": [
-        0.45,
-        0.275,
-        1.6
-      ],
-      "Position": [
-        0.0,
-        3.775,
-        -1.1
-      ],
-      "Part": "MainEngine"
-    },
-    {
-      "Size": [
-        0.7,
-        0.4,
-        0.7
-      ],
-      "Position": [
-        0.0,
-        4.45,
-        -0.8
-      ],
-      "Part": "MainEngine"
-    },
-    {
-      "Size": [
-        0.4,
-        0.825,
-        0.95
-      ],
-      "Position": [
-        0.3,
-        4.325,
-        -12.8
-      ],
-      "Part": "SubEngine"
-    }
+    {"Size": [1.25, 1.1, 3.825], "Position": [0.0, 1.85, -0.925], "Part": "Body"},
+    {"Size": [0.975, 0.95, 0.625], "Position": [-0.025, 1.8, 3.525], "Part": "Body"},
+    {"Size": [3.0, 0.4, 0.825], "Position": [0.0, 1.2, -0.675], "Part": "Body"},
+    {"Size": [0.5, 0.35, 4.575], "Position": [0.0, 3.15, -7.725], "Part": "Body"},
+    {"Size": [0.8, 0.275, 2.7], "Position": [0.0, 3.225, -0.45], "Part": "MainEngine"},
+    {"Size": [0.45, 0.275, 1.6], "Position": [0.0, 3.775, -1.1], "Part": "MainEngine"},
+    {"Size": [0.7, 0.4, 0.7], "Position": [0.0, 4.45, -0.8], "Part": "MainEngine"},
+    {"Size": [0.4, 0.825, 0.95], "Position": [0.3, 4.325, -12.8], "Part": "SubEngine"}
   ],
   "PassengerRenderScale": 0.85,
   "Seats": [
@@ -114,30 +18,14 @@
       "IsEnclosed": true,
       "BanHand": true,
       "Transform": "Vehicle",
-      "Position": [
-        -0.56,
-        0.72,
-        2.86
-      ],
-      "Sensitivity": [
-        0,
-        0,
-        0
-      ],
+      "Position": [-0.56, 0.72, 2.86],
+      "Sensitivity": [0, 0, 0],
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [
-          -0.56,
-          2.0,
-          2.86
-        ],
+        "Position": [-0.56, 2.0, 2.86],
         "UseAircraftCamera": true,
-        "AircraftCameraPos": [
-          -3,
-          3,
-          -10
-        ]
+        "AircraftCameraPos": [-3, 3, -10]
       },
       "CanRotateHead": false,
       "Weapons": [
@@ -147,38 +35,22 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [
-        0.56,
-        0.72,
-        2.86
-      ],
+      "Position": [0.56, 0.72, 2.86],
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [
-          0.56,
-          2.0,
-          2.86
-        ]
+        "Position": [0.56, 2.0, 2.86]
       },
       "BanHand": true
     },
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [
-        -0.68,
-        0.8,
-        0.4
-      ],
+      "Position": [-0.68, 0.8, 0.4],
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [
-          -0.68,
-          2.0,
-          0.4
-        ]
+        "Position": [-0.68, 2.0, 0.4]
       },
       "Orientation": -90,
       "MinPitch": -50,
@@ -190,19 +62,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [
-        0.68,
-        0.8,
-        0.4
-      ],
+      "Position": [0.68, 0.8, 0.4],
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [
-          0.68,
-          2.0,
-          0.4
-        ]
+        "Position": [0.68, 2.0, 0.4]
       },
       "Orientation": 90,
       "MinPitch": -50,
@@ -214,19 +78,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [
-        -0.68,
-        0.8,
-        -0.4
-      ],
+      "Position": [-0.68, 0.8, -0.4],
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [
-          -0.68,
-          2.0,
-          -0.4
-        ]
+        "Position": [-0.68, 2.0, -0.4]
       },
       "Orientation": -90,
       "MinPitch": -50,
@@ -238,19 +94,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [
-        0.68,
-        0.8,
-        -0.4
-      ],
+      "Position": [0.68, 0.8, -0.4],
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [
-          0.68,
-          2.0,
-          -0.4
-        ]
+        "Position": [0.68, 2.0, -0.4]
       },
       "Orientation": 90,
       "MinPitch": -50,
@@ -262,19 +110,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [
-        -0.68,
-        0.8,
-        -1.2
-      ],
+      "Position": [-0.68, 0.8, -1.2],
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [
-          -0.68,
-          2.0,
-          -1.2
-        ]
+        "Position": [-0.68, 2.0, -1.2]
       },
       "Orientation": -90,
       "MinPitch": -50,
@@ -286,19 +126,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [
-        0.68,
-        0.8,
-        -1.2
-      ],
+      "Position": [0.68, 0.8, -1.2],
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [
-          0.68,
-          2.0,
-          -1.2
-        ]
+        "Position": [0.68, 2.0, -1.2]
       },
       "Orientation": 90,
       "MinPitch": -50,
@@ -310,19 +142,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [
-        -0.68,
-        0.8,
-        -2.0
-      ],
+      "Position": [-0.68, 0.8, -2.0],
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [
-          -0.68,
-          2.0,
-          -2.0
-        ]
+        "Position": [-0.68, 2.0, -2.0]
       },
       "Orientation": -90,
       "MinPitch": -50,
@@ -334,19 +158,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [
-        0.68,
-        0.8,
-        -2.0
-      ],
+      "Position": [0.68, 0.8, -2.0],
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [
-          0.68,
-          2.0,
-          -2.0
-        ]
+        "Position": [0.68, 2.0, -2.0]
       },
       "Orientation": 90,
       "MinPitch": -50,
@@ -358,19 +174,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [
-        -0.68,
-        0.8,
-        -2.8
-      ],
+      "Position": [-0.68, 0.8, -2.8],
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [
-          -0.68,
-          2.0,
-          -2.8
-        ]
+        "Position": [-0.68, 2.0, -2.8]
       },
       "Orientation": -90,
       "MinPitch": -50,
@@ -382,19 +190,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [
-        0.68,
-        0.8,
-        -2.8
-      ],
+      "Position": [0.68, 0.8, -2.8],
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [
-          0.68,
-          2.0,
-          -2.8
-        ]
+        "Position": [0.68, 2.0, -2.8]
       },
       "Orientation": 90,
       "MinPitch": -50,
@@ -417,11 +217,7 @@
     "EngineSoundVolume": 1.5
   },
   "EngineSound": "superbwarfare:ah_6_engine",
-  "ThirdPersonCameraPos": [
-    2.5,
-    3.5,
-    10
-  ],
+  "ThirdPersonCameraPos": [2.5, 3.5, 10],
   "UpStep": 1.1,
   "RotateOffsetHeight": 1.5,
   "Mass": 1.0,
@@ -446,36 +242,12 @@
   "Type": "Helicopter",
   "HudType": "@Helicopter",
   "TerrainCompat": [
-    [
-      -1.12,
-      0,
-      2.4
-    ],
-    [
-      1.12,
-      0,
-      2.4
-    ],
-    [
-      -1.12,
-      0,
-      2.0
-    ],
-    [
-      1.12,
-      0,
-      2.0
-    ],
-    [
-      -1.12,
-      0,
-      1.6
-    ],
-    [
-      -1.12,
-      0,
-      1.6
-    ]
+    [-1.12, 0, 2.4],
+    [1.12, 0, 2.4],
+    [-1.12, 0, 2.0],
+    [1.12, 0, 2.0],
+    [-1.12, 0, 1.6],
+    [-1.12, 0, 1.6]
   ],
   "Weapons": {
     "Rocket": {
@@ -503,34 +275,12 @@
       "ShootPos": {
         "Transform": "Vehicle",
         "Positions": [
-          [
-            2.75326,
-            0.91178,
-            -0.43855
-          ],
-          [
-            2.19217,
-            0.91178,
-            -0.43855
-          ],
-          [
-            -2.75664,
-            0.91178,
-            -0.43855
-          ],
-          [
-            -2.19555,
-            0.91178,
-            -0.43855
-          ]
+          [2.75326, 0.91178, -0.43855],
+          [2.19217, 0.91178, -0.43855],
+          [-2.75664, 0.91178, -0.43855],
+          [-2.19555, 0.91178, -0.43855]
         ],
-        "Directions": [
-          [
-            0,
-            0.02,
-            1
-          ]
-        ]
+        "Directions": [[0, 0.02, 1]]
       },
       "Crosshair": "@Empty",
       "SoundRadius": 12

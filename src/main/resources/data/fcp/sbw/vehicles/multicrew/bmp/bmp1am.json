@@ -38,11 +38,7 @@
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
-        "Position": [
-          0.2826125,
-          -0.21386875,
-          1.31259375
-        ],
+        "Position": [0.2826125, -0.21386875, 1.31259375],
         "Direction": "Barrel"
       },
       "CanRotateHead": false,
@@ -157,13 +153,7 @@
       "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/gun_7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [
-          [
-            -0.57,
-            0.055,
-            0.75
-          ]
-        ],
+        "Positions": [[-0.57, 0.055, 0.75]],
         "Directions": [
           "Barrel"
         ]

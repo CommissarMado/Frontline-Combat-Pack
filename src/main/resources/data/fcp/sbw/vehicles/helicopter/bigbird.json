@@ -3,10 +3,10 @@
   "MaxHealth": 280,
   "MaxEnergy": 8000000,
   "OBB": [
-    {"Size": [11, 12, 28.5], "Position": [0, 20, -5], "Part":  "Body"},
-    {"Size": [2.5, 2.5, 22.5], "Position": [0, 24.5, -55.5], "Part":  "Body"},
-    {"Size": [4, 11.5, 5], "Position": [1, 26.5, -78], "Part":  "SubEngine"},
-    {"Size": [4, 3.5, 12.5], "Position": [0, 35.5, -14], "Part":  "MainEngine"}
+    {"Size": [11, 12, 28.5], "Position": [0, 20, -5], "Part": "Body"},
+    {"Size": [2.5, 2.5, 22.5], "Position": [0, 24.5, -55.5], "Part": "Body"},
+    {"Size": [4, 11.5, 5], "Position": [1, 26.5, -78], "Part": "SubEngine"},
+    {"Size": [4, 3.5, 12.5], "Position": [0, 35.5, -14], "Part": "MainEngine"}
   ],
   "Seats": [
     {

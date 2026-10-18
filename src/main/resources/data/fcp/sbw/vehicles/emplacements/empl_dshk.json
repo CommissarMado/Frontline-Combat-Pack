@@ -8,19 +8,11 @@
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Transform": "Barrel",
-        "Position": [
-          0.0,
-          0.6,
-          -0.75
-        ],
+        "Position": [0.0, 0.6, -0.75],
         "Direction": "Barrel"
       },
       "Transform": "Turret",
-      "Position": [
-        0.0,
-        -1.0,
-        -0.8
-      ],
+      "Position": [0.0, -1.0, -0.8],
       "MinPitch": -15,
       "MaxPitch": 40,
       "Pose": "MachineGunStand",
@@ -55,13 +47,7 @@
       "AmmoType": "superbwarfare:rifle_ammo",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [
-          [
-            -0.0086,
-            0.3567,
-            1.257
-          ]
-        ],
+        "Positions": [[-0.0086, 0.3567, 1.257]],
         "Directions": [
           "Barrel"
         ]
@@ -79,30 +65,12 @@
       "SoundRadius": 16
     }
   },
-  "TurretPos": [
-    0.008448,
-    1.105147,
-    -0.044797
-  ],
-  "BarrelPos": [
-    0,
-    0,
-    0
-  ],
-  "TurretTurnSpeed": [
-    15,
-    15
-  ],
-  "TurretPitchRange": [
-    -40,
-    40
-  ],
+  "TurretPos": [0.008448, 1.105147, -0.044797],
+  "BarrelPos": [0, 0, 0],
+  "TurretTurnSpeed": [15, 15],
+  "TurretPitchRange": [-40, 40],
   "TurretControllerIndex": 0,
-  "ThirdPersonCameraPos": [
-    0,
-    1,
-    3
-  ],
+  "ThirdPersonCameraPos": [0, 1, 3],
   "HasDecoy": false,
   "UpStep": 2.2,
   "RotateOffsetHeight": 2.2,
@@ -118,21 +86,9 @@
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0.15,
-        0.09,
-        false
-      ]
+      [0, 0, true],
+      [0, 0, true],
+      [0.15, 0.09, false]
     ]
   },
   "HasLowHealthWarning": false,

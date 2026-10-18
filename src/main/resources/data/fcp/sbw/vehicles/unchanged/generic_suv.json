@@ -4,84 +4,12 @@
   "MaxEnergy": 5000000,
   "PassengerRenderScale": 0.85,
   "OBB": [
-    {
-      "Size": [
-        0.1875,
-        0.5,
-        0.5
-      ],
-      "Position": [
-        0.9875,
-        0.5,
-        2.10625
-      ],
-      "Part": "WheelLeft"
-    },
-    {
-      "Size": [
-        0.1875,
-        0.5,
-        0.5
-      ],
-      "Position": [
-        0.9875,
-        0.5,
-        -1.6125
-      ],
-      "Part": "WheelLeft"
-    },
-    {
-      "Size": [
-        0.1875,
-        0.5,
-        0.5
-      ],
-      "Position": [
-        -1.05,
-        0.5,
-        2.10625
-      ],
-      "Part": "WheelRight"
-    },
-    {
-      "Size": [
-        0.1875,
-        0.5,
-        0.5
-      ],
-      "Position": [
-        -1.05,
-        0.5,
-        -1.6125
-      ],
-      "Part": "WheelRight"
-    },
-    {
-      "Size": [
-        1.15625,
-        0.5625,
-        1.0
-      ],
-      "Position": [
-        -0.03125,
-        0.875,
-        2.0625
-      ],
-      "Part": "MainEngine"
-    },
-    {
-      "Size": [
-        1.15625,
-        0.90625,
-        1.90625
-      ],
-      "Position": [
-        -0.03125,
-        1.21875,
-        -0.84375
-      ],
-      "Part": "Body"
-    }
+    {"Size": [0.1875, 0.5, 0.5], "Position": [0.9875, 0.5, 2.10625], "Part": "WheelLeft"},
+    {"Size": [0.1875, 0.5, 0.5], "Position": [0.9875, 0.5, -1.6125], "Part": "WheelLeft"},
+    {"Size": [0.1875, 0.5, 0.5], "Position": [-1.05, 0.5, 2.10625], "Part": "WheelRight"},
+    {"Size": [0.1875, 0.5, 0.5], "Position": [-1.05, 0.5, -1.6125], "Part": "WheelRight"},
+    {"Size": [1.15625, 0.5625, 1.0], "Position": [-0.03125, 0.875, 2.0625], "Part": "MainEngine"},
+    {"Size": [1.15625, 0.90625, 1.90625], "Position": [-0.03125, 1.21875, -0.84375], "Part": "Body"}
   ],
   "Seats": [
     {
@@ -89,11 +17,7 @@
       "Transform": "Vehicle",
       "Weapons": [],
       "BanHand": true,
-      "Position": [
-        0.5,
-        0.4,
-        0.3
-      ],
+      "Position": [0.5, 0.4, 0.3],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -103,11 +27,7 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        -0.5,
-        0.4,
-        0.3
-      ],
+      "Position": [-0.5, 0.4, 0.3],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -117,11 +37,7 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        0.5,
-        0.4,
-        -0.8
-      ],
+      "Position": [0.5, 0.4, -0.8],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -131,11 +47,7 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        -0.5,
-        0.4,
-        -0.8
-      ],
+      "Position": [-0.5, 0.4, -0.8],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -145,11 +57,7 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        0.5,
-        0.4,
-        -2.0
-      ],
+      "Position": [0.5, 0.4, -2.0],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -159,11 +67,7 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        -0.5,
-        0.4,
-        -2.0
-      ],
+      "Position": [-0.5, 0.4, -2.0],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -228,56 +132,24 @@
     "ExplosionDamage": 130,
     "ExplosionRadius": 7
   },
-  "ThirdPersonCameraPos": [
-    0,
-    1.1,
-    5.5
-  ],
+  "ThirdPersonCameraPos": [0, 1.1, 5.5],
   "ContainerIcon": "fcp:textures/gui/vehicle/type/civ_us.png",
   "Type": "Car",
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0.15,
-        0.09,
-        false
-      ]
+      [0, 0, true],
+      [0, 0, true],
+      [0.15, 0.09, false]
     ]
   },
   "EngineSound": "superbwarfare:truck_engine",
   "HudType": "@Empty",
   "TerrainCompat": [
-    [
-      0.9875,
-      0,
-      2.10625
-    ],
-    [
-      -1.05,
-      0,
-      2.10625
-    ],
-    [
-      0.9875,
-      0,
-      -1.6125
-    ],
-    [
-      -1.05,
-      0,
-      -1.6125
-    ]
+    [0.9875, 0, 2.10625],
+    [-1.05, 0, 2.10625],
+    [0.9875, 0, -1.6125],
+    [-1.05, 0, -1.6125]
   ],
   "InertiaRotateRate": 1.0
 }

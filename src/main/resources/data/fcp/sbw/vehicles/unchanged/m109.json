@@ -83,11 +83,7 @@
       "ExplosionRadius": 5,
       "RecoilTime": 42,
       "RecoilForce": 1.1,
-      "ShootShake": [
-        12,
-        14,
-        80
-      ],
+      "ShootShake": [12, 14, 80],
       "Spread": 0.06,
       "ProjectileLife": 800,
       "ShootAnimationTime": 30,
@@ -149,13 +145,7 @@
       ],
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [
-          [
-            0.0,
-            0.1275,
-            6.375
-          ]
-        ],
+        "Positions": [[0.0, 0.1275, 6.375]],
         "Directions": [
           "Barrel"
         ]
@@ -269,46 +259,18 @@
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0.15,
-        0.09,
-        false
-      ]
+      [0, 0, true],
+      [0, 0, true],
+      [0.15, 0.09, false]
     ]
   },
   "EngineSound": "fcp:lav25_engine",
   "HudType": "@Land",
   "TerrainCompat": [
-    [
-      0.83521,
-      0,
-      1.151665
-    ],
-    [
-      -0.83521,
-      0,
-      1.151665
-    ],
-    [
-      0.83521,
-      0,
-      -1.151665
-    ],
-    [
-      -0.83521,
-      0,
-      -1.151665
-    ]
+    [0.83521, 0, 1.151665],
+    [-0.83521, 0, 1.151665],
+    [0.83521, 0, -1.151665],
+    [-0.83521, 0, -1.151665]
   ],
   "InertiaRotateRate": 1.1
 }

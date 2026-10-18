@@ -26,18 +26,10 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        0.3825,
-        0.563125,
-        1.859375
-      ],
+      "Position": [0.3825, 0.563125, 1.859375],
       "CameraPos": {
         "UseFixedCameraPos": true,
-        "Position": [
-          0.46674,
-          2.209958,
-          2.412746
-        ]
+        "Position": [0.46674, 2.209958, 2.412746]
       },
       "MinYaw": -55,
       "MaxYaw": 55,
@@ -45,31 +37,19 @@
       "MaxPitch": 15
     },
     {
-      "Sensitivity": [
-        0.5,
-        0.3,
-        0.5
-      ],
+      "Sensitivity": [0.5, 0.3, 0.5],
       "IsEnclosed": true,
       "BanHand": true,
       "Weapons": [
         "Mortar"
       ],
       "Transform": "Vehicle",
-      "Position": [
-        -0.34,
-        0.765,
-        -0.4675
-      ],
+      "Position": [-0.34, 0.765, -0.4675],
       "CanRotateHead": true,
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
-        "Position": [
-          0.34,
-          0.0,
-          1.275
-        ],
+        "Position": [0.34, 0.0, 1.275],
         "Direction": "Barrel"
       },
       "MinPitch": 45,
@@ -82,11 +62,7 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        0.6375,
-        0.765,
-        -0.51
-      ],
+      "Position": [0.6375, 0.765, -0.51],
       "CameraPos": {},
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -98,11 +74,7 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        0.6375,
-        0.765,
-        -2.635
-      ],
+      "Position": [0.6375, 0.765, -2.635],
       "CameraPos": {},
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -114,11 +86,7 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        -0.6375,
-        0.765,
-        -2.635
-      ],
+      "Position": [-0.6375, 0.765, -2.635],
       "CameraPos": {},
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -162,28 +130,12 @@
       },
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [
-          [
-            -0.005695,
-            0.085,
-            1.7
-          ]
-        ],
-        "Directions": [
-          [
-            0,
-            0,
-            1
-          ]
-        ]
+        "Positions": [[-0.005695, 0.085, 1.7]],
+        "Directions": [[0, 0, 1]]
       },
       "Crosshair": "@Empty",
       "SoundRadius": 32,
-      "ShootShake": [
-        8,
-        6,
-        14
-      ]
+      "ShootShake": [8, 6, 14]
     }
   },
   "EngineType": "Wheel",
@@ -236,55 +188,23 @@
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },
-  "ThirdPersonCameraPos": [
-    0,
-    1,
-    5
-  ],
+  "ThirdPersonCameraPos": [0, 1, 5],
   "ContainerIcon": "fcp:textures/gui/vehicle/type/land_us.png",
   "Type": "APC",
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0.15,
-        0.09,
-        false
-      ]
+      [0, 0, true],
+      [0, 0, true],
+      [0.15, 0.09, false]
     ]
   },
   "HudType": "@Land",
   "TerrainCompat": [
-    [
-      0.9826,
-      0,
-      1.3549
-    ],
-    [
-      -0.9826,
-      0,
-      1.3549
-    ],
-    [
-      0.9826,
-      0,
-      -1.3549
-    ],
-    [
-      -0.9826,
-      0,
-      -1.3549
-    ]
+    [0.9826, 0, 1.3549],
+    [-0.9826, 0, 1.3549],
+    [0.9826, 0, -1.3549],
+    [-0.9826, 0, -1.3549]
   ],
   "InertiaRotateRate": 1.0
 }

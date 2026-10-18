@@ -2,129 +2,27 @@
   "ID": "fcp:toyota_hilux_zu23",
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
-  "TurretPos": [
-    0.047664,
-    1.83756,
-    -2.239148
-  ],
-  "TurretTurnSpeed": [
-    3.0,
-    2.5
-  ],
-  "TurretPitchRange": [
-    5,
-    90
-  ],
-  "BarrelPos": [
-    0.030883,
-    0.118171,
-    0.247464
-  ],
+  "TurretPos": [0.047664, 1.83756, -2.239148],
+  "TurretTurnSpeed": [3.0, 2.5],
+  "TurretPitchRange": [5, 90],
+  "BarrelPos": [0.030883, 0.118171, 0.247464],
   "TurretControllerIndex": 1,
   "PassengerRenderScale": 0.85,
   "OBB": [
-    {
-      "Size": [
-        0.1785,
-        0.39525,
-        0.39525
-      ],
-      "Position": [
-        0.816,
-        0.4335,
-        1.6575
-      ],
-      "Part": "WheelLeft"
-    },
-    {
-      "Size": [
-        0.1785,
-        0.39525,
-        0.39525
-      ],
-      "Position": [
-        -0.816,
-        0.4335,
-        1.6575
-      ],
-      "Part": "WheelRight"
-    },
-    {
-      "Size": [
-        0.1785,
-        0.39525,
-        0.39525
-      ],
-      "Position": [
-        0.816,
-        0.4335,
-        -1.785
-      ],
-      "Part": "WheelLeft"
-    },
-    {
-      "Size": [
-        0.1785,
-        0.39525,
-        0.39525
-      ],
-      "Position": [
-        -0.816,
-        0.4335,
-        -1.6575
-      ],
-      "Part": "WheelRight"
-    },
-    {
-      "Size": [
-        0.9078,
-        0.44625,
-        2.125
-      ],
-      "Position": [
-        0.0,
-        0.96475,
-        -0.8415
-      ],
-      "Part": "Body"
-    },
-    {
-      "Size": [
-        0.9078,
-        0.44625,
-        0.6375
-      ],
-      "Position": [
-        0.0,
-        0.96475,
-        1.921
-      ],
-      "Part": "MainEngine"
-    },
-    {
-      "Size": [
-        0.9078,
-        0.2975,
-        1.21125
-      ],
-      "Position": [
-        0.0,
-        1.7085,
-        0.0425
-      ],
-      "Part": "Body"
-    }
+    {"Size": [0.1785, 0.39525, 0.39525], "Position": [0.816, 0.4335, 1.6575], "Part": "WheelLeft"},
+    {"Size": [0.1785, 0.39525, 0.39525], "Position": [-0.816, 0.4335, 1.6575], "Part": "WheelRight"},
+    {"Size": [0.1785, 0.39525, 0.39525], "Position": [0.816, 0.4335, -1.785], "Part": "WheelLeft"},
+    {"Size": [0.1785, 0.39525, 0.39525], "Position": [-0.816, 0.4335, -1.6575], "Part": "WheelRight"},
+    {"Size": [0.9078, 0.44625, 2.125], "Position": [0.0, 0.96475, -0.8415], "Part": "Body"},
+    {"Size": [0.9078, 0.44625, 0.6375], "Position": [0.0, 0.96475, 1.921], "Part": "MainEngine"},
+    {"Size": [0.9078, 0.2975, 1.21125], "Position": [0.0, 1.7085, 0.0425], "Part": "Body"}
   ],
   "Seats": [
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        0.425,
-        0.255,
-        0.2125
-      ],
+      "Position": [0.425, 0.255, 0.2125],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -139,20 +37,12 @@
       "BanHand": true,
       "Transform": "Turret",
       "Pose": "Default",
-      "Position": [
-        0.55,
-        -0.75,
-        -0.65
-      ],
+      "Position": [0.55, -0.75, -0.65],
       "CanRotateHead": false,
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Transform": "Barrel",
-        "Position": [
-          0.032,
-          0.34,
-          0.3
-        ],
+        "Position": [0.032, 0.34, 0.3],
         "Direction": "Barrel"
       },
       "MinPitch": 5,
@@ -164,11 +54,7 @@
       "BanHand": false,
       "Transform": "Turret",
       "Pose": "Default",
-      "Position": [
-        -0.5,
-        -0.75,
-        -0.65
-      ],
+      "Position": [-0.5, -0.75, -0.65],
       "CanRotateHead": true,
       "MinPitch": -60,
       "MaxPitch": 60,
@@ -179,11 +65,7 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        -0.425,
-        0.255,
-        0.2125
-      ],
+      "Position": [-0.425, 0.255, 0.2125],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -193,11 +75,7 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        0.425,
-        0.255,
-        -0.765
-      ],
+      "Position": [0.425, 0.255, -0.765],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -207,11 +85,7 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [
-        0.0,
-        0.255,
-        -0.765
-      ],
+      "Position": [0.0, 0.255, -0.765],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -221,11 +95,7 @@
       "BanHand": true,
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [
-        -0.425,
-        0.255,
-        -0.765
-      ],
+      "Position": [-0.425, 0.255, -0.765],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -320,81 +190,33 @@
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
-          [
-            -0.113422,
-            0.031144,
-            2.598019
-          ],
-          [
-            0.115016,
-            0.031144,
-            2.598019
-          ]
+          [-0.113422, 0.031144, 2.598019],
+          [0.115016, 0.031144, 2.598019]
         ],
         "Directions": [
-          [
-            0,
-            0,
-            1
-          ],
-          [
-            0,
-            0,
-            1
-          ]
+          [0, 0, 1],
+          [0, 0, 1]
         ]
       }
     }
   },
-  "ThirdPersonCameraPos": [
-    0,
-    1,
-    5
-  ],
+  "ThirdPersonCameraPos": [0, 1, 5],
   "ContainerIcon": "fcp:textures/gui/vehicle/type/land_ter.png",
   "Type": "Car",
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0,
-        0,
-        true
-      ],
-      [
-        0.15,
-        0.09,
-        false
-      ]
+      [0, 0, true],
+      [0, 0, true],
+      [0.15, 0.09, false]
     ]
   },
   "HudType": "@Land",
   "TerrainCompat": [
-    [
-      0.9826,
-      0,
-      1.3549
-    ],
-    [
-      -0.9826,
-      0,
-      1.3549
-    ],
-    [
-      0.9826,
-      0,
-      -1.3549
-    ],
-    [
-      -0.9826,
-      0,
-      -1.3549
-    ]
+    [0.9826, 0, 1.3549],
+    [-0.9826, 0, 1.3549],
+    [0.9826, 0, -1.3549],
+    [-0.9826, 0, -1.3549]
   ],
   "InertiaRotateRate": 1.0
 }
