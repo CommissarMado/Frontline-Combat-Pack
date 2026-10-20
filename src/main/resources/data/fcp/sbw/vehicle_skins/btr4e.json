@@ -1,0 +1,40 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Tex 1",
+      "Texture": "fcp:textures/entity/btr4e/tex_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "tex_3",
+      "Name": "Tex 3",
+      "Texture": "fcp:textures/entity/btr4e/tex_3.png",
+      "Priority": 2
+    },
+    {
+      "Id": "tex_4",
+      "Name": "Tex 4",
+      "Texture": "fcp:textures/entity/btr4e/tex_4.png",
+      "Priority": 3
+    },
+    {
+      "Id": "tex_4_1",
+      "Name": "Tex 4-1",
+      "Texture": "fcp:textures/entity/btr4e/tex_4_1.png",
+      "Priority": 4
+    },
+    {
+      "Id": "tex_4_2",
+      "Name": "Tex 4-2",
+      "Texture": "fcp:textures/entity/btr4e/tex_4_2.png",
+      "Priority": 5
+    },
+    {
+      "Id": "tex_5",
+      "Name": "Tex 5",
+      "Texture": "fcp:textures/entity/btr4e/tex_5.png",
+      "Priority": 6
+    }
+  ]
+}

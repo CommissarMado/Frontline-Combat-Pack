@@ -18,6 +18,8 @@ import frontline.combat.fcp.client.renderer.Btr.BTR82Renderer;
 import frontline.combat.fcp.client.renderer.Btr.BTR82ATRenderer;
 import frontline.combat.fcp.client.renderer.Btr.BTR3ERenderer;
 import frontline.combat.fcp.client.renderer.Btr.BTR4MV1Renderer;
+import frontline.combat.fcp.client.renderer.Btr.BTR4E1Renderer;
+import frontline.combat.fcp.client.renderer.Btr.BTR4ERenderer;
 import frontline.combat.fcp.client.renderer.Btr.BTR80Renderer;
 import frontline.combat.fcp.client.renderer.Btr.BTR80CopeRenderer;
 import frontline.combat.fcp.client.renderer.Btr.BTR82CopeRenderer;
@@ -82,6 +84,8 @@ import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxMortarRenderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxZu23Renderer;
 import frontline.combat.fcp.client.renderer.Trailers.ExampleTrailer.ExampleTrailerRenderer;
 import frontline.combat.fcp.client.renderer.Type10.Type10Renderer;
+import frontline.combat.fcp.client.renderer.TyphoonVdv.TyphoonVdvRenderer;
+import frontline.combat.fcp.client.renderer.TyphoonVdvUnarmed.TyphoonVdvUnarmedRenderer;
 import frontline.combat.fcp.client.renderer.Uaz.UAZDSHKARenderer;
 import frontline.combat.fcp.client.renderer.Uaz.UAZSPG9Renderer;
 import frontline.combat.fcp.client.renderer.Uaz.UAZRenderer;
@@ -154,6 +158,8 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.T72AV.get(), T72AVRenderer::new);
 
         event.registerEntityRenderer(ModEntities.URAL.get(), UralRenderer::new);
+        event.registerEntityRenderer(ModEntities.GAZ66.get(), frontline.combat.fcp.client.renderer.Gaz66.Gaz66Renderer::new);
+        event.registerEntityRenderer(ModEntities.ZIS5.get(), frontline.combat.fcp.client.renderer.Zis5.Zis5Renderer::new);
         event.registerEntityRenderer(ModEntities.URAL_FUEL.get(), frontline.combat.fcp.client.renderer.Ural.UralFuelRenderer::new);
         event.registerEntityRenderer(ModEntities.URAL_KUNG.get(), frontline.combat.fcp.client.renderer.Ural.UralKungRenderer::new);
         event.registerEntityRenderer(ModEntities.URAL_GRAD.get(), UralGradRenderer::new);
@@ -235,6 +241,8 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.BTR82AT.get(), BTR82ATRenderer::new);
         event.registerEntityRenderer(ModEntities.BTR3E.get(), BTR3ERenderer::new);
         event.registerEntityRenderer(ModEntities.BTR4MV1.get(), BTR4MV1Renderer::new);
+        event.registerEntityRenderer(ModEntities.BTR4E1.get(), BTR4E1Renderer::new);
+        event.registerEntityRenderer(ModEntities.BTR4E.get(), BTR4ERenderer::new);
         event.registerEntityRenderer(ModEntities.BTR80.get(), BTR80Renderer::new);
         event.registerEntityRenderer(ModEntities.BTR80_COPE.get(), BTR80CopeRenderer::new);
         event.registerEntityRenderer(ModEntities.BTR82_COPE.get(), BTR82CopeRenderer::new);
@@ -259,6 +267,11 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.M1A2.get(), M1a2Renderer::new);
 
         event.registerEntityRenderer(ModEntities.TYPE10.get(), Type10Renderer::new);
+
+        event.registerEntityRenderer(ModEntities.TYPHOON_VDV.get(), TyphoonVdvRenderer::new);
+        event.registerEntityRenderer(ModEntities.TYPHOON_VDV_UNARMED.get(), TyphoonVdvUnarmedRenderer::new);
+
+        event.registerEntityRenderer(ModEntities.LANDROVER_110.get(), frontline.combat.fcp.client.renderer.LandRover110.LandRover110Renderer::new);
 
         // Projectiles
         event.registerEntityRenderer(ModEntities.LOCK_ON_HELLFIRE.get(), LockOnHellfireRenderer::new);

@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Tex 1",
+      "Texture": "fcp:textures/entity/zis5/tex_1.png",
+      "Priority": 1
+    }
+  ]
+}

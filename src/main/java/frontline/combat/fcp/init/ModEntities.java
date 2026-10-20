@@ -21,6 +21,8 @@ import frontline.combat.fcp.entity.vehicle.Btr.BTR82Entity;
 import frontline.combat.fcp.entity.vehicle.Btr.BTR82ATEntity;
 import frontline.combat.fcp.entity.vehicle.Btr.BTR3EEntity;
 import frontline.combat.fcp.entity.vehicle.Btr.BTR4MV1Entity;
+import frontline.combat.fcp.entity.vehicle.Btr.BTR4E1Entity;
+import frontline.combat.fcp.entity.vehicle.Btr.BTR4EEntity;
 import frontline.combat.fcp.entity.vehicle.Btr.BTR80Entity;
 import frontline.combat.fcp.entity.vehicle.Btr.BTR80CopeEntity;
 import frontline.combat.fcp.entity.vehicle.Btr.BTR82CopeEntity;
@@ -103,12 +105,17 @@ import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxMortarEntity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxZu23Entity;
 import frontline.combat.fcp.entity.vehicle.Trailers.ExampleTrailer.ExampleTrailerEntity;
 import frontline.combat.fcp.entity.vehicle.Type10.Type10Entity;
+import frontline.combat.fcp.entity.vehicle.TyphoonVdv.TyphoonVdvEntity;
+import frontline.combat.fcp.entity.vehicle.TyphoonVdvUnarmed.TyphoonVdvUnarmedEntity;
+import frontline.combat.fcp.entity.vehicle.LandRover110.LandRover110Entity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZDSHKAEntity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZSPG9Entity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZEntity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZ452Entity;
 import frontline.combat.fcp.entity.vehicle.Uaz.UAZ3303Entity;
 import frontline.combat.fcp.entity.vehicle.Ural.UralEntity;
+import frontline.combat.fcp.entity.vehicle.Gaz66.Gaz66Entity;
+import frontline.combat.fcp.entity.vehicle.Zis5.Zis5Entity;
 import frontline.combat.fcp.entity.vehicle.Ural.UralFuelEntity;
 import frontline.combat.fcp.entity.vehicle.Ural.UralKungEntity;
 import frontline.combat.fcp.entity.vehicle.Ural.UralGradEntity;
@@ -201,6 +208,10 @@ public class ModEntities {
             EntityType.Builder.of(T72AVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<UralEntity>> URAL = register("ural",
             EntityType.Builder.of(UralEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<Gaz66Entity>> GAZ66 = register("gaz66",
+            EntityType.Builder.of(Gaz66Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2.5f));
+    public static final RegistryObject<EntityType<Zis5Entity>> ZIS5 = register("zis5",
+            EntityType.Builder.of(Zis5Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2.5f));
     public static final RegistryObject<EntityType<UralFuelEntity>> URAL_FUEL = register("ural_fuel",
             EntityType.Builder.of(UralFuelEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
     public static final RegistryObject<EntityType<UralKungEntity>> URAL_KUNG = register("ural_kung",
@@ -343,6 +354,10 @@ public class ModEntities {
             EntityType.Builder.of(BTR3EEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<BTR4MV1Entity>> BTR4MV1 = register("btr4mv1",
             EntityType.Builder.of(BTR4MV1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<BTR4E1Entity>> BTR4E1 = register("btr4e1",
+            EntityType.Builder.of(BTR4E1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<BTR4EEntity>> BTR4E = register("btr4e",
+            EntityType.Builder.of(BTR4EEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<BTR82Entity>> BTR82 = register("btr82",
             EntityType.Builder.of(BTR82Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<BTR82ATEntity>> BTR82AT = register("btr82at",
@@ -362,6 +377,12 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<Type10Entity>> TYPE10 = register("type10",
             EntityType.Builder.of(Type10Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<TyphoonVdvEntity>> TYPHOON_VDV = register("typhoon_vdv",
+            EntityType.Builder.of(TyphoonVdvEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
+    public static final RegistryObject<EntityType<TyphoonVdvUnarmedEntity>> TYPHOON_VDV_UNARMED = register("typhoon_vdv_unarmed",
+            EntityType.Builder.of(TyphoonVdvUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
+    public static final RegistryObject<EntityType<LandRover110Entity>> LANDROVER_110 = register("landrover_110",
+            EntityType.Builder.of(LandRover110Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2.5f));
     // Projectiles
     public static final RegistryObject<EntityType<LockOnHellfireEntity>> LOCK_ON_HELLFIRE = register("lock_on_hellfire",
             EntityType.Builder.<LockOnHellfireEntity>of(LockOnHellfireEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f, 0.5f));

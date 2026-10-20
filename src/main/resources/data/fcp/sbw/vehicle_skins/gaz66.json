@@ -1,0 +1,22 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Tex 1",
+      "Texture": "fcp:textures/entity/gaz66/tex_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "tex_2",
+      "Name": "Tex 2",
+      "Texture": "fcp:textures/entity/gaz66/tex_2.png",
+      "Priority": 2
+    },
+    {
+      "Id": "russia",
+      "Name": "Russia",
+      "Texture": "fcp:textures/entity/gaz66/tex_russia.png",
+      "Priority": 3
+    }
+  ]
+}

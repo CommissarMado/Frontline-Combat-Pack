@@ -128,6 +128,11 @@ public class FcpPilotOverlay implements IGuiOverlay {
         // Weapon data for this seat (may be null on an unarmed seat -> ammo line is simply skipped).
         GunData data = ve.getGunData(seatIndex);
 
+        // SBW's own HelicopterHud already draws for armed seats (with its weapon-specific aim
+        // point) unless HelicopterHudSeatVisibilityMixin cancels it. Drawing here too would stack
+        // two HUDs and garble the weapon/ammo text, so only fill in where the stock HUD is absent.
+        if (data != null && !HelicopterHudSeats.isStockHudHidden(ve, seatIndex)) return;
+
         poseStack.pushPose();
 
         // Proper alpha blending so the semi-transparent vignette / ladder pixels are respected.

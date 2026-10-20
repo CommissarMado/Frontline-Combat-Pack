@@ -26,6 +26,8 @@
   "entity.fcp.mi8_amtsh": "MI-8 AMTSh",
   "entity.fcp.uaz_dshka": "UAZ With DSHKA",
   "entity.fcp.ural": "Ural",
+  "entity.fcp.gaz66": "GAZ-66",
+  "entity.fcp.zis5": "ZiS-5",
   "entity.fcp.ural_fuel": "Ural Fuel Truck",
   "entity.fcp.ural_kung": "Ural Kung",
   "entity.fcp.ural_grad": "Ural With Grad",
@@ -41,6 +43,8 @@
   "entity.fcp.btr82": "BTR82A",
   "entity.fcp.btr3e": "BTR-3E",
   "entity.fcp.btr4mv1": "BTR-4MV1",
+  "entity.fcp.btr4e": "BTR-4E",
+  "entity.fcp.btr4e1": "BTR-4E1",
   "entity.fcp.bmp2md": "BMP-2MD",
   "entity.fcp.btr82at": "BTR-82AT",
   "entity.fcp.btr80_cope": "BTR-80 (Cope Cage)",
@@ -209,5 +213,8 @@
   "entity.fcp.msta": "2S19 Msta-S",
   "entity.fcp.m109": "M109 Paladin",
   "entity.fcp.fmtv": "FMTV",
-  "entity.fcp.fmtv_4x4": "FMTV 4x4"
+  "entity.fcp.fmtv_4x4": "FMTV 4x4",
+  "entity.fcp.typhoon_vdv": "Typhoon-VDV",
+  "entity.fcp.typhoon_vdv_unarmed": "Typhoon-VDV (Unarmed)",
+  "entity.fcp.landrover_110": "Land Rover 110"
 }

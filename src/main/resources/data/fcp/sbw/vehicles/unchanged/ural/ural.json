@@ -224,7 +224,7 @@
   },
   "EngineSound": "superbwarfare:truck_engine",
   "HornSound": "superbwarfare:truck_horn",
-  "HudType": "@Land",
+  "HudType": "@Empty",
   "TerrainCompat": [
     [1.009375, 0, 2.576563], [-1.009375, 0, 2.576563],
     [1.009375, 0, -1.182031], [-1.009375, 0, -1.182031],

@@ -114,6 +114,8 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.UAZ_452.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.UAZ_3303.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.URAL.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.GAZ66.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.ZIS5.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.URAL_FUEL.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.URAL_KUNG.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.URAL_GRAD.get()));
@@ -134,6 +136,8 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BTR82_COPE.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BTR3E.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BTR4MV1.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BTR4E.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.BTR4E1.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BRDM2.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.PANTSIR.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MI17.get()));

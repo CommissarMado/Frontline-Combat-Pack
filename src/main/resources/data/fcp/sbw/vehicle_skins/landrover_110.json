@@ -1,0 +1,28 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Tex 1",
+      "Texture": "fcp:textures/entity/landrover_110/tex_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "tex_2",
+      "Name": "Tex 2",
+      "Texture": "fcp:textures/entity/landrover_110/tex_2.png",
+      "Priority": 2
+    },
+    {
+      "Id": "tex_3",
+      "Name": "Tex 3",
+      "Texture": "fcp:textures/entity/landrover_110/tex_3.png",
+      "Priority": 3
+    },
+    {
+      "Id": "tex_4",
+      "Name": "Tex 4",
+      "Texture": "fcp:textures/entity/landrover_110/tex_4.png",
+      "Priority": 4
+    }
+  ]
+}
