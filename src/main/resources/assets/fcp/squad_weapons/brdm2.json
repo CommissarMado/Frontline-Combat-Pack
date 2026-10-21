@@ -1,0 +1,284 @@
+{
+  "_comment": "Generated from Squad SDK fire and turret cues (see squad sound pipeline).",
+  "vehicles": [
+    "fcp:brdm2"
+  ],
+  "weapons": {
+    "Cannon": {
+      "volume": 0.45,
+      "burst_gap": 4,
+      "first_person": {
+        "start": [
+          {
+            "sound": "fcp:squad.weapons.kpvt.1p_start",
+            "gain": 2.25,
+            "spatial": false
+          }
+        ],
+        "loop": [
+          {
+            "sound": "fcp:squad.weapons.kpvt.1p_loop",
+            "gain": 2.25,
+            "spatial": false
+          }
+        ],
+        "tail": [
+          {
+            "sound": "fcp:squad.weapons.kpvt.1p_tail",
+            "gain": 2.25,
+            "spatial": false
+          }
+        ]
+      },
+      "third_person": {
+        "loop": [
+          {
+            "sound": "fcp:squad.weapons.kpvt.3p_close_loop",
+            "gain": 2.0,
+            "fade": [
+              0,
+              0,
+              30.9,
+              40
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.kpvt.3p_mid_loop",
+            "gain": 1.8,
+            "fade": [
+              30.9,
+              40,
+              100,
+              150
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.kpvt.3p_far_loop",
+            "gain": 1.5,
+            "fade": [
+              50,
+              70,
+              600,
+              1000
+            ]
+          }
+        ],
+        "tail": [
+          {
+            "sound": "fcp:squad.weapons.kpvt.echo_close",
+            "gain": 0.2,
+            "fade": [
+              0,
+              0,
+              30.9,
+              40
+            ],
+            "spatial": false,
+            "falloff": 250
+          },
+          {
+            "sound": "fcp:squad.weapons.kpvt.echo_close",
+            "gain": 0.21,
+            "fade": [
+              30.9,
+              40,
+              100,
+              150
+            ],
+            "spatial": false,
+            "falloff": 250
+          },
+          {
+            "sound": "fcp:squad.weapons.kpvt.echo_far",
+            "gain": 0.7,
+            "fade": [
+              50,
+              70,
+              600,
+              1000
+            ],
+            "spatial": false,
+            "falloff": 1000
+          },
+          {
+            "sound": "fcp:squad.weapons.kpvt.3p_close_tail",
+            "gain": 2.0,
+            "fade": [
+              0,
+              0,
+              30.9,
+              40
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.kpvt.3p_mid_tail",
+            "gain": 1.8,
+            "fade": [
+              30.9,
+              40,
+              100,
+              150
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.kpvt.3p_far_tail",
+            "gain": 1.5,
+            "fade": [
+              50,
+              70,
+              600,
+              1000
+            ]
+          }
+        ]
+      }
+    },
+    "Coax": {
+      "volume": 0.6,
+      "burst_gap": 4,
+      "first_person": {
+        "start": [
+          {
+            "sound": "fcp:squad.weapons.pkt.1p_start",
+            "gain": 1.5,
+            "spatial": false
+          }
+        ],
+        "loop": [
+          {
+            "sound": "fcp:squad.weapons.pkt.1p_loop",
+            "gain": 1.5,
+            "spatial": false
+          }
+        ],
+        "tail": [
+          {
+            "sound": "fcp:squad.weapons.pkt.1p_tail",
+            "gain": 1.5,
+            "spatial": false
+          }
+        ]
+      },
+      "third_person": {
+        "start": [
+          {
+            "sound": "fcp:squad.weapons.pkt.3p_close_start",
+            "gain": 4.0,
+            "fade": [
+              0,
+              0,
+              80,
+              150
+            ]
+          }
+        ],
+        "loop": [
+          {
+            "sound": "fcp:squad.weapons.pkt.3p_close_loop",
+            "gain": 5.7,
+            "fade": [
+              0,
+              0,
+              80,
+              150
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.pkt.3p_mid_loop",
+            "gain": 1.4,
+            "fade": [
+              30,
+              50,
+              800,
+              1000
+            ]
+          }
+        ],
+        "tail": [
+          {
+            "sound": "fcp:squad.weapons.pkt.3p_close_tail",
+            "gain": 5.7,
+            "fade": [
+              0,
+              0,
+              80,
+              150
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.pkt.echo_close",
+            "gain": 1.0,
+            "fade": [
+              0,
+              0,
+              80,
+              150
+            ],
+            "spatial": false,
+            "falloff": 200
+          },
+          {
+            "sound": "fcp:squad.weapons.pkt.3p_mid_tail",
+            "gain": 1.4,
+            "fade": [
+              30,
+              50,
+              800,
+              1000
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.pkt.echo_mid",
+            "gain": 0.7,
+            "fade": [
+              30,
+              50,
+              800,
+              1000
+            ],
+            "spatial": false,
+            "falloff": 1000
+          }
+        ]
+      }
+    }
+  },
+  "turret": {
+    "loop": "fcp:squad.turrets.loop07.loop",
+    "speed_scale": 5,
+    "pitch_mod": {
+      "in": [
+        5,
+        100
+      ],
+      "out": [
+        0.6,
+        0.8
+      ]
+    },
+    "volume_mod": {
+      "in": [
+        20,
+        250
+      ],
+      "out": [
+        0,
+        1
+      ]
+    },
+    "inside_volume": 0.5,
+    "outside_volume": 1.0,
+    "start": {
+      "sound": "fcp:squad.turrets.loop07.start",
+      "volume": 0.2
+    },
+    "stop": {
+      "sound": "fcp:squad.turrets.loop07.stop",
+      "volume": 0.1,
+      "pitch": [
+        0.9,
+        0.95
+      ]
+    }
+  }
+}

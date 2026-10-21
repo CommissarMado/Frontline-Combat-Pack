@@ -1,0 +1,35 @@
+{
+  "_comment": "Generated from the Squad SDK: M1151_engine_rpm_ALL_Cue.uasset (+ start/stop cues).",
+  "vehicles": ["fcp:hmmwv_ambulance", "fcp:hmmwv_armored_m2", "fcp:hmmwv_armored_mk19", "fcp:hmmwv_armored_unarmed", "fcp:hmmwv_asrad", "fcp:hmmwv_avenger", "fcp:hmmwv_cargo", "fcp:hmmwv_shelter", "fcp:hmmwv_soft_top", "fcp:hmmwv_soft_top_no_doors", "fcp:hmmwv_unarmored_m2", "fcp:hmmwv_unarmored_m2_shield", "fcp:hmmwv_unarmored_m2_turret", "fcp:hmmwv_unarmored_tow", "fcp:hmmwv_unarmored_tow_turret", "fcp:hmmwv_unarmored_unarmed"],
+  "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
+  "exterior_volume": 0.4167,
+  "interior_volume": 0.5128,
+  "start": {
+    "exterior": { "sound": "fcp:squad.m1151.engine.m1151_engine_start_01", "volume": 1, "duration": 0.57 },
+    "interior": { "sound": "fcp:squad.m1151.engine.m1151_start_int_01", "volume": 1, "duration": 3.50 }
+  },
+  "stop": {
+    "exterior": { "sound": "fcp:squad.m1151.engine.m1151_engine_stop_01", "volume": 1, "duration": 1.58 },
+    "interior": { "sound": "fcp:squad.m1151.engine.m1151_stop_int_01", "volume": 1, "duration": 1.00 }
+  },
+  "layers": [
+    { "sound": "fcp:squad.m1151.engine.m1151_idle_int_01", "interior": true, "gain": 1.95, "fade": [0, 0, 150, 800],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [0, 200], "out": [1, 1.1] }] },
+    { "sound": "fcp:squad.m1151.engine.m1151_rpm_low_int_01", "interior": true, "gain": 0.75, "fade": [0.5, 200, 2500, 3000],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [700, 2800], "out": [1, 2] }] },
+    { "sound": "fcp:squad.m1151.engine.m1151_rpm_high_int_01", "interior": true, "gain": 0.975, "fade": [750, 2000, 2500, 3000],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [20, 3000], "out": [0.75, 2] }] },
+    { "sound": "fcp:squad.m1151.engine.m1151_engine_idle_01", "gain": 1, "fade": [0, 0, 400, 500],
+      "volume_mods": [{ "param": "throttle", "in": [0.2, 1], "out": [1, 0.2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [0, 200], "out": [1, 1.1] }] },
+    { "sound": "fcp:squad.m1151.engine.m1151_unsteady_rpm_low", "gain": 0.6, "fade": [200, 600, 2000, 2500],
+      "volume_mods": [{ "param": "throttle", "in": [0.2, 1], "out": [1, 0.2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [20, 3000], "out": [0.85, 1.3] }] },
+    { "sound": "fcp:squad.m1151.engine.m1151_unsteady_rpm_high", "gain": 0.6, "fade": [3000, 3500, 3500, 4400],
+      "volume_mods": [{ "param": "throttle", "in": [0.2, 1], "out": [1, 0.2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [700, 2800], "out": [0.8, 1.3] }] },
+    { "sound": "fcp:squad.m1151.engine.m1151_throttle_02", "gain": 2.4, "fade": [0, 0, 1000, 4500],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [0, 1] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [0, 4000], "out": [1, 1] }] }
+  ]
+}

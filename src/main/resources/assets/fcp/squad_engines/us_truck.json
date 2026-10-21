@@ -1,0 +1,35 @@
+{
+  "_comment": "Generated from the Squad SDK: us_Truck_engine_rpm_ALL_Cue.uasset (+ start/stop cues).",
+  "vehicles": ["fcp:m939", "fcp:fmtv", "fcp:fmtv_4x4"],
+  "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
+  "exterior_volume": 0.3333,
+  "interior_volume": 1,
+  "start": {
+    "exterior": { "sound": "fcp:squad.us_truck.engine.us_truck_engine_start_ext_01", "volume": 0.6, "duration": 2.15 },
+    "interior": { "sound": "fcp:squad.man_truck.engine.us_truck_engine_start_int_01", "volume": 1, "duration": 2.67 }
+  },
+  "stop": {
+    "exterior": { "sound": "fcp:squad.us_truck.engine.us_truck_engine_stop_ext_01", "volume": 0.6, "duration": 3.97 },
+    "interior": { "sound": "fcp:squad.man_truck.engine.us_truck_engine_stop_int_01", "volume": 1, "duration": 3.71 }
+  },
+  "layers": [
+    { "sound": "fcp:squad.man_truck.engine.us_truck_engine_idle_int_01", "interior": true, "gain": 0.768, "fade": [0, 0, 400, 500],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [1, 0] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [0, 200], "out": [1, 1.2] }] },
+    { "sound": "fcp:squad.man_truck.engine.us_truck_engine_rpm_low_int_01", "interior": true, "gain": 0.784, "fade": [200, 600, 3000, 5000],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [1, 0] }, { "param": "rpm", "in": [0, 100], "out": [0, 2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [20, 4000], "out": [0.7, 1.4] }] },
+    { "sound": "fcp:squad.man_truck.engine.us_truck_engine_throttling_int_01", "interior": true, "gain": 0.6, "fade": [10, 50, 4000, 6000],
+      "volume_mods": [{ "param": "throttle", "in": [0.001, 1], "out": [0, 2] }, { "param": "rpm", "in": [0, 1], "out": [0, 1] }],
+      "pitch_mods": [{ "param": "throttle", "in": [-3, 1], "out": [0, 1] }, { "param": "rpm", "abs": true, "in": [0, 4000], "out": [0.9, 1.4] }] },
+    { "sound": "fcp:squad.us_truck.engine.us_truck_engine_idle_ext_01", "gain": 3, "fade": [0, 0, 400, 500],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [1, 0] }, { "param": "rpm", "in": [0, 0], "out": [1, 2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [0, 800], "out": [1, 1.2] }] },
+    { "sound": "fcp:squad.us_truck.engine.us_truck_engine_rpm_low_ext_01", "gain": 1, "fade": [200, 600, 3000, 5000],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [1, 0] }, { "param": "rpm", "in": [0, 100], "out": [0, 2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [20, 4000], "out": [0.7, 1.4] }] },
+    { "sound": "fcp:squad.us_truck.engine.us_truck_engine_throttling_ext_01", "gain": 1.5, "fade": [10, 50, 4000, 6000],
+      "volume_mods": [{ "param": "throttle", "in": [0.001, 1], "out": [0, 2] }, { "param": "rpm", "in": [0, 1], "out": [0, 1] }],
+      "pitch_mods": [{ "param": "throttle", "in": [-3, 1], "out": [0, 1] }, { "param": "rpm", "abs": true, "in": [0, 4000], "out": [0.9, 1.4] }] }
+  ]
+}

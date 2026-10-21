@@ -1,0 +1,23 @@
+{
+  "_comment": "Generated from the Squad SDK: mi8_engine_rpm_rotors_02_Cue.uasset (+ start/stop cues).",
+  "vehicles": ["fcp:mi8", "fcp:mi17", "fcp:mi8_door_guns", "fcp:mi17_door_guns", "fcp:mi8_mtv", "fcp:mi8_amtsh", "fcp:ch53a", "fcp:ch53e", "fcp:mh53"],
+  "mode": "helicopter",
+  "rotor_pitch": [0.85, 1.0],
+  "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
+  "exterior_volume": 0.25,
+  "interior_volume": 0.5556,
+  "start": {
+    "exterior": { "sound": "fcp:squad.mi8.engine.mi8_engine_start_close_01", "volume": 4, "duration": 21.22 },
+    "interior": { "sound": "fcp:squad.mi8.engine.mi8_engine_start_int_01", "volume": 2, "duration": 20.00 }
+  },
+  "stop": {
+    "exterior": { "sound": "fcp:squad.mi8.engine.mi8_engine_stop_close_01", "volume": 4, "duration": 28.21 },
+    "interior": { "sound": "fcp:squad.mi8.engine.mi8_engine_stop_int_01", "volume": 2, "duration": 23.50 }
+  },
+  "layers": [
+    { "sound": "fcp:squad.mi8.engine.mi8_engine_idle_int_01", "interior": true, "gain": 1.8 },
+    { "sound": "fcp:squad.mi8.engine.mi8_engine_idle_close_01", "gain": 4, "distance_fade": [0, 0, 110, 160] },
+    { "sound": "fcp:squad.mi8.engine.mi8_engine_idle_medium_01", "gain": 3.45, "distance_fade": [100, 130, 300, 400] },
+    { "sound": "fcp:squad.mi8.engine.mi8_engine_idle_far_03", "gain": 1.5, "distance_fade": [250, 280, 600, 9000] }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "_comment": "Generated from the Squad SDK: Loach_engine_rpm_rotors_Cue.uasset (+ start/stop cues).",
+  "vehicles": ["fcp:littlebird", "fcp:littlebird_armed", "fcp:littlebird_heavy", "fcp:bigbird", "fcp:oh1"],
+  "mode": "helicopter",
+  "rotor_pitch": [0.85, 1.0],
+  "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
+  "exterior_volume": 0.4348,
+  "interior_volume": 1,
+  "start": {
+    "exterior": { "sound": "fcp:squad.loach.engine.littlebird_engine_rotor_start_close", "volume": 3, "duration": 20.76 },
+    "interior": { "sound": "fcp:squad.loach.engine.littlebird_engine_rotor_start_int", "volume": 1, "duration": 20.00 }
+  },
+  "stop": {
+    "exterior": { "sound": "fcp:squad.loach.engine.littlebird_engine_rotor_stop_close", "volume": 3, "duration": 21.32 },
+    "interior": { "sound": "fcp:squad.loach.engine.littlebird_engine_rotor_stop_int", "volume": 1, "duration": 23.64 }
+  },
+  "layers": [
+    { "sound": "fcp:squad.loach.engine.littlebird_engine_rotor_idle_int", "interior": true, "gain": 1 },
+    { "sound": "fcp:squad.loach.engine.littlebird_engine_rotor_close", "gain": 2, "distance_fade": [0, 0, 110, 160] },
+    { "sound": "fcp:squad.loach.engine.littlebird_engine_rotor_mid", "gain": 2.3, "distance_fade": [100, 130, 300, 400] },
+    { "sound": "fcp:squad.loach.engine.littlebird_engine_rotor_far", "gain": 1.5, "distance_fade": [250, 280, 600, 9000] }
+  ]
+}

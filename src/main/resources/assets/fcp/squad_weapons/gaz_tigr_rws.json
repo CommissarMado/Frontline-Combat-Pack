@@ -1,0 +1,252 @@
+{
+  "_comment": "Generated from Squad SDK fire and turret cues (see squad sound pipeline).",
+  "vehicles": [
+    "fcp:gaz_tigr_rws"
+  ],
+  "weapons": {
+    "PassengerMachineGun": {
+      "volume": 1,
+      "burst_gap": 4,
+      "first_person": {
+        "start": [
+          {
+            "sound": "fcp:squad.weapons.kord.1p_start_1",
+            "gain": 1,
+            "spatial": false
+          }
+        ],
+        "loop": [
+          {
+            "sound": "fcp:squad.weapons.kord.1p_loop_2",
+            "gain": 1,
+            "spatial": false
+          }
+        ],
+        "tail": [
+          {
+            "sound": "fcp:squad.weapons.kord.1p_tail_3",
+            "gain": 1,
+            "spatial": false
+          },
+          {
+            "sound": "fcp:squad.weapons.kord.1p_tail_4",
+            "gain": 0.25,
+            "spatial": false,
+            "delay": 0.2
+          }
+        ]
+      },
+      "third_person": {
+        "start": [
+          {
+            "sound": "fcp:squad.weapons.kord.3p_start_5",
+            "gain": 0.8,
+            "fade": [
+              0,
+              0,
+              80,
+              150
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.kord.3p_start_6",
+            "gain": 0.8,
+            "fade": [
+              0,
+              0,
+              80,
+              150
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.kord.3p_start_5",
+            "gain": 0.1,
+            "fade": [
+              0,
+              0,
+              80,
+              150
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.kord.3p_start_5",
+            "gain": 0.2,
+            "fade": [
+              0,
+              0,
+              80,
+              150
+            ],
+            "delay": 0.35
+          }
+        ],
+        "loop": [
+          {
+            "sound": "fcp:squad.weapons.kord.3p_loop_7",
+            "gain": 0.8,
+            "fade": [
+              0,
+              0,
+              80,
+              150
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.kord.3p_loop_8",
+            "gain": 0.8,
+            "fade": [
+              0,
+              0,
+              80,
+              150
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.kord.3p_loop_8",
+            "gain": 0.1,
+            "fade": [
+              0,
+              0,
+              80,
+              150
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.kord.3p_loop_8",
+            "gain": 0.2,
+            "fade": [
+              0,
+              0,
+              80,
+              150
+            ],
+            "delay": 0.35
+          },
+          {
+            "sound": "fcp:squad.weapons.kord.3p_loop_9",
+            "gain": 1,
+            "fade": [
+              30,
+              50,
+              800,
+              1000
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.kord.3p_loop_10",
+            "gain": 0.4,
+            "fade": [
+              500,
+              600,
+              600,
+              2000
+            ]
+          }
+        ],
+        "tail": [
+          {
+            "sound": "fcp:squad.weapons.kord.3p_tail_11",
+            "gain": 0.8,
+            "fade": [
+              0,
+              0,
+              80,
+              150
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.kord.3p_tail_12",
+            "gain": 0.1,
+            "fade": [
+              0,
+              0,
+              80,
+              150
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.kord.3p_tail_13",
+            "gain": 0.2,
+            "fade": [
+              0,
+              0,
+              80,
+              150
+            ],
+            "delay": 0.35
+          },
+          {
+            "sound": "fcp:squad.weapons.kord.3p_tail_14",
+            "gain": 1,
+            "fade": [
+              30,
+              50,
+              800,
+              1000
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.kord.3p_tail_15",
+            "gain": 0.28,
+            "fade": [
+              30,
+              50,
+              800,
+              1000
+            ],
+            "spatial": false,
+            "falloff": 300
+          },
+          {
+            "sound": "fcp:squad.weapons.kord.3p_tail_16",
+            "gain": 0.4,
+            "fade": [
+              500,
+              600,
+              600,
+              2000
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "turret": {
+    "loop": "fcp:squad.turrets.loop07.loop",
+    "speed_scale": 5,
+    "pitch_mod": {
+      "in": [
+        5,
+        100
+      ],
+      "out": [
+        0.6,
+        0.8
+      ]
+    },
+    "volume_mod": {
+      "in": [
+        20,
+        250
+      ],
+      "out": [
+        0,
+        1
+      ]
+    },
+    "inside_volume": 0.5,
+    "outside_volume": 1.0,
+    "start": {
+      "sound": "fcp:squad.turrets.loop07.start",
+      "volume": 0.2
+    },
+    "stop": {
+      "sound": "fcp:squad.turrets.loop07.stop",
+      "volume": 0.1,
+      "pitch": [
+        0.9,
+        0.95
+      ]
+    }
+  }
+}

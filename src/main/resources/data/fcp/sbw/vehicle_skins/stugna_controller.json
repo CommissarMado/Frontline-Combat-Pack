@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Default",
+      "Texture": "fcp:textures/entity/stugna/stugna.png",
+      "Priority": 1
+    }
+  ]
+}

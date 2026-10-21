@@ -1,0 +1,33 @@
+{
+  "_comment": "Generated from Squad SDK fire and turret cues (see squad sound pipeline).",
+  "vehicles": [
+    "fcp:stryker_mortar"
+  ],
+  "weapons": {},
+  "turret": {
+    "loop": "fcp:squad.turrets.open.loop",
+    "speed_scale": 5,
+    "pitch_mod": {
+      "in": [
+        50,
+        300
+      ],
+      "out": [
+        1,
+        1
+      ]
+    },
+    "volume_mod": {
+      "in": [
+        1,
+        100
+      ],
+      "out": [
+        0,
+        1
+      ]
+    },
+    "inside_volume": 1,
+    "outside_volume": 1
+  }
+}

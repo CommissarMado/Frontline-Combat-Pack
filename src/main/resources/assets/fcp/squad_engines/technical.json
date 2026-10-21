@@ -1,0 +1,41 @@
+{
+  "_comment": "Generated from the Squad SDK: Technical_engine_rpm_ALL_Cue.uasset (+ start/stop cues).",
+  "vehicles": ["fcp:toyota_hilux", "fcp:toyota_hilux_rocket_pod", "fcp:toyota_hilux_bmp", "fcp:toyota_hilux_spg9", "fcp:toyota_hilux_mortar", "fcp:toyota_hilux_zu23"],
+  "rpm": { "max": 1125, "load": 375, "rise": 56, "fall": 38 },
+  "exterior_volume": 1,
+  "interior_volume": 1,
+  "start": {
+    "exterior": { "sound": "fcp:squad.technical.engine.technical_engine_start_01", "volume": 0.6, "duration": 1.04 },
+    "interior": { "sound": "fcp:squad.technical.engine.technical_engine_start_int_01", "volume": 1, "duration": 2.37 }
+  },
+  "stop": {
+    "exterior": { "sound": "fcp:squad.technical.engine.technical_engine_stop_01", "volume": 0.6, "duration": 2.76 },
+    "interior": { "sound": "fcp:squad.technical.engine.technical_engine_stop_int_01", "volume": 1, "duration": 2.26 }
+  },
+  "layers": [
+    { "sound": "fcp:squad.technical.engine.technical_engine_idle_int_01", "interior": true, "gain": 0.75, "fade": [0, 0, 500, 800],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [0.3, 1] }],
+      "pitch_mods": [{ "param": "rpm", "in": [0, 0], "out": [0.8, 0.8] }, { "param": "rpm", "abs": true, "in": [0, 800], "out": [1.2, 1.5] }] },
+    { "sound": "fcp:squad.technical.engine.technical_engine_rpm_low_int_01", "interior": true, "gain": 0.225, "fade": [0.5, 200, 2500, 3000],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [0.3, 1] }],
+      "pitch_mods": [{ "param": "rpm", "in": [0, 0], "out": [0.8, 0.8] }, { "param": "rpm", "abs": true, "in": [20, 3000], "out": [0.75, 2] }] },
+    { "sound": "fcp:squad.technical.engine.technical_engine_rpm_high_int_01", "interior": true, "gain": 0.375, "fade": [750, 2000, 2500, 3000],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [0.3, 1] }],
+      "pitch_mods": [{ "param": "rpm", "in": [0, 0], "out": [0.8, 0.8] }, { "param": "rpm", "abs": true, "in": [700, 2800], "out": [1, 2] }] },
+    { "sound": "fcp:squad.technical.engine.technical_engine_throttle_int_01", "interior": true, "gain": 0.375, "fade": [1, 5, 1000, 1500],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [0, 1] }],
+      "pitch_mods": [{ "param": "rpm", "in": [0, 0], "out": [0.8, 0.8] }, { "param": "rpm", "abs": true, "in": [0, 2000], "out": [1.1, 1.1] }] },
+    { "sound": "fcp:squad.technical.engine.technical_engine_idle_01", "gain": 0.3, "fade": [0, 0, 150, 250],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [0.3, 1] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [0, 200], "out": [1, 1.1] }] },
+    { "sound": "fcp:squad.technical.engine.technical_engine_rpm_low_01", "gain": 0.225, "fade": [0.5, 200, 2500, 3000],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [0.3, 1] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [20, 3000], "out": [0.75, 2] }] },
+    { "sound": "fcp:squad.technical.engine.technical_engine_rpm_high_01", "gain": 0.3, "fade": [750, 2000, 2500, 3000],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [0.3, 1] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [700, 2800], "out": [1, 2] }] },
+    { "sound": "fcp:squad.technical.engine.technical_engine_throttle_01", "gain": 0.45, "fade": [1, 5, 1000, 1500],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [0, 1] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [0, 2000], "out": [0.8, 2] }] }
+  ]
+}

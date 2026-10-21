@@ -1,0 +1,23 @@
+{
+  "_comment": "Generated from the Squad SDK: UH1Y_engine_rpm_rotors_Cue.uasset (+ start/stop cues).",
+  "vehicles": ["fcp:venom", "fcp:venom_gunship", "fcp:venom_door_guns", "fcp:viper"],
+  "mode": "helicopter",
+  "rotor_pitch": [0.85, 1.0],
+  "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
+  "exterior_volume": 0.4348,
+  "interior_volume": 0.5,
+  "start": {
+    "exterior": { "sound": "fcp:squad.uh1y.engine.uh1y_engine_rotors_start_close_01", "volume": 3, "duration": 20.76 },
+    "interior": { "sound": "fcp:squad.uh1y.engine.uh1y_engine_rotors_start_int_01", "volume": 2, "duration": 20.00 }
+  },
+  "stop": {
+    "exterior": { "sound": "fcp:squad.uh1y.engine.uh1y_engine_rotors_stop_close_01", "volume": 3, "duration": 20.25 },
+    "interior": { "sound": "fcp:squad.uh1y.engine.uh1y_engine_rotors_stop_int_01", "volume": 2, "duration": 16.70 }
+  },
+  "layers": [
+    { "sound": "fcp:squad.uh1y.engine.uh1y_engine_rotors_idle_int_01", "interior": true, "gain": 2 },
+    { "sound": "fcp:squad.uh1y.engine.uh1y_engine_rotors_idle_close_01", "gain": 2, "distance_fade": [0, 0, 110, 160] },
+    { "sound": "fcp:squad.uh1y.engine.uh1y_engine_rotors_idle_mid_01", "gain": 2.3, "distance_fade": [100, 130, 300, 400] },
+    { "sound": "fcp:squad.uh1y.engine.uh1y_engine_rotors_idle_far_01", "gain": 1.5, "distance_fade": [250, 280, 600, 9000] }
+  ]
+}

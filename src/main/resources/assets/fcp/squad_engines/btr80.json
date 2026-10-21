@@ -1,0 +1,64 @@
+{
+  "_comment": "Squad SDK Vehicles/BTR80/Sounds/BTR_engine_rpm_ALL_Cue. Gains, crossfades and modulators are copied from the cue; exterior/interior are its InVehicle branch. RPM idles at 0 as in Squad.",
+  "vehicles": ["fcp:btr80", "fcp:btr80_cope", "fcp:btr82", "fcp:btr82_cope", "fcp:btr82at", "fcp:btr3e", "fcp:btr4mv1", "fcp:btr4e1", "fcp:btr4e"],
+  "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
+  "exterior_volume": 0.33,
+  "interior_volume": 0.8,
+  "start": {
+    "exterior": { "sound": "fcp:squad.btr80.engine.start_ext", "volume": 0.6, "duration": 4.61 },
+    "interior": { "sound": "fcp:squad.btr80.engine.start_int", "volume": 0.4, "duration": 2.44 }
+  },
+  "stop": {
+    "exterior": { "sound": "fcp:squad.btr80.engine.stop_ext", "volume": 0.6, "duration": 2.68 },
+    "interior": { "sound": "fcp:squad.btr80.engine.stop_int", "volume": 0.4, "duration": 3.00 }
+  },
+  "layers": [
+    {
+      "sound": "fcp:squad.btr80.engine.idle_ext", "gain": 3.0, "fade": [0, 0, 400, 500],
+      "pitch_mods": [ { "param": "rpm", "abs": true, "in": [0, 800], "out": [1.0, 1.2] } ]
+    },
+    {
+      "sound": "fcp:squad.btr80.engine.rpm_low_ext", "gain": 1.4, "fade": [200, 600, 3000, 5000],
+      "volume_mods": [
+        { "param": "throttle", "in": [0, 1], "out": [1, 0] },
+        { "param": "rpm", "in": [0, 100], "out": [0, 2] }
+      ],
+      "pitch_mods": [ { "param": "rpm", "abs": true, "in": [20, 2000], "out": [0.8, 1.8] } ]
+    },
+    {
+      "sound": "fcp:squad.btr80.engine.throttle_ext", "gain": 1.95, "fade": [10, 50, 4000, 6000],
+      "volume_mods": [
+        { "param": "throttle", "in": [0.001, 1], "out": [0, 2] },
+        { "param": "rpm", "in": [0, 1], "out": [0, 1] }
+      ],
+      "pitch_mods": [
+        { "param": "throttle", "in": [-3, 1], "out": [0, 1] },
+        { "param": "rpm", "abs": true, "in": [0, 4000], "out": [0.9, 1.8] }
+      ]
+    },
+    {
+      "sound": "fcp:squad.btr80.engine.idle_int", "interior": true, "gain": 1.2, "fade": [0, 0, 400, 500],
+      "volume_mods": [ { "param": "throttle", "in": [0.2, 1], "out": [0.8, 0.2] } ],
+      "pitch_mods": [ { "param": "rpm", "in": [0, 1000], "out": [1.0, 1.1] } ]
+    },
+    {
+      "sound": "fcp:squad.btr80.engine.rpm_low_int", "interior": true, "gain": 0.4, "fade": [200, 600, 3000, 5000],
+      "volume_mods": [
+        { "param": "throttle", "in": [0, 1], "out": [1, 0] },
+        { "param": "rpm", "in": [0, 100], "out": [0, 2] }
+      ],
+      "pitch_mods": [ { "param": "rpm", "abs": true, "in": [20, 2000], "out": [0.8, 1.8] } ]
+    },
+    {
+      "sound": "fcp:squad.btr80.engine.rpm_high_int", "interior": true, "gain": 0.624, "fade": [10, 50, 4000, 6000],
+      "volume_mods": [
+        { "param": "throttle", "in": [0.001, 1], "out": [0, 2] },
+        { "param": "rpm", "in": [0, 1], "out": [0, 1] }
+      ],
+      "pitch_mods": [
+        { "param": "throttle", "in": [-3, 1], "out": [0, 1] },
+        { "param": "rpm", "abs": true, "in": [0, 4000], "out": [0.9, 1.8] }
+      ]
+    }
+  ]
+}

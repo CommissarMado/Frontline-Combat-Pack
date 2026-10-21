@@ -1,0 +1,45 @@
+{
+  "_comment": "Generated from Squad SDK fire and turret cues (see squad sound pipeline).",
+  "vehicles": [
+    "fcp:huey_rockets"
+  ],
+  "weapons": {
+    "Rocket": {
+      "volume": 1,
+      "burst_gap": 1,
+      "first_person": {
+        "start": [
+          {
+            "sound": "fcp:squad.weapons.ffar.1p_shot_1",
+            "gain": 1,
+            "spatial": false
+          }
+        ]
+      },
+      "third_person": {
+        "start": [
+          {
+            "sound": "fcp:squad.weapons.ffar.3p_shot_2",
+            "gain": 1,
+            "fade": [
+              0,
+              0,
+              250,
+              300
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.ffar.3p_shot_3",
+            "gain": 0.8,
+            "fade": [
+              100,
+              250,
+              800,
+              5000
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

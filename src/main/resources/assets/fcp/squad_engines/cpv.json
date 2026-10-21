@@ -1,0 +1,41 @@
+{
+  "_comment": "Generated from the Squad SDK: CPV_engine_rpm_ALL_Cue.uasset (+ start/stop cues).",
+  "vehicles": ["fcp:generic_suv"],
+  "rpm": { "max": 2100, "load": 700, "rise": 105, "fall": 70 },
+  "exterior_volume": 0.7143,
+  "interior_volume": 1,
+  "start": {
+    "exterior": { "sound": "fcp:squad.cpv.engine.cpv_engine_start_ext", "volume": 0.5, "duration": 2.51 },
+    "interior": { "sound": "fcp:squad.cpv.engine.cpv_engine_start_int", "volume": 0.6, "duration": 2.51 }
+  },
+  "stop": {
+    "exterior": { "sound": "fcp:squad.cpv.engine.cpv_engine_stop_ext", "volume": 1, "duration": 3.14 },
+    "interior": { "sound": "fcp:squad.cpv.engine.cpv_engine_stop_int", "volume": 1, "duration": 3.14 }
+  },
+  "layers": [
+    { "sound": "fcp:squad.cpv.engine.cpv_engine_idle_int", "interior": true, "gain": 0.8, "fade": [0, 0, 400, 500],
+      "volume_mods": [{ "param": "throttle", "in": [1, 1], "out": [1, 0] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [0, 200], "out": [1, 1.1] }] },
+    { "sound": "fcp:squad.cpv.engine.cpv_engine_idle2_int", "interior": true, "gain": 0.28, "fade": [200, 600, 3000, 5000],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [1, 0] }, { "param": "rpm", "in": [0, 100], "out": [0, 2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [20, 4000], "out": [0.7, 1.5] }] },
+    { "sound": "fcp:squad.cpv.engine.cpv_engine_throttle_int", "interior": true, "gain": 0.28, "fade": [10, 50, 4000, 6000],
+      "volume_mods": [{ "param": "throttle", "in": [0.001, 1], "out": [0, 2] }, { "param": "rpm", "in": [0, 1], "out": [0, 1] }],
+      "pitch_mods": [{ "param": "throttle", "in": [-3, 1], "out": [0, 1] }, { "param": "rpm", "abs": true, "in": [0, 3000], "out": [0.6, 1.2] }] },
+    { "sound": "fcp:squad.cpv.engine.cpv_engine_idle_ext", "gain": 1.4, "fade": [0, 0, 300, 400],
+      "volume_mods": [{ "param": "throttle", "in": [1, 1], "out": [1, 0] }, { "param": "throttle", "in": [0, 1], "out": [1, 1] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [0, 200], "out": [1, 1.5] }] },
+    { "sound": "fcp:squad.cpv.engine.cpv_engine_idle2_ext", "gain": 0.7, "fade": [200, 600, 3000, 5000],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [1, 0] }, { "param": "rpm", "in": [0, 100], "out": [0, 2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [20, 4000], "out": [0.7, 1.5] }] },
+    { "sound": "fcp:squad.cpv.engine.cpv_engine_throttle_1000_rpm_ext", "gain": 0.7, "fade": [10, 100, 250, 300],
+      "volume_mods": [{ "param": "throttle", "abs": true, "in": [0.001, 0.5], "out": [0.5, 2] }, { "param": "rpm", "in": [0, 2], "out": [0, 1] }],
+      "pitch_mods": [{ "param": "throttle", "in": [-3, 1], "out": [0, 1] }, { "param": "rpm", "abs": true, "in": [0, 200], "out": [0.88, 1.5] }] },
+    { "sound": "fcp:squad.cpv.engine.cpv_engine_throttle_2000_rpm_ext", "gain": 0.7, "fade": [150, 300, 900, 950],
+      "volume_mods": [{ "param": "throttle", "in": [0.001, 0.1], "out": [0.5, 2] }, { "param": "rpm", "in": [0, 1], "out": [0, 1] }],
+      "pitch_mods": [{ "param": "throttle", "in": [-5, 1], "out": [-1, 1] }, { "param": "rpm", "in": [0, 5600], "out": [1, 5] }] },
+    { "sound": "fcp:squad.cpv.engine.cpv_engine_throttle_3000_rpm_ext", "gain": 1, "fade": [800, 950, 4000, 5600],
+      "volume_mods": [{ "param": "throttle", "abs": true, "in": [-0.001, 1], "out": [0, 2] }, { "param": "rpm", "in": [0, 1], "out": [0, 1] }],
+      "pitch_mods": [{ "param": "throttle", "abs": true, "in": [-1, 1], "out": [0, 1] }, { "param": "rpm", "abs": true, "in": [0, 2000], "out": [1, 1.5] }] }
+  ]
+}

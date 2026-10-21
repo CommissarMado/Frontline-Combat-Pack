@@ -1,0 +1,95 @@
+{
+  "_comment": "Generated from Squad SDK fire and turret cues (see squad sound pipeline).",
+  "vehicles": [
+    "fcp:stryker_mk19"
+  ],
+  "weapons": {
+    "Grenade": {
+      "volume": 1,
+      "burst_gap": 1,
+      "first_person": {
+        "start": [
+          {
+            "sound": "fcp:squad.weapons.mk19.1p_shot_1",
+            "gain": 1,
+            "spatial": false
+          }
+        ]
+      },
+      "third_person": {
+        "start": [
+          {
+            "sound": "fcp:squad.weapons.mk19.3p_shot_2",
+            "gain": 1,
+            "fade": [
+              0,
+              0,
+              90,
+              300
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.mk19.3p_shot_3",
+            "gain": 0.747,
+            "fade": [
+              50,
+              60,
+              350,
+              400
+            ],
+            "delay": 0.08
+          },
+          {
+            "sound": "fcp:squad.weapons.mk19.3p_shot_4",
+            "gain": 0.533,
+            "fade": [
+              250,
+              300,
+              1000,
+              2000
+            ],
+            "delay": 0.095
+          }
+        ]
+      }
+    }
+  },
+  "turret": {
+    "loop": "fcp:squad.turrets.loop07.loop",
+    "speed_scale": 5,
+    "pitch_mod": {
+      "in": [
+        5,
+        100
+      ],
+      "out": [
+        0.6,
+        0.8
+      ]
+    },
+    "volume_mod": {
+      "in": [
+        20,
+        250
+      ],
+      "out": [
+        0,
+        1
+      ]
+    },
+    "inside_volume": 0.5,
+    "outside_volume": 1.0,
+    "start": {
+      "sound": "fcp:squad.turrets.loop07.start",
+      "volume": 0.2
+    },
+    "stop": {
+      "sound": "fcp:squad.turrets.loop07.stop",
+      "volume": 0.1,
+      "pitch": [
+        0.9,
+        0.95
+      ]
+    }
+  }
+}

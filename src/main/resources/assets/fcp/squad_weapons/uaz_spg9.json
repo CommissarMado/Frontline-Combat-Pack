@@ -1,0 +1,112 @@
+{
+  "_comment": "Generated from Squad SDK fire and turret cues (see squad sound pipeline).",
+  "vehicles": [
+    "fcp:uaz_spg9"
+  ],
+  "weapons": {
+    "Rocket": {
+      "volume": 1,
+      "burst_gap": 1,
+      "first_person": {
+        "start": [
+          {
+            "sound": "fcp:squad.weapons.spg9.1p_shot_1",
+            "gain": 0.5,
+            "spatial": false
+          },
+          {
+            "sound": "fcp:squad.weapons.spg9.1p_shot_2",
+            "gain": 1,
+            "spatial": false
+          }
+        ]
+      },
+      "third_person": {
+        "start": [
+          {
+            "sound": "fcp:squad.weapons.spg9.3p_shot_3",
+            "gain": 1,
+            "fade": [
+              0,
+              0,
+              20,
+              70
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.spg9.3p_shot_4",
+            "gain": 0.267,
+            "fade": [
+              0,
+              0,
+              10,
+              50
+            ],
+            "spatial": false,
+            "falloff": 90,
+            "delay": 0.1
+          },
+          {
+            "sound": "fcp:squad.weapons.spg9.3p_shot_5",
+            "gain": 0.533,
+            "fade": [
+              0,
+              0,
+              600,
+              800
+            ],
+            "delay": 0.05
+          },
+          {
+            "sound": "fcp:squad.weapons.spg9.3p_shot_6",
+            "gain": 0.133,
+            "fade": [
+              30,
+              70,
+              1000,
+              2000
+            ],
+            "delay": 0.05
+          },
+          {
+            "sound": "fcp:squad.weapons.spg9.3p_shot_7",
+            "gain": 0.187,
+            "fade": [
+              50,
+              500,
+              1200,
+              5000
+            ],
+            "delay": 0.05
+          }
+        ]
+      }
+    }
+  },
+  "turret": {
+    "loop": "fcp:squad.turrets.open.loop",
+    "speed_scale": 5,
+    "pitch_mod": {
+      "in": [
+        50,
+        300
+      ],
+      "out": [
+        1,
+        1
+      ]
+    },
+    "volume_mod": {
+      "in": [
+        1,
+        100
+      ],
+      "out": [
+        0,
+        1
+      ]
+    },
+    "inside_volume": 1,
+    "outside_volume": 1
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "_comment": "Generated from Squad SDK fire and turret cues (see squad sound pipeline).",
+  "vehicles": [
+    "fcp:empl_ags17"
+  ],
+  "weapons": {
+    "Grenade": {
+      "volume": 1,
+      "burst_gap": 1,
+      "first_person": {
+        "start": [
+          {
+            "sound": "fcp:squad.weapons.ags17.1p_shot_1",
+            "gain": 1,
+            "spatial": false
+          },
+          {
+            "sound": "fcp:squad.weapons.ags17.1p_shot_2",
+            "gain": 0.667,
+            "spatial": false
+          }
+        ]
+      },
+      "third_person": {
+        "start": [
+          {
+            "sound": "fcp:squad.weapons.ags17.3p_shot_3",
+            "gain": 1,
+            "fade": [
+              0,
+              0,
+              29,
+              30
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.ags17.3p_shot_3",
+            "gain": 0.5,
+            "fade": [
+              29.5,
+              30,
+              100,
+              300
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.ags17.3p_shot_4",
+            "gain": 0.333,
+            "fade": [
+              0,
+              0,
+              100,
+              200
+            ],
+            "spatial": false,
+            "falloff": 600
+          },
+          {
+            "sound": "fcp:squad.weapons.ags17.3p_shot_5",
+            "gain": 0.5,
+            "fade": [
+              60,
+              100,
+              800,
+              1200
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.ags17.3p_shot_4",
+            "gain": 0.117,
+            "fade": [
+              60,
+              100,
+              800,
+              1200
+            ],
+            "delay": 1
+          },
+          {
+            "sound": "fcp:squad.weapons.ags17.3p_shot_6",
+            "gain": 0.033,
+            "fade": [
+              400,
+              600,
+              600,
+              2000
+            ],
+            "delay": 0.06
+          }
+        ]
+      }
+    }
+  },
+  "turret": {
+    "loop": "fcp:squad.turrets.open.loop",
+    "speed_scale": 5,
+    "pitch_mod": {
+      "in": [
+        50,
+        300
+      ],
+      "out": [
+        1,
+        1
+      ]
+    },
+    "volume_mod": {
+      "in": [
+        1,
+        100
+      ],
+      "out": [
+        0,
+        1
+      ]
+    },
+    "inside_volume": 1,
+    "outside_volume": 1
+  }
+}

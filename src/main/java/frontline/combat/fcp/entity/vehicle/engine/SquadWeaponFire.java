@@ -1,0 +1,216 @@
+package frontline.combat.fcp.entity.vehicle.engine;
+
+import com.atsuishio.superbwarfare.data.gun.GunData;
+import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
+import frontline.combat.fcp.network.FCPNetwork;
+import frontline.combat.fcp.network.SquadFirePacket;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraftforge.network.PacketDistributor;
+
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * Server side of the Squad weapon sounds: every shot of a listed vehicle is forwarded to the
+ * clients tracking it, which play the layered Squad fire cue (SquadWeaponSounds). The vehicle's
+ * own SBW fire sounds are pointed at {@code fcp:squad.silent} in its JSON so they don't double up.
+ *
+ * Hooked from playShootSound3p(LivingEntity, GunData, Vec3) in the FCP vehicle bases: SBW calls
+ * it once per shot, server-side, for every weapon.
+ */
+public final class SquadWeaponFire {
+
+    /** Vehicles whose weapons use Squad fire sounds (generated with their squad_weapons profiles). */
+    public static final Set<String> VEHICLES = Set.of(
+            "fcp:aavp",
+            "fcp:bmp1",
+            "fcp:bmp1am",
+            "fcp:bmp1p",
+            "fcp:bmp1u",
+            "fcp:bmp2",
+            "fcp:bmp2_noatgm",
+            "fcp:bmp2d",
+            "fcp:bmp2m",
+            "fcp:bmp2md",
+            "fcp:brdm2",
+            "fcp:btr3e",
+            "fcp:btr4e",
+            "fcp:btr4e1",
+            "fcp:btr4mv1",
+            "fcp:btr80",
+            "fcp:btr80_cope",
+            "fcp:btr82",
+            "fcp:btr82_cope",
+            "fcp:btr82at",
+            "fcp:dpv_m240",
+            "fcp:dpv_minigun",
+            "fcp:empl_ags17",
+            "fcp:empl_dshk",
+            "fcp:empl_kornet",
+            "fcp:empl_m2",
+            "fcp:empl_mg3",
+            "fcp:empl_mk19",
+            "fcp:empl_tow",
+            "fcp:empl_zis3",
+            "fcp:gaz_tigr_dual",
+            "fcp:gaz_tigr_gl",
+            "fcp:gaz_tigr_mg",
+            "fcp:gaz_tigr_rws",
+            "fcp:hmmwv_armored_m2",
+            "fcp:hmmwv_armored_mk19",
+            "fcp:hmmwv_asrad",
+            "fcp:hmmwv_avenger",
+            "fcp:hmmwv_unarmored_m2",
+            "fcp:hmmwv_unarmored_m2_shield",
+            "fcp:hmmwv_unarmored_m2_turret",
+            "fcp:hmmwv_unarmored_tow",
+            "fcp:hmmwv_unarmored_tow_turret",
+            "fcp:huey_door_gunner_m134",
+            "fcp:huey_m134_door_guns",
+            "fcp:huey_m134_gunship",
+            "fcp:huey_m60_gunship",
+            "fcp:huey_rockets",
+            "fcp:kozak2m1",
+            "fcp:kozak5",
+            "fcp:lav25",
+            "fcp:littlebird_armed",
+            "fcp:littlebird_heavy",
+            "fcp:m109",
+            "fcp:man_hx58_mg3",
+            "fcp:matv",
+            "fcp:matv_9in1",
+            "fcp:matv_crow",
+            "fcp:matv_tow",
+            "fcp:mh60l",
+            "fcp:mi17_door_guns",
+            "fcp:mi8_amtsh",
+            "fcp:mi8_door_guns",
+            "fcp:mi8_mtv",
+            "fcp:msta",
+            "fcp:novator",
+            "fcp:pantsir",
+            "fcp:rg_33",
+            "fcp:stryker_dragoon",
+            "fcp:stryker_m2",
+            "fcp:stryker_mgs",
+            "fcp:stryker_mk19",
+            "fcp:stryker_tow",
+            "fcp:stugna_launcher",
+            "fcp:t72av",
+            "fcp:toyota_hilux_bmp",
+            "fcp:toyota_hilux_rocket_pod",
+            "fcp:toyota_hilux_spg9",
+            "fcp:toyota_hilux_zu23",
+            "fcp:typhoon_vdv",
+            "fcp:uaz_dshka",
+            "fcp:uaz_spg9",
+            "fcp:uh60_minigun",
+            "fcp:ural_grad",
+            "fcp:venom_door_guns",
+            "fcp:venom_gunship",
+            "fcp:viper"
+);
+
+    /** Vehicles with a Squad turret traverse loop; SBW's own turret sound is skipped on these. */
+    public static final Set<String> TURRETS = Set.of(
+            "fcp:aavp",
+            "fcp:bmp1",
+            "fcp:bmp1am",
+            "fcp:bmp1p",
+            "fcp:bmp1u",
+            "fcp:bmp2",
+            "fcp:bmp2_noatgm",
+            "fcp:bmp2d",
+            "fcp:bmp2m",
+            "fcp:bmp2md",
+            "fcp:brdm2",
+            "fcp:btr3e",
+            "fcp:btr4e",
+            "fcp:btr4e1",
+            "fcp:btr4mv1",
+            "fcp:btr80",
+            "fcp:btr80_cope",
+            "fcp:btr82",
+            "fcp:btr82_cope",
+            "fcp:btr82at",
+            "fcp:dpv_m240",
+            "fcp:dpv_minigun",
+            "fcp:empl_ags17",
+            "fcp:empl_dshk",
+            "fcp:empl_kornet",
+            "fcp:empl_m2",
+            "fcp:empl_mg3",
+            "fcp:empl_mk19",
+            "fcp:empl_tow",
+            "fcp:gaz_tigr_dual",
+            "fcp:gaz_tigr_gl",
+            "fcp:gaz_tigr_mg",
+            "fcp:gaz_tigr_rws",
+            "fcp:hmmwv_armored_m2",
+            "fcp:hmmwv_armored_mk19",
+            "fcp:hmmwv_asrad",
+            "fcp:hmmwv_avenger",
+            "fcp:hmmwv_unarmored_m2",
+            "fcp:hmmwv_unarmored_m2_shield",
+            "fcp:hmmwv_unarmored_m2_turret",
+            "fcp:hmmwv_unarmored_tow",
+            "fcp:hmmwv_unarmored_tow_turret",
+            "fcp:huey_m134_door_guns",
+            "fcp:huey_m134_gunship",
+            "fcp:huey_m60_door_guns",
+            "fcp:huey_m60_gunship",
+            "fcp:kozak2m1",
+            "fcp:kozak5",
+            "fcp:lav25",
+            "fcp:m109",
+            "fcp:man_hx58_mg3",
+            "fcp:matv",
+            "fcp:matv_9in1",
+            "fcp:matv_crow",
+            "fcp:matv_tow",
+            "fcp:mi17_door_guns",
+            "fcp:mi8_door_guns",
+            "fcp:msta",
+            "fcp:novator",
+            "fcp:pantsir",
+            "fcp:rg_33",
+            "fcp:stryker_dragoon",
+            "fcp:stryker_m2",
+            "fcp:stryker_mgs",
+            "fcp:stryker_mk19",
+            "fcp:stryker_mortar",
+            "fcp:stryker_tow",
+            "fcp:stugna_launcher",
+            "fcp:t72av",
+            "fcp:toyota_hilux_bmp",
+            "fcp:toyota_hilux_mortar",
+            "fcp:toyota_hilux_rocket_pod",
+            "fcp:toyota_hilux_spg9",
+            "fcp:toyota_hilux_zu23",
+            "fcp:typhoon_vdv",
+            "fcp:uaz_dshka",
+            "fcp:uaz_spg9",
+            "fcp:uh60_minigun",
+            "fcp:ural_grad",
+            "fcp:venom_door_guns",
+            "fcp:venom_gunship"
+);
+
+    private SquadWeaponFire() {
+    }
+
+    public static void onShoot(VehicleEntity vehicle, LivingEntity shooter, GunData data) {
+        if (vehicle.level().isClientSide() || !VEHICLES.contains(EngineControl.id(vehicle))) return;
+        String weapon = null;
+        for (Map.Entry<String, GunData> e : vehicle.getGunDataMap().entrySet()) {
+            if (e.getValue() == data) {
+                weapon = e.getKey();
+                break;
+            }
+            if (weapon == null && data != null && data.equals(e.getValue())) weapon = e.getKey();
+        }
+        if (weapon == null) return;
+        FCPNetwork.FCP_HANDLER.send(PacketDistributor.TRACKING_ENTITY.with(() -> vehicle),
+                new SquadFirePacket(vehicle.getId(), weapon, shooter == null ? -1 : shooter.getId()));
+    }
+}

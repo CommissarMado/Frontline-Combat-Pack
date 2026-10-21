@@ -1,0 +1,135 @@
+{
+  "ID": "fcp:stugna_launcher",
+  "MaxHealth": 40,
+  "MaxEnergy": 5250000,
+  "Seats": [
+    {
+      "HidePassenger": true,
+      "IsEnclosed": false,
+      "CameraPos": {
+        "UseFixedCameraPos": true,
+        "Transform": "Barrel",
+        "Position": [
+          -0.00119,
+          0.0442,
+          0.5525
+        ],
+        "Direction": "Barrel"
+      },
+      "Transform": "Turret",
+      "Position": [
+        0,
+        0,
+        0
+      ],
+      "MinPitch": -10,
+      "MaxPitch": 25,
+      "Weapons": [
+        "Missile"
+      ]
+    }
+  ],
+  "Weapons": {
+    "Missile": {
+      "DefaultFireMode": "Semi",
+      "AvailableFireModes": "Semi",
+      "DefaultZoom": 3,
+      "Name": "weapon.fcp.stugna_missile",
+      "AmmoType": "superbwarfare:medium_anti_ground_missile",
+      "Projectile": "superbwarfare:wire_guide_missile",
+      "Magazine": 1,
+      "EmptyReloadTime": 253,
+      "Damage": 600,
+      "ExplosionDamage": 70,
+      "ExplosionRadius": 7,
+      "Velocity": 3.5,
+      "ShootPos": {
+        "Transform": "Barrel",
+        "Positions": [
+          [
+            -0.005865,
+            0.30107,
+            1.153445
+          ]
+        ],
+        "Directions": [
+          "Barrel"
+        ]
+      },
+      "Crosshair": "@VehicleCommonMissile",
+      "CrosshairColor": "0x00FF66",
+      "SoundRadius": 32,
+      "SoundInfo": {
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_82a",
+        "VehicleReload": "fcp:squad.weapons.common.at3_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.at3_reload_3p"
+      },
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/missile_tow.png",
+      "RPM": 40,
+      "ShootDelayTime": 30
+    }
+  },
+  "TurretPos": [
+    0.003539,
+    0.811162,
+    -0.010439
+  ],
+  "BarrelPos": [
+    0.011164,
+    0.293986,
+    -0.211323
+  ],
+  "TurretTurnSpeed": [
+    15,
+    15
+  ],
+  "TurretPitchRange": [
+    -10,
+    25
+  ],
+  "TurretControllerIndex": 0,
+  "ThirdPersonCameraPos": [
+    0,
+    1,
+    3
+  ],
+  "HasDecoy": false,
+  "UpStep": 2.2,
+  "RotateOffsetHeight": 2.2,
+  "Mass": 12,
+  "VehicleContainerType": "Empty",
+  "DestroyInfo": {
+    "ExplosionDamage": 0,
+    "ExplosionRadius": 0
+  },
+  "VehicleIcon": "superbwarfare:textures/vehicle_icon/lav_150_icon.png",
+  "ContainerIcon": "fcp:textures/gui/vehicle/type/land_rus.png",
+  "Type": "Defense",
+  "CollisionLevel": {
+    "Level": 3,
+    "PowerLimits": [
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0.15,
+        0.09,
+        false
+      ]
+    ]
+  },
+  "HasLowHealthWarning": false,
+  "SelfHurtPercent": 0,
+  "HudType": "@Empty",
+  "InertiaRotateRate": 1,
+  "EngineType": "Fixed"
+}

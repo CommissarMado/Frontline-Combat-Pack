@@ -1,0 +1,35 @@
+{
+  "_comment": "Generated from the Squad SDK: Ural_engine_rpm_ALL_Cue.uasset (+ start/stop cues).",
+  "vehicles": ["fcp:gaz66", "fcp:zis5"],
+  "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
+  "exterior_volume": 0.8333,
+  "interior_volume": 0.5,
+  "start": {
+    "exterior": { "sound": "fcp:squad.ural375.engine.ural_engine_start_ext", "volume": 0.6, "duration": 2.00 },
+    "interior": { "sound": "fcp:squad.ural375.engine.ural_engine_start_int", "volume": 1, "duration": 2.42 }
+  },
+  "stop": {
+    "exterior": { "sound": "fcp:squad.ural375.engine.ural_engine_stop_ext", "volume": 0.6, "duration": 4.84 },
+    "interior": { "sound": "fcp:squad.ural375.engine.ural_engine_stop_int", "volume": 1, "duration": 4.72 }
+  },
+  "layers": [
+    { "sound": "fcp:squad.ural375.engine.ural_engine_idle_int", "interior": true, "gain": 0.6, "fade": [0, 0, 400, 500],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [1, 0] }],
+      "pitch_mods": [{ "param": "rpm", "in": [0, 0], "out": [0.8, 0.8] }, { "param": "rpm", "abs": true, "in": [0, 200], "out": [1, 1.5] }] },
+    { "sound": "fcp:squad.ural375.engine.ural_engine_rpm_low_int", "interior": true, "gain": 0.7, "fade": [200, 600, 3000, 5000],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [1, 0] }, { "param": "rpm", "in": [0, 100], "out": [0, 2] }],
+      "pitch_mods": [{ "param": "rpm", "in": [0, 0], "out": [0.8, 0.8] }, { "param": "rpm", "abs": true, "in": [20, 4000], "out": [0.7, 1.4] }] },
+    { "sound": "fcp:squad.ural375.engine.ural_engine_throttle_loaded_int", "interior": true, "gain": 2, "fade": [10, 50, 4000, 6000],
+      "volume_mods": [{ "param": "throttle", "in": [0.001, 1], "out": [0, 2] }, { "param": "rpm", "in": [0, 1], "out": [0, 1] }],
+      "pitch_mods": [{ "param": "rpm", "in": [0, 0], "out": [0.8, 0.8] }, { "param": "throttle", "in": [-3, 1], "out": [0, 1] }, { "param": "rpm", "abs": true, "in": [0, 4000], "out": [0.9, 1.4] }] },
+    { "sound": "fcp:squad.ural375.engine.ural_engine_idle_ext", "gain": 1, "fade": [0, 0, 400, 500],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [1, 0] }, { "param": "rpm", "in": [0, 0], "out": [1, 2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [0, 800], "out": [1, 1.2] }] },
+    { "sound": "fcp:squad.ural375.engine.ural_engine_rpm_low_ext", "gain": 0.6, "fade": [200, 600, 3000, 5000],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [1, 0] }, { "param": "rpm", "in": [0, 100], "out": [0, 2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [20, 4000], "out": [0.7, 1.4] }] },
+    { "sound": "fcp:squad.ural375.engine.ural_engine_throttle_loeaded_ext", "gain": 1.2, "fade": [10, 50, 4000, 6000],
+      "volume_mods": [{ "param": "throttle", "in": [0.001, 1], "out": [0, 2] }, { "param": "rpm", "in": [0, 1], "out": [0, 1] }],
+      "pitch_mods": [{ "param": "throttle", "in": [-3, 1], "out": [0, 1] }, { "param": "rpm", "abs": true, "in": [0, 4000], "out": [0.9, 1.4] }] }
+  ]
+}

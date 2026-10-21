@@ -1,0 +1,35 @@
+{
+  "_comment": "Generated from the Squad SDK: MGator_engine_rpm_ALL_Cue.uasset (+ start/stop cues).",
+  "vehicles": ["fcp:dpv_m240", "fcp:dpv_minigun"],
+  "rpm": { "max": 750, "load": 250, "rise": 38, "fall": 25 },
+  "exterior_volume": 0.6667,
+  "interior_volume": 0.6667,
+  "start": {
+    "exterior": { "sound": "fcp:squad.mgator.engine.mgator_engine_start_ext_01", "volume": 0.6, "duration": 1.26 },
+    "interior": { "sound": "fcp:squad.mgator.engine.mgator_engine_start_ext_01", "volume": 0.6, "duration": 1.26 }
+  },
+  "stop": {
+    "exterior": { "sound": "fcp:squad.mgator.engine.mgator_engine_stop_ext_01", "volume": 0.6, "duration": 1.36 },
+    "interior": { "sound": "fcp:squad.mgator.engine.mgator_engine_stop_ext_01", "volume": 0.6, "duration": 1.36 }
+  },
+  "layers": [
+    { "sound": "fcp:squad.mgator.engine.mgator_engine_idle_ext_01", "gain": 1, "fade": [0, 0, 100, 800],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [1, 0.4] }, { "param": "rpm", "in": [0, 0], "out": [1, 2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [0, 800], "out": [1, 1] }] },
+    { "sound": "fcp:squad.mgator.engine.mgator_engine_idle_ext_01", "interior": true, "gain": 1, "fade": [0, 0, 100, 800],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [1, 0.4] }, { "param": "rpm", "in": [0, 0], "out": [1, 2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [0, 800], "out": [1, 1] }] },
+    { "sound": "fcp:squad.mgator.engine.mgator_engine_idle2_ext_01", "gain": 1.4, "fade": [100, 200, 1000, 2000],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [1, 0.4] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [20, 2000], "out": [0.8, 1.5] }] },
+    { "sound": "fcp:squad.mgator.engine.mgator_engine_idle2_ext_01", "interior": true, "gain": 1.4, "fade": [100, 200, 1000, 2000],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [1, 0.4] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [20, 2000], "out": [0.8, 1.5] }] },
+    { "sound": "fcp:squad.mgator.engine.mgator_engine_throttle_ext_01", "gain": 1.5, "fade": [500, 1000, 2000, 4500],
+      "volume_mods": [{ "param": "rpm", "in": [0, 2000], "out": [0, 1] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [0, 2000], "out": [0.2, 1.1] }] },
+    { "sound": "fcp:squad.mgator.engine.mgator_engine_throttle_ext_01", "interior": true, "gain": 1.5, "fade": [500, 1000, 2000, 4500],
+      "volume_mods": [{ "param": "rpm", "in": [0, 2000], "out": [0, 1] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [0, 2000], "out": [0.2, 1.1] }] }
+  ]
+}

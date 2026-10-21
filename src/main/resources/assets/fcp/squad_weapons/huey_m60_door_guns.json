@@ -1,0 +1,33 @@
+{
+  "_comment": "Generated from Squad SDK fire and turret cues (see squad sound pipeline).",
+  "vehicles": [
+    "fcp:huey_m60_door_guns"
+  ],
+  "weapons": {},
+  "turret": {
+    "loop": "fcp:squad.turrets.doorgun.loop",
+    "speed_scale": 5,
+    "pitch_mod": {
+      "in": [
+        0,
+        100
+      ],
+      "out": [
+        0.9,
+        1
+      ]
+    },
+    "volume_mod": {
+      "in": [
+        30,
+        100
+      ],
+      "out": [
+        0,
+        2
+      ]
+    },
+    "inside_volume": 1,
+    "outside_volume": 1
+  }
+}

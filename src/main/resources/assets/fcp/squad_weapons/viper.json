@@ -1,0 +1,123 @@
+{
+  "_comment": "Generated from Squad SDK fire and turret cues (see squad sound pipeline).",
+  "vehicles": [
+    "fcp:viper"
+  ],
+  "weapons": {
+    "Cannon": {
+      "volume": 1,
+      "burst_gap": 4,
+      "first_person": {
+        "loop": [
+          {
+            "sound": "fcp:squad.weapons.2a42.1p_loop_fire",
+            "gain": 1,
+            "spatial": false
+          },
+          {
+            "sound": "fcp:squad.weapons.2a42.1p_loop_mech",
+            "gain": 0.929,
+            "spatial": false
+          }
+        ]
+      },
+      "third_person": {
+        "loop": [
+          {
+            "sound": "fcp:squad.weapons.2a42.3p_loop_close",
+            "gain": 1,
+            "fade": [
+              0,
+              0,
+              80,
+              300
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.2a42.3p_loop_mid",
+            "gain": 0.589,
+            "fade": [
+              100,
+              160,
+              350,
+              400
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.2a42.3p_loop_far",
+            "gain": 0.351,
+            "fade": [
+              300,
+              300,
+              1500,
+              2000
+            ]
+          }
+        ],
+        "tail": [
+          {
+            "sound": "fcp:squad.weapons.2a42.3p_shot_4",
+            "gain": 0.14,
+            "fade": [
+              0,
+              0,
+              80,
+              300
+            ],
+            "spatial": false,
+            "falloff": 300
+          },
+          {
+            "sound": "fcp:squad.weapons.2a42.3p_shot_6",
+            "gain": 0.138,
+            "fade": [
+              100,
+              160,
+              350,
+              400
+            ],
+            "spatial": false,
+            "falloff": 300
+          }
+        ]
+      }
+    },
+    "Rocket": {
+      "volume": 1,
+      "burst_gap": 1,
+      "first_person": {
+        "start": [
+          {
+            "sound": "fcp:squad.weapons.ffar.1p_shot_1",
+            "gain": 1,
+            "spatial": false
+          }
+        ]
+      },
+      "third_person": {
+        "start": [
+          {
+            "sound": "fcp:squad.weapons.ffar.3p_shot_2",
+            "gain": 1,
+            "fade": [
+              0,
+              0,
+              250,
+              300
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.ffar.3p_shot_3",
+            "gain": 0.8,
+            "fade": [
+              100,
+              250,
+              800,
+              5000
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
