@@ -307,9 +307,9 @@
       "Projectile": "superbwarfare:small_cannon_shell",
       "IsArmorPiercingProjectile": true,
       "IsHighExplosiveProjectile": false,
-      "EmptyReloadTime": 180,
+      "EmptyReloadTime": 211,
       "DefaultZoom": 3,
-      "RPM": 330,
+      "RPM": 400,
       "Velocity": 20,
       "Damage": 50,
       "ExplosionDamage": 0,
@@ -324,9 +324,12 @@
       "Crosshair": "@VehicleRuApc",
       "Name": "weapon.fcp.2a72_30mm_ap",
       "SoundInfo": {
-        "Fire1P": "fcp:lav25_fire_1p",
-        "Fire3P": "fcp:lav25_fire_3p",
-        "Fire3PFar": "fcp:lav25_fire_3p_far"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "VehicleReload": "fcp:squad.weapons.common.m249_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.m249_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_82a"
       },
       "SoundRadius": 24,
       "AmmoType": [
@@ -394,21 +397,23 @@
       "CrosshairColor": "0x00FF66",
       "SoundRadius": 32,
       "SoundInfo": {
-        "Fire1P": "superbwarfare:bmp_2_missile_fire_1p",
-        "Fire3P": "superbwarfare:bmp_2_missile_fire_3p",
-        "VehicleReload3p": "superbwarfare:medium_missile_reload",
-        "VehicleReloadSoundTime": 28,
-        "Change": "superbwarfare:into_missile"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "VehicleReload3p": "fcp:squad.weapons.common.tow_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_82a",
+        "VehicleReload": "fcp:squad.weapons.common.tow_reload_1p"
       },
-      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/missile_9m113.png"
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/missile_9m113.png",
+      "ShootDelayTime": 30,
+      "RPM": 40
     },
     "Coax": {
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 600,
-      "EmptyReloadTime": 160,
+      "RPM": 750,
+      "EmptyReloadTime": 231,
       "Velocity": 25,
       "Damage": 4,
       "BypassesArmor": 0.2,
@@ -422,9 +427,11 @@
       "CrosshairColor": "0xFFC700",
       "Name": "weapon.fcp.coaxial_pkt",
       "SoundInfo": {
-        "Fire1P": "fcp:russian_coax_1p",
-        "Fire3P": "fcp:russian_coax_3p",
-        "Change": "fcp:coax_equip"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_pkt",
+        "VehicleReload": "fcp:squad.weapons.common.coax_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.coax_reload_3p"
       },
       "SoundRadius": 16,
       "AmmoType": "superbwarfare:rifle_ammo",

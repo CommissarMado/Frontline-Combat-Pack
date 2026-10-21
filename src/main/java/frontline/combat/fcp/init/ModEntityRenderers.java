@@ -199,6 +199,8 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.RG_33.get(), RG33Renderer::new);
         event.registerEntityRenderer(ModEntities.EMPL_TOW.get(), frontline.combat.fcp.client.renderer.Emplacement.EmplTowRenderer::new);
         event.registerEntityRenderer(ModEntities.EMPL_KORNET.get(), frontline.combat.fcp.client.renderer.Emplacement.EmplKornetRenderer::new);
+        event.registerEntityRenderer(ModEntities.STUGNA_LAUNCHER.get(), frontline.combat.fcp.client.renderer.Stugna.StugnaLauncherRenderer::new);
+        event.registerEntityRenderer(ModEntities.STUGNA_CONTROLLER.get(), frontline.combat.fcp.client.renderer.Stugna.StugnaControllerRenderer::new);
         event.registerEntityRenderer(ModEntities.EMPL_DSHK.get(), frontline.combat.fcp.client.renderer.Emplacement.EmplDshkRenderer::new);
         event.registerEntityRenderer(ModEntities.EMPL_MK19.get(), frontline.combat.fcp.client.renderer.Emplacement.EmplMk19Renderer::new);
         event.registerEntityRenderer(ModEntities.EMPL_AGS17.get(), frontline.combat.fcp.client.renderer.Emplacement.EmplAgs17Renderer::new);
@@ -293,6 +295,7 @@ public class ModEntityRenderers {
     public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
         event.registerBelowAll(FcpDriverOverlay.ID, FcpDriverOverlay.INSTANCE);
         event.registerBelowAll(FcpPilotOverlay.ID, FcpPilotOverlay.INSTANCE);
+        event.registerAboveAll(frontline.combat.fcp.client.StugnaRemoteClient.OVERLAY_ID, frontline.combat.fcp.client.StugnaRemoteClient.OVERLAY);
     }
 
 }

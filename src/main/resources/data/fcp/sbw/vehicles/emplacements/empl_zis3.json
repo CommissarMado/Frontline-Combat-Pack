@@ -110,11 +110,13 @@
       ],
       "SoundRadius": 32,
       "SoundInfo": {
-        "Fire1P": "fcp:stryker_mgs_fire_1p",
-        "Fire3P": "fcp:stryker_mgs_fire_3p",
-        "Fire3PFar": "fcp:stryker_mgs_fire_3p_far",
-        "Fire3PVeryFar": "fcp:stryker_mgs_fire_3p_extrafar",
-        "VehicleReload": "fcp:stryker_mgs_reload"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "Fire3PVeryFar": "fcp:squad.silent",
+        "VehicleReload": "fcp:squad.weapons.common.zis3_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.zis3_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_cannon"
       },
       "ShootPos": {
         "Transform": "Barrel",

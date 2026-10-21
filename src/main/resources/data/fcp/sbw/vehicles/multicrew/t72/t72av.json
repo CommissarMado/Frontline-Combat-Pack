@@ -1,5 +1,6 @@
 {
   "ID": "fcp:t72av",
+  "HasDecoy": true,
   "MaxHealth": 300,
   "MaxEnergy": 5000000,
   "TurretPos": [0.023438, 1.782469, -0.638431],
@@ -68,7 +69,7 @@
       "IsArmorPiercingProjectile": true,
       "DefaultZoom": 3,
       "Magazine": 1,
-      "EmptyReloadTime": 130,
+      "EmptyReloadTime": 183,
       "Velocity": 40,
       "Damage": 500,
       "ExplosionDamage": 160,
@@ -98,11 +99,13 @@
       ],
       "SoundRadius": 32,
       "SoundInfo": {
-        "Fire1P": "fcp:stryker_mgs_fire_1p",
-        "Fire3P": "fcp:stryker_mgs_fire_3p",
-        "Fire3PFar": "fcp:stryker_mgs_fire_3p_far",
-        "Fire3PVeryFar": "fcp:stryker_mgs_fire_3p_extrafar",
-        "VehicleReload": "fcp:stryker_mgs_reload"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "Fire3PVeryFar": "fcp:squad.silent",
+        "VehicleReload": "fcp:squad.weapons.common.t72_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.t72_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_cannon"
       },
       "ShootPos": {
         "Transform": "Barrel",
@@ -124,7 +127,7 @@
       "CrosshairColor": "0x00ff66",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 450,
+      "RPM": 663,
       "Damage": 5,
       "BypassesArmor": 0.2,
       "Velocity": 25,
@@ -142,12 +145,15 @@
       "Crosshair": "@VehicleCommonGun",
       "Name": "weapon.fcp.m2_50cal",
       "SoundInfo": {
-        "Fire1P": "fcp:m2_fire_1p",
-        "Fire3P": "fcp:m2_fire_3p",
-        "Fire3PFar": "fcp:m2_fire_3p_far",
-        "Change": "fcp:coax_equip"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_nsv",
+        "VehicleReload": "fcp:squad.weapons.common.hmg_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.hmg_reload_3p"
       },
-      "SoundRadius": 16
+      "SoundRadius": 16,
+      "EmptyReloadTime": 401
     }
   },
   "UpStep": 2.2,

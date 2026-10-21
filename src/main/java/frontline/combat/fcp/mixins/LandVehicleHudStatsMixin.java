@@ -1,7 +1,9 @@
 package frontline.combat.fcp.mixins;
 
 import com.atsuishio.superbwarfare.client.RenderHelper;
+import com.atsuishio.superbwarfare.client.overlay.DecoyOverlayHelper;
 import com.atsuishio.superbwarfare.client.overlay.VehicleMainWeaponHudOverlay;
+import frontline.combat.fcp.entity.vehicle.GunnerSmoke;
 import com.atsuishio.superbwarfare.client.overlay.weapon.LandVehicleHud;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import com.atsuishio.superbwarfare.entity.vehicle.utils.VehicleVecUtils;
@@ -264,6 +266,32 @@ public class LandVehicleHudStatsMixin {
             // Energy warning
             VehicleMainWeaponHudOverlay.renderEnergyInfo(
                     vehicle, guiGraphics, screenWidth, screenHeight, mc.font);
+
+            // Smoke ready / reloading, where SBW's land HUD puts it.
+            renderSmokeInfo(vehicle, player, guiGraphics, screenWidth, screenHeight, color);
+        }
+    }
+
+    /**
+     * SBW's land HUD draws the smoke line only for the vehicle's first passenger (the driver), so the
+     * gunner on a gunner-smoke vehicle never saw it. Added after SBW's own HUD for any seat that can
+     * fire smoke but isn't the first passenger (the first passenger already got SBW's own line).
+     */
+    @Inject(method = "render", at = @At("RETURN"), remap = false)
+    private void fcp$gunnerSmokeInfo(VehicleEntity vehicle, Player player, ForgeGui gui, GuiGraphics guiGraphics,
+                                     float partialTick, int screenWidth, int screenHeight, CallbackInfo ci) {
+        Minecraft mc = gui.getMinecraft();
+        if ((mc.options.getCameraType() == CameraType.FIRST_PERSON || ClientEventHandler.zoomVehicle)
+                && vehicle.getFirstPassenger() != player) {
+            renderSmokeInfo(vehicle, player, guiGraphics, screenWidth, screenHeight, vehicle.getHudColor());
+        }
+    }
+
+    private static void renderSmokeInfo(VehicleEntity vehicle, Player player, GuiGraphics guiGraphics,
+                                        int screenWidth, int screenHeight, int color) {
+        if (GunnerSmoke.canFireSmoke(vehicle, player)) {
+            DecoyOverlayHelper.renderThirdPersonDecoyInfo(vehicle, guiGraphics,
+                    screenWidth / 2 - 165, screenHeight / 2 - 36, color);
         }
     }
 

@@ -2,6 +2,8 @@ package frontline.combat.fcp.entity.vehicle;
 
 import com.atsuishio.superbwarfare.entity.vehicle.base.GeoVehicleEntity;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
+import frontline.combat.fcp.entity.vehicle.engine.EngineControl;
+import frontline.combat.fcp.entity.vehicle.engine.EngineControlled;
 import frontline.combat.fcp.init.ModItems;
 import frontline.combat.fcp.init.ModSounds;
 import frontline.combat.fcp.entity.vehicle.VehicleInventory.InventoryStyle;
@@ -39,10 +41,92 @@ import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class CamoVehicleBase extends GeoVehicleEntity implements VehicleInventory {
+public abstract class CamoVehicleBase extends GeoVehicleEntity implements VehicleInventory, EngineControlled {
 
     public CamoVehicleBase(EntityType<? extends VehicleEntity> type, Level world) {
         super(type, world);
+    }
+
+    /** Gunner-fired smoke on the vehicles listed in GunnerSmoke; SBW's driver input everywhere else. */
+    @Override
+    public boolean decoyInputDown() {
+        Boolean gunner = GunnerSmoke.decoyInput(this);
+        return gunner != null ? gunner : super.decoyInputDown();
+    }
+
+    // ── Engine start/stop ───────────────────────────────────────────────────────
+    // See EngineControl. Only vehicles listed there use it; for everything else the state is
+    // never read and the input overrides below fall straight through to SBW.
+
+    private static final EntityDataAccessor<Byte> FCP_ENGINE_STATE =
+            SynchedEntityData.defineId(CamoVehicleBase.class, EntityDataSerializers.BYTE);
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(FCP_ENGINE_STATE, EngineControl.OFF);
+    }
+
+    @Override
+    public byte fcp$getEngineState() {
+        return this.entityData.get(FCP_ENGINE_STATE);
+    }
+
+    @Override
+    public void fcp$setEngineState(byte state) {
+        this.entityData.set(FCP_ENGINE_STATE, state);
+    }
+
+    @Override
+    public boolean forwardInputDown() {
+        return !EngineControl.blocksInput(this) && super.forwardInputDown();
+    }
+
+    @Override
+    public boolean backInputDown() {
+        return !EngineControl.blocksInput(this) && super.backInputDown();
+    }
+
+    @Override
+    public boolean leftInputDown() {
+        return !EngineControl.blocksInput(this) && super.leftInputDown();
+    }
+
+    @Override
+    public boolean rightInputDown() {
+        return !EngineControl.blocksInput(this) && super.rightInputDown();
+    }
+
+    @Override
+    public boolean upInputDown() {
+        return !EngineControl.blocksInput(this) && super.upInputDown();
+    }
+
+    @Override
+    public boolean downInputDown() {
+        return !EngineControl.blocksInput(this) && super.downInputDown();
+    }
+
+    /** SBW's turret traverse sound; skipped where the Squad turret loop replaces it. */
+    @Override
+    public void turretTurnSound(float diffX, float diffY, float pitch) {
+        if (frontline.combat.fcp.entity.vehicle.engine.SquadWeaponFire.TURRETS.contains(
+                frontline.combat.fcp.entity.vehicle.engine.EngineControl.id(this))) return;
+        super.turretTurnSound(diffX, diffY, pitch);
+    }
+
+    /** Every shot; forwards it to clients for the Squad fire sounds where the vehicle has them. */
+    @Override
+    public void playShootSound3p(net.minecraft.world.entity.LivingEntity living,
+                                 com.atsuishio.superbwarfare.data.gun.GunData data, net.minecraft.world.phys.Vec3 pos) {
+        super.playShootSound3p(living, data, pos);
+        frontline.combat.fcp.entity.vehicle.engine.SquadWeaponFire.onShoot(this, living, data);
+    }
+
+    /** Silence SBW's single engine loop where FCP plays the layered Squad engine instead. */
+    @Override
+    public float getEngineSoundVolume() {
+        return EngineControl.usesSquadSound(this) ? 0f : super.getEngineSoundVolume();
     }
 
     /**
@@ -170,6 +254,7 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements Vehicl
     @Override
     public void tick() {
         super.tick();
+        EngineControl.tick(this);
         chargeFromInventoryEnergyItems();
     }
 
@@ -403,6 +488,7 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements Vehicl
     @Override
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
+        compound.putByte("FcpEngineState", fcp$getEngineState());
         if (hasVehicleInventory()) {
             compound.put("VehicleInventory", getVehicleInventory().createTag());
         }
@@ -411,6 +497,7 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements Vehicl
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
+        if (compound.contains("FcpEngineState")) fcp$setEngineState(compound.getByte("FcpEngineState"));
         VehicleSkins.migrateLegacyCamo(this, compound);
         if (hasVehicleInventory() && compound.contains("VehicleInventory", Tag.TAG_LIST)) {
             getVehicleInventory().fromTag(compound.getList("VehicleInventory", Tag.TAG_COMPOUND));

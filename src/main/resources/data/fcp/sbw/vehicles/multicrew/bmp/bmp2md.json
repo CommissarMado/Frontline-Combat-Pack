@@ -1,5 +1,6 @@
 {
   "ID": "fcp:bmp2md",
+  "HasDecoy": true,
   "MaxHealth": 300,
   "MaxEnergy": 5000000,
   "TurretPos": [-0.002645, 1.762225, -0.554917],
@@ -225,7 +226,7 @@
       "Projectile": "superbwarfare:small_cannon_shell",
       "IsArmorPiercingProjectile": true,
       "IsHighExplosiveProjectile": false,
-      "EmptyReloadTime": 180,
+      "EmptyReloadTime": 211,
       "DefaultZoom": 3,
       "RPM": 550,
       "Velocity": 20,
@@ -242,11 +243,13 @@
       "Crosshair": "@VehicleRuApc",
       "Name": "weapon.fcp.2a42_30mm_ap",
       "SoundInfo": {
-        "Fire1P": "superbwarfare:bmp_2_cannon_fire_1p",
-        "Fire3P": "superbwarfare:bmp_2_cannon_fire_3p",
-        "Fire3PFar": "superbwarfare:mi_28_cannon_far",
-        "Fire3PVeryFar": "superbwarfare:mi_28_cannon_veryfar",
-        "Change": "superbwarfare:into_cannon"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "Fire3PVeryFar": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_82a",
+        "VehicleReload": "fcp:squad.weapons.common.m249_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.m249_reload_3p"
       },
       "SoundRadius": 24,
       "AmmoType": [
@@ -291,8 +294,8 @@
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 600,
-      "EmptyReloadTime": 160,
+      "RPM": 750,
+      "EmptyReloadTime": 231,
       "Velocity": 25,
       "Damage": 4,
       "BypassesArmor": 0.2,
@@ -306,9 +309,11 @@
       "CrosshairColor": "0xFFC700",
       "Name": "weapon.fcp.coaxial_pkt",
       "SoundInfo": {
-        "Fire1P": "fcp:russian_coax_1p",
-        "Fire3P": "fcp:russian_coax_3p",
-        "Change": "fcp:coax_equip"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_pkt",
+        "VehicleReload": "fcp:squad.weapons.common.coax_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.coax_reload_3p"
       },
       "SoundRadius": 16,
       "AmmoType": "superbwarfare:rifle_ammo",

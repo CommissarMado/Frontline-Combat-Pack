@@ -1,5 +1,6 @@
 {
   "ID": "fcp:stryker_dragoon",
+  "HasDecoy": true,
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "TurretPos": [-0.032385, 2.72119, -0.939505],
@@ -243,9 +244,12 @@
       "Crosshair": "@VehicleRuApc",
       "Name": "weapon.fcp.stryker_30mm",
       "SoundInfo": {
-        "Fire1P": "fcp:lav25_fire_1p",
-        "Fire3P": "fcp:lav25_fire_3p",
-        "Fire3PFar": "fcp:lav25_fire_3p_far"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "VehicleReload": "fcp:squad.weapons.common.warrior30_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.warrior30_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_82a"
       },
       "SoundRadius": 24,
       "AmmoType": [
@@ -294,8 +298,8 @@
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 650,
-      "EmptyReloadTime": 160,
+      "RPM": 857,
+      "EmptyReloadTime": 231,
       "Velocity": 25,
       "Damage": 5,
       "BypassesArmor": 0.2,
@@ -309,11 +313,13 @@
       "CrosshairColor": "0x66FF00",
       "Name": "weapon.fcp.m240_coax",
       "SoundInfo": {
-        "Fire1P": "superbwarfare:coax_fire_1p",
-        "Fire3P": "superbwarfare:mg_17_fire_3p",
-        "Fire3PFar": "superbwarfare:mg_17_far",
-        "Fire3PVeryFar": "superbwarfare:mg_17_veryfar",
-        "Change": "fcp:coax_equip"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "Fire3PVeryFar": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_pkt",
+        "VehicleReload": "fcp:squad.weapons.common.coax_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.coax_reload_3p"
       },
       "SoundRadius": 16,
       "AmmoType": "superbwarfare:rifle_ammo",

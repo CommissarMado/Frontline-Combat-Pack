@@ -285,9 +285,11 @@
       "ExplosionRadius": 4,
       "Velocity": 16,
       "SoundInfo": {
-        "Fire1P": "fcp:spg9_fire_1p",
-        "Fire3P": "fcp:spg9_fire_3p",
-        "VehicleReload": "fcp:spg9_reload"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "VehicleReload": "fcp:squad.weapons.common.spg9_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.spg9_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_cannon"
       },
       "ShootPos": {
         "Transform": "Barrel",

@@ -200,8 +200,8 @@
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 600,
-      "EmptyReloadTime": 200,
+      "RPM": 750,
+      "EmptyReloadTime": 167,
       "Magazine": 200,
       "Velocity": 25,
       "Damage": 4,
@@ -216,10 +216,11 @@
       "CrosshairColor": "0xFFC700",
       "Name": "weapon.fcp.pkm",
       "SoundInfo": {
-        "Fire1P": "fcp:russian_coax_1p",
-        "Fire3P": "fcp:russian_coax_3p",
-        "Change": "fcp:coax_equip",
-        "VehicleReload": "fcp:m2_reload"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_pkt",
+        "VehicleReload": "fcp:squad.weapons.common.pkm_opentop_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.pkm_opentop_reload_3p"
       },
       "SoundRadius": 16,
       "AmmoType": "superbwarfare:rifle_ammo",
@@ -256,7 +257,7 @@
     1,
     3
   ],
-  "HasDecoy": false,
+  "HasDecoy": true,
   "UpStep": 2.2,
   "RotateOffsetHeight": 2.2,
   "Mass": 12,

@@ -17,7 +17,6 @@ public class ViperEntity extends CamoVehicleBase {
 
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
-    private int previousCannonAmmo = -1;
     private float barrelRotation = 0f;
     private float barrelRotationOld = 0f;
 
@@ -35,27 +34,15 @@ public class ViperEntity extends CamoVehicleBase {
     public void baseTick() {
         super.baseTick();
 
-        // Store previous barrel rotation for smooth interpolation
+        // Same spin system as the UH-60 miniguns (see Uh60MinigunEntity#baseTick): the barrels
+        // turn continuously while SBW reports the cannon's shot timer as active, instead of
+        // stepping once per round that left the ammo count - at the Squad 2A42 fire rate the
+        // per-shot steps no longer read as a spinning gatling. The angle grows unbounded (no
+        // wrap) so the interpolated render never sweeps backwards; the model converts to radians.
         barrelRotationOld = barrelRotation;
-
-        // Check if cannon ammo has changed (meaning it was fired)
-        int currentAmmo = getAmmoCount("Cannon");
-
-        // Initialize on first tick
-        if (previousCannonAmmo == -1) {
-            previousCannonAmmo = currentAmmo;
+        if (isWeaponFiring("Cannon")) {
+            barrelRotation += 80f;
         }
-
-        // If ammo decreased, increment barrel rotation
-        if (currentAmmo < previousCannonAmmo) {
-            barrelRotation += 20f; // Increment by 20 degrees per shot
-            if (barrelRotation >= 360f) {
-                barrelRotation -= 360f; // Wrap around at 360 degrees
-            }
-        }
-
-        // Update stored ammo count for next tick
-        previousCannonAmmo = currentAmmo;
     }
 
     public boolean GetWeaponState(String WeaponName, int Count) {

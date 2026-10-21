@@ -73,7 +73,7 @@
       "AvailableFireModes": "Semi",
       "Projectile": "superbwarfare:cannon_shell",
       "Magazine": 1,
-      "EmptyReloadTime": 120,
+      "EmptyReloadTime": 143,
       "DefaultZoom": 3,
       "Velocity": 18,
       "Gravity": 0.06,
@@ -95,14 +95,16 @@
       "CrosshairColor": "0x00ff66",
       "Name": "weapon.superbwarfare.cannon_ap",
       "SoundInfo": {
-        "Fire1P": "superbwarfare:plz_05_fire_1p",
-        "Fire3P": "superbwarfare:plz_05_fire_3p",
-        "Fire3PFar": "superbwarfare:plz_05_far",
-        "Fire3PVeryFar": "superbwarfare:plz_05_veryfar",
-        "VehicleReload": "superbwarfare:plz_05_reload",
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "Fire3PVeryFar": "fcp:squad.silent",
+        "VehicleReload": "fcp:squad.weapons.common.abrams_reload_1p",
         "CancellableSounds": [
           "superbwarfare:plz_05_reload"
-        ]
+        ],
+        "VehicleReload3p": "fcp:squad.weapons.common.abrams_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_cannon"
       },
       "SoundRadius": 32,
       "AmmoType": [
@@ -165,7 +167,7 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 500,
-      "EmptyReloadTime": 160,
+      "EmptyReloadTime": 228,
       "Magazine": 200,
       "Velocity": 25,
       "Damage": 15,
@@ -180,10 +182,12 @@
       "CrosshairColor": "0x66FF00",
       "Name": "weapon.fcp.m2_hb",
       "SoundInfo": {
-        "Fire1P": "fcp:m2_fire_1p",
-        "Fire3P": "fcp:m2_fire_3p",
-        "Fire3PFar": "fcp:m2_fire_3p_far",
-        "VehicleReload": "fcp:m2_reload"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "VehicleReload": "fcp:squad.weapons.common.m2_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.m2_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_nsv"
       },
       "ShootPos": {
         "Transform": "WeaponStationBarrel",

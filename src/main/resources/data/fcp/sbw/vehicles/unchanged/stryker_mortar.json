@@ -154,9 +154,11 @@
       "Gravity": 0.05,
       "Velocity": 10,
       "SoundInfo": {
+        "Fire1P": "superbwarfare:mortar_fire",
         "Fire3P": "superbwarfare:mortar_fire",
         "Fire3PFar": "superbwarfare:mortar_distant",
-        "VehicleReload": "superbwarfare:mortar_load"
+        "VehicleReload": "superbwarfare:mortar_load",
+        "Change": "superbwarfare:into_cannon"
       },
       "ShootPos": {
         "Transform": "Barrel",

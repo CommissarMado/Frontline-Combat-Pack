@@ -250,8 +250,9 @@
         ]
       },
       "SoundInfo": {
-        "Fire1P": "superbwarfare:small_rocket_fire_1p",
-        "Fire3P": "superbwarfare:small_rocket_fire_3p"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_launcher"
       },
       "Crosshair": "@Empty",
       "SoundRadius": 12
@@ -266,7 +267,7 @@
     "YawSpeed": 0.85,
     "RollSpeed": 0.68,
     "LiftSpeed": 0.95,
-    "EngineStartSound": "superbwarfare:ah_6_engine_start",
+    "EngineStartSound": "fcp:squad.silent",
     "EngineSoundVolume": 1.5
   },
   "EngineSound": "superbwarfare:ah_6_engine",

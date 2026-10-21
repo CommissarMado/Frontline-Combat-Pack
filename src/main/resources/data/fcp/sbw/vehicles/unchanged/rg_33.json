@@ -162,7 +162,7 @@
       "IsHighExplosiveProjectile": false,
       "Velocity": 25,
       "RecoilTime": 32,
-      "EmptyReloadTime": 200,
+      "EmptyReloadTime": 228,
       "Magazine": 200,
       "RecoilForce": 0.1,
       "HeatPerShoot": 5,
@@ -179,12 +179,13 @@
       "Crosshair": "@Empty",
       "Name": "weapon.fcp.m2a1_browning",
       "SoundInfo": {
-        "Fire1P": "superbwarfare:m_2_hb_fire_1p",
-        "Fire3P": "superbwarfare:m_2_hb_fire_3p",
-        "Fire3PFar": "superbwarfare:m_2_hb_far",
-        "Fire3PVeryFar": "superbwarfare:m_2_hb_veryfar",
-        "Change": "fcp:into_coax",
-        "VehicleReload": "fcp:m2_reload"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "Fire3PVeryFar": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_nsv",
+        "VehicleReload": "fcp:squad.weapons.common.m2_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.m2_reload_3p"
       },
       "SoundRadius": 16
     }

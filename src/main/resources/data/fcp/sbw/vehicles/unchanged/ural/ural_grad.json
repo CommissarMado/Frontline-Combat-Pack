@@ -87,8 +87,11 @@
       "Gravity": 0.122097,
       "Velocity": 18,
       "SoundInfo": {
-        "Fire1P": "superbwarfare:small_rocket_fire_1p",
-        "Fire3P": "superbwarfare:small_rocket_fire_3p"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "VehicleReload": "fcp:squad.weapons.common.ub32_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.ub32_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_launcher"
       },
       "ShootPos": {
         "Transform": "Barrel",

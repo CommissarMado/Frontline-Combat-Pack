@@ -517,7 +517,7 @@
     "YawSpeed": 0.55,
     "RollSpeed": 0.4,
     "LiftSpeed": 0.85,
-    "EngineStartSound": "superbwarfare:ah_6_engine_start",
+    "EngineStartSound": "fcp:squad.silent",
     "EngineSoundVolume": 1.5
   },
   "EngineSound": "superbwarfare:ah_6_engine",

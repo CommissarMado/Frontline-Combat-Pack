@@ -422,7 +422,7 @@
     "YawSpeed": 0.6,
     "RollSpeed": 0.45,
     "LiftSpeed": 0.92,
-    "EngineStartSound": "superbwarfare:ah_6_engine_start",
+    "EngineStartSound": "fcp:squad.silent",
     "EngineSoundVolume": 1.5
   },
   "EngineSound": "superbwarfare:ah_6_engine",
@@ -495,7 +495,7 @@
       "CrosshairColor": "0xFFC700",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 600,
+      "RPM": 750,
       "Damage": 4,
       "BypassesArmor": 0.2,
       "Velocity": 25,
@@ -504,7 +504,7 @@
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "EmptyReloadTime": 200,
+      "EmptyReloadTime": 231,
       "Magazine": 200,
       "AmmoType": "superbwarfare:rifle_ammo",
       "ShootPos": {
@@ -528,10 +528,11 @@
       "Crosshair": "@Empty",
       "Name": "weapon.fcp.pkm",
       "SoundInfo": {
-        "Fire1P": "fcp:russian_coax_1p",
-        "Fire3P": "fcp:russian_coax_3p",
-        "Change": "fcp:coax_equip",
-        "VehicleReload": "fcp:m2_reload"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_pkt",
+        "VehicleReload": "fcp:squad.weapons.common.pkp_doorgun_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.pkp_doorgun_reload_3p"
       },
       "SoundRadius": 16
     },
@@ -543,7 +544,7 @@
       "CrosshairColor": "0xFFC700",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 600,
+      "RPM": 750,
       "Damage": 4,
       "BypassesArmor": 0.2,
       "Velocity": 25,
@@ -552,7 +553,7 @@
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "EmptyReloadTime": 200,
+      "EmptyReloadTime": 231,
       "Magazine": 200,
       "AmmoType": "superbwarfare:rifle_ammo",
       "ShootPos": {
@@ -576,10 +577,11 @@
       "Crosshair": "@Empty",
       "Name": "weapon.fcp.pkm",
       "SoundInfo": {
-        "Fire1P": "fcp:russian_coax_1p",
-        "Fire3P": "fcp:russian_coax_3p",
-        "Change": "fcp:coax_equip",
-        "VehicleReload": "fcp:m2_reload"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_pkt",
+        "VehicleReload": "fcp:squad.weapons.common.pkp_doorgun_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.pkp_doorgun_reload_3p"
       },
       "SoundRadius": 16
     }

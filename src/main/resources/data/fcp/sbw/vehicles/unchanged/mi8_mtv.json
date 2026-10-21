@@ -413,7 +413,7 @@
     "YawSpeed": 0.6,
     "RollSpeed": 0.45,
     "LiftSpeed": 0.92,
-    "EngineStartSound": "superbwarfare:ah_6_engine_start",
+    "EngineStartSound": "fcp:squad.silent",
     "EngineSoundVolume": 1.5
   },
   "EngineSound": "superbwarfare:ah_6_engine",
@@ -496,8 +496,9 @@
       "Gravity": 0.02,
       "Velocity": 16,
       "SoundInfo": {
-        "Fire1P": "superbwarfare:small_rocket_fire_1p",
-        "Fire3P": "superbwarfare:small_rocket_fire_3p"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_launcher"
       },
       "ShootPos": {
         "Transform": "Vehicle",

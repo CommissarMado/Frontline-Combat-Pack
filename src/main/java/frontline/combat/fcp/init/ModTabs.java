@@ -37,6 +37,8 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.EMPL_AGS17.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.EMPL_TOW.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.EMPL_KORNET.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.STUGNA_LAUNCHER.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.STUGNA_CONTROLLER.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.EMPL_ZIS3.get()));
 
                 // ---- American Vehicles ----

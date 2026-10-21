@@ -2,6 +2,8 @@ package frontline.combat.fcp.client.overlay;
 
 import com.atsuishio.superbwarfare.client.RenderHelper;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
+import com.atsuishio.superbwarfare.client.overlay.DecoyOverlayHelper;
+import frontline.combat.fcp.entity.vehicle.GunnerSmoke;
 import com.atsuishio.superbwarfare.tools.FormatTool;
 import com.atsuishio.superbwarfare.tools.MathTool;
 import com.mojang.blaze3d.platform.GlStateManager;
@@ -172,6 +174,13 @@ public class FcpDriverOverlay implements IGuiOverlay {
                 Component.literal(FormatTool.format0D(100 - bodyHeal, "")),
                 screenWidth / 2 - 165, screenHeight / 2 - 46,
                 MathTool.getGradientColor(color, 0xFF0000, bodyHeal, 2), false);
+
+        // Smoke ready / reloading just below the HP - same call and spot as SBW's own land HUD.
+        // Only for a seat that can actually fire it (see GunnerSmoke.canFireSmoke).
+        if (GunnerSmoke.canFireSmoke(ve, player)) {
+            DecoyOverlayHelper.renderThirdPersonDecoyInfo(ve, guiGraphics,
+                    screenWidth / 2 - 165, screenHeight / 2 - 36, color);
+        }
 
         // Component damage — hull fixed, turret line rotates
         RenderHelper.blit(poseStack, BODY,

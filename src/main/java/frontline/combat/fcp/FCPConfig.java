@@ -14,6 +14,7 @@ public class FCPConfig {
 
     public static final ForgeConfigSpec SPEC;
     private static final ForgeConfigSpec.BooleanValue MULTICREW;
+    private static final ForgeConfigSpec.IntValue STUGNA_LINK_RANGE;
 
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
@@ -24,7 +25,18 @@ public class FCPConfig {
                         "Applies on world load or /reload.")
                 .define("multicrew_vehicles", false);
         builder.pop();
+        builder.push("stugna");
+        STUGNA_LINK_RANGE = builder
+                .comment("How far (in blocks) a Stugna-P control panel searches for a launcher to link to.",
+                        "The nearest free launcher within this range is used.")
+                .defineInRange("link_range", 16, 1, 64);
+        builder.pop();
         SPEC = builder.build();
+    }
+
+    /** Stugna control panel link range in blocks; the default until the config has loaded. */
+    public static int stugnaLinkRange() {
+        return SPEC.isLoaded() ? STUGNA_LINK_RANGE.get() : 16;
     }
 
     /** Safe at any time: false until the config file has actually loaded. */

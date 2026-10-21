@@ -69,8 +69,9 @@
       "Gravity": 0.02,
       "Velocity": 16,
       "SoundInfo": {
-        "Fire1P": "superbwarfare:small_rocket_fire_1p",
-        "Fire3P": "superbwarfare:small_rocket_fire_3p"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_launcher"
       },
       "ShootPos": {
         "Transform": "Vehicle",
@@ -104,7 +105,7 @@
       "Projectile": "superbwarfare:projectile",
       "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "DefaultZoom": 3,
-      "RPM": 1000,
+      "RPM": 1500,
       "Velocity": 30,
       "Damage": 4,
       "Magazine": 1000,
@@ -113,9 +114,10 @@
       "Spread": 1.2,
       "Name": "weapon.fcp.m134_minigun",
       "SoundInfo": {
-        "Fire1P": "fcp:m134_fire_1p",
-        "Fire3P": "fcp:m134_fire_3p",
-        "Fire3PFar": "fcp:m134_fire_3p_far"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_pkt"
       },
       "ShootPos": {
         "Transform": "Vehicle",
@@ -152,7 +154,7 @@
     "YawSpeed": 0.9,
     "RollSpeed": 0.7,
     "LiftSpeed": 0.95,
-    "EngineStartSound": "superbwarfare:ah_6_engine_start",
+    "EngineStartSound": "fcp:squad.silent",
     "EngineSoundVolume": 1.5
   },
   "EngineSound": "superbwarfare:ah_6_engine",

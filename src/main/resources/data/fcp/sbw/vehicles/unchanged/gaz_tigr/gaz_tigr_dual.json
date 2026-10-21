@@ -248,8 +248,8 @@
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 600,
-      "EmptyReloadTime": 200,
+      "RPM": 750,
+      "EmptyReloadTime": 167,
       "Magazine": 200,
       "Velocity": 25,
       "Damage": 4,
@@ -264,10 +264,11 @@
       "CrosshairColor": "0xFFC700",
       "Name": "weapon.fcp.pkm",
       "SoundInfo": {
-        "Fire1P": "fcp:russian_coax_1p",
-        "Fire3P": "fcp:russian_coax_3p",
-        "Change": "fcp:coax_equip",
-        "VehicleReload": "fcp:m2_reload"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_pkt",
+        "VehicleReload": "fcp:squad.weapons.common.pkm_opentop_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.pkm_opentop_reload_3p"
       },
       "SoundRadius": 16,
       "AmmoType": "superbwarfare:rifle_ammo",
@@ -293,7 +294,7 @@
       "DefaultZoom": 2,
       "RPM": 325,
       "Magazine": 32,
-      "EmptyReloadTime": 200,
+      "EmptyReloadTime": 215,
       "Velocity": 7,
       "Damage": 0,
       "ExplosionDamage": 15,
@@ -310,10 +311,13 @@
       "CrosshairColor": "0x66FF00",
       "Name": "weapon.fcp.ags17",
       "SoundInfo": {
-        "Fire1P": "fcp:mk19_fire_1p",
-        "Fire3P": "fcp:mk19_fire_3p",
-        "Fire3PFar": "fcp:mk19_fire_3p_far",
-        "VehicleRelaod": "fcp:mk19_reload"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "VehicleRelaod": "fcp:mk19_reload",
+        "VehicleReload": "fcp:squad.weapons.common.ags_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.ags_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_82a"
       },
       "SoundRadius": 16,
       "AmmoType": "superbwarfare:grenade_40mm",
