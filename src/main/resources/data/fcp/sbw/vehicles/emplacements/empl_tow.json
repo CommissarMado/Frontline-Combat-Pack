@@ -38,7 +38,7 @@
       "AmmoType": "superbwarfare:medium_anti_ground_missile",
       "Projectile": "superbwarfare:wire_guide_missile",
       "Magazine": 1,
-      "EmptyReloadTime": 250,
+      "EmptyReloadTime": 251,
       "Damage": 600,
       "ExplosionDamage": 70,
       "ExplosionRadius": 7,
@@ -60,13 +60,15 @@
       "CrosshairColor": "0x00FF66",
       "SoundRadius": 32,
       "SoundInfo": {
-        "Fire1P": "superbwarfare:bmp_2_missile_fire_1p",
-        "Fire3P": "superbwarfare:bmp_2_missile_fire_3p",
-        "VehicleReloadSoundTime": 28,
-        "Change": "superbwarfare:into_missile"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_82a",
+        "VehicleReload": "fcp:squad.weapons.common.tow_emplaced_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.tow_emplaced_reload_3p"
       },
       "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/missile_tow.png",
-      "RPM": 8
+      "RPM": 40,
+      "ShootDelayTime": 30
     }
   },
   "TurretPos": [

@@ -1,5 +1,6 @@
 {
   "ID": "fcp:stryker_tow",
+  "HasDecoy": true,
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "TurretPos": [0.06885, 2.735555, -1.51623],
@@ -258,13 +259,15 @@
       "CrosshairColor": "0x00FF66",
       "SoundRadius": 32,
       "SoundInfo": {
-        "Fire1P": "superbwarfare:bmp_2_missile_fire_1p",
-        "Fire3P": "superbwarfare:bmp_2_missile_fire_3p",
-        "VehicleReload3p": "superbwarfare:medium_missile_reload",
-        "VehicleReloadSoundTime": 28,
-        "Change": "superbwarfare:into_missile"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "VehicleReload3p": "fcp:squad.weapons.common.tow_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_82a",
+        "VehicleReload": "fcp:squad.weapons.common.tow_reload_1p"
       },
-      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/missile_tow.png"
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/missile_tow.png",
+      "ShootDelayTime": 30,
+      "RPM": 40
     }
   },
   "EngineType": "Wheel",

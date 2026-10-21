@@ -29,9 +29,18 @@ public class FCPKeybinds {
             GLFW.GLFW_KEY_F8,
             "key.categories.fcp");
 
+    /** Hold as the driver to start/stop the engine (EngineKeyHandler). */
+    public static final KeyMapping ENGINE_TOGGLE = new KeyMapping(
+            "key.fcp.engine_toggle",
+            KeyConflictContext.IN_GAME,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_H,
+            "key.categories.fcp");
+
     @SubscribeEvent
     public static void onRegisterKeys(RegisterKeyMappingsEvent event) {
         event.register(OPEN_CONFIG);
+        event.register(ENGINE_TOGGLE);
         // Poll on the game bus; registered here so the listener exists exactly once and
         // only on the client.
         MinecraftForge.EVENT_BUS.addListener(FCPKeybinds::onClientTick);

@@ -235,8 +235,8 @@
       "CrosshairColor": "0x00ff66",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 500,
-      "EmptyReloadTime": 160,
+      "RPM": 663,
+      "EmptyReloadTime": 401,
       "Magazine": 200,
       "Damage": 15,
       "BypassesArmor": 2,
@@ -265,12 +265,13 @@
       "Crosshair": "@VehicleCommonGun",
       "Name": "weapon.fcp.kord_12_7mm_rws",
       "SoundInfo": {
-        "Fire1P": "superbwarfare:m_2_hb_fire_1p",
-        "Fire3P": "superbwarfare:m_2_hb_fire_3p",
-        "Fire3PFar": "superbwarfare:m_2_hb_far",
-        "Fire3PVeryFar": "superbwarfare:m_2_hb_veryfar",
-        "Change": "fcp:into_coax",
-        "VehicleReload": "fcp:m2_reload"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "Fire3PVeryFar": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_nsv",
+        "VehicleReload": "fcp:squad.weapons.common.hmg_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.hmg_reload_3p"
       },
       "SoundRadius": 16
     }
@@ -311,7 +312,7 @@
     0.8,
     2.4
   ],
-  "HasDecoy": false,
+  "HasDecoy": true,
   "UpStep": 2.2,
   "RotateOffsetHeight": 1.785,
   "Mass": 7,

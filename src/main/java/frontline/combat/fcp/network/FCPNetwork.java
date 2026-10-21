@@ -49,5 +49,23 @@ public final class FCPNetwork {
         FCP_HANDLER.registerMessage(id++, ReloadEmplacementPacket.class,
                 ReloadEmplacementPacket::encode, ReloadEmplacementPacket::decode,
                 ReloadEmplacementPacket::handle);
+        FCP_HANDLER.registerMessage(id++, StugnaRemoteStatePacket.class,
+                StugnaRemoteStatePacket::encode, StugnaRemoteStatePacket::decode,
+                StugnaRemoteStatePacket::handle);
+        FCP_HANDLER.registerMessage(id++, StugnaRemoteActionPacket.class,
+                StugnaRemoteActionPacket::encode, StugnaRemoteActionPacket::decode,
+                StugnaRemoteActionPacket::handle);
+        FCP_HANDLER.registerMessage(id++, StugnaAimPacket.class,
+                StugnaAimPacket::encode, StugnaAimPacket::decode,
+                StugnaAimPacket::handle);
+        FCP_HANDLER.registerMessage(id++, GunnerSmokePacket.class,
+                GunnerSmokePacket::encode, GunnerSmokePacket::decode,
+                GunnerSmokePacket::handle);
+        FCP_HANDLER.registerMessage(id++, EngineControlPacket.class,
+                EngineControlPacket::encode, EngineControlPacket::decode,
+                EngineControlPacket::handle);
+        FCP_HANDLER.registerMessage(id++, SquadFirePacket.class,
+                SquadFirePacket::encode, SquadFirePacket::decode,
+                SquadFirePacket::handle);
     }
 }

@@ -58,6 +58,8 @@ import frontline.combat.fcp.entity.vehicle.Matv.MATVCrowsEntity;
 import frontline.combat.fcp.entity.vehicle.Matv.MATVEntity;
 import frontline.combat.fcp.entity.vehicle.Emplacement.EmplTowEntity;
 import frontline.combat.fcp.entity.vehicle.Emplacement.EmplKornetEntity;
+import frontline.combat.fcp.entity.vehicle.Stugna.StugnaControllerEntity;
+import frontline.combat.fcp.entity.vehicle.Stugna.StugnaLauncherEntity;
 import frontline.combat.fcp.entity.vehicle.Emplacement.EmplDshkEntity;
 import frontline.combat.fcp.entity.vehicle.Emplacement.EmplMk19Entity;
 import frontline.combat.fcp.entity.vehicle.Emplacement.EmplAgs17Entity;
@@ -278,6 +280,10 @@ public class ModEntities {
             EntityType.Builder.of(EmplTowEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,1.4f));
     public static final RegistryObject<EntityType<EmplKornetEntity>> EMPL_KORNET = register("empl_kornet",
             EntityType.Builder.of(EmplKornetEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,1.4f));
+    public static final RegistryObject<EntityType<StugnaLauncherEntity>> STUGNA_LAUNCHER = register("stugna_launcher",
+            EntityType.Builder.of(StugnaLauncherEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,1.4f));
+    public static final RegistryObject<EntityType<StugnaControllerEntity>> STUGNA_CONTROLLER = register("stugna_controller",
+            EntityType.Builder.of(StugnaControllerEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,0.6f));
     public static final RegistryObject<EntityType<EmplDshkEntity>> EMPL_DSHK = register("empl_dshk",
             EntityType.Builder.of(EmplDshkEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(0.8f,1.4f));
     public static final RegistryObject<EntityType<EmplMk19Entity>> EMPL_MK19 = register("empl_mk19",

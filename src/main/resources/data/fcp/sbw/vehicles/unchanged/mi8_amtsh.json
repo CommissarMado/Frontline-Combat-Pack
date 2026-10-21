@@ -434,7 +434,7 @@
     "YawSpeed": 0.6,
     "RollSpeed": 0.45,
     "LiftSpeed": 0.92,
-    "EngineStartSound": "superbwarfare:ah_6_engine_start",
+    "EngineStartSound": "fcp:squad.silent",
     "EngineSoundVolume": 1.5
   },
   "EngineSound": "superbwarfare:ah_6_engine",
@@ -532,8 +532,9 @@
       "Gravity": 0.02,
       "Velocity": 16,
       "SoundInfo": {
-        "Fire1P": "superbwarfare:small_rocket_fire_1p",
-        "Fire3P": "superbwarfare:small_rocket_fire_3p"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_launcher"
       },
       "ShootPos": {
         "Transform": "Vehicle",
@@ -579,7 +580,7 @@
       "AmmoType": "superbwarfare:small_shell_he",
       "IsHighExplosiveProjectile": true,
       "DefaultZoom": 2,
-      "RPM": 900,
+      "RPM": 1000,
       "Magazine": 100,
       "EmptyReloadTime": 200,
       "Velocity": 22,
@@ -596,11 +597,11 @@
       "CrosshairColor": "0x00FF66",
       "SoundRadius": 24,
       "SoundInfo": {
-        "Fire1P": "superbwarfare:bmp_2_cannon_fire_1p",
-        "Fire3P": "superbwarfare:bmp_2_cannon_fire_3p",
-        "Fire3PFar": "superbwarfare:mi_28_cannon_far",
-        "Fire3PVeryFar": "superbwarfare:mi_28_cannon_veryfar",
-        "Change": "superbwarfare:into_cannon",
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "Fire3PVeryFar": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_82a",
         "VehicleReload": "fcp:m2_reload"
       },
       "ShootPos": {

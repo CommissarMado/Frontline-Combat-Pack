@@ -4,6 +4,8 @@ import com.atsuishio.superbwarfare.data.gun.GunData;
 import com.atsuishio.superbwarfare.entity.vehicle.base.ArtilleryEntity;
 import com.atsuishio.superbwarfare.entity.vehicle.base.GeckoArtilleryEntity;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
+import frontline.combat.fcp.entity.vehicle.engine.EngineControl;
+import frontline.combat.fcp.entity.vehicle.engine.EngineControlled;
 import frontline.combat.fcp.init.ModItems;
 import frontline.combat.fcp.init.ModSounds;
 import frontline.combat.fcp.entity.vehicle.VehicleInventory.InventoryStyle;
@@ -63,7 +65,7 @@ import org.jetbrains.annotations.Nullable;
  *
  * canBind() is true here, which is what actually exposes these vehicles to the indicator.
  */
-public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements VehicleInventory {
+public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements VehicleInventory, EngineControlled {
 
     /** Allows the Artillery Indicator to bind to this vehicle for remote aiming. */
     @Override
@@ -72,24 +74,15 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
     }
 
     /**
-     * Only let the MAIN gun throw the big cannon muzzle particles.
+     * Never spawn SBW's own big cannon muzzle particles.
      *
-     * SBW's ArtilleryEntity.beforeShoot() runs on every vehicleShoot call, whichever weapon fired,
-     * and unconditionally spawns spawnBigCannonMuzzleParticles() at getShootPos("Main") - the
-     * weapon name is hardcoded. On a vehicle whose only gun IS the main gun that is invisible, but
-     * the M109 and Msta also carry a passenger machine gun, so firing the M2 produced the 155mm
-     * blast out of the cannon barrel.
-     *
-     * Skipping super for any other weapon keeps the effect on the cannon.
-     *
-     * Since 0.8.9.1 SBW passes the firing weapon's name in, so we can gate on that directly
-     * instead of comparing GunData instances. Upstream still ignores the parameter and hardcodes
-     * "Main" for the particles, so this override is still required.
+     * SBW's ArtilleryEntity.beforeShoot() runs on every vehicleShoot call and unconditionally
+     * spawns spawnBigCannonMuzzleParticles() at getShootPos("Main"). Every FCP artillery vehicle
+     * (M109, Msta) gets FCP's forward cannon blast from FCPMuzzleEffects instead, so calling super
+     * stacked the two effects - and fired the 155mm blast for the passenger M2 as well.
      */
     @Override
     public void beforeShoot(net.minecraft.world.entity.LivingEntity living, String weapon) {
-        if (!"Main".equals(weapon)) return;
-        super.beforeShoot(living, weapon);
     }
 
     @Override
@@ -145,6 +138,88 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
 
     public CamoArtilleryBase(EntityType<? extends VehicleEntity> type, Level world) {
         super(type, world);
+    }
+
+    /** Gunner-fired smoke on the vehicles listed in GunnerSmoke; SBW's driver input everywhere else. */
+    @Override
+    public boolean decoyInputDown() {
+        Boolean gunner = GunnerSmoke.decoyInput(this);
+        return gunner != null ? gunner : super.decoyInputDown();
+    }
+
+    // ── Engine start/stop ───────────────────────────────────────────────────────
+    // See EngineControl. Only vehicles listed there use it; for everything else the state is
+    // never read and the input overrides below fall straight through to SBW.
+
+    private static final EntityDataAccessor<Byte> FCP_ENGINE_STATE =
+            SynchedEntityData.defineId(CamoArtilleryBase.class, EntityDataSerializers.BYTE);
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(FCP_ENGINE_STATE, EngineControl.OFF);
+    }
+
+    @Override
+    public byte fcp$getEngineState() {
+        return this.entityData.get(FCP_ENGINE_STATE);
+    }
+
+    @Override
+    public void fcp$setEngineState(byte state) {
+        this.entityData.set(FCP_ENGINE_STATE, state);
+    }
+
+    @Override
+    public boolean forwardInputDown() {
+        return !EngineControl.blocksInput(this) && super.forwardInputDown();
+    }
+
+    @Override
+    public boolean backInputDown() {
+        return !EngineControl.blocksInput(this) && super.backInputDown();
+    }
+
+    @Override
+    public boolean leftInputDown() {
+        return !EngineControl.blocksInput(this) && super.leftInputDown();
+    }
+
+    @Override
+    public boolean rightInputDown() {
+        return !EngineControl.blocksInput(this) && super.rightInputDown();
+    }
+
+    @Override
+    public boolean upInputDown() {
+        return !EngineControl.blocksInput(this) && super.upInputDown();
+    }
+
+    @Override
+    public boolean downInputDown() {
+        return !EngineControl.blocksInput(this) && super.downInputDown();
+    }
+
+    /** SBW's turret traverse sound; skipped where the Squad turret loop replaces it. */
+    @Override
+    public void turretTurnSound(float diffX, float diffY, float pitch) {
+        if (frontline.combat.fcp.entity.vehicle.engine.SquadWeaponFire.TURRETS.contains(
+                frontline.combat.fcp.entity.vehicle.engine.EngineControl.id(this))) return;
+        super.turretTurnSound(diffX, diffY, pitch);
+    }
+
+    /** Every shot; forwards it to clients for the Squad fire sounds where the vehicle has them. */
+    @Override
+    public void playShootSound3p(net.minecraft.world.entity.LivingEntity living,
+                                 com.atsuishio.superbwarfare.data.gun.GunData data, net.minecraft.world.phys.Vec3 pos) {
+        super.playShootSound3p(living, data, pos);
+        frontline.combat.fcp.entity.vehicle.engine.SquadWeaponFire.onShoot(this, living, data);
+    }
+
+    /** Silence SBW's single engine loop where FCP plays the layered Squad engine instead. */
+    @Override
+    public float getEngineSoundVolume() {
+        return EngineControl.usesSquadSound(this) ? 0f : super.getEngineSoundVolume();
     }
 
     /**
@@ -272,6 +347,7 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
     @Override
     public void tick() {
         super.tick();
+        EngineControl.tick(this);
         chargeFromInventoryEnergyItems();
     }
 
@@ -505,6 +581,7 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
     @Override
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
+        compound.putByte("FcpEngineState", fcp$getEngineState());
         if (hasVehicleInventory()) {
             compound.put("VehicleInventory", getVehicleInventory().createTag());
         }
@@ -513,6 +590,7 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
+        if (compound.contains("FcpEngineState")) fcp$setEngineState(compound.getByte("FcpEngineState"));
         VehicleSkins.migrateLegacyCamo(this, compound);
         if (hasVehicleInventory() && compound.contains("VehicleInventory", Tag.TAG_LIST)) {
             getVehicleInventory().fromTag(compound.getList("VehicleInventory", Tag.TAG_COMPOUND));

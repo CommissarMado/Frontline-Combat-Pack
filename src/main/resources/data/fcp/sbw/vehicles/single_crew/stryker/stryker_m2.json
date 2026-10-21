@@ -1,5 +1,6 @@
 {
   "ID": "fcp:stryker_m2",
+  "HasDecoy": true,
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "TurretPos": [-0.565154, 2.403571, 0.243663],
@@ -203,7 +204,7 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 500,
-      "EmptyReloadTime": 160,
+      "EmptyReloadTime": 228,
       "Magazine": 200,
       "Velocity": 25,
       "Damage": 15,
@@ -218,10 +219,12 @@
       "CrosshairColor": "0x66FF00",
       "Name": "weapon.fcp.m2_hb",
       "SoundInfo": {
-        "Fire1P": "fcp:m2_fire_1p",
-        "Fire3P": "fcp:m2_fire_3p",
-        "Fire3PFar": "fcp:m2_fire_3p_far",
-        "VehicleReload": "fcp:m2_reload"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "VehicleReload": "fcp:squad.weapons.common.m2_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.m2_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_nsv"
       },
       "SoundRadius": 16,
       "AmmoType": "superbwarfare:rifle_ammo",

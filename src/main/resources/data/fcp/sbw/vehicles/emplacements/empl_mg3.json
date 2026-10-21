@@ -49,7 +49,7 @@
       "IsHighExplosiveProjectile": false,
       "Velocity": 25,
       "RecoilTime": 16,
-      "EmptyReloadTime": 200,
+      "EmptyReloadTime": 231,
       "Magazine": 250,
       "RecoilForce": 0.05,
       "HeatPerShoot": 3,
@@ -71,12 +71,13 @@
       },
       "Name": "weapon.fcp.mg3",
       "SoundInfo": {
-        "Fire1P": "superbwarfare:coax_fire_1p",
-        "Fire3P": "superbwarfare:mg_17_fire_3p",
-        "Fire3PFar": "superbwarfare:mg_17_far",
-        "Fire3PVeryFar": "superbwarfare:mg_17_veryfar",
-        "Change": "fcp:coax_equip",
-        "VehicleReload": "fcp:m2_reload"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "Fire3PVeryFar": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_pkt",
+        "VehicleReload": "fcp:squad.weapons.common.coax_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.coax_reload_3p"
       },
       "SoundRadius": 16
     }

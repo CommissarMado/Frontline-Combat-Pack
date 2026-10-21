@@ -154,13 +154,13 @@
         "BoundUpWithAmmoAmount": true
       },
       "SoundInfo": {
-        "Fire1P": "superbwarfare:bmp_2_missile_fire_1p",
-        "Fire3P": "superbwarfare:bmp_2_missile_fire_3p",
-        "VehicleReload3p": "superbwarfare:bomb_reload",
-        "VehicleReloadSoundTime": 11,
-        "Change": "superbwarfare:into_missile",
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "VehicleReload3p": "fcp:squad.weapons.common.at3_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_82a",
         "Locking": "superbwarfare:javelin_locking",
-        "Locked": "superbwarfare:javelin_locked"
+        "Locked": "superbwarfare:javelin_locked",
+        "VehicleReload": "fcp:squad.weapons.common.at3_reload_1p"
       },
       "CrosshairColor": "0x66FF00",
       "Crosshair": "@VehicleCommonSeekMissile",
@@ -175,14 +175,14 @@
       "CrosshairColor": "0x00ff66",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 1100,
+      "RPM": 1000,
       "Damage": 15,
       "BypassesArmor": 2,
       "IsArmorPiercingProjectile": true,
       "IsHighExplosiveProjectile": false,
       "Velocity": 25,
       "RecoilTime": 32,
-      "EmptyReloadTime": 200,
+      "EmptyReloadTime": 231,
       "Magazine": 200,
       "RecoilForce": 0.1,
       "HeatPerShoot": 5,
@@ -204,12 +204,13 @@
       },
       "Name": "weapon.fcp.m3p",
       "SoundInfo": {
-        "Fire1P": "superbwarfare:m_2_hb_fire_1p",
-        "Fire3P": "superbwarfare:m_2_hb_fire_3p",
-        "Fire3PFar": "superbwarfare:m_2_hb_far",
-        "Fire3PVeryFar": "superbwarfare:m_2_hb_veryfar",
-        "Change": "fcp:into_coax",
-        "VehicleReload": "fcp:m2_reload"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "Fire3PVeryFar": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_pkt",
+        "VehicleReload": "fcp:squad.weapons.common.coax_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.coax_reload_3p"
       },
       "SoundRadius": 16
     }

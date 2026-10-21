@@ -1,5 +1,6 @@
 {
   "ID": "fcp:typhoon_vdv",
+  "HasDecoy": true,
   "MaxHealth": 240,
   "MaxEnergy": 5000000,
   "PassengerRenderScale": 0.85,
@@ -364,7 +365,7 @@
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
       "DefaultZoom": 3,
-      "RPM": 200,
+      "RPM": 550,
       "IsArmorPiercingProjectile": true,
       "IsHighExplosiveProjectile": false,
       "Velocity": 20,
@@ -382,11 +383,13 @@
       "Name": "weapon.superbwarfare.30mm_2a42_ap",
       "Projectile": "superbwarfare:small_cannon_shell",
       "SoundInfo": {
-        "Fire1P": "superbwarfare:bmp_2_cannon_fire_1p",
-        "Fire3P": "superbwarfare:bmp_2_cannon_fire_3p",
-        "Fire3PFar": "superbwarfare:mi_28_cannon_far",
-        "Fire3PVeryFar": "superbwarfare:mi_28_cannon_veryfar",
-        "Change": "superbwarfare:into_missile"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "Fire3PVeryFar": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_82a",
+        "VehicleReload": "fcp:squad.weapons.common.m249_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.m249_reload_3p"
       },
       "SoundRadius": 24,
       "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/cannon_30mm_ap.png",
@@ -418,7 +421,8 @@
         "Directions": [
           "Barrel"
         ]
-      }
+      },
+      "EmptyReloadTime": 211
     },
     "MachineGun": {
       "DefaultFireMode": "Auto",
@@ -429,7 +433,7 @@
       "CrosshairColor": "0xFFC700",
       "AmmoType": "superbwarfare:rifle_ammo",
       "Projectile": "superbwarfare:projectile",
-      "RPM": 600,
+      "RPM": 750,
       "Damage": 5,
       "BypassesArmor": 0.2,
       "Velocity": 25,
@@ -453,14 +457,17 @@
       "Crosshair": "@VehicleCommonGun",
       "Name": "weapon.superbwarfare.7_62mm_coax",
       "SoundInfo": {
-        "Fire1P": "superbwarfare:coax_fire_1p",
-        "Fire3P": "superbwarfare:m_60_fire_3p",
-        "Fire3PFar": "superbwarfare:m_60_far",
-        "Fire3PVeryFar": "superbwarfare:m_60_veryfar",
-        "Change": "superbwarfare:into_cannon"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "Fire3PVeryFar": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_pkt",
+        "VehicleReload": "fcp:squad.weapons.common.coax_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.coax_reload_3p"
       },
       "SoundRadius": 12,
-      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/gun_7_62mm.png"
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/gun_7_62mm.png",
+      "EmptyReloadTime": 231
     }
   }
 }

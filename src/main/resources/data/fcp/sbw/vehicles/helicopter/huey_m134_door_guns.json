@@ -156,7 +156,7 @@
       "CrosshairColor": "0x00ff66",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 1000,
+      "RPM": 1500,
       "Damage": 4,
       "BypassesArmor": 0.2,
       "Velocity": 25,
@@ -169,10 +169,12 @@
       "Crosshair": "@Empty",
       "Name": "weapon.fcp.m134_minigun",
       "SoundInfo": {
-        "Fire1P": "fcp:m134_fire_1p",
-        "Fire3P": "fcp:m134_fire_3p",
-        "Fire3PFar": "fcp:m134_fire_3p_far",
-        "Change": "fcp:into_coax"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_pkt",
+        "VehicleReload": "fcp:squad.weapons.common.coax_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.coax_reload_3p"
       },
       "SoundRadius": 16,
       "ShootPos": {
@@ -180,7 +182,8 @@
         "Positions": [[0.10437, 0.15486, 0.72238]],
         "Directions": ["Passenger"],
         "DefaultBarrelDirection": [0, 0, 1]
-      }
+      },
+      "EmptyReloadTime": 231
     },
     "M134Right": {
       "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
@@ -190,7 +193,7 @@
       "CrosshairColor": "0x00ff66",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 1000,
+      "RPM": 1500,
       "Damage": 4,
       "BypassesArmor": 0.2,
       "Velocity": 25,
@@ -203,10 +206,12 @@
       "Crosshair": "@Empty",
       "Name": "weapon.fcp.m134_minigun",
       "SoundInfo": {
-        "Fire1P": "fcp:m134_fire_1p",
-        "Fire3P": "fcp:m134_fire_3p",
-        "Fire3PFar": "fcp:m134_fire_3p_far",
-        "Change": "fcp:into_coax"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_pkt",
+        "VehicleReload": "fcp:squad.weapons.common.coax_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.coax_reload_3p"
       },
       "SoundRadius": 16,
       "ShootPos": {
@@ -214,7 +219,8 @@
         "Positions": [[-0.10437, 0.15486, 0.72238]],
         "Directions": ["Passenger"],
         "DefaultBarrelDirection": [0, 0, 1]
-      }
+      },
+      "EmptyReloadTime": 231
     }
   },
   "EngineType": "Helicopter",
@@ -226,7 +232,7 @@
     "YawSpeed": 0.9,
     "RollSpeed": 0.7,
     "LiftSpeed": 0.95,
-    "EngineStartSound": "superbwarfare:ah_6_engine_start",
+    "EngineStartSound": "fcp:squad.silent",
     "EngineSoundVolume": 1.5
   },
   "EngineSound": "superbwarfare:ah_6_engine",

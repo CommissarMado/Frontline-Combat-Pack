@@ -61,11 +61,11 @@
       "Projectile": "superbwarfare:small_cannon_shell",
       "Icon": "fcp:textures/screens/vehicle_weapon/20mm.png",
       "DefaultZoom": 3,
-      "RPM": 800,
+      "RPM": 550,
       "Velocity": 30,
       "Damage": 35,
       "Magazine": 750,
-      "EmptyReloadTime": 100,
+      "EmptyReloadTime": 231,
       "ExplosionDamage": 10,
       "ExplosionRadius": 2.5,
       "HeatPerShoot": 4,
@@ -73,8 +73,11 @@
       "Spread": 0.3,
       "Name": "weapon.fcp.m197",
       "SoundInfo": {
-        "Fire1P": "superbwarfare:mi_28_cannon_fire_1p",
-        "Fire3P": "superbwarfare:bmp_2_cannon_fire_3p"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "VehicleReload": "fcp:squad.weapons.common.m249_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.m249_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_82a"
       },
       "Crosshair": "@VehicleCommonGun",
       "CrosshairColor": "0x00FF66",
@@ -110,8 +113,9 @@
         "Directions": [[0, 0.02, 1], [0, 0.02, 1]]
       },
       "SoundInfo": {
-        "Fire1P": "superbwarfare:small_rocket_fire_1p",
-        "Fire3P": "superbwarfare:small_rocket_fire_3p"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_launcher"
       },
       "Crosshair": "@Empty",
       "SoundRadius": 12
@@ -173,8 +177,8 @@
         "BoundUpWithAmmoAmount": true
       },
       "SoundInfo": {
-        "Fire1P": "superbwarfare:bomb_release",
-        "Fire3P": "superbwarfare:bomb_release",
+        "Fire1P": "superbwarfare:bmp_2_missile_fire_1p",
+        "Fire3P": "superbwarfare:bmp_2_missile_fire_3p",
         "VehicleReload3p": "superbwarfare:bomb_reload",
         "VehicleReloadSoundTime": 11,
         "Change": "superbwarfare:into_missile",
@@ -206,8 +210,9 @@
       ], "BoundUpWithAmmoAmount": true},
       "Crosshair": "@VehicleCommonMissile",
       "CrosshairColor": "0x00FF66",
-      "SoundInfo": {"Fire1P": "superbwarfare:bmp_2_missile_fire_1p", "Fire3P": "superbwarfare:bmp_2_missile_fire_3p", "Change": "vvp:into_atgm"},
-      "Icon":"fcp:textures/screens/vehicle_weapon/hellfire.png"
+      "SoundInfo": { "Fire1P": "superbwarfare:bmp_2_missile_fire_1p", "Fire3P": "superbwarfare:bmp_2_missile_fire_3p", "Change": "vvp:into_atgm", "VehicleReload3p": "superbwarfare:missile_reload" },
+      "Icon": "fcp:textures/screens/vehicle_weapon/hellfire.png",
+      "SoundRadius": 48
     },
     "Sidewinder": {
       "Icon": "fcp:textures/screens/vehicle_weapon/sidewinder.png",
@@ -245,8 +250,8 @@
         "BoundUpWithAmmoAmount": true
       },
       "SoundInfo": {
-        "Fire1P": "superbwarfare:bomb_release",
-        "Fire3P": "superbwarfare:bomb_release",
+        "Fire1P": "superbwarfare:javelin_fire_1p",
+        "Fire3P": "superbwarfare:javelin_fire_3p",
         "VehicleReload3p": "superbwarfare:bomb_reload",
         "VehicleReloadSoundTime": 11,
         "Change": "superbwarfare:into_missile",
@@ -267,7 +272,7 @@
     "YawSpeed": 0.9,
     "RollSpeed": 0.7,
     "LiftSpeed": 0.95,
-    "EngineStartSound": "superbwarfare:ah_6_engine_start",
+    "EngineStartSound": "fcp:squad.silent",
     "EngineSoundVolume": 1.5
   },
   "EngineSound": "superbwarfare:ah_6_engine",

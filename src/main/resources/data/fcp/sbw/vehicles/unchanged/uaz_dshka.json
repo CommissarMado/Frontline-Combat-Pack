@@ -167,9 +167,9 @@
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 450,
+      "RPM": 663,
       "Magazine": 100,
-      "EmptyReloadTime": 20,
+      "EmptyReloadTime": 401,
       "Velocity": 25,
       "Damage": 15,
       "BypassesArmor": 2,
@@ -183,8 +183,11 @@
       "CrosshairColor": "0x66FF00",
       "Name": "weapon.fcp.dshka",
       "SoundInfo": {
-        "Fire1P": "superbwarfare:coax_fire_1p",
-        "Fire3P": "superbwarfare:coax_fire_1p"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "VehicleReload": "fcp:squad.weapons.common.hmg_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.hmg_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_nsv"
       },
       "SoundRadius": 16,
       "AmmoType": "superbwarfare:rifle_ammo",

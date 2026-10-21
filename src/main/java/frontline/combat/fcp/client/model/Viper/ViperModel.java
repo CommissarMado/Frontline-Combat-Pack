@@ -23,7 +23,7 @@ public class ViperModel extends VehicleModel<ViperEntity> {
             case "tailPropeller" ->
                     (bone, vehicle, state) -> bone.setRotX(6 * Mth.lerp(state.getPartialTick(), vehicle.getPropellerRotO(), vehicle.getPropellerRot()));
             case "BarrelRotationController" ->
-                    (bone, vehicle, state) -> bone.setRotZ(-Mth.lerp(state.getPartialTick(), vehicle.getBarrelRot0(), vehicle.getBarrelRot()));
+                    (bone, vehicle, state) -> bone.setRotZ(-Mth.lerp(state.getPartialTick(), vehicle.getBarrelRot0(), vehicle.getBarrelRot()) * Mth.DEG_TO_RAD);
             case "LockOn1" ->
                     (bone, vehicle, state) -> bone.setHidden(vehicle.GetWeaponState("Hellfire-LockOn", 3));
             case "LockOn2" ->

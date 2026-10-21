@@ -95,7 +95,7 @@
     "YawSpeed": 0.9,
     "RollSpeed": 0.7,
     "LiftSpeed": 0.95,
-    "EngineStartSound": "fcp:littlebird_engine_start",
+    "EngineStartSound": "fcp:squad.silent",
     "EngineSoundVolume": 5
   },
   "EngineSound": "fcp:littlebird_engine_idle",

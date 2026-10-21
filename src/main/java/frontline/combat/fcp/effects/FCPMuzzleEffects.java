@@ -66,7 +66,8 @@ public final class FCPMuzzleEffects {
             return false;
         }
         String name = gunData.get(GunProp.NAME);
-        return name != null && name.contains("cannon");
+        // Named guns carry their calibre instead: the MGS's "weapon.fcp.m68a2_105mm_ap" (100mm+).
+        return name != null && (name.contains("cannon") || name.matches(".*_\\d{3}mm_.*"));
     }
 
     private static boolean isForwardCannonBlast(Entity supplier, GunData gunData) {

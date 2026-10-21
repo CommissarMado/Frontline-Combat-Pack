@@ -1,5 +1,6 @@
 {
   "ID": "fcp:stryker_mgs",
+  "HasDecoy": true,
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "TurretPos": [0.014944, 1.974566, -0.719551],
@@ -170,7 +171,7 @@
       "ShellType": "AP",
       "DefaultZoom": 3,
       "Magazine": 1,
-      "EmptyReloadTime": 130,
+      "EmptyReloadTime": 136,
       "Velocity": 40,
       "Damage": 800,
       "ExplosionDamage": 20,
@@ -201,11 +202,13 @@
       ],
       "SoundRadius": 32,
       "SoundInfo": {
-        "Fire1P": "fcp:stryker_mgs_fire_1p",
-        "Fire3P": "fcp:stryker_mgs_fire_3p",
-        "Fire3PFar": "fcp:stryker_mgs_fire_3p_far",
-        "Fire3PVeryFar": "fcp:stryker_mgs_fire_3p_extrafar",
-        "VehicleReload": "fcp:stryker_mgs_reload"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "Fire3PVeryFar": "fcp:squad.silent",
+        "VehicleReload": "fcp:squad.weapons.common.m128_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.m128_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_cannon"
       },
       "ShootPos": {
         "Transform": "Barrel",
@@ -231,7 +234,7 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 500,
-      "EmptyReloadTime": 160,
+      "EmptyReloadTime": 228,
       "Magazine": 200,
       "Velocity": 25,
       "Damage": 15,
@@ -246,10 +249,12 @@
       "CrosshairColor": "0x66FF00",
       "Name": "weapon.fcp.m2_hb",
       "SoundInfo": {
-        "Fire1P": "fcp:m2_fire_1p",
-        "Fire3P": "fcp:m2_fire_3p",
-        "Fire3PFar": "fcp:m2_fire_3p_far",
-        "VehicleReload": "fcp:m2_reload"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "VehicleReload": "fcp:squad.weapons.common.m2_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.m2_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_nsv"
       },
       "ShootPos": {
         "Transform": "WeaponStationBarrel",
@@ -280,7 +285,7 @@
       "CrosshairColor": "0x00ff66",
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
-      "RPM": 650,
+      "RPM": 857,
       "Damage": 5,
       "BypassesArmor": 0.2,
       "Velocity": 25,
@@ -310,13 +315,16 @@
       "Crosshair": "@VehicleCommonGun",
       "Name": "weapon.fcp.m240_coax",
       "SoundInfo": {
-        "Fire1P": "superbwarfare:coax_fire_1p",
-        "Fire3P": "superbwarfare:mg_17_fire_3p",
-        "Fire3PFar": "superbwarfare:mg_17_far",
-        "Fire3PVeryFar": "superbwarfare:mg_17_veryfar",
-        "Change": "fcp:coax_equip"
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "Fire3PVeryFar": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_pkt",
+        "VehicleReload": "fcp:squad.weapons.common.coax_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.coax_reload_3p"
       },
-      "SoundRadius": 16
+      "SoundRadius": 16,
+      "EmptyReloadTime": 231
     },
     "Empty": {
       "Magazine": 0,

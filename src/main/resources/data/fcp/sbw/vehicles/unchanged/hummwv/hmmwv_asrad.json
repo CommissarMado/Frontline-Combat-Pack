@@ -162,13 +162,13 @@
         "BoundUpWithAmmoAmount": true
       },
       "SoundInfo": {
-        "Fire1P": "superbwarfare:bmp_2_missile_fire_1p",
-        "Fire3P": "superbwarfare:bmp_2_missile_fire_3p",
-        "VehicleReload3p": "superbwarfare:bomb_reload",
-        "VehicleReloadSoundTime": 11,
-        "Change": "superbwarfare:into_missile",
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "VehicleReload3p": "fcp:squad.weapons.common.at3_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_82a",
         "Locking": "superbwarfare:javelin_locking",
-        "Locked": "superbwarfare:javelin_locked"
+        "Locked": "superbwarfare:javelin_locked",
+        "VehicleReload": "fcp:squad.weapons.common.at3_reload_1p"
       },
       "CrosshairColor": "0x66FF00",
       "Crosshair": "@VehicleCommonSeekMissile",
