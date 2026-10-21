@@ -4,6 +4,7 @@
   "MaxEnergy": 5000000,
   "PassengerRenderScale": 0.85,
   "OBB": [
+    {"Size": [1.133, 1.27, 2.445], "Position": [0.0, 1.27, -0.002], "Part": "Collision"},
     {"Size": [0.190625, 0.375, 0.40625], "Position": [0.815625, 0.375, 1.40625], "Part": "WheelLeft"},
     {"Size": [0.190625, 0.375, 0.40625], "Position": [-0.815625, 0.375, 1.40625], "Part": "WheelRight"},
     {"Size": [0.190625, 0.375, 0.40625], "Position": [0.815625, 0.375, -1.40625], "Part": "WheelLeft"},

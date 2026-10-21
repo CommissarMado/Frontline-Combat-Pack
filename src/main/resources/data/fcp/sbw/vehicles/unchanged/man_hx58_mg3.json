@@ -9,6 +9,7 @@
   "TurretPitchRange": [-40, 40],
   "TurretYawRange": [-75, 75],
   "OBB": [
+    {"Size": [1.383, 1.853, 4.502], "Position": [0.0, 1.853, -0.546], "Part": "Collision"},
     {"Size": [0.25, 0.6562, 0.6562], "Position": [1.125, 0.6562, 2.3813], "Part": "WheelLeft"},
     {"Size": [0.25, 0.6562, 0.6562], "Position": [1.125, 0.6562, -1.875], "Part": "WheelLeft"},
     {"Size": [0.25, 0.6562, 0.6562], "Position": [1.125, 0.6562, -3.4125], "Part": "WheelLeft"},

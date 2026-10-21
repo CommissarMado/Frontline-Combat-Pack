@@ -3,6 +3,7 @@
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "OBB": [
+    {"Size": [0.25, 0.445, 0.57], "Position": [0.0, 0.445, 0.018], "Part": "Collision"},
     {"Size": [0.3, 0.45, 0.75], "Position": [0, 0.45, 0], "Part": "Body"}
   ],
   "Seats": [

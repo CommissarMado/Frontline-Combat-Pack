@@ -9,6 +9,7 @@
   "TurretTurnSpeed": [5, 5],
   "TurretPitchRange": [-15, 40],
   "OBB": [
+    {"Size": [1.203, 0.972, 2.897], "Position": [0.066, 0.972, -0.025], "Part": "Collision"},
     {"Size": [1.1875, 0.8125, 0.9688], "Position": [0.0, 1.1875, -0.0312], "Part": "Body"},
     {"Size": [1.1875, 0.4688, 0.7812], "Position": [0.0, 0.8438, -1.7812], "Part": "Body"},
     {"Size": [1.1875, 0.5312, 0.6953], "Position": [0.0, 0.9062, 1.6328], "Part": "MainEngine"},

@@ -3,6 +3,7 @@
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
   "OBB": [
+    {"Size": [1.258, 1.571, 3.835], "Position": [0.0, 1.571, -0.015], "Part": "Collision"},
     {"Size": [0.2975, 0.5525, 0.5525], "Position": [1.02, 0.612, 2.5], "Part": "WheelLeft"},
     {"Size": [0.2975, 0.5525, 0.5525], "Position": [1.02, 0.612, -0.95], "Part": "WheelLeft"},
     {"Size": [0.2975, 0.5525, 0.5525], "Position": [1.02, 0.612, -2.25], "Part": "WheelLeft"},

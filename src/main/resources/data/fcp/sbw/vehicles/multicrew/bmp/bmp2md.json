@@ -9,6 +9,7 @@
   "TurretControllerIndex": 1,
   "BarrelPos": [-0.001541, 0.252041, 0.630945],
   "OBB": [
+    {"Size": [1.656, 0.869, 3.508], "Position": [0.0, 0.869, 0.226], "Part": "Collision"},
     {"Size": [0.2125, 0.6375, 2.975], "Position": [1.36, 0.6375, -0.0425], "Part": "WheelLeft"},
     {"Size": [0.2125, 0.6375, 2.975], "Position": [-1.36, 0.6375, -0.0425], "Part": "WheelRight"},
     {"Size": [1.36, 0.6375, 3.5275], "Position": [0.0, 1.0625, 0.2125], "Part": "Body"},
