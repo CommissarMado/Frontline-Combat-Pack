@@ -1,0 +1,35 @@
+{
+  "_comment": "Generated from the Squad SDK: Abrams_engine_rpm_ALL_Cue.uasset (+ start/stop cues).",
+  "vehicles": ["fcp:m1a1", "fcp:m1a1_aim", "fcp:m1a1_ukr", "fcp:m1a2", "fcp:m1a2_tusk1", "fcp:m1a2_tusk2"],
+  "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
+  "exterior_volume": 0.3333,
+  "interior_volume": 1,
+  "start": {
+    "exterior": { "sound": "fcp:squad.abrams.engine.abrams_engine_ext_start_01", "volume": 0.9, "duration": 13.02 },
+    "interior": { "sound": "fcp:squad.abrams.engine.abrams_engine_int_start_01", "volume": 0.7, "duration": 13.02 }
+  },
+  "stop": {
+    "exterior": { "sound": "fcp:squad.abrams.engine.abrams_engine_ext_stop_01", "volume": 0.9, "duration": 29.26 },
+    "interior": { "sound": "fcp:squad.abrams.engine.abrams_engine_int_stop_01", "volume": 0.7, "duration": 7.73 }
+  },
+  "layers": [
+    { "sound": "fcp:squad.abrams.engine.abrams_engine_int_idle_01", "interior": true, "gain": 0.88, "fade": [0, 0, 400, 500],
+      "volume_mods": [{ "param": "throttle", "in": [1, 1], "out": [1, 0] }, { "param": "throttle", "in": [0.2, 1], "out": [0.8, 0.2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [0, 1000], "out": [1, 1.1] }] },
+    { "sound": "fcp:squad.abrams.engine.abrams_engine_int_idle2_01", "interior": true, "gain": 0.176, "fade": [200, 600, 3000, 5000],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [1, 0] }, { "param": "rpm", "in": [0, 100], "out": [0, 2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [20, 4000], "out": [0.7, 1.88] }] },
+    { "sound": "fcp:squad.abrams.engine.abrams_engine_int_throttle_01", "interior": true, "gain": 0.4, "fade": [10, 50, 4000, 6000],
+      "volume_mods": [{ "param": "throttle", "in": [-0.3, 1], "out": [0, 2] }, { "param": "rpm", "in": [0, 1], "out": [0, 1] }],
+      "pitch_mods": [{ "param": "throttle", "in": [-3, 1], "out": [0, 1] }, { "param": "rpm", "abs": true, "in": [0, 4000], "out": [0.7, 1.1] }] },
+    { "sound": "fcp:squad.abrams.engine.abrams_engine_ext_idle_01", "gain": 2.25, "fade": [0, 0, 400, 500],
+      "volume_mods": [{ "param": "throttle", "in": [1, 1], "out": [1, 0] }, { "param": "throttle", "in": [0.2, 1], "out": [0.8, 0.2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [0, 1000], "out": [0.8, 1.1] }] },
+    { "sound": "fcp:squad.abrams.engine.abrams_engine_ext_idle2_01", "gain": 1.68, "fade": [200, 600, 3000, 5000],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [1, 0] }, { "param": "rpm", "in": [0, 100], "out": [0, 2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [20, 4000], "out": [0.7, 1.88] }] },
+    { "sound": "fcp:squad.abrams.engine.abrams_engine_ext_throttle_01", "gain": 3, "fade": [10, 50, 4000, 6000],
+      "volume_mods": [{ "param": "throttle", "in": [-0.3, 1], "out": [0, 2] }, { "param": "rpm", "in": [0, 1], "out": [0, 1] }],
+      "pitch_mods": [{ "param": "throttle", "in": [-3, 1], "out": [0, 1] }, { "param": "rpm", "abs": true, "in": [0, 4000], "out": [0.7, 1.1] }] }
+  ]
+}

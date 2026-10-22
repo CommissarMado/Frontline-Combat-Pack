@@ -2,26 +2,116 @@
   "ID": "fcp:uaz_dshka",
   "MaxHealth": 150,
   "MaxEnergy": 5000000,
-  "TurretPos": [0.004617, 1.696046, -0.645842],
-  "TurretTurnSpeed": [5, 5],
-  "TurretPitchRange": [-45, 85],
-  "BarrelPos": [0.0, 0.0, 0.0],
+  "TurretPos": [
+    0.004617,
+    1.696046,
+    -0.645842
+  ],
+  "TurretTurnSpeed": [
+    5,
+    5
+  ],
+  "TurretPitchRange": [
+    -45,
+    85
+  ],
+  "BarrelPos": [
+    0.0,
+    0.0,
+    0.0
+  ],
   "TurretControllerIndex": 1,
   "PassengerRenderScale": 0.85,
   "OBB": [
-    {"Size": [0.859, 0.732, 2.078], "Position": [0.0, 0.732, -0.04], "Part": "Collision"},
-    {"Size": [0.1785, 0.39525, 0.39525], "Position": [0.74375, 0.4335, 1.4025], "Part": "WheelLeft"},
-    {"Size": [0.1785, 0.39525, 0.39525], "Position": [-0.74375, 0.4335, 1.4025], "Part": "WheelRight"},
-    {"Size": [0.1785, 0.39525, 0.39525], "Position": [0.74375, 0.4335, -1.16875], "Part": "WheelLeft"},
-    {"Size": [0.1785, 0.39525, 0.39525], "Position": [-0.74375, 0.4335, -1.16875], "Part": "WheelRight"},
-    {"Size": [0.85, 0.425, 2.04], "Position": [0.0, 0.935, 0.2125], "Part": "Body"}
+    {
+      "Size": [
+        0.859,
+        0.732,
+        2.078
+      ],
+      "Position": [
+        0.0,
+        0.732,
+        -0.04
+      ],
+      "Part": "Collision"
+    },
+    {
+      "Size": [
+        0.1785,
+        0.39525,
+        0.39525
+      ],
+      "Position": [
+        0.74375,
+        0.4335,
+        1.4025
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.1785,
+        0.39525,
+        0.39525
+      ],
+      "Position": [
+        -0.74375,
+        0.4335,
+        1.4025
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.1785,
+        0.39525,
+        0.39525
+      ],
+      "Position": [
+        0.74375,
+        0.4335,
+        -1.16875
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.1785,
+        0.39525,
+        0.39525
+      ],
+      "Position": [
+        -0.74375,
+        0.4335,
+        -1.16875
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.85,
+        0.425,
+        2.04
+      ],
+      "Position": [
+        0.0,
+        0.935,
+        0.2125
+      ],
+      "Part": "Body"
+    }
   ],
   "Seats": [
     {
       "IsEnclosed": false,
       "Transform": "Vehicle",
       "BanHand": true,
-      "Position": [0.40375, 0.255, 0.1275],
+      "Position": [
+        0.40375,
+        0.255,
+        0.1275
+      ],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -34,11 +124,19 @@
       "Weapons": [
         "DHSKA"
       ],
-      "Position": [0.0, -1.0, -0.65],
+      "Position": [
+        0.0,
+        -1.0,
+        -0.65
+      ],
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Transform": "Barrel",
-        "Position": [0.0, 0.5, -0.75],
+        "Position": [
+          0.0,
+          0.5,
+          -0.75
+        ],
         "Direction": "Barrel"
       },
       "MinPitch": -30,
@@ -47,17 +145,29 @@
       "MaxYaw": 95,
       "Pose": "MachineGunStand",
       "CanRotateHead": false,
-      "Sensitivity": [0.7, 0.75, 1],
+      "Sensitivity": [
+        0.7,
+        0.75,
+        1
+      ],
       "DismountInfo": {
         "Transform": "Vehicle",
-        "Position": [0.0, 0.75, -3.0]
+        "Position": [
+          0.0,
+          0.75,
+          -3.0
+        ]
       }
     },
     {
       "IsEnclosed": false,
       "Transform": "Vehicle",
       "BanHand": false,
-      "Position": [-0.40375, 0.255, 0.1275],
+      "Position": [
+        -0.40375,
+        0.255,
+        0.1275
+      ],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -97,8 +207,20 @@
       "Icon": "fcp:textures/screens/vehicle_weapon/12_7mm.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[-0.0017, 0.33, 1.065]],
-        "Directions": [[0, 0, 1]]
+        "Positions": [
+          [
+            -0.0017,
+            0.33,
+            1.065
+          ]
+        ],
+        "Directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
       }
     }
   },
@@ -151,25 +273,60 @@
     "ExplosionDamage": 120,
     "ExplosionRadius": 7
   },
-  "ThirdPersonCameraPos": [0, 1, 5],
+  "ThirdPersonCameraPos": [
+    0,
+    1,
+    5
+  ],
   "ContainerIcon": "fcp:textures/gui/vehicle/type/land_rus.png",
   "Type": "Car",
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
-      [0, 0, true],
-      [0, 0, true],
-      [0.15, 0.09, false]
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0.15,
+        0.09,
+        false
+      ]
     ]
   },
   "EngineSound": "superbwarfare:truck_engine",
   "HudType": "@Empty",
   "TerrainCompat": [
-    [0.9826, 0, 1.3549],
-    [-0.9826, 0, 1.3549],
-    [0.9826, 0, -1.3549],
-    [-0.9826, 0, -1.3549]
+    [
+      0.9826,
+      0,
+      1.3549
+    ],
+    [
+      -0.9826,
+      0,
+      1.3549
+    ],
+    [
+      0.9826,
+      0,
+      -1.3549
+    ],
+    [
+      -0.9826,
+      0,
+      -1.3549
+    ]
   ],
   "InertiaRotateRate": 1.0,
-  "TurretYawRange": [-95, 95]
+  "TurretYawRange": [
+    -95,
+    95
+  ]
 }

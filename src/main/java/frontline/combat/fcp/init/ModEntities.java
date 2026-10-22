@@ -7,7 +7,6 @@ import frontline.combat.fcp.entity.projectile.Malyutka.MalyutkaEntity;
 import frontline.combat.fcp.entity.projectile.Sidewinder.SidewinderEntity;
 import frontline.combat.fcp.entity.vehicle.Aavp.AAVPEntity;
 import frontline.combat.fcp.entity.vehicle.Abrams.M1a1Entity;
-import frontline.combat.fcp.entity.vehicle.Abrams.M1a2Entity;
 import frontline.combat.fcp.entity.vehicle.Bmp.Bmp1.BMP1AMEntity;
 import frontline.combat.fcp.entity.vehicle.Bmp.Bmp1.BMP1Entity;
 import frontline.combat.fcp.entity.vehicle.Bmp.Bmp1.BMP1UEntity;
@@ -356,6 +355,17 @@ public class ModEntities {
             EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<HumveeUnarmedEntity>> HMMWV_UNARMORED_UNARMED = register("hmmwv_unarmored_unarmed",
             EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    // Caiman MRAP: shares the Humvee attachment entity (roof rack and gun shield toggles).
+    public static final RegistryObject<EntityType<HumveeUnarmedEntity>> CAIMAN = register("caiman",
+            EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2.5f));
+    public static final RegistryObject<EntityType<HumveeUnarmedEntity>> CAIMAN_UNARMED = register("caiman_unarmed",
+            EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2.5f));
+    public static final RegistryObject<EntityType<HumveeUnarmedEntity>> CAIMAN_POLICE = register("caiman_police",
+            EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2.5f));
+    public static final RegistryObject<EntityType<HumveeUnarmedEntity>> CAIMAN_UPARMORED = register("caiman_uparmored",
+            EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2.5f));
+    public static final RegistryObject<EntityType<HumveeUnarmedEntity>> CAIMAN_UPARMORED_UNARMED = register("caiman_uparmored_unarmed",
+            EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2.5f));
     public static final RegistryObject<EntityType<BTR3EEntity>> BTR3E = register("btr3e",
             EntityType.Builder.of(BTR3EEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<BTR4MV1Entity>> BTR4MV1 = register("btr4mv1",
@@ -378,8 +388,17 @@ public class ModEntities {
             EntityType.Builder.of(FMTVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<M1a1Entity>> M1A1 = register("m1a1",
             EntityType.Builder.of(M1a1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
-    public static final RegistryObject<EntityType<M1a2Entity>> M1A2 = register("m1a2",
-            EntityType.Builder.of(M1a2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    // Abrams family: one entity class; the registry name picks geo, skins and attachments.
+    public static final RegistryObject<EntityType<M1a1Entity>> M1A1_AIM = register("m1a1_aim",
+            EntityType.Builder.of(M1a1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<M1a1Entity>> M1A1_UKR = register("m1a1_ukr",
+            EntityType.Builder.of(M1a1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<M1a1Entity>> M1A2 = register("m1a2",
+            EntityType.Builder.of(M1a1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<M1a1Entity>> M1A2_TUSK1 = register("m1a2_tusk1",
+            EntityType.Builder.of(M1a1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<M1a1Entity>> M1A2_TUSK2 = register("m1a2_tusk2",
+            EntityType.Builder.of(M1a1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
 
     public static final RegistryObject<EntityType<Type10Entity>> TYPE10 = register("type10",
             EntityType.Builder.of(Type10Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));

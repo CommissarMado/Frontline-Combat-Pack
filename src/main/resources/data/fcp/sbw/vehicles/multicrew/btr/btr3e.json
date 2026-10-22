@@ -3,18 +3,164 @@
   "MaxHealth": 250,
   "MaxEnergy": 5500000,
   "OBB": [
-    {"Size": [1.57, 1.136, 4.25], "Position": [0.0, 1.136, 0.061], "Part": "Collision"},
-    {"Size": [0.2, 0.62, 0.62], "Position": [1.33, 0.625, 2.46], "Part": "WheelLeft"},
-    {"Size": [0.2, 0.62, 0.62], "Position": [1.33, 0.625, 1.02], "Part": "WheelLeft"},
-    {"Size": [0.2, 0.62, 0.62], "Position": [1.33, 0.625, -0.92], "Part": "WheelLeft"},
-    {"Size": [0.2, 0.62, 0.62], "Position": [1.33, 0.625, -2.36], "Part": "WheelLeft"},
-    {"Size": [0.2, 0.62, 0.62], "Position": [-1.33, 0.625, 2.46], "Part": "WheelRight"},
-    {"Size": [0.2, 0.62, 0.62], "Position": [-1.33, 0.625, 1.02], "Part": "WheelRight"},
-    {"Size": [0.2, 0.62, 0.62], "Position": [-1.33, 0.625, -0.92], "Part": "WheelRight"},
-    {"Size": [0.2, 0.62, 0.62], "Position": [-1.33, 0.625, -2.36], "Part": "WheelRight"},
-    {"Size": [1.43, 0.72, 4.0], "Position": [0, 1.4, 0.25], "Part": "Body"},
-    {"Size": [1.55, 0.5, 0.65], "Position": [0, 1.75, -2], "Part": "MainEngine"},
-    {"Size": [0.75, 0.45, 0.75], "Position": [0, 0.45, 0], "Part": "Turret", "Transform": "Turret", "Rotation": "Turret"}
+    {
+      "Size": [
+        1.57,
+        1.136,
+        4.25
+      ],
+      "Position": [
+        0.0,
+        1.136,
+        0.061
+      ],
+      "Part": "Collision"
+    },
+    {
+      "Size": [
+        0.2,
+        0.62,
+        0.62
+      ],
+      "Position": [
+        1.33,
+        0.625,
+        2.46
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.2,
+        0.62,
+        0.62
+      ],
+      "Position": [
+        1.33,
+        0.625,
+        1.02
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.2,
+        0.62,
+        0.62
+      ],
+      "Position": [
+        1.33,
+        0.625,
+        -0.92
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.2,
+        0.62,
+        0.62
+      ],
+      "Position": [
+        1.33,
+        0.625,
+        -2.36
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.2,
+        0.62,
+        0.62
+      ],
+      "Position": [
+        -1.33,
+        0.625,
+        2.46
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.2,
+        0.62,
+        0.62
+      ],
+      "Position": [
+        -1.33,
+        0.625,
+        1.02
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.2,
+        0.62,
+        0.62
+      ],
+      "Position": [
+        -1.33,
+        0.625,
+        -0.92
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.2,
+        0.62,
+        0.62
+      ],
+      "Position": [
+        -1.33,
+        0.625,
+        -2.36
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        1.43,
+        0.72,
+        4.0
+      ],
+      "Position": [
+        0,
+        1.4,
+        0.25
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        1.55,
+        0.5,
+        0.65
+      ],
+      "Position": [
+        0,
+        1.75,
+        -2
+      ],
+      "Part": "MainEngine"
+    },
+    {
+      "Size": [
+        0.75,
+        0.45,
+        0.75
+      ],
+      "Position": [
+        0,
+        0.45,
+        0
+      ],
+      "Part": "Turret",
+      "Transform": "Turret",
+      "Rotation": "Turret"
+    }
   ],
   "Seats": [
     {
@@ -23,10 +169,18 @@
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [0.523556, 2.48535, 2.220112]
+        "Position": [
+          0.523556,
+          2.48535,
+          2.220112
+        ]
       },
       "Transform": "Vehicle",
-      "Position": [0, 0, 0],
+      "Position": [
+        0,
+        0,
+        0
+      ],
       "MinYaw": -65,
       "MaxYaw": 65,
       "MinPitch": -15,
@@ -38,7 +192,11 @@
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
-        "Position": [-0.038139, 0.39992, 0.958322],
+        "Position": [
+          -0.038139,
+          0.39992,
+          0.958322
+        ],
         "Direction": "Barrel"
       },
       "CanRotateHead": false,
@@ -48,7 +206,11 @@
         "Coax"
       ],
       "Transform": "Turret",
-      "Position": [0, 0, 0],
+      "Position": [
+        0,
+        0,
+        0
+      ],
       "MinPitch": -15,
       "MaxPitch": 32.5
     },
@@ -61,7 +223,11 @@
       },
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [0, 1, 0]
+      "Position": [
+        0,
+        1,
+        0
+      ]
     },
     {
       "HidePassenger": true,
@@ -72,7 +238,11 @@
       },
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [0, 1, 0]
+      "Position": [
+        0,
+        1,
+        0
+      ]
     },
     {
       "HidePassenger": true,
@@ -83,7 +253,11 @@
       },
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [0, 1, 0]
+      "Position": [
+        0,
+        1,
+        0
+      ]
     },
     {
       "HidePassenger": true,
@@ -94,7 +268,11 @@
       },
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [0, 1, 0]
+      "Position": [
+        0,
+        1,
+        0
+      ]
     },
     {
       "HidePassenger": true,
@@ -105,7 +283,11 @@
       },
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [0, 1, 0]
+      "Position": [
+        0,
+        1,
+        0
+      ]
     },
     {
       "HidePassenger": true,
@@ -116,7 +298,11 @@
       },
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [0, 1, 0]
+      "Position": [
+        0,
+        1,
+        0
+      ]
     },
     {
       "HidePassenger": true,
@@ -127,7 +313,11 @@
       },
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [0, 1, 0]
+      "Position": [
+        0,
+        1,
+        0
+      ]
     },
     {
       "HidePassenger": true,
@@ -138,7 +328,11 @@
       },
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [0, 1, 0]
+      "Position": [
+        0,
+        1,
+        0
+      ]
     }
   ],
   "Weapons": {
@@ -158,10 +352,24 @@
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
-          [-0.75, 0.15, 0.8],
-          [-0.75, -0.075, 0.815]
+          [
+            -0.75,
+            0.15,
+            0.8
+          ],
+          [
+            -0.75,
+            -0.075,
+            0.815
+          ]
         ],
-        "Directions": [[0, 0, 1]]
+        "Directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
       },
       "Crosshair": "@VehicleCommonMissile",
       "CrosshairColor": "0x00FF66",
@@ -228,7 +436,13 @@
       "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/cannon_30mm_ap.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[-0.024512, 0.0, 2.65]],
+        "Positions": [
+          [
+            -0.024512,
+            0.0,
+            2.65
+          ]
+        ],
         "Directions": [
           "Barrel"
         ]
@@ -271,7 +485,13 @@
       "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[0.1275, 0.0, 0.8]],
+        "Positions": [
+          [
+            0.1275,
+            0.0,
+            0.8
+          ]
+        ],
         "Directions": [
           "Barrel"
         ]
@@ -292,11 +512,29 @@
     "Decrement": 0.018,
     "SteeringSpeed": 0.1
   },
-  "TurretPos": [0.00316, 2.48023, 1.10265],
-  "TurretTurnSpeed": [2.5, 2.3],
-  "TurretPitchRange": [-10, 30],
-  "BarrelPos": [-0.08625, 0.28046, -0.00777],
-  "ThirdPersonCameraPos": [0, 3, 5],
+  "TurretPos": [
+    0.00316,
+    2.48023,
+    1.10265
+  ],
+  "TurretTurnSpeed": [
+    2.5,
+    2.3
+  ],
+  "TurretPitchRange": [
+    -10,
+    30
+  ],
+  "BarrelPos": [
+    -0.08625,
+    0.28046,
+    -0.00777
+  ],
+  "ThirdPersonCameraPos": [
+    0,
+    3,
+    5
+  ],
   "TurretControllerIndex": 1,
   "HasDecoy": true,
   "UpStep": 1.5,
@@ -343,46 +581,186 @@
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
-      [0, 0, true],
-      [0, 0, true],
-      [0.15, 0.09, false]
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0.15,
+        0.09,
+        false
+      ]
     ]
   },
   "EngineSound": "fcp:lav25_engine",
   "HudType": "@Land",
   "TerrainCompat": [
-    [1.13, 0, 3.08],
-    [1.13, 0, 1.64],
-    [1.13, 0, -0.3],
-    [1.13, 0, -1.84],
-    [1.13, 0, 1.84],
-    [1.13, 0, 0.4],
-    [1.13, 0, -1.54],
-    [1.13, 0, -2.98],
-    [1.53, 0, 3.08],
-    [1.53, 0, 1.64],
-    [1.53, 0, -0.3],
-    [1.53, 0, -1.84],
-    [1.53, 0, 1.84],
-    [1.53, 0, 0.4],
-    [1.53, 0, -1.54],
-    [1.53, 0, -2.98],
-    [-1.13, 0, 3.08],
-    [-1.13, 0, 1.64],
-    [-1.13, 0, -0.3],
-    [-1.13, 0, -1.84],
-    [-1.13, 0, 1.84],
-    [-1.13, 0, 0.4],
-    [-1.13, 0, -1.54],
-    [-1.13, 0, -2.98],
-    [-1.53, 0, 3.08],
-    [-1.53, 0, 1.64],
-    [-1.53, 0, -0.3],
-    [-1.53, 0, -1.84],
-    [-1.53, 0, 1.84],
-    [-1.53, 0, 0.4],
-    [-1.53, 0, -1.54],
-    [-1.53, 0, -2.98]
+    [
+      1.13,
+      0,
+      3.08
+    ],
+    [
+      1.13,
+      0,
+      1.64
+    ],
+    [
+      1.13,
+      0,
+      -0.3
+    ],
+    [
+      1.13,
+      0,
+      -1.84
+    ],
+    [
+      1.13,
+      0,
+      1.84
+    ],
+    [
+      1.13,
+      0,
+      0.4
+    ],
+    [
+      1.13,
+      0,
+      -1.54
+    ],
+    [
+      1.13,
+      0,
+      -2.98
+    ],
+    [
+      1.53,
+      0,
+      3.08
+    ],
+    [
+      1.53,
+      0,
+      1.64
+    ],
+    [
+      1.53,
+      0,
+      -0.3
+    ],
+    [
+      1.53,
+      0,
+      -1.84
+    ],
+    [
+      1.53,
+      0,
+      1.84
+    ],
+    [
+      1.53,
+      0,
+      0.4
+    ],
+    [
+      1.53,
+      0,
+      -1.54
+    ],
+    [
+      1.53,
+      0,
+      -2.98
+    ],
+    [
+      -1.13,
+      0,
+      3.08
+    ],
+    [
+      -1.13,
+      0,
+      1.64
+    ],
+    [
+      -1.13,
+      0,
+      -0.3
+    ],
+    [
+      -1.13,
+      0,
+      -1.84
+    ],
+    [
+      -1.13,
+      0,
+      1.84
+    ],
+    [
+      -1.13,
+      0,
+      0.4
+    ],
+    [
+      -1.13,
+      0,
+      -1.54
+    ],
+    [
+      -1.13,
+      0,
+      -2.98
+    ],
+    [
+      -1.53,
+      0,
+      3.08
+    ],
+    [
+      -1.53,
+      0,
+      1.64
+    ],
+    [
+      -1.53,
+      0,
+      -0.3
+    ],
+    [
+      -1.53,
+      0,
+      -1.84
+    ],
+    [
+      -1.53,
+      0,
+      1.84
+    ],
+    [
+      -1.53,
+      0,
+      0.4
+    ],
+    [
+      -1.53,
+      0,
+      -1.54
+    ],
+    [
+      -1.53,
+      0,
+      -2.98
+    ]
   ],
   "InertiaRotateRate": 1.0
 }

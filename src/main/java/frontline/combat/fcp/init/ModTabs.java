@@ -70,6 +70,11 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.RG_33.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV_CROW.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV_TOW.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.CAIMAN_UNARMED.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.CAIMAN.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.CAIMAN_UPARMORED_UNARMED.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.CAIMAN_UPARMORED.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.CAIMAN_POLICE.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.M939.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.FMTV.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.M109.get()));
@@ -77,7 +82,11 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.KOZAK2M1.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.M1A1.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.M1A1_AIM.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.M1A1_UKR.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.M1A2.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.M1A2_TUSK1.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.M1A2_TUSK2.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TYPE10.get()));
 

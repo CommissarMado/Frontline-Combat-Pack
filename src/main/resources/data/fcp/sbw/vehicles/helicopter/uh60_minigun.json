@@ -3,11 +3,71 @@
   "MaxHealth": 300,
   "MaxEnergy": 8000000,
   "OBB": [
-    {"Size": [1.5625, 1.0625, 4.1875], "Position": [0.0, 1.875, -0.25], "Part": "Body"},
-    {"Size": [0.625, 0.75, 3.1875], "Position": [0.0, 1.875, -7.625], "Part": "Body"},
-    {"Size": [1.25, 0.625, 0.6875], "Position": [0.0, 1.5625, 4.625], "Part": "Body"},
-    {"Size": [1.125, 0.375, 2.875], "Position": [0.0, 3.3125, -0.5], "Part": "MainEngine"},
-    {"Size": [0.4375, 1.125, 1.5625], "Position": [0.0, 3.6875, -11.8125], "Part": "SubEngine"}
+    {
+      "Size": [
+        1.5625,
+        1.0625,
+        4.1875
+      ],
+      "Position": [
+        0.0,
+        1.875,
+        -0.25
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        0.625,
+        0.75,
+        3.1875
+      ],
+      "Position": [
+        0.0,
+        1.875,
+        -7.625
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        1.25,
+        0.625,
+        0.6875
+      ],
+      "Position": [
+        0.0,
+        1.5625,
+        4.625
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        1.125,
+        0.375,
+        2.875
+      ],
+      "Position": [
+        0.0,
+        3.3125,
+        -0.5
+      ],
+      "Part": "MainEngine"
+    },
+    {
+      "Size": [
+        0.4375,
+        1.125,
+        1.5625
+      ],
+      "Position": [
+        0.0,
+        3.6875,
+        -11.8125
+      ],
+      "Part": "SubEngine"
+    }
   ],
   "PassengerRenderScale": 0.85,
   "Seats": [
@@ -15,25 +75,49 @@
       "BanHand": true,
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-0.75, 1.15, 3.1],
-      "Sensitivity": [0, 0, 0],
+      "Position": [
+        -0.75,
+        1.15,
+        3.1
+      ],
+      "Sensitivity": [
+        0,
+        0,
+        0
+      ],
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [-0.75, 2.5, 3.5],
+        "Position": [
+          -0.75,
+          2.5,
+          3.5
+        ],
         "UseAircraftCamera": true,
-        "AircraftCameraPos": [-3.5, 3.5, -12]
+        "AircraftCameraPos": [
+          -3.5,
+          3.5,
+          -12
+        ]
       },
       "CanRotateHead": false
     },
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [0.75, 1.15, 3.1],
+      "Position": [
+        0.75,
+        1.15,
+        3.1
+      ],
       "CameraPos": {
         "Transform": "Vehicle",
         "UseFixedCameraPos": true,
-        "Position": [0.75, 2.5, 3.5]
+        "Position": [
+          0.75,
+          2.5,
+          3.5
+        ]
       },
       "BanHand": true
     },
@@ -41,11 +125,19 @@
       "Pose": "MachineGunStand",
       "IsEnclosed": false,
       "Transform": "Vehicle",
-      "Position": [-1.2, 1.15, 1.9],
+      "Position": [
+        -1.2,
+        1.15,
+        1.9
+      ],
       "CameraPos": {
         "Transform": "LeftTurret",
         "UseFixedCameraPos": true,
-        "Position": [0, 0.5, 0.5],
+        "Position": [
+          0,
+          0.5,
+          0.5
+        ],
         "Direction": "Passenger"
       },
       "Weapons": [
@@ -63,11 +155,19 @@
       "Pose": "MachineGunStand",
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [1.2, 1.15, 1.9],
+      "Position": [
+        1.2,
+        1.15,
+        1.9
+      ],
       "CameraPos": {
         "Transform": "RightTurret",
         "UseFixedCameraPos": true,
-        "Position": [0, 0.5, 0.5],
+        "Position": [
+          0,
+          0.5,
+          0.5
+        ],
         "Direction": "Passenger"
       },
       "Weapons": [
@@ -84,7 +184,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [0.0, 0.9, 1.9],
+      "Position": [
+        0.0,
+        0.9,
+        1.9
+      ],
       "CameraPos": {
         "Transform": "Vehicle"
       },
@@ -98,7 +202,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [0.9, 0.9, 0.3],
+      "Position": [
+        0.9,
+        0.9,
+        0.3
+      ],
       "CameraPos": {
         "Transform": "Vehicle"
       },
@@ -112,7 +220,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-0.9, 0.9, 0.3],
+      "Position": [
+        -0.9,
+        0.9,
+        0.3
+      ],
       "CameraPos": {
         "Transform": "Vehicle"
       },
@@ -126,7 +238,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [0.9, 0.9, -1.45],
+      "Position": [
+        0.9,
+        0.9,
+        -1.45
+      ],
       "CameraPos": {
         "Transform": "Vehicle"
       },
@@ -140,7 +256,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-0.9, 0.9, -1.45],
+      "Position": [
+        -0.9,
+        0.9,
+        -1.45
+      ],
       "CameraPos": {
         "Transform": "Vehicle"
       },
@@ -154,7 +274,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [0.3, 0.9, 0.3],
+      "Position": [
+        0.3,
+        0.9,
+        0.3
+      ],
       "CameraPos": {
         "Transform": "Vehicle"
       },
@@ -168,7 +292,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-0.3, 0.9, 0.3],
+      "Position": [
+        -0.3,
+        0.9,
+        0.3
+      ],
       "CameraPos": {
         "Transform": "Vehicle"
       },
@@ -182,7 +310,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [0.3, 0.9, -1.45],
+      "Position": [
+        0.3,
+        0.9,
+        -1.45
+      ],
       "CameraPos": {
         "Transform": "Vehicle"
       },
@@ -196,7 +328,11 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-0.3, 0.9, -1.45],
+      "Position": [
+        -0.3,
+        0.9,
+        -1.45
+      ],
       "CameraPos": {
         "Transform": "Vehicle"
       },
@@ -229,11 +365,21 @@
       "AmmoType": "superbwarfare:rifle_ammo",
       "ShootPos": {
         "Transform": "RightBarrel",
-        "Positions": [[0.00256, 0.18433, 0.94745]],
+        "Positions": [
+          [
+            0.00256,
+            0.18433,
+            0.94745
+          ]
+        ],
         "Directions": [
           "Passenger"
         ],
-        "DefaultBarrelDirection": [0, 0, 1]
+        "DefaultBarrelDirection": [
+          0,
+          0,
+          1
+        ]
       },
       "Crosshair": "@Empty",
       "Name": "weapon.fcp.m134_minigun",
@@ -268,11 +414,21 @@
       "AmmoType": "superbwarfare:rifle_ammo",
       "ShootPos": {
         "Transform": "LeftBarrel",
-        "Positions": [[-0.00256, 0.18433, 0.94745]],
+        "Positions": [
+          [
+            -0.00256,
+            0.18433,
+            0.94745
+          ]
+        ],
         "Directions": [
           "Passenger"
         ],
-        "DefaultBarrelDirection": [0, 0, 1]
+        "DefaultBarrelDirection": [
+          0,
+          0,
+          1
+        ]
       },
       "Crosshair": "@Empty",
       "Name": "weapon.fcp.m134_minigun",
@@ -301,7 +457,11 @@
     "EngineSoundVolume": 1.5
   },
   "EngineSound": "superbwarfare:ah_6_engine",
-  "ThirdPersonCameraPos": [3, 4, 11],
+  "ThirdPersonCameraPos": [
+    3,
+    4,
+    11
+  ],
   "UpStep": 1.1,
   "RotateOffsetHeight": 1.4,
   "Mass": 1.0,
@@ -327,11 +487,35 @@
   "Type": "Helicopter",
   "HudType": "@Helicopter",
   "TerrainCompat": [
-    [-1.4, 0, 3],
-    [1.4, 0, 3],
-    [-1.4, 0, 2.5],
-    [1.4, 0, 2.5],
-    [-1.4, 0, 2],
-    [-1.4, 0, 2]
+    [
+      -1.4,
+      0,
+      3
+    ],
+    [
+      1.4,
+      0,
+      3
+    ],
+    [
+      -1.4,
+      0,
+      2.5
+    ],
+    [
+      1.4,
+      0,
+      2.5
+    ],
+    [
+      -1.4,
+      0,
+      2
+    ],
+    [
+      -1.4,
+      0,
+      2
+    ]
   ]
 }

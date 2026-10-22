@@ -4,7 +4,6 @@ import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.overlay.FcpPilotOverlay;
 import frontline.combat.fcp.client.renderer.Aavp.AAVPRenderer;
 import frontline.combat.fcp.client.renderer.Abrams.M1a1Renderer;
-import frontline.combat.fcp.client.renderer.Abrams.M1a2Renderer;
 import frontline.combat.fcp.client.renderer.Bmp.Bmp1.BMP1AMRenderer;
 import frontline.combat.fcp.client.renderer.Bmp.Bmp1.BMP1Renderer;
 import frontline.combat.fcp.client.renderer.Bmp.Bmp1.BMP1URenderer;
@@ -40,6 +39,7 @@ import frontline.combat.fcp.client.renderer.Huey.VenomDoorGunsRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.CombineRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.CultivatorRenderer;
 import frontline.combat.fcp.client.renderer.Humvee.HumveeUnarmedRenderer;
+import frontline.combat.fcp.client.renderer.Caiman.CaimanRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.JohnDeereRenderer;
 import frontline.combat.fcp.client.renderer.JohnDeere.SeederRenderer;
 import frontline.combat.fcp.client.renderer.Kamaz.KamazRenderer;
@@ -238,6 +238,11 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_TOW.get(), HumveeUnarmedRenderer::new);
         event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_TOW_TURRET.get(), HumveeUnarmedRenderer::new);
         event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_UNARMED.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.CAIMAN.get(), CaimanRenderer::new);
+        event.registerEntityRenderer(ModEntities.CAIMAN_UNARMED.get(), CaimanRenderer::new);
+        event.registerEntityRenderer(ModEntities.CAIMAN_POLICE.get(), CaimanRenderer::new);
+        event.registerEntityRenderer(ModEntities.CAIMAN_UPARMORED.get(), CaimanRenderer::new);
+        event.registerEntityRenderer(ModEntities.CAIMAN_UPARMORED_UNARMED.get(), CaimanRenderer::new);
 
         event.registerEntityRenderer(ModEntities.BTR82.get(), BTR82Renderer::new);
         event.registerEntityRenderer(ModEntities.BTR82AT.get(), BTR82ATRenderer::new);
@@ -266,7 +271,11 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.COMBINE.get(), CombineRenderer::new);
 
         event.registerEntityRenderer(ModEntities.M1A1.get(), M1a1Renderer::new);
-        event.registerEntityRenderer(ModEntities.M1A2.get(), M1a2Renderer::new);
+        event.registerEntityRenderer(ModEntities.M1A1_AIM.get(), M1a1Renderer::new);
+        event.registerEntityRenderer(ModEntities.M1A1_UKR.get(), M1a1Renderer::new);
+        event.registerEntityRenderer(ModEntities.M1A2.get(), M1a1Renderer::new);
+        event.registerEntityRenderer(ModEntities.M1A2_TUSK1.get(), M1a1Renderer::new);
+        event.registerEntityRenderer(ModEntities.M1A2_TUSK2.get(), M1a1Renderer::new);
 
         event.registerEntityRenderer(ModEntities.TYPE10.get(), Type10Renderer::new);
 

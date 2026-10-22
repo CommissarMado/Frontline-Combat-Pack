@@ -1,9 +1,12 @@
 package frontline.combat.fcp.client.renderer.Abrams;
 
 import com.atsuishio.superbwarfare.client.renderer.entity.VehicleRenderer;
+import com.mojang.blaze3d.vertex.PoseStack;
 import frontline.combat.fcp.client.model.Abrams.M1a1Model;
 import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
+import frontline.combat.fcp.client.renderer.Humvee.HumveeUnarmedRenderer;
 import frontline.combat.fcp.entity.vehicle.Abrams.M1a1Entity;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 
@@ -14,5 +17,13 @@ public class M1a1Renderer extends VehicleRenderer<M1a1Entity> {
     @Override
     public ResourceLocation getTextureLocation(M1a1Entity entity) {
         return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
+    }
+
+    /** Also draws the attachment interaction boxes (F3+B), as on the Humvees. */
+    @Override
+    public void render(M1a1Entity entity, float entityYaw, float partialTick,
+                       PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
+        super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
+        HumveeUnarmedRenderer.renderAttachmentHitboxes(entity, partialTick, poseStack, bufferSource);
     }
 }

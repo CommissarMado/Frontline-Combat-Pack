@@ -39,12 +39,19 @@ public final class HumveeAttachments {
          * and it shows only at index 0 (index 1 = removed).
          */
         public final boolean turret;
+        /**
+         * True for a single toggle bone on the hull rather than a folder under "Attachments"
+         * (e.g. the Caiman's roof rack "toggle"). Its box is vehicle-local; like a turret toggle
+         * it shows only at index 0.
+         */
+        public final boolean single;
 
-        Category(String name, double[] aabb, int variantCount, boolean turret) {
+        Category(String name, double[] aabb, int variantCount, boolean turret, boolean single) {
             this.name = name;
             this.aabb = aabb;
             this.variantCount = variantCount;
             this.turret = turret;
+            this.single = single;
         }
 
         /** The 8 corners of the local AABB. */
@@ -78,7 +85,8 @@ public final class HumveeAttachments {
                     double[] box = new double[6];
                     for (int i = 0; i < 6; i++) box[i] = ja.get(i).getAsDouble();
                     boolean turret = c.has("turret") && c.get("turret").getAsBoolean();
-                    cats.add(new Category(ce.getKey(), box, c.get("variants").getAsInt(), turret));
+                    boolean single = c.has("single") && c.get("single").getAsBoolean();
+                    cats.add(new Category(ce.getKey(), box, c.get("variants").getAsInt(), turret, single));
                 }
                 DATA.put(veh.getKey(), cats);
             }
@@ -113,10 +121,11 @@ public final class HumveeAttachments {
                 }
             }
         });
-        // Turret-mounted single-bone toggles (e.g. "fd"), which live outside "Attachments"
-        // so they rotate with the turret. Shown at index 0, hidden otherwise.
+        // Single-bone toggles outside "Attachments": turret-mounted ones (e.g. "fd"), which
+        // rotate with the turret, and hull ones (e.g. the Caiman's "toggle"). Shown at index 0,
+        // hidden otherwise.
         for (Category c : categories(vehicle.humveeName())) {
-            if (c.turret) {
+            if (c.turret || c.single) {
                 boolean hidden = vehicle.getAttachmentIndex(c.name) != 0;
                 model.getBone(c.name).ifPresent(bone -> setHiddenDeep(bone, hidden));
             }

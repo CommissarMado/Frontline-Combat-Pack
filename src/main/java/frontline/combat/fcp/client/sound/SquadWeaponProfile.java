@@ -28,12 +28,15 @@ public final class SquadWeaponProfile {
     public final List<String> vehicles = new ArrayList<>();
     public final Map<String, Weapon> weapons = new HashMap<>();
     public final Turret turret;
+    /** Commander weapon station traverse (same format as the turret); null when there is none. */
+    public final Turret station;
 
     SquadWeaponProfile(JsonObject json) {
         for (JsonElement e : GsonHelper.getAsJsonArray(json, "vehicles")) vehicles.add(e.getAsString());
         JsonObject w = GsonHelper.getAsJsonObject(json, "weapons", new JsonObject());
         for (String key : w.keySet()) weapons.put(key, new Weapon(w.getAsJsonObject(key)));
         turret = json.has("turret") ? new Turret(json.getAsJsonObject("turret")) : null;
+        station = json.has("station") ? new Turret(json.getAsJsonObject("station")) : null;
     }
 
     public static final class Weapon {

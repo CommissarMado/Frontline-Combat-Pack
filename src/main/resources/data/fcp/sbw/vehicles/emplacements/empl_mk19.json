@@ -8,11 +8,19 @@
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Transform": "Barrel",
-        "Position": [0.0, 0.4, 0.0],
+        "Position": [
+          0.0,
+          0.4,
+          0.0
+        ],
         "Direction": "Barrel"
       },
       "Transform": "Vehicle",
-      "Position": [0, -0.6, -1],
+      "Position": [
+        0,
+        -0.6,
+        -1
+      ],
       "MinPitch": -5,
       "MaxPitch": 40,
       "MinYaw": -75,
@@ -61,19 +69,43 @@
       "Icon": "fcp:textures/screens/vehicle_weapon/40mm.png",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[0.0, 0.03, 0.99]],
+        "Positions": [
+          [
+            0.0,
+            0.03,
+            0.99
+          ]
+        ],
         "Directions": [
           "Barrel"
         ]
       }
     }
   },
-  "TurretPos": [0.01287, 0.57082, 0.06344],
-  "BarrelPos": [0, 0, 0],
-  "TurretTurnSpeed": [15, 15],
-  "TurretPitchRange": [-40, 45],
+  "TurretPos": [
+    0.01287,
+    0.57082,
+    0.06344
+  ],
+  "BarrelPos": [
+    0,
+    0,
+    0
+  ],
+  "TurretTurnSpeed": [
+    15,
+    15
+  ],
+  "TurretPitchRange": [
+    -40,
+    45
+  ],
   "TurretControllerIndex": 0,
-  "ThirdPersonCameraPos": [0, 1, 3],
+  "ThirdPersonCameraPos": [
+    0,
+    1,
+    3
+  ],
   "HasDecoy": false,
   "UpStep": 2.2,
   "RotateOffsetHeight": 2.2,
@@ -89,9 +121,21 @@
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
-      [0, 0, true],
-      [0, 0, true],
-      [0.15, 0.09, false]
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0.15,
+        0.09,
+        false
+      ]
     ]
   },
   "HasLowHealthWarning": false,
@@ -99,5 +143,8 @@
   "HudType": "@Empty",
   "InertiaRotateRate": 1,
   "EngineType": "Fixed",
-  "TurretYawRange": [-75, 75]
+  "TurretYawRange": [
+    -75,
+    75
+  ]
 }

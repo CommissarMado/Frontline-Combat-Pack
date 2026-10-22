@@ -1,0 +1,22 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Sand",
+      "Texture": "fcp:textures/entity/caiman/caiman_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "green",
+      "Name": "Green",
+      "Texture": "fcp:textures/entity/caiman/caiman_2.png",
+      "Priority": 2
+    },
+    {
+      "Id": "grey",
+      "Name": "Grey",
+      "Texture": "fcp:textures/entity/caiman/caiman_3.png",
+      "Priority": 3
+    }
+  ]
+}

@@ -24,6 +24,12 @@ public class HumveeUnarmedRenderer extends VehicleRenderer<HumveeUnarmedEntity> 
         super(renderManager, new HumveeUnarmedModel());
     }
 
+    /** For other vehicles on the shared attachment entity (e.g. the Caiman) with their own model. */
+    protected HumveeUnarmedRenderer(EntityRendererProvider.Context renderManager,
+                                    com.atsuishio.superbwarfare.client.model.entity.VehicleModel<HumveeUnarmedEntity> model) {
+        super(renderManager, model);
+    }
+
     @Override
     public ResourceLocation getTextureLocation(HumveeUnarmedEntity entity) {
         return FcpVehicleTexture.resolve(entity, entity.getCurrentTexture());
@@ -41,8 +47,8 @@ public class HumveeUnarmedRenderer extends VehicleRenderer<HumveeUnarmedEntity> 
      * and off when reduced-debug-info is on). The pose is rebuilt to mirror SuperbWarfare's
      * getVehicleYOffsetTransform so the boxes line up with the interaction ray-cast.
      */
-    private void renderAttachmentHitboxes(HumveeUnarmedEntity entity, float partialTick,
-                                          PoseStack poseStack, MultiBufferSource bufferSource) {
+    public static <E extends com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity & frontline.combat.fcp.vehicle.humvee.HumveeVehicle>
+    void renderAttachmentHitboxes(E entity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource) {
         Minecraft mc = Minecraft.getInstance();
         if (!mc.getEntityRenderDispatcher().shouldRenderHitBoxes()) return;
         if (mc.options.reducedDebugInfo().get()) return;

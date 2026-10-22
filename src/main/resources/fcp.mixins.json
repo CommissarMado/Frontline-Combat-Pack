@@ -7,7 +7,8 @@
   "mixins": [
     "AmmoSupplierItemMixin",
     "VehicleBackblastMixin",
-    "SmallRocketChunkLoadMixin"
+    "SmallRocketChunkLoadMixin",
+    "VehicleReloadSoundStopMixin"
   ],
   "client": [
     "AmmoCountOverlayMixin",

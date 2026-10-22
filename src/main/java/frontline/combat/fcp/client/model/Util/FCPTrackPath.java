@@ -56,6 +56,18 @@ public final class FCPTrackPath {
         return new FCPTrackPath(keyframes, trackCount, length, reversed, rotationScale, rotationOffset);
     }
 
+    /**
+     * The same path for a model resized by {@code k} about 0 0 0 (Blockbench "resize"): link
+     * positions scale, link angles do not. Lets a resized variant share its hull's table.
+     */
+    public FCPTrackPath scaled(float k) {
+        float[][] frames = new float[keyframes.length][];
+        for (int i = 0; i < keyframes.length; i++) {
+            frames[i] = new float[]{keyframes[i][ROT_X], keyframes[i][MOVE_Y] * k, keyframes[i][MOVE_Z] * k};
+        }
+        return new FCPTrackPath(frames, trackCount, animationLength, reversed, rotationScale, rotationOffset);
+    }
+
     public float rotX(float t) {
         return rotationScale * sample(t, ROT_X) + rotationOffset;
     }

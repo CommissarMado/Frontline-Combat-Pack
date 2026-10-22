@@ -53,7 +53,13 @@ public final class GunnerSmoke {
             "fcp:stryker_dragoon",
             "fcp:stryker_tow",
             "fcp:typhoon_vdv",
-            "fcp:gaz_tigr_rws"
+            "fcp:gaz_tigr_rws",
+            "fcp:m1a1",
+            "fcp:m1a1_aim",
+            "fcp:m1a1_ukr",
+            "fcp:m1a2",
+            "fcp:m1a2_tusk1",
+            "fcp:m1a2_tusk2"
     );
 
     /** Ticks the gunner's smoke input stays "down" after each GunnerSmokePacket (sent every tick while held). */

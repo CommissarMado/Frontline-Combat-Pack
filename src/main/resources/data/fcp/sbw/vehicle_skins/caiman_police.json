@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Police",
+      "Texture": "fcp:textures/entity/caiman/caiman_police.png",
+      "Priority": 1
+    }
+  ]
+}

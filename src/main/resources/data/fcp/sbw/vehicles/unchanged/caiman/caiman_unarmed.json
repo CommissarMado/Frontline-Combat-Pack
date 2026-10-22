@@ -1,0 +1,413 @@
+{
+  "ID": "fcp:caiman_unarmed",
+  "MaxHealth": 175,
+  "PassengerRenderScale": 0.85,
+  "MaxEnergy": 5250000,
+  "OBB": [
+    {
+      "Size": [
+        1.27062,
+        0.80919,
+        2.60812
+      ],
+      "Position": [
+        0.0,
+        2.21356,
+        -0.73562
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        0.73563,
+        0.27419,
+        2.60812
+      ],
+      "Position": [
+        0.0,
+        1.14356,
+        -0.73562
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        1.07,
+        0.74231,
+        1.03656
+      ],
+      "Position": [
+        0.0,
+        1.61169,
+        2.90906
+      ],
+      "Part": "MainEngine"
+    },
+    {
+      "Size": [
+        0.2675,
+        0.63531,
+        0.63531
+      ],
+      "Position": [
+        1.00313,
+        0.63531,
+        2.59475
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.2675,
+        0.63531,
+        0.63531
+      ],
+      "Position": [
+        1.00313,
+        0.63531,
+        -0.92287
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.2675,
+        0.63531,
+        0.63531
+      ],
+      "Position": [
+        1.00313,
+        0.63531,
+        -2.354
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.2675,
+        0.63531,
+        0.63531
+      ],
+      "Position": [
+        -1.00312,
+        0.63531,
+        -0.92287
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.2675,
+        0.63531,
+        0.63531
+      ],
+      "Position": [
+        -1.00312,
+        0.63531,
+        2.59475
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.2675,
+        0.63531,
+        0.63531
+      ],
+      "Position": [
+        -1.00312,
+        0.63531,
+        -2.354
+      ],
+      "Part": "WheelRight"
+    }
+  ],
+  "Seats": [
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        0.575,
+        1.23,
+        0.8375
+      ],
+      "MinPitch": -60,
+      "MaxPitch": 60,
+      "MinYaw": -95,
+      "MaxYaw": 95,
+      "BanHand": true,
+      "CameraPos": {
+        "UseFixedCameraPos": true,
+        "Position": [
+          0.575,
+          2.65,
+          0.8375
+        ]
+      }
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        -0.575,
+        1.23,
+        0.8375
+      ],
+      "MinPitch": -60,
+      "MaxPitch": 60,
+      "MinYaw": -95,
+      "MaxYaw": 95,
+      "BanHand": true,
+      "CameraPos": {
+        "UseFixedCameraPos": true,
+        "Position": [
+          -0.575,
+          2.65,
+          0.8375
+        ]
+      }
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        0.5625,
+        1.23,
+        -0.456
+      ],
+      "Orientation": 90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        -0.5625,
+        1.23,
+        -0.456
+      ],
+      "Orientation": -90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        0.5625,
+        1.23,
+        -1.3125
+      ],
+      "Orientation": 90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        -0.5625,
+        1.23,
+        -1.3125
+      ],
+      "Orientation": -90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        0.5625,
+        1.23,
+        -2.05
+      ],
+      "Orientation": 90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        -0.5625,
+        1.23,
+        -2.05
+      ],
+      "Orientation": -90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        0.5625,
+        1.23,
+        -2.9
+      ],
+      "Orientation": 90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [
+        -0.5625,
+        1.23,
+        -2.9
+      ],
+      "Orientation": -90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    }
+  ],
+  "Weapons": {
+    "Nothing": {
+      "Name": "",
+      "Crosshair": "@Empty",
+      "RPM": 0,
+      "Magazine": 0,
+      "Damage": 0
+    }
+  },
+  "EngineType": "Wheel",
+  "EngineInfo": {
+    "Buoyancy": 0,
+    "EnergyCostRate": 96,
+    "WheelRotSpeed": 1.25,
+    "WheelDifferential": 0.5,
+    "MaxForwardSpeedRate": 1.1,
+    "MaxBackwardSpeedRate": 0.2,
+    "Increment": 0.025,
+    "Decrement": 0.02,
+    "SteeringSpeed": 0.1
+  },
+  "ThirdPersonCameraPos": [
+    0.0,
+    1.5,
+    4.0
+  ],
+  "HasDecoy": false,
+  "UpStep": 2.55,
+  "RotateOffsetHeight": 2.55,
+  "Mass": 14,
+  "DamageModifiers": [
+    "All * 0.5",
+    "minecraft:lava - -4",
+    "minecraft:lava * 4",
+    "minecraft:arrow * 0.2",
+    "minecraft:trident * 0.4",
+    "minecraft:mob_attack * 0.4",
+    "minecraft:mob_attack_no_aggro * 0.4",
+    "minecraft:mob_projectile * 0.4",
+    "minecraft:explosion * 1",
+    "minecraft:player_explosion * 1",
+    "superbwarfare:custom_explosion * 2.0",
+    "superbwarfare:projectile_explosion * 0.5",
+    "superbwarfare:mine * 0.75",
+    "superbwarfare:projectile_hit * 0.8",
+    "superbwarfare:grapeshot_hit * 0.2",
+    "superbwarfare:laser * 1.0",
+    "@#superbwarfare:aerial_bomb * 1.4",
+    "#superbwarfare:projectile * 0.16",
+    "#superbwarfare:projectile_absolute * 0.9",
+    "superbwarfare:vehicle_strike * 0.7",
+    "@superbwarfare:mortar_shell * 2.0",
+    "@superbwarfare:gun_grenade * 0.5",
+    "@superbwarfare:javelin_missile * 1.0",
+    "@superbwarfare:igla_9k38_missile * 1.0",
+    "@superbwarfare:wire_guide_missile * 1.0",
+    "All - 5"
+  ],
+  "VehicleContainerType": "Huge",
+  "DestroyInfo": {
+    "ExplosionDamage": 120,
+    "ExplosionRadius": 7
+  },
+  "VehicleIcon": "superbwarfare:textures/vehicle_icon/lav_150_icon.png",
+  "ContainerIcon": "fcp:textures/gui/vehicle/type/land_us.png",
+  "Type": "APC",
+  "CollisionLevel": {
+    "Level": 3,
+    "PowerLimits": [
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0.15,
+        0.09,
+        false
+      ]
+    ]
+  },
+  "EngineSound": "superbwarfare:lav_150_engine",
+  "HornSound": "superbwarfare:truck_horn",
+  "HudType": "@Empty",
+  "TerrainCompat": [
+    [
+      1.0,
+      0.0,
+      2.59
+    ],
+    [
+      -1.0,
+      0.0,
+      2.59
+    ],
+    [
+      1.0,
+      0.0,
+      -0.92
+    ],
+    [
+      -1.0,
+      0.0,
+      -0.92
+    ],
+    [
+      1.0,
+      0.0,
+      -2.35
+    ],
+    [
+      -1.0,
+      0.0,
+      -2.35
+    ]
+  ],
+  "InertiaRotateRate": 1
+}

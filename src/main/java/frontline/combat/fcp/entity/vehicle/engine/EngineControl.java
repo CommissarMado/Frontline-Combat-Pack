@@ -54,6 +54,8 @@ public final class EngineControl {
         put(m, 41, "fcp:stryker_mgs", "fcp:stryker_m2", "fcp:stryker_dragoon", "fcp:stryker_mk19", "fcp:stryker_tow", "fcp:stryker_mortar");
         // t72: t72_engine_start_int_01
         put(m, 49, "fcp:t72av", "fcp:msta");
+        // abrams: abrams_engine_int_start_01 (gas turbine spool-up)
+        put(m, 261, "fcp:m1a1", "fcp:m1a1_aim", "fcp:m1a1_ukr", "fcp:m1a2", "fcp:m1a2_tusk1", "fcp:m1a2_tusk2");
         // t90: t90_engine_start_int_01
         put(m, 33, "fcp:t14_armata");
         // technical: technical_engine_start_int_01
@@ -72,8 +74,9 @@ public final class EngineControl {
         put(m, 28, "fcp:gaz_tigr", "fcp:gaz_tigr_rws", "fcp:gaz_tigr_mg", "fcp:gaz_tigr_gl", "fcp:gaz_tigr_dual");
         // matv: matv_engine_int_start_01
         put(m, 39, "fcp:matv", "fcp:matv_tow", "fcp:matv_crow", "fcp:matv_9in1", "fcp:novator", "fcp:novator_unarmed", "fcp:kozak5", "fcp:kozak2m1", "fcp:kozak_ambulance");
-        // us_truck: us_truck_engine_start_int_01
-        put(m, 53, "fcp:m939", "fcp:fmtv", "fcp:fmtv_4x4");
+        // us_truck: us_truck_engine_start_int_01 (FMTV; also the RG-33 and Caimans, which need a heavier engine)
+        put(m, 53, "fcp:m939", "fcp:fmtv", "fcp:fmtv_4x4",
+                "fcp:rg_33", "fcp:caiman", "fcp:caiman_unarmed", "fcp:caiman_police", "fcp:caiman_uparmored", "fcp:caiman_uparmored_unarmed");
         // man_truck: us_truck_engine_start_int_01
         put(m, 53, "fcp:man_hx58", "fcp:man_hx58_mg3", "fcp:man_hx60");
         // gwagon: gwagon_engine_start_int_01
@@ -86,8 +89,6 @@ public final class EngineControl {
         put(m, 400, "fcp:huey", "fcp:huey_m60_door_guns", "fcp:huey_m60_gunship", "fcp:huey_m134_door_guns", "fcp:huey_m134_gunship");
         put(m, 400, "fcp:venom", "fcp:venom_gunship", "fcp:venom_door_guns", "fcp:viper");
         put(m, 400, "fcp:mi8", "fcp:mi17", "fcp:mi8_door_guns", "fcp:mi17_door_guns", "fcp:mi8_mtv", "fcp:mi8_amtsh", "fcp:ch53a", "fcp:ch53e", "fcp:mh53");
-        // pmv: pmv_engine_start_int_01 (RG-33)
-        put(m, 77, "fcp:rg_33");
         // cpv: cpv_engine_start_int (generic SUV)
         put(m, 50, "fcp:generic_suv");
         return Map.copyOf(m);
@@ -180,12 +181,16 @@ public final class EngineControl {
     }
 
     /** Helicopter idle: turns the rotor without lifting. (SBW spools to 0.12, which lifts some FCP helicopters.) */
-    public static final float HELICOPTER_IDLE_POWER = 0.08f;
+    public static final float HELICOPTER_IDLE_POWER = 0.05f;
     /**
-     * Per-tick power loss with the engine off: full power (1.0) to none in ~21.5 s, roughly the
-     * length of Squad's rotor stop sounds (16-28 s).
+     * Engine-off wind-down: the rotor loses whatever power it had at shutdown over ~21.5 s, roughly
+     * the length of Squad's rotor stop sounds (16-28 s). The time is shared by every helicopter and
+     * does not depend on the power, so a rotor at idle (landed) keeps turning as long as one shut
+     * down at full power - a fixed per-tick loss had idle rotors stop in about a second and a half.
      */
-    private static final float HELICOPTER_SPIN_DOWN = 1f / 430f;
+    private static final int HELICOPTER_SPIN_DOWN_TICKS = 430;
+    /** Per-tick power loss for the current wind-down, fixed from the power at shutdown. */
+    private static final Map<VehicleEntity, Float> SPIN_DOWN = new WeakHashMap<>();
 
     /**
      * Server: SBW turns the rotor from its power value, so power follows our engine state - it
@@ -202,8 +207,11 @@ public final class EngineControl {
         } else if (state == RUNNING) {
             if (vehicle.onGround() && power < HELICOPTER_IDLE_POWER) vehicle.setPower(HELICOPTER_IDLE_POWER);
         } else if (power != 0f) {
-            vehicle.setPower(power > 0 ? Math.max(0f, power - HELICOPTER_SPIN_DOWN) : Math.min(0f, power + HELICOPTER_SPIN_DOWN));
+            float step = SPIN_DOWN.computeIfAbsent(vehicle, v -> Math.abs(power) / HELICOPTER_SPIN_DOWN_TICKS);
+            vehicle.setPower(power > 0 ? Math.max(0f, power - step) : Math.min(0f, power + step));
+            return;
         }
+        SPIN_DOWN.remove(vehicle);
     }
 
     private static void setOff(VehicleEntity vehicle) {

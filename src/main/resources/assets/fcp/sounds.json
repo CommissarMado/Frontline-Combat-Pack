@@ -7730,5 +7730,90 @@
         "attenuation_distance": 32
       }
     ]
+  },
+  "squad.abrams.engine.abrams_engine_int_idle_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/abrams/engine/abrams_engine_int_idle_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.abrams.engine.abrams_engine_int_idle2_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/abrams/engine/abrams_engine_int_idle2_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.abrams.engine.abrams_engine_int_throttle_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/abrams/engine/abrams_engine_int_throttle_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.abrams.engine.abrams_engine_ext_idle_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/abrams/engine/abrams_engine_ext_idle_01",
+        "stream": false,
+        "attenuation_distance": 24
+      }
+    ]
+  },
+  "squad.abrams.engine.abrams_engine_ext_idle2_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/abrams/engine/abrams_engine_ext_idle2_01",
+        "stream": false,
+        "attenuation_distance": 24
+      }
+    ]
+  },
+  "squad.abrams.engine.abrams_engine_ext_throttle_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/abrams/engine/abrams_engine_ext_throttle_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.abrams.engine.abrams_engine_ext_start_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/abrams/engine/abrams_engine_ext_start_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.abrams.engine.abrams_engine_int_start_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/abrams/engine/abrams_engine_int_start_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.abrams.engine.abrams_engine_ext_stop_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/abrams/engine/abrams_engine_ext_stop_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.abrams.engine.abrams_engine_int_stop_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/abrams/engine/abrams_engine_int_stop_01",
+        "stream": false
+      }
+    ]
   }
 }

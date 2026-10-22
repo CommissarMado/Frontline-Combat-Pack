@@ -15,19 +15,177 @@
   "PassengerWeaponStationControllerIndex": 1,
   "PassengerRenderScale": 0.75,
   "OBB": [
-    {"Size": [1.552, 1.141, 3.762], "Position": [0.0, 1.141, 0.127], "Part": "Collision"},
-    {"Size": [0.192578, 0.537891, 0.53125], "Position": [1.1475, 0.6375, 2.14625], "Part": "WheelLeft"},
-    {"Size": [0.192578, 0.537891, 0.53125], "Position": [1.1475, 0.6375, 0.9775], "Part": "WheelLeft"},
-    {"Size": [0.192578, 0.537891, 0.53125], "Position": [1.1475, 0.6375, -1.72125], "Part": "WheelLeft"},
-    {"Size": [0.192578, 0.537891, 0.53125], "Position": [1.1475, 0.6375, -0.4675], "Part": "WheelLeft"},
-    {"Size": [0.192578, 0.537891, 0.53125], "Position": [-1.1475, 0.6375, 2.14625], "Part": "WheelRight"},
-    {"Size": [0.192578, 0.537891, 0.53125], "Position": [-1.1475, 0.6375, 0.9775], "Part": "WheelRight"},
-    {"Size": [0.192578, 0.537891, 0.53125], "Position": [-1.1475, 0.6375, -1.72125], "Part": "WheelRight"},
-    {"Size": [0.192578, 0.537891, 0.53125], "Position": [-1.1475, 0.6375, -0.4675], "Part": "WheelRight"},
-    {"Size": [1.275, 0.53125, 3.6125], "Position": [0.0, 0.9775, 0.17], "Part": "Body"},
-    {"Size": [1.275, 0.36125, 3.6125], "Position": [0.0, 1.87, 0.17], "Part": "Body"},
-    {"Size": [0.6875, 0.75, 1.0625], "Position": [-0.6875, 1.5625, 1.5], "Part": "MainEngine"},
-    {"Size": [0.425, 0.36125, 3.4], "Position": [0.0, 0.19125, 2.3375], "Transform": "Barrel", "Part": "Turret", "Rotation": "Barrel"}
+    {
+      "Size": [
+        1.552,
+        1.141,
+        3.762
+      ],
+      "Position": [
+        0.0,
+        1.141,
+        0.127
+      ],
+      "Part": "Collision"
+    },
+    {
+      "Size": [
+        0.192578,
+        0.537891,
+        0.53125
+      ],
+      "Position": [
+        1.1475,
+        0.6375,
+        2.14625
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.192578,
+        0.537891,
+        0.53125
+      ],
+      "Position": [
+        1.1475,
+        0.6375,
+        0.9775
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.192578,
+        0.537891,
+        0.53125
+      ],
+      "Position": [
+        1.1475,
+        0.6375,
+        -1.72125
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.192578,
+        0.537891,
+        0.53125
+      ],
+      "Position": [
+        1.1475,
+        0.6375,
+        -0.4675
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.192578,
+        0.537891,
+        0.53125
+      ],
+      "Position": [
+        -1.1475,
+        0.6375,
+        2.14625
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.192578,
+        0.537891,
+        0.53125
+      ],
+      "Position": [
+        -1.1475,
+        0.6375,
+        0.9775
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.192578,
+        0.537891,
+        0.53125
+      ],
+      "Position": [
+        -1.1475,
+        0.6375,
+        -1.72125
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.192578,
+        0.537891,
+        0.53125
+      ],
+      "Position": [
+        -1.1475,
+        0.6375,
+        -0.4675
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        1.275,
+        0.53125,
+        3.6125
+      ],
+      "Position": [
+        0.0,
+        0.9775,
+        0.17
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        1.275,
+        0.36125,
+        3.6125
+      ],
+      "Position": [
+        0.0,
+        1.87,
+        0.17
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        0.6875,
+        0.75,
+        1.0625
+      ],
+      "Position": [
+        -0.6875,
+        1.5625,
+        1.5
+      ],
+      "Part": "MainEngine"
+    },
+    {
+      "Size": [
+        0.425,
+        0.36125,
+        3.4
+      ],
+      "Position": [
+        0.0,
+        0.19125,
+        2.3375
+      ],
+      "Transform": "Barrel",
+      "Part": "Turret",
+      "Rotation": "Barrel"
+    }
   ],
   "Seats": [
     {
@@ -36,7 +194,11 @@
       "CameraPos": {
         "Transform": "Barrel",
         "UseFixedCameraPos": true,
-        "Position": [-0.428012, 1.111805, 0.0],
+        "Position": [
+          -0.428012,
+          1.111805,
+          0.0
+        ],
         "Direction": "Barrel"
       },
       "CanRotateHead": false,
@@ -45,7 +207,11 @@
         "Coax"
       ],
       "Transform": "Turret",
-      "Position": [0, 0, 0],
+      "Position": [
+        0,
+        0,
+        0
+      ],
       "MinPitch": -3,
       "MaxPitch": 32.5
     },
@@ -56,11 +222,19 @@
         "PassengerMachineGun"
       ],
       "BanHand": true,
-      "Position": [0.0, -1.105, -1.02],
+      "Position": [
+        0.0,
+        -1.105,
+        -1.02
+      ],
       "CameraPos": {
         "Transform": "WeaponStationBarrel",
         "UseFixedCameraPos": true,
-        "Position": [0.0, 0.6375, -0.85],
+        "Position": [
+          0.0,
+          0.6375,
+          -0.85
+        ],
         "Direction": "WeaponStationBarrel"
       },
       "MinPitch": -10,
@@ -174,8 +348,20 @@
       },
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[0.0425, 0.068, 5.82522]],
-        "Directions": [[0, 0, 1]]
+        "Positions": [
+          [
+            0.0425,
+            0.068,
+            5.82522
+          ]
+        ],
+        "Directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
       }
     },
     "PassengerMachineGun": {
@@ -208,8 +394,20 @@
       },
       "ShootPos": {
         "Transform": "WeaponStationBarrel",
-        "Positions": [[-0.006273, 0.156468, 1.135812]],
-        "Directions": [[0, 0, 1]]
+        "Positions": [
+          [
+            -0.006273,
+            0.156468,
+            1.135812
+          ]
+        ],
+        "Directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
       },
       "SoundRadius": 16,
       "AmmoType": "superbwarfare:rifle_ammo",
@@ -235,8 +433,20 @@
       "AmmoType": "superbwarfare:rifle_ammo",
       "ShootPos": {
         "Transform": "Barrel",
-        "Positions": [[0.331644, 0.354991, 1.434769]],
-        "Directions": [[0, 0, 1]]
+        "Positions": [
+          [
+            0.331644,
+            0.354991,
+            1.434769
+          ]
+        ],
+        "Directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
       },
       "Crosshair": "@VehicleCommonGun",
       "Name": "weapon.fcp.m240_coax",
@@ -259,23 +469,55 @@
       "RPM": 0
     }
   },
-  "ThirdPersonCameraPos": [0, 1, 5],
+  "ThirdPersonCameraPos": [
+    0,
+    1,
+    5
+  ],
   "ContainerIcon": "fcp:textures/gui/vehicle/type/land_us.png",
   "Type": "APC",
   "CollisionLevel": {
     "Level": 3,
     "PowerLimits": [
-      [0, 0, true],
-      [0, 0, true],
-      [0.15, 0.09, false]
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0.15,
+        0.09,
+        false
+      ]
     ]
   },
   "HudType": "@Land",
   "TerrainCompat": [
-    [0.9826, 0, 1.3549],
-    [-0.9826, 0, 1.3549],
-    [0.9826, 0, -1.3549],
-    [-0.9826, 0, -1.3549]
+    [
+      0.9826,
+      0,
+      1.3549
+    ],
+    [
+      -0.9826,
+      0,
+      1.3549
+    ],
+    [
+      0.9826,
+      0,
+      -1.3549
+    ],
+    [
+      -0.9826,
+      0,
+      -1.3549
+    ]
   ],
   "InertiaRotateRate": 1.0
 }

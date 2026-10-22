@@ -69,7 +69,26 @@ public class LandVehicleHudStatsMixin {
             "fcp:empl_tow",
             "fcp:empl_zis3",
             "fcp:m109",
-            "fcp:msta"
+            "fcp:msta",
+            "fcp:m1a1",
+            "fcp:m1a1_aim",
+            "fcp:m1a1_ukr",
+            "fcp:m1a2",
+            "fcp:m1a2_tusk1",
+            "fcp:m1a2_tusk2"
+    );
+
+    // Commander weapon station sights (the passenger-weapon-station seat): the M1A1's cupola M2 is
+    // aimed through a gunner's sight, the M1A2's CROWS through a monitor (SBW's TV frame).
+    private static final ResourceLocation TV_FRAME =
+            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/land/tv_frame.png");
+    private static final java.util.Map<String, ResourceLocation> FCP_COMMANDER_FRAMES = java.util.Map.of(
+            "fcp:m1a1", new ResourceLocation("fcp", "textures/overlay/vehicle/frame/gunner.png"),
+            "fcp:m1a1_aim", new ResourceLocation("fcp", "textures/overlay/vehicle/frame/gunner.png"),
+            "fcp:m1a1_ukr", new ResourceLocation("fcp", "textures/overlay/vehicle/frame/gunner.png"),
+            "fcp:m1a2", TV_FRAME,
+            "fcp:m1a2_tusk1", TV_FRAME,
+            "fcp:m1a2_tusk2", TV_FRAME
     );
 
     // Vehicles that suppress the TV frame entirely but show no replacement overlay
@@ -125,6 +144,21 @@ public class LandVehicleHudStatsMixin {
         boolean noFrame = FCP_NO_FRAME_VEHICLES.contains(vehicleId);
         boolean hasMortarHud = FCP_MORTAR_HUD_VEHICLES.contains(vehicleId);
 
+        ResourceLocation commanderFrame = FCP_COMMANDER_FRAMES.get(vehicleId);
+        if (commanderFrame != null
+                && vehicle.getSeatIndex(player) == vehicle.computed().getPassengerWeaponStationControllerIndex()) {
+            ci.cancel();
+            Minecraft mc = gui.getMinecraft();
+            if (mc.options.getCameraType() == CameraType.FIRST_PERSON || ClientEventHandler.zoomVehicle) {
+                RenderSystem.disableDepthTest();
+                RenderSystem.depthMask(false);
+                RenderSystem.enableBlend();
+                RenderSystem.setShader(GameRenderer::getPositionTexShader);
+                drawFrame(guiGraphics, commanderFrame, screenWidth, screenHeight);
+            }
+            return;
+        }
+
         if (!hasGunnerFrame && !noFrame && !hasMortarHud) return;
 
         ci.cancel();
@@ -152,39 +186,7 @@ public class LandVehicleHudStatsMixin {
         if (mc.options.getCameraType() == CameraType.FIRST_PERSON || ClientEventHandler.zoomVehicle) {
 
             if (hasGunnerFrame) {
-                float targetAspect = 16f / 9f;
-                float screenAspect = (float) screenWidth / screenHeight;
-
-                if (screenAspect > targetAspect) {
-                    float drawWidth = screenHeight * targetAspect;
-                    float drawX = (screenWidth - drawWidth) / 2f;
-                    // Fills overlap the image by 1px on each side to eliminate sub-pixel gaps
-                    int leftEnd = (int) Math.floor(drawX) + 1;
-                    int rightStart = (int) Math.ceil(drawX + drawWidth) - 1;
-                    guiGraphics.fill(0, 0, leftEnd, screenHeight, 0xFF000000);
-                    guiGraphics.fill(rightStart, 0, screenWidth, screenHeight, 0xFF000000);
-                    // Re-establish blend after fill() which resets render state
-                    RenderSystem.enableBlend();
-                    RenderSystem.blendFuncSeparate(
-                            GlStateManager.SourceFactor.SRC_ALPHA,
-                            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
-                            GlStateManager.SourceFactor.ONE,
-                            GlStateManager.DestFactor.ZERO
-                    );
-                    RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
-                    RenderHelper.preciseBlit(guiGraphics, GUNNER_FRAME,
-                            drawX, 0, 10f, 0f, 0f,
-                            drawWidth, screenHeight, drawWidth, screenHeight);
-                } else {
-                    // Zoom to fill height, crop sides symmetrically
-                    float zoomedWidth = screenHeight * targetAspect;
-                    float uOffset = (zoomedWidth - screenWidth) / 2f;
-                    RenderHelper.preciseBlit(guiGraphics, GUNNER_FRAME,
-                            0, 0, 10f,
-                            uOffset, 0f,
-                            screenWidth, screenHeight,
-                            zoomedWidth, screenHeight);
-                }
+                drawFrame(guiGraphics, GUNNER_FRAME, screenWidth, screenHeight);
             }
 
             // Line below crosshair
@@ -284,6 +286,43 @@ public class LandVehicleHudStatsMixin {
         if ((mc.options.getCameraType() == CameraType.FIRST_PERSON || ClientEventHandler.zoomVehicle)
                 && vehicle.getFirstPassenger() != player) {
             renderSmokeInfo(vehicle, player, guiGraphics, screenWidth, screenHeight, vehicle.getHudColor());
+        }
+    }
+
+    /** Draws a sight/monitor frame fitted to 16:9, black bars filling any wider screen. */
+    private static void drawFrame(GuiGraphics guiGraphics, ResourceLocation frame, int screenWidth, int screenHeight) {
+        float targetAspect = 16f / 9f;
+        float screenAspect = (float) screenWidth / screenHeight;
+
+        if (screenAspect > targetAspect) {
+            float drawWidth = screenHeight * targetAspect;
+            float drawX = (screenWidth - drawWidth) / 2f;
+            // Fills overlap the image by 1px on each side to eliminate sub-pixel gaps
+            int leftEnd = (int) Math.floor(drawX) + 1;
+            int rightStart = (int) Math.ceil(drawX + drawWidth) - 1;
+            guiGraphics.fill(0, 0, leftEnd, screenHeight, 0xFF000000);
+            guiGraphics.fill(rightStart, 0, screenWidth, screenHeight, 0xFF000000);
+            // Re-establish blend after fill() which resets render state
+            RenderSystem.enableBlend();
+            RenderSystem.blendFuncSeparate(
+                    GlStateManager.SourceFactor.SRC_ALPHA,
+                    GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+                    GlStateManager.SourceFactor.ONE,
+                    GlStateManager.DestFactor.ZERO
+            );
+            RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
+            RenderHelper.preciseBlit(guiGraphics, frame,
+                    drawX, 0, 10f, 0f, 0f,
+                    drawWidth, screenHeight, drawWidth, screenHeight);
+        } else {
+            // Zoom to fill height, crop sides symmetrically
+            float zoomedWidth = screenHeight * targetAspect;
+            float uOffset = (zoomedWidth - screenWidth) / 2f;
+            RenderHelper.preciseBlit(guiGraphics, frame,
+                    0, 0, 10f,
+                    uOffset, 0f,
+                    screenWidth, screenHeight,
+                    zoomedWidth, screenHeight);
         }
     }
 

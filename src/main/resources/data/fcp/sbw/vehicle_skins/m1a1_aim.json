@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "AIM Desert",
+      "Texture": "fcp:textures/entity/abrams/abrams_aim.png",
+      "Priority": 1
+    }
+  ]
+}

@@ -47,6 +47,8 @@ public final class SquadWeaponSounds {
     private static volatile Map<String, SquadWeaponProfile> byVehicle = Map.of();
     private static final Map<String, Burst> BURSTS = new HashMap<>();
     private static final Map<Integer, TurretAudio> TURRETS = new HashMap<>();
+    /** Commander weapon station traverse (e.g. the Abrams' cupola M2 / CROWS), keyed like TURRETS. */
+    private static final Map<Integer, TurretAudio> STATIONS = new HashMap<>();
     private static ClientLevel lastLevel;
 
     private SquadWeaponSounds() {
@@ -84,6 +86,8 @@ public final class SquadWeaponSounds {
     private static void stopAll() {
         TURRETS.values().forEach(t -> t.loop.end());
         TURRETS.clear();
+        STATIONS.values().forEach(t -> t.loop.end());
+        STATIONS.clear();
         BURSTS.values().forEach(b -> b.loops.forEach(LoopSound::end));
         BURSTS.clear();
     }
@@ -276,14 +280,23 @@ public final class SquadWeaponSounds {
 
     private static void tickTurrets(Minecraft mc) {
         for (Entity entity : mc.level.entitiesForRendering()) {
-            if (!(entity instanceof VehicleEntity vehicle) || TURRETS.containsKey(vehicle.getId())) continue;
+            if (!(entity instanceof VehicleEntity vehicle)) continue;
             if (vehicle.distanceToSqr(mc.player) > TURRET_RANGE * TURRET_RANGE) continue;
             SquadWeaponProfile profile = byVehicle.get(EngineControl.id(vehicle));
-            if (profile != null && profile.turret != null) {
-                TURRETS.put(vehicle.getId(), new TurretAudio(vehicle, profile.turret));
+            if (profile == null) continue;
+            if (profile.turret != null && !TURRETS.containsKey(vehicle.getId())) {
+                TURRETS.put(vehicle.getId(), new TurretAudio(vehicle, profile.turret, false));
+            }
+            if (profile.station != null && !STATIONS.containsKey(vehicle.getId())) {
+                STATIONS.put(vehicle.getId(), new TurretAudio(vehicle, profile.station, true));
             }
         }
-        Iterator<TurretAudio> it = TURRETS.values().iterator();
+        tickAll(mc, TURRETS);
+        tickAll(mc, STATIONS);
+    }
+
+    private static void tickAll(Minecraft mc, Map<Integer, TurretAudio> map) {
+        Iterator<TurretAudio> it = map.values().iterator();
         while (it.hasNext()) {
             TurretAudio t = it.next();
             if (t.vehicle.isRemoved() || t.vehicle.distanceToSqr(mc.player) > TURRET_RANGE * TURRET_RANGE * 1.2) {
@@ -295,25 +308,39 @@ public final class SquadWeaponSounds {
         }
     }
 
-    /** Squad's Turret_Loop cue: rotation speed drives the loop's volume and pitch. */
+    /**
+     * Squad's Turret_Loop cue: rotation speed drives the loop's volume and pitch. Either the main
+     * turret, or (station) the commander weapon station, which turns on its own.
+     */
     private static final class TurretAudio {
         final VehicleEntity vehicle;
         final SquadWeaponProfile.Turret profile;
+        final boolean station;
         TurretLoop loop;
         float lastYaw, lastPitch, speed;
         boolean inside, moving;
 
-        TurretAudio(VehicleEntity vehicle, SquadWeaponProfile.Turret profile) {
+        TurretAudio(VehicleEntity vehicle, SquadWeaponProfile.Turret profile, boolean station) {
             this.vehicle = vehicle;
             this.profile = profile;
-            this.lastYaw = vehicle.getTurretYRot();
-            this.lastPitch = vehicle.getTurretXRot();
+            this.station = station;
+            this.lastYaw = yawAngle();
+            this.lastPitch = pitchAngle();
             this.loop = new TurretLoop(this);
             Minecraft.getInstance().getSoundManager().play(loop);
         }
 
+        /** The station's gunYRot is vehicle-relative; it turns with the turret, so only its own traverse counts. */
+        private float yawAngle() {
+            return station ? vehicle.getGunYRot() - vehicle.getTurretYRot() : vehicle.getTurretYRot();
+        }
+
+        private float pitchAngle() {
+            return station ? vehicle.getGunXRot() : vehicle.getTurretXRot();
+        }
+
         void tick(Minecraft mc) {
-            float yaw = vehicle.getTurretYRot(), pitch = vehicle.getTurretXRot();
+            float yaw = yawAngle(), pitch = pitchAngle();
             float dy = Mth.wrapDegrees(yaw - lastYaw), dx = pitch - lastPitch;
             lastYaw = yaw;
             lastPitch = pitch;
@@ -323,7 +350,8 @@ public final class SquadWeaponSounds {
 
             Player player = mc.player;
             inside = player.getVehicle() == vehicle && mc.options.getCameraType().isFirstPerson();
-            boolean gunner = player.getVehicle() == vehicle && vehicle.getSeatIndex(player) == vehicle.getTurretControllerIndex();
+            int controller = station ? vehicle.getPassengerWeaponStationControllerIndex() : vehicle.getTurretControllerIndex();
+            boolean gunner = player.getVehicle() == vehicle && vehicle.getSeatIndex(player) == controller;
 
             boolean nowMoving = speed >= profile.volumeIn[0];
             SquadWeaponProfile.Turret.Click clickDef = nowMoving ? profile.start : profile.stop;

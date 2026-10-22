@@ -75,7 +75,13 @@ public class FcpDriverOverlay implements IGuiOverlay {
             "fcp:btr82_cope",
             "fcp:brdm2",
             "fcp:msta",
-            "fcp:m109"
+            "fcp:m109",
+            "fcp:m1a1",
+            "fcp:m1a1_aim",
+            "fcp:m1a1_ukr",
+            "fcp:m1a2",
+            "fcp:m1a2_tusk1",
+            "fcp:m1a2_tusk2"
     );
 
     @Override

@@ -38,6 +38,9 @@ public final class CannonRecoilTransforms {
 
         M109(-40f, 0f),
 
+        // Abrams 120 mm: a short straight recoil (its tube bone faces the other way to the M109's).
+        ABRAMS(4f, 0f),
+
         MSTA(-20f, 0f);
 
 
