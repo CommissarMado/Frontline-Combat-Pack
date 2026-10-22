@@ -266,12 +266,6 @@
       },
       "SoundRadius": 16,
       "EmptyReloadTime": 231
-    },
-    "Empty": {
-      "Magazine": 0,
-      "Damage": 0,
-      "Crosshair": "@Empty",
-      "RPM": 0
     }
   },
   "ThirdPersonCameraPos": [0, 1, 5],

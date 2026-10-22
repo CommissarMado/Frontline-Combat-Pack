@@ -7,6 +7,11 @@
   "TurretPitchRange": [-9, 20],
   "TurretControllerIndex": 1,
   "BarrelPos": [0.004, -0.2681, 1.573],
+  "PassengerWeaponStationPos": [-0.6438, 0.6903, -0.9115],
+  "PassengerWeaponStationBarrelPos": [0.0013, -0.0307, 1.1424],
+  "PassengerWeaponStationTurnSpeed": [15, 15],
+  "PassengerWeaponStationPitchRange": [-25, 35],
+  "PassengerWeaponStationControllerIndex": 2,
   "OBB": [
     {"Size": [2.366, 1.083, 4.953], "Position": [0.0, 1.083, 0.081], "Part": "Collision"},
     {"Size": [1.3984, 0.625, 4.5938], "Position": [0.0078, 1.0625, 0.5312]},
@@ -54,99 +59,17 @@
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
+      "Weapons": [
+        "PassengerMachineGun"
+      ],
       "CameraPos": {
-        "UseSimulate3P": true
+        "Transform": "WeaponStationBarrel",
+        "UseFixedCameraPos": true,
+        "Position": [-0.0444, 0.6185, -0.4984],
+        "Direction": "WeaponStationBarrel"
       },
       "CanRotateHead": true,
-      "Transform": "Vehicle",
-      "Position": [0, 1, 0]
-    },
-    {
-      "HidePassenger": true,
-      "IsEnclosed": true,
-      "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
-      "CanRotateHead": true,
-      "Transform": "Vehicle",
-      "Position": [0, 1, 0]
-    },
-    {
-      "HidePassenger": true,
-      "IsEnclosed": true,
-      "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
-      "CanRotateHead": true,
-      "Transform": "Vehicle",
-      "Position": [0, 1, 0]
-    },
-    {
-      "HidePassenger": true,
-      "IsEnclosed": true,
-      "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
-      "CanRotateHead": true,
-      "Transform": "Vehicle",
-      "Position": [0, 1, 0]
-    },
-    {
-      "HidePassenger": true,
-      "IsEnclosed": true,
-      "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
-      "CanRotateHead": true,
-      "Transform": "Vehicle",
-      "Position": [0, 1, 0]
-    },
-    {
-      "HidePassenger": true,
-      "IsEnclosed": true,
-      "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
-      "CanRotateHead": true,
-      "Transform": "Vehicle",
-      "Position": [0, 1, 0]
-    },
-    {
-      "HidePassenger": true,
-      "IsEnclosed": true,
-      "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
-      "CanRotateHead": true,
-      "Transform": "Vehicle",
-      "Position": [0, 1, 0]
-    },
-    {
-      "HidePassenger": true,
-      "IsEnclosed": true,
-      "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
-      "CanRotateHead": true,
-      "Transform": "Vehicle",
-      "Position": [0, 1, 0]
-    },
-    {
-      "HidePassenger": true,
-      "IsEnclosed": true,
-      "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
-      "CanRotateHead": true,
-      "Transform": "Vehicle",
+      "Transform": "WeaponStationBarrel",
       "Position": [0, 1, 0]
     }
   ],
@@ -218,6 +141,43 @@
         "Positions": [[-0.0236, -0.0098, 5.4027]],
         "Directions": [[0, 0, 1]]
       }
+    },
+    "PassengerMachineGun": {
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Projectile": "superbwarfare:projectile",
+      "DefaultZoom": 3,
+      "RPM": 500,
+      "EmptyReloadTime": 228,
+      "Magazine": 200,
+      "Velocity": 25,
+      "Damage": 15,
+      "BypassesArmor": 2,
+      "HeatPerShoot": 5,
+      "NaturalCooldown": 1,
+      "RecoilTime": 16,
+      "RecoilForce": 0.05,
+      "ShootAnimationTime": 1,
+      "Spread": 0.25,
+      "Crosshair": "@VehicleCommonGun",
+      "CrosshairColor": "0x66FF00",
+      "Name": "weapon.fcp.m2_hb",
+      "SoundInfo": {
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "VehicleReload": "fcp:squad.weapons.common.m2_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.m2_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_nsv"
+      },
+      "ShootPos": {
+        "Transform": "WeaponStationBarrel",
+        "Positions": [[-0.0444, 0.4337, 1.4637]],
+        "Directions": [[0, 0, 1]]
+      },
+      "SoundRadius": 16,
+      "AmmoType": "superbwarfare:rifle_ammo",
+      "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png"
     },
     "Coax": {
       "DefaultFireMode": "Auto",
