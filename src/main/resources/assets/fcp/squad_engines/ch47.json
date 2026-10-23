@@ -1,0 +1,23 @@
+{
+  "_comment": "CH-47 sounds from the Squad SuperMod (SPM) CH47 folder; no cue assets shipped, so levels are matched to the Mi-8 set and the Mi-8 cue values are reused.",
+  "vehicles": ["fcp:ch47"],
+  "mode": "helicopter",
+  "rotor_pitch": [0.85, 1.0],
+  "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
+  "exterior_volume": 0.25,
+  "interior_volume": 0.5556,
+  "start": {
+    "exterior": { "sound": "fcp:squad.ch47.engine.ch47_engine_start_close", "volume": 4, "duration": 23.09 },
+    "interior": { "sound": "fcp:squad.ch47.engine.ch47_engine_start_int", "volume": 2, "duration": 19.23 }
+  },
+  "stop": {
+    "exterior": { "sound": "fcp:squad.ch47.engine.ch47_engine_stop_close", "volume": 4, "duration": 17.91 },
+    "interior": { "sound": "fcp:squad.ch47.engine.ch47_engine_stop_int", "volume": 2, "duration": 35.60 }
+  },
+  "layers": [
+    { "sound": "fcp:squad.ch47.engine.ch47_engine_idle_int", "interior": true, "gain": 1.8 },
+    { "sound": "fcp:squad.ch47.engine.ch47_engine_idle_close", "gain": 4, "distance_fade": [0, 0, 110, 160] },
+    { "sound": "fcp:squad.ch47.engine.ch47_engine_idle_medium", "gain": 3.45, "distance_fade": [100, 130, 300, 400] },
+    { "sound": "fcp:squad.ch47.engine.ch47_engine_idle_far", "gain": 1.5, "distance_fade": [250, 280, 600, 9000] }
+  ]
+}

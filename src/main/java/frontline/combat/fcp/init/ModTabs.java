@@ -104,6 +104,7 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.VIPER.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.CH53A.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.CH53E.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.CH47.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MH53.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.UH60.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.UH60_MINIGUN.get()));

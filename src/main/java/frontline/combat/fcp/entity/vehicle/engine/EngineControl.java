@@ -89,6 +89,8 @@ public final class EngineControl {
         put(m, 400, "fcp:huey", "fcp:huey_m60_door_guns", "fcp:huey_m60_gunship", "fcp:huey_m134_door_guns", "fcp:huey_m134_gunship");
         put(m, 400, "fcp:venom", "fcp:venom_gunship", "fcp:venom_door_guns", "fcp:viper");
         put(m, 400, "fcp:mi8", "fcp:mi17", "fcp:mi8_door_guns", "fcp:mi17_door_guns", "fcp:mi8_mtv", "fcp:mi8_amtsh", "fcp:ch53a", "fcp:ch53e", "fcp:mh53");
+        // ch47: SPM mod CH-47D start (Startup_INT_APU__001_FADE), 23.1 s
+        put(m, 462, "fcp:ch47");
         // cpv: cpv_engine_start_int (generic SUV)
         put(m, 50, "fcp:generic_suv");
         return Map.copyOf(m);

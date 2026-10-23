@@ -1,0 +1,28 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Dark Grey",
+      "Texture": "fcp:textures/entity/ch47/ch47_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "jgsdf",
+      "Name": "JGSDF Woodland",
+      "Texture": "fcp:textures/entity/ch47/ch47_2.png",
+      "Priority": 2
+    },
+    {
+      "Id": "olive",
+      "Name": "Olive",
+      "Texture": "fcp:textures/entity/ch47/ch47_3.png",
+      "Priority": 3
+    },
+    {
+      "Id": "tan",
+      "Name": "Tan",
+      "Texture": "fcp:textures/entity/ch47/ch47_4.png",
+      "Priority": 4
+    }
+  ]
+}

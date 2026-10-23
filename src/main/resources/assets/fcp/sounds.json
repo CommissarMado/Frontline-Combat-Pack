@@ -2523,7 +2523,7 @@
       {
         "name": "fcp:squad/loach/engine/littlebird_engine_rotor_far",
         "stream": false,
-        "attenuation_distance": 192
+        "attenuation_distance": 512
       }
     ]
   },
@@ -2556,7 +2556,7 @@
       {
         "name": "fcp:squad/loach/engine/littlebird_engine_rotor_mid",
         "stream": false,
-        "attenuation_distance": 192
+        "attenuation_distance": 400
       }
     ]
   },
@@ -2592,7 +2592,7 @@
       {
         "name": "fcp:squad/mi8/engine/mi8_engine_idle_far_03",
         "stream": false,
-        "attenuation_distance": 192
+        "attenuation_distance": 512
       }
     ]
   },
@@ -2625,7 +2625,7 @@
       {
         "name": "fcp:squad/mi8/engine/mi8_engine_idle_medium_01",
         "stream": false,
-        "attenuation_distance": 192
+        "attenuation_distance": 400
       }
     ]
   },
@@ -2661,7 +2661,7 @@
       {
         "name": "fcp:squad/uh1h/engine/uh1_engine_rotors_idle_far_01",
         "stream": false,
-        "attenuation_distance": 192
+        "attenuation_distance": 512
       }
     ]
   },
@@ -2694,7 +2694,7 @@
       {
         "name": "fcp:squad/uh1h/engine/uh1_engine_rotors_idle_mid_01",
         "stream": false,
-        "attenuation_distance": 192
+        "attenuation_distance": 400
       }
     ]
   },
@@ -2730,7 +2730,7 @@
       {
         "name": "fcp:squad/uh1y/engine/uh1y_engine_rotors_idle_far_01",
         "stream": false,
-        "attenuation_distance": 192
+        "attenuation_distance": 512
       }
     ]
   },
@@ -2763,7 +2763,7 @@
       {
         "name": "fcp:squad/uh1y/engine/uh1y_engine_rotors_idle_mid_01",
         "stream": false,
-        "attenuation_distance": 192
+        "attenuation_distance": 400
       }
     ]
   },
@@ -2799,7 +2799,7 @@
       {
         "name": "fcp:squad/uh60/engine/uh60_engine_rotors_idle_far_01",
         "stream": false,
-        "attenuation_distance": 192
+        "attenuation_distance": 512
       }
     ]
   },
@@ -2808,7 +2808,7 @@
       {
         "name": "fcp:squad/uh60/engine/uh60_engine_rotors_idle_mid_01",
         "stream": false,
-        "attenuation_distance": 192
+        "attenuation_distance": 400
       }
     ]
   },
@@ -7812,6 +7812,75 @@
     "sounds": [
       {
         "name": "fcp:squad/abrams/engine/abrams_engine_int_stop_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.ch47.engine.ch47_engine_start_close": {
+    "sounds": [
+      {
+        "name": "fcp:squad/ch47/engine/ch47_engine_start_close",
+        "stream": false,
+        "attenuation_distance": 192
+      }
+    ]
+  },
+  "squad.ch47.engine.ch47_engine_stop_close": {
+    "sounds": [
+      {
+        "name": "fcp:squad/ch47/engine/ch47_engine_stop_close",
+        "stream": false,
+        "attenuation_distance": 192
+      }
+    ]
+  },
+  "squad.ch47.engine.ch47_engine_idle_close": {
+    "sounds": [
+      {
+        "name": "fcp:squad/ch47/engine/ch47_engine_idle_close",
+        "stream": false,
+        "attenuation_distance": 192
+      }
+    ]
+  },
+  "squad.ch47.engine.ch47_engine_idle_medium": {
+    "sounds": [
+      {
+        "name": "fcp:squad/ch47/engine/ch47_engine_idle_medium",
+        "stream": false,
+        "attenuation_distance": 400
+      }
+    ]
+  },
+  "squad.ch47.engine.ch47_engine_idle_far": {
+    "sounds": [
+      {
+        "name": "fcp:squad/ch47/engine/ch47_engine_idle_far",
+        "stream": false,
+        "attenuation_distance": 512
+      }
+    ]
+  },
+  "squad.ch47.engine.ch47_engine_start_int": {
+    "sounds": [
+      {
+        "name": "fcp:squad/ch47/engine/ch47_engine_start_int",
+        "stream": false
+      }
+    ]
+  },
+  "squad.ch47.engine.ch47_engine_stop_int": {
+    "sounds": [
+      {
+        "name": "fcp:squad/ch47/engine/ch47_engine_stop_int",
+        "stream": false
+      }
+    ]
+  },
+  "squad.ch47.engine.ch47_engine_idle_int": {
+    "sounds": [
+      {
+        "name": "fcp:squad/ch47/engine/ch47_engine_idle_int",
         "stream": false
       }
     ]

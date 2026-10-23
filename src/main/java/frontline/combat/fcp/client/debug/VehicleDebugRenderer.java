@@ -41,7 +41,8 @@ import java.util.List;
  * Press the toggle key (default F6) while in game. For every loaded vehicle within
  * range it draws, all from the vehicle's real SBW data (nothing approximated):
  *   - cyan crosses at the vehicle's defined terrainCompat sample points, each with a
- *     ray down to the detected ground (green)
+ *     ray down to the detected ground (green), and a smaller magenta cross at the same
+ *     point carried by the model's pitch/roll (SBW samples the flat cyan one)
  *   - a red cross at the barrel pivot, with an orange ray along the barrel
  *   - a yellow cross at the turret pivot, with a ray along the turret facing
  *   - purple crosses at each weapon's shoot position (where projectiles spawn)
@@ -135,7 +136,14 @@ public final class VehicleDebugRenderer {
             // Vehicle's terrainCompat list, placed flat (yaw-only) exactly like SBW samples
             // them. Count/layout match the vehicle data (e.g. MATV = 6 points).
             Matrix4d transform = v.getWheelsTransform(pt);
+            // The same point carried by the model's pitch/roll (the transform OBBs use). SBW samples
+            // the flat (cyan) one, so on a tilted vehicle the two split apart; the magenta one is the
+            // one to compare against the wheels/skids.
+            Matrix4d modelTransform = v.getVehicleTransform(pt);
             for (Vec3 local : points) {
+                Vector4d m = v.transformPosition(modelTransform, local.x, local.y, local.z);
+                cross(pose, vc, new Vec3(m.x, m.y, m.z), 0.05, 1f, 0f, 1f, 1f); // magenta: on the model
+
                 Vector4d w = v.transformPosition(transform, local.x, local.y, local.z);
                 Vec3 p = new Vec3(w.x, w.y, w.z);
                 cross(pose, vc, p, 0.08, 0f, 1f, 1f, 1f); // cyan sample point

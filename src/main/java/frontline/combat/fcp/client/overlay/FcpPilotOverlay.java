@@ -92,6 +92,7 @@ public class FcpPilotOverlay implements IGuiOverlay {
             Map.entry("oh1", List.of(0, 1)),
             Map.entry("ch53a", List.of(0, 1)),
             Map.entry("ch53e", List.of(0, 1)),
+            Map.entry("ch47", List.of(0, 1)),
             Map.entry("mh53", List.of(0, 1)),
             Map.entry("uh60", List.of(0, 1)),
             Map.entry("mh60l", List.of(0, 1)),
@@ -109,11 +110,20 @@ public class FcpPilotOverlay implements IGuiOverlay {
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         if (player == null || player.isSpectator() || mc.options.hideGui) return;
-        if (mc.options.getCameraType() != CameraType.FIRST_PERSON) return;
 
         var vehicle = player.getVehicle();
         if (!(vehicle instanceof VehicleEntity ve)) return;
         if (!ve.computed().getHudType().equals("@Helicopter")) return;
+
+        if (mc.options.getCameraType() != CameraType.FIRST_PERSON) {
+            // Third person: SBW's helicopter HUD only draws for armed seats, so an unarmed pilot got
+            // none. Pilot seat only - other seats on this overlay keep no third-person HUD.
+            if (ve.getSeatIndex(player) == 0 && ve.getGunData(0) == null
+                    && PILOT_OVERLAY_VEHICLES.containsKey(EntityType.getKey(ve.getType()).getPath())) {
+                renderThirdPerson(ve, player, guiGraphics, partialTick);
+            }
+            return;
+        }
 
         // Look up which seats of this vehicle should show the pilot HUD.
         List<Integer> hudSeats = PILOT_OVERLAY_VEHICLES.get(EntityType.getKey(ve.getType()).getPath());
@@ -284,6 +294,84 @@ public class FcpPilotOverlay implements IGuiOverlay {
      * Replicates the default helicopter HUD's ranging logic locally: cast from the gun's
      * shoot position along the aim vector, preferring a looked-at entity over the block hit.
      */
+    // Third-person HUD textures (SBW's HelicopterHud keeps these private).
+    private static final ResourceLocation CROSSHAIR_3P =
+            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/crosshair/third_camera_2.png");
+    private static final ResourceLocation RING_3P =
+            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/aircraft/rex_circle.png");
+    private static final ResourceLocation BLOCK_3P =
+            new ResourceLocation("superbwarfare", "textures/overlay/misc/block_white.png");
+    private float mouseX3p, mouseY3p;
+
+    /**
+     * SBW's third-person helicopter HUD (HelicopterHud, armed seats only) for an unarmed pilot: aim
+     * point ahead of the helicopter with the lagging mouse ring, pitch ladder, roll, height, speed and
+     * climb, and the flare line - everything but the weapon line. An unarmed seat's HUD shoot position
+     * and direction are the helicopter's own eye position and facing.
+     */
+    private void renderThirdPerson(VehicleEntity ve, Player player, GuiGraphics guiGraphics, float partialTick) {
+        Minecraft mc = Minecraft.getInstance();
+        var poseStack = guiGraphics.pose();
+        Vec3 shootPos = ve.getShootPosForHud(player, partialTick);
+        Vec3 shootDir = ve.getShootDirectionForHud(player, partialTick);
+        Vec3 pos = shootPos.add(shootDir.scale(computeAimDistance(ve, player, shootPos, shootDir, partialTick)));
+        if (!VectorToolKt.canSee(pos)) return;
+        Vec3 screenPos = VectorToolKt.worldToScreen(pos);
+        float x = (float) screenPos.x, y = (float) screenPos.y;
+        double speed = ve.getDeltaMovement().length() * 72;
+        lerpVy = (float) Mth.lerp(0.021F * partialTick, lerpVy, ve.getDeltaMovement().y() * 20);
+
+        poseStack.pushPose();
+        RenderSystem.disableDepthTest();
+        RenderSystem.depthMask(false);
+        RenderSystem.enableBlend();
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+                GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+        RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
+
+        mouseX3p = Mth.lerp(0.1F * partialTick, mouseX3p, (float) com.atsuishio.superbwarfare.event.ClientMouseHandler.lerpSpeedX);
+        mouseY3p = Mth.lerp(0.1F * partialTick, mouseY3p, (float) com.atsuishio.superbwarfare.event.ClientMouseHandler.lerpSpeedY);
+        RenderHelper.preciseBlit(guiGraphics, RING_3P, x - 2 + mouseX3p, y - 2 + mouseY3p, 0f, 0f, 4f, 4f, 4f, 4f);
+        Vec3 origin = new Vec3(x, y, 0), ring = new Vec3(x + mouseX3p, y + mouseY3p, 0);
+        double distance = ring.distanceTo(origin);
+        for (double i = 0; i < distance - 3; i += 3) {
+            Vec3 p0 = ring.add(ring.vectorTo(origin).normalize().scale(i));
+            RenderHelper.blit(poseStack, BLOCK_3P, (float) (p0.x - 0.25), (float) (p0.y - 0.25), 0f, 0f, 0.5f, 0.5f, 0.5f, 0.5f, -1);
+        }
+
+        float pitch = ve.getPitch(partialTick);
+        var aircraftHud = com.atsuishio.superbwarfare.client.overlay.weapon.AircraftHud.INSTANCE;
+        RenderHelper.blit(poseStack, aircraftHud.getHUD_LINE_3P(), x - 96, y - 48, 0f, 195 + 1.36F * pitch, 192f, 96f, 192f, 486f, -1);
+        RenderHelper.blit(poseStack, aircraftHud.getROLL_HUD_3P(), x - 48, y - 48, 0f, 0f, 96f, 96f, 96f, 96f, -1);
+
+        poseStack.pushPose();
+        poseStack.rotateAround(Axis.ZP.rotationDegrees(ve.getRoll(partialTick)), x, y, 0f);
+        RenderHelper.preciseBlit(guiGraphics, CROSSHAIR_3P, x - 34, y - 8.5F, 0f, 0f, 68f, 17f, 68f, 17f);
+        poseStack.pushPose();
+        poseStack.translate(x, y, 0f);
+        poseStack.scale(0.75F, 0.75F, 1f);
+        guiGraphics.drawString(mc.font, Component.literal(FormatTool.format0D(ve.getRoll(partialTick)) + "°"), -42, -9, -1, false);
+        guiGraphics.drawString(mc.font, Component.literal(FormatTool.format0D(ve.getY()) + "m"), -42, 2, -1, false);
+        poseStack.popPose();
+        poseStack.popPose();
+
+        poseStack.pushPose();
+        poseStack.translate(x, y, 0f);
+        poseStack.scale(0.75F, 0.75F, 1f);
+        guiGraphics.drawString(mc.font, Component.literal(FormatTool.format0D(speed, "km/h")), -60, -52, -1, false);
+        Component vy = Component.literal(FormatTool.format0D(lerpVy) + "m/s");
+        guiGraphics.drawString(mc.font, vy, 60 - mc.font.width(vy), -52, -1, false);
+        poseStack.popPose();
+
+        poseStack.pushPose();
+        poseStack.translate(x, y + 50, 0f);
+        poseStack.scale(0.75F, 0.75F, 1f);
+        com.atsuishio.superbwarfare.client.overlay.DecoyOverlayHelper.renderFirstPersonDecoyInfo(ve, guiGraphics, 1, -1);
+        poseStack.popPose();
+        poseStack.popPose();
+    }
+
     private double computeAimDistance(VehicleEntity ve, Player player, Vec3 shootPos, Vec3 shootDir, float partialTick) {
         double dis = 512.0;
         HitResult result = player.level().clip(new ClipContext(

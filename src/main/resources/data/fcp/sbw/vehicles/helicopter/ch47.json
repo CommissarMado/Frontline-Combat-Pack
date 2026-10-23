@@ -1,0 +1,319 @@
+{
+  "ID": "fcp:ch47",
+  "MaxHealth": 480,
+  "MaxEnergy": 8000000,
+  "OBB": [
+    {"Size": [0.5625, 0.8125, 1.2188], "Position": [-0.0625, 4.4375, 5.6563], "Part": "MainEngine"},
+    {"Size": [0.875, 0.5625, 0.875], "Position": [-0.0625, 5.875, -6.5625], "Part": "MainEngine"},
+    {"Size": [1.8125, 0.5, 1.4063], "Position": [-0.0625, 3.5625, -4.9062], "Part": "MainEngine"},
+    {"Size": [1.5, 1.4063, 7.2813], "Position": [-0.0625, 2.0967, -0.1625], "CustomRotate": [-2.0, 0.0, 0.0], "Part": "Body"},
+    {"Size": [1.125, 0.6563, 0.5313], "Position": [-0.0625, 1.8438, 7.6563], "Part": "Body"},
+    {"Size": [0.5625, 1.4688, 2.4375], "Position": [-0.0625, 3.8438, -6.0625], "Part": "Body"},
+    {"Size": [2.0, 0.5625, 4.5938], "Position": [-0.0625, 1.3051, -0.4476], "CustomRotate": [-2.0, 0.0, 0.0], "Part": "Body"}
+  ],
+  "Seats": [
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [-0.7969, 1.0813, 6.5],
+      "Sensitivity": [0, 0, 0],
+      "CameraPos": {
+        "Transform": "Vehicle",
+        "UseFixedCameraPos": false,
+        "Position": [-0.7969, 2.5013, 6.6],
+        "UseAircraftCamera": true,
+        "AircraftCameraPos": [-4, 5, -19]
+      },
+      "CanRotateHead": false,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [0.6906, 1.0813, 6.5],
+      "CameraPos": {
+        "Transform": "Vehicle",
+        "UseFixedCameraPos": false,
+        "Position": [0.6906, 2.5013, 6.6]
+      },
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [-0.9281, 1.1729, 3.45],
+      "CameraPos": {
+        "Transform": "Vehicle",
+        "UseFixedCameraPos": true,
+        "Position": [-0.9281, 2.5929, 3.45]
+      },
+      "Orientation": -90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [0.8219, 1.1729, 3.45],
+      "CameraPos": {
+        "Transform": "Vehicle",
+        "UseFixedCameraPos": true,
+        "Position": [0.8219, 2.5929, 3.45]
+      },
+      "Orientation": 90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [-0.9281, 1.1328, 2.3],
+      "CameraPos": {
+        "Transform": "Vehicle",
+        "UseFixedCameraPos": true,
+        "Position": [-0.9281, 2.5528, 2.3]
+      },
+      "Orientation": -90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [0.8219, 1.1328, 2.3],
+      "CameraPos": {
+        "Transform": "Vehicle",
+        "UseFixedCameraPos": true,
+        "Position": [0.8219, 2.5528, 2.3]
+      },
+      "Orientation": 90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [-0.9281, 1.0926, 1.15],
+      "CameraPos": {
+        "Transform": "Vehicle",
+        "UseFixedCameraPos": true,
+        "Position": [-0.9281, 2.5126, 1.15]
+      },
+      "Orientation": -90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [0.8219, 1.0926, 1.15],
+      "CameraPos": {
+        "Transform": "Vehicle",
+        "UseFixedCameraPos": true,
+        "Position": [0.8219, 2.5126, 1.15]
+      },
+      "Orientation": 90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [-0.9281, 1.0525, 0.0],
+      "CameraPos": {
+        "Transform": "Vehicle",
+        "UseFixedCameraPos": true,
+        "Position": [-0.9281, 2.4725, 0.0]
+      },
+      "Orientation": -90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [0.8219, 1.0525, 0.0],
+      "CameraPos": {
+        "Transform": "Vehicle",
+        "UseFixedCameraPos": true,
+        "Position": [0.8219, 2.4725, 0.0]
+      },
+      "Orientation": 90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [-0.9281, 1.0124, -1.15],
+      "CameraPos": {
+        "Transform": "Vehicle",
+        "UseFixedCameraPos": true,
+        "Position": [-0.9281, 2.4324, -1.15]
+      },
+      "Orientation": -90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [0.8219, 1.0124, -1.15],
+      "CameraPos": {
+        "Transform": "Vehicle",
+        "UseFixedCameraPos": true,
+        "Position": [0.8219, 2.4324, -1.15]
+      },
+      "Orientation": 90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [-0.9281, 0.9722, -2.3],
+      "CameraPos": {
+        "Transform": "Vehicle",
+        "UseFixedCameraPos": true,
+        "Position": [-0.9281, 2.3922, -2.3]
+      },
+      "Orientation": -90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [0.8219, 0.9722, -2.3],
+      "CameraPos": {
+        "Transform": "Vehicle",
+        "UseFixedCameraPos": true,
+        "Position": [0.8219, 2.3922, -2.3]
+      },
+      "Orientation": 90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [-0.9281, 0.9321, -3.45],
+      "CameraPos": {
+        "Transform": "Vehicle",
+        "UseFixedCameraPos": true,
+        "Position": [-0.9281, 2.3521, -3.45]
+      },
+      "Orientation": -90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [0.8219, 0.9321, -3.45],
+      "CameraPos": {
+        "Transform": "Vehicle",
+        "UseFixedCameraPos": true,
+        "Position": [0.8219, 2.3521, -3.45]
+      },
+      "Orientation": 90,
+      "MinPitch": -50,
+      "MaxPitch": 15,
+      "MinYaw": -75,
+      "MaxYaw": 75,
+      "BanHand": true
+    }
+  ],
+  "Weapons": {
+    "Empty": {
+      "Name": "",
+      "Crosshair": "@Empty",
+      "RPM": 0,
+      "Magazine": 0,
+      "Damage": 0
+    }
+  },
+  "EngineType": "Helicopter",
+  "EngineInfo": {
+    "EnergyCostRate": 340,
+    "Increment": 0.85,
+    "Decrement": 0.85,
+    "PitchSpeed": 0.5,
+    "YawSpeed": 0.55,
+    "RollSpeed": 0.4,
+    "LiftSpeed": 0.85,
+    "EngineStartSound": "fcp:squad.silent",
+    "EngineSoundVolume": 1.5
+  },
+  "EngineSound": "superbwarfare:ah_6_engine",
+  "ThirdPersonCameraPos": [4, 6, 20],
+  "UpStep": 1.1,
+  "RotateOffsetHeight": 1.5,
+  "Mass": 1.0,
+  "AllowFreeCam": true,
+  "HasDecoy": true,
+  "SmokeDecoy": false,
+  "DamageModifiers": [
+    "minecraft:arrow * 0.15",
+    "minecraft:explosion * 4",
+    "superbwarfare:projectile_hit * 0.7",
+    "#superbwarfare:projectile * 0.05",
+    "superbwarfare:vehicle_strike * 6",
+    "@#superbwarfare:at_rocket * 2",
+    "All * 0.8",
+    "All - 8"
+  ],
+  "DestroyInfo": {
+    "ExplosionDamage": 400,
+    "ExplosionRadius": 14,
+    "CrashPassengers": true
+  },
+  "ContainerIcon": "fcp:textures/gui/vehicle/type/air_us.png",
+  "Type": "Helicopter",
+  "HudType": "@Helicopter",
+  "TerrainCompat": [
+    [-1.79, -0.02, 2.1],
+    [1.64, -0.02, 2.1],
+    [1.69, 0.01, -5.22],
+    [-1.8, 0.01, -5.22]
+  ]
+}

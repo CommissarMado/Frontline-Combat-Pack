@@ -297,5 +297,10 @@
   "ContainerIcon": "fcp:textures/gui/vehicle/type/air_us.png",
   "Type": "Helicopter",
   "HudType": "@Helicopter",
-  "TerrainCompat": [[-1.4, 0, 3], [1.4, 0, 3],[-1.4, 0, 2.5],[1.4, 0, 2.5],[-1.4, 0, 2],[-1.4, 0, 2]]
+  "TerrainCompat": [
+    [1.31, -0.01, 1.9],
+    [1.23, 0.01, -2],
+    [-1.19, -0.01, 1.9],
+    [-1.27, 0.01, -2]
+  ]
 }

@@ -124,6 +124,7 @@ import frontline.combat.fcp.entity.vehicle.Viper.ViperEntity;
 import frontline.combat.fcp.entity.vehicle.Oh1.Oh1Entity;
 import frontline.combat.fcp.entity.vehicle.Ch53.Ch53aEntity;
 import frontline.combat.fcp.entity.vehicle.Ch53.Ch53eEntity;
+import frontline.combat.fcp.entity.vehicle.Ch47.Ch47Entity;
 import frontline.combat.fcp.entity.vehicle.Ch53.Mh53Entity;
 import frontline.combat.fcp.entity.vehicle.Uh60.Uh60Entity;
 import frontline.combat.fcp.entity.vehicle.Uh60.Uh60MinigunEntity;
@@ -233,6 +234,8 @@ public class ModEntities {
             EntityType.Builder.of(Ch53aEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<Ch53eEntity>> CH53E = register("ch53e",
             EntityType.Builder.of(Ch53eEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<Ch47Entity>> CH47 = register("ch47",
+            EntityType.Builder.of(Ch47Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<Mh53Entity>> MH53 = register("mh53",
             EntityType.Builder.of(Mh53Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<Uh60Entity>> UH60 = register("uh60",

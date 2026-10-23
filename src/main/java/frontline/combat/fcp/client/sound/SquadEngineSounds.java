@@ -39,6 +39,12 @@ import java.util.Map;
 public final class SquadEngineSounds {
 
     private static final double RANGE = 128.0;
+    /**
+     * Helicopters carry medium (100-400 blocks) and far (250+) rotor layers, so they must stay
+     * tracked well past the ground range or those layers never get to play. The client only has the
+     * entity within the server's view distance anyway, so this is an upper bound.
+     */
+    private static final double HELICOPTER_RANGE = 512.0;
     /** Ticks over which the idle crossfades in at the end of a start sound. */
     private static final int IDLE_HANDOVER = 6;
     private static final SoundSource SOURCE = SoundSource.NEUTRAL;
@@ -62,9 +68,11 @@ public final class SquadEngineSounds {
 
         for (Entity entity : mc.level.entitiesForRendering()) {
             if (!(entity instanceof VehicleEntity vehicle) || ACTIVE.containsKey(vehicle.getId())) continue;
-            if (vehicle.distanceToSqr(mc.player) > RANGE * RANGE) continue;
             SquadEngineProfile profile = SquadEngineProfiles.get(EngineControl.id(vehicle));
-            if (profile != null) ACTIVE.put(vehicle.getId(), new EngineAudio(vehicle, profile));
+            if (profile == null) continue;
+            double range = range(profile);
+            if (vehicle.distanceToSqr(mc.player) > range * range) continue;
+            ACTIVE.put(vehicle.getId(), new EngineAudio(vehicle, profile));
         }
 
         Iterator<EngineAudio> it = ACTIVE.values().iterator();
@@ -75,6 +83,10 @@ public final class SquadEngineSounds {
                 it.remove();
             }
         }
+    }
+
+    private static double range(SquadEngineProfile profile) {
+        return profile.helicopter ? HELICOPTER_RANGE : RANGE;
     }
 
     public static void stopAll() {
@@ -117,7 +129,8 @@ public final class SquadEngineSounds {
 
         /** @return false once this vehicle no longer needs audio. */
         boolean tick(Minecraft mc) {
-            if (vehicle.isRemoved() || vehicle.distanceToSqr(mc.player) > RANGE * RANGE * 1.1) return false;
+            double range = range(profile);
+            if (vehicle.isRemoved() || vehicle.distanceToSqr(mc.player) > range * range * 1.1) return false;
 
             inside = mc.player.getVehicle() == vehicle && mc.options.getCameraType().isFirstPerson();
 

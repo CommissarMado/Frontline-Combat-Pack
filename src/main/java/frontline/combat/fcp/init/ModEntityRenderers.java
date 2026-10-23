@@ -97,6 +97,7 @@ import frontline.combat.fcp.client.renderer.Viper.ViperRenderer;
 import frontline.combat.fcp.client.renderer.Oh1.Oh1Renderer;
 import frontline.combat.fcp.client.renderer.Ch53.Ch53aRenderer;
 import frontline.combat.fcp.client.renderer.Ch53.Ch53eRenderer;
+import frontline.combat.fcp.client.renderer.Ch47.Ch47Renderer;
 import frontline.combat.fcp.client.renderer.Ch53.Mh53Renderer;
 import frontline.combat.fcp.client.renderer.Uh60.Uh60Renderer;
 import frontline.combat.fcp.client.renderer.Uh60.Uh60MinigunRenderer;
@@ -172,6 +173,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.OH1.get(), Oh1Renderer::new);
         event.registerEntityRenderer(ModEntities.CH53A.get(), Ch53aRenderer::new);
         event.registerEntityRenderer(ModEntities.CH53E.get(), Ch53eRenderer::new);
+        event.registerEntityRenderer(ModEntities.CH47.get(), Ch47Renderer::new);
         event.registerEntityRenderer(ModEntities.MH53.get(), Mh53Renderer::new);
         event.registerEntityRenderer(ModEntities.UH60.get(), Uh60Renderer::new);
         event.registerEntityRenderer(ModEntities.UH60_MINIGUN.get(), Uh60MinigunRenderer::new);
