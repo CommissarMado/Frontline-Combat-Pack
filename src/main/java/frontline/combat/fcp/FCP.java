@@ -32,6 +32,7 @@ public class FCP {
                 net.minecraftforge.fml.config.ModConfig.Type.COMMON, FCPConfig.SPEC);
 
         ModEntities.register(modEventBus);
+        ModBlocks.REGISTRY.register(modEventBus);
         ModItems.REGISTRY.register(modEventBus);
         ModParticleTypes.PARTICLE_TYPES.register(modEventBus);
         ModSounds.REGISTRY.register(modEventBus);

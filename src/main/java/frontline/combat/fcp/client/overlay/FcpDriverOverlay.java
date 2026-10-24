@@ -53,6 +53,8 @@ public class FcpDriverOverlay implements IGuiOverlay {
             "fcp:bmp1p",
             "fcp:bmp1am",
             "fcp:bmp2",
+            "fcp:puma",
+            "fcp:puma_atgm",
             "fcp:bmp2d",
             "fcp:bmp2m",
             "fcp:bmp2md",

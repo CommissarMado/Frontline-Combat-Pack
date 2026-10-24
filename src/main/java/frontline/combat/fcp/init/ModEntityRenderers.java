@@ -146,6 +146,8 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.BMP1AM.get(), BMP1AMRenderer::new);
 
         event.registerEntityRenderer(ModEntities.BMP2.get(), BMP2Renderer::new);
+        event.registerEntityRenderer(ModEntities.PUMA.get(), frontline.combat.fcp.client.renderer.Puma.PumaRenderer::new);
+        event.registerEntityRenderer(ModEntities.PUMA_ATGM.get(), frontline.combat.fcp.client.renderer.Puma.PumaRenderer::new);
         event.registerEntityRenderer(ModEntities.BMP1P.get(), BMP1PRenderer::new);
         event.registerEntityRenderer(ModEntities.BMP2D.get(), BMP2DRenderer::new);
         event.registerEntityRenderer(ModEntities.BMP2M.get(), BMP2MRenderer::new);
@@ -234,6 +236,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.HMMWV_SHELTER.get(), HumveeUnarmedRenderer::new);
         event.registerEntityRenderer(ModEntities.HMMWV_SOFT_TOP.get(), HumveeUnarmedRenderer::new);
         event.registerEntityRenderer(ModEntities.HMMWV_SOFT_TOP_NO_DOORS.get(), HumveeUnarmedRenderer::new);
+        event.registerEntityRenderer(ModEntities.TOYOTA_HMV.get(), frontline.combat.fcp.client.renderer.Toyota.ToyotaHmvRenderer::new);
         event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_M2.get(), HumveeUnarmedRenderer::new);
         event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_M2_SHIELD.get(), HumveeUnarmedRenderer::new);
         event.registerEntityRenderer(ModEntities.HMMWV_UNARMORED_M2_TURRET.get(), HumveeUnarmedRenderer::new);
@@ -307,6 +310,7 @@ public class ModEntityRenderers {
         event.registerBelowAll(FcpDriverOverlay.ID, FcpDriverOverlay.INSTANCE);
         event.registerBelowAll(FcpPilotOverlay.ID, FcpPilotOverlay.INSTANCE);
         event.registerAboveAll(frontline.combat.fcp.client.StugnaRemoteClient.OVERLAY_ID, frontline.combat.fcp.client.StugnaRemoteClient.OVERLAY);
+        event.registerAboveAll(frontline.combat.fcp.client.overlay.PumaCommanderHud.OVERLAY_ID, frontline.combat.fcp.client.overlay.PumaCommanderHud.OVERLAY);
     }
 
 }

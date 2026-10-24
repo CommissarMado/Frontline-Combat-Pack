@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Standard",
+      "Texture": "fcp:textures/entity/puma/puma_1.png",
+      "Priority": 1
+    }
+  ]
+}

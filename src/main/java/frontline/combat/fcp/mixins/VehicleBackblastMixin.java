@@ -1,6 +1,8 @@
 package frontline.combat.fcp.mixins;
 
+import com.atsuishio.superbwarfare.Mod;
 import com.atsuishio.superbwarfare.data.gun.GunData;
+import com.atsuishio.superbwarfare.data.gun.GunProp;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import com.atsuishio.superbwarfare.init.ModDamageTypes;
 import com.atsuishio.superbwarfare.tools.ParticleTool;
@@ -49,12 +51,17 @@ public abstract class VehicleBackblastMixin {
      *   rpgSmoke   - true  = RPG-7's CLOUD puff (small S-5/S-8 pods)
      *                false = the Grad's heavier CAMPFIRE_COSY_SMOKE column
      */
-    private record Blast(double tubeLength, double flashScale, boolean rpgSmoke) {}
+    /**
+     * weapon - only this gunner weapon blasts (vehicles that also carry guns); null = any.
+     */
+    private record Blast(double tubeLength, double flashScale, boolean rpgSmoke, String weapon) {}
 
     private static final Map<String, Blast> FCP_BACKBLAST_VEHICLES = Map.of(
-            "fcp:ural_grad",               new Blast(3.15, 1.00, false),
-            "fcp:toyota_hilux_rocket_pod", new Blast(1.5879, 0.40, true),
-            "fcp:stryker_tow",            new Blast(1.275, 0.40, true)
+            "fcp:ural_grad",               new Blast(3.15, 1.00, false, null),
+            "fcp:toyota_hilux_rocket_pod", new Blast(1.5879, 0.40, true, null),
+            "fcp:stryker_tow",            new Blast(1.275, 0.40, true, null),
+            // Spike tubes are 18.7 px; the muzzle ShootPos sits 0.05 past their front.
+            "fcp:puma_atgm",              new Blast(1.22, 0.40, true, "ATGM")
     );
 
 
@@ -64,13 +71,31 @@ public abstract class VehicleBackblastMixin {
 
         String vehicleId = EntityType.getKey(self.getType()).toString();
         Blast cfg = FCP_BACKBLAST_VEHICLES.get(vehicleId);
-        if (cfg == null) return;
+        if (cfg == null || gunData == null) return;
+        if (!(self.level() instanceof ServerLevel)) return;
+
+        int turretIndex = self.computed().getTurretControllerIndex();
+        if (cfg.weapon() != null && !cfg.weapon().equals(self.getGunName(turretIndex))) return;
+
+        // afterShoot runs on the click, but a weapon with a ShootDelayTime (ATGMs: the Squad
+        // pop-then-launch) only spawns its projectile that many ticks later - SBW queues the
+        // spawn itself. The blast goes off with the launch, not the click.
+        int delay = ((Number) gunData.get(GunProp.SHOOT_DELAY_TIME)).intValue();
+        if (delay > 0) {
+            Mod.queueServerWork(delay, () -> {
+                if (!self.isRemoved()) fcp$blast(self, cfg, turretIndex);
+            });
+        } else {
+            fcp$blast(self, cfg, turretIndex);
+        }
+    }
+
+    private static void fcp$blast(VehicleEntity self, Blast cfg, int turretIndex) {
         if (!(self.level() instanceof ServerLevel level)) return;
 
         Vec3 barrelVector = self.getBarrelVector(1f);
         Vec3 back = barrelVector.scale(-1.0);
 
-        int turretIndex = self.computed().getTurretControllerIndex();
         Entity gunner = self.getNthEntity(turretIndex);
 
         // ---- damage + knockback, behind the launcher only ----

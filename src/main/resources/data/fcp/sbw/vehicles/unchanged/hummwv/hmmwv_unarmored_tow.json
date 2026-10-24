@@ -117,6 +117,7 @@
   "Seats": [
     {
       "IsEnclosed": true,
+      "BanHand": true,
       "Transform": "Vehicle",
       "Position": [
         0.6375,

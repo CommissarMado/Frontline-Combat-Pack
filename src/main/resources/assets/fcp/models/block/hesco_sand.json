@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "fcp:block/hesco_sand_top",
+    "bottom": "fcp:block/hesco_sand_bottom",
+    "side": "fcp:block/hesco_sand_side"
+  }
+}

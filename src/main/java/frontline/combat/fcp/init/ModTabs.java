@@ -29,6 +29,10 @@ public class ModTabs {
                 output.accept(ModItems.REDBULL.get());
                 output.accept(ModItems.DELICIOUS_SNACK.get());
 
+                // ---- Blocks ----
+                output.accept(ModBlocks.HESCO_SAND.get());
+                output.accept(ModBlocks.HESCO_DIRT.get());
+
                 // ---- Stationary Turrets ----
                 output.accept(ContainerBlockItem.createInstance(ModEntities.EMPL_M2.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.EMPL_MG3.get()));
@@ -66,6 +70,7 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_SHELTER.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_SOFT_TOP.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.HMMWV_SOFT_TOP_NO_DOORS.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.TOYOTA_HMV.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.RG_33.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV_CROW.get()));
@@ -166,6 +171,8 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP1AM.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP1P.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP2.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.PUMA.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.PUMA_ATGM.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP2D.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP2M.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP2MD.get()));

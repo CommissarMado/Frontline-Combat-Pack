@@ -42,6 +42,8 @@ public final class GunnerSmoke {
             "fcp:bmp1am",
             "fcp:bmp1u",
             "fcp:bmp2",
+            "fcp:puma",
+            "fcp:puma_atgm",
             "fcp:bmp2_noatgm",
             "fcp:bmp2d",
             "fcp:bmp2m",

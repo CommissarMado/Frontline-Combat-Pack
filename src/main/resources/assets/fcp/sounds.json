@@ -7884,5 +7884,124 @@
         "stream": false
       }
     ]
+  },
+  "squad.warrior.engine.warrior_engine_int_idle_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/warrior/engine/warrior_engine_int_idle_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.warrior.engine.warrior_engine_int_idle_02": {
+    "sounds": [
+      {
+        "name": "fcp:squad/warrior/engine/warrior_engine_int_idle_02",
+        "stream": false
+      }
+    ]
+  },
+  "squad.warrior.engine.warrior_engine_int_throttle_loop_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/warrior/engine/warrior_engine_int_throttle_loop_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.warrior.engine.warrior_engine_ext_idle_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/warrior/engine/warrior_engine_ext_idle_01",
+        "stream": false,
+        "attenuation_distance": 24
+      }
+    ]
+  },
+  "squad.warrior.engine.warrior_engine_ext_idle_02": {
+    "sounds": [
+      {
+        "name": "fcp:squad/warrior/engine/warrior_engine_ext_idle_02",
+        "stream": false,
+        "attenuation_distance": 24
+      }
+    ]
+  },
+  "squad.warrior.engine.warrior_engine_ext_throttle_loop_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/warrior/engine/warrior_engine_ext_throttle_loop_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.warrior.engine.warrior_engine_ext_start_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/warrior/engine/warrior_engine_ext_start_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.warrior.engine.warrior_engine_int_start_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/warrior/engine/warrior_engine_int_start_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.warrior.engine.warrior_engine_ext_stop_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/warrior/engine/warrior_engine_ext_stop_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.warrior.engine.warrior_engine_int_stop_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/warrior/engine/warrior_engine_int_stop_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.bradley.tow.up_ext": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bradley/tow/tow_bradley_up_ext_01",
+        "stream": false,
+        "attenuation_distance": 32
+      }
+    ]
+  },
+  "squad.bradley.tow.up_int": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bradley/tow/tow_bradley_up_int_02",
+        "stream": false
+      }
+    ]
+  },
+  "squad.bradley.tow.down_ext": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bradley/tow/tow_bradley_down_ext_01",
+        "stream": false,
+        "attenuation_distance": 32
+      }
+    ]
+  },
+  "squad.bradley.tow.down_int": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bradley/tow/tow_bradley_down_int_01",
+        "stream": false
+      }
+    ]
   }
 }

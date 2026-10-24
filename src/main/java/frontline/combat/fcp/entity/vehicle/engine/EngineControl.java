@@ -46,6 +46,8 @@ public final class EngineControl {
         put(m, 51, "fcp:bmp1", "fcp:bmp1u", "fcp:bmp1am", "fcp:bmp1p");
         // bmp2: bmp2_engine_start_int_01
         put(m, 55, "fcp:bmp2", "fcp:bmp2d", "fcp:bmp2m", "fcp:bmp2_noatgm", "fcp:bmp2md");
+        // warrior (Puma): warrior_engine_int_start_01, 1.13 s
+        put(m, 23, "fcp:puma", "fcp:puma_atgm");
         // brdm2: bdrm_int_start_01
         put(m, 72, "fcp:brdm2");
         // lav25: lav25_engine_start_int_01
@@ -82,7 +84,7 @@ public final class EngineControl {
         // gwagon: gwagon_engine_start_int_01
         put(m, 30, "fcp:landrover_110");
         // m1151: m1151_start_int_01
-        put(m, 70, "fcp:hmmwv_ambulance", "fcp:hmmwv_armored_m2", "fcp:hmmwv_armored_mk19", "fcp:hmmwv_armored_unarmed", "fcp:hmmwv_asrad", "fcp:hmmwv_avenger", "fcp:hmmwv_cargo", "fcp:hmmwv_shelter", "fcp:hmmwv_soft_top", "fcp:hmmwv_soft_top_no_doors", "fcp:hmmwv_unarmored_m2", "fcp:hmmwv_unarmored_m2_shield", "fcp:hmmwv_unarmored_m2_turret", "fcp:hmmwv_unarmored_tow", "fcp:hmmwv_unarmored_tow_turret", "fcp:hmmwv_unarmored_unarmed");
+        put(m, 70, "fcp:hmmwv_ambulance", "fcp:hmmwv_armored_m2", "fcp:hmmwv_armored_mk19", "fcp:hmmwv_armored_unarmed", "fcp:hmmwv_asrad", "fcp:hmmwv_avenger", "fcp:hmmwv_cargo", "fcp:hmmwv_shelter", "fcp:hmmwv_soft_top", "fcp:hmmwv_soft_top_no_doors", "fcp:toyota_hmv", "fcp:hmmwv_unarmored_m2", "fcp:hmmwv_unarmored_m2_shield", "fcp:hmmwv_unarmored_m2_turret", "fcp:hmmwv_unarmored_tow", "fcp:hmmwv_unarmored_tow_turret", "fcp:hmmwv_unarmored_unarmed");
         // Helicopters: Squad rotor start (int), 20 s. Only HELICOPTER_HOLD_TICKS of it is a hold.
         put(m, 400, "fcp:littlebird", "fcp:littlebird_armed", "fcp:littlebird_heavy", "fcp:bigbird", "fcp:oh1");
         put(m, 400, "fcp:uh60", "fcp:uh60_minigun", "fcp:mh60l");

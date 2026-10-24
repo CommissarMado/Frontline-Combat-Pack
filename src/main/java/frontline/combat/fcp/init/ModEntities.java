@@ -125,6 +125,7 @@ import frontline.combat.fcp.entity.vehicle.Oh1.Oh1Entity;
 import frontline.combat.fcp.entity.vehicle.Ch53.Ch53aEntity;
 import frontline.combat.fcp.entity.vehicle.Ch53.Ch53eEntity;
 import frontline.combat.fcp.entity.vehicle.Ch47.Ch47Entity;
+import frontline.combat.fcp.entity.vehicle.Puma.PumaEntity;
 import frontline.combat.fcp.entity.vehicle.Ch53.Mh53Entity;
 import frontline.combat.fcp.entity.vehicle.Uh60.Uh60Entity;
 import frontline.combat.fcp.entity.vehicle.Uh60.Uh60MinigunEntity;
@@ -192,6 +193,11 @@ public class ModEntities {
             EntityType.Builder.of(BMP1AMEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<BMP2Entity>> BMP2 = register("bmp2",
             EntityType.Builder.of(BMP2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    // Puma IFV: one entity class for both variants (the registry name picks geo and skins).
+    public static final RegistryObject<EntityType<PumaEntity>> PUMA = register("puma",
+            EntityType.Builder.of(PumaEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<PumaEntity>> PUMA_ATGM = register("puma_atgm",
+            EntityType.Builder.of(PumaEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<BMP1PEntity>> BMP1P = register("bmp1p",
             EntityType.Builder.of(BMP1PEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<BMP2DEntity>> BMP2D = register("bmp2d",
@@ -345,6 +351,9 @@ public class ModEntities {
     public static final RegistryObject<EntityType<HumveeUnarmedEntity>> HMMWV_SOFT_TOP = register("hmmwv_soft_top",
             EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<HumveeUnarmedEntity>> HMMWV_SOFT_TOP_NO_DOORS = register("hmmwv_soft_top_no_doors",
+            EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    // Toyota HMV (JGSDF Kokido): shares the Humvee entity (steering, wheels, skins); no attachments.
+    public static final RegistryObject<EntityType<HumveeUnarmedEntity>> TOYOTA_HMV = register("toyota_hmv",
             EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<HumveeUnarmedEntity>> HMMWV_UNARMORED_M2 = register("hmmwv_unarmored_m2",
             EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));

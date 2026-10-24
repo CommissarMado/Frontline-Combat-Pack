@@ -1,0 +1,16 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Olive",
+      "Texture": "fcp:textures/entity/toyota_hmv/toyota_hmv_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "green",
+      "Name": "Green",
+      "Texture": "fcp:textures/entity/toyota_hmv/toyota_hmv_2.png",
+      "Priority": 2
+    }
+  ]
+}

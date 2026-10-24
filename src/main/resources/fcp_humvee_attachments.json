@@ -1275,5 +1275,18 @@
    "variants": 2,
    "turret": true
   }
+ },
+ "toyota_hmv": {
+  "Top": {
+   "aabb": [
+    -1.07,
+    0.53,
+    -2.35,
+    1.07,
+    2.3,
+    0.96
+   ],
+   "variants": 2
+  }
  }
 }

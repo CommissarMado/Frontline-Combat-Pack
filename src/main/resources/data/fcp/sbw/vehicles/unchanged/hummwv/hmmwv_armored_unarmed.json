@@ -16,6 +16,7 @@
   "Seats": [
     {
       "IsEnclosed": true,
+      "BanHand": true,
       "Transform": "Vehicle",
       "Position": [0.6375, 0.255, 0.255],
       "MinPitch": -60,
