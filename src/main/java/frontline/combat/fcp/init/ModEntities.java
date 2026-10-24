@@ -66,6 +66,7 @@ import frontline.combat.fcp.entity.vehicle.Emplacement.EmplM2Entity;
 import frontline.combat.fcp.entity.vehicle.Emplacement.EmplMg3Entity;
 import frontline.combat.fcp.entity.vehicle.Emplacement.EmplZis3Entity;
 import frontline.combat.fcp.entity.vehicle.Msta.MstaEntity;
+import frontline.combat.fcp.entity.vehicle.Vena.VenaEntity;
 import frontline.combat.fcp.entity.vehicle.Pantsir.PantsirEntity;
 import frontline.combat.fcp.entity.vehicle.Brdm.Brdm2Entity;
 import frontline.combat.fcp.entity.vehicle.M939.M939Entity;
@@ -455,6 +456,9 @@ public class ModEntities {
             EntityType.Builder.of(M109Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<MstaEntity>> MSTA = register("msta",
             EntityType.Builder.of(MstaEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(4f, 3f));
+    // 2S31 Vena: BMP-3 hull, 120 mm gun-mortar artillery.
+    public static final RegistryObject<EntityType<VenaEntity>> VENA = register("2s31",
+            EntityType.Builder.of(VenaEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3.4f, 2.3f));
     public static final RegistryObject<EntityType<MI17Entity>> MI17 = register("mi17",
             EntityType.Builder.of(MI17Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<MI8Entity>> MI8 = register("mi8",

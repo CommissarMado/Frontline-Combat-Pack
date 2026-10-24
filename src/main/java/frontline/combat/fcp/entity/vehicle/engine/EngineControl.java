@@ -49,7 +49,7 @@ public final class EngineControl {
         // warrior (Puma): warrior_engine_int_start_01, 1.13 s
         put(m, 23, "fcp:puma", "fcp:puma_atgm");
         // bmp3 (Khrizantema-S, BMP-3 family): bmp3m_engine_start_int_01, 5.21 s
-        put(m, 104, "fcp:khrizantema", "fcp:bmp3", "fcp:bmp3_cage", "fcp:bmp3m", "fcp:brm3k");
+        put(m, 104, "fcp:khrizantema", "fcp:bmp3", "fcp:bmp3_cage", "fcp:bmp3m", "fcp:brm3k", "fcp:2s31");
         // brdm2: bdrm_int_start_01
         put(m, 72, "fcp:brdm2");
         // lav25: lav25_engine_start_int_01

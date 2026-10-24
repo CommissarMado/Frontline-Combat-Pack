@@ -47,7 +47,8 @@ public final class FCPMuzzleEffects {
             "fcp:m1a2_tusk2",
             "fcp:empl_zis3",
             "fcp:m109",
-            "fcp:msta"
+            "fcp:msta",
+            "fcp:2s31"
     );
 
     private FCPMuzzleEffects() {

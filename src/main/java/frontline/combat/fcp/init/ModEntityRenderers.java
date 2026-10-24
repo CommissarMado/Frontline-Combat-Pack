@@ -276,6 +276,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.M109.get(), M109Renderer::new);
 
         event.registerEntityRenderer(ModEntities.MSTA.get(), MstaRenderer::new);
+        event.registerEntityRenderer(ModEntities.VENA.get(), frontline.combat.fcp.client.renderer.Vena.VenaRenderer::new);
 
         event.registerEntityRenderer(ModEntities.JOHN_DEERE.get(), JohnDeereRenderer::new);
         event.registerEntityRenderer(ModEntities.COMBINE.get(), CombineRenderer::new);

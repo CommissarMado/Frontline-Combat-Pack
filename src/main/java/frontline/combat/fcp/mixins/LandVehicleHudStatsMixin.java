@@ -74,6 +74,7 @@ public class LandVehicleHudStatsMixin {
             "fcp:empl_zis3",
             "fcp:m109",
             "fcp:msta",
+            "fcp:2s31",
             "fcp:m1a1",
             "fcp:m1a1_aim",
             "fcp:m1a1_ukr",
@@ -122,7 +123,8 @@ public class LandVehicleHudStatsMixin {
             "fcp:toyota_hilux_rocket_pod",
             "fcp:toyota_hilux_mortar",
             "fcp:m109",
-            "fcp:msta"
+            "fcp:msta",
+            "fcp:2s31"
     );
 
     private static final ResourceLocation GUNNER_FRAME =

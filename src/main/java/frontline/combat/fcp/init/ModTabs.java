@@ -164,6 +164,7 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MI8_MTV.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MI8_AMTSH.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MSTA.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.VENA.get()));
 
                 // ---- Terrorist Vehicles ----
                 output.accept(ContainerBlockItem.createInstance(ModEntities.BMP1.get()));

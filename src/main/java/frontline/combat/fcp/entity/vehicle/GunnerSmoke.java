@@ -36,6 +36,7 @@ public final class GunnerSmoke {
             "fcp:lav25",
             "fcp:m109",
             "fcp:msta",
+            "fcp:2s31",
             "fcp:pantsir",
             // Smoke added
             "fcp:bmp1p",

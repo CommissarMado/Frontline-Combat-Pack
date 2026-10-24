@@ -1,6 +1,6 @@
 {
   "_comment": "Generated from the Squad SDK: BMP3M_engine_rpm_ALL_Cue.uasset (+ start/stop cues).",
-  "vehicles": ["fcp:khrizantema", "fcp:bmp3", "fcp:bmp3_cage", "fcp:bmp3m", "fcp:brm3k"],
+  "vehicles": ["fcp:khrizantema", "fcp:bmp3", "fcp:bmp3_cage", "fcp:bmp3m", "fcp:brm3k", "fcp:2s31"],
   "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
   "exterior_volume": 0.1667,
   "interior_volume": 0.9091,
