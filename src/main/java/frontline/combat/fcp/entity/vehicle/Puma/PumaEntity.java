@@ -1,8 +1,12 @@
 package frontline.combat.fcp.entity.vehicle.Puma;
 
+import com.atsuishio.superbwarfare.data.gun.GunData;
 import com.atsuishio.superbwarfare.entity.vehicle.damage.DamageModifier;
 import com.mojang.math.Axis;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
@@ -25,10 +29,34 @@ public class PumaEntity extends CamoVehicleBase {
     /** The "ATGM" bone's pivot relative to the turret pivot, in blocks (config convention). */
     private static final double[] ATGM_PIVOT = {0.9470, 0.3184, 0.2472};
 
+    /** Server-side ATGM reload state, synced so every client closes the launcher lids during it. */
+    private static final EntityDataAccessor<Boolean> ATGM_RELOADING =
+            SynchedEntityData.defineId(PumaEntity.class, EntityDataSerializers.BOOLEAN);
+
     public int INVENTORY_SIZE = 9;
 
     public PumaEntity(EntityType<PumaEntity> type, Level world) {
         super(type, world);
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(ATGM_RELOADING, false);
+    }
+
+    @Override
+    public void baseTick() {
+        super.baseTick();
+        if (!level().isClientSide) {
+            GunData atgm = getGunData(ATGM_WEAPON);
+            this.entityData.set(ATGM_RELOADING, atgm != null && atgm.reloading());
+        }
+    }
+
+    /** True while the ATGM is reloading (synced). */
+    public boolean atgmReloading() {
+        return this.entityData.get(ATGM_RELOADING);
     }
 
     @Override

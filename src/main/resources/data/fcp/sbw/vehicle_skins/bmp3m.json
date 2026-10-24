@@ -1,0 +1,46 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Green",
+      "Texture": "fcp:textures/entity/khrizantema/khrizantema_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "woodland",
+      "Name": "Woodland",
+      "Texture": "fcp:textures/entity/khrizantema/khrizantema_2.png",
+      "Priority": 2
+    },
+    {
+      "Id": "desert",
+      "Name": "Desert",
+      "Texture": "fcp:textures/entity/khrizantema/khrizantema_3.png",
+      "Priority": 3
+    },
+    {
+      "Id": "grey",
+      "Name": "Grey",
+      "Texture": "fcp:textures/entity/khrizantema/khrizantema_4.png",
+      "Priority": 4
+    },
+    {
+      "Id": "urban",
+      "Name": "Urban",
+      "Texture": "fcp:textures/entity/khrizantema/khrizantema_5.png",
+      "Priority": 5
+    },
+    {
+      "Id": "parade",
+      "Name": "Parade",
+      "Texture": "fcp:textures/entity/khrizantema/khrizantema_6.png",
+      "Priority": 6
+    },
+    {
+      "Id": "desert_camo",
+      "Name": "Desert Camo",
+      "Texture": "fcp:textures/entity/khrizantema/khrizantema_7.png",
+      "Priority": 7
+    }
+  ]
+}

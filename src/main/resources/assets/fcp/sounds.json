@@ -8003,5 +8003,237 @@
         "stream": false
       }
     ]
+  },
+  "squad.bmp3.engine.bmp3m_engine_idle_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bmp3/engine/bmp3m_engine_idle_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.bmp3.engine.bmp3m_engine_idle2_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bmp3/engine/bmp3m_engine_idle2_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.bmp3.engine.bmp2_engine_throttle_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bmp3/engine/bmp2_engine_throttle_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.bmp3.engine.bmp3m_engine_idle_ext_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bmp3/engine/bmp3m_engine_idle_ext_01",
+        "stream": false,
+        "attenuation_distance": 24
+      }
+    ]
+  },
+  "squad.bmp3.engine.bmp3m_engine_idle2_ext_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bmp3/engine/bmp3m_engine_idle2_ext_01",
+        "stream": false,
+        "attenuation_distance": 24
+      }
+    ]
+  },
+  "squad.bmp3.engine.bmp3m_engine_throttle_ext_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bmp3/engine/bmp3m_engine_throttle_ext_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.bmp3.engine.bmp3m_engine_start_ext_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bmp3/engine/bmp3m_engine_start_ext_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.bmp3.engine.bmp3m_engine_start_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bmp3/engine/bmp3m_engine_start_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.bmp3.engine.bmp3m_engine_stop_ext_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bmp3/engine/bmp3m_engine_stop_ext_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.bmp3.engine.bmp3m_engine_stop_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bmp3/engine/bmp3m_engine_stop_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.weapons.2a70.1p_shot_1": {
+    "sounds": [
+      {
+        "name": "fcp:squad/weapons/2a70/1p_shot_1_01",
+        "stream": false
+      },
+      {
+        "name": "fcp:squad/weapons/2a70/1p_shot_1_02",
+        "stream": false
+      }
+    ]
+  },
+  "squad.weapons.2a70.3p_shot_2": {
+    "sounds": [
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_2_01",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_2_02",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_2_03",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_2_04",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_2_05",
+        "stream": false,
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "squad.weapons.2a70.3p_shot_3": {
+    "sounds": [
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_3_01",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_3_02",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_3_03",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_3_04",
+        "stream": false,
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "squad.weapons.2a70.3p_shot_4": {
+    "sounds": [
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_4_01",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_4_02",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_4_03",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_4_04",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_4_05",
+        "stream": false,
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "squad.weapons.2a70.3p_shot_5": {
+    "sounds": [
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_5_01",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_5_02",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_5_03",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_5_04",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_5_05",
+        "stream": false,
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "squad.weapons.2a70.3p_shot_6": {
+    "sounds": [
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_6_01",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_6_02",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_6_03",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/2a70/3p_shot_6_04",
+        "stream": false,
+        "attenuation_distance": 256
+      }
+    ]
   }
 }

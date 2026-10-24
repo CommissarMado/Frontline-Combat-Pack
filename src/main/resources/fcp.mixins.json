@@ -12,7 +12,8 @@
     "VehicleDismountSafetyMixin",
     "VehicleGroundContactMixin",
     "VehicleVecUtilsGroundMixin",
-    "HelicopterGroundLiftMixin"
+    "HelicopterGroundLiftMixin",
+    "TerrainRestPlaneMixin"
   ],
   "client": [
     "AmmoCountOverlayMixin",

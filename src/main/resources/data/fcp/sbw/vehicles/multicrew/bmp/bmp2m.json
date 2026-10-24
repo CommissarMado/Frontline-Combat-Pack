@@ -7,6 +7,11 @@
   "TurretTurnSpeed": [2.5, 2.1],
   "TurretPitchRange": [-6, 30],
   "TurretControllerIndex": 1,
+  "PassengerWeaponStationPos": [-0.5864, 0.6924, -0.9704],
+  "PassengerWeaponStationBarrelPos": [0.0, 0.06, 0.0],
+  "PassengerWeaponStationTurnSpeed": [6.0, 6.0],
+  "PassengerWeaponStationPitchRange": [-10, 30],
+  "PassengerWeaponStationControllerIndex": 2,
   "BarrelPos": [-0.001541, 0.252041, 0.630945],
   "OBB": [
     {
@@ -148,17 +153,31 @@
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
+      "Weapons": [
+        "Empty"
+      ],
+      "HasThermalImaging": true,
       "CameraPos": {
-        "UseSimulate3P": true
+        "Transform": "WeaponStationBarrel",
+        "UseFixedCameraPos": true,
+        "Position": [
+          0.0,
+          0.0,
+          0.21
+        ],
+        "Direction": "WeaponStationBarrel"
       },
       "CanRotateHead": true,
-      "Transform": "Vehicle",
+      "Transform": "Turret",
       "Position": [
-        0,
-        1,
-        0
-      ]
-    },
+        -0.5864,
+        0.6924,
+        -0.9704
+      ],
+      "MinPitch": -10,
+      "MaxPitch": 30
+    }
+,
     {
       "HidePassenger": true,
       "IsEnclosed": true,
@@ -524,7 +543,7 @@
       }
     }
   },
-  "UpStep": 2.2,
+  "UpStep": 1.5,
   "Mass": 13,
   "RotateOffsetHeight": 2.2,
   "DamageModifiers": [

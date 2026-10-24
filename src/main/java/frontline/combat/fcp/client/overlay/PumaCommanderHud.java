@@ -3,13 +3,14 @@ package frontline.combat.fcp.client.overlay;
 import com.atsuishio.superbwarfare.event.ClientEventHandler;
 import com.mojang.blaze3d.systems.RenderSystem;
 import frontline.combat.fcp.FCP;
-import frontline.combat.fcp.entity.vehicle.Puma.PumaEntity;
+import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.HitResult;
@@ -28,7 +29,8 @@ import net.minecraftforge.fml.common.Mod;
 import java.util.Set;
 
 /**
- * The Puma commander's sight: the same camera HUD as the Stugna-P remote (StugnaRemoteClient) -
+ * The commander's sight on the Puma (both variants) and the BMP-2M: the same camera HUD as the
+ * Stugna-P remote (StugnaRemoteClient) -
  * TV frame, reticle, scroll-wheel zoom (1x-6x) with its scale, the RANGE readout and a THERMAL tag -
  * without its ammo, health and distance readouts. The commander seat is thermal-capable in the
  * vehicle JSON ("HasThermalImaging"), so SBW's own thermal key works there. SBW's vehicle HUD and the
@@ -39,6 +41,9 @@ public final class PumaCommanderHud {
 
     public static final String OVERLAY_ID = "fcp_puma_commander";
     public static final IGuiOverlay OVERLAY = PumaCommanderHud::renderOverlay;
+
+    /** Vehicles whose commander (passenger weapon station) seat gets this sight. */
+    private static final Set<String> VEHICLES = Set.of("fcp:puma", "fcp:puma_atgm", "fcp:bmp2m");
 
     private static final int MIN_ZOOM = 1, MAX_ZOOM = 6;
     private static final double MAX_RANGE = 500.0;
@@ -66,19 +71,20 @@ public final class PumaCommanderHud {
     private PumaCommanderHud() {
     }
 
-    /** The Puma whose commander sight the local player is looking through (first person), or null. */
-    private static PumaEntity commandedPuma() {
+    /** The vehicle whose commander sight the local player is looking through (first person), or null. */
+    private static VehicleEntity commandedVehicle() {
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         if (player == null || !mc.options.getCameraType().isFirstPerson()) return null;
-        if (!(player.getVehicle() instanceof PumaEntity puma)) return null;
-        return puma.getSeatIndex(player) == puma.computed().getPassengerWeaponStationControllerIndex() ? puma : null;
+        if (!(player.getVehicle() instanceof VehicleEntity vehicle)) return null;
+        if (!VEHICLES.contains(EntityType.getKey(vehicle.getType()).toString())) return null;
+        return vehicle.getSeatIndex(player) == vehicle.computed().getPassengerWeaponStationControllerIndex() ? vehicle : null;
     }
 
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
-        if (commandedPuma() == null) {
+        if (commandedVehicle() == null) {
             zoom = MIN_ZOOM;
             zoomLerp = MIN_ZOOM;
             return;
@@ -88,21 +94,21 @@ public final class PumaCommanderHud {
 
     @SubscribeEvent
     public static void onScroll(InputEvent.MouseScrollingEvent event) {
-        if (commandedPuma() == null || Minecraft.getInstance().screen != null) return;
+        if (commandedVehicle() == null || Minecraft.getInstance().screen != null) return;
         event.setCanceled(true);
         zoom = Mth.clamp(zoom + (event.getScrollDelta() > 0 ? 1 : -1), MIN_ZOOM, MAX_ZOOM);
     }
 
     @SubscribeEvent
     public static void onFov(ComputeFovModifierEvent event) {
-        if (commandedPuma() != null) {
+        if (commandedVehicle() != null) {
             event.setNewFovModifier((float) (event.getNewFovModifier() / zoomLerp));
         }
     }
 
     @SubscribeEvent
     public static void onGuiOverlay(RenderGuiOverlayEvent.Pre event) {
-        if (commandedPuma() == null) return;
+        if (commandedVehicle() == null) return;
         ResourceLocation id = event.getOverlay().id();
         if ("superbwarfare".equals(id.getNamespace()) || HIDDEN_VANILLA.contains(id)) {
             event.setCanceled(true);
@@ -111,8 +117,8 @@ public final class PumaCommanderHud {
 
     private static void renderOverlay(ForgeGui gui, GuiGraphics graphics, float partialTick, int width, int height) {
         Minecraft mc = Minecraft.getInstance();
-        PumaEntity puma = commandedPuma();
-        if (puma == null || mc.options.hideGui) return;
+        VehicleEntity vehicle = commandedVehicle();
+        if (vehicle == null || mc.options.hideGui) return;
         int cx = width / 2, cy = height / 2;
         var poseStack = graphics.pose();
         poseStack.pushPose();
@@ -138,7 +144,7 @@ public final class PumaCommanderHud {
         Camera camera = mc.gameRenderer.getMainCamera();
         Vec3 eye = camera.getPosition();
         Vec3 end = eye.add(new Vec3(camera.getLookVector()).scale(MAX_RANGE));
-        HitResult hit = puma.level().clip(new ClipContext(eye, end, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, mc.player));
+        HitResult hit = vehicle.level().clip(new ClipContext(eye, end, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, mc.player));
         String range = hit.getType() == HitResult.Type.MISS ? "---m" : String.format("%.1fm", hit.getLocation().distanceTo(eye));
         graphics.drawString(mc.font, Component.translatable("tips.superbwarfare.drone.range").getString() + range,
                 cx + 12, cy - 28, -1, false);

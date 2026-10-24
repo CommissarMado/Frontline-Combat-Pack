@@ -97,7 +97,7 @@
     "SteeringSpeed": 0.08,
     "EngineSoundVolume": 0.6
   },
-  "UpStep": 2.0,
+  "UpStep": 1.5,
   "Mass": 14,
   "RotateOffsetHeight": 2.4,
   "DamageModifiers": [

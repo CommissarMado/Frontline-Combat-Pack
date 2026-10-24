@@ -30,6 +30,11 @@ public final class SquadWeaponFire {
             "fcp:bmp2",
             "fcp:puma",
             "fcp:puma_atgm",
+            "fcp:khrizantema",
+            "fcp:bmp3",
+            "fcp:bmp3_cage",
+            "fcp:bmp3m",
+            "fcp:brm3k",
             "fcp:bmp2_noatgm",
             "fcp:bmp2d",
             "fcp:bmp2m",
@@ -131,6 +136,11 @@ public final class SquadWeaponFire {
             "fcp:bmp2",
             "fcp:puma",
             "fcp:puma_atgm",
+            "fcp:khrizantema",
+            "fcp:bmp3",
+            "fcp:bmp3_cage",
+            "fcp:bmp3m",
+            "fcp:brm3k",
             "fcp:bmp2_noatgm",
             "fcp:bmp2d",
             "fcp:bmp2m",
@@ -230,7 +240,11 @@ public final class SquadWeaponFire {
             if (weapon == null && data != null && data.equals(e.getValue())) weapon = e.getKey();
         }
         if (weapon == null) return;
+        // A gun firing a second ammo type with its own cue (e.g. the BMP-3's 100 mm firing its 9M117) is
+        // keyed "weapon#index"; clients fall back to the plain weapon when the profile has no such entry.
+        if (data != null && data.selectedAmmoType.get() > 0) weapon = weapon + "#" + data.selectedAmmoType.get();
+        final String key = weapon;
         FCPNetwork.FCP_HANDLER.send(PacketDistributor.TRACKING_ENTITY.with(() -> vehicle),
-                new SquadFirePacket(vehicle.getId(), weapon, shooter == null ? -1 : shooter.getId()));
+                new SquadFirePacket(vehicle.getId(), key, shooter == null ? -1 : shooter.getId()));
     }
 }

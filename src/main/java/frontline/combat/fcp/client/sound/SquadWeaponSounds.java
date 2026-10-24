@@ -217,6 +217,11 @@ public final class SquadWeaponSounds {
         if (!(mc.level.getEntity(vehicleId) instanceof VehicleEntity vehicle)) return;
         SquadWeaponProfile profile = byVehicle.get(EngineControl.id(vehicle));
         SquadWeaponProfile.Weapon weapon = profile == null ? null : profile.weapons.get(weaponName);
+        if (weapon == null && profile != null && weaponName.contains("#")) {
+            // "weapon#ammoIndex" with no cue of its own: the weapon's cue.
+            weaponName = weaponName.substring(0, weaponName.indexOf('#'));
+            weapon = profile.weapons.get(weaponName);
+        }
         if (weapon == null) return;
 
         boolean firstPerson = shooterId == mc.player.getId() && mc.options.getCameraType().isFirstPerson();

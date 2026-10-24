@@ -24,7 +24,7 @@ import java.util.WeakHashMap;
 /**
  * The Puma's Spike launcher covers. Selecting the ATGM as gunner raises the launcher: the two lids
  * swing open over the length of Squad's Bradley TOW "up" sound, which plays with them; switching to
- * another weapon closes them over the "down" sound. Purely client-side, driven by the gunner's
+ * another weapon, or reloading the ATGM, closes them over the "down" sound. Purely client-side, driven by the gunner's
  * selected weapon (synced by SBW), so every player sees and hears it.
  */
 @Mod.EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
@@ -89,8 +89,9 @@ public final class PumaLauncherLids {
         }
     }
 
+    /** Open while the gunner has the ATGM selected, except while it reloads. */
     private static boolean atgmSelected(PumaEntity vehicle) {
-        return PumaEntity.ATGM_WEAPON.equals(CannonRecoilTransforms.gunnerGunName(vehicle));
+        return PumaEntity.ATGM_WEAPON.equals(CannonRecoilTransforms.gunnerGunName(vehicle)) && !vehicle.atgmReloading();
     }
 
     private static void play(Minecraft mc, PumaEntity vehicle, boolean open) {

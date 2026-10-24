@@ -148,6 +148,11 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.BMP2.get(), BMP2Renderer::new);
         event.registerEntityRenderer(ModEntities.PUMA.get(), frontline.combat.fcp.client.renderer.Puma.PumaRenderer::new);
         event.registerEntityRenderer(ModEntities.PUMA_ATGM.get(), frontline.combat.fcp.client.renderer.Puma.PumaRenderer::new);
+        event.registerEntityRenderer(ModEntities.KHRIZANTEMA.get(), frontline.combat.fcp.client.renderer.Khrizantema.KhrizantemaRenderer::new);
+        event.registerEntityRenderer(ModEntities.BMP3.get(), frontline.combat.fcp.client.renderer.Bmp3.Bmp3Renderer::new);
+        event.registerEntityRenderer(ModEntities.BMP3_CAGE.get(), frontline.combat.fcp.client.renderer.Bmp3.Bmp3Renderer::new);
+        event.registerEntityRenderer(ModEntities.BMP3M.get(), frontline.combat.fcp.client.renderer.Bmp3.Bmp3Renderer::new);
+        event.registerEntityRenderer(ModEntities.BRM3K.get(), frontline.combat.fcp.client.renderer.Bmp3.Bmp3Renderer::new);
         event.registerEntityRenderer(ModEntities.BMP1P.get(), BMP1PRenderer::new);
         event.registerEntityRenderer(ModEntities.BMP2D.get(), BMP2DRenderer::new);
         event.registerEntityRenderer(ModEntities.BMP2M.get(), BMP2MRenderer::new);
@@ -291,6 +296,7 @@ public class ModEntityRenderers {
 
         // Projectiles
         event.registerEntityRenderer(ModEntities.LOCK_ON_HELLFIRE.get(), LockOnHellfireRenderer::new);
+        event.registerEntityRenderer(ModEntities.LOCK_ON_9M123.get(), frontline.combat.fcp.client.renderer.Projectile.Khrizantema.LockOn9M123Renderer::new);
         event.registerEntityRenderer(ModEntities.WIRE_GUIDED_HELLFIRE.get(), WireGuidedHellfireRenderer::new);
 
         event.registerEntityRenderer(ModEntities.SIDEWINDER.get(), SidewinderRenderer::new);

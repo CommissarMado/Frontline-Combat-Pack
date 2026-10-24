@@ -273,7 +273,7 @@
     "TrackRotSpeed": 2.125,
     "TrackDifferential": 0.75,
     "MaxForwardSpeedRate": 0.76,
-    "MaxBackwardSpeedRate": 0.13,
+    "MaxBackwardSpeedRate": 0.63,
     "Increment": 0.022,
     "Decrement": 0.013,
     "SteeringSpeed": 0.1,
@@ -543,7 +543,7 @@
       "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png"
     }
   },
-  "UpStep": 2.2,
+  "UpStep": 1.5,
   "Mass": 12,
   "RotateOffsetHeight": 1.76,
   "DamageModifiers": [

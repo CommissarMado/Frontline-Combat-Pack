@@ -420,5 +420,43 @@
         0.95
       ]
     }
+  },
+  "station": {
+    "loop": "fcp:squad.turrets.loop07.loop",
+    "speed_scale": 5,
+    "pitch_mod": {
+      "in": [
+        5,
+        100
+      ],
+      "out": [
+        0.6,
+        0.8
+      ]
+    },
+    "volume_mod": {
+      "in": [
+        20,
+        250
+      ],
+      "out": [
+        0,
+        1
+      ]
+    },
+    "inside_volume": 0.5,
+    "outside_volume": 1.0,
+    "start": {
+      "sound": "fcp:squad.turrets.loop07.start",
+      "volume": 0.2
+    },
+    "stop": {
+      "sound": "fcp:squad.turrets.loop07.stop",
+      "volume": 0.1,
+      "pitch": [
+        0.9,
+        0.95
+      ]
+    }
   }
 }

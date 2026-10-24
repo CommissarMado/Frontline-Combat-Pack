@@ -219,7 +219,7 @@
       "EmptyReloadTime": 401
     }
   },
-  "UpStep": 2.2,
+  "UpStep": 1.5,
   "Mass": 10,
   "RotateOffsetHeight": 2.2,
   "DamageModifiers": [

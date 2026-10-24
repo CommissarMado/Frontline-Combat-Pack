@@ -6,6 +6,19 @@
   "OBB": [
     {
       "Size": [
+        1.4044,
+        1.5114,
+        3.8453
+      ],
+      "Position": [
+        0.0,
+        1.5114,
+        0.2341
+      ],
+      "Part": "Collision"
+    },
+    {
+      "Size": [
         1.40438,
         0.80919,
         2.74188
@@ -315,7 +328,7 @@
     4.0
   ],
   "HasDecoy": false,
-  "UpStep": 2.55,
+  "UpStep": 1.5,
   "RotateOffsetHeight": 2.55,
   "Mass": 16,
   "DamageModifiers": [

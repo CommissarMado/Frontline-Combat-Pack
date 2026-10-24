@@ -44,6 +44,10 @@ public class LandVehicleHudStatsMixin {
             "fcp:bmp2",
             "fcp:bmp2d",
             "fcp:bmp2m",
+            "fcp:bmp3",
+            "fcp:bmp3_cage",
+            "fcp:bmp3m",
+            "fcp:brm3k",
             "fcp:bmp2md",
             "fcp:bmp2_noatgm",
             "fcp:btr82",
@@ -76,6 +80,15 @@ public class LandVehicleHudStatsMixin {
             "fcp:m1a2",
             "fcp:m1a2_tusk1",
             "fcp:m1a2_tusk2"
+    );
+
+    // Extra seats (not the turret controller) that get the gunner frame HUD: guns aimed by their
+    // own seat, like the bow PKTs of the 9P157-2 (seat 2) and the BMP-3s (seats 2 and 3).
+    private static final java.util.Map<String, Set<Integer>> FCP_PASSENGER_GUNNER_SEATS = java.util.Map.of(
+            "fcp:khrizantema", Set.of(2),
+            "fcp:bmp3", Set.of(2, 3),
+            "fcp:bmp3_cage", Set.of(2, 3),
+            "fcp:bmp3m", Set.of(2, 3)
     );
 
     // Commander weapon station sights (the passenger-weapon-station seat): the M1A1's cupola M2 is
@@ -140,7 +153,9 @@ public class LandVehicleHudStatsMixin {
             CallbackInfo ci
     ) {
         String vehicleId = EntityType.getKey(vehicle.getType()).toString();
-        boolean hasGunnerFrame = FCP_GUNNER_FRAME_VEHICLES.contains(vehicleId);
+        Set<Integer> passengerGunnerSeats = FCP_PASSENGER_GUNNER_SEATS.get(vehicleId);
+        boolean isPassengerGunner = passengerGunnerSeats != null && passengerGunnerSeats.contains(vehicle.getSeatIndex(player));
+        boolean hasGunnerFrame = isPassengerGunner || FCP_GUNNER_FRAME_VEHICLES.contains(vehicleId);
         boolean noFrame = FCP_NO_FRAME_VEHICLES.contains(vehicleId);
         boolean hasMortarHud = FCP_MORTAR_HUD_VEHICLES.contains(vehicleId);
 
@@ -164,7 +179,7 @@ public class LandVehicleHudStatsMixin {
         ci.cancel();
 
         // Only render for the turret controller seat
-        if (vehicle.getSeatIndex(player) != vehicle.computed().getTurretControllerIndex()) return;
+        if (vehicle.getSeatIndex(player) != vehicle.computed().getTurretControllerIndex() && !isPassengerGunner) return;
 
         Minecraft mc = gui.getMinecraft();
         int color = vehicle.getHudColor();

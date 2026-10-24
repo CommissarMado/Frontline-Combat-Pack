@@ -126,6 +126,8 @@ import frontline.combat.fcp.entity.vehicle.Ch53.Ch53aEntity;
 import frontline.combat.fcp.entity.vehicle.Ch53.Ch53eEntity;
 import frontline.combat.fcp.entity.vehicle.Ch47.Ch47Entity;
 import frontline.combat.fcp.entity.vehicle.Puma.PumaEntity;
+import frontline.combat.fcp.entity.vehicle.Khrizantema.KhrizantemaEntity;
+import frontline.combat.fcp.entity.vehicle.Bmp3.Bmp3Entity;
 import frontline.combat.fcp.entity.vehicle.Ch53.Mh53Entity;
 import frontline.combat.fcp.entity.vehicle.Uh60.Uh60Entity;
 import frontline.combat.fcp.entity.vehicle.Uh60.Uh60MinigunEntity;
@@ -198,6 +200,18 @@ public class ModEntities {
             EntityType.Builder.of(PumaEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<PumaEntity>> PUMA_ATGM = register("puma_atgm",
             EntityType.Builder.of(PumaEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    // 9P157-2 Khrizantema-S ATGM carrier (BMP-3 hull).
+    public static final RegistryObject<EntityType<KhrizantemaEntity>> KHRIZANTEMA = register("khrizantema",
+            EntityType.Builder.of(KhrizantemaEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3.4f, 2.3f));
+    // BMP-3 family: one entity class for all four (the registry name picks geo and skins).
+    public static final RegistryObject<EntityType<Bmp3Entity>> BMP3 = register("bmp3",
+            EntityType.Builder.of(Bmp3Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3.4f, 2.3f));
+    public static final RegistryObject<EntityType<Bmp3Entity>> BMP3_CAGE = register("bmp3_cage",
+            EntityType.Builder.of(Bmp3Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3.4f, 2.3f));
+    public static final RegistryObject<EntityType<Bmp3Entity>> BMP3M = register("bmp3m",
+            EntityType.Builder.of(Bmp3Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3.4f, 2.3f));
+    public static final RegistryObject<EntityType<Bmp3Entity>> BRM3K = register("brm3k",
+            EntityType.Builder.of(Bmp3Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3.4f, 2.3f));
     public static final RegistryObject<EntityType<BMP1PEntity>> BMP1P = register("bmp1p",
             EntityType.Builder.of(BMP1PEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<BMP2DEntity>> BMP2D = register("bmp2d",
@@ -423,6 +437,9 @@ public class ModEntities {
     // Projectiles
     public static final RegistryObject<EntityType<LockOnHellfireEntity>> LOCK_ON_HELLFIRE = register("lock_on_hellfire",
             EntityType.Builder.<LockOnHellfireEntity>of(LockOnHellfireEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f, 0.5f));
+    // Radar-guided 9M123 (Khrizantema): lock-on homing, flies and looks like SBW's wire-guided missile.
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.projectile.Khrizantema.LockOn9M123Entity>> LOCK_ON_9M123 = register("lock_on_9m123",
+            EntityType.Builder.<frontline.combat.fcp.entity.projectile.Khrizantema.LockOn9M123Entity>of(frontline.combat.fcp.entity.projectile.Khrizantema.LockOn9M123Entity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f, 0.5f));
     public static final RegistryObject<EntityType<WireGuidedHellfireEntity>> WIRE_GUIDED_HELLFIRE = register("wire_guided_hellfire",
             EntityType.Builder.<WireGuidedHellfireEntity>of(WireGuidedHellfireEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f, 0.5f));
     public static final RegistryObject<EntityType<SidewinderEntity>> SIDEWINDER = register("sidewinder",

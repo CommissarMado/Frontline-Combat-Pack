@@ -333,7 +333,7 @@
   "TurretControllerIndex": 1,
   "ThirdPersonCameraPos": [0, 3.5, 7.5],
   "HasDecoy": false,
-  "UpStep": 2.2,
+  "UpStep": 1.5,
   "RotateOffsetHeight": 2.2,
   "Mass": 16,
   "DamageModifiers": [

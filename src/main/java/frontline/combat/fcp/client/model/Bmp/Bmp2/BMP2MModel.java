@@ -32,6 +32,9 @@ public class BMP2MModel extends FCPVehicleModel<BMP2MEntity> {
         return switch (boneName) {
             case "gun" -> barrelRecoil(0);
 
+            // Commander's sight: traverses with the commander's station (same as the Puma), never elevates.
+            case "weaponstationturret" -> super.collectTransform("passengerWeaponStationYaw");
+
             // The AGS-30 has its own mount, so it elevates about its own pivot rather than
             // riding the 2A42 trunnion. Same angle and clamp as the barrel, matching the
             // "AGS" position transform registered on the entity.

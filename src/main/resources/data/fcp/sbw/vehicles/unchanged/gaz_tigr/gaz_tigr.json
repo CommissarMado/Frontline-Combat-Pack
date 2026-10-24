@@ -115,7 +115,7 @@
   },
   "ThirdPersonCameraPos": [0.0, 0.8, 2.4],
   "HasDecoy": false,
-  "UpStep": 2.2,
+  "UpStep": 1.5,
   "RotateOffsetHeight": 1.785,
   "Mass": 7,
   "DamageModifiers": [

@@ -97,7 +97,7 @@
     3
   ],
   "HasDecoy": false,
-  "UpStep": 2.2,
+  "UpStep": 1.5,
   "RotateOffsetHeight": 2.2,
   "Mass": 12,
   "VehicleContainerType": "Empty",
