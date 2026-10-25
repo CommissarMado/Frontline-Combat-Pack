@@ -27,16 +27,6 @@ public class BMP1AMModel extends FCPVehicleModel<BMP1AMEntity> {
 
     @Override
     public @Nullable VehicleModel.TransformContext<BMP1AMEntity> collectTransform(String boneName) {
-        // The BMP-1AM carries the BTR-82's BPPU turret, and GUN3 is its recoiling gun
-        // section (3 cubes under "barrel", exactly like the BTR-82's BarrelOccilator),
-        // so it gets the same FORWARDBACK recoil.
-        //
-        // One difference: GUN3 is authored with a bind-pose rotation ("rotation":
-        // [180, 0, -180]) which the BTR-82's bone does not have. The shared recoil
-        // helpers assign rotX absolutely and zero it when idle, which would wipe that
-        // bind pose, so it is captured and re-applied on top of the recoil kick.
-        // The slide needs no such treatment: GeckoLib applies bone position offsets in
-        // the parent's frame, and "barrel" is unrotated on both vehicles.
         if ("GUN3".equals(boneName)) {
             return (bone, vehicle, state) -> {
                 float bindRotX = bone.getInitialSnapshot().getRotX();

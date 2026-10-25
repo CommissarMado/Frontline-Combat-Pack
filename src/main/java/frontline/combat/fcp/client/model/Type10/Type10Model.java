@@ -22,6 +22,6 @@ public class Type10Model extends FCPVehicleModel<Type10Entity> {
 
     @Override
     protected FCPTrackPath getTrackPath() {
-        return Type10TrackPaths.TYPE10;
+        return Type10TrackPaths.TYPE10.reversed();
     }
 }
