@@ -11,7 +11,7 @@ import net.minecraft.world.level.Level;
 
 public class KamazKungEntity extends CamoVehicleBase {
 
-    public int INVENTORY_SIZE = 9;
+    public int INVENTORY_SIZE = 54;
 
     @Override
     public int inventorySize() {

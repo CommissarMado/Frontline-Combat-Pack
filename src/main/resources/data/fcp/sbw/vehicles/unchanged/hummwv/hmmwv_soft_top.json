@@ -1,8 +1,8 @@
 {
   "ID": "fcp:hmmwv_soft_top",
-  "MaxHealth": 150,
+  "MaxHealth": 58,
   "PassengerRenderScale": 0.85,
-  "MaxEnergy": 5000000,
+  "MaxEnergy": 9500000,
   "OBB": [
     {"Size": [1.203, 0.972, 2.897], "Position": [0.066, 0.972, -0.025], "Part": "Collision"},
     {"Size": [1.1875, 0.8125, 0.9688], "Position": [0.0, 1.1875, -0.0312], "Part": "Body"},
@@ -67,12 +67,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 22.4,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.26,
-    "MaxBackwardSpeedRate": 0.33,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.29,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.01534,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1,
     "EngineSoundVolume": 0.6

@@ -50,9 +50,10 @@ public class LockOn9M123Entity extends MissileProjectile {
     public LockOn9M123Entity(EntityType<? extends LockOn9M123Entity> type, Level level) {
         super(type, level);
         this.noCulling = true;
-        setDamage(600);
-        setExplosionDamage(70);
-        setExplosionRadius(7);
+        // Same as the weapon config, in case the shot doesn't overwrite them.
+        setDamage(175f);
+        setExplosionDamage(17f);
+        setExplosionRadius(5);
         this.setDistracted(false);
     }
 

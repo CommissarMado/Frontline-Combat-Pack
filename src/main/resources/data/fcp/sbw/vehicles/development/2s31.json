@@ -1,17 +1,14 @@
 {
   "ID": "fcp:2s31",
   "HasDecoy": true,
-  "MaxHealth": 270,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 121,
+  "MaxEnergy": 69000000,
   "TurretPos": [
     -0.0044,
     2.4974,
     0.2037
   ],
-  "TurretTurnSpeed": [
-    2.5,
-    1.8
-  ],
+  "TurretTurnSpeed": [1.75, 1.75],
   "TurretPitchRange": [
     -4.0,
     80.0
@@ -181,13 +178,13 @@
   "EngineSound": "fcp:bmp1_engine",
   "EngineInfo": {
     "Buoyancy": 0.05,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 71.6,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
     "TrackRotSpeed": 1.7,
     "TrackDifferential": 0.75,
-    "MaxForwardSpeedRate": 0.6,
-    "MaxBackwardSpeedRate": 0.13,
+    "MaxForwardSpeedRate": 0.71,
+    "MaxBackwardSpeedRate": 0.33,
     "Increment": 0.022,
     "Decrement": 0.013,
     "SteeringSpeed": 0.1,
@@ -205,9 +202,9 @@
       "Velocity": 15,
       "Gravity": 0.06,
       "ApDurability": 200,
-      "Damage": 320,
-      "ExplosionDamage": 190,
-      "ExplosionRadius": 10,
+      "Damage": 14.5,
+      "ExplosionDamage": 38.7,
+      "ExplosionRadius": 20,
       "RecoilTime": 42,
       "RecoilForce": 0.8,
       "ShootShake": [
@@ -242,9 +239,9 @@
             "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/ap_shell.png",
             "ShellType": "AP",
             "Velocity": 18,
-            "Damage": 700,
-            "ExplosionDamage": 90,
-            "ExplosionRadius": 4,
+            "Damage": 290.3,
+            "ExplosionDamage": 0,
+            "ExplosionRadius": 0,
             "Name": "weapon.fcp.2a80_120mm_ap"
           }
         }

@@ -1,7 +1,7 @@
 {
   "ID": "fcp:huey_door_gunner_m60",
-  "MaxHealth": 280,
-  "MaxEnergy": 8000000,
+  "MaxHealth": 97,
+  "MaxEnergy": 80000000,
   "TurretPos": [-1.77410625, 1.440825, -0.38746875],
   "BarrelPos": [0, 0, 0],
   "TurretTurnSpeed": [15, 15],
@@ -154,7 +154,7 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 550,
-      "Damage": 5.5,
+      "Damage": 8.3,
       "BypassesArmor": 0.2,
       "Velocity": 25,
       "RecoilTime": 16,
@@ -162,7 +162,7 @@
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [[-0.00923750000000001, -0.06088125, 0.88015]],
@@ -182,7 +182,7 @@
   },
   "EngineType": "Helicopter",
   "EngineInfo": {
-    "EnergyCostRate": 280,
+    "EnergyCostRate": 61,
     "Increment": 0.9,
     "Decrement": 0.9,
     "PitchSpeed": 0.85,

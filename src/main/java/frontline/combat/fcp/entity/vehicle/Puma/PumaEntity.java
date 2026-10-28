@@ -3,6 +3,7 @@ package frontline.combat.fcp.entity.vehicle.Puma;
 import com.atsuishio.superbwarfare.data.gun.GunData;
 import com.atsuishio.superbwarfare.entity.vehicle.damage.DamageModifier;
 import com.mojang.math.Axis;
+import frontline.combat.fcp.entity.vehicle.AtgmLauncherVehicle;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -21,7 +22,7 @@ import org.joml.Matrix4d;
  * the transform "AtgmBarrel" - built exactly like SBW's barrel transform (turret -> pivot -> gun pitch)
  * but at the launcher's pivot - which the ATGM's ShootPos uses, so missiles leave the launcher tubes.
  */
-public class PumaEntity extends CamoVehicleBase {
+public class PumaEntity extends CamoVehicleBase implements AtgmLauncherVehicle {
 
     public static final String ATGM_WEAPON = "ATGM";
     public static final String ATGM_BARREL = "AtgmBarrel";
@@ -33,7 +34,7 @@ public class PumaEntity extends CamoVehicleBase {
     private static final EntityDataAccessor<Boolean> ATGM_RELOADING =
             SynchedEntityData.defineId(PumaEntity.class, EntityDataSerializers.BOOLEAN);
 
-    public int INVENTORY_SIZE = 9;
+    public int INVENTORY_SIZE = 18;
 
     public PumaEntity(EntityType<PumaEntity> type, Level world) {
         super(type, world);
@@ -54,7 +55,18 @@ public class PumaEntity extends CamoVehicleBase {
         }
     }
 
+    @Override
+    public boolean hasAtgmLauncher() {
+        return getType() == frontline.combat.fcp.init.ModEntities.PUMA_ATGM.get();
+    }
+
+    @Override
+    public String atgmWeapon() {
+        return ATGM_WEAPON;
+    }
+
     /** True while the ATGM is reloading (synced). */
+    @Override
     public boolean atgmReloading() {
         return this.entityData.get(ATGM_RELOADING);
     }

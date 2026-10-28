@@ -1,7 +1,7 @@
 {
   "ID": "fcp:venom",
-  "MaxHealth": 320,
-  "MaxEnergy": 8000000,
+  "MaxHealth": 97,
+  "MaxEnergy": 140000000,
   "TurretPos": [0.00325, 0.65428, 4.44664],
   "TurretPitchRange": [-50, 15],
   "TurretYawRange": [-75, 75],
@@ -166,7 +166,7 @@
   ],
   "EngineType": "Helicopter",
   "EngineInfo": {
-    "EnergyCostRate": 280,
+    "EnergyCostRate": 93,
     "Increment": 0.9,
     "Decrement": 0.9,
     "PitchSpeed": 0.82,

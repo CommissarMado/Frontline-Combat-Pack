@@ -1,7 +1,7 @@
 {
   "ID": "fcp:ural_grad",
-  "MaxHealth": 150,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 73,
+  "MaxEnergy": 36000000,
   "TurretTurnSpeed": [1, 1],
   "TurretPos": [0.009371, 1.531243, -2.184277],
   "BarrelPos": [-0.025472, 0.10576, -0.85247],
@@ -156,7 +156,7 @@
       "IsEnclosed": true,
       "Transform": "Vehicle",
       "Position": [-0.061444, 1.02, 0.9775],
-      "Weapons": ["Rocket"],
+      "Weapons": ["Main"],
       "CameraPos": {
         "UseFixedCameraPos": true,
         "Position": [1.462855, 0.016958, 0.005445],
@@ -188,7 +188,7 @@
       "Magazine": 0,
       "Damage": 0
     },
-    "Rocket": {
+    "Main": {
       "AmmoType": "superbwarfare:small_rocket",
       "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/small_rocket.png",
       "DefaultZoom": 2,
@@ -202,9 +202,9 @@
       "Spread": 1.5,
       "Name": "weapon.fcp.grad",
       "RPM": 120,
-      "Damage": 60,
-      "ExplosionDamage": 100,
-      "ExplosionRadius": 8,
+      "Damage": 116.1,
+      "ExplosionDamage": 24.2,
+      "ExplosionRadius": 6,
       "Gravity": 0.122097,
       "Velocity": 18,
       "SoundInfo": {
@@ -276,12 +276,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 64,
+    "EnergyCostRate": 31.3,
     "WheelRotSpeed": 0.833,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.08,
-    "MaxBackwardSpeedRate": 0.4,
-    "Increment": 0.012,
+    "MaxForwardSpeedRate": 0.99,
+    "MaxBackwardSpeedRate": 0.32,
+    "Increment": 0.00768,
     "Decrement": 0.009,
     "SteeringSpeed": 0.05,
     "EngineSoundVolume": 0.6

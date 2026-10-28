@@ -1,6 +1,6 @@
 {
   "_comment": "Generated from the Squad SDK: GWAGON_engine_rpm_ALL_Cue.uasset (+ start/stop cues).",
-  "vehicles": ["fcp:landrover_110"],
+  "vehicles": ["fcp:landrover_110", "fcp:bmw_e34", "fcp:vw_t4"],
   "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
   "exterior_volume": 0.8333,
   "interior_volume": 0.7143,

@@ -8,7 +8,7 @@ import net.minecraft.world.level.Level;
 
 public class HueyRocketsEntity extends CamoVehicleBase {
 
-    public int INVENTORY_SIZE = 9;
+    public int INVENTORY_SIZE = 18;
 
     @Override
     public int inventorySize() {

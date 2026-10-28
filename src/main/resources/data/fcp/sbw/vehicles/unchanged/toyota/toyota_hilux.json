@@ -1,7 +1,7 @@
 {
   "ID": "fcp:toyota_hilux",
-  "MaxHealth": 150,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 58,
+  "MaxEnergy": 8000000,
   "PassengerRenderScale": 0.85,
   "OBB": [
     {"Size": [0.969, 0.971, 2.914], "Position": [0.0, 0.971, -0.22], "Part": "Collision"},
@@ -108,12 +108,12 @@
   "EngineSound": "fcp:toyota_engine",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 16.6,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.62,
-    "MaxBackwardSpeedRate": 0.33,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.66,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.0119,
     "Decrement": 0.020,
     "SteeringSpeed": 0.1,
     "EngineSoundVolume": 1.0

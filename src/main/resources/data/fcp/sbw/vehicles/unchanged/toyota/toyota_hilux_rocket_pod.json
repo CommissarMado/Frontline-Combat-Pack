@@ -1,7 +1,7 @@
 {
   "ID": "fcp:toyota_hilux_rocket_pod",
-  "MaxHealth": 150,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 58,
+  "MaxEnergy": 8000000,
   "TurretPos": [0.002277, 2.673525, -1.966404],
   "BarrelPos": [0, 0, 0],
   "TurretPitchRange": [6.63, 45.0],
@@ -128,7 +128,7 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Weapons": ["Rocket"],
+      "Weapons": ["Main"],
       "BanHand": true,
       "Sensitivity": [0.5, 0.3, 0.5],
       "Position": [-0.425, 0.255, 0.2125],
@@ -176,12 +176,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 16.6,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.62,
-    "MaxBackwardSpeedRate": 0.33,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.66,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.0119,
     "Decrement": 0.020,
     "SteeringSpeed": 0.1,
     "EngineSoundVolume": 0.6
@@ -223,7 +223,7 @@
     "ExplosionRadius": 7
   },
   "Weapons": {
-    "Rocket": {
+    "Main": {
       "AmmoType": "superbwarfare:small_rocket",
       "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/small_rocket.png",
       "DefaultZoom": 2,
@@ -236,9 +236,9 @@
       "Spread": 2.5,
       "Name": "weapon.fcp.ub32",
       "RPM": 400,
-      "Damage": 80,
-      "ExplosionDamage": 40,
-      "ExplosionRadius": 5,
+      "Damage": 19.4,
+      "ExplosionDamage": 24.2,
+      "ExplosionRadius": 6,
       "Gravity": 0.214011,
       "Velocity": 16,
       "SoundInfo": {

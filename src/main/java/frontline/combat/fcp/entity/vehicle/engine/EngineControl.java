@@ -48,22 +48,25 @@ public final class EngineControl {
         put(m, 55, "fcp:bmp2", "fcp:bmp2d", "fcp:bmp2m", "fcp:bmp2_noatgm", "fcp:bmp2md");
         // warrior (Puma): warrior_engine_int_start_01, 1.13 s
         put(m, 23, "fcp:puma", "fcp:puma_atgm");
+        // bradley: bradley_engine_start_INT_01, 2.16 s
+        put(m, 43, "fcp:m2a2", "fcp:m2a2_busk", "fcp:m2a3", "fcp:m2a3_busk");
         // bmp3 (Khrizantema-S, BMP-3 family): bmp3m_engine_start_int_01, 5.21 s
         put(m, 104, "fcp:khrizantema", "fcp:bmp3", "fcp:bmp3_cage", "fcp:bmp3m", "fcp:brm3k", "fcp:2s31");
         // brdm2: bdrm_int_start_01
         put(m, 72, "fcp:brdm2");
         // lav25: lav25_engine_start_int_01
-        put(m, 31, "fcp:lav25");
+        put(m, 31, "fcp:lav25", "fcp:lav25_mg");
         // stryker: stryker_engine_int_start_01
         put(m, 41, "fcp:stryker_mgs", "fcp:stryker_m2", "fcp:stryker_dragoon", "fcp:stryker_mk19", "fcp:stryker_tow", "fcp:stryker_mortar");
         // t72: t72_engine_start_int_01
-        put(m, 49, "fcp:t72av", "fcp:msta");
+        put(m, 49, "fcp:t72a", "fcp:t72av", "fcp:t72b", "fcp:t72b_1985", "fcp:t72b_1989", "fcp:t72b2", "fcp:t72b3", "fcp:t72b3_2016", "fcp:t72b3m",
+                "fcp:t72m2_moderna", "fcp:msta");
         // abrams: abrams_engine_int_start_01 (gas turbine spool-up)
         put(m, 261, "fcp:m1a1", "fcp:m1a1_aim", "fcp:m1a1_ukr", "fcp:m1a2", "fcp:m1a2_tusk1", "fcp:m1a2_tusk2");
         // t90: t90_engine_start_int_01
-        put(m, 33, "fcp:t14_armata");
+        put(m, 33, "fcp:t14_armata", "fcp:t90a", "fcp:t90m", "fcp:t90m_2022", "fcp:t90m_2024", "fcp:t90ms");
         // technical: technical_engine_start_int_01
-        put(m, 47, "fcp:toyota_hilux", "fcp:toyota_hilux_rocket_pod", "fcp:toyota_hilux_bmp", "fcp:toyota_hilux_spg9", "fcp:toyota_hilux_mortar", "fcp:toyota_hilux_zu23");
+        put(m, 47, "fcp:land_cruiser_80", "fcp:toyota_hilux", "fcp:toyota_hilux_rocket_pod", "fcp:toyota_hilux_bmp", "fcp:toyota_hilux_spg9", "fcp:toyota_hilux_mortar", "fcp:toyota_hilux_zu23");
         // mgator: mgator_engine_start_ext_01
         put(m, 25, "fcp:dpv_m240", "fcp:dpv_minigun");
         // csk131: csk_engine_start_int_01
@@ -84,9 +87,9 @@ public final class EngineControl {
         // man_truck: us_truck_engine_start_int_01
         put(m, 53, "fcp:man_hx58", "fcp:man_hx58_mg3", "fcp:man_hx60");
         // gwagon: gwagon_engine_start_int_01
-        put(m, 30, "fcp:landrover_110");
+        put(m, 30, "fcp:landrover_110", "fcp:bmw_e34", "fcp:vw_t4");
         // m1151: m1151_start_int_01
-        put(m, 70, "fcp:hmmwv_ambulance", "fcp:hmmwv_armored_m2", "fcp:hmmwv_armored_mk19", "fcp:hmmwv_armored_unarmed", "fcp:hmmwv_asrad", "fcp:hmmwv_avenger", "fcp:hmmwv_cargo", "fcp:hmmwv_shelter", "fcp:hmmwv_soft_top", "fcp:hmmwv_soft_top_no_doors", "fcp:toyota_hmv", "fcp:hmmwv_unarmored_m2", "fcp:hmmwv_unarmored_m2_shield", "fcp:hmmwv_unarmored_m2_turret", "fcp:hmmwv_unarmored_tow", "fcp:hmmwv_unarmored_tow_turret", "fcp:hmmwv_unarmored_unarmed");
+        put(m, 70, "fcp:suburban", "fcp:hmmwv_ambulance", "fcp:hmmwv_armored_m2", "fcp:hmmwv_armored_mk19", "fcp:hmmwv_armored_unarmed", "fcp:hmmwv_asrad", "fcp:hmmwv_avenger", "fcp:hmmwv_cargo", "fcp:hmmwv_shelter", "fcp:hmmwv_soft_top", "fcp:hmmwv_soft_top_no_doors", "fcp:toyota_hmv", "fcp:hmmwv_unarmored_m2", "fcp:hmmwv_unarmored_m2_shield", "fcp:hmmwv_unarmored_m2_turret", "fcp:hmmwv_unarmored_tow", "fcp:hmmwv_unarmored_tow_turret", "fcp:hmmwv_unarmored_unarmed");
         // Helicopters: Squad rotor start (int), 20 s. Only HELICOPTER_HOLD_TICKS of it is a hold.
         put(m, 400, "fcp:littlebird", "fcp:littlebird_armed", "fcp:littlebird_heavy", "fcp:bigbird", "fcp:oh1");
         put(m, 400, "fcp:uh60", "fcp:uh60_minigun", "fcp:mh60l");

@@ -1,9 +1,9 @@
 {
   "ID": "fcp:stryker_mortar",
-  "MaxHealth": 150,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 121,
+  "MaxEnergy": 20000000,
   "TurretPos": [0.00442, 0.902105, -1.753125],
-  "TurretTurnSpeed": [5, 5],
+  "TurretTurnSpeed": [2.5, 3.0],
   "TurretPitchRange": [45, 85],
   "BarrelPos": [0.0, 0.0, -0.53125],
   "TurretControllerIndex": 1,
@@ -42,7 +42,7 @@
       "IsEnclosed": true,
       "BanHand": true,
       "Weapons": [
-        "Mortar"
+        "Main"
       ],
       "Transform": "Vehicle",
       "Position": [-0.34, 0.765, -0.4675],
@@ -103,7 +103,7 @@
       "Magazine": 0,
       "Damage": 0
     },
-    "Mortar": {
+    "Main": {
       "AmmoType": "superbwarfare:mortar_shell",
       "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/mortar_shell.png",
       "DefaultZoom": 2,
@@ -117,9 +117,9 @@
       "Spread": 0.1,
       "Name": "weapon.fcp.stryker_mortar",
       "RPM": 45,
-      "Damage": 60,
-      "ExplosionDamage": 100,
-      "ExplosionRadius": 8,
+      "Damage": 1,
+      "ExplosionDamage": 38.7,
+      "ExplosionRadius": 20,
       "Gravity": 0.05,
       "Velocity": 10,
       "SoundInfo": {
@@ -143,12 +143,12 @@
   "EngineSound": "fcp:stryker_engine",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 41.8,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.02375,
-    "MaxBackwardSpeedRate": 0.33,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.19,
+    "MaxBackwardSpeedRate": 0.32,
+    "Increment": 0.01667,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1,
     "EngineSoundVolume": 1.0

@@ -13,7 +13,7 @@ import org.joml.Vector4d;
 
 public class Uh60MinigunEntity extends CamoVehicleBase {
 
-    public int INVENTORY_SIZE = 9;
+    public int INVENTORY_SIZE = 27;
 
     @Override
     public int inventorySize() {

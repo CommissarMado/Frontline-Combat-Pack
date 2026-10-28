@@ -1,7 +1,7 @@
 {
   "ID": "fcp:oh1",
-  "MaxHealth": 280,
-  "MaxEnergy": 8000000,
+  "MaxHealth": 73,
+  "MaxEnergy": 95000000,
   "TurretPos": [0.0, 2.6304, 0.775],
   "TurretPitchRange": [-60, 30],
   "TurretYawRange": [-100, 100],
@@ -62,9 +62,9 @@
       "EmptyReloadTime": 200,
       "Projectile": "fcp:sidewinder",
       "Name": "weapon.fcp.type_91",
-      "Damage": 1100,
-      "ExplosionDamage": 180,
-      "ExplosionRadius": 4,
+      "Damage": 13,
+      "ExplosionDamage": 40,
+      "ExplosionRadius": 8,
       "AddShooterDeltaMovement": true,
       "Velocity": 1.05,
       "SeekWeaponInfo": {
@@ -107,7 +107,7 @@
   },
   "EngineType": "Helicopter",
   "EngineInfo": {
-    "EnergyCostRate": 240,
+    "EnergyCostRate": 63,
     "Increment": 0.95,
     "Decrement": 0.95,
     "PitchSpeed": 0.9,

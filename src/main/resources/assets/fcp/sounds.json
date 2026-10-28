@@ -8235,5 +8235,90 @@
         "attenuation_distance": 256
       }
     ]
+  },
+  "squad.bradley.engine.bradley_engine_idle_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bradley/engine/bradley_engine_idle_01",
+        "stream": false,
+        "attenuation_distance": 24
+      }
+    ]
+  },
+  "squad.bradley.engine.bradley_engine_idle_03": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bradley/engine/bradley_engine_idle_03",
+        "stream": false,
+        "attenuation_distance": 24
+      }
+    ]
+  },
+  "squad.bradley.engine.bradley_engine_throttle_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bradley/engine/bradley_engine_throttle_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.bradley.engine.bradley_engine_start_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bradley/engine/bradley_engine_start_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.bradley.engine.bradley_engine_stop_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bradley/engine/bradley_engine_stop_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.bradley.engine.bradley_engine_idle_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bradley/engine/bradley_engine_idle_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.bradley.engine.bradley_engine_idle_int_02": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bradley/engine/bradley_engine_idle_int_02",
+        "stream": false
+      }
+    ]
+  },
+  "squad.bradley.engine.bradley_engine_throttle_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bradley/engine/bradley_engine_throttle_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.bradley.engine.bradley_engine_start_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bradley/engine/bradley_engine_start_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.bradley.engine.bradley_engine_stop_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/bradley/engine/bradley_engine_stop_int_01",
+        "stream": false
+      }
+    ]
   }
 }

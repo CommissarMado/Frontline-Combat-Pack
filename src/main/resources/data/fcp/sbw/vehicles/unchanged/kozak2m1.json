@@ -1,7 +1,7 @@
 {
   "ID": "fcp:kozak2m1",
-  "MaxHealth": 175,
-  "MaxEnergy": 5250000,
+  "MaxHealth": 73,
+  "MaxEnergy": 20000000,
   "OBB": [
     {
       "Size": [
@@ -218,10 +218,8 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 663,
-      "Damage": 15,
+      "Damage": 15.7,
       "BypassesArmor": 2,
-      "IsArmorPiercingProjectile": true,
-      "IsHighExplosiveProjectile": false,
       "Velocity": 25,
       "RecoilTime": 32,
       "EmptyReloadTime": 401,
@@ -230,7 +228,7 @@
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@HeavyAmmo",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
@@ -260,12 +258,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 37.1,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.1,
-    "MaxBackwardSpeedRate": 0.2,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.27,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.01563,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1
   },
@@ -390,10 +388,7 @@
     0.124639,
     0.863471
   ],
-  "TurretTurnSpeed": [
-    15,
-    15
-  ],
+  "TurretTurnSpeed": [4.5, 4.5],
   "TurretPitchRange": [
     -15,
     40

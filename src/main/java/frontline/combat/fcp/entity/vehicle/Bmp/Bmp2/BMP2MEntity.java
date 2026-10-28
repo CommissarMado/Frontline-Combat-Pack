@@ -14,7 +14,7 @@ import org.joml.Matrix4d;
 
 public class BMP2MEntity extends CamoVehicleBase {
 
-    public int INVENTORY_SIZE = 9;
+    public int INVENTORY_SIZE = 18;
 
     @Override
     public int inventorySize() {

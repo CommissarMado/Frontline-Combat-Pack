@@ -55,6 +55,10 @@ public class FcpDriverOverlay implements IGuiOverlay {
             "fcp:bmp2",
             "fcp:puma",
             "fcp:puma_atgm",
+            "fcp:m2a2",
+            "fcp:m2a2_busk",
+            "fcp:m2a3",
+            "fcp:m2a3_busk",
             "fcp:khrizantema",
             "fcp:bmp3",
             "fcp:bmp3_cage",
@@ -69,9 +73,24 @@ public class FcpDriverOverlay implements IGuiOverlay {
             "fcp:btr3e",
             "fcp:btr4mv1",
             "fcp:lav25",
+            "fcp:lav25_mg",
             "fcp:stryker_m2",
             "fcp:stryker_mgs",
+            "fcp:t72a",
             "fcp:t72av",
+            "fcp:t72b",
+            "fcp:t72b_1985",
+            "fcp:t72b_1989",
+            "fcp:t72b2",
+            "fcp:t72b3",
+            "fcp:t72b3_2016",
+            "fcp:t72b3m",
+            "fcp:t72m2_moderna",
+            "fcp:t90a",
+            "fcp:t90m",
+            "fcp:t90m_2022",
+            "fcp:t90m_2024",
+            "fcp:t90ms",
             "fcp:aavp",
             "fcp:stryker_mk19",
             "fcp:stryker_tow",
@@ -92,6 +111,18 @@ public class FcpDriverOverlay implements IGuiOverlay {
             "fcp:m1a2_tusk2"
     );
 
+    /**
+     * A troop seat's fixed periscope: a fixed camera with yaw and pitch locked (Min = Max) and no weapon.
+     * These replaced the forced third-person passenger seats; they get the driver's periscope frame.
+     */
+    private static boolean isPeriscopeSeat(VehicleEntity ve, int seatIndex) {
+        if (seatIndex <= 0 || seatIndex >= ve.computed().seats().size()) return false;
+        if (seatIndex == ve.computed().getTurretControllerIndex()) return false;
+        var seat = ve.computed().seats().get(seatIndex);
+        return seat.getMinYaw() == seat.getMaxYaw() && seat.getMinPitch() == seat.getMaxPitch()
+                && ve.getGunData(seatIndex) == null;
+    }
+
     @Override
     public void render(ForgeGui gui, GuiGraphics guiGraphics, float partialTick,
                        int screenWidth, int screenHeight) {
@@ -105,11 +136,13 @@ public class FcpDriverOverlay implements IGuiOverlay {
         if (!ve.computed().getHudType().equals("@Land")) return;
 
         int seatIndex = ve.getSeatIndex(player);
-        if (seatIndex != 0) return;
-        if (seatIndex == ve.computed().getTurretControllerIndex()) return;
+        if (!isPeriscopeSeat(ve, seatIndex)) {
+            if (seatIndex != 0) return;
+            if (seatIndex == ve.computed().getTurretControllerIndex()) return;
 
-        String vehicleId = EntityType.getKey(ve.getType()).toString();
-        if (!DRIVER_OVERLAY_VEHICLES.contains(vehicleId)) return;
+            String vehicleId = EntityType.getKey(ve.getType()).toString();
+            if (!DRIVER_OVERLAY_VEHICLES.contains(vehicleId)) return;
+        }
 
         int color = ve.getHudColor();
         var poseStack = guiGraphics.pose();

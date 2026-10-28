@@ -1,0 +1,19 @@
+{
+  "armor": {
+    "front": 600.0,
+    "side": 100.0,
+    "rear": 60.0,
+    "top": 20.0,
+    "turret_front": 400.0,
+    "turret_side": 100.0
+  },
+  "modifiers": {
+    "kinetic": 0.1,
+    "heat": 0.39,
+    "hat": 1.0,
+    "explosive": 1.0,
+    "frag": 1.0,
+    "small_arms": 0.0
+  },
+  "weapons": {}
+}

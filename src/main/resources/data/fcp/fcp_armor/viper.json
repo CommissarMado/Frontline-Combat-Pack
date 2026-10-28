@@ -1,0 +1,45 @@
+{
+  "armor": {
+    "front": 15.0,
+    "side": 7.0,
+    "rear": 3.0,
+    "top": 3.0,
+    "turret_front": 0.0,
+    "turret_side": 0.0
+  },
+  "modifiers": {
+    "kinetic": 0.15,
+    "heat": 0.8,
+    "hat": 0.6,
+    "explosive": 1.5,
+    "frag": 0.5,
+    "small_arms": 0.05
+  },
+  "weapons": {
+    "Cannon": {
+      "type": "frag",
+      "pen": 8.0
+    },
+    "Rocket": {
+      "type": "frag",
+      "pen": 100.0
+    },
+    "Hellfire-LockOn": {
+      "type": "hat",
+      "pen": 900.0
+    },
+    "Hellfire-LockOn#1": {
+      "type": "hat",
+      "pen": 900.0
+    },
+    "Hellfire-WireGuided": {
+      "type": "hat",
+      "pen": 900.0
+    },
+    "Sidewinder": {
+      "type": "explosive",
+      "pen": 100.0
+    }
+  },
+  "ammo": {"Cannon": [1, 750], "Rocket": [1, 20], "Hellfire-LockOn": [1, 4], "Hellfire-WireGuided": [1, 4], "Sidewinder": [1, 2]}
+}

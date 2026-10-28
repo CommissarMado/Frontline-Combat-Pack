@@ -1,0 +1,22 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Desert Tan",
+      "Texture": "fcp:textures/entity/bradley/bradley_desert.png",
+      "Priority": 1
+    },
+    {
+      "Id": "woodland",
+      "Name": "Woodland Green",
+      "Texture": "fcp:textures/entity/bradley/bradley_green.png",
+      "Priority": 2
+    },
+    {
+      "Id": "ukraine",
+      "Name": "Ukrainian",
+      "Texture": "fcp:textures/entity/bradley/bradley_ukr.png",
+      "Priority": 3
+    }
+  ]
+}

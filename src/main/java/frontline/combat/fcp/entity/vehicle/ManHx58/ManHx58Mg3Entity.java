@@ -10,7 +10,7 @@ import net.minecraft.world.level.Level;
 
 public class ManHx58Mg3Entity extends CamoVehicleBase {
 
-    public int INVENTORY_SIZE = 9;
+    public int INVENTORY_SIZE = 108;
 
     @Override
     public int inventorySize() {

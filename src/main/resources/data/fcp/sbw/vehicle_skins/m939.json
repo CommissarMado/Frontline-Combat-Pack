@@ -11,6 +11,12 @@
       "Name": "Sand",
       "Texture": "fcp:textures/entity/m939/m939_sand.png",
       "Priority": 2
+    },
+    {
+      "Id": "black",
+      "Name": "Black",
+      "Texture": "fcp:textures/entity/m939/m939_black.png",
+      "Priority": 3
     }
   ]
 }

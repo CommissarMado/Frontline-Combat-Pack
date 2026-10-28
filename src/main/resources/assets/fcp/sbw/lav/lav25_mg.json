@@ -1,0 +1,7 @@
+﻿{
+  "ID": "fcp:lav25_mg",
+  "Model": {
+    "Model": "fcp:geo/lav25_mg.geo.json",
+    "Texture": "fcp:textures/entity/toyota.png"
+  }
+}

@@ -29,6 +29,12 @@
       "Name": "Tan",
       "Texture": "fcp:textures/entity/lav/lav25_tan.png",
       "Priority": 5
+    },
+    {
+      "Id": "australian",
+      "Name": "Australian",
+      "Texture": "fcp:textures/entity/lav/lav25_aus.png",
+      "Priority": 6
     }
   ]
 }

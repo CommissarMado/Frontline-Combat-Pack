@@ -1,0 +1,29 @@
+{
+  "armor": {
+    "front": 7.0,
+    "side": 7.0,
+    "rear": 7.0,
+    "top": 5.0,
+    "turret_front": 7.0,
+    "turret_side": 7.0
+  },
+  "modifiers": {
+    "kinetic": 0.1,
+    "heat": 0.36,
+    "hat": 0.5,
+    "explosive": 0.8,
+    "frag": 1.0,
+    "small_arms": 0.0
+  },
+  "weapons": {
+    "PKM": {
+      "type": "small_arms",
+      "pen": 7.0
+    },
+    "AGS": {
+      "type": "frag",
+      "pen": 5.0
+    }
+  },
+  "ammo": {"PKM": [5, 200], "AGS": [10, 29]}
+}

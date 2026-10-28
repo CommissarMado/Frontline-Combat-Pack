@@ -1,0 +1,88 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Camouflage",
+      "Texture": "fcp:textures/entity/t72/camouflage.png",
+      "Priority": 1
+    },
+    {
+      "Id": "russia_1",
+      "Name": "Russia",
+      "Texture": "fcp:textures/entity/t72/russia_1.png",
+      "Priority": 2
+    },
+    {
+      "Id": "russia_2",
+      "Name": "Russia (Alt)",
+      "Texture": "fcp:textures/entity/t72/russia_2.png",
+      "Priority": 3
+    },
+    {
+      "Id": "russia_3",
+      "Name": "Russia (Late)",
+      "Texture": "fcp:textures/entity/t72/russia_3.png",
+      "Priority": 4
+    },
+    {
+      "Id": "russia_winter",
+      "Name": "Russia (Winter)",
+      "Texture": "fcp:textures/entity/t72/russia_winter.png",
+      "Priority": 5
+    },
+    {
+      "Id": "russia_z",
+      "Name": "Russia Z",
+      "Texture": "fcp:textures/entity/t72/russia_z.png",
+      "Priority": 6
+    },
+    {
+      "Id": "russia_v",
+      "Name": "Russia V",
+      "Texture": "fcp:textures/entity/t72/russia_v.png",
+      "Priority": 7
+    },
+    {
+      "Id": "turms_1",
+      "Name": "TURMS 1",
+      "Texture": "fcp:textures/entity/t72/turms_1.png",
+      "Priority": 8
+    },
+    {
+      "Id": "turms_2",
+      "Name": "TURMS 2",
+      "Texture": "fcp:textures/entity/t72/turms_2.png",
+      "Priority": 9
+    },
+    {
+      "Id": "turms_3",
+      "Name": "TURMS 3",
+      "Texture": "fcp:textures/entity/t72/turms_3.png",
+      "Priority": 10
+    },
+    {
+      "Id": "turms_4",
+      "Name": "TURMS 4",
+      "Texture": "fcp:textures/entity/t72/turms_4.png",
+      "Priority": 11
+    },
+    {
+      "Id": "test",
+      "Name": "Test",
+      "Texture": "fcp:textures/entity/t72/test.png",
+      "Priority": 12
+    },
+    {
+      "Id": "ukraine_1",
+      "Name": "Ukraine",
+      "Texture": "fcp:textures/entity/t72/ukraine_1.png",
+      "Priority": 13
+    },
+    {
+      "Id": "ukraine_2",
+      "Name": "Ukraine (Alt)",
+      "Texture": "fcp:textures/entity/t72/ukraine_2.png",
+      "Priority": 14
+    }
+  ]
+}

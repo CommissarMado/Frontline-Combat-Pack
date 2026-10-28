@@ -1,0 +1,10 @@
+{
+  "model": false,
+  "weapons": {
+    "MachineGun": {
+      "type": "kinetic",
+      "pen": 28.0
+    }
+  },
+  "ammo": {"MachineGun": [10, 100]}
+}

@@ -1,0 +1,37 @@
+{
+  "armor": {
+    "front": 100.0,
+    "side": 45.0,
+    "rear": 30.0,
+    "top": 15.0,
+    "turret_front": 100.0,
+    "turret_side": 45.0
+  },
+  "modifiers": {
+    "kinetic": 0.1,
+    "heat": 0.34,
+    "hat": 1.0,
+    "explosive": 1.0,
+    "frag": 1.0,
+    "small_arms": 0.0
+  },
+  "weapons": {
+    "Cannon": {
+      "type": "kinetic",
+      "pen": 110.0
+    },
+    "Cannon#1": {
+      "type": "frag",
+      "pen": 9.0
+    },
+    "Coax": {
+      "type": "small_arms",
+      "pen": 7.0
+    },
+    "ATGM": {
+      "type": "hat",
+      "pen": 900.0
+    }
+  },
+  "ammo": {"Cannon": [1, 200], "Cannon#1": [1, 200], "Coax": [8, 250], "ATGM": [1, 2]}
+}

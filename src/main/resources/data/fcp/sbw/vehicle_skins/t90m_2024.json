@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {"Id": "vanilla", "Name": "Russian Green", "Texture": "fcp:textures/entity/t90m/green.png", "Priority": 1},
+    {"Id": "light_green", "Name": "Light Green", "Texture": "fcp:textures/entity/t90m/light_green.png", "Priority": 2},
+    {"Id": "woodland", "Name": "Woodland Camo", "Texture": "fcp:textures/entity/t90m/woodland.png", "Priority": 3},
+    {"Id": "grey", "Name": "Grey Camo", "Texture": "fcp:textures/entity/t90m/grey.png", "Priority": 4},
+    {"Id": "dark_grey", "Name": "Dark Grey Camo", "Texture": "fcp:textures/entity/t90m/dark_grey.png", "Priority": 5},
+    {"Id": "desert", "Name": "Desert Camo", "Texture": "fcp:textures/entity/t90m/desert.png", "Priority": 6}
+  ]
+}

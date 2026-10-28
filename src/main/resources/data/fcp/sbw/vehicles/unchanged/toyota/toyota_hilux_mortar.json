@@ -1,7 +1,7 @@
 {
   "ID": "fcp:toyota_hilux_mortar",
-  "MaxHealth": 150,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 58,
+  "MaxEnergy": 8000000,
   "PassengerRenderScale": 0.85,
   "OBB": [
     {"Size": [0.969, 0.971, 2.914], "Position": [0.0, 0.971, -0.22], "Part": "Collision"},
@@ -30,7 +30,7 @@
       "IsEnclosed": false,
       "Transform": "Turret",
       "Weapons": [
-        "Mortar"
+        "Main"
       ],
       "BanHand": true,
       "CameraPos": {
@@ -93,7 +93,7 @@
       "Magazine": 0,
       "Damage": 0
     },
-    "Mortar": {
+    "Main": {
       "AmmoType": "superbwarfare:mortar_shell",
       "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/mortar_shell.png",
       "DefaultZoom": 2,
@@ -107,9 +107,9 @@
       "Spread": 0.1,
       "Name": "weapon.fcp.stryker_mortar",
       "RPM": 45,
-      "Damage": 60,
-      "ExplosionDamage": 100,
-      "ExplosionRadius": 8,
+      "Damage": 1,
+      "ExplosionDamage": 38.7,
+      "ExplosionRadius": 20,
       "Gravity": 0.05,
       "Velocity": 10,
       "SoundInfo": {
@@ -133,12 +133,12 @@
   "EngineSound": "fcp:toyota_engine",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 16.6,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.62,
-    "MaxBackwardSpeedRate": 0.33,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.66,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.0119,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1,
     "EngineSoundVolume": 1.0

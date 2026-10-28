@@ -1,7 +1,7 @@
 {
   "ID": "fcp:generic_suv",
-  "MaxHealth": 160,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 58,
+  "MaxEnergy": 8000000,
   "PassengerRenderScale": 0.85,
   "OBB": [
     {"Size": [1.219, 1.086, 3.0], "Position": [0.0, 1.086, 0.161], "Part": "Collision"},
@@ -87,12 +87,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 90,
+    "EnergyCostRate": 16.2,
     "WheelRotSpeed": 1.1,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.4,
-    "MaxBackwardSpeedRate": 0.33,
-    "Increment": 0.02,
+    "MaxForwardSpeedRate": 1.62,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.00878,
     "Decrement": 0.016,
     "SteeringSpeed": 0.08,
     "EngineSoundVolume": 0.6

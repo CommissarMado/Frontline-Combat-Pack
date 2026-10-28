@@ -1,7 +1,7 @@
 {
   "ID": "fcp:uaz_3303",
-  "MaxHealth": 150,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 73,
+  "MaxEnergy": 7700000,
   "PassengerRenderScale": 0.85,
   "OBB": [
     {"Size": [1.133, 1.27, 2.445], "Position": [0.0, 1.27, -0.002], "Part": "Collision"},
@@ -48,12 +48,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 104,
+    "EnergyCostRate": 17.4,
     "WheelRotSpeed": 0.9,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.15,
-    "MaxBackwardSpeedRate": 0.23,
-    "Increment": 0.018,
+    "MaxForwardSpeedRate": 1.11,
+    "MaxBackwardSpeedRate": 0.32,
+    "Increment": 0.009,
     "Decrement": 0.020,
     "SteeringSpeed": 0.09,
     "EngineSoundVolume": 0.6

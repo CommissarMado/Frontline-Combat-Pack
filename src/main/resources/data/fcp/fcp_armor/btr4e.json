@@ -1,0 +1,37 @@
+{
+  "armor": {
+    "front": 70.0,
+    "side": 35.0,
+    "rear": 30.0,
+    "top": 7.0,
+    "turret_front": 35.0,
+    "turret_side": 30.0
+  },
+  "modifiers": {
+    "kinetic": 0.1,
+    "heat": 0.29,
+    "hat": 0.5,
+    "explosive": 1.0,
+    "frag": 0.25,
+    "small_arms": 0.0
+  },
+  "weapons": {
+    "Konkurs": {
+      "type": "hat",
+      "pen": 900.0
+    },
+    "Cannon": {
+      "type": "kinetic",
+      "pen": 62.0
+    },
+    "Cannon#1": {
+      "type": "frag",
+      "pen": 9.0
+    },
+    "Coax": {
+      "type": "small_arms",
+      "pen": 7.0
+    }
+  },
+  "ammo": {"Konkurs": [2, 2], "Cannon": [1, 150], "Cannon#1": [1, 150], "Coax": [1, 2000]}
+}

@@ -1,7 +1,7 @@
 {
   "ID": "fcp:kamaz_long",
-  "MaxHealth": 150,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 73,
+  "MaxEnergy": 35000000,
   "OBB": [
     {"Size": [1.258, 1.598, 4.742], "Position": [0.0, 1.598, 0.353], "Part": "Collision"},
     {"Size": [0.24655, 0.59094, 0.59094], "Position": [0.98489, 0.59445, 3.77614], "Part": "WheelLeft"},
@@ -149,12 +149,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 32.9,
     "WheelRotSpeed": 0.833,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.1,
-    "MaxBackwardSpeedRate": 0.2,
-    "Increment": 0.018,
+    "MaxForwardSpeedRate": 1.07,
+    "MaxBackwardSpeedRate": 0.32,
+    "Increment": 0.012,
     "Decrement": 0.013,
     "SteeringSpeed": 0.05,
     "EngineSoundVolume": 0.6

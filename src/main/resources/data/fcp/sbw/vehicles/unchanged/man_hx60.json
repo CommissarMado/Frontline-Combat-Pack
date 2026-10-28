@@ -1,7 +1,7 @@
 {
   "ID": "fcp:man_hx60",
-  "MaxHealth": 180,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 73,
+  "MaxEnergy": 30000000,
   "OBB": [
     {"Size": [1.383, 1.853, 4.258], "Position": [0.0, 1.853, -0.302], "Part": "Collision"},
     {"Size": [0.25, 0.6562, 0.6562], "Position": [0.96, 0.6712, 2.3791], "Part": "WheelLeft"},
@@ -149,12 +149,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 72,
+    "EnergyCostRate": 39.9,
     "WheelRotSpeed": 0.75,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.0,
-    "MaxBackwardSpeedRate": 0.35,
-    "Increment": 0.011,
+    "MaxForwardSpeedRate": 1.06,
+    "MaxBackwardSpeedRate": 0.32,
+    "Increment": 0.00739,
     "Decrement": 0.008,
     "SteeringSpeed": 0.045,
     "EngineSoundVolume": 0.6

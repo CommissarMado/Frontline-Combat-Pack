@@ -3,7 +3,6 @@ package frontline.combat.fcp.client.model.Toyota;
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.model.Util.WheelRotationTransforms;
-import frontline.combat.fcp.entity.vehicle.T72av.T72AVEntity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxBMPEntity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxEntity;
 import net.minecraft.resources.ResourceLocation;

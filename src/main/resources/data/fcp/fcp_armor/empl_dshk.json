@@ -1,0 +1,10 @@
+{
+  "model": false,
+  "weapons": {
+    "DShK": {
+      "type": "kinetic",
+      "pen": 28.0
+    }
+  },
+  "ammo": {"DShK": [5, 200]}
+}

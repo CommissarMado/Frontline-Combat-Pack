@@ -1,7 +1,7 @@
 {
   "ID": "fcp:pantsir",
-  "MaxHealth": 250,
-  "MaxEnergy": 5500000,
+  "MaxHealth": 73,
+  "MaxEnergy": 70000000,
   "OBB": [
     {
       "Size": [
@@ -246,10 +246,10 @@
       "EmptyReloadTime": 260,
       "Projectile": "superbwarfare:ru_9m336_missile",
       "Name": "weapon.fcp.pantsir_missile",
-      "Damage": 260,
+      "Damage": 13,
       "RPM": 30,
-      "ExplosionDamage": 90,
-      "ExplosionRadius": 6,
+      "ExplosionDamage": 40,
+      "ExplosionRadius": 8,
       "Velocity": 3,
       "SeekWeaponInfo": {
         "SeekDirection": "Barrel",
@@ -360,15 +360,14 @@
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:small_cannon_shell",
       "AmmoType": "superbwarfare:small_shell_he",
-      "IsHighExplosiveProjectile": true,
       "DefaultZoom": 2,
       "RPM": 1000,
       "Magazine": 100,
       "EmptyReloadTime": 211,
       "Velocity": 22,
-      "Damage": 25,
-      "ExplosionDamage": 12,
-      "ExplosionRadius": 2,
+      "Damage": 18.4,
+      "ExplosionDamage": 7.7,
+      "ExplosionRadius": 2.3,
       "Spread": 0.8,
       "RecoilTime": 24,
       "RecoilForce": 0.7,
@@ -417,20 +416,21 @@
           "Barrel",
           "Barrel"
         ]
-      }
+      },
+      "ShellType": "HE"
     }
   },
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0.05,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 136.3,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
     "TrackRotSpeed": 1.9,
     "TrackDifferential": 0.8,
-    "MaxForwardSpeedRate": 0.95,
-    "MaxBackwardSpeedRate": 0.32,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.11,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.01786,
     "Decrement": 0.018,
     "SteeringSpeed": 0.1
   },
@@ -439,10 +439,7 @@
     3.047064,
     -1.604643
   ],
-  "TurretTurnSpeed": [
-    2.5,
-    2.3
-  ],
+  "TurretTurnSpeed": [4.5, 4.5],
   "TurretPitchRange": [
     0,
     85

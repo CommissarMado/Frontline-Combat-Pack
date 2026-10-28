@@ -1,7 +1,7 @@
 {
   "ID": "fcp:novator",
-  "MaxHealth": 175,
-  "MaxEnergy": 5250000,
+  "MaxHealth": 73,
+  "MaxEnergy": 28000000,
   "OBB": [
     {
       "Size": [
@@ -191,13 +191,11 @@
         0,
         0
       ],
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
-      "MinPitch": -10,
-      "MaxPitch": 60,
-      "MinYaw": -95,
-      "MaxYaw": 95
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [1.339, 2.174, 0.272]},
+      "MinPitch": 0,
+      "MaxPitch": 0,
+      "MinYaw": -90.0,
+      "MaxYaw": -90.0
     },
     {
       "IsEnclosed": true,
@@ -209,13 +207,11 @@
         0,
         0
       ],
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
-      "MinPitch": -10,
-      "MaxPitch": 60,
-      "MinYaw": -95,
-      "MaxYaw": 95
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [-1.339, 2.174, 0.272]},
+      "MinPitch": 0,
+      "MaxPitch": 0,
+      "MinYaw": 90.0,
+      "MaxYaw": 90.0
     },
     {
       "IsEnclosed": true,
@@ -227,13 +223,11 @@
         0,
         0
       ],
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
-      "MinPitch": -10,
-      "MaxPitch": 60,
-      "MinYaw": -95,
-      "MaxYaw": 95
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [1.339, 2.174, -1.0]},
+      "MinPitch": 0,
+      "MaxPitch": 0,
+      "MinYaw": -90.0,
+      "MaxYaw": -90.0
     },
     {
       "IsEnclosed": true,
@@ -245,13 +239,11 @@
         0,
         0
       ],
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
-      "MinPitch": -10,
-      "MaxPitch": 60,
-      "MinYaw": -95,
-      "MaxYaw": 95
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [-1.339, 2.174, -1.0]},
+      "MinPitch": 0,
+      "MaxPitch": 0,
+      "MinYaw": 90.0,
+      "MaxYaw": 90.0
     },
     {
       "IsEnclosed": true,
@@ -263,13 +255,11 @@
         0,
         0
       ],
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
-      "MinPitch": -10,
-      "MaxPitch": 60,
-      "MinYaw": -95,
-      "MaxYaw": 95
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [1.339, 2.174, -2.272]},
+      "MinPitch": 0,
+      "MaxPitch": 0,
+      "MinYaw": -90.0,
+      "MaxYaw": -90.0
     },
     {
       "IsEnclosed": true,
@@ -281,13 +271,11 @@
         0,
         0
       ],
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
-      "MinPitch": -10,
-      "MaxPitch": 60,
-      "MinYaw": -95,
-      "MaxYaw": 95
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [-1.339, 2.174, -2.272]},
+      "MinPitch": 0,
+      "MaxPitch": 0,
+      "MinYaw": 90.0,
+      "MaxYaw": 90.0
     }
   ],
   "Weapons": {
@@ -300,7 +288,7 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 663,
-      "Damage": 15,
+      "Damage": 15.7,
       "BypassesArmor": 2,
       "Velocity": 25,
       "RecoilTime": 16,
@@ -308,7 +296,7 @@
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@HeavyAmmo",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
@@ -340,12 +328,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 31.2,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.35,
-    "MaxBackwardSpeedRate": 0.2,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.27,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.01563,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1
   },
@@ -359,10 +347,7 @@
     0.367916,
     -0.192569
   ],
-  "TurretTurnSpeed": [
-    15,
-    15
-  ],
+  "TurretTurnSpeed": [4.5, 4.5],
   "TurretPitchRange": [
     -60,
     60

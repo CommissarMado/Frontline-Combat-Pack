@@ -5,6 +5,8 @@ import com.atsuishio.superbwarfare.tools.CustomExplosion;
 import com.atsuishio.superbwarfare.tools.DamageHandler;
 import com.mojang.logging.LogUtils;
 import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.balance.VehicleArmor;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -56,6 +58,16 @@ public final class VpbProjectileImpactHandler {
 
         if (!level.isClientSide) {
             Entity shooter = projectile.getOwner();
+
+            // Squad type/penetration for FCP's vehicle armour model (the projectile is the direct entity of
+            // both the hit and the blast), and the crater share for the frag block-damage reduction.
+            if (stats.type != null) {
+                CompoundTag round = new CompoundTag();
+                round.putString("type", stats.type);
+                round.putFloat("pen", stats.penetration);
+                if (stats.blockDamage >= 0f) round.putFloat("block", stats.blockDamage);
+                projectile.getPersistentData().put(VehicleArmor.TAG, round);
+            }
 
             // 1) Direct hit on the struck entity (entity hits only), through SBW's projectile-hit
             //    damage type so vehicle DamageModifiers/armor apply.

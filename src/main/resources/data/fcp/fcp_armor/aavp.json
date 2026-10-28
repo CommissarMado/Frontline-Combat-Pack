@@ -1,0 +1,29 @@
+{
+  "armor": {
+    "front": 50.0,
+    "side": 30.0,
+    "rear": 20.0,
+    "top": 5.0,
+    "turret_front": 35.0,
+    "turret_side": 30.0
+  },
+  "modifiers": {
+    "kinetic": 0.1,
+    "heat": 0.34,
+    "hat": 1.0,
+    "explosive": 1.0,
+    "frag": 1.0,
+    "small_arms": 0.0
+  },
+  "weapons": {
+    "Coax": {
+      "type": "kinetic",
+      "pen": 28.0
+    },
+    "Cannon": {
+      "type": "frag",
+      "pen": 5.0
+    }
+  },
+  "ammo": {"Coax": [5, 100], "Cannon": [6, 32]}
+}

@@ -1,7 +1,7 @@
 {
   "ID": "fcp:landrover_110",
-  "MaxHealth": 140,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 58,
+  "MaxEnergy": 7500000,
   "PassengerRenderScale": 0.85,
   "OBB": [
     {
@@ -208,12 +208,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 85,
+    "EnergyCostRate": 16.4,
     "WheelRotSpeed": 1.1,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.3,
-    "MaxBackwardSpeedRate": 0.33,
-    "Increment": 0.02,
+    "MaxForwardSpeedRate": 1.5,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.00947,
     "Decrement": 0.016,
     "SteeringSpeed": 0.08,
     "EngineSoundVolume": 0.6

@@ -4,6 +4,7 @@ import com.atsuishio.superbwarfare.client.RenderHelper;
 import com.atsuishio.superbwarfare.client.overlay.VehicleHudOverlay;
 import com.atsuishio.superbwarfare.data.gun.GunData;
 import frontline.combat.fcp.entity.vehicle.CamoEmplacementEntity;
+import frontline.combat.fcp.entity.vehicle.VehicleInventory;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -90,6 +91,8 @@ public abstract class VehicleHudMagazineMixin {
     private int fcp$markEmplacement(GunData data, Entity source) {
         fcp$emplacement = source instanceof CamoEmplacementEntity;
         fcp$reserveDigits = 0;
+        // FCP holds aren't synced to the client: read the count the server publishes (VehicleReserveAmmoMixin).
+        if (source instanceof VehicleInventory) return data.backupAmmoCount.get();
         return data.countBackupAmmo(source);
     }
 

@@ -27,7 +27,7 @@ public class Bmp3Entity extends CamoVehicleBase {
     private static final Vec3 PKT_PIVOT = new Vec3(1.3060, 1.7096, 2.2478);
     private static final Vec3 PKT2_PIVOT = new Vec3(-1.3060, 1.7096, 2.2478);
 
-    public int INVENTORY_SIZE = 9;
+    public int INVENTORY_SIZE = 18;
 
     public Bmp3Entity(EntityType<Bmp3Entity> type, Level world) {
         super(type, world);

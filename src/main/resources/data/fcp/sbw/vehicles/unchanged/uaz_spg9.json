@@ -1,7 +1,7 @@
 {
   "ID": "fcp:uaz_spg9",
-  "MaxHealth": 150,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 58,
+  "MaxEnergy": 7800000,
   "TurretPos": [
     0.01051875,
     1.668125,
@@ -162,8 +162,6 @@
     "Rocket": {
       "AmmoType": "superbwarfare:rpg_rocket_standard",
       "Icon": "fcp:textures/screens/vehicle_weapon/pg_9v.png",
-      "IsArmorPiercingProjectile": true,
-      "IsHighExplosiveProjectile": true,
       "DefaultZoom": 2,
       "DefaultFireMode": "Semi",
       "AvailableFireModes": "Semi",
@@ -175,9 +173,9 @@
       "Crosshair": "@VehicleCommonMissile",
       "CrosshairColor": "0x00ff66",
       "RPM": 400,
-      "Damage": 150,
-      "ExplosionDamage": 40,
-      "ExplosionRadius": 4,
+      "Damage": 174.2,
+      "ExplosionDamage": 9.7,
+      "ExplosionRadius": 5,
       "Velocity": 16,
       "SoundInfo": {
         "Fire1P": "fcp:squad.silent",
@@ -203,18 +201,19 @@
           ]
         ]
       },
-      "SoundRadius": 32
+      "SoundRadius": 32,
+      "ShellType": "HE"
     }
   },
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 18.7,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.62,
-    "MaxBackwardSpeedRate": 0.33,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.23,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.0129,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1,
     "EngineSoundVolume": 0.6

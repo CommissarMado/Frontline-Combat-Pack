@@ -1,12 +1,12 @@
 {
   "ID": "fcp:hmmwv_avenger",
-  "MaxHealth": 150,
+  "MaxHealth": 73,
   "PassengerRenderScale": 0.85,
-  "MaxEnergy": 5000000,
+  "MaxEnergy": 9500000,
   "TurretControllerIndex": 1,
   "TurretPos": [0.044174, 2.153644, -1.412352],
   "BarrelPos": [-0.357951, 0.20144, -0.182035],
-  "TurretTurnSpeed": [5, 5],
+  "TurretTurnSpeed": [4.5, 4.5],
   "TurretPitchRange": [-0, 40],
   "OBB": [
     {
@@ -210,10 +210,10 @@
       "EmptyReloadTime": 260,
       "Projectile": "superbwarfare:ru_9m336_missile",
       "Name": "weapon.superbwarfare.fim_92_missile",
-      "Damage": 260,
+      "Damage": 13,
       "RPM": 30,
-      "ExplosionDamage": 90,
-      "ExplosionRadius": 6,
+      "ExplosionDamage": 40,
+      "ExplosionRadius": 8,
       "Velocity": 3,
       "SeekWeaponInfo": {
         "SeekDirection": "Barrel",
@@ -302,10 +302,8 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 1000,
-      "Damage": 15,
+      "Damage": 14.8,
       "BypassesArmor": 2,
-      "IsArmorPiercingProjectile": true,
-      "IsHighExplosiveProjectile": false,
       "Velocity": 25,
       "RecoilTime": 32,
       "EmptyReloadTime": 231,
@@ -314,7 +312,7 @@
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@HeavyAmmo",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
@@ -344,12 +342,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 22.4,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.26,
-    "MaxBackwardSpeedRate": 0.33,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.29,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.01534,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1,
     "EngineSoundVolume": 0.6

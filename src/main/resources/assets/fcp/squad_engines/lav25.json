@@ -1,6 +1,6 @@
 {
   "_comment": "Generated from the Squad SDK: LAV25_engine_rpm_ALL_Cue.uasset (+ start/stop cues).",
-  "vehicles": ["fcp:lav25"],
+  "vehicles": ["fcp:lav25", "fcp:lav25_mg"],
   "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
   "exterior_volume": 0.5128,
   "interior_volume": 0.4167,

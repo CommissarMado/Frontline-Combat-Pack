@@ -1,0 +1,10 @@
+{
+  "model": false,
+  "weapons": {
+    "MachineGun": {
+      "type": "small_arms",
+      "pen": 7.0
+    }
+  },
+  "ammo": {"MachineGun": [6, 120]}
+}

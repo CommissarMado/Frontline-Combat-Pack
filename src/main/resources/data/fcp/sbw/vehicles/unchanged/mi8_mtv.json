@@ -1,7 +1,7 @@
 {
   "ID": "fcp:mi8_mtv",
-  "MaxHealth": 420,
-  "MaxEnergy": 8000000,
+  "MaxHealth": 97,
+  "MaxEnergy": 187000000,
   "OBB": [
     {
       "Size": [
@@ -406,7 +406,7 @@
   ],
   "EngineType": "Helicopter",
   "EngineInfo": {
-    "EnergyCostRate": 280,
+    "EnergyCostRate": 148,
     "Increment": 0.9,
     "Decrement": 0.9,
     "PitchSpeed": 0.55,
@@ -463,9 +463,9 @@
       "Spread": 0.3,
       "Name": "weapon.fcp.hydra_rocket",
       "RPM": 400,
-      "Damage": 80,
-      "ExplosionDamage": 40,
-      "ExplosionRadius": 5,
+      "Damage": 19.4,
+      "ExplosionDamage": 24.2,
+      "ExplosionRadius": 6,
       "Gravity": 0.02,
       "Velocity": 16,
       "SoundInfo": {

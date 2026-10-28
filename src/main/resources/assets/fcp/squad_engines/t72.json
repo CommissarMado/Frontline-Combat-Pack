@@ -1,6 +1,6 @@
 {
   "_comment": "Generated from the Squad SDK: T72_engine_rpm_ALL_Cue.uasset (+ start/stop cues).",
-  "vehicles": ["fcp:t72av", "fcp:msta"],
+  "vehicles": ["fcp:t72a", "fcp:t72av", "fcp:t72b", "fcp:t72b_1985", "fcp:t72b_1989", "fcp:t72b2", "fcp:t72b3", "fcp:t72b3_2016", "fcp:t72b3m", "fcp:t72m2_moderna", "fcp:msta"],
   "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
   "exterior_volume": 0.5,
   "interior_volume": 1,

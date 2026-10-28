@@ -1,7 +1,7 @@
 {
   "ID": "fcp:msta",
-  "MaxHealth": 290,
-  "MaxEnergy": 5500000,
+  "MaxHealth": 194,
+  "MaxEnergy": 85000000,
   "OBB": [
     {
       "Size": [
@@ -227,9 +227,9 @@
       "Velocity": 18,
       "Gravity": 0.06,
       "ApDurability": 200,
-      "Damage": 1050,
-      "ExplosionDamage": 140,
-      "ExplosionRadius": 5,
+      "Damage": 774.2,
+      "ExplosionDamage": 0,
+      "ExplosionRadius": 0,
       "RecoilTime": 42,
       "RecoilForce": 1.1,
       "ShootShake": [
@@ -263,9 +263,9 @@
           "Override": {
             "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/he_shell.png",
             "ShellType": "HE",
-            "Damage": 450,
-            "ExplosionDamage": 260,
-            "ExplosionRadius": 14,
+            "Damage": 19.4,
+            "ExplosionDamage": 58.1,
+            "ExplosionRadius": 25,
             "Name": "weapon.superbwarfare.cannon_he"
           }
         },
@@ -276,9 +276,9 @@
             "ShellType": "CM",
             "SpreadAmount": 22,
             "SpreadAngle": 8,
-            "Damage": 600,
-            "ExplosionDamage": 240,
-            "ExplosionRadius": 7,
+            "Damage": 9.7,
+            "ExplosionDamage": 29,
+            "ExplosionRadius": 10,
             "Name": "weapon.superbwarfare.cannon_cm"
           }
         },
@@ -308,7 +308,8 @@
         "Directions": [
           "Barrel"
         ]
-      }
+      },
+      "ShellType": "AP"
     },
     "PassengerMachineGun": {
       "DefaultFireMode": "Auto",
@@ -319,7 +320,7 @@
       "EmptyReloadTime": 228,
       "Magazine": 200,
       "Velocity": 25,
-      "Damage": 15,
+      "Damage": 14.8,
       "BypassesArmor": 2,
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
@@ -344,26 +345,26 @@
         "Directions": [[0, 0, 1]]
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@HeavyAmmo",
       "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png"
     }
   },
   "EngineType": "Track",
   "EngineInfo": {
     "Buoyancy": 0.05,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 82,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
     "TrackRotSpeed": 1.7,
     "TrackDifferential": 0.8,
-    "MaxForwardSpeedRate": 0.57,
-    "MaxBackwardSpeedRate": 0.22,
+    "MaxForwardSpeedRate": 0.55,
+    "MaxBackwardSpeedRate": 0.32,
     "Increment": 0.02,
     "Decrement": 0.014,
     "SteeringSpeed": 0.085
   },
   "TurretPos": [-0.010811, 2.218792, -0.479044],
-  "TurretTurnSpeed": [2.5, 1.8],
+  "TurretTurnSpeed": [0.75, 0.5],
   "TurretPitchRange": [-3, 75],
   "BarrelPos": [0.0, 0.0, 0.609583],
   "ThirdPersonCameraPos": [0, 3, 5],

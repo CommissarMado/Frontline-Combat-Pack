@@ -61,7 +61,12 @@ public abstract class VehicleBackblastMixin {
             "fcp:toyota_hilux_rocket_pod", new Blast(1.5879, 0.40, true, null),
             "fcp:stryker_tow",            new Blast(1.275, 0.40, true, null),
             // Spike tubes are 18.7 px; the muzzle ShootPos sits 0.05 past their front.
-            "fcp:puma_atgm",              new Blast(1.22, 0.40, true, "ATGM")
+            "fcp:puma_atgm",              new Blast(1.22, 0.40, true, "ATGM"),
+            // TOW tubes are 1.37 blocks; the ShootPos sits 0.04 past their front.
+            "fcp:m2a2",                   new Blast(1.41, 0.40, true, "TOW"),
+            "fcp:m2a2_busk",              new Blast(1.41, 0.40, true, "TOW"),
+            "fcp:m2a3",                   new Blast(1.41, 0.40, true, "TOW"),
+            "fcp:m2a3_busk",              new Blast(1.41, 0.40, true, "TOW")
     );
 
 

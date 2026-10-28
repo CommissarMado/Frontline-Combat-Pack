@@ -53,8 +53,23 @@ public class LandVehicleHudStatsMixin {
             "fcp:btr82",
             "fcp:btr82at",
             "fcp:lav25",
+            "fcp:lav25_mg",
             "fcp:stryker_mgs",
+            "fcp:t72a",
             "fcp:t72av",
+            "fcp:t72b",
+            "fcp:t72b_1985",
+            "fcp:t72b_1989",
+            "fcp:t72b2",
+            "fcp:t72b3",
+            "fcp:t72b3_2016",
+            "fcp:t72b3m",
+            "fcp:t72m2_moderna",
+            "fcp:t90a",
+            "fcp:t90m",
+            "fcp:t90m_2022",
+            "fcp:t90m_2024",
+            "fcp:t90ms",
             "fcp:aavp",
             "fcp:matv_tow",
             "fcp:hmmwv_unarmored_tow",
@@ -92,17 +107,35 @@ public class LandVehicleHudStatsMixin {
             "fcp:bmp3m", Set.of(2, 3)
     );
 
-    // Commander weapon station sights (the passenger-weapon-station seat): the M1A1's cupola M2 is
-    // aimed through a gunner's sight, the M1A2's CROWS through a monitor (SBW's TV frame).
+    // Commander weapon station sights (the passenger-weapon-station seat): the M1A1's cupola M2 and
+    // the T-72s'/T-90A's NSVT/Kord are aimed through a gunner's sight, the M1A2's CROWS and the
+    // T-72AV's cupola through a monitor (SBW's TV frame). The T-72M2 Moderna's sight is PumaCommanderHud.
     private static final ResourceLocation TV_FRAME =
             new ResourceLocation("superbwarfare", "textures/overlay/vehicle/land/tv_frame.png");
-    private static final java.util.Map<String, ResourceLocation> FCP_COMMANDER_FRAMES = java.util.Map.of(
-            "fcp:m1a1", new ResourceLocation("fcp", "textures/overlay/vehicle/frame/gunner.png"),
-            "fcp:m1a1_aim", new ResourceLocation("fcp", "textures/overlay/vehicle/frame/gunner.png"),
-            "fcp:m1a1_ukr", new ResourceLocation("fcp", "textures/overlay/vehicle/frame/gunner.png"),
-            "fcp:m1a2", TV_FRAME,
-            "fcp:m1a2_tusk1", TV_FRAME,
-            "fcp:m1a2_tusk2", TV_FRAME
+    private static final ResourceLocation COMMANDER_GUNNER_FRAME =
+            new ResourceLocation("fcp", "textures/overlay/vehicle/frame/gunner.png");
+    private static final java.util.Map<String, ResourceLocation> FCP_COMMANDER_FRAMES = java.util.Map.ofEntries(
+            java.util.Map.entry("fcp:m1a1", COMMANDER_GUNNER_FRAME),
+            java.util.Map.entry("fcp:m1a1_aim", COMMANDER_GUNNER_FRAME),
+            java.util.Map.entry("fcp:m1a1_ukr", COMMANDER_GUNNER_FRAME),
+            java.util.Map.entry("fcp:m1a2", TV_FRAME),
+            java.util.Map.entry("fcp:m1a2_tusk1", TV_FRAME),
+            java.util.Map.entry("fcp:m1a2_tusk2", TV_FRAME),
+            java.util.Map.entry("fcp:t72a", COMMANDER_GUNNER_FRAME),
+            java.util.Map.entry("fcp:t72av", TV_FRAME),
+            java.util.Map.entry("fcp:t72b", COMMANDER_GUNNER_FRAME),
+            java.util.Map.entry("fcp:t72b_1985", COMMANDER_GUNNER_FRAME),
+            java.util.Map.entry("fcp:t72b_1989", COMMANDER_GUNNER_FRAME),
+            java.util.Map.entry("fcp:t72b2", COMMANDER_GUNNER_FRAME),
+            java.util.Map.entry("fcp:t72b3", COMMANDER_GUNNER_FRAME),
+            java.util.Map.entry("fcp:t72b3_2016", COMMANDER_GUNNER_FRAME),
+            java.util.Map.entry("fcp:t72b3m", COMMANDER_GUNNER_FRAME),
+            java.util.Map.entry("fcp:t90a", COMMANDER_GUNNER_FRAME),
+            // T-90M family: Kord RWS, TV sight like the M1A2's CROWS.
+            java.util.Map.entry("fcp:t90m", TV_FRAME),
+            java.util.Map.entry("fcp:t90m_2022", TV_FRAME),
+            java.util.Map.entry("fcp:t90m_2024", TV_FRAME),
+            java.util.Map.entry("fcp:t90ms", TV_FRAME)
     );
 
     // Vehicles that suppress the TV frame entirely but show no replacement overlay

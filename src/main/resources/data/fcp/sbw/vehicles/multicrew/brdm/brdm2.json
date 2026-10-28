@@ -1,7 +1,7 @@
 {
   "ID": "fcp:brdm2",
-  "MaxHealth": 250,
-  "MaxEnergy": 5500000,
+  "MaxHealth": 73,
+  "MaxEnergy": 29000000,
   "OBB": [
     {
       "Size": [
@@ -177,31 +177,35 @@
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [1.089, 1.474, -0.694]},
       "CanRotateHead": true,
       "Transform": "Vehicle",
       "Position": [
         0,
         1,
         0
-      ]
+      ],
+      "MinYaw": -90.0,
+      "MaxYaw": -90.0,
+      "MinPitch": 0,
+      "MaxPitch": 0
     },
     {
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [-1.089, 1.474, -0.694]},
       "CanRotateHead": true,
       "Transform": "Vehicle",
       "Position": [
         0,
         1,
         0
-      ]
+      ],
+      "MinYaw": 90.0,
+      "MaxYaw": 90.0,
+      "MinPitch": 0,
+      "MaxPitch": 0
     }
   ],
   "Weapons": {
@@ -214,7 +218,7 @@
       "Magazine": 100,
       "EmptyReloadTime": 401,
       "Velocity": 35,
-      "Damage": 20,
+      "Damage": 21.3,
       "BypassesArmor": 3,
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
@@ -233,7 +237,7 @@
         "Change": "fcp:squad.weapons.common.switch_kpvt"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@HeavyAmmo",
       "Icon": "fcp:textures/screens/vehicle_weapon/12_7mm.png",
       "ShootPos": {
         "Transform": "Barrel",
@@ -261,7 +265,7 @@
       "RPM": 750,
       "EmptyReloadTime": 231,
       "Velocity": 25,
-      "Damage": 4,
+      "Damage": 9.4,
       "BypassesArmor": 0.2,
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
@@ -280,7 +284,7 @@
         "VehicleReload3p": "fcp:squad.weapons.common.coax_reload_3p"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/gun_7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",
@@ -304,14 +308,14 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0.05,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 37.7,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
     "TrackRotSpeed": 1.9,
     "TrackDifferential": 0.8,
-    "MaxForwardSpeedRate": 0.95,
-    "MaxBackwardSpeedRate": 0.32,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.11,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.01607,
     "Decrement": 0.018,
     "SteeringSpeed": 0.1
   },
@@ -320,10 +324,7 @@
     2.018672,
     0.090163
   ],
-  "TurretTurnSpeed": [
-    2.5,
-    2.3
-  ],
+  "TurretTurnSpeed": [6.0, 6.0],
   "TurretPitchRange": [
     -10,
     60

@@ -1,7 +1,7 @@
 {
   "ID": "fcp:huey_m134_gunship",
-  "MaxHealth": 310,
-  "MaxEnergy": 8000000,
+  "MaxHealth": 97,
+  "MaxEnergy": 80000000,
   "OBB": [
     {"Size": [1.125, 0.9375, 3], "Position": [0, 1.5, 0], "Part": "Body"},
     {"Size": [1.125, 0.9375, 0.375], "Position": [0, 1.5, 3.375], "Part": "Body"},
@@ -160,7 +160,7 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 1500,
-      "Damage": 4,
+      "Damage": 19.4,
       "BypassesArmor": 0.2,
       "Velocity": 25,
       "RecoilTime": 16,
@@ -168,7 +168,7 @@
       "HeatPerShoot": 2.5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "Crosshair": "@Empty",
       "Name": "weapon.fcp.m134_minigun",
       "SoundInfo": {
@@ -197,7 +197,7 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 1500,
-      "Damage": 4,
+      "Damage": 19.4,
       "BypassesArmor": 0.2,
       "Velocity": 25,
       "RecoilTime": 16,
@@ -205,7 +205,7 @@
       "HeatPerShoot": 2.5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "Crosshair": "@Empty",
       "Name": "weapon.fcp.m134_minigun",
       "SoundInfo": {
@@ -237,9 +237,9 @@
       "Spread": 0.3,
       "Name": "weapon.fcp.hydra_rocket",
       "RPM": 400,
-      "Damage": 80,
-      "ExplosionDamage": 40,
-      "ExplosionRadius": 5,
+      "Damage": 19.4,
+      "ExplosionDamage": 24.2,
+      "ExplosionRadius": 6,
       "Gravity": 0.02,
       "Velocity": 16,
       "ShootPos": {
@@ -264,7 +264,7 @@
   },
   "EngineType": "Helicopter",
   "EngineInfo": {
-    "EnergyCostRate": 280,
+    "EnergyCostRate": 61,
     "Increment": 0.9,
     "Decrement": 0.9,
     "PitchSpeed": 0.82,

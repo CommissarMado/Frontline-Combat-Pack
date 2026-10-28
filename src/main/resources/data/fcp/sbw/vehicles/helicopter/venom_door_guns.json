@@ -1,7 +1,7 @@
 {
   "ID": "fcp:venom_door_guns",
-  "MaxHealth": 320,
-  "MaxEnergy": 8000000,
+  "MaxHealth": 97,
+  "MaxEnergy": 140000000,
   "TurretPos": [
     0.00325,
     0.65428,
@@ -384,7 +384,7 @@
   ],
   "EngineType": "Helicopter",
   "EngineInfo": {
-    "EnergyCostRate": 280,
+    "EnergyCostRate": 93,
     "Increment": 0.9,
     "Decrement": 0.9,
     "PitchSpeed": 0.82,
@@ -440,7 +440,7 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 1500,
-      "Damage": 4,
+      "Damage": 19.4,
       "BypassesArmor": 0.2,
       "Velocity": 25,
       "RecoilTime": 16,
@@ -448,7 +448,7 @@
       "HeatPerShoot": 2.5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "Crosshair": "@Empty",
       "Name": "weapon.fcp.m134_minigun",
       "SoundInfo": {
@@ -489,7 +489,7 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 1500,
-      "Damage": 4,
+      "Damage": 19.4,
       "BypassesArmor": 0.2,
       "Velocity": 25,
       "RecoilTime": 16,
@@ -497,7 +497,7 @@
       "HeatPerShoot": 2.5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "Crosshair": "@Empty",
       "Name": "weapon.fcp.m134_minigun",
       "SoundInfo": {

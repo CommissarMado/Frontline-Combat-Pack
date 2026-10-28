@@ -1,8 +1,11 @@
 package frontline.combat.fcp.entity.vehicle;
 
+import frontline.combat.fcp.FcpWorldSettings;
 import com.atsuishio.superbwarfare.entity.vehicle.base.GeoVehicleEntity;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import frontline.combat.fcp.entity.vehicle.engine.EngineControl;
+import frontline.combat.fcp.entity.vehicle.engine.IdleFuel;
+import frontline.combat.fcp.balance.VehicleRearm;
 import frontline.combat.fcp.entity.vehicle.engine.EngineControlled;
 import frontline.combat.fcp.init.ModItems;
 import frontline.combat.fcp.init.ModSounds;
@@ -197,6 +200,15 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements Vehicl
     }
 
     /**
+     * SBW's own container is unused: cargo and ammo live in the FCP hold (exposed as ITEM_HANDLER
+     * below), and VehicleInventoryGateMixin never lets SBW's screen open.
+     */
+    @Override
+    public int getContainerSize() {
+        return 0;
+    }
+
+    /**
      * Created on first use, because the hooks above are overridden by subclasses and aren't
      * reliable during construction.
      */
@@ -224,6 +236,8 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements Vehicl
                     return super.addItem(stack);
                 }
             };
+            // Any change to the hold (firing, reloading, rearming, a player) re-counts the reserve shown on the HUD.
+            this.vehicleInventory.addListener(container -> this.setChanged());
         }
         return this.vehicleInventory;
     }
@@ -251,11 +265,16 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements Vehicl
         ammoItemHandler.invalidate();
     }
 
+    /** Fractional idle burn carried between ticks (IdleFuel). */
+    private double idleFuel;
+
     @Override
     public void tick() {
         super.tick();
         EngineControl.tick(this);
         chargeFromInventoryEnergyItems();
+        idleFuel = IdleFuel.tick(this, idleFuel);
+        VehicleRearm.onFirstTick(this);
     }
 
     /**
@@ -307,9 +326,11 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements Vehicl
      * Open this vehicle's hold. The entity id and size are sent so the client can build a
      * matching menu and apply the same rules locally.
      */
+    @Override
     public void openVehicleInventory(ServerPlayer player) {
         // NONE has no storage but still shows a screen, so gate on the screen, not the hold.
         if (!opensVehicleScreen()) return;
+        if (FcpWorldSettings.refuseInventory(player)) return;
         // Tidy any mixed channel before it's shown, so the player never looks at one.
         normalizeBulkChannels();
         SimpleContainer inventory = getVehicleInventory();
@@ -464,7 +485,8 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements Vehicl
      */
     @Override
     public List<ItemStack> getRetrieveItems() {
-        if (!this.level().isClientSide() && hasVehicleInventory()) {
+        // With the F8 inventory lock on, the cargo stays packed in the container item instead of spilling.
+        if (!this.level().isClientSide() && hasVehicleInventory() && !FcpWorldSettings.current().lockInventories()) {
             SimpleContainer inventory = getVehicleInventory();
             if (!inventory.isEmpty()) {
                 Containers.dropContents(this.level(), this, inventory);
@@ -478,8 +500,10 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements Vehicl
 
     @Override
     public void remove(RemovalReason reason) {
-        // Spill cargo when destroyed — but NOT on chunk unload.
-        if (!this.level().isClientSide() && reason.shouldDestroy() && hasVehicleInventory()) {
+        // Spill cargo when destroyed — but NOT on chunk unload, and not at all under the F8 inventory
+        // lock: the cargo is simply deleted with the vehicle.
+        if (!this.level().isClientSide() && reason.shouldDestroy() && hasVehicleInventory()
+                && !FcpWorldSettings.current().lockInventories()) {
             Containers.dropContents(this.level(), this, getVehicleInventory());
         }
         super.remove(reason);

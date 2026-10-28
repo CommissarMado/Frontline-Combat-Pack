@@ -1,7 +1,7 @@
 {
   "ID": "fcp:combine",
-  "MaxHealth": 175,
-  "MaxEnergy": 5250000,
+  "MaxHealth": 73,
+  "MaxEnergy": 75000000,
   "OBB": [
     {"Size": [3.172, 2.971, 6.523], "Position": [0.0, 2.971, 0.864], "Part": "Collision"},
     {"Size": [1.4688, 0.7188, 2.9062], "Position": [0.0312, 1.2812, -0.5938]},
@@ -41,12 +41,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 52.6,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 0.1885714,
-    "MaxBackwardSpeedRate": 0.2,
-    "Increment": 0.01875,
+    "MaxForwardSpeedRate": 0.32,
+    "MaxBackwardSpeedRate": 0.24,
+    "Increment": 0.01406,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1
   },

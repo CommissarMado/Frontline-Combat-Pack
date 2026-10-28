@@ -1,7 +1,7 @@
 {
   "ID": "fcp:man_hx58_mg3",
-  "MaxHealth": 180,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 73,
+  "MaxEnergy": 40000000,
   "TurretControllerIndex": 1,
   "TurretPos": [
     -0.28853,
@@ -362,10 +362,8 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 1200,
-      "Damage": 5.5,
+      "Damage": 8.3,
       "BypassesArmor": 0.2,
-      "IsArmorPiercingProjectile": false,
-      "IsHighExplosiveProjectile": false,
       "Velocity": 25,
       "RecoilTime": 16,
       "EmptyReloadTime": 231,
@@ -374,7 +372,7 @@
       "HeatPerShoot": 3,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
@@ -404,12 +402,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 72,
+    "EnergyCostRate": 46.5,
     "WheelRotSpeed": 0.75,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.0,
-    "MaxBackwardSpeedRate": 0.35,
-    "Increment": 0.011,
+    "MaxForwardSpeedRate": 1.06,
+    "MaxBackwardSpeedRate": 0.32,
+    "Increment": 0.00739,
     "Decrement": 0.008,
     "SteeringSpeed": 0.045,
     "EngineSoundVolume": 0.6

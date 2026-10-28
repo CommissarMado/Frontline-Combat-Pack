@@ -1,7 +1,7 @@
 {
   "ID": "fcp:ch53a",
-  "MaxHealth": 480,
-  "MaxEnergy": 8000000,
+  "MaxHealth": 145,
+  "MaxEnergy": 240000000,
   "OBB": [
     {"Size": [1.6875, 1.7812, 7.625], "Position": [-0.125, 2.2812, -1.125], "Part": "Body"},
     {"Size": [3.75, 0.75, 3.5312], "Position": [-0.125, 1.375, -0.8438], "Part": "Body"},
@@ -261,7 +261,7 @@
   },
   "EngineType": "Helicopter",
   "EngineInfo": {
-    "EnergyCostRate": 340,
+    "EnergyCostRate": 200,
     "Increment": 0.85,
     "Decrement": 0.85,
     "PitchSpeed": 0.5,

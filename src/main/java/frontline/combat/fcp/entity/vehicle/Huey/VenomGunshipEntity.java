@@ -29,7 +29,7 @@ import org.joml.Vector4d;
 // muzzle/CameraPos pivot on the wrong side of the vehicle entirely.
 public class VenomGunshipEntity extends CamoVehicleBase {
 
-    public int INVENTORY_SIZE = 9;
+    public int INVENTORY_SIZE = 18;
 
     @Override
     public int inventorySize() {

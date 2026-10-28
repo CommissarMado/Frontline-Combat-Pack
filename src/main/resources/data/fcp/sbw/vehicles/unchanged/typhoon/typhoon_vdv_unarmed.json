@@ -1,7 +1,7 @@
 {
   "ID": "fcp:typhoon_vdv_unarmed",
-  "MaxHealth": 220,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 73,
+  "MaxEnergy": 30000000,
   "PassengerRenderScale": 0.85,
   "UpStep": 1.5,
   "Mass": 22,
@@ -69,12 +69,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 80,
+    "EnergyCostRate": 27,
     "WheelRotSpeed": 0.9,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.02,
-    "MaxBackwardSpeedRate": 0.38,
-    "Increment": 0.012,
+    "MaxForwardSpeedRate": 1.23,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.00774,
     "Decrement": 0.009,
     "SteeringSpeed": 0.045,
     "EngineSoundVolume": 0.6

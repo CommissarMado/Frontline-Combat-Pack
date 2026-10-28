@@ -74,6 +74,7 @@ import frontline.combat.fcp.entity.vehicle.ManHx58.ManHx58Entity;
 import frontline.combat.fcp.entity.vehicle.ManHx58.ManHx58Mg3Entity;
 import frontline.combat.fcp.entity.vehicle.ManHx60.ManHx60Entity;
 import frontline.combat.fcp.entity.vehicle.GenericSuv.GenericSuvEntity;
+import frontline.combat.fcp.entity.vehicle.Civ.CivCarEntity;
 import frontline.combat.fcp.entity.vehicle.Fmtv4x4.FMTV4x4Entity;
 import frontline.combat.fcp.entity.vehicle.Kozak.Kozak5Entity;
 import frontline.combat.fcp.entity.vehicle.Kozak.Kozak2m1Entity;
@@ -98,7 +99,7 @@ import frontline.combat.fcp.entity.vehicle.Stryker.StrykerDragoonEntity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerMk19Entity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerTowEntity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerMortarEntity;
-import frontline.combat.fcp.entity.vehicle.T72av.T72AVEntity;
+import frontline.combat.fcp.entity.vehicle.T72.T72Entity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxBMPEntity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxEntity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxRocketPodEntity;
@@ -201,6 +202,10 @@ public class ModEntities {
             EntityType.Builder.of(PumaEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<PumaEntity>> PUMA_ATGM = register("puma_atgm",
             EntityType.Builder.of(PumaEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Bradley.BradleyEntity>> M2A2 = bradley("m2a2");
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Bradley.BradleyEntity>> M2A2_BUSK = bradley("m2a2_busk");
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Bradley.BradleyEntity>> M2A3 = bradley("m2a3");
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Bradley.BradleyEntity>> M2A3_BUSK = bradley("m2a3_busk");
     // 9P157-2 Khrizantema-S ATGM carrier (BMP-3 hull).
     public static final RegistryObject<EntityType<KhrizantemaEntity>> KHRIZANTEMA = register("khrizantema",
             EntityType.Builder.of(KhrizantemaEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3.4f, 2.3f));
@@ -227,8 +232,34 @@ public class ModEntities {
             EntityType.Builder.of(AAVPEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<Lav25Entity>> LAV25 = register("lav25",
             EntityType.Builder.of(Lav25Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
-    public static final RegistryObject<EntityType<T72AVEntity>> T72AV = register("t72av",
-            EntityType.Builder.of(T72AVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<Lav25Entity>> LAV25_MG = register("lav25_mg",
+            EntityType.Builder.of(Lav25Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<T72Entity>> T72A = register("t72a",
+            EntityType.Builder.of(T72Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<T72Entity>> T72AV = register("t72av",
+            EntityType.Builder.of(T72Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<T72Entity>> T72B = register("t72b",
+            EntityType.Builder.of(T72Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<T72Entity>> T72B_1985 = register("t72b_1985",
+            EntityType.Builder.of(T72Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<T72Entity>> T72B_1989 = register("t72b_1989",
+            EntityType.Builder.of(T72Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<T72Entity>> T72B2 = register("t72b2",
+            EntityType.Builder.of(T72Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<T72Entity>> T72B3 = register("t72b3",
+            EntityType.Builder.of(T72Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<T72Entity>> T72B3_2016 = register("t72b3_2016",
+            EntityType.Builder.of(T72Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<T72Entity>> T72B3M = register("t72b3m",
+            EntityType.Builder.of(T72Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<T72Entity>> T72M2_MODERNA = register("t72m2_moderna",
+            EntityType.Builder.of(T72Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<T72Entity>> T90A = register("t90a",
+            EntityType.Builder.of(T72Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.T90M.T90MEntity>> T90M = t90m("t90m");
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.T90M.T90MEntity>> T90M_2022 = t90m("t90m_2022");
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.T90M.T90MEntity>> T90M_2024 = t90m("t90m_2024");
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.T90M.T90MEntity>> T90MS = t90m("t90ms");
     public static final RegistryObject<EntityType<UralEntity>> URAL = register("ural",
             EntityType.Builder.of(UralEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<Gaz66Entity>> GAZ66 = register("gaz66",
@@ -333,6 +364,14 @@ public class ModEntities {
             EntityType.Builder.of(ManHx60Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
     public static final RegistryObject<EntityType<GenericSuvEntity>> GENERIC_SUV = register("generic_suv",
             EntityType.Builder.of(GenericSuvEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2.5f));
+    public static final RegistryObject<EntityType<CivCarEntity>> BMW_E34 = register("bmw_e34",
+            EntityType.Builder.of(CivCarEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<CivCarEntity>> LAND_CRUISER_80 = register("land_cruiser_80",
+            EntityType.Builder.of(CivCarEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<CivCarEntity>> SUBURBAN = register("suburban",
+            EntityType.Builder.of(CivCarEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<CivCarEntity>> VW_T4 = register("vw_t4",
+            EntityType.Builder.of(CivCarEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<FMTV4x4Entity>> FMTV_4X4 = register("fmtv_4x4",
             EntityType.Builder.of(FMTV4x4Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<Kozak5Entity>> KOZAK5 = register("kozak5",
@@ -482,6 +521,18 @@ public class ModEntities {
 
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> entityTypeBuilder) {
         return ENTITY_TYPES.register(name, () -> entityTypeBuilder.build(FCP.MODID + ":" + name));
+    }
+
+    /** One of the T-90M variants (all on T90MEntity). */
+    private static RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.T90M.T90MEntity>> t90m(String name) {
+        return register(name, EntityType.Builder.of(frontline.combat.fcp.entity.vehicle.T90M.T90MEntity::new, MobCategory.MISC)
+                .setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f, 2f));
+    }
+
+    /** One of the M2 Bradley variants (all on BradleyEntity). */
+    private static RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Bradley.BradleyEntity>> bradley(String name) {
+        return register(name, EntityType.Builder.of(frontline.combat.fcp.entity.vehicle.Bradley.BradleyEntity::new, MobCategory.MISC)
+                .setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f, 2f));
     }
 
     // Trailers

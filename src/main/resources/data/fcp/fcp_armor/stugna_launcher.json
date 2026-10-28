@@ -1,0 +1,10 @@
+{
+  "model": false,
+  "weapons": {
+    "Missile": {
+      "type": "hat",
+      "pen": 1200.0
+    }
+  },
+  "ammo": {}
+}
