@@ -2,7 +2,10 @@ package frontline.combat.fcp.client.model.Puma;
 
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.client.model.Abrams.M1a1TrackPaths;
+import frontline.combat.fcp.client.model.FCPVehicleModel;
 import frontline.combat.fcp.client.model.Util.CannonRecoilTransforms;
+import frontline.combat.fcp.client.model.Util.FCPTrackPath;
 import frontline.combat.fcp.client.model.Util.ModelBoneTransforms;
 import frontline.combat.fcp.client.sound.PumaLauncherLids;
 import frontline.combat.fcp.entity.vehicle.Puma.PumaEntity;
@@ -21,11 +24,17 @@ import org.jetbrains.annotations.Nullable;
  * Extends VehicleModel directly (like the Stryker TOW): FCPVehicleModel un-hides transform bones,
  * which would cancel the missile hide.
  */
-public class PumaModel extends VehicleModel<PumaEntity> {
+public class PumaModel extends FCPVehicleModel<PumaEntity> {
 
     private static final String CANNON_WEAPON = "Cannon";
     /** Open lid angles in degrees (Blockbench X rotation). */
     private static final float LID_OPEN = -100f, LID2_OPEN = 100f;
+
+    private static final FCPTrackPath TRACK_PATH = PumaTrackPaths.PUMA.reversed();
+
+    protected FCPTrackPath getTrackPath() {
+        return TRACK_PATH;
+    }
 
     @Override
     public ResourceLocation getModelResource(PumaEntity animatable) {
