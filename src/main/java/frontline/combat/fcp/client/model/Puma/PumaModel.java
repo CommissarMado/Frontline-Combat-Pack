@@ -2,7 +2,6 @@ package frontline.combat.fcp.client.model.Puma;
 
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
-import frontline.combat.fcp.client.model.Abrams.M1a1TrackPaths;
 import frontline.combat.fcp.client.model.FCPVehicleModel;
 import frontline.combat.fcp.client.model.Util.CannonRecoilTransforms;
 import frontline.combat.fcp.client.model.Util.FCPTrackPath;
@@ -15,8 +14,8 @@ import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Both Puma variants. No track or wheel animation: SBW would spin any "wheelL../wheelR.." bone, so
- * those are opted out. The ATGM variant's launcher ("ATGM") elevates with the gun about its own pivot,
+ * Both Puma variants. The tracks scroll along PumaTrackPaths; the road wheels are opted out of SBW's
+ * "wheelL../wheelR.." spin and stay as modelled. The ATGM variant's launcher ("ATGM") elevates with the gun about its own pivot,
  * its covers ("lid", "lid2") open when the gunner selects the ATGM (see AtgmLauncherAnimation), and the
  * missiles ("rocket", "rocket2") disappear as they are fired. The commander's sight
  * ("weaponstationturret") turns with the commander's station but doesn't elevate.
@@ -32,6 +31,7 @@ public class PumaModel extends FCPVehicleModel<PumaEntity> {
 
     private static final FCPTrackPath TRACK_PATH = PumaTrackPaths.PUMA.reversed();
 
+    @Override
     protected FCPTrackPath getTrackPath() {
         return TRACK_PATH;
     }
