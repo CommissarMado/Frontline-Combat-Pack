@@ -48,8 +48,6 @@ public class PumaModel extends FCPVehicleModel<PumaEntity> {
 
     @Override
     public @Nullable VehicleModel.TransformContext<PumaEntity> collectTransform(String boneName) {
-        // Road wheels stay as modelled.
-        if (boneName.startsWith("wheel")) return null;
 
         switch (boneName) {
             case "base":

@@ -3,7 +3,9 @@ package frontline.combat.fcp.client.model.T72;
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.model.FCPVehicleModel;
+import frontline.combat.fcp.client.model.Puma.PumaTrackPaths;
 import frontline.combat.fcp.client.model.Util.CannonRecoilTransforms;
+import frontline.combat.fcp.client.model.Util.FCPTrackPath;
 import frontline.combat.fcp.client.model.Util.ModelBoneTransforms;
 import frontline.combat.fcp.entity.vehicle.T72.T72Entity;
 import net.minecraft.resources.ResourceLocation;
@@ -22,6 +24,13 @@ import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
  * </ul>
  */
 public class T72Model extends FCPVehicleModel<T72Entity> {
+
+    private static final FCPTrackPath TRACK_PATH = T72TrackPaths.T72.reversed();
+
+    @Override
+    protected FCPTrackPath getTrackPath() {
+        return TRACK_PATH;
+    }
 
     @Override
     public ResourceLocation getModelResource(T72Entity animatable) {
