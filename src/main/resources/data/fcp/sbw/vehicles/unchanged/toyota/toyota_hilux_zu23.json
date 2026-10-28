@@ -1,7 +1,7 @@
 {
   "ID": "fcp:toyota_hilux_zu23",
-  "MaxHealth": 150,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 58,
+  "MaxEnergy": 8000000,
   "TurretPos": [
     0.047664,
     1.83756,
@@ -249,12 +249,12 @@
   "EngineSound": "fcp:toyota_engine",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 16.6,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.62,
-    "MaxBackwardSpeedRate": 0.33,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.66,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.0119,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1,
     "EngineSoundVolume": 0.6
@@ -303,15 +303,14 @@
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:small_cannon_shell",
       "AmmoType": "superbwarfare:small_shell_he",
-      "IsHighExplosiveProjectile": true,
       "DefaultZoom": 2,
       "RPM": 1000,
       "Magazine": 100,
       "EmptyReloadTime": 211,
       "Velocity": 22,
-      "Damage": 30,
-      "ExplosionDamage": 12,
-      "ExplosionRadius": 2,
+      "Damage": 18.4,
+      "ExplosionDamage": 7.7,
+      "ExplosionRadius": 2.3,
       "Spread": 0.8,
       "RecoilTime": 24,
       "RecoilForce": 0.7,
@@ -356,7 +355,8 @@
             1
           ]
         ]
-      }
+      },
+      "ShellType": "HE"
     }
   },
   "ThirdPersonCameraPos": [

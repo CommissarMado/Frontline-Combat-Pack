@@ -1,7 +1,7 @@
 {
   "ID": "fcp:gaz_tigr_gl",
-  "MaxHealth": 175,
-  "MaxEnergy": 5250000,
+  "MaxHealth": 73,
+  "MaxEnergy": 13800000,
   "OBB": [
     {
       "Size": [
@@ -264,17 +264,15 @@
       "Magazine": 32,
       "EmptyReloadTime": 215,
       "Velocity": 7,
-      "Damage": 0,
-      "ExplosionDamage": 15,
-      "ExplosionRadius": 3,
+      "Damage": 5.8,
+      "ExplosionDamage": 14.8,
+      "ExplosionRadius": 5,
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "RecoilTime": 30,
       "RecoilForce": 0.31,
       "ShootAnimationTime": 3,
       "Spread": 0.8,
-      "IsArmorPiercingProjectile": false,
-      "IsHighExplosiveProjectile": true,
       "Crosshair": "@Empty",
       "CrosshairColor": "0x66FF00",
       "Name": "weapon.fcp.ags17",
@@ -308,12 +306,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 17.3,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.27,
-    "MaxBackwardSpeedRate": 0.2,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.43,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.01528,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1
   },
@@ -327,10 +325,7 @@
     0.1675704,
     0.4841248
   ],
-  "TurretTurnSpeed": [
-    15,
-    15
-  ],
+  "TurretTurnSpeed": [4.5, 4.5],
   "TurretPitchRange": [
     -10,
     32.5

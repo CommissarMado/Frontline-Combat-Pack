@@ -1,10 +1,10 @@
 {
   "ID": "fcp:bmp1am",
   "HasDecoy": true,
-  "MaxHealth": 270,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 121,
+  "MaxEnergy": 46000000,
   "TurretPos": [0.01965625, 1.7411625, -0.28000625],
-  "TurretTurnSpeed": [2.5, 2.5],
+  "TurretTurnSpeed": [2.5, 3.0],
   "TurretPitchRange": [-10, 30],
   "TurretControllerIndex": 0,
   "BarrelPos": [0.0137125, 0.6601, -0.54448125],
@@ -116,13 +116,13 @@
   "EngineSound": "fcp:bmp1_engine",
   "EngineInfo": {
     "Buoyancy": 0.05,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 47.8,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
     "TrackRotSpeed": 1.7,
     "TrackDifferential": 0.75,
-    "MaxForwardSpeedRate": 0.57,
-    "MaxBackwardSpeedRate": 0.13,
+    "MaxForwardSpeedRate": 0.71,
+    "MaxBackwardSpeedRate": 0.33,
     "Increment": 0.022,
     "Decrement": 0.013,
     "SteeringSpeed": 0.1,
@@ -133,13 +133,11 @@
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:small_cannon_shell",
-      "IsArmorPiercingProjectile": true,
-      "IsHighExplosiveProjectile": false,
       "EmptyReloadTime": 211,
       "DefaultZoom": 3,
       "RPM": 400,
       "Velocity": 20,
-      "Damage": 50,
+      "Damage": 29,
       "ExplosionDamage": 0,
       "ExplosionRadius": 0,
       "HeatPerShoot": 8,
@@ -166,13 +164,12 @@
           "Ammo": "superbwarfare:small_shell_he",
           "Override": {
             "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/cannon_30mm_he.png",
-            "IsArmorPiercingProjectile": false,
-            "IsHighExplosiveProjectile": true,
             "Velocity": 25,
-            "Damage": 15,
-            "ExplosionDamage": 16,
-            "ExplosionRadius": 3,
-            "Name": "weapon.fcp.2a72_30mm_he"
+            "Damage": 9.7,
+            "ExplosionDamage": 12.1,
+            "ExplosionRadius": 4.3,
+            "Name": "weapon.fcp.2a72_30mm_he",
+            "ShellType": "HE"
           }
         }
       ],
@@ -183,7 +180,8 @@
         "Directions": [
           "Barrel"
         ]
-      }
+      },
+      "ShellType": "AP"
     },
     "Coax": {
       "DefaultFireMode": "Auto",
@@ -193,7 +191,7 @@
       "RPM": 750,
       "EmptyReloadTime": 231,
       "Velocity": 25,
-      "Damage": 4,
+      "Damage": 9.4,
       "BypassesArmor": 0.2,
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
@@ -212,7 +210,7 @@
         "VehicleReload3p": "fcp:squad.weapons.common.coax_reload_3p"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/gun_7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",

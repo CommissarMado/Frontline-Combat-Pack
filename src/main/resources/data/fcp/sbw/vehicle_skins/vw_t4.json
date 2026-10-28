@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Default",
+      "Texture": "fcp:textures/entity/civ/vw_t4.png",
+      "Priority": 1
+    }
+  ]
+}

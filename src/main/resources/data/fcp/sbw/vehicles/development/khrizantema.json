@@ -1,10 +1,10 @@
 {
   "ID": "fcp:khrizantema",
   "HasDecoy": false,
-  "MaxHealth": 300,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 121,
+  "MaxEnergy": 69000000,
   "TurretPos": [-0.3823, 2.0092, 0.206],
-  "TurretTurnSpeed": [3.0, 2.0],
+  "TurretTurnSpeed": [1.75, 1.75],
   "TurretPitchRange": [-5, 15],
   "TurretYawRange": [-85, 85],
   "TurretControllerIndex": 1,
@@ -63,13 +63,13 @@
   "EngineSound": "fcp:bmp1_engine",
   "EngineInfo": {
     "Buoyancy": 0.05,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 71.6,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
     "TrackRotSpeed": 1.7,
     "TrackDifferential": 0.75,
-    "MaxForwardSpeedRate": 0.6,
-    "MaxBackwardSpeedRate": 0.13,
+    "MaxForwardSpeedRate": 0.71,
+    "MaxBackwardSpeedRate": 0.33,
     "Increment": 0.022,
     "Decrement": 0.013,
     "SteeringSpeed": 0.1,
@@ -102,15 +102,18 @@
               "MaxTargetHeight": 32,
               "MinTargetSize": 0.9,
               "OnlyLockEntity": true
-            }
+            },
+            "Damage": 175,
+            "ExplosionDamage": 17,
+            "ExplosionRadius": 5
           }
         }
       ],
       "Magazine": 2,
       "EmptyReloadTime": 300,
-      "Damage": 600,
-      "ExplosionDamage": 70,
-      "ExplosionRadius": 7,
+      "Damage": 175,
+      "ExplosionDamage": 17,
+      "ExplosionRadius": 5,
       "Velocity": 3.5,
       "ShootPos": {
         "Transform": "Barrel",
@@ -142,7 +145,7 @@
       "RPM": 750,
       "EmptyReloadTime": 231,
       "Velocity": 25,
-      "Damage": 4,
+      "Damage": 9.4,
       "BypassesArmor": 0.2,
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
@@ -161,7 +164,7 @@
         "VehicleReload3p": "fcp:squad.weapons.common.coax_reload_3p"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/gun_7_62mm.png",
       "ShootPos": {
         "Transform": "PktBarrel",

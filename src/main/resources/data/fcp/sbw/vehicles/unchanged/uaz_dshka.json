@@ -1,7 +1,7 @@
 {
   "ID": "fcp:uaz_dshka",
-  "MaxHealth": 150,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 58,
+  "MaxEnergy": 7800000,
   "TurretPos": [
     0.004617,
     1.696046,
@@ -184,7 +184,7 @@
       "Magazine": 100,
       "EmptyReloadTime": 401,
       "Velocity": 25,
-      "Damage": 15,
+      "Damage": 15.7,
       "BypassesArmor": 2,
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
@@ -203,7 +203,7 @@
         "Change": "fcp:squad.weapons.common.switch_nsv"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@HeavyAmmo",
       "Icon": "fcp:textures/screens/vehicle_weapon/12_7mm.png",
       "ShootPos": {
         "Transform": "Barrel",
@@ -227,12 +227,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 18.7,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.62,
-    "MaxBackwardSpeedRate": 0.33,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.23,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.0129,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1,
     "EngineSoundVolume": 0.6

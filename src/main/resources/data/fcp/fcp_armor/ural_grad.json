@@ -1,0 +1,25 @@
+{
+  "armor": {
+    "front": 2.0,
+    "side": 0.0,
+    "rear": 0.0,
+    "top": 0.0,
+    "turret_front": 0.0,
+    "turret_side": 0.0
+  },
+  "modifiers": {
+    "kinetic": 0.1,
+    "heat": 0.37,
+    "hat": 0.5,
+    "explosive": 1.0,
+    "frag": 0.25,
+    "small_arms": 0.05
+  },
+  "weapons": {
+    "Main": {
+      "type": "hat",
+      "pen": 130.0
+    }
+  },
+  "ammo": {"Main": [1, 40]}
+}

@@ -1,10 +1,13 @@
 package frontline.combat.fcp.entity.vehicle;
 
+import frontline.combat.fcp.FcpWorldSettings;
 import com.atsuishio.superbwarfare.data.gun.GunData;
 import com.atsuishio.superbwarfare.entity.vehicle.base.ArtilleryEntity;
 import com.atsuishio.superbwarfare.entity.vehicle.base.GeckoArtilleryEntity;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import frontline.combat.fcp.entity.vehicle.engine.EngineControl;
+import frontline.combat.fcp.entity.vehicle.engine.IdleFuel;
+import frontline.combat.fcp.balance.VehicleRearm;
 import frontline.combat.fcp.entity.vehicle.engine.EngineControlled;
 import frontline.combat.fcp.init.ModItems;
 import frontline.combat.fcp.init.ModSounds;
@@ -31,6 +34,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
+import java.util.Map;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.core.Direction;
@@ -71,6 +75,24 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
     @Override
     public boolean canBind() {
         return true;
+    }
+
+    /**
+     * SBW's own container is only the one-slot loading tray autoloadFromHold() fills; cargo and
+     * ammo live in the FCP hold, and VehicleInventoryGateMixin never lets SBW's screen open.
+     */
+    @Override
+    public int getContainerSize() {
+        return 1;
+    }
+
+    /** Registers the main gun so the F8 artillery gravity multipliers reach it. */
+    @Override
+    public Map<String, GunData> getGunDataMap() {
+        Map<String, GunData> guns = super.getGunDataMap();
+        GunData main = guns.get("Main");
+        if (main != null) FcpWorldSettings.trackArtilleryGun(main, EntityType.getKey(getType()).toString());
+        return guns;
     }
 
     /**
@@ -317,6 +339,8 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
                     return super.addItem(stack);
                 }
             };
+            // Any change to the hold (firing, reloading, rearming, a player) re-counts the reserve shown on the HUD.
+            this.vehicleInventory.addListener(container -> this.setChanged());
         }
         return this.vehicleInventory;
     }
@@ -344,11 +368,16 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
         ammoItemHandler.invalidate();
     }
 
+    /** Fractional idle burn carried between ticks (IdleFuel). */
+    private double idleFuel;
+
     @Override
     public void tick() {
         super.tick();
         EngineControl.tick(this);
         chargeFromInventoryEnergyItems();
+        idleFuel = IdleFuel.tick(this, idleFuel);
+        VehicleRearm.onFirstTick(this);
     }
 
     /**
@@ -400,9 +429,11 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
      * Open this vehicle's hold. The entity id and size are sent so the client can build a
      * matching menu and apply the same rules locally.
      */
+    @Override
     public void openVehicleInventory(ServerPlayer player) {
         // NONE has no storage but still shows a screen, so gate on the screen, not the hold.
         if (!opensVehicleScreen()) return;
+        if (FcpWorldSettings.refuseInventory(player)) return;
         // Tidy any mixed channel before it's shown, so the player never looks at one.
         normalizeBulkChannels();
         SimpleContainer inventory = getVehicleInventory();
@@ -557,7 +588,8 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
      */
     @Override
     public List<ItemStack> getRetrieveItems() {
-        if (!this.level().isClientSide() && hasVehicleInventory()) {
+        // With the F8 inventory lock on, the cargo stays packed in the container item instead of spilling.
+        if (!this.level().isClientSide() && hasVehicleInventory() && !FcpWorldSettings.current().lockInventories()) {
             SimpleContainer inventory = getVehicleInventory();
             if (!inventory.isEmpty()) {
                 Containers.dropContents(this.level(), this, inventory);
@@ -571,8 +603,10 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
 
     @Override
     public void remove(RemovalReason reason) {
-        // Spill cargo when destroyed — but NOT on chunk unload.
-        if (!this.level().isClientSide() && reason.shouldDestroy() && hasVehicleInventory()) {
+        // Spill cargo when destroyed — but NOT on chunk unload, and not at all under the F8 inventory
+        // lock: the cargo is simply deleted with the vehicle.
+        if (!this.level().isClientSide() && reason.shouldDestroy() && hasVehicleInventory()
+                && !FcpWorldSettings.current().lockInventories()) {
             Containers.dropContents(this.level(), this, getVehicleInventory());
         }
         super.remove(reason);

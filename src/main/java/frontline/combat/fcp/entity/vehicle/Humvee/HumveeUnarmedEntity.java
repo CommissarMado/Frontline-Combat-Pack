@@ -26,8 +26,12 @@ public class HumveeUnarmedEntity extends CamoVehicleBase implements HumveeVehicl
 
     public int INVENTORY_SIZE = 9;
 
+    /** Sized to each variant's real cargo space: open beds and shelters carry the most, MRAPs a crew bay's worth. */
     @Override
     public int inventorySize() {
+        String name = humveeName();
+        if (name.equals("hmmwv_cargo") || name.equals("hmmwv_shelter")) return 27;
+        if (name.equals("hmmwv_ambulance") || name.startsWith("caiman")) return 18;
         return INVENTORY_SIZE;
     }
 

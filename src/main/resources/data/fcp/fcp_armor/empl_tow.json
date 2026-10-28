@@ -1,0 +1,10 @@
+{
+  "model": false,
+  "weapons": {
+    "TOW": {
+      "type": "hat",
+      "pen": 900.0
+    }
+  },
+  "ammo": {}
+}

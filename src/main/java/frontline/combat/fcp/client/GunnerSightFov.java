@@ -2,7 +2,9 @@ package frontline.combat.fcp.client;
 
 import com.atsuishio.superbwarfare.event.ClientEventHandler;
 import frontline.combat.fcp.FCP;
+import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import frontline.combat.fcp.entity.vehicle.Abrams.M1a1Entity;
+import frontline.combat.fcp.entity.vehicle.T72.T72Entity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
@@ -14,12 +16,12 @@ import net.minecraftforge.fml.common.Mod;
 /**
  * Narrower default view for a main gunner looking through the sight. SBW only zooms the vehicle
  * camera while the zoom key is held (the gun's DefaultZoom); this is the view without it, so the
- * Abrams gunner's sight starts magnified like the real wide-field optic.
+ * Abrams and T-72/T-90 gunners' sights start magnified like the real wide-field optics.
  */
 @Mod.EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
 public final class GunnerSightFov {
 
-    private static final double ABRAMS_GUNNER_ZOOM = 2.0;
+    private static final double TANK_GUNNER_ZOOM = 2.0;
 
     private GunnerSightFov() {}
 
@@ -28,8 +30,8 @@ public final class GunnerSightFov {
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         if (player == null || ClientEventHandler.zoomVehicle || !mc.options.getCameraType().isFirstPerson()) return;
-        if (!(player.getVehicle() instanceof M1a1Entity tank)) return;
+        if (!(player.getVehicle() instanceof VehicleEntity tank) || !(tank instanceof M1a1Entity || tank instanceof T72Entity || tank instanceof frontline.combat.fcp.entity.vehicle.T90M.T90MEntity)) return;
         if (tank.getSeatIndex(player) != tank.computed().getTurretControllerIndex()) return;
-        event.setFOV(event.getFOV() / ABRAMS_GUNNER_ZOOM);
+        event.setFOV(event.getFOV() / TANK_GUNNER_ZOOM);
     }
 }

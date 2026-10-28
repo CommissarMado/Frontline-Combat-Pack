@@ -1,10 +1,10 @@
 {
   "ID": "fcp:bmp1p",
   "HasDecoy": true,
-  "MaxHealth": 270,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 121,
+  "MaxEnergy": 46000000,
   "TurretPos": [0.036869, 1.751654, -0.262942],
-  "TurretTurnSpeed": [1.5, 1.0],
+  "TurretTurnSpeed": [1.0, 1.0],
   "TurretPitchRange": [-10, 30],
   "TurretControllerIndex": 1,
   "BarrelPos": [-0.031301, 0.156899, 0.746858],
@@ -146,149 +146,167 @@
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [1.605, 1.388, 0.568]},
       "CanRotateHead": true,
       "Transform": "Vehicle",
       "Position": [
         0,
         1,
         0
-      ]
+      ],
+      "MinYaw": -90.0,
+      "MaxYaw": -90.0,
+      "MinPitch": 0,
+      "MaxPitch": 0
     },
     {
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [-1.605, 1.388, 0.568]},
       "CanRotateHead": true,
       "Transform": "Vehicle",
       "Position": [
         0,
         1,
         0
-      ]
+      ],
+      "MinYaw": 90.0,
+      "MaxYaw": 90.0,
+      "MinPitch": 0,
+      "MaxPitch": 0
     },
     {
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [1.605, 1.388, -0.365]},
       "CanRotateHead": true,
       "Transform": "Vehicle",
       "Position": [
         0,
         1,
         0
-      ]
+      ],
+      "MinYaw": -90.0,
+      "MaxYaw": -90.0,
+      "MinPitch": 0,
+      "MaxPitch": 0
     },
     {
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [-1.605, 1.388, -0.365]},
       "CanRotateHead": true,
       "Transform": "Vehicle",
       "Position": [
         0,
         1,
         0
-      ]
+      ],
+      "MinYaw": 90.0,
+      "MaxYaw": 90.0,
+      "MinPitch": 0,
+      "MaxPitch": 0
     },
     {
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [1.605, 1.388, -1.299]},
       "CanRotateHead": true,
       "Transform": "Vehicle",
       "Position": [
         0,
         1,
         0
-      ]
+      ],
+      "MinYaw": -90.0,
+      "MaxYaw": -90.0,
+      "MinPitch": 0,
+      "MaxPitch": 0
     },
     {
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [-1.605, 1.388, -1.299]},
       "CanRotateHead": true,
       "Transform": "Vehicle",
       "Position": [
         0,
         1,
         0
-      ]
+      ],
+      "MinYaw": 90.0,
+      "MaxYaw": 90.0,
+      "MinPitch": 0,
+      "MaxPitch": 0
     },
     {
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [1.605, 1.388, -2.232]},
       "CanRotateHead": true,
       "Transform": "Vehicle",
       "Position": [
         0,
         1,
         0
-      ]
+      ],
+      "MinYaw": -90.0,
+      "MaxYaw": -90.0,
+      "MinPitch": 0,
+      "MaxPitch": 0
     },
     {
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [-1.605, 1.388, -2.232]},
       "CanRotateHead": true,
       "Transform": "Vehicle",
       "Position": [
         0,
         1,
         0
-      ]
+      ],
+      "MinYaw": 90.0,
+      "MaxYaw": 90.0,
+      "MinPitch": 0,
+      "MaxPitch": 0
     },
     {
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [0.0, 1.388, -3.332]},
       "CanRotateHead": true,
       "Transform": "Vehicle",
       "Position": [
         0,
         1,
         0
-      ]
+      ],
+      "MinYaw": 180.0,
+      "MaxYaw": 180.0,
+      "MinPitch": 0,
+      "MaxPitch": 0
     }
   ],
   "EngineType": "Track",
   "EngineSound": "fcp:bmp1_engine",
   "EngineInfo": {
     "Buoyancy": 0.05,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 47.8,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
     "TrackRotSpeed": 1.7,
     "TrackDifferential": 0.75,
-    "MaxForwardSpeedRate": 0.57,
-    "MaxBackwardSpeedRate": 0.13,
+    "MaxForwardSpeedRate": 0.71,
+    "MaxBackwardSpeedRate": 0.33,
     "Increment": 0.022,
     "Decrement": 0.013,
     "SteeringSpeed": 0.1,
@@ -304,9 +322,9 @@
       "Projectile": "superbwarfare:wire_guide_missile",
       "Magazine": 1,
       "EmptyReloadTime": 250,
-      "Damage": 600,
-      "ExplosionDamage": 70,
-      "ExplosionRadius": 7,
+      "Damage": 174.2,
+      "ExplosionDamage": 14.8,
+      "ExplosionRadius": 5,
       "Velocity": 3.5,
       "ShootPos": {
         "Transform": "Turret",
@@ -344,14 +362,13 @@
       "DefaultFireMode": "Semi",
       "AvailableFireModes": "Semi",
       "Projectile": "superbwarfare:small_cannon_shell",
-      "IsArmorPiercingProjectile": true,
       "DefaultZoom": 3,
       "Magazine": 1,
       "EmptyReloadTime": 163,
       "Velocity": 20,
-      "Damage": 200,
-      "ExplosionDamage": 80,
-      "ExplosionRadius": 4,
+      "Damage": 174.2,
+      "ExplosionDamage": 9.7,
+      "ExplosionRadius": 5,
       "RecoilTime": 42,
       "RecoilForce": 0,
       "Spread": 0.02,
@@ -382,7 +399,8 @@
         "Directions": [
           "Barrel"
         ]
-      }
+      },
+      "ShellType": "HE"
     },
     "Coax": {
       "DefaultFireMode": "Auto",
@@ -394,7 +412,7 @@
       "NaturalCooldown": 1,
       "EmptyReloadTime": 231,
       "Velocity": 25,
-      "Damage": 4,
+      "Damage": 9.4,
       "BypassesArmor": 0.2,
       "RecoilTime": 16,
       "RecoilForce": 0.05,
@@ -411,7 +429,7 @@
         "VehicleReload3p": "fcp:squad.weapons.common.coax_reload_3p"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",

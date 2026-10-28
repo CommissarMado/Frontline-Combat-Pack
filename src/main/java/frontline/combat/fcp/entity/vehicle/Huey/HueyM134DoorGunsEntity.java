@@ -26,7 +26,7 @@ import org.joml.Vector4d;
 // analysis - only the barrelRotation trackers below and the matching Model.java bone cases.
 public class HueyM134DoorGunsEntity extends CamoVehicleBase {
 
-    public int INVENTORY_SIZE = 9;
+    public int INVENTORY_SIZE = 18;
 
     @Override
     public int inventorySize() {

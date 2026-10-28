@@ -1,12 +1,12 @@
 {
   "ID": "fcp:hmmwv_asrad",
-  "MaxHealth": 150,
+  "MaxHealth": 73,
   "PassengerRenderScale": 0.85,
-  "MaxEnergy": 5000000,
+  "MaxEnergy": 9500000,
   "TurretControllerIndex": 1,
   "TurretPos": [-0.486413, 2.833246, -1.588721],
   "BarrelPos": [0.008288, 0.301042, 0.070833],
-  "TurretTurnSpeed": [5, 5],
+  "TurretTurnSpeed": [4.5, 4.5],
   "TurretPitchRange": [-15, 40],
   "OBB": [
     {
@@ -238,10 +238,10 @@
       "EmptyReloadTime": 260,
       "Projectile": "superbwarfare:ru_9m336_missile",
       "Name": "weapon.superbwarfare.fim_92_missile",
-      "Damage": 260,
+      "Damage": 13,
       "RPM": 30,
-      "ExplosionDamage": 90,
-      "ExplosionRadius": 6,
+      "ExplosionDamage": 40,
+      "ExplosionRadius": 8,
       "Velocity": 3,
       "SeekWeaponInfo": {
         "SeekDirection": "Barrel",
@@ -304,12 +304,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 22.4,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.26,
-    "MaxBackwardSpeedRate": 0.33,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.29,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.01534,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1,
     "EngineSoundVolume": 0.6

@@ -1,7 +1,7 @@
 {
   "ID": "fcp:gaz_tigr_mg",
-  "MaxHealth": 175,
-  "MaxEnergy": 5250000,
+  "MaxHealth": 73,
+  "MaxEnergy": 13800000,
   "OBB": [
     {
       "Size": [
@@ -264,7 +264,7 @@
       "Magazine": 800,
       "EmptyReloadTime": 401,
       "Velocity": 25,
-      "Damage": 8,
+      "Damage": 15.7,
       "BypassesArmor": 2,
       "NaturalCooldown": 1,
       "HeatPerShoot": 3.5,
@@ -285,7 +285,7 @@
         "Change": "fcp:squad.weapons.common.switch_nsv"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@HeavyAmmo",
       "Icon": "fcp:textures/screens/vehicle_weapon/12_7mm.png",
       "ShootPos": {
         "Transform": "Barrel",
@@ -305,12 +305,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 17.3,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.27,
-    "MaxBackwardSpeedRate": 0.2,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.43,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.01528,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1
   },
@@ -324,10 +324,7 @@
     0.35334,
     0.54522
   ],
-  "TurretTurnSpeed": [
-    15,
-    15
-  ],
+  "TurretTurnSpeed": [4.5, 4.5],
   "TurretPitchRange": [
     -10,
     32.5

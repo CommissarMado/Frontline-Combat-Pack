@@ -1,8 +1,8 @@
 {
   "ID": "fcp:caiman_police",
-  "MaxHealth": 175,
+  "MaxHealth": 73,
   "PassengerRenderScale": 0.85,
-  "MaxEnergy": 5250000,
+  "MaxEnergy": 28400000,
   "OBB": [
     {
       "Size": [
@@ -313,12 +313,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 63.8,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.1,
-    "MaxBackwardSpeedRate": 0.2,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.23,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.01613,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1
   },

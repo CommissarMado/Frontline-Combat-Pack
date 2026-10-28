@@ -34,6 +34,9 @@ public interface VehicleInventory {
      */
     void openHoldForRider(ServerPlayer player);
 
+    /** Opens the hold for anyone (no riding check). Refused while the F8 inventory lock is on. */
+    void openVehicleInventory(ServerPlayer player);
+
     /** Which UI a hold uses. GRID and BULK are ordinary containers underneath — hoppers,
      *  shift-click and drop-on-destroy behave the same either way; only the presentation
      *  differs. */

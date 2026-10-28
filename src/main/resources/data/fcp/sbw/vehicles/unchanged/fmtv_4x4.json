@@ -1,7 +1,7 @@
 {
   "ID": "fcp:fmtv_4x4",
-  "MaxHealth": 150,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 73,
+  "MaxEnergy": 21000000,
   "OBB": [
     {"Size": [1.25, 1.619, 3.328], "Position": [0.0, 1.619, 0.094], "Part": "Collision"},
     {"Size": [0.2, 0.59, 0.59], "Position": [1.0, 0.59, 1.975], "Part": "WheelLeft"},
@@ -118,12 +118,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 64,
+    "EnergyCostRate": 31.7,
     "WheelRotSpeed": 0.833,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.08,
-    "MaxBackwardSpeedRate": 0.4,
-    "Increment": 0.012,
+    "MaxForwardSpeedRate": 1.1,
+    "MaxBackwardSpeedRate": 0.32,
+    "Increment": 0.00777,
     "Decrement": 0.009,
     "SteeringSpeed": 0.05,
     "EngineSoundVolume": 0.6

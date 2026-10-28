@@ -1,10 +1,10 @@
 {
   "ID": "fcp:stryker_mgs",
   "HasDecoy": true,
-  "MaxHealth": 150,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 121,
+  "MaxEnergy": 20000000,
   "TurretPos": [0.014944, 1.974566, -0.719551],
-  "TurretTurnSpeed": [2.5, 1.8],
+  "TurretTurnSpeed": [1.25, 1.25],
   "TurretPitchRange": [-3, 40],
   "BarrelPos": [-0.052509, 0.567157, -0.804536],
   "PassengerWeaponStationPos": [-0.82999, 0.549611, 0.014115],
@@ -248,12 +248,12 @@
   "EngineSound": "fcp:stryker_engine",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 41.8,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.02375,
-    "MaxBackwardSpeedRate": 0.33,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.19,
+    "MaxBackwardSpeedRate": 0.32,
+    "Increment": 0.01667,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1,
     "EngineSoundVolume": 1.0
@@ -303,15 +303,14 @@
       "DefaultFireMode": "Semi",
       "AvailableFireModes": "Semi",
       "Projectile": "superbwarfare:cannon_shell",
-      "IsArmorPiercingProjectile": true,
       "ShellType": "AP",
       "DefaultZoom": 3,
       "Magazine": 1,
       "EmptyReloadTime": 136,
       "Velocity": 40,
-      "Damage": 800,
-      "ExplosionDamage": 20,
-      "ExplosionRadius": 1,
+      "Damage": 774.2,
+      "ExplosionDamage": 0,
+      "ExplosionRadius": 0,
       "RecoilTime": 42,
       "RecoilForce": 1.1,
       "Spread": 0.02,
@@ -325,14 +324,26 @@
           "Ammo": "superbwarfare:large_shell_he",
           "Override": {
             "Icon": "fcp:textures/screens/vehicle_weapon/105mm_he.png",
-            "IsArmorPiercingProjectile": false,
-            "IsHighExplosiveProjectile": true,
             "ShellType": "HE",
             "Velocity": 25,
-            "Damage": 0,
-            "ExplosionDamage": 120,
-            "ExplosionRadius": 10,
+            "Damage": 19.4,
+            "ExplosionDamage": 29,
+            "ExplosionRadius": 19.5,
             "Name": "weapon.fcp.m68a2_105mm_he"
+          }
+        },
+        {
+          "Ammo": "superbwarfare:large_shell_gs",
+          "Override": {
+            "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/grape_shell.png",
+            "Projectile": "superbwarfare:grapeshot",
+            "Spread": 5,
+            "Damage": 18,
+            "ExplosionDamage": 0,
+            "ExplosionRadius": 0,
+            "ProjectileAmount": 36,
+            "Velocity": 15,
+            "Name": "weapon.fcp.m68a2_105mm_gs"
           }
         }
       ],
@@ -373,7 +384,7 @@
       "EmptyReloadTime": 228,
       "Magazine": 200,
       "Velocity": 25,
-      "Damage": 15,
+      "Damage": 14.8,
       "BypassesArmor": 2,
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
@@ -410,7 +421,7 @@
         ]
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@HeavyAmmo",
       "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png"
     },
     "Coax": {
@@ -422,7 +433,7 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 857,
-      "Damage": 5,
+      "Damage": 8.3,
       "BypassesArmor": 0.2,
       "Velocity": 25,
       "RecoilTime": 16,
@@ -430,7 +441,7 @@
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [

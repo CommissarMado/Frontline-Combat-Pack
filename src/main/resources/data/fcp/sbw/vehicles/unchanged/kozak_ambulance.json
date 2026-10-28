@@ -1,7 +1,7 @@
 {
   "ID": "fcp:kozak_ambulance",
-  "MaxHealth": 175,
-  "MaxEnergy": 5250000,
+  "MaxHealth": 73,
+  "MaxEnergy": 20000000,
   "OBB": [
     {"Size": [1.25, 1.213, 3.195], "Position": [0.0, 1.213, 0.11], "Part": "Collision"},
     {"Size": [0.22, 0.6, 0.6], "Position": [1.075, 0.51875, 2.2], "Part": "WheelLeft"},
@@ -55,12 +55,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 37.1,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.1,
-    "MaxBackwardSpeedRate": 0.2,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.27,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.01563,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1
   },

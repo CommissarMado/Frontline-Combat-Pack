@@ -1,0 +1,25 @@
+{
+  "armor": {
+    "front": 15.0,
+    "side": 15.0,
+    "rear": 7.0,
+    "top": 7.0,
+    "turret_front": 15.0,
+    "turret_side": 15.0
+  },
+  "modifiers": {
+    "kinetic": 0.1,
+    "heat": 0.36,
+    "hat": 0.5,
+    "explosive": 0.8,
+    "frag": 1.0,
+    "small_arms": 0.0
+  },
+  "weapons": {
+    "TOW": {
+      "type": "hat",
+      "pen": 900.0
+    }
+  },
+  "ammo": {"TOW": [6, 1]}
+}

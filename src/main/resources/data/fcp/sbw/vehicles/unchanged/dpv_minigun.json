@@ -1,7 +1,7 @@
 {
   "ID": "fcp:dpv_minigun",
-  "MaxHealth": 150,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 58,
+  "MaxEnergy": 8000000,
   "PassengerRenderScale": 0.85,
   "OBB": [
     {
@@ -180,7 +180,7 @@
   ],
   "Weapons": {
     "MachineGun": {
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:projectile",
@@ -189,7 +189,7 @@
       "RPM": 1500,
       "EmptyReloadTime": 231,
       "Velocity": 30,
-      "Damage": 4,
+      "Damage": 19.4,
       "Magazine": 1000,
       "HeatPerShoot": 1.5,
       "NaturalCooldown": 1,
@@ -224,12 +224,12 @@
   "EngineSound": "fcp:toyota_engine",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 32.9,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.62,
-    "MaxBackwardSpeedRate": 0.33,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.5,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.01579,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1,
     "EngineSoundVolume": 1.0

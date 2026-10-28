@@ -1,7 +1,7 @@
 {
   "ID": "fcp:littlebird_armed",
-  "MaxHealth": 280,
-  "MaxEnergy": 8000000,
+  "MaxHealth": 73,
+  "MaxEnergy": 23500000,
   "OBB": [
     {"Size": [0.825, 0.9, 2.1375], "Position": [0.003609, 1.514575, -0.972685], "Part": "Body"},
     {"Size": [0.1875, 0.1875, 1.6875], "Position": [0.003609, 1.852075, -4.760185], "Part": "Body"},
@@ -63,9 +63,9 @@
       "Spread": 0.3,
       "Name": "weapon.fcp.hydra_rocket",
       "RPM": 400,
-      "Damage": 80,
-      "ExplosionDamage": 40,
-      "ExplosionRadius": 5,
+      "Damage": 19.4,
+      "ExplosionDamage": 24.2,
+      "ExplosionRadius": 6,
       "Gravity": 0.02,
       "Velocity": 16,
       "SoundInfo": {
@@ -99,7 +99,7 @@
       "SoundRadius": 12
     },
     "Cannon": {
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:projectile",
@@ -107,7 +107,7 @@
       "DefaultZoom": 3,
       "RPM": 1500,
       "Velocity": 30,
-      "Damage": 4,
+      "Damage": 19.4,
       "Magazine": 1000,
       "HeatPerShoot": 1,
       "NaturalCooldown": 1,
@@ -147,7 +147,7 @@
   },
   "EngineType": "Helicopter",
   "EngineInfo": {
-    "EnergyCostRate": 280,
+    "EnergyCostRate": 16,
     "Increment": 0.9,
     "Decrement": 0.9,
     "PitchSpeed": 0.85,

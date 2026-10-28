@@ -1,7 +1,7 @@
 {
   "ID": "fcp:littlebird",
-  "MaxHealth": 280,
-  "MaxEnergy": 8000000,
+  "MaxHealth": 73,
+  "MaxEnergy": 23500000,
   "TurretPos": [-0.000316, 0.790129, 0.827102],
   "TurretPitchRange": [-50, 15],
   "TurretYawRange": [-75, 75],
@@ -103,7 +103,7 @@
   ],
   "EngineType": "Helicopter",
   "EngineInfo": {
-    "EnergyCostRate": 280,
+    "EnergyCostRate": 16,
     "Increment": 0.9,
     "Decrement": 0.9,
     "PitchSpeed": 0.85,

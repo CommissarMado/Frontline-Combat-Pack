@@ -1,10 +1,10 @@
 {
   "ID": "fcp:stryker_dragoon",
   "HasDecoy": true,
-  "MaxHealth": 150,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 121,
+  "MaxEnergy": 20000000,
   "TurretPos": [-0.032385, 2.72119, -0.939505],
-  "TurretTurnSpeed": [3, 3],
+  "TurretTurnSpeed": [2.5, 3.0],
   "TurretPitchRange": [-10, 60],
   "BarrelPos": [0.04828, 0.01904, 0.65467],
   "TurretControllerIndex": 1,
@@ -384,13 +384,11 @@
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:small_cannon_shell",
-      "IsArmorPiercingProjectile": true,
-      "IsHighExplosiveProjectile": false,
       "EmptyReloadTime": 180,
       "DefaultZoom": 3,
       "RPM": 200,
       "Velocity": 20,
-      "Damage": 60,
+      "Damage": 29,
       "ExplosionDamage": 0,
       "ExplosionRadius": 0,
       "HeatPerShoot": 10,
@@ -417,13 +415,12 @@
           "Ammo": "superbwarfare:small_shell_he",
           "Override": {
             "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/cannon_30mm_he.png",
-            "IsArmorPiercingProjectile": false,
-            "IsHighExplosiveProjectile": true,
             "Velocity": 25,
-            "Damage": 15,
-            "ExplosionDamage": 20,
-            "ExplosionRadius": 3,
-            "Name": "weapon.fcp.m242_bushmaster_he"
+            "Damage": 9.7,
+            "ExplosionDamage": 12.1,
+            "ExplosionRadius": 4.3,
+            "Name": "weapon.fcp.m242_bushmaster_he",
+            "ShellType": "HE"
           }
         }
       ],
@@ -444,7 +441,8 @@
             1
           ]
         ]
-      }
+      },
+      "ShellType": "AP"
     },
     "Empty": {
       "Magazine": 0,
@@ -460,7 +458,7 @@
       "RPM": 857,
       "EmptyReloadTime": 231,
       "Velocity": 25,
-      "Damage": 5,
+      "Damage": 8.3,
       "BypassesArmor": 0.2,
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
@@ -481,7 +479,7 @@
         "VehicleReload3p": "fcp:squad.weapons.common.coax_reload_3p"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",
@@ -506,12 +504,12 @@
   "EngineSound": "fcp:stryker_engine",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 41.8,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.02375,
-    "MaxBackwardSpeedRate": 0.33,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.19,
+    "MaxBackwardSpeedRate": 0.32,
+    "Increment": 0.01667,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1,
     "EngineSoundVolume": 1.0

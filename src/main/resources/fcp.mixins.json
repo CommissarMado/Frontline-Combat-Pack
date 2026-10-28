@@ -13,7 +13,13 @@
     "VehicleGroundContactMixin",
     "VehicleVecUtilsGroundMixin",
     "HelicopterGroundLiftMixin",
-    "TerrainRestPlaneMixin"
+    "TerrainRestPlaneMixin",
+    "VehicleWallGuardMixin",
+    "VehicleArmorMixin",
+    "FragBlockDamageMixin",
+    "ArtilleryGravityMixin",
+    "VehicleInventoryGateMixin",
+    "VehicleReserveAmmoMixin"
   ],
   "client": [
     "AmmoCountOverlayMixin",

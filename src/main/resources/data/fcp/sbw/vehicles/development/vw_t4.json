@@ -1,0 +1,326 @@
+{
+  "ID": "fcp:vw_t4",
+  "MaxHealth": 58,
+  "MaxEnergy": 8000000,
+  "PassengerRenderScale": 0.85,
+  "OBB": [
+    {
+      "Size": [
+        0.9688,
+        1.0156,
+        2.5625
+      ],
+      "Position": [
+        -0.0125,
+        1.0156,
+        -0.0625
+      ],
+      "Part": "Collision"
+    },
+    {
+      "Size": [
+        0.9063,
+        0.4688,
+        0.5625
+      ],
+      "Position": [
+        -0.0062,
+        0.8125,
+        1.875
+      ],
+      "Part": "MainEngine"
+    },
+    {
+      "Size": [
+        0.9063,
+        0.875,
+        1.9063
+      ],
+      "Position": [
+        -0.0125,
+        1.1563,
+        -0.5937
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        0.1406,
+        0.375,
+        0.375
+      ],
+      "Position": [
+        0.8219,
+        0.375,
+        1.425
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.1406,
+        0.375,
+        0.375
+      ],
+      "Position": [
+        0.8219,
+        0.375,
+        -1.7
+      ],
+      "Part": "WheelLeft"
+    },
+    {
+      "Size": [
+        0.1406,
+        0.375,
+        0.375
+      ],
+      "Position": [
+        -0.8344,
+        0.375,
+        1.425
+      ],
+      "Part": "WheelRight"
+    },
+    {
+      "Size": [
+        0.1406,
+        0.375,
+        0.375
+      ],
+      "Position": [
+        -0.8344,
+        0.375,
+        -1.7
+      ],
+      "Part": "WheelRight"
+    }
+  ],
+  "Seats": [
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "BanHand": true,
+      "MinPitch": -60,
+      "MaxPitch": 60,
+      "MinYaw": -95,
+      "MaxYaw": 95,
+      "Position": [
+        0.405,
+        0.219,
+        0.6
+      ],
+      "Weapons": [],
+      "CameraPos": {
+        "UseFixedCameraPos": true,
+        "Position": [
+          0.405,
+          1.569,
+          0.65
+        ]
+      }
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "BanHand": true,
+      "MinPitch": -60,
+      "MaxPitch": 60,
+      "MinYaw": -95,
+      "MaxYaw": 95,
+      "Position": [
+        -0.415,
+        0.219,
+        0.6
+      ],
+      "CameraPos": {
+        "UseFixedCameraPos": true,
+        "Position": [
+          -0.415,
+          1.569,
+          0.65
+        ]
+      }
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "BanHand": true,
+      "MinPitch": -60,
+      "MaxPitch": 60,
+      "MinYaw": -95,
+      "MaxYaw": 95,
+      "Position": [
+        0.405,
+        0.219,
+        -0.25
+      ]
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "BanHand": true,
+      "MinPitch": -60,
+      "MaxPitch": 60,
+      "MinYaw": -95,
+      "MaxYaw": 95,
+      "Position": [
+        -0.405,
+        0.219,
+        -0.25
+      ]
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "BanHand": true,
+      "MinPitch": -60,
+      "MaxPitch": 60,
+      "MinYaw": -95,
+      "MaxYaw": 95,
+      "Position": [
+        0.45,
+        0.219,
+        -1.01
+      ]
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "BanHand": true,
+      "MinPitch": -60,
+      "MaxPitch": 60,
+      "MinYaw": -95,
+      "MaxYaw": 95,
+      "Position": [
+        0.0,
+        0.219,
+        -1.01
+      ]
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "BanHand": true,
+      "MinPitch": -60,
+      "MaxPitch": 60,
+      "MinYaw": -95,
+      "MaxYaw": 95,
+      "Position": [
+        -0.45,
+        0.219,
+        -1.01
+      ]
+    }
+  ],
+  "Weapons": {
+    "Nothing": {
+      "Name": "",
+      "Crosshair": "@Empty",
+      "RPM": 0,
+      "Magazine": 0,
+      "Damage": 0
+    }
+  },
+  "EngineType": "Wheel",
+  "EngineInfo": {
+    "Buoyancy": 0,
+    "EnergyCostRate": 14.2,
+    "WheelRotSpeed": 1.1,
+    "WheelDifferential": 0.5,
+    "MaxForwardSpeedRate": 1.62,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.00878,
+    "Decrement": 0.016,
+    "SteeringSpeed": 0.08,
+    "EngineSoundVolume": 0.6
+  },
+  "UpStep": 1.5,
+  "Mass": 14,
+  "RotateOffsetHeight": 2.0312,
+  "DamageModifiers": [
+    "All * 0.55",
+    "minecraft:lava - -4",
+    "minecraft:lava * 4",
+    "minecraft:arrow * 0.2",
+    "minecraft:trident * 0.4",
+    "minecraft:mob_attack * 0.4",
+    "minecraft:mob_attack_no_aggro * 0.4",
+    "minecraft:mob_projectile * 0.4",
+    "minecraft:explosion * 1",
+    "minecraft:player_explosion * 1",
+    "superbwarfare:custom_explosion * 2.0",
+    "superbwarfare:projectile_explosion * 0.5",
+    "superbwarfare:mine * 1.0",
+    "superbwarfare:projectile_hit * 0.8",
+    "superbwarfare:grapeshot_hit * 0.2",
+    "superbwarfare:laser * 1.0",
+    "@#superbwarfare:aerial_bomb * 1.4",
+    "#superbwarfare:projectile * 0.16",
+    "#superbwarfare:projectile_absolute * 1.0",
+    "superbwarfare:vehicle_strike * 0.7",
+    "@superbwarfare:mortar_shell * 2.0",
+    "@superbwarfare:gun_grenade * 0.5",
+    "@superbwarfare:javelin_missile * 1.0",
+    "@superbwarfare:igla_9k38_missile * 1.0",
+    "@superbwarfare:wire_guide_missile * 1.0",
+    "All - 4"
+  ],
+  "VehicleContainerType": "Medium",
+  "DestroyInfo": {
+    "ExplosionDamage": 130,
+    "ExplosionRadius": 7
+  },
+  "ThirdPersonCameraPos": [
+    0,
+    1.1,
+    5.5
+  ],
+  "ContainerIcon": "fcp:textures/gui/vehicle/type/civ_us.png",
+  "Type": "Car",
+  "CollisionLevel": {
+    "Level": 3,
+    "PowerLimits": [
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0,
+        0,
+        true
+      ],
+      [
+        0.15,
+        0.09,
+        false
+      ]
+    ]
+  },
+  "EngineSound": "superbwarfare:truck_engine",
+  "HudType": "@Empty",
+  "TerrainCompat": [
+    [
+      0.8219,
+      0.0,
+      1.425
+    ],
+    [
+      0.8219,
+      0.0,
+      -1.7
+    ],
+    [
+      -0.8344,
+      0.0,
+      1.425
+    ],
+    [
+      -0.8344,
+      0.0,
+      -1.7
+    ]
+  ],
+  "InertiaRotateRate": 1.0
+}

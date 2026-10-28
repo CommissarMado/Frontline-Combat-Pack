@@ -2,6 +2,7 @@ package frontline.combat.fcp.init;
 
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.block.HescoBlock;
+import frontline.combat.fcp.block.RearmStationBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -32,6 +33,13 @@ public class ModBlocks {
                     .mapColor(MapColor.DIRT)
                     .strength(HESCO_HARDNESS, HESCO_BLAST_RESISTANCE)
                     .sound(SoundType.GRAVEL)));
+
+    /** Hidden admin block: kept out of the creative tabs and JEI (FcpJeiPlugin). */
+    public static final RegistryObject<Block> REARM_STATION = register("rearm_station",
+            () -> new RearmStationBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .strength(5.0f, 1200.0f)
+                    .sound(SoundType.METAL)));
 
     /** Registers the block and its item. */
     private static RegistryObject<Block> register(String name, Supplier<Block> block) {

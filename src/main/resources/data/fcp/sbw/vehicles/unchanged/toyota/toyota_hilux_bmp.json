@@ -1,7 +1,7 @@
 {
   "ID": "fcp:toyota_hilux_bmp",
-  "MaxHealth": 150,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 58,
+  "MaxEnergy": 8000000,
   "TurretPos": [
     -0.029495,
     2.531003,
@@ -247,14 +247,13 @@
       "DefaultFireMode": "Semi",
       "AvailableFireModes": "Semi",
       "Projectile": "superbwarfare:small_cannon_shell",
-      "IsArmorPiercingProjectile": true,
       "DefaultZoom": 3,
       "Magazine": 1,
       "EmptyReloadTime": 163,
       "Velocity": 20,
-      "Damage": 200,
-      "ExplosionDamage": 80,
-      "ExplosionRadius": 4,
+      "Damage": 174.2,
+      "ExplosionDamage": 9.7,
+      "ExplosionRadius": 5,
       "RecoilTime": 42,
       "RecoilForce": 0,
       "Spread": 0.02,
@@ -287,7 +286,8 @@
         "Directions": [
           "Barrel"
         ]
-      }
+      },
+      "ShellType": "HE"
     },
     "Coax": {
       "DefaultFireMode": "Auto",
@@ -298,7 +298,7 @@
       "Magazine": 100,
       "EmptyReloadTime": 231,
       "Velocity": 25,
-      "Damage": 4,
+      "Damage": 9.4,
       "BypassesArmor": 0.2,
       "HeatPerShoot": 0,
       "NaturalCooldown": 1,
@@ -317,7 +317,7 @@
         "VehicleReload3p": "fcp:squad.weapons.common.coax_reload_3p"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",
@@ -338,12 +338,12 @@
   "EngineSound": "fcp:toyota_engine",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 16.6,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.62,
-    "MaxBackwardSpeedRate": 0.33,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.66,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.0119,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1,
     "EngineSoundVolume": 0.6

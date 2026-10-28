@@ -1,7 +1,7 @@
 {
   "ID": "fcp:mi8_door_guns",
-  "MaxHealth": 420,
-  "MaxEnergy": 8000000,
+  "MaxHealth": 97,
+  "MaxEnergy": 187000000,
   "OBB": [
     {
       "Size": [
@@ -404,7 +404,7 @@
   ],
   "EngineType": "Helicopter",
   "EngineInfo": {
-    "EnergyCostRate": 280,
+    "EnergyCostRate": 148,
     "Increment": 0.9,
     "Decrement": 0.9,
     "PitchSpeed": 0.55,
@@ -457,7 +457,7 @@
       "CrosshairColor": "0xFFC700",
       "Projectile": "superbwarfare:projectile",
       "RPM": 750,
-      "Damage": 4,
+      "Damage": 9.4,
       "BypassesArmor": 0.2,
       "Velocity": 25,
       "RecoilTime": 16,
@@ -467,7 +467,7 @@
       "ShootAnimationTime": 1,
       "EmptyReloadTime": 231,
       "Magazine": 200,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
@@ -501,7 +501,7 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 750,
-      "Damage": 4,
+      "Damage": 9.4,
       "BypassesArmor": 0.2,
       "Velocity": 25,
       "RecoilTime": 16,
@@ -511,7 +511,7 @@
       "ShootAnimationTime": 1,
       "EmptyReloadTime": 231,
       "Magazine": 200,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "ShootPos": {
         "Transform": "LeftBarrel",
         "Positions": [

@@ -33,6 +33,7 @@ public class FCP {
 
         ModEntities.register(modEventBus);
         ModBlocks.REGISTRY.register(modEventBus);
+        ModBlockEntities.REGISTRY.register(modEventBus);
         ModItems.REGISTRY.register(modEventBus);
         ModParticleTypes.PARTICLE_TYPES.register(modEventBus);
         ModSounds.REGISTRY.register(modEventBus);

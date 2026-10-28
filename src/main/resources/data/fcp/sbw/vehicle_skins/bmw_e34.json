@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Default",
+      "Texture": "fcp:textures/entity/civ/bmw_e34.png",
+      "Priority": 1
+    }
+  ]
+}

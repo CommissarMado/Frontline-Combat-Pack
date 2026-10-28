@@ -1,8 +1,8 @@
 {
   "ID": "fcp:caiman_uparmored",
-  "MaxHealth": 225,
+  "MaxHealth": 73,
   "PassengerRenderScale": 0.85,
-  "MaxEnergy": 5250000,
+  "MaxEnergy": 28400000,
   "OBB": [
     {
       "Size": [
@@ -350,10 +350,8 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 500,
-      "Damage": 15,
+      "Damage": 14.8,
       "BypassesArmor": 2,
-      "IsArmorPiercingProjectile": true,
-      "IsHighExplosiveProjectile": false,
       "Velocity": 25,
       "RecoilTime": 32,
       "EmptyReloadTime": 228,
@@ -362,7 +360,7 @@
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@HeavyAmmo",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
@@ -393,12 +391,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 63.8,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.1,
-    "MaxBackwardSpeedRate": 0.2,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.23,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.01613,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1
   },
@@ -412,10 +410,7 @@
     0.1248,
     0.74464
   ],
-  "TurretTurnSpeed": [
-    15,
-    15
-  ],
+  "TurretTurnSpeed": [4.5, 4.5],
   "TurretPitchRange": [
     -9,
     40

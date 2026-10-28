@@ -1,7 +1,7 @@
 {
   "ID": "fcp:uh60_minigun",
-  "MaxHealth": 300,
-  "MaxEnergy": 8000000,
+  "MaxHealth": 97,
+  "MaxEnergy": 136000000,
   "OBB": [
     {
       "Size": [
@@ -354,7 +354,7 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 1500,
-      "Damage": 4,
+      "Damage": 19.4,
       "BypassesArmor": 0.2,
       "Velocity": 25,
       "RecoilTime": 16,
@@ -362,7 +362,7 @@
       "HeatPerShoot": 2.5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "ShootPos": {
         "Transform": "RightBarrel",
         "Positions": [
@@ -403,7 +403,7 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 1500,
-      "Damage": 4,
+      "Damage": 19.4,
       "BypassesArmor": 0.2,
       "Velocity": 25,
       "RecoilTime": 16,
@@ -411,7 +411,7 @@
       "HeatPerShoot": 2.5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "ShootPos": {
         "Transform": "LeftBarrel",
         "Positions": [
@@ -446,7 +446,7 @@
   },
   "EngineType": "Helicopter",
   "EngineInfo": {
-    "EnergyCostRate": 300,
+    "EnergyCostRate": 108,
     "Increment": 0.85,
     "Decrement": 0.85,
     "PitchSpeed": 0.75,

@@ -1,6 +1,7 @@
 package frontline.combat.fcp.network;
 
 import frontline.combat.fcp.FCPConfig;
+import frontline.combat.fcp.FcpWorldSettings;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
@@ -76,9 +77,9 @@ public class SetMulticrewPacket {
         return player.hasPermissions(2);
     }
 
-    static void sendStateTo(ServerPlayer player) {
+    public static void sendStateTo(ServerPlayer player) {
         FCPNetwork.FCP_HANDLER.send(PacketDistributor.PLAYER.with(() -> player),
-                new FcpConfigStatePacket(FCPConfig.multicrewEnabled(), mayEdit(player)));
+                new FcpConfigStatePacket(FCPConfig.multicrewEnabled(), mayEdit(player), FcpWorldSettings.current()));
     }
 
     /**

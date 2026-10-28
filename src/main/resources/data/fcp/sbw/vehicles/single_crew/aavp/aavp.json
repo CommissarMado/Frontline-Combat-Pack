@@ -1,7 +1,7 @@
 {
   "ID": "fcp:aavp",
-  "MaxHealth": 290,
-  "MaxEnergy": 5500000,
+  "MaxHealth": 194,
+  "MaxEnergy": 65000000,
   "OBB": [
     {
       "Size": [
@@ -119,89 +119,105 @@
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [1.659, 2.288, 0.505]},
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [0, 1, 0]
+      "Position": [0, 1, 0],
+      "MinYaw": -90.0,
+      "MaxYaw": -90.0,
+      "MinPitch": 0,
+      "MaxPitch": 0
     },
     {
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [-1.659, 2.288, 0.505]},
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [0, 1, 0]
+      "Position": [0, 1, 0],
+      "MinYaw": 90.0,
+      "MaxYaw": 90.0,
+      "MinPitch": 0,
+      "MaxPitch": 0
     },
     {
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [1.659, 2.288, -0.574]},
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [0, 1, 0]
+      "Position": [0, 1, 0],
+      "MinYaw": -90.0,
+      "MaxYaw": -90.0,
+      "MinPitch": 0,
+      "MaxPitch": 0
     },
     {
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [-1.659, 2.288, -0.574]},
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [0, 1, 0]
+      "Position": [0, 1, 0],
+      "MinYaw": 90.0,
+      "MaxYaw": 90.0,
+      "MinPitch": 0,
+      "MaxPitch": 0
     },
     {
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [1.659, 2.288, -1.654]},
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [0, 1, 0]
+      "Position": [0, 1, 0],
+      "MinYaw": -90.0,
+      "MaxYaw": -90.0,
+      "MinPitch": 0,
+      "MaxPitch": 0
     },
     {
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [-1.659, 2.288, -1.654]},
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [0, 1, 0]
+      "Position": [0, 1, 0],
+      "MinYaw": 90.0,
+      "MaxYaw": 90.0,
+      "MinPitch": 0,
+      "MaxPitch": 0
     },
     {
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [1.659, 2.288, -2.733]},
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [0, 1, 0]
+      "Position": [0, 1, 0],
+      "MinYaw": -90.0,
+      "MaxYaw": -90.0,
+      "MinPitch": 0,
+      "MaxPitch": 0
     },
     {
       "HidePassenger": true,
       "IsEnclosed": true,
       "BanHand": true,
-      "CameraPos": {
-        "UseSimulate3P": true
-      },
+      "CameraPos": {"Transform": "Vehicle", "UseFixedCameraPos": true, "Position": [-1.659, 2.288, -2.733]},
       "CanRotateHead": true,
       "Transform": "Vehicle",
-      "Position": [0, 1, 0]
+      "Position": [0, 1, 0],
+      "MinYaw": 90.0,
+      "MaxYaw": 90.0,
+      "MinPitch": 0,
+      "MaxPitch": 0
     }
   ],
   "Weapons": {
@@ -211,10 +227,8 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 500,
-      "Damage": 15,
+      "Damage": 14.8,
       "BypassesArmor": 2,
-      "IsArmorPiercingProjectile": true,
-      "IsHighExplosiveProjectile": false,
       "Velocity": 25,
       "RecoilTime": 32,
       "EmptyReloadTime": 228,
@@ -237,7 +251,7 @@
         "VehicleReload3p": "fcp:squad.weapons.common.m2_reload_3p"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@HeavyAmmo",
       "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png",
       "ShootPos": {
         "Transform": "Barrel",
@@ -260,17 +274,15 @@
       "Magazine": 32,
       "EmptyReloadTime": 261,
       "Velocity": 7,
-      "Damage": 0,
-      "ExplosionDamage": 15,
-      "ExplosionRadius": 3,
+      "Damage": 5.8,
+      "ExplosionDamage": 14.8,
+      "ExplosionRadius": 5,
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "RecoilTime": 30,
       "RecoilForce": 0.31,
       "ShootAnimationTime": 3,
       "Spread": 0.8,
-      "IsArmorPiercingProjectile": false,
-      "IsHighExplosiveProjectile": true,
       "Crosshair": "@VehicleRuApc",
       "CrosshairColor": "0x66FF00",
       "Name": "weapon.fcp.mk19",
@@ -296,19 +308,19 @@
   "EngineType": "Track",
   "EngineInfo": {
     "Buoyancy": 0.05,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 84.3,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
     "TrackRotSpeed": 1.7,
     "TrackDifferential": 0.8,
-    "MaxForwardSpeedRate": 0.57,
-    "MaxBackwardSpeedRate": 0.22,
+    "MaxForwardSpeedRate": 0.71,
+    "MaxBackwardSpeedRate": 0.33,
     "Increment": 0.020,
     "Decrement": 0.014,
     "SteeringSpeed": 0.085
   },
   "TurretPos": [-0.5805, 2.72, 1.04058125],
-  "TurretTurnSpeed": [2.5, 1.8],
+  "TurretTurnSpeed": [2.5, 3.0],
   "TurretPitchRange": [-10, 60],
   "BarrelPos": [0.32395625, 0, 0.466575],
   "ThirdPersonCameraPos": [0, 3, 5],

@@ -5,6 +5,12 @@
       "Name": "Green",
       "Texture": "fcp:textures/entity/brdm/green.png",
       "Priority": 1
+    },
+    {
+      "Id": "sand",
+      "Name": "Sand",
+      "Texture": "fcp:textures/entity/brdm/sand.png",
+      "Priority": 2
     }
   ]
 }

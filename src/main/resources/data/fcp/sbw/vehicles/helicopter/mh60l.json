@@ -1,7 +1,7 @@
 {
   "ID": "fcp:mh60l",
-  "MaxHealth": 340,
-  "MaxEnergy": 8000000,
+  "MaxHealth": 97,
+  "MaxEnergy": 136000000,
   "TurretPos": [
     -0.00523,
     0.89582,
@@ -375,9 +375,9 @@
       "EmptyReloadTime": 200,
       "Projectile": "fcp:lock_on_hellfire",
       "Name": "weapon.fcp.hellfire_missile_entity",
-      "Damage": 1100,
-      "ExplosionDamage": 180,
-      "ExplosionRadius": 4,
+      "Damage": 175,
+      "ExplosionDamage": 19.4,
+      "ExplosionRadius": 6,
       "AddShooterDeltaMovement": true,
       "Velocity": 1.05,
       "SeekWeaponInfo": {
@@ -407,7 +407,10 @@
               "MaxTargetHeight": 32,
               "MinTargetSize": 0.9,
               "OnlyLockBlock": true
-            }
+            },
+            "Damage": 175,
+            "ExplosionDamage": 19.4,
+            "ExplosionRadius": 6
           }
         }
       ],
@@ -464,8 +467,8 @@
       "Projectile": "fcp:wire_guided_hellfire",
       "Magazine": 4,
       "EmptyReloadTime": 200,
-      "Damage": 400,
-      "ExplosionDamage": 80,
+      "Damage": 175,
+      "ExplosionDamage": 19.4,
       "ExplosionRadius": 6,
       "Velocity": 3,
       "ShootPos": {
@@ -520,9 +523,9 @@
       "Spread": 0.3,
       "Name": "weapon.fcp.hydra_rocket",
       "RPM": 400,
-      "Damage": 80,
-      "ExplosionDamage": 40,
-      "ExplosionRadius": 5,
+      "Damage": 19.4,
+      "ExplosionDamage": 24.2,
+      "ExplosionRadius": 6,
       "Gravity": 0.02,
       "Velocity": 16,
       "ShootPos": {
@@ -563,7 +566,7 @@
   },
   "EngineType": "Helicopter",
   "EngineInfo": {
-    "EnergyCostRate": 300,
+    "EnergyCostRate": 108,
     "Increment": 0.85,
     "Decrement": 0.85,
     "PitchSpeed": 0.75,

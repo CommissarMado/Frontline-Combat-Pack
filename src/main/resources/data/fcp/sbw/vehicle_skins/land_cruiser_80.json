@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Default",
+      "Texture": "fcp:textures/entity/civ/land_cruiser_80.png",
+      "Priority": 1
+    }
+  ]
+}

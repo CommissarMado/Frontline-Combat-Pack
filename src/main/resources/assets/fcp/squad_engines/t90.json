@@ -1,6 +1,6 @@
 {
   "_comment": "Generated from the Squad SDK: T90_engine_rpm_ALL_Cue.uasset (+ start/stop cues).",
-  "vehicles": ["fcp:t14_armata"],
+  "vehicles": ["fcp:t14_armata", "fcp:t90a", "fcp:t90m", "fcp:t90m_2022", "fcp:t90m_2024", "fcp:t90ms"],
   "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
   "exterior_volume": 0.5,
   "interior_volume": 1,

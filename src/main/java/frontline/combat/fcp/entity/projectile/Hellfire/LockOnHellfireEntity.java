@@ -22,7 +22,9 @@ import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
@@ -42,13 +44,31 @@ public class LockOnHellfireEntity extends MissileProjectile implements GeoEntity
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
+    /** Steering rate, degrees per tick after the motor lights: ramps up, then caps here (9M123-like). */
+    private static final float MAX_TURN = 1.5f, TURN_RAMP = 0.15f;
+    /** Seeker half-angle (degrees) and how long (ticks) the target may hide behind blocks. */
+    private static final double SEEKER_CONE = 20;
+    private static final int HIDDEN_GRACE = 10;
+
+    private int hiddenTicks;
+
     public LockOnHellfireEntity(EntityType<? extends LockOnHellfireEntity> type, Level level) {
         super(type, level);
         this.noCulling = true;
-        setDamage(1100);
-        setExplosionDamage(180);
-        setExplosionRadius(12);
+        // Same as the weapon config, in case the shot doesn't overwrite them.
+        setDamage(175f);
+        setExplosionDamage(19.4f);
+        setExplosionRadius(6);
         this.setDistracted(false);
+    }
+
+    private boolean seekerLost(Vec3 aim) {
+        Vec3 toTarget = position().vectorTo(aim);
+        if (VectorTool.calculateAngle(getLookAngle(), toTarget) > SEEKER_CONE) return true;
+        boolean blocked = level().clip(new ClipContext(position(), aim, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this))
+                .getType() != HitResult.Type.MISS;
+        hiddenTicks = blocked ? hiddenTicks + 1 : 0;
+        return hiddenTicks > HIDDEN_GRACE;
     }
 
     @Override
@@ -114,20 +134,20 @@ public class LockOnHellfireEntity extends MissileProjectile implements GeoEntity
             }
         }
 
-        Vec3 toVec = getLookAngle();
+        Vec3 toVec = null;
 
+        // Seeker like the 9M123's: flies straight at the target (no top-attack climb), and a target that
+        // leaves the seeker cone or stays behind cover past the grace period is lost for good.
         if (getGuideType() == 0) {
-            if (!entityData.get(TARGET_UUID).equals("none")) {
-                if (entity != null) {
-                    if (level() instanceof ServerLevel) {
-                        if ((!entity.getPassengers().isEmpty() || entity instanceof VehicleEntity) && entity.tickCount % ((int) Math.max(0.04 * this.distanceTo(entity), 2)) == 0) {
-                            entity.level().playSound(null, entity.getOnPos(), entity instanceof Pig ? SoundEvents.PIG_HURT : ModSounds.MISSILE_WARNING.get(), SoundSource.PLAYERS, 2, 1f);
-                        }
-                        double dis = entity.position().vectorTo(position()).horizontalDistance();
-                        double height = dis > 30 ? 0.4 * (dis - 30) : 0;
-                        Vec3 targetPos = new Vec3(entity.getX(), entity.getY() + (entity instanceof EnderDragon ? -2 : 0) + height, entity.getZ());
-                        toVec = RangeTool.calculateFiringSolution(position(), targetPos, entity.getDeltaMovement(), getDeltaMovement().length(), 0);
+            if (!entityData.get(TARGET_UUID).equals("none") && entity != null && level() instanceof ServerLevel) {
+                Vec3 aim = entity.getBoundingBox().getCenter();
+                if (tickCount > 8 && seekerLost(aim)) {
+                    this.entityData.set(TARGET_UUID, "none");
+                } else {
+                    if ((!entity.getPassengers().isEmpty() || entity instanceof VehicleEntity) && entity.tickCount % ((int) Math.max(0.04 * this.distanceTo(entity), 2)) == 0) {
+                        entity.level().playSound(null, entity.getOnPos(), entity instanceof Pig ? SoundEvents.PIG_HURT : ModSounds.MISSILE_WARNING.get(), SoundSource.PLAYERS, 2, 1f);
                     }
+                    toVec = RangeTool.calculateFiringSolution(position(), aim, entity.getDeltaMovement(), getDeltaMovement().length(), 0);
                 }
             }
         } else {
@@ -142,9 +162,8 @@ public class LockOnHellfireEntity extends MissileProjectile implements GeoEntity
         if (this.tickCount > 8) {
             this.setDeltaMovement(this.getDeltaMovement().scale(0.05).add(getLookAngle().scale(8)));
             this.setDeltaMovement(this.getDeltaMovement().multiply(0.85, 0.85, 0.85));
-            boolean lostTarget = (VectorTool.calculateAngle(getLookAngle(), toVec) > 170);
-            if (!lostTarget) {
-                turn(toVec, Mth.clamp((tickCount - 8) * 0.5f, 0, 15));
+            if (toVec != null) {
+                turn(toVec, Mth.clamp((tickCount - 8) * TURN_RAMP, 0, MAX_TURN));
             }
         } else {
             this.setDeltaMovement(this.getDeltaMovement().add(0, -0.06, 0));

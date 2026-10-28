@@ -16,7 +16,7 @@ import org.joml.Matrix4d;
 import org.joml.Vector4d;
 public class MI17DoorGunsEntity extends CamoVehicleBase {
 
-    public int INVENTORY_SIZE = 9;
+    public int INVENTORY_SIZE = 54;
 
     @Override
     public int inventorySize() {

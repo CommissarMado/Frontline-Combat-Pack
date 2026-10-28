@@ -40,10 +40,8 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 663,
-      "Damage": 15,
+      "Damage": 15.7,
       "BypassesArmor": 2,
-      "IsArmorPiercingProjectile": true,
-      "IsHighExplosiveProjectile": false,
       "Velocity": 25,
       "RecoilTime": 32,
       "EmptyReloadTime": 401,
@@ -52,7 +50,7 @@
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@HeavyAmmo",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [

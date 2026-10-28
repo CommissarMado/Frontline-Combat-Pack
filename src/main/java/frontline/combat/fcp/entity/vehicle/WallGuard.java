@@ -3,74 +3,56 @@ package frontline.combat.fcp.entity.vehicle;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import com.atsuishio.superbwarfare.tools.OBB;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.joml.Vector3d;
 
 /**
- * Two holes in SBW's collision for collision-box vehicles, closed here:
- * <ul>
- *   <li><b>Wall climbing.</b> SBW steps a hull up (UpStep) whenever it counts as on the ground, and its
- *       box ground check also counts a hull pressed against a wall face. A hull hanging on a wall then
- *       steps up again every tick and walks up any height. A step is only allowed while the hull
- *       really rests on ground ({@link #restsOnGround}).</li>
- *   <li><b>Turning through walls.</b> Turning on the spot is never collision-checked, so the hull's
- *       corners swing into a wall; once enough of it is inside, the push-out flips to the far side.
- *       A turn that leaves the hull deeper than {@link #MAX_WALL_DEPTH} in a wall is undone
- *       ({@link #wallDepth}).</li>
- * </ul>
+ * Collision-box vehicles: SBW never collision-checks turning on the spot, so a hull's corners can
+ * swing into a wall, and once enough of it is inside, SBW's push-out flips it to the far side. Like a
+ * vanilla entity stuck in a block, a hull inside a wall is pushed back out sideways every tick
+ * ({@link #pushOutOfWalls}). Only blocks rising more than a step above the hull's underside right above
+ * them count as walls (so a hull tilted up a slope or stairs isn't held back), and ground and steps are
+ * left to SBW.
  */
 public final class WallGuard {
 
-    /** A sample on the underside counts as resting if ground is this close below (or this far into it). */
-    private static final double REST_GAP = 0.35, REST_SINK = 0.6;
-    /** Underside samples (of 5) that must rest for a step up to be allowed. */
-    private static final int MIN_RESTING = 2;
     /** Block faces this high above the underside or more are walls, not steps. */
     private static final double WALL_ABOVE = 1.0;
-    /** How deep (blocks) the hull may sit in a wall: SBW itself tolerates up to 0.1. */
-    public static final double MAX_WALL_DEPTH = 0.15;
+    /** Depth (blocks) left alone: SBW's own collision tolerates up to 0.1. */
+    private static final double TOLERANCE = 0.05;
+    private static final int PASSES = 3;
 
     private WallGuard() {
     }
 
-    /** True if at least {@link #MIN_RESTING} of the box's underside corners and centre sit on ground. */
-    public static boolean restsOnGround(VehicleEntity vehicle, OBB obb) {
-        Level level = vehicle.level();
-        Vector3d[] ax = obb.getAxes();
-        Vector3d c = obb.center, e = obb.extents();
-        double[][] at = {{-1, -1}, {-1, 1}, {1, -1}, {1, 1}, {0, 0}};
-        int resting = 0;
-        for (double[] f : at) {
-            double lx = f[0] * e.x, ly = -e.y, lz = f[1] * e.z;
-            double wx = c.x + ax[0].x * lx + ax[1].x * ly + ax[2].x * lz;
-            double wy = c.y + ax[0].y * lx + ax[1].y * ly + ax[2].y * lz;
-            double wz = c.z + ax[0].z * lx + ax[1].z * ly + ax[2].z * lz;
-            Double top = groundTop(level, wx, wy, wz);
-            if (top != null && wy - top <= REST_GAP && top - wy <= REST_SINK) resting++;
+    /** Moves the vehicle sideways out of any wall its collision box is in. */
+    public static void pushOutOfWalls(VehicleEntity vehicle) {
+        for (int pass = 0; pass < PASSES; pass++) {
+            OBB box = vehicle.getCollisionOBB();
+            if (box == null) return;
+            Vector3d push = deepestWallPush(vehicle, box);
+            if (push == null) return;
+            double depth = Math.sqrt(push.x * push.x + push.z * push.z);
+            if (depth <= TOLERANCE) return;
+            double k = (depth - TOLERANCE) / depth;
+            vehicle.setPos(vehicle.getX() + push.x * k, vehicle.getY(), vehicle.getZ() + push.z * k);
+            vehicle.updateOBB();
+            vehicle.refreshBoundingBoxFromOBBs();
         }
-        return resting >= MIN_RESTING;
     }
 
-    /** Top of the highest collision shape in the column at (x, z) from just above y down to the rest gap. */
-    private static Double groundTop(Level level, double x, double y, double z) {
-        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-        int bx = (int) Math.floor(x), bz = (int) Math.floor(z);
-        for (int by = (int) Math.floor(y + REST_SINK); by >= (int) Math.floor(y - REST_GAP); by--) {
-            pos.set(bx, by, bz);
-            VoxelShape shape = level.getBlockState(pos).getCollisionShape(level, pos);
-            if (!shape.isEmpty()) return by + shape.max(Direction.Axis.Y);
-        }
-        return null;
-    }
-
-    /** How deep (blocks) the box sits in blocks rising more than a step above its underside, sideways. */
-    public static double wallDepth(VehicleEntity vehicle, OBB obb) {
+    /** The horizontal part of the largest sideways separation vector against a wall block, or null. */
+    private static Vector3d deepestWallPush(VehicleEntity vehicle, OBB obb) {
         Level level = vehicle.level();
         AABB box = OBB.Companion.getWorldAABB(obb);
+        Vector3d[] ax = obb.getAxes();
+        Vector3d e = obb.extents(), up = ax[1];
+        // Centre of the underside; "up" is the hull's own up axis, so the underside tilts with the hull.
+        double ux = obb.center.x - up.x * e.y, uy = obb.center.y - up.y * e.y, uz = obb.center.z - up.z * e.y;
         double bottom = box.minY;
+        Vector3d best = null;
         double deepest = 0;
         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
         for (int x = (int) Math.floor(box.minX); x <= (int) Math.floor(box.maxX); x++) {
@@ -81,15 +63,23 @@ public final class WallGuard {
                     if (shape.isEmpty()) continue;
                     for (AABB part : shape.toAabbs()) {
                         AABB a = part.move(x, y, z);
-                        if (a.maxY <= bottom + WALL_ABOVE) continue;
+                        // Compare with the underside right above this block, not the lowest corner: on a
+                        // slope the raised nose sits well above the steps it is climbing.
+                        double cx = (a.minX + a.maxX) / 2, cz = (a.minZ + a.maxZ) / 2;
+                        double underside = Math.abs(up.y) < 1.0e-3 ? bottom
+                                : uy - (up.x * (cx - ux) + up.z * (cz - uz)) / up.y;
+                        if (a.maxY <= underside + WALL_ABOVE) continue;
                         Vector3d mtv = OBB.Companion.computeObbAabbMtv(obb, a);
                         if (mtv == null) continue;
                         double side = Math.sqrt(mtv.x * mtv.x + mtv.z * mtv.z);
-                        if (side > Math.abs(mtv.y)) deepest = Math.max(deepest, side);
+                        if (side > Math.abs(mtv.y) && side > deepest) {
+                            deepest = side;
+                            best = new Vector3d(mtv.x, 0, mtv.z);
+                        }
                     }
                 }
             }
         }
-        return deepest;
+        return best;
     }
 }

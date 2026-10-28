@@ -1,0 +1,33 @@
+{
+  "armor": {
+    "front": 15.0,
+    "side": 15.0,
+    "rear": 7.0,
+    "top": 7.0,
+    "turret_front": 15.0,
+    "turret_side": 15.0
+  },
+  "modifiers": {
+    "kinetic": 0.1,
+    "heat": 0.36,
+    "hat": 0.5,
+    "explosive": 0.8,
+    "frag": 1.0,
+    "small_arms": 0.0
+  },
+  "weapons": {
+    "Cannon": {
+      "type": "kinetic",
+      "pen": 62.0
+    },
+    "Cannon#1": {
+      "type": "frag",
+      "pen": 9.0
+    },
+    "MachineGun": {
+      "type": "small_arms",
+      "pen": 7.0
+    }
+  },
+  "ammo": {"Cannon": [1, 160], "Cannon#1": [1, 340], "MachineGun": [1, 2000]}
+}

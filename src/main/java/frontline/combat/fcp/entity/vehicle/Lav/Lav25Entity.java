@@ -12,7 +12,7 @@ import net.minecraft.world.level.Level;
 
 public class Lav25Entity extends CamoVehicleBase implements SteerableVehicle {
 
-    public int INVENTORY_SIZE = 9;
+    public int INVENTORY_SIZE = 27;
 
     @Override
     public int inventorySize() {
@@ -57,6 +57,22 @@ public class Lav25Entity extends CamoVehicleBase implements SteerableVehicle {
 
     public float getPrevWheelRotation() {
         return prevWheelRotation;
+    }
+
+    /** lav25_mg: the pintle M240 covers a 140 degree arc centred on the turret's front. */
+    private static final float MG_ARC = 70f;
+
+    /**
+     * SBW clamps its weapon station's yaw against the hull; the LAV's M240 rides the turret, so it is held
+     * within {@link #MG_ARC} of the turret's facing instead (gun yaw and turret yaw share the hull frame).
+     */
+    @Override
+    public void adjustWeaponControllerAngle() {
+        super.adjustWeaponControllerAngle();
+        if (!hasPassengerWeaponStation()) return;
+        float rel = net.minecraft.util.Mth.wrapDegrees(getGunYRot() - getTurretYRot());
+        float clamped = net.minecraft.util.Mth.clamp(rel, -MG_ARC, MG_ARC);
+        if (clamped != rel) setGunYRot(getGunYRot() + clamped - rel);
     }
 
     @Override

@@ -1,7 +1,7 @@
 {
   "ID": "fcp:man_hx58",
-  "MaxHealth": 180,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 73,
+  "MaxEnergy": 40000000,
   "OBB": [
     {"Size": [1.383, 1.853, 4.502], "Position": [0.0, 1.853, -0.546], "Part": "Collision"},
     {"Size": [0.25, 0.6562, 0.6562], "Position": [1.125, 0.6562, 2.3813], "Part": "WheelLeft"},
@@ -150,12 +150,12 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 72,
+    "EnergyCostRate": 46.5,
     "WheelRotSpeed": 0.75,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.0,
-    "MaxBackwardSpeedRate": 0.35,
-    "Increment": 0.011,
+    "MaxForwardSpeedRate": 1.06,
+    "MaxBackwardSpeedRate": 0.32,
+    "Increment": 0.00739,
     "Decrement": 0.008,
     "SteeringSpeed": 0.045,
     "EngineSoundVolume": 0.6

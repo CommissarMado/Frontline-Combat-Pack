@@ -1,0 +1,10 @@
+{
+  "model": false,
+  "weapons": {
+    "Grenade": {
+      "type": "frag",
+      "pen": 5.0
+    }
+  },
+  "ammo": {"Grenade": [10, 29]}
+}

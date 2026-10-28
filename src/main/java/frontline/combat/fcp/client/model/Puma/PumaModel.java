@@ -4,7 +4,7 @@ import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.model.Util.CannonRecoilTransforms;
 import frontline.combat.fcp.client.model.Util.ModelBoneTransforms;
-import frontline.combat.fcp.client.sound.PumaLauncherLids;
+import frontline.combat.fcp.client.sound.AtgmLauncherAnimation;
 import frontline.combat.fcp.entity.vehicle.Puma.PumaEntity;
 import frontline.combat.fcp.vehicle.humvee.HumveeAttachments;
 import net.minecraft.resources.ResourceLocation;
@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 /**
  * Both Puma variants. No track or wheel animation: SBW would spin any "wheelL../wheelR.." bone, so
  * those are opted out. The ATGM variant's launcher ("ATGM") elevates with the gun about its own pivot,
- * its covers ("lid", "lid2") open when the gunner selects the ATGM (see PumaLauncherLids), and the
+ * its covers ("lid", "lid2") open when the gunner selects the ATGM (see AtgmLauncherAnimation), and the
  * missiles ("rocket", "rocket2") disappear as they are fired. The commander's sight
  * ("weaponstationturret") turns with the commander's station but doesn't elevate.
  * <p>
@@ -53,9 +53,9 @@ public class PumaModel extends VehicleModel<PumaEntity> {
                 // Commander's sight: traverses with the station, never elevates.
                 return super.collectTransform("passengerWeaponStationYaw");
             case "lid":
-                return (bone, vehicle, state) -> bone.setRotX(LID_OPEN * Mth.DEG_TO_RAD * PumaLauncherLids.openness(vehicle, state.getPartialTick()));
+                return (bone, vehicle, state) -> bone.setRotX(LID_OPEN * Mth.DEG_TO_RAD * AtgmLauncherAnimation.openness(vehicle, state.getPartialTick()));
             case "lid2":
-                return (bone, vehicle, state) -> bone.setRotX(LID2_OPEN * Mth.DEG_TO_RAD * PumaLauncherLids.openness(vehicle, state.getPartialTick()));
+                return (bone, vehicle, state) -> bone.setRotX(LID2_OPEN * Mth.DEG_TO_RAD * AtgmLauncherAnimation.openness(vehicle, state.getPartialTick()));
             case "rocket":
                 // Magazine of 2: "rocket" goes with the first shot, "rocket2" with the second.
                 return (bone, vehicle, state) -> bone.setHidden(vehicle.GetWeaponState(PumaEntity.ATGM_WEAPON, 1));

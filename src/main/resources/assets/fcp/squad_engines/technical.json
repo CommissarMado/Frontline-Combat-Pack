@@ -1,6 +1,6 @@
 {
   "_comment": "Generated from the Squad SDK: Technical_engine_rpm_ALL_Cue.uasset (+ start/stop cues).",
-  "vehicles": ["fcp:toyota_hilux", "fcp:toyota_hilux_rocket_pod", "fcp:toyota_hilux_bmp", "fcp:toyota_hilux_spg9", "fcp:toyota_hilux_mortar", "fcp:toyota_hilux_zu23"],
+  "vehicles": ["fcp:toyota_hilux", "fcp:land_cruiser_80", "fcp:toyota_hilux_rocket_pod", "fcp:toyota_hilux_bmp", "fcp:toyota_hilux_spg9", "fcp:toyota_hilux_mortar", "fcp:toyota_hilux_zu23"],
   "rpm": { "max": 1125, "load": 375, "rise": 56, "fall": 38 },
   "exterior_volume": 1,
   "interior_volume": 1,

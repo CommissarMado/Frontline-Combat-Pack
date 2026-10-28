@@ -1,7 +1,7 @@
 {
   "ID": "fcp:littlebird_heavy",
-  "MaxHealth": 280,
-  "MaxEnergy": 8000000,
+  "MaxHealth": 73,
+  "MaxEnergy": 23500000,
   "TurretPos": [-0.000316, 0.790129, 0.827102],
   "TurretPitchRange": [-50, 15],
   "TurretYawRange": [-75, 75],
@@ -71,9 +71,9 @@
       "Spread": 0.3,
       "Name": "weapon.fcp.hydra_rocket",
       "RPM": 400,
-      "Damage": 80,
-      "ExplosionDamage": 40,
-      "ExplosionRadius": 5,
+      "Damage": 19.4,
+      "ExplosionDamage": 24.2,
+      "ExplosionRadius": 6,
       "Gravity": 0.02,
       "Velocity": 16,
       "SoundInfo": {
@@ -102,7 +102,7 @@
       "SoundRadius": 12
     },
     "Cannon": {
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "DefaultFireMode": "Auto",
       "AvailableFireModes": "Auto",
       "Projectile": "superbwarfare:projectile",
@@ -110,7 +110,7 @@
       "DefaultZoom": 3,
       "RPM": 1500,
       "Velocity": 30,
-      "Damage": 4,
+      "Damage": 19.4,
       "Magazine": 1000,
       "HeatPerShoot": 1,
       "NaturalCooldown": 1,
@@ -151,8 +151,8 @@
       "Projectile": "fcp:wire_guided_hellfire",
       "Magazine": 2,
       "EmptyReloadTime": 400,
-      "Damage": 400,
-      "ExplosionDamage": 80,
+      "Damage": 175,
+      "ExplosionDamage": 19.4,
       "ExplosionRadius": 6,
       "Velocity": 3,
       "ShootPos": {
@@ -188,7 +188,7 @@
   },
   "EngineType": "Helicopter",
   "EngineInfo": {
-    "EnergyCostRate": 280,
+    "EnergyCostRate": 16,
     "Increment": 0.9,
     "Decrement": 0.9,
     "PitchSpeed": 0.85,

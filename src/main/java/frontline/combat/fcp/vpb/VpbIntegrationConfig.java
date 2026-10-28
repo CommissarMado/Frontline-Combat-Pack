@@ -72,6 +72,10 @@ public final class VpbIntegrationConfig {
                     float explosionRadius = s.has("explosionRadius") ? s.get("explosionRadius").getAsFloat() : 0f;
                     int fireTime = s.has("fireTime") ? s.get("fireTime").getAsInt() : 0;
                     boolean destroy = !s.has("destroyBlocks") || s.get("destroyBlocks").getAsBoolean();
+                    String type = s.has("type") && !s.get("type").getAsString().isBlank()
+                            ? s.get("type").getAsString().trim().toLowerCase(java.util.Locale.ROOT) : null;
+                    float pen = s.has("penetration") ? s.get("penetration").getAsFloat() : 0f;
+                    float blockDamage = s.has("blockDamage") ? s.get("blockDamage").getAsFloat() : -1f;
                     ParticleTool.ParticleType particle = null;
                     if (s.has("explosionParticle") && !s.get("explosionParticle").getAsString().isBlank()) {
                         String raw = s.get("explosionParticle").getAsString().trim().toUpperCase(java.util.Locale.ROOT);
@@ -82,7 +86,7 @@ public final class VpbIntegrationConfig {
                                     id, raw);
                         }
                     }
-                    WarheadStats stats = new WarheadStats(directDamage, explosionDamage, explosionRadius, particle, fireTime, destroy);
+                    WarheadStats stats = new WarheadStats(directDamage, explosionDamage, explosionRadius, particle, fireTime, destroy, type, pen, blockDamage);
                     if (!stats.hasDirectHit() && !stats.hasExplosion()) {
                         LOGGER.warn("[FCP/VPB] Skipping '{}': needs directDamage > 0 and/or (explosionDamage > 0 and explosionRadius > 0)", id);
                         continue;
@@ -116,281 +120,56 @@ public final class VpbIntegrationConfig {
         return id;
     }
 
+    private static void warhead(JsonObject warheads, String id, float direct, float blast, float radius,
+                                boolean destroyBlocks, String type, float penetration) {
+        JsonObject entry = new JsonObject();
+        entry.addProperty("directDamage", direct);
+        entry.addProperty("explosionDamage", blast);
+        entry.addProperty("explosionRadius", radius);
+        entry.addProperty("explosionParticle", "MEDIUM");
+        entry.addProperty("fireTime", 0);
+        entry.addProperty("destroyBlocks", destroyBlocks);
+        entry.addProperty("type", type);
+        entry.addProperty("penetration", penetration);
+        warheads.add(id, entry);
+    }
+
     private static void writeDefault(Path path) throws IOException {
         JsonObject root = new JsonObject();
-        root.addProperty("comment", "FCP  Point Blank integration. Keys are registry ids. projectileWarheads maps a VPB projectile ENTITY id to the SBW warhead it is replaced by on impact: directDamage is a flat hit on the struck entity (runs through SBW vehicle DamageModifiers/armor), explosionDamage/explosionRadius are the AoE blast. AP = direct only; HE = explosion only; HEAT = both. muzzleSmokeProjectiles lists VPB projectile ENTITY ids that emit the SBW-RPG muzzle + downrange smoke when fired. Enable debugLogging to print unmapped pointblank ids to the log so you can discover the exact strings for your installed content packs.");
+        root.addProperty("comment", "FCP  Point Blank integration. Keys are registry ids. projectileWarheads maps a VPB projectile ENTITY id to the SBW warhead it is replaced by on impact: directDamage is a flat hit on the struck entity (runs through SBW vehicle DamageModifiers/armor), explosionDamage/explosionRadius are the AoE blast. AP = direct only; HE = explosion only; HEAT = both. type (heat, hat, explosive, frag, kinetic) and penetration (mm) feed FCP's vehicle armour model; blockDamage (0-1) shrinks the crater (frag defaults to 0.35). muzzleSmokeProjectiles lists VPB projectile ENTITY ids that emit the SBW-RPG muzzle + downrange smoke when fired. Enable debugLogging to print unmapped pointblank ids to the log so you can discover the exact strings for your installed content packs.");
         root.addProperty("debugLogging", false);
         JsonObject warheads = new JsonObject();
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 200.0);
-            entry.addProperty("explosionDamage", 90.0);
-            entry.addProperty("explosionRadius", 6.0);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", true);
-            warheads.add("pointblank:example_rocket", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 250.0);
-            entry.addProperty("explosionDamage", 35.0);
-            entry.addProperty("explosionRadius", 5.2);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", false);
-            warheads.add("pointblank:fcl_rpg7v2_pg7vm", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 400.0);
-            entry.addProperty("explosionDamage", 28.0);
-            entry.addProperty("explosionRadius", 5.6);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", true);
-            warheads.add("pointblank:fcl_rpg7v2_pg7vr", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 0.0);
-            entry.addProperty("explosionDamage", 50.0);
-            entry.addProperty("explosionRadius", 5.6);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", false);
-            warheads.add("pointblank:fcl_rpg7v2_og7v", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 400.0);
-            entry.addProperty("explosionDamage", 28.0);
-            entry.addProperty("explosionRadius", 5.6);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", true);
-            warheads.add("pointblank:fcl_smaw_heaa", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 200.0);
-            entry.addProperty("explosionDamage", 70.0);
-            entry.addProperty("explosionRadius", 7);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", true);
-            warheads.add("pointblank:fcl_smaw_hedm", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 250.0);
-            entry.addProperty("explosionDamage", 35.0);
-            entry.addProperty("explosionRadius", 5.2);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", false);
-            warheads.add("pointblank:fcl_rpg26_rocket", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 250.0);
-            entry.addProperty("explosionDamage", 35.0);
-            entry.addProperty("explosionRadius", 5.2);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", false);
-            warheads.add("pointblank:fcl_m72_rocket", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 400.0);
-            entry.addProperty("explosionDamage", 28.0);
-            entry.addProperty("explosionRadius", 5.6);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", true);
-            warheads.add("pointblank:fcl_rpg28_rocket", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 250.0);
-            entry.addProperty("explosionDamage", 35.0);
-            entry.addProperty("explosionRadius", 5.2);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", false);
-            warheads.add("pointblank:fcl_at4_rocket", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 250.0);
-            entry.addProperty("explosionDamage", 35.0);
-            entry.addProperty("explosionRadius", 5.2);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", false);
-            warheads.add("pointblank:fcl_dzj08_round", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 0.0);
-            entry.addProperty("explosionDamage", 100.0);
-            entry.addProperty("explosionRadius", 5);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", true);
-            warheads.add("pointblank:grenade40mm", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 0.0);
-            entry.addProperty("explosionDamage", 100.0);
-            entry.addProperty("explosionRadius", 5);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", true);
-            warheads.add("pointblank:cs_grenade30mm", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 0.0);
-            entry.addProperty("explosionDamage", 100.0);
-            entry.addProperty("explosionRadius", 5);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", true);
-            warheads.add("pointblank:cs_grenade7g23", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 0.0);
-            entry.addProperty("explosionDamage", 100.0);
-            entry.addProperty("explosionRadius", 7);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", true);
-            warheads.add("pointblank:fcl_carlgustaf_he448", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 250.0);
-            entry.addProperty("explosionDamage", 35.0);
-            entry.addProperty("explosionRadius", 5.2);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", false);
-            warheads.add("pointblank:fcl_carlgustaf_heat551crs", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 400.0);
-            entry.addProperty("explosionDamage", 28.0);
-            entry.addProperty("explosionRadius", 5.6);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", true);
-            warheads.add("pointblank:fcl_carlgustaf_heat758", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 200.0);
-            entry.addProperty("explosionDamage", 70.0);
-            entry.addProperty("explosionRadius", 5);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", true);
-            warheads.add("pointblank:fcl_carlgustaf_hedp502", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 0.0);
-            entry.addProperty("explosionDamage", 100.0);
-            entry.addProperty("explosionRadius", 7);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", true);
-            warheads.add("pointblank:fcl_rpg29_og29", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 400.0);
-            entry.addProperty("explosionDamage", 28.0);
-            entry.addProperty("explosionRadius", 5.6);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", true);
-            warheads.add("pointblank:fcl_rpg29_pg29v", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 200.0);
-            entry.addProperty("explosionDamage", 70.0);
-            entry.addProperty("explosionRadius", 5);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", true);
-            warheads.add("pointblank:fcl_rpg29_mg29", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 0.0);
-            entry.addProperty("explosionDamage", 100.0);
-            entry.addProperty("explosionRadius", 7);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", true);
-            warheads.add("pointblank:fcl_panzerfaust3_bunkerfaust", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 400.0);
-            entry.addProperty("explosionDamage", 28.0);
-            entry.addProperty("explosionRadius", 5.6);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", true);
-            warheads.add("pointblank:fcl_panzerfaust3_tandem", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 250.0);
-            entry.addProperty("explosionDamage", 35.0);
-            entry.addProperty("explosionRadius", 5.2);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", false);
-            warheads.add("pointblank:fcl_panzerfaust3_heat", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 0.0);
-            entry.addProperty("explosionDamage", 100.0);
-            entry.addProperty("explosionRadius", 7);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", true);
-            warheads.add("pointblank:fcl_pf98_he", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 400.0);
-            entry.addProperty("explosionDamage", 28.0);
-            entry.addProperty("explosionRadius", 5.6);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", true);
-            warheads.add("pointblank:fcl_pf98_heat", entry);
-        }
-        {
-            JsonObject entry = new JsonObject();
-            entry.addProperty("directDamage", 200.0);
-            entry.addProperty("explosionDamage", 70.0);
-            entry.addProperty("explosionRadius", 7);
-            entry.addProperty("explosionParticle", "MEDIUM");
-            entry.addProperty("fireTime", 0);
-            entry.addProperty("destroyBlocks", true);
-            warheads.add("pointblank:fcl_pf98_hei", entry);
-        }
+        // Squad launcher values x0.097 (rifle 62 -> 6). SBW blasts reach twice their radius, so radius = Squad outer radius / 2.
+        // Columns: direct, blast, radius, destroyBlocks, armour type, penetration (mm).
+        // Penetration = Squad's PROJECTILE value (the launcher-level ArmorPenetrationDepthMillimeters is stale, e.g. RPG-28
+        // launcher 320 vs projectile 1200). Panzerfaust 3 isn't in Squad.
+        warhead(warheads, "pointblank:example_rocket", 93.1f, 12.6f, 4f, true, "heat", 320);
+        warhead(warheads, "pointblank:fcl_rpg7v2_pg7vm", 93.1f, 12.6f, 4f, false, "heat", 400);
+        warhead(warheads, "pointblank:fcl_rpg7v2_pg7vr", 135.8f, 19.4f, 5f, true, "hat", 900);
+        warhead(warheads, "pointblank:fcl_rpg7v2_og7v", 1.0f, 24.3f, 8f, false, "frag", 9);
+        warhead(warheads, "pointblank:fcl_smaw_heaa", 135.8f, 19.4f, 5f, true, "hat", 900);
+        warhead(warheads, "pointblank:fcl_smaw_hedm", 93.1f, 19.4f, 6f, true, "heat", 150);
+        warhead(warheads, "pointblank:fcl_rpg26_rocket", 93.1f, 12.6f, 4f, false, "heat", 440);
+        warhead(warheads, "pointblank:fcl_m72_rocket", 93.1f, 12.6f, 4f, false, "heat", 320);
+        warhead(warheads, "pointblank:fcl_rpg28_rocket", 135.8f, 19.4f, 5f, true, "hat", 1200);
+        warhead(warheads, "pointblank:fcl_at4_rocket", 93.1f, 12.6f, 4f, false, "heat", 420);
+        warhead(warheads, "pointblank:fcl_dzj08_round", 93.1f, 12.6f, 4f, false, "heat", 400);
+        warhead(warheads, "pointblank:grenade40mm", 5.8f, 14.8f, 5f, true, "frag", 5);
+        warhead(warheads, "pointblank:cs_grenade30mm", 5.8f, 14.8f, 5f, true, "frag", 5);
+        warhead(warheads, "pointblank:cs_grenade7g23", 5.8f, 14.8f, 5f, true, "frag", 5);
+        warhead(warheads, "pointblank:fcl_carlgustaf_he448", 93.1f, 24.3f, 8f, true, "frag", 9);
+        warhead(warheads, "pointblank:fcl_carlgustaf_heat551crs", 93.1f, 12.6f, 4f, false, "heat", 400);
+        warhead(warheads, "pointblank:fcl_carlgustaf_heat758", 135.8f, 19.4f, 5f, true, "hat", 900);
+        warhead(warheads, "pointblank:fcl_carlgustaf_hedp502", 93.1f, 19.4f, 6f, true, "heat", 150);
+        warhead(warheads, "pointblank:fcl_rpg29_og29", 1.0f, 24.3f, 8f, true, "frag", 9);
+        warhead(warheads, "pointblank:fcl_rpg29_pg29v", 135.8f, 19.4f, 5f, true, "hat", 900);
+        warhead(warheads, "pointblank:fcl_rpg29_mg29", 93.1f, 19.4f, 6f, true, "heat", 150);
+        warhead(warheads, "pointblank:fcl_panzerfaust3_bunkerfaust", 23.3f, 19.4f, 12f, true, "explosive", 12);
+        warhead(warheads, "pointblank:fcl_panzerfaust3_tandem", 135.8f, 19.4f, 5f, true, "hat", 900);
+        warhead(warheads, "pointblank:fcl_panzerfaust3_heat", 93.1f, 12.6f, 4f, false, "heat", 700);
+        warhead(warheads, "pointblank:fcl_pf98_he", 1.0f, 24.3f, 8f, true, "frag", 9);
+        warhead(warheads, "pointblank:fcl_pf98_heat", 135.8f, 19.4f, 5f, true, "hat", 900);
+        warhead(warheads, "pointblank:fcl_pf98_hei", 93.1f, 19.4f, 6f, true, "heat", 150);
         root.add("projectileWarheads", warheads);
         JsonArray smokeProjectiles = new JsonArray();
         smokeProjectiles.add("pointblank:example_rocket");

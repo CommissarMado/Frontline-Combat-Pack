@@ -39,9 +39,9 @@
       "Projectile": "superbwarfare:wire_guide_missile",
       "Magazine": 1,
       "EmptyReloadTime": 253,
-      "Damage": 600,
-      "ExplosionDamage": 70,
-      "ExplosionRadius": 7,
+      "Damage": 174.2,
+      "ExplosionDamage": 14.8,
+      "ExplosionRadius": 5,
       "Velocity": 3.5,
       "ShootPos": {
         "Transform": "Barrel",

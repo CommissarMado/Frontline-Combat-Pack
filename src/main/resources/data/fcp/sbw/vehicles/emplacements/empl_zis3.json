@@ -37,15 +37,14 @@
       "DefaultFireMode": "Semi",
       "AvailableFireModes": "Semi",
       "Projectile": "superbwarfare:cannon_shell",
-      "IsArmorPiercingProjectile": true,
       "ShellType": "AP",
       "DefaultZoom": 3,
       "Magazine": 1,
       "EmptyReloadTime": 130,
       "Velocity": 40,
-      "Damage": 800,
-      "ExplosionDamage": 20,
-      "ExplosionRadius": 1,
+      "Damage": 290.3,
+      "ExplosionDamage": 0,
+      "ExplosionRadius": 0,
       "RecoilTime": 42,
       "RecoilForce": 1.1,
       "Spread": 0.02,
@@ -59,12 +58,11 @@
           "Ammo": "superbwarfare:large_shell_he",
           "Override": {
             "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/he_shell.png",
-            "IsArmorPiercingProjectile": false,
-            "IsHighExplosiveProjectile": true,
             "ShellType": "HE",
-            "ExplosionDamage": 120,
-            "ExplosionRadius": 10,
-            "Name": "weapon.fcp.zis3_he"
+            "ExplosionDamage": 24.2,
+            "ExplosionRadius": 12,
+            "Name": "weapon.fcp.zis3_he",
+            "Damage": 14.5
           }
         },
         {
@@ -74,9 +72,9 @@
             "ShellType": "CM",
             "SpreadAmount": 22,
             "SpreadAngle": 8,
-            "Damage": 600,
-            "ExplosionDamage": 240,
-            "ExplosionRadius": 7,
+            "Damage": 9.7,
+            "ExplosionDamage": 29,
+            "ExplosionRadius": 10,
             "Name": "weapon.fcp.zis3_cm"
           }
         },

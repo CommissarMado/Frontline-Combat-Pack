@@ -1,0 +1,45 @@
+{
+  "armor": {
+    "front": 535.0,
+    "side": 80.0,
+    "rear": 50.0,
+    "top": 30.0,
+    "turret_front": 240.0,
+    "turret_side": 80.0
+  },
+  "modifiers": {
+    "kinetic": 0.1,
+    "heat": 0.19,
+    "hat": 1.0,
+    "explosive": 1.0,
+    "frag": 1.0,
+    "small_arms": 0.0
+  },
+  "weapons": {
+    "Cannon": {
+      "type": "kinetic",
+      "pen": 800.0
+    },
+    "Cannon#1": {
+      "type": "frag",
+      "pen": 10.0
+    },
+    "Cannon#2": {
+      "type": "frag",
+      "pen": 10.0
+    },
+    "Coax": {
+      "type": "small_arms",
+      "pen": 7.0
+    },
+    "Cannon#3": {
+      "type": "heat",
+      "pen": 500.0
+    },
+    "PassengerMachineGun": {
+      "type": "kinetic",
+      "pen": 28.0
+    }
+  },
+  "ammo": {"Cannon": [20, 1], "Cannon#1": [13, 1], "Cannon#2": [6, 1], "Cannon#3": [2, 1], "Coax": [1, 2000], "PassengerMachineGun": [2, 150]}
+}

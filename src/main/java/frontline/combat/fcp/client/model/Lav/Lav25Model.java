@@ -10,6 +10,7 @@ import frontline.combat.fcp.entity.vehicle.Huey.HueyEntity;
 import frontline.combat.fcp.entity.vehicle.Lav.Lav25Entity;
 import frontline.combat.fcp.entity.vehicle.Stryker.StrykerM2Entity;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import org.jetbrains.annotations.Nullable;
 
 public class Lav25Model extends FCPVehicleModel<Lav25Entity> {
@@ -18,7 +19,8 @@ public class Lav25Model extends FCPVehicleModel<Lav25Entity> {
 
     @Override
     public ResourceLocation getModelResource(Lav25Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/lav25.geo.json");
+        // lav25_mg is the LAV-25 with the commander's pintle M240; same skins.
+        return new ResourceLocation(FCP.MODID, "geo/" + EntityType.getKey(animatable.getType()).getPath() + ".geo.json");
     }
 
     @Override
@@ -31,6 +33,16 @@ public class Lav25Model extends FCPVehicleModel<Lav25Entity> {
 
         if ("BarrelOccilator".equals(boneName)) {
             return barrelRecoil(0);
+        }
+
+        // lav25_mg: the pintle M240 is one bone, so SBW's weapon-station yaw and pitch both turn it.
+        if ("weaponstationbarrel".equals(boneName)) {
+            VehicleModel.TransformContext<Lav25Entity> yaw = super.collectTransform("passengerWeaponStationYaw");
+            VehicleModel.TransformContext<Lav25Entity> pitch = super.collectTransform("passengerWeaponStationPitch");
+            return (bone, vehicle, state) -> {
+                if (yaw != null) yaw.transform(bone, vehicle, state);
+                if (pitch != null) pitch.transform(bone, vehicle, state);
+            };
         }
 
         // Steering wheels (roll on X + pivot on Y). Lav25Entity implements

@@ -1,0 +1,33 @@
+{
+  "armor": {
+    "front": 35.0,
+    "side": 15.0,
+    "rear": 10.0,
+    "top": 7.0,
+    "turret_front": 35.0,
+    "turret_side": 15.0
+  },
+  "modifiers": {
+    "kinetic": 0.1,
+    "heat": 0.3,
+    "hat": 0.625,
+    "explosive": 1.0,
+    "frag": 1.0,
+    "small_arms": 0.0
+  },
+  "weapons": {
+    "Malyutka": {
+      "type": "hat",
+      "pen": 500.0
+    },
+    "Cannon": {
+      "type": "heat",
+      "pen": 400.0
+    },
+    "Coax": {
+      "type": "small_arms",
+      "pen": 7.0
+    }
+  },
+  "ammo": {"Malyutka": [4, 1], "Cannon": [24, 1], "Coax": [8, 250]}
+}

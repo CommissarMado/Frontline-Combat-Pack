@@ -19,7 +19,7 @@ import org.joml.Vector4d;
 // pivots as huey_m60.geo.json).
 public class HueyM60GunshipEntity extends CamoVehicleBase {
 
-    public int INVENTORY_SIZE = 9;
+    public int INVENTORY_SIZE = 18;
 
     @Override
     public int inventorySize() {

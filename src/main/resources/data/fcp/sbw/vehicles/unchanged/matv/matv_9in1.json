@@ -1,7 +1,7 @@
 {
   "ID": "fcp:matv_9in1",
-  "MaxHealth": 175,
-  "MaxEnergy": 5250000,
+  "MaxHealth": 73,
+  "MaxEnergy": 12500000,
   "OBB": [
     {
       "Size": [
@@ -216,10 +216,8 @@
       "Projectile": "superbwarfare:projectile",
       "DefaultZoom": 3,
       "RPM": 500,
-      "Damage": 15,
+      "Damage": 14.8,
       "BypassesArmor": 2,
-      "IsArmorPiercingProjectile": true,
-      "IsHighExplosiveProjectile": false,
       "Velocity": 25,
       "RecoilTime": 32,
       "EmptyReloadTime": 228,
@@ -228,7 +226,7 @@
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
       "ShootAnimationTime": 1,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@HeavyAmmo",
       "ShootPos": {
         "Transform": "Barrel",
         "Positions": [
@@ -254,18 +252,18 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 27,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 1.1,
-    "MaxBackwardSpeedRate": 0.2,
-    "Increment": 0.025,
+    "MaxForwardSpeedRate": 1.27,
+    "MaxBackwardSpeedRate": 0.48,
+    "Increment": 0.01719,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1
   },
   "TurretPos": [-0.00123125, 2.65119375, -0.8426125],
   "BarrelPos": [-0.0175, 0.1494, 0.4986875],
-  "TurretTurnSpeed": [15, 15],
+  "TurretTurnSpeed": [4.5, 4.5],
   "TurretPitchRange": [-9, 40],
   "TurretControllerIndex": 1,
   "ThirdPersonCameraPos": [0, 1, 3],

@@ -21,7 +21,7 @@ import org.joml.Vector4d;
 // rotation puts each named bone pair on the opposite side from what its own name suggests).
 public class VenomDoorGunsEntity extends CamoVehicleBase {
 
-    public int INVENTORY_SIZE = 9;
+    public int INVENTORY_SIZE = 18;
 
     @Override
     public int inventorySize() {

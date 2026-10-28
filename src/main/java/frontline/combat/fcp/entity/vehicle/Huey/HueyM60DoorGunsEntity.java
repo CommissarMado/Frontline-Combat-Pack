@@ -30,7 +30,7 @@ import org.joml.Vector4d;
 // VenomGunshipEntity's LeftBarrel/RightBarrel pair exactly.
 public class HueyM60DoorGunsEntity extends CamoVehicleBase {
 
-    public int INVENTORY_SIZE = 9;
+    public int INVENTORY_SIZE = 18;
 
     @Override
     public int inventorySize() {

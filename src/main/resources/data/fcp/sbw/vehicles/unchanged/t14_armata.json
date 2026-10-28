@@ -1,7 +1,7 @@
 {
   "ID": "fcp:t14_armata",
-  "MaxHealth": 150,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 290,
+  "MaxEnergy": 160000000,
   "OBB": [
     {"Size": [0.25, 0.445, 0.57], "Position": [0.0, 0.445, 0.018], "Part": "Collision"},
     {"Size": [0.3, 0.45, 0.75], "Position": [0, 0.45, 0], "Part": "Body"}
@@ -23,11 +23,11 @@
   "EngineSound": "fcp:toyota_engine",
   "EngineInfo": {
     "Buoyancy": 1,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 221.8,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 1,
-    "MaxForwardSpeedRate": 1.62,
-    "MaxBackwardSpeedRate": 0.33,
+    "MaxForwardSpeedRate": 0.79,
+    "MaxBackwardSpeedRate": 0.48,
     "Increment": 0.025,
     "Decrement": 0.020,
     "SteeringSpeed": 0.1,

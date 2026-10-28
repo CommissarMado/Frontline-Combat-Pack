@@ -1,16 +1,13 @@
 {
   "ID": "fcp:m1a2",
-  "MaxHealth": 297,
-  "MaxEnergy": 5000000,
+  "MaxHealth": 290,
+  "MaxEnergy": 190000000,
   "TurretPos": [
     0.0041,
     2.0998,
     0.4356
   ],
-  "TurretTurnSpeed": [
-    2.0,
-    1.25
-  ],
+  "TurretTurnSpeed": [2.0, 2.5],
   "TurretPitchRange": [
     -9,
     20
@@ -266,13 +263,13 @@
   "EngineSound": "fcp:bmp1_engine",
   "EngineInfo": {
     "Buoyancy": 0.05,
-    "EnergyCostRate": 96,
+    "EnergyCostRate": 297.4,
     "WheelRotSpeed": 1.5625,
     "WheelDifferential": 0.5,
     "TrackRotSpeed": 2.125,
     "TrackDifferential": 0.75,
     "MaxForwardSpeedRate": 0.76,
-    "MaxBackwardSpeedRate": 0.63,
+    "MaxBackwardSpeedRate": 0.38,
     "Increment": 0.022,
     "Decrement": 0.013,
     "SteeringSpeed": 0.1,
@@ -284,15 +281,14 @@
       "DefaultFireMode": "Semi",
       "AvailableFireModes": "Semi",
       "Projectile": "superbwarfare:cannon_shell",
-      "IsArmorPiercingProjectile": true,
       "ShellType": "AP",
       "DefaultZoom": 4,
       "Magazine": 1,
       "EmptyReloadTime": 143,
       "Velocity": 40,
-      "Damage": 800,
-      "ExplosionDamage": 20,
-      "ExplosionRadius": 1,
+      "Damage": 774.2,
+      "ExplosionDamage": 0,
+      "ExplosionRadius": 0,
       "RecoilTime": 42,
       "RecoilForce": 1.1,
       "Spread": 0.02,
@@ -306,13 +302,11 @@
           "Ammo": "superbwarfare:large_shell_he",
           "Override": {
             "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/he_shell.png",
-            "IsArmorPiercingProjectile": false,
-            "IsHighExplosiveProjectile": true,
             "ShellType": "HE",
             "Velocity": 25,
-            "Damage": 0,
-            "ExplosionDamage": 120,
-            "ExplosionRadius": 10,
+            "Damage": 19.4,
+            "ExplosionDamage": 29,
+            "ExplosionRadius": 19.5,
             "Name": "weapon.fcp.m256_120mm_he"
           }
         },
@@ -369,7 +363,7 @@
       "EmptyReloadTime": 228,
       "Magazine": 200,
       "Velocity": 25,
-      "Damage": 15,
+      "Damage": 14.8,
       "BypassesArmor": 2,
       "HeatPerShoot": 5,
       "NaturalCooldown": 1,
@@ -406,7 +400,7 @@
         ]
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@HeavyAmmo",
       "Icon": "fcp:textures/screens/vehicle_weapon/50_bmg.png"
     },
     "Coax": {
@@ -419,7 +413,7 @@
       "NaturalCooldown": 1,
       "EmptyReloadTime": 231,
       "Velocity": 25,
-      "Damage": 4,
+      "Damage": 8.3,
       "BypassesArmor": 0.2,
       "RecoilTime": 16,
       "RecoilForce": 0.05,
@@ -436,7 +430,7 @@
         "VehicleReload3p": "fcp:squad.weapons.common.coax_reload_3p"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "ShootPos": {
         "Transform": "Barrel",
@@ -462,7 +456,7 @@
       "NaturalCooldown": 1,
       "EmptyReloadTime": 231,
       "Velocity": 25,
-      "Damage": 4,
+      "Damage": 8.3,
       "BypassesArmor": 0.2,
       "RecoilTime": 16,
       "RecoilForce": 0.05,
@@ -479,7 +473,7 @@
         "VehicleReload3p": "fcp:squad.weapons.common.coax_reload_3p"
       },
       "SoundRadius": 16,
-      "AmmoType": "superbwarfare:rifle_ammo",
+      "AmmoType": "@RifleAmmo",
       "Icon": "fcp:textures/screens/vehicle_weapon/7_62mm.png",
       "ShootPos": {
         "Transform": "LoaderBarrel",
