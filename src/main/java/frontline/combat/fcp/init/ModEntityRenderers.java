@@ -190,6 +190,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.URAL_FUEL.get(), frontline.combat.fcp.client.renderer.Ural.UralFuelRenderer::new);
         event.registerEntityRenderer(ModEntities.URAL_KUNG.get(), frontline.combat.fcp.client.renderer.Ural.UralKungRenderer::new);
         event.registerEntityRenderer(ModEntities.URAL_GRAD.get(), UralGradRenderer::new);
+        event.registerEntityRenderer(ModEntities.HIMARS.get(), frontline.combat.fcp.client.renderer.Himars.HimarsRenderer::new);
 
         event.registerEntityRenderer(ModEntities.KAMAZ.get(), KamazRenderer::new);
         event.registerEntityRenderer(ModEntities.KAMAZ_KUNG.get(), frontline.combat.fcp.client.renderer.Kamaz.KamazKungRenderer::new);
@@ -320,6 +321,7 @@ public class ModEntityRenderers {
 
         // Projectiles
         event.registerEntityRenderer(ModEntities.LOCK_ON_HELLFIRE.get(), LockOnHellfireRenderer::new);
+        event.registerEntityRenderer(ModEntities.HIMARS_MISSILE.get(), frontline.combat.fcp.client.renderer.Projectile.Himars.HimarsMissileRenderer::new);
         event.registerEntityRenderer(ModEntities.LOCK_ON_9M123.get(), frontline.combat.fcp.client.renderer.Projectile.Khrizantema.LockOn9M123Renderer::new);
         event.registerEntityRenderer(ModEntities.WIRE_GUIDED_HELLFIRE.get(), WireGuidedHellfireRenderer::new);
 
@@ -341,6 +343,7 @@ public class ModEntityRenderers {
         event.registerBelowAll(FcpPilotOverlay.ID, FcpPilotOverlay.INSTANCE);
         event.registerAboveAll(frontline.combat.fcp.client.StugnaRemoteClient.OVERLAY_ID, frontline.combat.fcp.client.StugnaRemoteClient.OVERLAY);
         event.registerAboveAll(frontline.combat.fcp.client.overlay.PumaCommanderHud.OVERLAY_ID, frontline.combat.fcp.client.overlay.PumaCommanderHud.OVERLAY);
+        event.registerAboveAll(frontline.combat.fcp.client.HimarsTvClient.OVERLAY_ID, frontline.combat.fcp.client.HimarsTvClient.OVERLAY);
     }
 
 }

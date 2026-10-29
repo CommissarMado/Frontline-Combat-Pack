@@ -110,51 +110,100 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
     @Override
     public void baseTick() {
         super.baseTick();
-        autoloadFromHold();
+        returnTrayToHold();
+        tickDelayedShot();
     }
 
     /**
-     * Feeds the gun from the vehicle's own cargo hold.
-     *
-     * SBW's autoload (ArtilleryEntity.baseTick) only runs when a PLAYER is sitting in the turret
-     * controller seat, and it draws from that player's personal inventory. Artillery fired
-     * remotely through the Artillery Indicator has an empty seat, so it never reloaded and went
-     * silent after its first round. This tops the loading tray up from getVehicleInventory()
-     * instead, so a piece stocked with shells keeps firing while unmanned.
-     *
-     * Deliberately skipped when a player IS seated: SBW's own logic already handles that case,
-     * and running both would consume two rounds per tick.
+     * No autoload is needed: SBW ticks every vehicle gun with the vehicle itself as the shooter and auto-reloads it
+     * from the ITEM_HANDLER capability, which is the hold - manned or not, so indicator-fired artillery keeps
+     * reloading. (An older FCP autoload copied shells into SBW's one-slot native "tray" for an SBW autoload that no
+     * longer exists; the gun never read the tray, so unmanned guns emptied their hold into it.) Anything still in that
+     * tray goes back to the hold.
      */
-    private void autoloadFromHold() {
-        if (this.level().isClientSide() || this.isWreck() || !hasVehicleInventory()) return;
-        if (getNthEntity(getTurretControllerIndex()) instanceof Player) return;
-
-        GunData gunData = getGunData("Main");
-        if (gunData == null) return;
-
-        ItemStack ammoStack = gunData.selectedAmmoConsumer().stack();
-        if (ammoStack.isEmpty()) return;
-        Item ammoItem = ammoStack.getItem();
-
-        // Slot 0 of SBW's native container is the loading tray the gun reloads from.
-        if (getItems().isEmpty()) return;
+    private void returnTrayToHold() {
+        if (this.level().isClientSide() || this.isWreck() || !hasVehicleInventory() || getItems().isEmpty()) return;
         ItemStack tray = getItems().get(0);
-        int count = tray.getCount();
-        if (count >= Math.min(this.getMaxStackSize(), ammoStack.getMaxStackSize())) return;
-        // Never mix ammo types in the tray.
-        if (!tray.isEmpty() && !tray.is(ammoItem)) return;
+        if (tray.isEmpty()) return;
+        ItemStack left = getVehicleInventory().addItem(tray.copy());
+        setItem(0, left);
+    }
 
-        SimpleContainer hold = getVehicleInventory();
-        for (int i = 0; i < hold.getContainerSize(); i++) {
-            ItemStack held = hold.getItem(i);
-            if (held.isEmpty() || !held.is(ammoItem)) continue;
+    // ---- delayed shots (mortars) ----
 
-            held.shrink(1);
-            if (held.isEmpty()) hold.setItem(i, ItemStack.EMPTY);
-            hold.setChanged();
-            setItem(0, ammoStack.copyWithCount(count + 1));
-            return; // one round per tick, same cadence as SBW's own autoload
+    /**
+     * Ticks between the fire sounds and the round leaving the tube; 0 (default) fires at once. Mortars return their
+     * drop delay, and every shot - the gunner's or the Artillery Indicator's - then plays the drop (reload) sound and
+     * the fire sound first and launches the round after the delay.
+     */
+    protected int fireDelayTicks() {
+        return 0;
+    }
+
+    private int delayedShotTime;
+    private @Nullable net.minecraft.world.entity.LivingEntity delayedShooter;
+    private @Nullable java.util.UUID delayedUuid;
+    private @Nullable net.minecraft.world.phys.Vec3 delayedTarget;
+
+    /** The gunner's fire packet. */
+    @Override
+    public void vehicleShoot(@Nullable net.minecraft.world.entity.LivingEntity living, @Nullable java.util.UUID uuid,
+                             @Nullable net.minecraft.world.phys.Vec3 targetPos) {
+        if (fireDelayTicks() <= 0 || this.level().isClientSide() || isWreck()) {
+            super.vehicleShoot(living, uuid, targetPos);
+            return;
         }
+        startDelayedShot(living, uuid, targetPos);
+    }
+
+    /** The Artillery Indicator fires through this overload (weapon "Main"). */
+    @Override
+    public void vehicleShoot(@Nullable net.minecraft.world.entity.LivingEntity living, String weaponName,
+                             @Nullable net.minecraft.world.phys.Vec3 targetPos) {
+        if (fireDelayTicks() <= 0 || this.level().isClientSide() || isWreck() || !"Main".equals(weaponName)) {
+            super.vehicleShoot(living, weaponName, targetPos);
+            return;
+        }
+        startDelayedShot(living, null, targetPos);
+    }
+
+    private void startDelayedShot(@Nullable net.minecraft.world.entity.LivingEntity living, @Nullable java.util.UUID uuid,
+                                  @Nullable net.minecraft.world.phys.Vec3 targetPos) {
+        GunData data = getGunData("Main");
+        if (data == null || delayedShotTime != 0) return; // already mid fire sequence
+        if (!data.canShoot(getAmmoSupplier())) return;
+        delayedShotTime = fireDelayTicks();
+        delayedShooter = living;
+        delayedUuid = uuid;
+        delayedTarget = targetPos;
+        var soundInfo = data.get(com.atsuishio.superbwarfare.data.gun.GunProp.SOUND_INFO);
+        if (soundInfo != null && soundInfo.vehicleReload != null) {
+            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), soundInfo.vehicleReload, SoundSource.PLAYERS, 1f, 1f);
+        }
+        playShootSound3p(living, "Main");
+    }
+
+    private void tickDelayedShot() {
+        if (delayedShotTime <= 0) return;
+        if (--delayedShotTime > 0) return;
+        if (this.level() instanceof net.minecraft.server.level.ServerLevel server && !isWreck()) {
+            net.minecraft.world.phys.Vec3 dir = getShootVec("Main", 1f), pos = getShootPos("Main", 1f);
+            if (dir != null && pos != null) {
+                net.minecraft.world.entity.LivingEntity shooter = delayedShooter;
+                java.util.UUID uuid = delayedUuid;
+                net.minecraft.world.phys.Vec3 target = delayedTarget;
+                modifyGunData("Main", d -> {
+                    if (d.canShoot(getAmmoSupplier())) {
+                        d.shoot(new com.atsuishio.superbwarfare.data.gun.ShootParameters(getAmmoSupplier(), shooter, server, pos, dir, d,
+                                d.get(com.atsuishio.superbwarfare.data.gun.GunProp.SPREAD), true, uuid, target));
+                    }
+                });
+                afterShoot(getGunData("Main"), dir);
+            }
+        }
+        delayedShooter = null;
+        delayedUuid = null;
+        delayedTarget = null;
     }
 
 

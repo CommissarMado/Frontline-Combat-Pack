@@ -1,6 +1,6 @@
 {
   "_comment": "Generated from the Squad SDK: us_Truck_engine_rpm_ALL_Cue.uasset (+ start/stop cues).",
-  "vehicles": ["fcp:m939", "fcp:fmtv", "fcp:fmtv_4x4", "fcp:rg_33", "fcp:caiman", "fcp:caiman_unarmed", "fcp:caiman_police", "fcp:caiman_uparmored", "fcp:caiman_uparmored_unarmed"],
+  "vehicles": ["fcp:m939", "fcp:fmtv", "fcp:fmtv_4x4", "fcp:himars", "fcp:rg_33", "fcp:caiman", "fcp:caiman_unarmed", "fcp:caiman_police", "fcp:caiman_uparmored", "fcp:caiman_uparmored_unarmed"],
   "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
   "exterior_volume": 0.3333,
   "interior_volume": 1,

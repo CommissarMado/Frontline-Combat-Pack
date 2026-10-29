@@ -1,0 +1,35 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.himars_missile",
+				"texture_width": 512,
+				"texture_height": 512,
+				"visible_bounds_width": 6,
+				"visible_bounds_height": 6,
+				"visible_bounds_offset": [0, 0, 0]
+			},
+			"bones": [
+				{
+					"name": "missile",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-2.04298, -2.04298, -33.79791],
+							"size": [4.08595, 4.08595, 67.59582],
+							"uv": {
+								"north": {"uv": [346, 410], "uv_size": [5, 5]},
+								"east": {"uv": [182, 157], "uv_size": [80, 5]},
+								"south": {"uv": [352, 410], "uv_size": [5, 5]},
+								"west": {"uv": [214, 131], "uv_size": [80, 5]},
+								"up": {"uv": [109, 185], "uv_size": [5, 80]},
+								"down": {"uv": [109, 265], "uv_size": [5, -80]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

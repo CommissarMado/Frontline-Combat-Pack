@@ -76,6 +76,7 @@ public class LandVehicleHudStatsMixin {
             "fcp:hmmwv_unarmored_tow_turret",
             "fcp:stryker_mortar",
             "fcp:ural_grad",
+            "fcp:himars",
             "fcp:toyota_hilux_bmp",
             "fcp:toyota_hilux_spg9",
             "fcp:uaz_spg9",

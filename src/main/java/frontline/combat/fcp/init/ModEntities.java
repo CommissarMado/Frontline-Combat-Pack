@@ -272,6 +272,8 @@ public class ModEntities {
             EntityType.Builder.of(UralKungEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
     public static final RegistryObject<EntityType<UralGradEntity>> URAL_GRAD = register("ural_grad",
             EntityType.Builder.of(UralGradEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Himars.HimarsEntity>> HIMARS = register("himars",
+            EntityType.Builder.of(frontline.combat.fcp.entity.vehicle.Himars.HimarsEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<KamazEntity>> KAMAZ = register("kamaz",
             EntityType.Builder.of(KamazEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<KamazKungEntity>> KAMAZ_KUNG = register("kamaz_kung",
@@ -477,6 +479,9 @@ public class ModEntities {
     // Projectiles
     public static final RegistryObject<EntityType<LockOnHellfireEntity>> LOCK_ON_HELLFIRE = register("lock_on_hellfire",
             EntityType.Builder.<LockOnHellfireEntity>of(LockOnHellfireEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f, 0.5f));
+    // HIMARS GMLRS: TV- or coordinate-guided, steers like the Hellfires.
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.projectile.Himars.HimarsMissileEntity>> HIMARS_MISSILE = register("himars_missile",
+            EntityType.Builder.<frontline.combat.fcp.entity.projectile.Himars.HimarsMissileEntity>of(frontline.combat.fcp.entity.projectile.Himars.HimarsMissileEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f, 0.5f));
     // Radar-guided 9M123 (Khrizantema): lock-on homing, flies and looks like SBW's wire-guided missile.
     public static final RegistryObject<EntityType<frontline.combat.fcp.entity.projectile.Khrizantema.LockOn9M123Entity>> LOCK_ON_9M123 = register("lock_on_9m123",
             EntityType.Builder.<frontline.combat.fcp.entity.projectile.Khrizantema.LockOn9M123Entity>of(frontline.combat.fcp.entity.projectile.Khrizantema.LockOn9M123Entity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(false).setTrackingRange(256).setUpdateInterval(1).noSave().fireImmune().sized(0.5f, 0.5f));

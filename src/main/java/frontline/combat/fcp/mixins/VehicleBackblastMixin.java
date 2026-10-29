@@ -58,6 +58,8 @@ public abstract class VehicleBackblastMixin {
 
     private static final Map<String, Blast> FCP_BACKBLAST_VEHICLES = Map.of(
             "fcp:ural_grad",               new Blast(3.15, 1.00, false, null),
+            // GMLRS tubes are 4.225 blocks; the ShootPos sits 0.1 past their front.
+            "fcp:himars",                 new Blast(4.33, 1.00, false, null),
             "fcp:toyota_hilux_rocket_pod", new Blast(1.5879, 0.40, true, null),
             "fcp:stryker_tow",            new Blast(1.275, 0.40, true, null),
             // Spike tubes are 18.7 px; the muzzle ShootPos sits 0.05 past their front.
