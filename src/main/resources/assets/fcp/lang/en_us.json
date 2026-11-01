@@ -303,5 +303,9 @@
   "entity.fcp.fmtv_4x4": "FMTV 4x4",
   "entity.fcp.typhoon_vdv": "Typhoon-VDV",
   "entity.fcp.typhoon_vdv_unarmed": "Typhoon-VDV (Unarmed)",
-  "entity.fcp.landrover_110": "Land Rover 110"
+  "entity.fcp.landrover_110": "Land Rover 110",
+  "gui.fcp.disclaimer.title": "Frontline Combat Pack Terms of Use",
+  "gui.fcp.disclaimer.message": "Please note: This pack has been developed exclusively for the Frontline Combat project and its events.\n\nUsing or redistributing this pack on any public server not run by Frontline Combat is strictly §lforbidden§r unless you have explicit permission from the owners.\n\nTo ask for permission, contact us at: discord.gg/frontlinecombat or frontline.combat@outlook.com\n-The Frontline Combat Team",
+  "gui.fcp.disclaimer.check": "I understand and agree not to use this pack on unauthorised servers.",
+  "gui.fcp.disclaimer.proceed_wait": "Proceed (%s)"
 }

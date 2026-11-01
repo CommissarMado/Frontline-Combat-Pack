@@ -15,9 +15,11 @@ public class FCPConfig {
     public static final ForgeConfigSpec SPEC;
     private static final ForgeConfigSpec.BooleanValue MULTICREW;
     private static final ForgeConfigSpec.IntValue STUGNA_LINK_RANGE;
+    private static final ForgeConfigSpec.ConfigValue<Object> NOTICE;
 
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
+        NOTICE = builder.define("notice", (Object) "", o -> o instanceof String || o instanceof Boolean);
         builder.push("vehicles");
         MULTICREW = builder
                 .comment("Use multicrew vehicle configurations (separate driver/gunner seats)",
@@ -42,6 +44,11 @@ public class FCPConfig {
     /** Safe at any time: false until the config file has actually loaded. */
     public static boolean multicrewEnabled() {
         return SPEC.isLoaded() && MULTICREW.get();
+    }
+
+    /** False only when the pack explicitly turns the first-launch notice off. */
+    public static boolean noticeEnabled() {
+        return !SPEC.isLoaded() || !String.valueOf(NOTICE.get()).trim().equalsIgnoreCase("false");
     }
 
     /** Set and persist. Callers are responsible for the permission check and pack reload. */
