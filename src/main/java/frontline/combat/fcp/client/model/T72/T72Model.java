@@ -3,7 +3,6 @@ package frontline.combat.fcp.client.model.T72;
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.model.FCPVehicleModel;
-import frontline.combat.fcp.client.model.Puma.PumaTrackPaths;
 import frontline.combat.fcp.client.model.Util.CannonRecoilTransforms;
 import frontline.combat.fcp.client.model.Util.FCPTrackPath;
 import frontline.combat.fcp.client.model.Util.ModelBoneTransforms;
@@ -14,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
 
 /**
- * One model for the T-72 family and the T-90A (geo by registry name). No track animation.
+ * One model for the T-72 family and the T-90A (geo by registry name). Tracks scroll along T72TrackPaths.
  * <ul>
  *   <li>"barrel2" (PKT coax) and the Moderna's "barrel3" (2A42) elevate with the main gun about their own pivots.</li>
  *   <li>"GUN" recoils with the 125 mm (same travel as the Abrams), the Moderna's "GUN2" with the 2A42.</li>

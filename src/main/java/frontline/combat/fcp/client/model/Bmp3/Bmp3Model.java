@@ -2,7 +2,10 @@ package frontline.combat.fcp.client.model.Bmp3;
 
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.client.model.FCPVehicleModel;
+import frontline.combat.fcp.client.model.T72.T72TrackPaths;
 import frontline.combat.fcp.client.model.Util.CannonRecoilTransforms;
+import frontline.combat.fcp.client.model.Util.FCPTrackPath;
 import frontline.combat.fcp.client.model.Util.ModelBoneTransforms;
 import frontline.combat.fcp.entity.vehicle.Bmp3.Bmp3Entity;
 import frontline.combat.fcp.vehicle.humvee.HumveeAttachments;
@@ -16,7 +19,14 @@ import org.jetbrains.annotations.Nullable;
  * ("pkt", "pkt2") follow their seats' aim. No track or wheel animation: none of the running gear bones
  * match SBW's wheel/track names.
  */
-public class Bmp3Model extends VehicleModel<Bmp3Entity> {
+public class Bmp3Model extends FCPVehicleModel<Bmp3Entity> {
+
+    private static final FCPTrackPath TRACK_PATH = Bmp3TrackPaths.BMP3.reversed();
+
+    @Override
+    protected FCPTrackPath getTrackPath() {
+        return TRACK_PATH;
+    }
 
     @Override
     public ResourceLocation getModelResource(Bmp3Entity animatable) {
