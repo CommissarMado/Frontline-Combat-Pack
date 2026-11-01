@@ -238,6 +238,8 @@
     "EnergyCostRate": 162.5,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
+    "TrackRotSpeed": 2.323,
+    "TrackDifferential": 0.75,
     "MaxForwardSpeedRate": 0.71,
     "MaxBackwardSpeedRate": 0.32,
     "Increment": 0.0125,
