@@ -141,6 +141,7 @@ public final class SquadWeaponFire {
             "fcp:uaz_spg9",
             "fcp:uh60_minigun",
             "fcp:ural_grad",
+            "fcp:himars",
             "fcp:venom_door_guns",
             "fcp:venom_gunship",
             "fcp:viper"
@@ -262,6 +263,7 @@ public final class SquadWeaponFire {
             "fcp:uaz_spg9",
             "fcp:uh60_minigun",
             "fcp:ural_grad",
+            "fcp:himars",
             "fcp:venom_door_guns",
             "fcp:venom_gunship"
 );

@@ -70,5 +70,11 @@ public final class FCPNetwork {
         FCP_HANDLER.registerMessage(id++, SquadFirePacket.class,
                 SquadFirePacket::encode, SquadFirePacket::decode,
                 SquadFirePacket::handle);
+        FCP_HANDLER.registerMessage(id++, HimarsTargetPacket.class,
+                HimarsTargetPacket::encode, HimarsTargetPacket::decode,
+                HimarsTargetPacket::handle);
+        FCP_HANDLER.registerMessage(id++, HimarsTvAimPacket.class,
+                HimarsTvAimPacket::encode, HimarsTvAimPacket::decode,
+                HimarsTvAimPacket::handle);
     }
 }

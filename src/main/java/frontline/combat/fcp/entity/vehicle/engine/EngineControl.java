@@ -82,7 +82,7 @@ public final class EngineControl {
         // matv: matv_engine_int_start_01
         put(m, 39, "fcp:matv", "fcp:matv_tow", "fcp:matv_crow", "fcp:matv_9in1", "fcp:novator", "fcp:novator_unarmed", "fcp:kozak5", "fcp:kozak2m1", "fcp:kozak_ambulance");
         // us_truck: us_truck_engine_start_int_01 (FMTV; also the RG-33 and Caimans, which need a heavier engine)
-        put(m, 53, "fcp:m939", "fcp:fmtv", "fcp:fmtv_4x4",
+        put(m, 53, "fcp:m939", "fcp:fmtv", "fcp:fmtv_4x4", "fcp:himars",
                 "fcp:rg_33", "fcp:caiman", "fcp:caiman_unarmed", "fcp:caiman_police", "fcp:caiman_uparmored", "fcp:caiman_uparmored_unarmed");
         // man_truck: us_truck_engine_start_int_01
         put(m, 53, "fcp:man_hx58", "fcp:man_hx58_mg3", "fcp:man_hx60");

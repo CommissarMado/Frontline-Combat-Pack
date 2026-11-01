@@ -1,0 +1,8 @@
+{
+  "Skins": [
+    {"Id": "vanilla", "Name": "Woodland Green", "Texture": "fcp:textures/entity/himars/woodland.png", "Priority": 1},
+    {"Id": "grey_green", "Name": "Grey Green", "Texture": "fcp:textures/entity/himars/grey_green.png", "Priority": 2},
+    {"Id": "desert", "Name": "Desert Tan", "Texture": "fcp:textures/entity/himars/desert.png", "Priority": 3},
+    {"Id": "dark_grey", "Name": "Dark Grey", "Texture": "fcp:textures/entity/himars/dark_grey.png", "Priority": 4}
+  ]
+}

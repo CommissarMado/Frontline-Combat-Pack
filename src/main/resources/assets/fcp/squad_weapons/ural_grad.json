@@ -4,7 +4,7 @@
     "fcp:ural_grad"
   ],
   "weapons": {
-    "Rocket": {
+    "Main": {
       "volume": 1,
       "burst_gap": 1,
       "first_person": {

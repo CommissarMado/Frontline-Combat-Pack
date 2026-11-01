@@ -1,0 +1,140 @@
+{
+  "_comment": "M142 HIMARS (not in Squad): Squad Grad launch cue for both guidance modes, Grad turret (user picked the Grad).",
+  "vehicles": [
+    "fcp:himars"
+  ],
+  "weapons": {
+    "Main": {
+      "volume": 1,
+      "burst_gap": 1,
+      "first_person": {
+        "start": [
+          {
+            "sound": "fcp:squad.weapons.grad.1p_shot_1",
+            "gain": 1,
+            "spatial": false
+          }
+        ]
+      },
+      "third_person": {
+        "start": [
+          {
+            "sound": "fcp:squad.weapons.grad.3p_shot_2",
+            "gain": 1,
+            "fade": [
+              0,
+              0,
+              20,
+              150
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.grad.3p_shot_3",
+            "gain": 0.513,
+            "fade": [
+              80,
+              120,
+              500,
+              600
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.grad.3p_shot_4",
+            "gain": 0.215,
+            "fade": [
+              500,
+              550,
+              1200,
+              5000
+            ]
+          }
+        ]
+      }
+    },
+    "Main#1": {
+      "volume": 1,
+      "burst_gap": 1,
+      "first_person": {
+        "start": [
+          {
+            "sound": "fcp:squad.weapons.grad.1p_shot_1",
+            "gain": 1,
+            "spatial": false
+          }
+        ]
+      },
+      "third_person": {
+        "start": [
+          {
+            "sound": "fcp:squad.weapons.grad.3p_shot_2",
+            "gain": 1,
+            "fade": [
+              0,
+              0,
+              20,
+              150
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.grad.3p_shot_3",
+            "gain": 0.513,
+            "fade": [
+              80,
+              120,
+              500,
+              600
+            ]
+          },
+          {
+            "sound": "fcp:squad.weapons.grad.3p_shot_4",
+            "gain": 0.215,
+            "fade": [
+              500,
+              550,
+              1200,
+              5000
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "turret": {
+    "loop": "fcp:squad.turrets.loop06.loop",
+    "speed_scale": 5,
+    "pitch_mod": {
+      "in": [
+        5,
+        100
+      ],
+      "out": [
+        0.6,
+        0.8
+      ]
+    },
+    "volume_mod": {
+      "in": [
+        20,
+        250
+      ],
+      "out": [
+        0,
+        1
+      ]
+    },
+    "inside_volume": 0.5,
+    "outside_volume": 1.0,
+    "start": {
+      "sound": "fcp:squad.turrets.loop06.start",
+      "volume": 0.2
+    },
+    "stop": {
+      "sound": "fcp:squad.turrets.loop06.stop",
+      "volume": 0.1,
+      "pitch": [
+        0.9,
+        0.95
+      ]
+    }
+  }
+}
