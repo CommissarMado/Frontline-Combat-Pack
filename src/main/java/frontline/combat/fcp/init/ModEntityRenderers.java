@@ -249,6 +249,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.KOMATSU_LAV.get(), frontline.combat.fcp.client.renderer.Komatsu.KomatsuLavRenderer::new);
         event.registerEntityRenderer(ModEntities.KOMATSU_LAV_SHIELD.get(), frontline.combat.fcp.client.renderer.Komatsu.KomatsuLavRenderer::new);
         event.registerEntityRenderer(ModEntities.KOMATSU_LAV_UNARMED.get(), frontline.combat.fcp.client.renderer.Komatsu.KomatsuLavRenderer::new);
+        event.registerEntityRenderer(ModEntities.MINE.get(), com.atsuishio.superbwarfare.client.renderer.projectile.Tm62Renderer::new);
         event.registerEntityRenderer(ModEntities.M939.get(), frontline.combat.fcp.client.renderer.M939.M939Renderer::new);
         event.registerEntityRenderer(ModEntities.MAN_HX58.get(), frontline.combat.fcp.client.renderer.ManHx58.ManHx58Renderer::new);
         event.registerEntityRenderer(ModEntities.MAN_HX58_MG3.get(), frontline.combat.fcp.client.renderer.ManHx58.ManHx58Mg3Renderer::new);

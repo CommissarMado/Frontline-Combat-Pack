@@ -227,6 +227,8 @@
   "entity.fcp.komatsu_lav": "Komatsu LAV (M2)",
   "entity.fcp.komatsu_lav_shield": "Komatsu LAV (M2, Shield)",
   "entity.fcp.komatsu_lav_unarmed": "Komatsu LAV",
+  "item.fcp.mine": "AT Mine",
+  "entity.fcp.mine": "AT Mine",
   "entity.fcp.m939": "M939 Truck",
   "entity.fcp.man_hx58": "MAN HX58",
   "entity.fcp.man_hx58_mg3": "MAN HX58 MG3",

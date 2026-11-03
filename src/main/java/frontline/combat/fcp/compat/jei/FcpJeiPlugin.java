@@ -11,7 +11,7 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
-/** Only loaded by JEI. Hides FCP's admin-only blocks from the ingredient list. */
+/** Only loaded by JEI. Hides FCP's admin-only items (the rearm station, the AT mine) from the ingredient list. */
 @JeiPlugin
 public class FcpJeiPlugin implements IModPlugin {
 
@@ -23,6 +23,6 @@ public class FcpJeiPlugin implements IModPlugin {
     @Override
     public void onRuntimeAvailable(IJeiRuntime runtime) {
         runtime.getIngredientManager().removeIngredientsAtRuntime(VanillaTypes.ITEM_STACK,
-                List.of(new ItemStack(ModBlocks.REARM_STATION.get())));
+                List.of(new ItemStack(ModBlocks.REARM_STATION.get()), new ItemStack(frontline.combat.fcp.init.ModItems.MINE.get())));
     }
 }

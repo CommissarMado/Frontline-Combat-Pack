@@ -25,6 +25,9 @@ public class ModItems {
     public static final RegistryObject<Item> REDBULL = REGISTRY.register("redbull",
             () -> new Item(new Item.Properties().food(ModFoods.REDBULL).stacksTo(1)));
 
+    /** Squad-style AT mine (FcpMineEntity). */
+    public static final RegistryObject<Item> MINE = REGISTRY.register("mine", frontline.combat.fcp.item.FcpMineItem::new);
+
     public static final RegistryObject<Item> SPRAY = REGISTRY.register("spray",
             () -> new frontline.combat.fcp.item.varies.SprayItem());
 }

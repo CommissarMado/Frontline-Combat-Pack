@@ -245,6 +245,9 @@ public final class VehicleArmor {
         Profile p = profile(vehicle);
         if (p == null || !p.model()) return sbwDamage;
         Entity direct = source.getDirectEntity();
+        // fcp:mine: its own Squad AT-mine hits (armour ignored, explosive modifier) pass; the SBW blast it also sets off
+        // does nothing more to vehicles, so a mine counts once (FcpMineEntity).
+        if (direct instanceof frontline.combat.fcp.entity.projectile.FcpMineEntity mine) return mine.squadHit() ? raw * Math.max(0f, p.modifier("explosive")) : 0;
         CompoundTag tag = direct != null && direct.getPersistentData().contains(TAG) ? direct.getPersistentData().getCompound(TAG) : null;
 
         boolean explosion = source.is(DamageTypeTags.IS_EXPLOSION) || source.is(ModDamageTypes.CUSTOM_EXPLOSION)

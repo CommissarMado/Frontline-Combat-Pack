@@ -371,6 +371,9 @@ public class ModEntities {
     public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Komatsu.KomatsuLavEntity>> KOMATSU_LAV = komatsu("komatsu_lav");
     public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Komatsu.KomatsuLavEntity>> KOMATSU_LAV_SHIELD = komatsu("komatsu_lav_shield");
     public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Komatsu.KomatsuLavEntity>> KOMATSU_LAV_UNARMED = komatsu("komatsu_lav_unarmed");
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.projectile.FcpMineEntity>> MINE = register("mine",
+            EntityType.Builder.<frontline.combat.fcp.entity.projectile.FcpMineEntity>of(frontline.combat.fcp.entity.projectile.FcpMineEntity::new, MobCategory.MISC)
+                    .setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.15f));
     public static final RegistryObject<EntityType<M939Entity>> M939 = register("m939",
             EntityType.Builder.of(M939Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
     public static final RegistryObject<EntityType<ManHx58Entity>> MAN_HX58 = register("man_hx58",

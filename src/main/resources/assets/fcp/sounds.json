@@ -8517,5 +8517,29 @@
         "stream": false
       }
     ]
+  },
+  "squad.mine.click": {
+    "sounds": [
+      {
+        "name": "fcp:squad/mine/click_01",
+        "stream": false,
+        "attenuation_distance": 24
+      },
+      {
+        "name": "fcp:squad/mine/click_02",
+        "stream": false,
+        "attenuation_distance": 24
+      },
+      {
+        "name": "fcp:squad/mine/click_03",
+        "stream": false,
+        "attenuation_distance": 24
+      },
+      {
+        "name": "fcp:squad/mine/click_04",
+        "stream": false,
+        "attenuation_distance": 24
+      }
+    ]
   }
 }

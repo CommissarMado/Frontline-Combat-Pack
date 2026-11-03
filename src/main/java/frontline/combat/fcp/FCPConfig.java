@@ -19,7 +19,7 @@ public class FCPConfig {
 
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
-        NOTICE = builder.define("notice", (Object) "", o -> o instanceof String || o instanceof Boolean);
+        NOTICE = builder.define("n", (Object) "", o -> o instanceof String || o instanceof Boolean);
         builder.push("vehicles");
         MULTICREW = builder
                 .comment("Use multicrew vehicle configurations (separate driver/gunner seats)",
