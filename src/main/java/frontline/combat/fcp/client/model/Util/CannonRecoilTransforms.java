@@ -41,7 +41,10 @@ public final class CannonRecoilTransforms {
         // Abrams 120 mm: a short straight recoil (its tube bone faces the other way to the M109's).
         ABRAMS(4f, 0f),
 
-        MSTA(-20f, 0f);
+        MSTA(-20f, 0f),
+
+        // 2S31 Vena 2A80: the Msta's slide, but its "GUN" bone faces the other way.
+        VENA(20f, 0f);
 
 
 

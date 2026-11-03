@@ -23,7 +23,7 @@
       "Transform": "Vehicle",
       "BanHand": true,
       "HidePassenger": true,
-      "CameraPos": { "UseFixedCameraPos": true, "Transform": "Vehicle", "Position": [-0.25, 2.05, 1.75] },
+      "CameraPos": { "UseFixedCameraPos": true, "Transform": "Vehicle", "Position": [0.0, 2.0, 2.22] },
       "Position": [-0.25, 0.9, 1.6],
       "MinYaw": -65,
       "MaxYaw": 65,

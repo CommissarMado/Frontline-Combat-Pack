@@ -2,6 +2,8 @@ package frontline.combat.fcp.client.model.Khrizantema;
 
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.client.model.Bmp3.Bmp3TrackPaths;
+import frontline.combat.fcp.client.model.Util.FCPTrackPath;
 import frontline.combat.fcp.entity.vehicle.Khrizantema.KhrizantemaEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -16,7 +18,7 @@ import static frontline.combat.fcp.entity.vehicle.Khrizantema.KhrizantemaEntity.
  * rest rotation from the geo; the geo is modelled with the launcher deployed and its stowed pose is
  * the bones' rest rotations, so "deployed" = those rotations taken back to zero.
  * <p>
- * No track or wheel animation: none of the running gear bones match SBW's wheel/track names.
+ * Tracks share the BMP-3 hull's path (Bmp3TrackPaths), overridden here as FCPVehicleModel does.
  * Extends VehicleModel directly (like the Puma): FCPVehicleModel un-hides transform bones, which
  * would cancel the missile hide.
  */
@@ -25,6 +27,27 @@ public class KhrizantemaModel extends VehicleModel<KhrizantemaEntity> {
     private static final float DOOR3_OPEN = 90f, DOOR4_OPEN = -90f, HATCH7_OPEN = -180f;
     /** Rise of the sight mast and of the launcher arm, in model pixels. */
     private static final float MAST_RISE = 13.6f, ARM_RISE = 9.35f;
+    private static final FCPTrackPath TRACK_PATH = Bmp3TrackPaths.BMP3.reversed();
+
+    @Override
+    public float getBoneRotX(float t) {
+        return TRACK_PATH.rotX(t);
+    }
+
+    @Override
+    public float getBoneMoveY(float t) {
+        return TRACK_PATH.moveY(t);
+    }
+
+    @Override
+    public float getBoneMoveZ(float t) {
+        return TRACK_PATH.moveZ(t);
+    }
+
+    @Override
+    public float getTrackDistance() {
+        return TRACK_PATH.trackDistance();
+    }
 
     @Override
     public ResourceLocation getModelResource(KhrizantemaEntity animatable) {

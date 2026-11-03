@@ -126,9 +126,9 @@
         "UseFixedCameraPos": true,
         "Transform": "Vehicle",
         "Position": [
-          -0.25,
-          2.05,
-          1.75
+          0.0,
+          2.0,
+          2.22
         ]
       },
       "Position": [
