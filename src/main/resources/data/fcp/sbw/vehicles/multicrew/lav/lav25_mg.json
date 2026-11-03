@@ -578,7 +578,7 @@
       "RecoilForce": 0.05,
       "ShootAnimationTime": 1,
       "Spread": 0.25,
-      "Crosshair": "@VehicleCommonGun",
+      "Crosshair": "@Empty",
       "CrosshairColor": "0x66FF00",
       "Name": "weapon.fcp.m240",
       "SoundInfo": {

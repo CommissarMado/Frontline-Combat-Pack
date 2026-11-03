@@ -149,7 +149,10 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
     @Override
     public void vehicleShoot(@Nullable net.minecraft.world.entity.LivingEntity living, @Nullable java.util.UUID uuid,
                              @Nullable net.minecraft.world.phys.Vec3 targetPos) {
-        if (fireDelayTicks() <= 0 || this.level().isClientSide() || isWreck()) {
+        // Only the gun's own seat goes through the drop delay: other seats (e.g. the Stryker Mortar's roof M240) fire
+        // their weapons as usual - delaying them fired the mortar instead.
+        boolean mainGun = living == null || "Main".equals(getGunName(getSeatIndex(living)));
+        if (fireDelayTicks() <= 0 || this.level().isClientSide() || isWreck() || !mainGun) {
             super.vehicleShoot(living, uuid, targetPos);
             return;
         }

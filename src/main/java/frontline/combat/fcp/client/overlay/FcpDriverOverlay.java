@@ -150,10 +150,12 @@ public class FcpDriverOverlay implements IGuiOverlay {
 
         var vehicle = player.getVehicle();
         if (!(vehicle instanceof VehicleEntity ve)) return;
-        if (!ve.computed().getHudType().equals("@Land")) return;
-
         int seatIndex = ve.getSeatIndex(player);
-        if (!isPeriscopeSeat(ve, seatIndex) && !isCupolaSeat(ve, seatIndex)) {
+        boolean periscope = isPeriscopeSeat(ve, seatIndex) || isCupolaSeat(ve, seatIndex);
+        // Periscope troop seats also get the frame on @Empty vehicles (e.g. the Novator Unarmed); drivers only on @Land.
+        String hud = ve.computed().getHudType();
+        if (!hud.equals("@Land") && !(periscope && hud.equals("@Empty"))) return;
+        if (!periscope) {
             if (seatIndex != 0) return;
             // A driver who also runs the turret (single crew) has their own sight; turretless vehicles (M113, Skif)
             // still report seat 0 as the controller, so only a seat with a gun counts.

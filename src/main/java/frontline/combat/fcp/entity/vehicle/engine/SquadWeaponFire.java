@@ -120,6 +120,7 @@ public final class SquadWeaponFire {
             "fcp:stryker_dragoon",
             "fcp:stryker_m2",
             "fcp:stryker_mgs",
+            "fcp:stryker_mortar", // its roof M240 (the mortar itself keeps SBW's sound: no "Main" cue)
             "fcp:stryker_mk19",
             "fcp:stryker_tow",
             "fcp:stugna_launcher",

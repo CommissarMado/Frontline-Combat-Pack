@@ -192,7 +192,14 @@ public final class VehicleArmor {
     @Nullable
     private static Round vehicleRound(Projectile round) {
         Entity shooter = round.getOwner();
-        if (shooter == null || !(shooter.getVehicle() instanceof VehicleEntity vehicle)) return null;
+        if (shooter == null) return null;
+        VehicleEntity vehicle = shooter.getVehicle() instanceof VehicleEntity v ? v : null;
+        // The remote-operated Stugna-P: its operator stands at the control panel, not aboard (and SBW doesn't stamp the
+        // missile with its launcher then), so ask StugnaRemote - the launcher counts its operator as seat 0.
+        if (vehicle == null && shooter instanceof net.minecraft.server.level.ServerPlayer player) {
+            vehicle = frontline.combat.fcp.entity.vehicle.Stugna.StugnaRemote.launcherOf(player);
+        }
+        if (vehicle == null) return null;
         Profile p = profile(vehicle);
         if (p == null) return null;
         int seat = vehicle.getSeatIndex(shooter);

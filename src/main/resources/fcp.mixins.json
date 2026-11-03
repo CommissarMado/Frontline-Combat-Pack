@@ -12,6 +12,7 @@
     "ChunkMapAccessor",
     "TrackedEntityAccessor",
     "SmallRocketChunkLoadMixin",
+    "ArtilleryChunkLoadMixin",
     "VehicleReloadSoundStopMixin",
     "VehicleDismountSafetyMixin",
     "VehicleGroundContactMixin",

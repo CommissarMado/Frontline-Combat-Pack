@@ -170,7 +170,11 @@ public final class SquadEngineSounds {
             level = state == EngineControl.OFF ? approach(level, 0f, 0.125f) : targetLevel;
 
             boolean running = state == EngineControl.RUNNING;
-            float targetThrottle = running && (vehicle.forwardInputDown() || vehicle.backInputDown()) ? 1f : 0f;
+            // Tracked vehicles drive their tracks in a neutral (pivot) turn too: steering alone counts as throttle.
+            boolean tracked = vehicle.computed().getEngineType() == com.atsuishio.superbwarfare.data.vehicle.subdata.EngineType.TRACK;
+            boolean driving = vehicle.forwardInputDown() || vehicle.backInputDown()
+                    || tracked && (vehicle.leftInputDown() || vehicle.rightInputDown());
+            float targetThrottle = running && driving ? 1f : 0f;
             throttle = approach(throttle, targetThrottle, targetThrottle > throttle ? 0.2f : 0.1f);
 
             float targetRpm = state == EngineControl.OFF ? 0f

@@ -87,6 +87,12 @@ public final class NovatorStugnaHud {
 
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
+        // The gunner only ever looks through the launcher's sight, like the emplaced Stugna's operator: no third
+        // person (with it, SBW's ADS skipped this HUD - user).
+        Minecraft mc = Minecraft.getInstance();
+        if (gunnerSeat() != null && !mc.options.getCameraType().isFirstPerson()) {
+            mc.options.setCameraType(net.minecraft.client.CameraType.FIRST_PERSON);
+        }
         if (event.phase != TickEvent.Phase.END) return;
         if (gunnedVehicle() == null) {
             zoom = MIN_ZOOM;

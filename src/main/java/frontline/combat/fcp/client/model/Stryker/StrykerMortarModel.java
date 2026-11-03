@@ -29,6 +29,14 @@ public class StrykerMortarModel extends VehicleModel<StrykerMortarEntity> {
                 WheelRotationTransforms.matchAny(boneName, 0.534,
                         "wheRR", "wheRR2", "wheRR3", "wheRR4", "wheRR5", "wheRR6", "wheRR7", "wheRR8");
         if (wheels != null) return wheels;
+        // Roof M240: bound bones, aimed from its seat's look (StrykerMortarEntity.mgYawDeg/mgPitchDeg), like the UH-60
+        // door guns - independent of the mortar turret.
+        if ("turret2".equals(boneName)) {
+            return (bone, vehicle, state) -> bone.setRotY(vehicle.mgYawDeg(state.getPartialTick()) * net.minecraft.util.Mth.DEG_TO_RAD);
+        }
+        if ("barrel2".equals(boneName)) {
+            return (bone, vehicle, state) -> bone.setRotX(vehicle.mgPitchDeg(state.getPartialTick()) * net.minecraft.util.Mth.DEG_TO_RAD);
+        }
         return super.collectTransform(boneName);
     }
 }
