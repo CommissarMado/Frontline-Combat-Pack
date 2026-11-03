@@ -11,9 +11,11 @@ import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * All four Bradleys. No track or wheel animation. The 25 mm recoils straight back on "GUN". The TOW launcher ("BGM_71")
- * swings up a quarter turn about Z while its cover ("dort", a child of it) turns back the other way at the
- * same rate, driven by AtgmLauncherAnimation; the missiles ("BGM_2", "BGM_3") disappear as they are fired.
+ * All four Bradleys and the M6A2 Linebacker. No track or wheel animation. The 25 mm recoils straight back on "GUN". The
+ * TOW launcher ("BGM_71") swings up a quarter turn about Z while its cover ("dort", a child of it) turns back the other
+ * way at the same rate, driven by AtgmLauncherAnimation; the missiles ("BGM_2", "BGM_3") disappear as they are fired.
+ * The Linebacker's Stinger pod is "BGM_2" itself (no cover). Once up, the launcher follows the gun's elevation on
+ * "BGM_elev", a group bone pivoted at the raised launcher (BradleyElev), in proportion to how far it's raised.
  * The A3s' Commander's Independent Viewer traverses on "weaponstationturret" and elevates on "weaponstationbarrel".
  * <p>
  * Extends VehicleModel directly (like the Puma): FCPVehicleModel un-hides transform bones, which would
@@ -47,13 +49,21 @@ public class BradleyModel extends VehicleModel<BradleyEntity> {
             case "base":
                 // SBW shakes "base" on every recoiling shot; only the gun recoils here.
                 return null;
+            case "BGM_elev":
+                return (bone, vehicle, state) -> bone.setRotX(Mth.clamp(-getTurretXRot(), vehicle.getTurretMinPitch(), vehicle.getTurretMaxPitch())
+                        * Mth.DEG_TO_RAD * AtgmLauncherAnimation.openness(vehicle, state.getPartialTick()));
             case "BGM_71":
                 return (bone, vehicle, state) -> bone.setRotZ(LAUNCHER_RAISED * Mth.DEG_TO_RAD * AtgmLauncherAnimation.openness(vehicle, state.getPartialTick()));
             case "dort":
-                return (bone, vehicle, state) -> bone.setRotZ(-LAUNCHER_RAISED * Mth.DEG_TO_RAD * AtgmLauncherAnimation.openness(vehicle, state.getPartialTick()));
+                // The Linebacker's pod has no cover to swing.
+                return (bone, vehicle, state) -> bone.setRotZ(vehicle.isLinebacker() ? 0 :-LAUNCHER_RAISED * Mth.DEG_TO_RAD * AtgmLauncherAnimation.openness(vehicle, state.getPartialTick()));
             case "BGM_2":
-                // Two in the launcher: "BGM_2" goes with the first shot, "BGM_3" with the second.
-                return (bone, vehicle, state) -> bone.setHidden(vehicle.towAtMost(1));
+                // Two in the launcher: "BGM_2" goes with the first shot, "BGM_3" with the second. On the Linebacker
+                // "BGM_2" is the Stinger pod, raised like the TOW launcher.
+                return (bone, vehicle, state) -> {
+                    if (vehicle.isLinebacker()) bone.setRotZ(LAUNCHER_RAISED * Mth.DEG_TO_RAD * AtgmLauncherAnimation.openness(vehicle, state.getPartialTick()));
+                    else bone.setHidden(vehicle.towAtMost(1));
+                };
             case "BGM_3":
                 return (bone, vehicle, state) -> bone.setHidden(vehicle.towAtMost(0));
             case "weaponstationturret":

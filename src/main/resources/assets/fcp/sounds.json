@@ -8320,5 +8320,202 @@
         "stream": false
       }
     ]
+  },
+  "squad.challenger2.engine.challenger2_engine_idle_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/challenger2/engine/challenger2_engine_idle_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.challenger2.engine.challenger2_engine_idle2_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/challenger2/engine/challenger2_engine_idle2_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.challenger2.engine.challenger2_engine_ambience_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/challenger2/engine/challenger2_engine_ambience_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.challenger2.engine.challenger2_engine_throttle_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/challenger2/engine/challenger2_engine_throttle_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.challenger2.engine.challenger2_engine_idle_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/challenger2/engine/challenger2_engine_idle_01",
+        "stream": false,
+        "attenuation_distance": 24
+      }
+    ]
+  },
+  "squad.challenger2.engine.challenger2_engine_idle2_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/challenger2/engine/challenger2_engine_idle2_01",
+        "stream": false,
+        "attenuation_distance": 24
+      }
+    ]
+  },
+  "squad.challenger2.engine.challenger2_engine_throttle_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/challenger2/engine/challenger2_engine_throttle_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.challenger2.engine.challenger2_engine_start_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/challenger2/engine/challenger2_engine_start_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.challenger2.engine.challenger2_engine_start_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/challenger2/engine/challenger2_engine_start_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.challenger2.engine.challenger2_engine_stop_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/challenger2/engine/challenger2_engine_stop_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.challenger2.engine.challenger2_engine_stop_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/challenger2/engine/challenger2_engine_stop_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.weapons.common.type10_reload_1p": {
+    "sounds": [
+      {
+        "name": "fcp:squad/weapons/common/type10_reload_1p",
+        "stream": false,
+        "volume": 0.45
+      }
+    ]
+  },
+  "squad.weapons.common.type10_reload_3p": {
+    "sounds": [
+      {
+        "name": "fcp:squad/weapons/common/type10_reload_3p",
+        "stream": false,
+        "attenuation_distance": 32,
+        "volume": 0.45
+      }
+    ]
+  },
+  "squad.m113.engine.fv432_engine_idle_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/m113/engine/fv432_engine_idle_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.m113.engine.fv432_engine_idle2_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/m113/engine/fv432_engine_idle2_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.m113.engine.fv432_engine_throttle_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/m113/engine/fv432_engine_throttle_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.m113.engine.fv432_engine_idle_ext_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/m113/engine/fv432_engine_idle_ext_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.m113.engine.fv432_engine_idle2_ext_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/m113/engine/fv432_engine_idle2_ext_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.m113.engine.fv432_engine_throttle_ext_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/m113/engine/fv432_engine_throttle_ext_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.m113.engine.fv432_engine_start_ext_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/m113/engine/fv432_engine_start_ext_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.m113.engine.fv432_engine_start_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/m113/engine/fv432_engine_start_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.m113.engine.fv432_engine_stop_ext_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/m113/engine/fv432_engine_stop_ext_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.m113.engine.fv432_engine_stop_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/m113/engine/fv432_engine_stop_int_01",
+        "stream": false
+      }
+    ]
   }
 }

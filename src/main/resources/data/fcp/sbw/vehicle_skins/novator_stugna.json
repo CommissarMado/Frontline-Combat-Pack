@@ -1,0 +1,5 @@
+{
+  "Skins": [
+    {"Id": "vanilla", "Name": "Base", "Texture": "fcp:textures/entity/novator/novator_stugna.png", "Priority": 1}
+  ]
+}

@@ -121,6 +121,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_ROCKET_POD.get(), ToyotaHiluxRocketPodRenderer::new);
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_BMP.get(), ToyotaHiluxBMPRenderer::new);
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_SPG9.get(), ToyotaHiluxSpg9Renderer::new);
+        event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_KORNET.get(), ToyotaHiluxSpg9Renderer::new);
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_MORTAR.get(), ToyotaHiluxMortarRenderer::new);
         event.registerEntityRenderer(ModEntities.TOYOTA_HILUX_ZU23.get(), ToyotaHiluxZu23Renderer::new);
 
@@ -149,6 +150,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.PUMA.get(), frontline.combat.fcp.client.renderer.Puma.PumaRenderer::new);
         event.registerEntityRenderer(ModEntities.PUMA_ATGM.get(), frontline.combat.fcp.client.renderer.Puma.PumaRenderer::new);
         event.registerEntityRenderer(ModEntities.M2A2.get(), frontline.combat.fcp.client.renderer.Bradley.BradleyRenderer::new);
+        event.registerEntityRenderer(ModEntities.M6A2.get(), frontline.combat.fcp.client.renderer.Bradley.BradleyRenderer::new);
         event.registerEntityRenderer(ModEntities.M2A2_BUSK.get(), frontline.combat.fcp.client.renderer.Bradley.BradleyRenderer::new);
         event.registerEntityRenderer(ModEntities.M2A3.get(), frontline.combat.fcp.client.renderer.Bradley.BradleyRenderer::new);
         event.registerEntityRenderer(ModEntities.M2A3_BUSK.get(), frontline.combat.fcp.client.renderer.Bradley.BradleyRenderer::new);
@@ -197,6 +199,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.KAMAZ_LONG.get(), frontline.combat.fcp.client.renderer.Kamaz.KamazLongRenderer::new);
 
         event.registerEntityRenderer(ModEntities.VIPER.get(), ViperRenderer::new);
+        event.registerEntityRenderer(ModEntities.KA52.get(), frontline.combat.fcp.client.renderer.Ka52.Ka52Renderer::new);
         event.registerEntityRenderer(ModEntities.OH1.get(), Oh1Renderer::new);
         event.registerEntityRenderer(ModEntities.CH53A.get(), Ch53aRenderer::new);
         event.registerEntityRenderer(ModEntities.CH53E.get(), Ch53eRenderer::new);
@@ -222,6 +225,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.VENOM_DOOR_GUNS.get(), VenomDoorGunsRenderer::new);
 
         event.registerEntityRenderer(ModEntities.NOVATOR.get(), NovatorRenderer::new);
+        event.registerEntityRenderer(ModEntities.NOVATOR_STUGNA.get(), NovatorRenderer::new);
         event.registerEntityRenderer(ModEntities.NOVATOR_UNARMED.get(), NovatorUnarmedRenderer::new);
 
         event.registerEntityRenderer(ModEntities.MATV.get(), MATVRenderer::new);
@@ -238,6 +242,13 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.EMPL_ZIS3.get(), frontline.combat.fcp.client.renderer.Emplacement.EmplZis3Renderer::new);
         event.registerEntityRenderer(ModEntities.PANTSIR.get(), frontline.combat.fcp.client.renderer.Pantsir.PantsirRenderer::new);
         event.registerEntityRenderer(ModEntities.BRDM2.get(), frontline.combat.fcp.client.renderer.Brdm.Brdm2Renderer::new);
+        event.registerEntityRenderer(ModEntities.BRDM2_KORNET.get(), frontline.combat.fcp.client.renderer.Brdm.Brdm2Renderer::new);
+        event.registerEntityRenderer(ModEntities.M113.get(), frontline.combat.fcp.client.renderer.M113.M113Renderer::new);
+        event.registerEntityRenderer(ModEntities.M113A2.get(), frontline.combat.fcp.client.renderer.M113.M113Renderer::new);
+        event.registerEntityRenderer(ModEntities.SKIF.get(), frontline.combat.fcp.client.renderer.M113.M113Renderer::new);
+        event.registerEntityRenderer(ModEntities.KOMATSU_LAV.get(), frontline.combat.fcp.client.renderer.Komatsu.KomatsuLavRenderer::new);
+        event.registerEntityRenderer(ModEntities.KOMATSU_LAV_SHIELD.get(), frontline.combat.fcp.client.renderer.Komatsu.KomatsuLavRenderer::new);
+        event.registerEntityRenderer(ModEntities.KOMATSU_LAV_UNARMED.get(), frontline.combat.fcp.client.renderer.Komatsu.KomatsuLavRenderer::new);
         event.registerEntityRenderer(ModEntities.M939.get(), frontline.combat.fcp.client.renderer.M939.M939Renderer::new);
         event.registerEntityRenderer(ModEntities.MAN_HX58.get(), frontline.combat.fcp.client.renderer.ManHx58.ManHx58Renderer::new);
         event.registerEntityRenderer(ModEntities.MAN_HX58_MG3.get(), frontline.combat.fcp.client.renderer.ManHx58.ManHx58Mg3Renderer::new);
@@ -343,6 +354,7 @@ public class ModEntityRenderers {
         event.registerBelowAll(FcpPilotOverlay.ID, FcpPilotOverlay.INSTANCE);
         event.registerAboveAll(frontline.combat.fcp.client.StugnaRemoteClient.OVERLAY_ID, frontline.combat.fcp.client.StugnaRemoteClient.OVERLAY);
         event.registerAboveAll(frontline.combat.fcp.client.overlay.PumaCommanderHud.OVERLAY_ID, frontline.combat.fcp.client.overlay.PumaCommanderHud.OVERLAY);
+        event.registerBelowAll(frontline.combat.fcp.client.overlay.NovatorStugnaHud.OVERLAY_ID, frontline.combat.fcp.client.overlay.NovatorStugnaHud.OVERLAY);
         event.registerAboveAll(frontline.combat.fcp.client.HimarsTvClient.OVERLAY_ID, frontline.combat.fcp.client.HimarsTvClient.OVERLAY);
     }
 

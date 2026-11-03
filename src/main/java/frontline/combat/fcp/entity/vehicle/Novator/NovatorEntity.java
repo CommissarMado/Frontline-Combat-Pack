@@ -23,6 +23,9 @@ public class NovatorEntity extends CamoVehicleBase {
 
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(NovatorEntity.class, EntityDataSerializers.FLOAT);
 
+    /** Missile variants: the spent launch tube is off the launcher (LauncherTube). */
+    private static final EntityDataAccessor<Boolean> TUBE_OFF = SynchedEntityData.defineId(NovatorEntity.class, EntityDataSerializers.BOOLEAN);
+
     private float prevSteeringAngle = 0f;
 
     private float wheelRotation = 0f;
@@ -35,6 +38,7 @@ public class NovatorEntity extends CamoVehicleBase {
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(STEERING_ANGLE, 0f);
+        this.entityData.define(TUBE_OFF, false);
     }
 
     public float getSteeringAngle() {
@@ -42,6 +46,10 @@ public class NovatorEntity extends CamoVehicleBase {
     }
 
     public void setSteeringAngle(float angle) {this.entityData.set(STEERING_ANGLE, angle);
+    }
+
+    public boolean launcherTubeOff() {
+        return this.entityData.get(TUBE_OFF);
     }
 
     public float getPrevSteeringAngle(){
@@ -79,6 +87,7 @@ public class NovatorEntity extends CamoVehicleBase {
     @Override
     public void baseTick() {
         super.baseTick();
+        if (!level().isClientSide) this.entityData.set(TUBE_OFF, frontline.combat.fcp.entity.vehicle.LauncherTube.off(this, "Missile"));
 
         prevSteeringAngle = getSteeringAngle();
         float currentAngle = getSteeringAngle();

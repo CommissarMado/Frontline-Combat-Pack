@@ -15,7 +15,8 @@ import org.jetbrains.annotations.Nullable;
 public class NovatorModel extends FCPVehicleModel<NovatorEntity> {
     @Override
     public ResourceLocation getModelResource(NovatorEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/novator.geo.json");
+        // "novator" or "novator_stugna" (same entity class, registry name picks the geo).
+        return new ResourceLocation(FCP.MODID, "geo/" + net.minecraft.world.entity.EntityType.getKey(animatable.getType()).getPath() + ".geo.json");
     }
 
     @Override
@@ -36,6 +37,11 @@ public class NovatorModel extends FCPVehicleModel<NovatorEntity> {
                 WheelRotationTransforms.matchAny(boneName, 0.621,
                         "WheelL0", "WheelR0", "WheelL1", "WheelR1");
         if (wheels != null) return wheels;
+
+        // Novator Stugna: the spent Stugna-P container comes off halfway through the reload (LauncherTube).
+        if ("missile".equals(boneName)) {
+            return (bone, vehicle, state) -> bone.setHidden(vehicle.launcherTubeOff());
+        }
 
         return super.collectTransform(boneName);
     }

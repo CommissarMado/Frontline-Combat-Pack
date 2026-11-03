@@ -604,4 +604,20 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements Vehicl
         }
         return stack;
     }
+
+    /**
+     * For seat-fired missiles that only fly when locked (SBW's Igla and FCP's Sidewinder just hang in the air unguided):
+     * true - and the shooter is told why - when {@code shooter}'s selected weapon is one of {@code lockOnly} and the
+     * shot carries no locked target. Call from a {@code vehicleShoot(LivingEntity, UUID, Vec3)} override, whose UUID is
+     * the locked target.
+     */
+    protected boolean refuseUnlocked(@Nullable net.minecraft.world.entity.LivingEntity shooter, @Nullable java.util.UUID target, String... lockOnly) {
+        if (target != null || shooter == null || this.level().isClientSide()) return false;
+        int seat = getSeatIndex(shooter);
+        if (seat < 0 || !List.of(lockOnly).contains(getGunName(seat))) return false;
+        if (shooter instanceof Player player) {
+            player.displayClientMessage(net.minecraft.network.chat.Component.translatable("tips.fcp.lock_required"), true);
+        }
+        return true;
+    }
 }

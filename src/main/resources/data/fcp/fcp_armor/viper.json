@@ -22,7 +22,7 @@
     },
     "Rocket": {
       "type": "frag",
-      "pen": 100.0
+      "pen": 15.0
     },
     "Hellfire-LockOn": {
       "type": "hat",
@@ -41,5 +41,26 @@
       "pen": 100.0
     }
   },
-  "ammo": {"Cannon": [1, 750], "Rocket": [1, 20], "Hellfire-LockOn": [1, 4], "Hellfire-WireGuided": [1, 4], "Sidewinder": [1, 2]}
+  "ammo": {
+    "Cannon": [
+      1,
+      750
+    ],
+    "Rocket": [
+      1,
+      20
+    ],
+    "Hellfire-LockOn": [
+      1,
+      4
+    ],
+    "Hellfire-WireGuided": [
+      1,
+      4
+    ],
+    "Sidewinder": [
+      1,
+      2
+    ]
+  }
 }

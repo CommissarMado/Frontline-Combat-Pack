@@ -157,6 +157,8 @@ public class ModEntities {
             EntityType.Builder.of(ToyotaHiluxBMPEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<ToyotaHiluxSpg9Entity>> TOYOTA_HILUX_SPG9 = register("toyota_hilux_spg9",
             EntityType.Builder.of(ToyotaHiluxSpg9Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<ToyotaHiluxSpg9Entity>> TOYOTA_HILUX_KORNET = register("toyota_hilux_kornet",
+            EntityType.Builder.of(ToyotaHiluxSpg9Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<ToyotaHiluxMortarEntity>> TOYOTA_HILUX_MORTAR = register("toyota_hilux_mortar",
             EntityType.Builder.of(ToyotaHiluxMortarEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<ToyotaHiluxZu23Entity>> TOYOTA_HILUX_ZU23 = register("toyota_hilux_zu23",
@@ -203,6 +205,7 @@ public class ModEntities {
     public static final RegistryObject<EntityType<PumaEntity>> PUMA_ATGM = register("puma_atgm",
             EntityType.Builder.of(PumaEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Bradley.BradleyEntity>> M2A2 = bradley("m2a2");
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Bradley.BradleyEntity>> M6A2 = bradley("m6a2");
     public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Bradley.BradleyEntity>> M2A2_BUSK = bradley("m2a2_busk");
     public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Bradley.BradleyEntity>> M2A3 = bradley("m2a3");
     public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Bradley.BradleyEntity>> M2A3_BUSK = bradley("m2a3_busk");
@@ -282,6 +285,8 @@ public class ModEntities {
             EntityType.Builder.of(KamazLongEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
     public static final RegistryObject<EntityType<ViperEntity>> VIPER = register("viper",
             EntityType.Builder.of(ViperEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Ka52.Ka52Entity>> KA52 = register("ka52",
+            EntityType.Builder.of(frontline.combat.fcp.entity.vehicle.Ka52.Ka52Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f, 2.5f));
     public static final RegistryObject<EntityType<Oh1Entity>> OH1 = register("oh1",
             EntityType.Builder.of(Oh1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<Ch53aEntity>> CH53A = register("ch53a",
@@ -328,6 +333,8 @@ public class ModEntities {
             EntityType.Builder.of(NovatorEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<NovatorUnarmedEntity>> NOVATOR_UNARMED = register("novator_unarmed",
             EntityType.Builder.of(NovatorUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<NovatorEntity>> NOVATOR_STUGNA = register("novator_stugna",
+            EntityType.Builder.of(NovatorEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<MATVEntity>> MATV = register("matv",
             EntityType.Builder.of(MATVEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<RG33Entity>> RG_33 = register("rg_33",
@@ -356,6 +363,14 @@ public class ModEntities {
             EntityType.Builder.of(PantsirEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(4f,4f));
     public static final RegistryObject<EntityType<Brdm2Entity>> BRDM2 = register("brdm2",
             EntityType.Builder.of(Brdm2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2.5f));
+    public static final RegistryObject<EntityType<Brdm2Entity>> BRDM2_KORNET = register("brdm2_kornet",
+            EntityType.Builder.of(Brdm2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2.5f));
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.M113.M113Entity>> M113 = m113("m113");
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.M113.M113Entity>> M113A2 = m113("m113a2");
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.M113.M113Entity>> SKIF = m113("skif");
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Komatsu.KomatsuLavEntity>> KOMATSU_LAV = komatsu("komatsu_lav");
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Komatsu.KomatsuLavEntity>> KOMATSU_LAV_SHIELD = komatsu("komatsu_lav_shield");
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Komatsu.KomatsuLavEntity>> KOMATSU_LAV_UNARMED = komatsu("komatsu_lav_unarmed");
     public static final RegistryObject<EntityType<M939Entity>> M939 = register("m939",
             EntityType.Builder.of(M939Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
     public static final RegistryObject<EntityType<ManHx58Entity>> MAN_HX58 = register("man_hx58",
@@ -538,6 +553,16 @@ public class ModEntities {
     private static RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Bradley.BradleyEntity>> bradley(String name) {
         return register(name, EntityType.Builder.of(frontline.combat.fcp.entity.vehicle.Bradley.BradleyEntity::new, MobCategory.MISC)
                 .setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f, 2f));
+    }
+
+    private static RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.M113.M113Entity>> m113(String name) {
+        return register(name, EntityType.Builder.of(frontline.combat.fcp.entity.vehicle.M113.M113Entity::new, MobCategory.MISC)
+                .setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f, 2f));
+    }
+
+    private static RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Komatsu.KomatsuLavEntity>> komatsu(String name) {
+        return register(name, EntityType.Builder.of(frontline.combat.fcp.entity.vehicle.Komatsu.KomatsuLavEntity::new, MobCategory.MISC)
+                .setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(2.5f, 2f));
     }
 
     // Trailers

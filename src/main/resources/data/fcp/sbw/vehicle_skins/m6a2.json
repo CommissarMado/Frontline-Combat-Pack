@@ -1,0 +1,6 @@
+{
+  "Skins": [
+    {"Id": "vanilla", "Name": "Desert Tan", "Texture": "fcp:textures/entity/bradley/m6a2_desert.png", "Priority": 1},
+    {"Id": "woodland", "Name": "Woodland Green", "Texture": "fcp:textures/entity/bradley/m6a2_green.png", "Priority": 2}
+  ]
+}

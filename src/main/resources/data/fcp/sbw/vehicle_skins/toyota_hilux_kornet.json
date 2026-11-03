@@ -1,0 +1,6 @@
+{
+  "Skins": [
+    {"Id": "vanilla", "Name": "Toyota", "Texture": "fcp:textures/entity/toyota/toyota_hilux_kornet_1.png", "Priority": 1},
+    {"Id": "alt", "Name": "Toyota 2", "Texture": "fcp:textures/entity/toyota/toyota_hilux_kornet_2.png", "Priority": 2}
+  ]
+}

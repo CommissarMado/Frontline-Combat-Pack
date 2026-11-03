@@ -1,0 +1,30 @@
+{
+  "armor": {
+    "front": 20.0,
+    "side": 9.0,
+    "rear": 5.0,
+    "top": 5.0,
+    "turret_front": 9.0,
+    "turret_side": 7.0
+  },
+  "modifiers": {
+    "kinetic": 0.1,
+    "heat": 0.36,
+    "hat": 0.5,
+    "explosive": 1.0,
+    "frag": 0.25,
+    "small_arms": 0.0
+  },
+  "weapons": {
+    "Missile": {
+      "type": "hat",
+      "pen": 900.0
+    }
+  },
+  "ammo": {
+    "Missile": [
+      1,
+      5
+    ]
+  }
+}

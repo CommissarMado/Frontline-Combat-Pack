@@ -1,0 +1,545 @@
+{
+  "ID": "fcp:ka52",
+  "MaxHealth": 121.0,
+  "MaxEnergy": 188000000,
+  "TurretPos": [
+    0.04,
+    0.8829,
+    3.8595
+  ],
+  "TurretPitchRange": [
+    -40.0,
+    10.0
+  ],
+  "TurretYawRange": [
+    -60.0,
+    60.0
+  ],
+  "BarrelPos": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "TurretControllerIndex": 1,
+  "OBB": [
+    {
+      "Size": [
+        0.9563,
+        1.1156,
+        3.2938
+      ],
+      "Position": [
+        0.0,
+        1.7531,
+        -0.0531
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        0.4516,
+        0.6109,
+        2.4703
+      ],
+      "Position": [
+        -0.0266,
+        1.7797,
+        -5.8172
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        0.7438,
+        0.4516,
+        0.9297
+      ],
+      "Position": [
+        0.0,
+        1.5141,
+        4.1703
+      ],
+      "Part": "Body"
+    },
+    {
+      "Size": [
+        1.3016,
+        0.5844,
+        1.5938
+      ],
+      "Position": [
+        -0.0266,
+        2.3375,
+        -0.425
+      ],
+      "Part": "MainEngine"
+    },
+    {
+      "Size": [
+        0.6641,
+        0.9563,
+        0.6641
+      ],
+      "Position": [
+        -0.0266,
+        3.8781,
+        -0.2922
+      ],
+      "Part": "SubEngine"
+    }
+  ],
+  "Seats": [
+    {
+      "Transform": "Vehicle",
+      "Sensitivity": [
+        0,
+        0,
+        0
+      ],
+      "Weapons": [
+        "Rocket",
+        "ATGM",
+        "Igla"
+      ],
+      "CameraPos": {
+        "UseFixedCameraPos": true,
+        "UseAircraftCamera": true,
+        "AircraftCameraPos": [
+          -3.5,
+          3.5,
+          -13
+        ],
+        "Position": [
+          0.372,
+          2.29,
+          2.356
+        ]
+      },
+      "CanRotateHead": false,
+      "Position": [
+        0.372,
+        0.94,
+        2.256
+      ]
+    },
+    {
+      "Transform": "Vehicle",
+      "Weapons": [
+        "Cannon",
+        "ATGM-Wire"
+      ],
+      "CameraPos": {
+        "Transform": "Barrel",
+        "UseFixedCameraPos": true,
+        "Direction": "Barrel",
+        "Position": [
+          0.0,
+          0.0,
+          0.386
+        ]
+      },
+      "BanHand": true,
+      "MinPitch": -40,
+      "MaxPitch": 10,
+      "MinYaw": -60,
+      "MaxYaw": 60,
+      "Position": [
+        -0.351,
+        0.94,
+        2.256
+      ]
+    }
+  ],
+  "Weapons": {
+    "Rocket": {
+      "AmmoType": "superbwarfare:small_rocket",
+      "Icon": "fcp:textures/screens/vehicle_weapon/hydra_70.png",
+      "DefaultZoom": 2,
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Magazine": 44,
+      "EmptyReloadTime": 600,
+      "Projectile": "superbwarfare:small_rocket",
+      "Spread": 0.3,
+      "Name": "weapon.fcp.s8_rocket",
+      "RPM": 400,
+      "Damage": 19.4,
+      "ExplosionDamage": 24.2,
+      "ExplosionRadius": 6,
+      "Gravity": 0.02,
+      "Velocity": 16,
+      "ShootPos": {
+        "Transform": "Vehicle",
+        "Directions": [
+          [
+            0,
+            0.02,
+            1
+          ],
+          [
+            0,
+            0.02,
+            1
+          ]
+        ],
+        "Positions": [
+          [
+            1.7823,
+            1.3328,
+            0.9984
+          ],
+          [
+            -1.9364,
+            1.3332,
+            1.0007
+          ]
+        ]
+      },
+      "SoundInfo": {
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_launcher"
+      },
+      "Crosshair": "@Empty",
+      "SoundRadius": 12
+    },
+    "ATGM": {
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/missile_9m120.png",
+      "DefaultZoom": 2,
+      "DefaultFireMode": "Semi",
+      "AvailableFireModes": "Semi",
+      "Magazine": 4,
+      "EmptyReloadTime": 300,
+      "RPM": 60,
+      "Projectile": "fcp:lock_on_9m123",
+      "Name": "weapon.fcp.9m120_lockon",
+      "AddShooterDeltaMovement": true,
+      "Velocity": 2.0,
+      "SeekWeaponInfo": {
+        "SeekDirection": "Default",
+        "SeekRange": 384,
+        "SeekAngle": 20,
+        "SeekTime": 20,
+        "MaxTargetHeight": 32,
+        "MinTargetSize": 0.9,
+        "OnlyLockEntity": true
+      },
+      "AmmoType": [
+        {
+          "Ammo": "superbwarfare:medium_anti_ground_missile",
+          "ShouldUnload": false
+        }
+      ],
+      "SoundInfo": {
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "VehicleReload3p": "superbwarfare:bomb_reload",
+        "VehicleReloadSoundTime": 11,
+        "Change": "superbwarfare:into_missile",
+        "Locking": "superbwarfare:missile_locking",
+        "Locked": "superbwarfare:missile_locked"
+      },
+      "Crosshair": "@AirCraftMissile",
+      "CrosshairColor": "0x66FF00",
+      "SoundRadius": 32,
+      "Damage": 175.2,
+      "ExplosionDamage": 16.9,
+      "ExplosionRadius": 5,
+      "ShootPos": {
+        "Transform": "Vehicle",
+        "ShootPositionForHud": [
+          0,
+          1.1,
+          0
+        ],
+        "BoundUpWithAmmoAmount": true,
+        "Positions": [
+          [
+            -2.9856,
+            1.1299,
+            1.5101
+          ],
+          [
+            2.805,
+            1.1299,
+            1.5101
+          ],
+          [
+            -3.1981,
+            1.1299,
+            1.5101
+          ],
+          [
+            3.0175,
+            1.1299,
+            1.5101
+          ]
+        ]
+      }
+    },
+    "Igla": {
+      "Icon": "fcp:textures/screens/vehicle_weapon/sidewinder.png",
+      "DefaultZoom": 2,
+      "DefaultFireMode": "Semi",
+      "AvailableFireModes": "Semi",
+      "Magazine": 2,
+      "EmptyReloadTime": 200,
+      "Projectile": "superbwarfare:igla_9k38_missile",
+      "Name": "weapon.fcp.igla_v",
+      "Damage": 13,
+      "ExplosionDamage": 40,
+      "ExplosionRadius": 8,
+      "AddShooterDeltaMovement": true,
+      "Velocity": 1.05,
+      "SeekWeaponInfo": {
+        "SeekDirection": "Default",
+        "SeekRange": 384,
+        "SeekAngle": 20,
+        "SeekTime": 10,
+        "MinTargetHeight": 33,
+        "MinTargetSize": 0.9,
+        "OnlyLockEntity": true
+      },
+      "AmmoType": [
+        {
+          "Ammo": "superbwarfare:medium_anti_air_missile",
+          "ShouldUnload": false
+        }
+      ],
+      "ShootPos": {
+        "Transform": "Vehicle",
+        "ShootPositionForHud": [
+          0,
+          1.1475,
+          0
+        ],
+        "Positions": [
+          [
+            -3.0388,
+            1.3751,
+            1.4921
+          ],
+          [
+            2.9113,
+            1.3751,
+            1.4921
+          ]
+        ],
+        "BoundUpWithAmmoAmount": true
+      },
+      "SoundInfo": {
+        "Fire1P": "superbwarfare:javelin_fire_1p",
+        "Fire3P": "superbwarfare:javelin_fire_3p",
+        "VehicleReload3p": "superbwarfare:bomb_reload",
+        "VehicleReloadSoundTime": 11,
+        "Change": "superbwarfare:into_missile",
+        "Locking": "superbwarfare:missile_locking",
+        "Locked": "superbwarfare:missile_locked"
+      },
+      "Crosshair": "@AirCraftMissile",
+      "CrosshairColor": "0x66FF00",
+      "SoundRadius": 8
+    },
+    "Cannon": {
+      "DefaultFireMode": "Auto",
+      "AvailableFireModes": "Auto",
+      "Projectile": "superbwarfare:small_cannon_shell",
+      "EmptyReloadTime": 211,
+      "DefaultZoom": 3,
+      "RPM": 550,
+      "Velocity": 20,
+      "Damage": 29,
+      "ExplosionDamage": 0,
+      "ExplosionRadius": 0,
+      "HeatPerShoot": 5,
+      "NaturalCooldown": 1,
+      "RecoilTime": 4,
+      "RecoilForce": 0.62,
+      "ShootAnimationTime": 3,
+      "Spread": 0.5,
+      "CrosshairColor": "0xFFC700",
+      "Crosshair": "@Empty",
+      "Name": "weapon.fcp.2a42_30mm_ap",
+      "SoundInfo": {
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "Fire3PFar": "fcp:squad.silent",
+        "Fire3PVeryFar": "fcp:squad.silent",
+        "Change": "fcp:squad.weapons.common.switch_82a",
+        "VehicleReload": "fcp:squad.weapons.common.m249_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.m249_reload_3p"
+      },
+      "SoundRadius": 24,
+      "AmmoType": [
+        "superbwarfare:small_shell_ap",
+        {
+          "Ammo": "superbwarfare:small_shell_he",
+          "Override": {
+            "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/cannon_30mm_he.png",
+            "Velocity": 18,
+            "Damage": 9.7,
+            "ExplosionDamage": 12.1,
+            "ExplosionRadius": 4.3,
+            "Name": "weapon.fcp.2a42_30mm_he",
+            "ShellType": "HE"
+          }
+        }
+      ],
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/cannon_30mm_ap.png",
+      "ShootPos": {
+        "Transform": "CannonBarrel",
+        "Directions": [
+          "CannonBarrel"
+        ],
+        "Positions": [
+          [
+            -0.2653,
+            -0.0689,
+            2.7435
+          ]
+        ]
+      },
+      "ShellType": "AP",
+      "Magazine": 230
+    },
+    "ATGM-Wire": {
+      "DefaultFireMode": "Semi",
+      "AvailableFireModes": "Semi",
+      "DefaultZoom": 3,
+      "Name": "weapon.fcp.9m120_wire",
+      "Projectile": "superbwarfare:wire_guide_missile",
+      "Magazine": 6,
+      "EmptyReloadTime": 300,
+      "RPM": 40,
+      "Velocity": 3.5,
+      "AmmoType": [
+        {
+          "Ammo": "superbwarfare:medium_anti_ground_missile",
+          "ShouldUnload": false
+        }
+      ],
+      "Crosshair": "@VehicleCommonMissile",
+      "CrosshairColor": "0x00FF66",
+      "SoundRadius": 32,
+      "SoundInfo": {
+        "Fire1P": "fcp:squad.silent",
+        "Fire3P": "fcp:squad.silent",
+        "VehicleReload": "fcp:squad.weapons.common.tow_reload_1p",
+        "VehicleReload3p": "fcp:squad.weapons.common.tow_reload_3p",
+        "Change": "fcp:squad.weapons.common.switch_82a"
+      },
+      "Icon": "superbwarfare:textures/overlay/vehicle/weapon/icons/missile_9m120.png",
+      "Damage": 175.2,
+      "ExplosionDamage": 16.9,
+      "ExplosionRadius": 5,
+      "ShootPos": {
+        "Transform": "Vehicle",
+        "Directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "BoundUpWithAmmoAmount": true,
+        "Positions": [
+          [
+            -2.6669,
+            1.3751,
+            1.4921
+          ],
+          [
+            2.5394,
+            1.3751,
+            1.4921
+          ],
+          [
+            -2.7731,
+            1.1299,
+            1.5101
+          ],
+          [
+            2.5925,
+            1.1299,
+            1.5101
+          ],
+          [
+            -2.5606,
+            1.1299,
+            1.5101
+          ],
+          [
+            2.38,
+            1.1299,
+            1.5101
+          ]
+        ]
+      }
+    }
+  },
+  "EngineType": "Helicopter",
+  "EngineInfo": {
+    "EnergyCostRate": 157,
+    "Increment": 0.9,
+    "Decrement": 0.9,
+    "PitchSpeed": 0.85,
+    "YawSpeed": 0.9,
+    "RollSpeed": 0.7,
+    "LiftSpeed": 0.95,
+    "EngineStartSound": "fcp:squad.silent",
+    "EngineSoundVolume": 1.5
+  },
+  "EngineSound": "superbwarfare:ah_6_engine",
+  "ThirdPersonCameraPos": [
+    3.0,
+    4.5,
+    14.0
+  ],
+  "UpStep": 1.1,
+  "RotateOffsetHeight": 1.5,
+  "Mass": 1.0,
+  "AllowFreeCam": true,
+  "HasDecoy": true,
+  "SmokeDecoy": false,
+  "DamageModifiers": [
+    "minecraft:arrow * 0.15",
+    "minecraft:explosion * 4",
+    "superbwarfare:projectile_hit * 0.7",
+    "#superbwarfare:projectile * 0.05",
+    "superbwarfare:vehicle_strike * 6",
+    "@#superbwarfare:at_rocket * 2",
+    "All * 0.8",
+    "All - 8"
+  ],
+  "DestroyInfo": {
+    "ExplosionDamage": 350,
+    "ExplosionRadius": 12,
+    "CrashPassengers": true
+  },
+  "ContainerIcon": "fcp:textures/gui/vehicle/type/air_rus.png",
+  "Type": "Helicopter",
+  "HudType": "@Helicopter",
+  "TerrainCompat": [
+    [
+      1.1575,
+      0.0,
+      -1.1042
+    ],
+    [
+      -1.1841,
+      0.0,
+      -1.1042
+    ],
+    [
+      0.3,
+      0.0,
+      3.2113
+    ],
+    [
+      -0.3,
+      0.0,
+      3.2113
+    ]
+  ],
+  "PassengerRenderScale": 0.85
+}

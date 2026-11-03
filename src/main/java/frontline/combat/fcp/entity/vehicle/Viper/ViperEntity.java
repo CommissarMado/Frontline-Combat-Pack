@@ -5,6 +5,7 @@ import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
 public class ViperEntity extends CamoVehicleBase {
 
@@ -22,6 +23,13 @@ public class ViperEntity extends CamoVehicleBase {
 
     public ViperEntity(EntityType<ViperEntity> type, Level world) {
         super(type, world);
+    }
+
+    /** The Sidewinder only flies when locked on: no launch without a target. */
+    @Override
+    public void vehicleShoot(@Nullable net.minecraft.world.entity.LivingEntity living, @Nullable java.util.UUID target, @Nullable net.minecraft.world.phys.Vec3 targetPos) {
+        if (refuseUnlocked(living, target, "Sidewinder")) return;
+        super.vehicleShoot(living, target, targetPos);
     }
 
     @Override

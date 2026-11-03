@@ -49,11 +49,13 @@ public final class EngineControl {
         // warrior (Puma): warrior_engine_int_start_01, 1.13 s
         put(m, 23, "fcp:puma", "fcp:puma_atgm");
         // bradley: bradley_engine_start_INT_01, 2.16 s
-        put(m, 43, "fcp:m2a2", "fcp:m2a2_busk", "fcp:m2a3", "fcp:m2a3_busk");
+        put(m, 43, "fcp:m2a2", "fcp:m2a2_busk", "fcp:m2a3", "fcp:m2a3_busk", "fcp:m6a2");
         // bmp3 (Khrizantema-S, BMP-3 family): bmp3m_engine_start_int_01, 5.21 s
         put(m, 104, "fcp:khrizantema", "fcp:bmp3", "fcp:bmp3_cage", "fcp:bmp3m", "fcp:brm3k", "fcp:2s31");
         // brdm2: bdrm_int_start_01
-        put(m, 72, "fcp:brdm2");
+        put(m, 72, "fcp:brdm2", "fcp:brdm2_kornet");
+        // m113 (Squad M113A3 = FV432 cues): fv432_engine_start_int_01, 2.12 s
+        put(m, 42, "fcp:m113", "fcp:m113a2", "fcp:skif");
         // lav25: lav25_engine_start_int_01
         put(m, 31, "fcp:lav25", "fcp:lav25_mg");
         // stryker: stryker_engine_int_start_01
@@ -65,8 +67,10 @@ public final class EngineControl {
         put(m, 261, "fcp:m1a1", "fcp:m1a1_aim", "fcp:m1a1_ukr", "fcp:m1a2", "fcp:m1a2_tusk1", "fcp:m1a2_tusk2");
         // t90: t90_engine_start_int_01
         put(m, 33, "fcp:t14_armata", "fcp:t90a", "fcp:t90m", "fcp:t90m_2022", "fcp:t90m_2024", "fcp:t90ms");
+        // challenger2 (Type 10, user pick): challenger2_engine_start_int_01
+        put(m, 38, "fcp:type10");
         // technical: technical_engine_start_int_01
-        put(m, 47, "fcp:land_cruiser_80", "fcp:toyota_hilux", "fcp:toyota_hilux_rocket_pod", "fcp:toyota_hilux_bmp", "fcp:toyota_hilux_spg9", "fcp:toyota_hilux_mortar", "fcp:toyota_hilux_zu23");
+        put(m, 47, "fcp:land_cruiser_80", "fcp:toyota_hilux", "fcp:toyota_hilux_rocket_pod", "fcp:toyota_hilux_bmp", "fcp:toyota_hilux_spg9", "fcp:toyota_hilux_kornet", "fcp:toyota_hilux_mortar", "fcp:toyota_hilux_zu23");
         // mgator: mgator_engine_start_ext_01
         put(m, 25, "fcp:dpv_m240", "fcp:dpv_minigun");
         // csk131: csk_engine_start_int_01
@@ -80,7 +84,7 @@ public final class EngineControl {
         // tigr: tigr_engine_start_int_01
         put(m, 28, "fcp:gaz_tigr", "fcp:gaz_tigr_rws", "fcp:gaz_tigr_mg", "fcp:gaz_tigr_gl", "fcp:gaz_tigr_dual");
         // matv: matv_engine_int_start_01
-        put(m, 39, "fcp:matv", "fcp:matv_tow", "fcp:matv_crow", "fcp:matv_9in1", "fcp:novator", "fcp:novator_unarmed", "fcp:kozak5", "fcp:kozak2m1", "fcp:kozak_ambulance");
+        put(m, 39, "fcp:komatsu_lav", "fcp:komatsu_lav_shield", "fcp:komatsu_lav_unarmed", "fcp:matv", "fcp:matv_tow", "fcp:matv_crow", "fcp:matv_9in1", "fcp:novator", "fcp:novator_unarmed", "fcp:novator_stugna", "fcp:kozak5", "fcp:kozak2m1", "fcp:kozak_ambulance");
         // us_truck: us_truck_engine_start_int_01 (FMTV; also the RG-33 and Caimans, which need a heavier engine)
         put(m, 53, "fcp:m939", "fcp:fmtv", "fcp:fmtv_4x4", "fcp:himars",
                 "fcp:rg_33", "fcp:caiman", "fcp:caiman_unarmed", "fcp:caiman_police", "fcp:caiman_uparmored", "fcp:caiman_uparmored_unarmed");
@@ -95,7 +99,7 @@ public final class EngineControl {
         put(m, 400, "fcp:uh60", "fcp:uh60_minigun", "fcp:mh60l");
         put(m, 400, "fcp:huey", "fcp:huey_m60_door_guns", "fcp:huey_m60_gunship", "fcp:huey_m134_door_guns", "fcp:huey_m134_gunship");
         put(m, 400, "fcp:venom", "fcp:venom_gunship", "fcp:venom_door_guns", "fcp:viper");
-        put(m, 400, "fcp:mi8", "fcp:mi17", "fcp:mi8_door_guns", "fcp:mi17_door_guns", "fcp:mi8_mtv", "fcp:mi8_amtsh", "fcp:ch53a", "fcp:ch53e", "fcp:mh53");
+        put(m, 400, "fcp:mi8", "fcp:mi17", "fcp:mi8_door_guns", "fcp:mi17_door_guns", "fcp:mi8_mtv", "fcp:mi8_amtsh", "fcp:ka52", "fcp:ch53a", "fcp:ch53e", "fcp:mh53");
         // ch47: SPM mod CH-47D start (Startup_INT_APU__001_FADE), 23.1 s
         put(m, 462, "fcp:ch47");
         // cpv: cpv_engine_start_int (generic SUV)

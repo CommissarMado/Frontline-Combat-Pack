@@ -79,12 +79,14 @@ public class LandVehicleHudStatsMixin {
             "fcp:himars",
             "fcp:toyota_hilux_bmp",
             "fcp:toyota_hilux_spg9",
+            "fcp:toyota_hilux_kornet",
             "fcp:uaz_spg9",
             "fcp:toyota_hilux_mortar",
             "fcp:btr80",
             "fcp:btr80_cope",
             "fcp:btr82_cope",
             "fcp:brdm2",
+            "fcp:brdm2_kornet",
             "fcp:empl_kornet",
             "fcp:empl_tow",
             "fcp:empl_zis3",
@@ -92,6 +94,7 @@ public class LandVehicleHudStatsMixin {
             "fcp:msta",
             "fcp:2s31",
             "fcp:m1a1",
+            "fcp:type10",
             "fcp:m1a1_aim",
             "fcp:m1a1_ukr",
             "fcp:m1a2",
@@ -142,7 +145,8 @@ public class LandVehicleHudStatsMixin {
     // Vehicles that suppress the TV frame entirely but show no replacement overlay
     private static final Set<String> FCP_NO_FRAME_VEHICLES = Set.of(
             "fcp:toyota_hilux_zu23",
-            "fcp:empl_dshk"
+            "fcp:empl_dshk",
+            "fcp:m113a2"
     );
 
     // Vehicles whose gunner seat gets the mortar-style Pitch / Yaw / Range readout.
@@ -188,6 +192,18 @@ public class LandVehicleHudStatsMixin {
             int screenHeight,
             CallbackInfo ci
     ) {
+        // Novator Stugna gunner: the launcher camera HUD (NovatorStugnaHud) replaces SBW's land-HUD frame.
+        if (vehicle == frontline.combat.fcp.client.overlay.NovatorStugnaHud.gunnedVehicle()) {
+            ci.cancel();
+            return;
+        }
+        // Turretless vehicles (M113, Skif) still report seat 0 as the turret controller: a seat with no gun gets no
+        // gun HUD (the driver there has FcpDriverOverlay's frame instead).
+        int seat = vehicle.getSeatIndex(player);
+        if (seat == vehicle.computed().getTurretControllerIndex() && vehicle.getGunData(seat) == null) {
+            ci.cancel();
+            return;
+        }
         String vehicleId = EntityType.getKey(vehicle.getType()).toString();
         Set<Integer> passengerGunnerSeats = FCP_PASSENGER_GUNNER_SEATS.get(vehicleId);
         boolean isPassengerGunner = passengerGunnerSeats != null && passengerGunnerSeats.contains(vehicle.getSeatIndex(player));

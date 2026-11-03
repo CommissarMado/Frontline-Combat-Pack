@@ -1,6 +1,6 @@
 {
   "_comment": "Generated from the Squad SDK: mi8_engine_rpm_rotors_02_Cue.uasset (+ start/stop cues).",
-  "vehicles": ["fcp:mi8", "fcp:mi17", "fcp:mi8_door_guns", "fcp:mi17_door_guns", "fcp:mi8_mtv", "fcp:mi8_amtsh", "fcp:ch53a", "fcp:ch53e", "fcp:mh53"],
+  "vehicles": ["fcp:mi8", "fcp:mi17", "fcp:mi8_door_guns", "fcp:mi17_door_guns", "fcp:mi8_mtv", "fcp:mi8_amtsh", "fcp:ka52", "fcp:ch53a", "fcp:ch53e", "fcp:mh53"],
   "mode": "helicopter",
   "rotor_pitch": [0.85, 1.0],
   "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },

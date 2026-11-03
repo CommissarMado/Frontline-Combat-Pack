@@ -40,6 +40,7 @@ public final class FCPMuzzleEffects {
     private static final Set<String> FORWARD_CANNON_BLAST_VEHICLES = Set.of(
             "fcp:stryker_mgs",
             "fcp:m1a1",
+            "fcp:type10",
             "fcp:m1a1_aim",
             "fcp:m1a1_ukr",
             "fcp:m1a2",

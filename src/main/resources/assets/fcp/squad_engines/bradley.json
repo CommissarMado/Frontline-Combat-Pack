@@ -1,6 +1,6 @@
 {
   "_comment": "Generated from the Squad SDK: Bradley_engine_rpm_ALL_Cue.uasset (+ start/stop cues).",
-  "vehicles": ["fcp:m2a2", "fcp:m2a2_busk", "fcp:m2a3", "fcp:m2a3_busk"],
+  "vehicles": ["fcp:m2a2", "fcp:m2a2_busk", "fcp:m2a3", "fcp:m2a3_busk", "fcp:m6a2"],
   "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
   "exterior_volume": 0.25,
   "interior_volume": 1,

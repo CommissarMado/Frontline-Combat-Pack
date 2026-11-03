@@ -59,6 +59,7 @@ public class FcpDriverOverlay implements IGuiOverlay {
             "fcp:m2a2_busk",
             "fcp:m2a3",
             "fcp:m2a3_busk",
+            "fcp:m6a2",
             "fcp:khrizantema",
             "fcp:bmp3",
             "fcp:bmp3_cage",
@@ -100,16 +101,32 @@ public class FcpDriverOverlay implements IGuiOverlay {
             "fcp:btr80_cope",
             "fcp:btr82_cope",
             "fcp:brdm2",
+            "fcp:brdm2_kornet",
+            "fcp:m113",
+            "fcp:m113a2",
+            "fcp:skif",
             "fcp:msta",
             "fcp:2s31",
             "fcp:m109",
             "fcp:m1a1",
+            "fcp:type10",
             "fcp:m1a1_aim",
             "fcp:m1a1_ukr",
             "fcp:m1a2",
             "fcp:m1a2_tusk1",
             "fcp:m1a2_tusk2"
     );
+
+    /** Commanders who look out through a cupola's periscopes (360 degrees, no up/down): they get the driver frame too. */
+    private static final java.util.Map<String, Integer> COMMANDER_CUPOLA_SEATS = java.util.Map.of(
+            "fcp:m113", 1,
+            "fcp:skif", 1
+    );
+
+    private static boolean isCupolaSeat(VehicleEntity ve, int seatIndex) {
+        Integer seat = COMMANDER_CUPOLA_SEATS.get(EntityType.getKey(ve.getType()).toString());
+        return seat != null && seat == seatIndex;
+    }
 
     /**
      * A troop seat's fixed periscope: a fixed camera with yaw and pitch locked (Min = Max) and no weapon.
@@ -136,9 +153,11 @@ public class FcpDriverOverlay implements IGuiOverlay {
         if (!ve.computed().getHudType().equals("@Land")) return;
 
         int seatIndex = ve.getSeatIndex(player);
-        if (!isPeriscopeSeat(ve, seatIndex)) {
+        if (!isPeriscopeSeat(ve, seatIndex) && !isCupolaSeat(ve, seatIndex)) {
             if (seatIndex != 0) return;
-            if (seatIndex == ve.computed().getTurretControllerIndex()) return;
+            // A driver who also runs the turret (single crew) has their own sight; turretless vehicles (M113, Skif)
+            // still report seat 0 as the controller, so only a seat with a gun counts.
+            if (seatIndex == ve.computed().getTurretControllerIndex() && ve.getGunData(seatIndex) != null) return;
 
             String vehicleId = EntityType.getKey(ve.getType()).toString();
             if (!DRIVER_OVERLAY_VEHICLES.contains(vehicleId)) return;

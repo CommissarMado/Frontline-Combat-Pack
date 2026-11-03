@@ -1,0 +1,38 @@
+{
+  "_comment": "Generated from the Squad SDK: Challenger2_engine_rpm_ALL_Cue.uasset (+ start/stop cues). Type 10 (not in Squad): user picked the Challenger 2.",
+  "vehicles": ["fcp:type10"],
+  "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
+  "exterior_volume": 0.2222,
+  "interior_volume": 0.2841,
+  "start": {
+    "exterior": { "sound": "fcp:squad.challenger2.engine.challenger2_engine_start_01", "volume": 3, "duration": 2.95 },
+    "interior": { "sound": "fcp:squad.challenger2.engine.challenger2_engine_start_int_01", "volume": 1, "duration": 1.91 }
+  },
+  "stop": {
+    "exterior": { "sound": "fcp:squad.challenger2.engine.challenger2_engine_stop_01", "volume": 2, "duration": 2.10 },
+    "interior": { "sound": "fcp:squad.challenger2.engine.challenger2_engine_stop_int_01", "volume": 1, "duration": 2.90 }
+  },
+  "layers": [
+    { "sound": "fcp:squad.challenger2.engine.challenger2_engine_idle_int_01", "interior": true, "gain": 3.52, "fade": [0, 0, 400, 500],
+      "volume_mods": [{ "param": "throttle", "in": [1, 1], "out": [1, 0] }, { "param": "throttle", "in": [0, 1], "out": [0.8, 0.2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [0, 1000], "out": [1, 1.1] }] },
+    { "sound": "fcp:squad.challenger2.engine.challenger2_engine_idle2_int_01", "interior": true, "gain": 0.616, "fade": [200, 600, 3000, 5000],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [1, 0] }, { "param": "rpm", "in": [0, 100], "out": [0, 2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [20, 4000], "out": [0.7, 1.3] }] },
+    { "sound": "fcp:squad.challenger2.engine.challenger2_engine_ambience_int_01", "interior": true, "gain": 0, "fade": [0, 0, 2000, 4500],
+      "volume_mods": [{ "param": "rpm", "in": [0, 2000], "out": [1, 1] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [0, 1000], "out": [1, 1.2] }] },
+    { "sound": "fcp:squad.challenger2.engine.challenger2_engine_throttle_int_01", "interior": true, "gain": 0.96, "fade": [10, 50, 4000, 6000],
+      "volume_mods": [{ "param": "throttle", "in": [0.001, 1], "out": [0, 2] }, { "param": "rpm", "in": [0, 1], "out": [0, 1] }],
+      "pitch_mods": [{ "param": "throttle", "in": [-3, 1], "out": [0, 1] }, { "param": "rpm", "abs": true, "in": [0, 4000], "out": [0.9, 1.3] }] },
+    { "sound": "fcp:squad.challenger2.engine.challenger2_engine_idle_01", "gain": 2, "fade": [0, 0, 400, 500],
+      "volume_mods": [{ "param": "throttle", "in": [1, 1], "out": [1, 0] }, { "param": "rpm", "in": [0, 0], "out": [1, 2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [0, 800], "out": [1, 1.2] }] },
+    { "sound": "fcp:squad.challenger2.engine.challenger2_engine_idle2_01", "gain": 1.4, "fade": [200, 600, 3000, 5000],
+      "volume_mods": [{ "param": "throttle", "in": [0, 1], "out": [1, 0] }, { "param": "rpm", "in": [0, 100], "out": [0, 2] }],
+      "pitch_mods": [{ "param": "rpm", "abs": true, "in": [20, 4000], "out": [0.7, 1.3] }] },
+    { "sound": "fcp:squad.challenger2.engine.challenger2_engine_throttle_01", "gain": 4.5, "fade": [10, 50, 4000, 6000],
+      "volume_mods": [{ "param": "throttle", "in": [0.001, 1], "out": [0, 2] }, { "param": "rpm", "in": [0, 1], "out": [0, 1] }],
+      "pitch_mods": [{ "param": "throttle", "in": [-3, 1], "out": [0, 1] }, { "param": "rpm", "abs": true, "in": [0, 4000], "out": [0.9, 1.3] }] }
+  ]
+}

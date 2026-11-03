@@ -96,7 +96,10 @@ public class FcpPilotOverlay implements IGuiOverlay {
             Map.entry("mh53", List.of(0, 1)),
             Map.entry("uh60", List.of(0, 1)),
             Map.entry("mh60l", List.of(0, 1)),
-            Map.entry("uh60_minigun", List.of(0, 1))
+            Map.entry("uh60_minigun", List.of(0, 1)),
+            // Camera gunners: the stock HUD is hidden for them (HelicopterHudSeats), so this draws with the weapon line.
+            Map.entry("viper", List.of(1)),
+            Map.entry("ka52", List.of(1))
     );
 
     // Smoothed HUD state (matches the default helicopter HUD's lerped values).
