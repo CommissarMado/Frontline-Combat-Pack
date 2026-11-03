@@ -1,6 +1,6 @@
 {
   "_comment": "Generated from the Squad SDK: BDRM_engine_rpm_ALL_Cue.uasset (+ start/stop cues).",
-  "vehicles": ["fcp:brdm2"],
+  "vehicles": ["fcp:brdm2", "fcp:brdm2_kornet"],
   "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
   "exterior_volume": 0.3333,
   "interior_volume": 1,

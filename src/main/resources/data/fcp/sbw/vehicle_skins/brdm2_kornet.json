@@ -1,0 +1,6 @@
+{
+  "Skins": [
+    {"Id": "vanilla", "Name": "Green", "Texture": "fcp:textures/entity/brdm/kornet_green.png", "Priority": 1},
+    {"Id": "sand", "Name": "Sand", "Texture": "fcp:textures/entity/brdm/kornet_sand.png", "Priority": 2}
+  ]
+}

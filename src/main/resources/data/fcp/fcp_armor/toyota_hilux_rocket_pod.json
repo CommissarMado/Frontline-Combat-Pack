@@ -18,8 +18,13 @@
   "weapons": {
     "Main": {
       "type": "frag",
-      "pen": 100.0
+      "pen": 15.0
     }
   },
-  "ammo": {"Main": [2, 32]}
+  "ammo": {
+    "Main": [
+      2,
+      32
+    ]
+  }
 }

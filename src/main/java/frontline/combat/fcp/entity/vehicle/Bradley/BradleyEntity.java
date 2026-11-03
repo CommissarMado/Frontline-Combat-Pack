@@ -11,7 +11,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 
 /**
- * M2 Bradley family (m2a2, m2a2_busk, m2a3, m2a3_busk) on one class; the registry name picks the geo and skins.
+ * M2 Bradley family (m2a2, m2a2_busk, m2a3, m2a3_busk) and the M6A2 Linebacker (m6a2: four Stingers in place of the
+ * TOW) on one class; the registry name picks the geo and skins.
  * <p>
  * The TOW launcher on the turret's left side swings up while the gunner has the TOW selected and down while
  * it reloads (AtgmLauncherAnimation); the missiles fire from the raised tubes. The A3s add the Commander's
@@ -20,6 +21,7 @@ import net.minecraft.world.level.Level;
 public class BradleyEntity extends CamoVehicleBase implements AtgmLauncherVehicle {
 
     public static final String TOW_WEAPON = "TOW";
+    public static final String STINGER_WEAPON = "Stinger";
 
     /** Server-side TOW reload state, synced so every client lowers the launcher during it. */
     private static final EntityDataAccessor<Boolean> TOW_RELOADING =
@@ -36,6 +38,11 @@ public class BradleyEntity extends CamoVehicleBase implements AtgmLauncherVehicl
         return EntityType.getKey(getType()).getPath();
     }
 
+    /** The M6A2: its launcher is the Stinger pod. */
+    public boolean isLinebacker() {
+        return variant().equals("m6a2");
+    }
+
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
@@ -46,7 +53,7 @@ public class BradleyEntity extends CamoVehicleBase implements AtgmLauncherVehicl
     public void baseTick() {
         super.baseTick();
         if (!level().isClientSide) {
-            GunData tow = getGunData(TOW_WEAPON);
+            GunData tow = getGunData(atgmWeapon());
             this.entityData.set(TOW_RELOADING, tow != null && tow.reloading());
         }
     }
@@ -58,7 +65,7 @@ public class BradleyEntity extends CamoVehicleBase implements AtgmLauncherVehicl
 
     @Override
     public String atgmWeapon() {
-        return TOW_WEAPON;
+        return isLinebacker() ? STINGER_WEAPON : TOW_WEAPON;
     }
 
     @Override

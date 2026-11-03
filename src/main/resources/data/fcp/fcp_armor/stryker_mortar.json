@@ -19,7 +19,20 @@
     "Main": {
       "type": "frag",
       "pen": 0.0
+    },
+    "PassengerMachineGun": {
+      "type": "small_arms",
+      "pen": 7.0
     }
   },
-  "ammo": {"Main": [1, 40]}
+  "ammo": {
+    "Main": [
+      1,
+      40
+    ],
+    "PassengerMachineGun": [
+      10,
+      250
+    ]
+  }
 }

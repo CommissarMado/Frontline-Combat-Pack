@@ -55,6 +55,22 @@ public class Type10Entity extends CamoVehicleBase {
         return prevWheelRotation;
     }
 
+    /** The commander's open-top M2 covers a 140 degree arc centred on the turret's front. */
+    private static final float MG_ARC = 70f;
+
+    /**
+     * SBW clamps its weapon station's yaw against the hull; the commander's M2 rides the turret, so it is held within
+     * {@link #MG_ARC} of the turret's facing instead (gun yaw and turret yaw share the hull frame) - as the LAV-25's.
+     */
+    @Override
+    public void adjustWeaponControllerAngle() {
+        super.adjustWeaponControllerAngle();
+        if (!hasPassengerWeaponStation()) return;
+        float rel = net.minecraft.util.Mth.wrapDegrees(getGunYRot() - getTurretYRot());
+        float clamped = net.minecraft.util.Mth.clamp(rel, -MG_ARC, MG_ARC);
+        if (clamped != rel) setGunYRot(getGunYRot() + clamped - rel);
+    }
+
     @Override
     public DamageModifier getDamageModifier() {
         return super.getDamageModifier()

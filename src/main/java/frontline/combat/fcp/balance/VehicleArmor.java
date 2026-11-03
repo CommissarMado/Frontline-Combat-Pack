@@ -192,7 +192,14 @@ public final class VehicleArmor {
     @Nullable
     private static Round vehicleRound(Projectile round) {
         Entity shooter = round.getOwner();
-        if (shooter == null || !(shooter.getVehicle() instanceof VehicleEntity vehicle)) return null;
+        if (shooter == null) return null;
+        VehicleEntity vehicle = shooter.getVehicle() instanceof VehicleEntity v ? v : null;
+        // The remote-operated Stugna-P: its operator stands at the control panel, not aboard (and SBW doesn't stamp the
+        // missile with its launcher then), so ask StugnaRemote - the launcher counts its operator as seat 0.
+        if (vehicle == null && shooter instanceof net.minecraft.server.level.ServerPlayer player) {
+            vehicle = frontline.combat.fcp.entity.vehicle.Stugna.StugnaRemote.launcherOf(player);
+        }
+        if (vehicle == null) return null;
         Profile p = profile(vehicle);
         if (p == null) return null;
         int seat = vehicle.getSeatIndex(shooter);
@@ -238,6 +245,9 @@ public final class VehicleArmor {
         Profile p = profile(vehicle);
         if (p == null || !p.model()) return sbwDamage;
         Entity direct = source.getDirectEntity();
+        // fcp:mine: its own Squad AT-mine hits (armour ignored, explosive modifier) pass; the SBW blast it also sets off
+        // does nothing more to vehicles, so a mine counts once (FcpMineEntity).
+        if (direct instanceof frontline.combat.fcp.entity.projectile.FcpMineEntity mine) return mine.squadHit() ? raw * Math.max(0f, p.modifier("explosive")) : 0;
         CompoundTag tag = direct != null && direct.getPersistentData().contains(TAG) ? direct.getPersistentData().getCompound(TAG) : null;
 
         boolean explosion = source.is(DamageTypeTags.IS_EXPLOSION) || source.is(ModDamageTypes.CUSTOM_EXPLOSION)

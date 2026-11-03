@@ -1,0 +1,6 @@
+{
+  "Skins": [
+    {"Id": "vanilla", "Name": "Green", "Texture": "fcp:textures/entity/komatsu/komatsu_lav_green.png", "Priority": 1},
+    {"Id": "olive", "Name": "Olive Drab", "Texture": "fcp:textures/entity/komatsu/komatsu_lav_olive.png", "Priority": 2}
+  ]
+}

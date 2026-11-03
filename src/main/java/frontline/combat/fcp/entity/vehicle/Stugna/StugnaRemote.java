@@ -123,8 +123,9 @@ public final class StugnaRemote {
         return session != null && session.launcherId() == launcher.getId();
     }
 
+    /** The launcher {@code player} is operating remotely, or null (also used to tag its missiles, VehicleArmor). */
     @Nullable
-    private static StugnaLauncherEntity launcherOf(ServerPlayer player) {
+    public static StugnaLauncherEntity launcherOf(ServerPlayer player) {
         Session session = SESSIONS.get(player.getUUID());
         if (session == null || !player.level().dimension().equals(session.dimension())) {
             return null;

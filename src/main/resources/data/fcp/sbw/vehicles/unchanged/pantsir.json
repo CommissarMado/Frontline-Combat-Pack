@@ -423,16 +423,16 @@
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0.05,
-    "EnergyCostRate": 136.3,
-    "WheelRotSpeed": 1.25,
+    "EnergyCostRate": 131.4,
+    "WheelRotSpeed": 0.833,
     "WheelDifferential": 0.5,
     "TrackRotSpeed": 1.9,
     "TrackDifferential": 0.8,
-    "MaxForwardSpeedRate": 1.11,
-    "MaxBackwardSpeedRate": 0.48,
-    "Increment": 0.01786,
-    "Decrement": 0.018,
-    "SteeringSpeed": 0.1
+    "MaxForwardSpeedRate": 1.07,
+    "MaxBackwardSpeedRate": 0.32,
+    "Increment": 0.012,
+    "Decrement": 0.013,
+    "SteeringSpeed": 0.05
   },
   "TurretPos": [
     -0.000996,

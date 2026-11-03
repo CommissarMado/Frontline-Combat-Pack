@@ -31,12 +31,14 @@ public class BMP1AMModel extends FCPVehicleModel<BMP1AMEntity> {
             return (bone, vehicle, state) -> {
                 float bindRotX = bone.getInitialSnapshot().getRotX();
 
+                // clearRecoilOffsets already puts rotX back to the bind rotation; the recoil sets rotX to its kick
+                // alone, so the bind rotation is added only then (adding it at rest doubled it - the gun sat flipped
+                // until the first shot).
                 ModelBoneTransforms.clearRecoilOffsets(bone);
                 if (vehicle.getCannonRecoilTime() > 0 && CANNON_WEAPON.equals(CannonRecoilTransforms.gunnerGunName(vehicle))) {
                     CannonRecoilTransforms.apply(bone, vehicle, CannonRecoilTransforms.Profile.FORWARDBACK);
+                    bone.setRotX(bindRotX + bone.getRotX());
                 }
-
-                bone.setRotX(bindRotX + bone.getRotX());
             };
         }
 

@@ -1,6 +1,7 @@
 package frontline.combat.fcp.entity.vehicle.Khrizantema;
 
 import com.atsuishio.superbwarfare.data.gun.GunData;
+import com.atsuishio.superbwarfare.entity.projectile.WireGuideMissileEntity;
 import com.atsuishio.superbwarfare.entity.vehicle.damage.DamageModifier;
 import com.atsuishio.superbwarfare.entity.vehicle.utils.VehicleVecUtils;
 import com.mojang.math.Axis;
@@ -18,6 +19,8 @@ import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix4d;
 import org.joml.Vector4d;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -81,10 +84,21 @@ public class KhrizantemaEntity extends CamoVehicleBase {
             SynchedEntityData.defineId(KhrizantemaEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> ARM_WANTED =
             SynchedEntityData.defineId(KhrizantemaEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> GUIDING =
+            SynchedEntityData.defineId(KhrizantemaEntity.class, EntityDataSerializers.BOOLEAN);
 
     private float sightO, sightNow, armO, armNow;
     private float mastYaw, mastPitch, mastYawO, mastPitchO;
     private float sightYaw, sightPitch, sightYawO, sightPitchO;
+
+    /** Server: wire-guided missiles this launcher fired that are still flying (they steer by the launcher's aim). */
+    private final List<WireGuideMissileEntity> guiding = new ArrayList<>();
+
+    /**
+     * The aim those missiles follow (turret yaw/pitch convention). It is the turret's own while the turret is free; once
+     * the launcher folds for the reload it keeps following the gunner on its own, so the crosshair and the wire stay put.
+     */
+    private float guideYRot, guideXRot, guideYRotO, guideXRotO;
 
     public int INVENTORY_SIZE = 9;
 
@@ -105,6 +119,7 @@ public class KhrizantemaEntity extends CamoVehicleBase {
         this.entityData.define(ARM, 0f);
         this.entityData.define(SIGHT_WANTED, false);
         this.entityData.define(ARM_WANTED, false);
+        this.entityData.define(GUIDING, false);
     }
 
     @Override
@@ -156,11 +171,25 @@ public class KhrizantemaEntity extends CamoVehicleBase {
         if (!level().isClientSide) stepDeploy();
     }
 
+    /**
+     * Remembers missiles launched from here (SBW tags each with its launcher's UUID). Scanned every tick close to the
+     * vehicle: the ATGM leaves 1.5 s after the trigger (fire delay), and a fresh one is within 8 blocks for a tick or two.
+     */
+    private void trackLaunches() {
+        guiding.removeIf(m -> !m.isAlive());
+        for (WireGuideMissileEntity m : level().getEntitiesOfClass(WireGuideMissileEntity.class, getBoundingBox().inflate(8),
+                m -> getUUID().equals(m.getLauncherVehicleUUID()))) {
+            if (!guiding.contains(m)) guiding.add(m);
+        }
+    }
+
     private void stepDeploy() {
         Entity gunner = getNthEntity(GUNNER_SEAT);
         GunData atgm = gunner == null ? null : getGunData(GUNNER_SEAT);
         boolean sightWanted = gunner != null && !isWreck();
+        trackLaunches();
         boolean armWanted = sightWanted && !(atgm != null && atgm.reloading());
+        this.entityData.set(GUIDING, gunner != null && !guiding.isEmpty());
         this.entityData.set(SIGHT_WANTED, sightWanted);
         this.entityData.set(ARM_WANTED, armWanted);
 
@@ -188,7 +217,39 @@ public class KhrizantemaEntity extends CamoVehicleBase {
     /** Locked: don't follow the gunner (lockTurret drives it to zero instead). */
     @Override
     public void adjustTurretAngle() {
-        if (!turretLocked()) super.adjustTurretAngle();
+        guideYRotO = guideYRot;
+        guideXRotO = guideXRot;
+        if (!turretLocked()) {
+            super.adjustTurretAngle();
+        } else if (guidingDetached()) {
+            // SBW's own aiming, run on the guide angles in place of the (homing) turret's.
+            float y = getTurretYRot(), x = getTurretXRot(), yo = getTurretYRotO(), xo = getTurretXRotO();
+            setTurretYRot(guideYRot); setTurretXRot(guideXRot); setTurretYRotO(guideYRotO); setTurretXRotO(guideXRotO);
+            super.adjustTurretAngle();
+            guideYRot = getTurretYRot();
+            guideXRot = getTurretXRot();
+            setTurretYRot(y); setTurretXRot(x); setTurretYRotO(yo); setTurretXRotO(xo);
+            setTurretYRotLock(0f);
+            return;
+        }
+        guideYRot = getTurretYRot();
+        guideXRot = getTurretXRot();
+    }
+
+    /** Missiles in flight while the launcher is locked for its reload: they (and the crosshair) follow the guide aim. */
+    private boolean guidingDetached() {
+        return this.entityData.get(GUIDING) && turretLocked();
+    }
+
+    /** Wire-guided missiles and the crosshair steer by this: the guide aim while detached, the barrel otherwise. */
+    @Override
+    public Vec3 getBarrelVector(float partialTicks) {
+        if (!guidingDetached()) return super.getBarrelVector(partialTicks);
+        float y = getTurretYRot(), x = getTurretXRot(), yo = getTurretYRotO(), xo = getTurretXRotO();
+        setTurretYRot(guideYRot); setTurretXRot(guideXRot); setTurretYRotO(guideYRotO); setTurretXRotO(guideXRotO);
+        Vec3 v = super.getBarrelVector(partialTicks);
+        setTurretYRot(y); setTurretXRot(x); setTurretYRotO(yo); setTurretXRotO(xo);
+        return v;
     }
 
     private void lockTurret() {

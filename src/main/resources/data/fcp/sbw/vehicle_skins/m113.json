@@ -1,0 +1,22 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Green",
+      "Texture": "fcp:textures/entity/m113/m113_green.png",
+      "Priority": 1
+    },
+    {
+      "Id": "iraq",
+      "Name": "Iraq",
+      "Texture": "fcp:textures/entity/m113/m113_iraq.png",
+      "Priority": 2
+    },
+    {
+      "Id": "pmc",
+      "Name": "PMC",
+      "Texture": "fcp:textures/entity/m113/m113_pmc.png",
+      "Priority": 3
+    }
+  ]
+}

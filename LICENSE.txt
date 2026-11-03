@@ -10,7 +10,7 @@ PERMISSIONS GRANTED:
    - Use this mod for personal enjoyment
    - Modify the source code
    - Distribute copies and modifications
-   - Use on free, non-monetized servers
+   - Use on free, non-monetized, private servers
    - Create content (videos, streams, tutorials)
    
    For these uses, no permission is required.

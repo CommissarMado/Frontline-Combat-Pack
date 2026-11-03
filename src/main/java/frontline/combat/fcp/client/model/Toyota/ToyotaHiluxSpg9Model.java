@@ -12,7 +12,8 @@ import org.jetbrains.annotations.Nullable;
 public class ToyotaHiluxSpg9Model extends VehicleModel<ToyotaHiluxSpg9Entity> {
     @Override
     public ResourceLocation getModelResource(ToyotaHiluxSpg9Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/toyota_hilux_spg9.geo.json");
+        // "toyota_hilux_spg9" or "toyota_hilux_kornet" (same entity class, registry name picks the geo).
+        return new ResourceLocation(FCP.MODID, "geo/" + net.minecraft.world.entity.EntityType.getKey(animatable.getType()).getPath() + ".geo.json");
     }
 
     @Override
@@ -33,6 +34,11 @@ public class ToyotaHiluxSpg9Model extends VehicleModel<ToyotaHiluxSpg9Entity> {
                 WheelRotationTransforms.matchAny(boneName, 0.392,
                         "WheelL0", "WheelR0", "WheelL1", "WheelR1");
         if (wheels != null) return wheels;
+
+        // Hilux Kornet: the spent Kornet container comes off halfway through the reload (LauncherTube).
+        if ("missile".equals(boneName)) {
+            return (bone, vehicle, state) -> bone.setHidden(vehicle.launcherTubeOff());
+        }
 
         return super.collectTransform(boneName);
     }
