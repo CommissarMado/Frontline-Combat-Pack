@@ -606,15 +606,26 @@ public abstract class CamoVehicleBase extends GeoVehicleEntity implements Vehicl
     }
 
     /**
-     * For seat-fired missiles that only fly when locked (SBW's Igla and FCP's Sidewinder just hang in the air unguided):
-     * true - and the shooter is told why - when {@code shooter}'s selected weapon is one of {@code lockOnly} and the
-     * shot carries no locked target. Call from a {@code vehicleShoot(LivingEntity, UUID, Vec3)} override, whose UUID is
-     * the locked target.
+     * Seat-fired missiles that only fly when locked (SBW's Igla and FCP's Sidewinder just hang in the air unguided).
+     * The server refuses them unlocked ({@link #refuseUnlocked}) and the client plays no fire sound for them
+     * (VehicleLockFireSoundMixin).
      */
-    protected boolean refuseUnlocked(@Nullable net.minecraft.world.entity.LivingEntity shooter, @Nullable java.util.UUID target, String... lockOnly) {
+    protected java.util.Set<String> lockOnlyWeapons() {
+        return java.util.Set.of();
+    }
+
+    /** True when {@code seat}'s selected weapon is one of {@link #lockOnlyWeapons()}. */
+    public boolean lockOnly(int seat) {
+        return seat >= 0 && lockOnlyWeapons().contains(getGunName(seat));
+    }
+
+    /**
+     * True - and the shooter is told why - when {@code shooter}'s selected weapon is lock-only and the shot carries no
+     * locked target. Call from a {@code vehicleShoot(LivingEntity, UUID, Vec3)} override, whose UUID is the locked target.
+     */
+    protected boolean refuseUnlocked(@Nullable net.minecraft.world.entity.LivingEntity shooter, @Nullable java.util.UUID target) {
         if (target != null || shooter == null || this.level().isClientSide()) return false;
-        int seat = getSeatIndex(shooter);
-        if (seat < 0 || !List.of(lockOnly).contains(getGunName(seat))) return false;
+        if (!lockOnly(getSeatIndex(shooter))) return false;
         if (shooter instanceof Player player) {
             player.displayClientMessage(net.minecraft.network.chat.Component.translatable("tips.fcp.lock_required"), true);
         }

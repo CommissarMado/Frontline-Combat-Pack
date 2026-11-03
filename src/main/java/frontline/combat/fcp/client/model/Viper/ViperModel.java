@@ -18,6 +18,14 @@ public class ViperModel extends VehicleModel<ViperEntity> {
     @Override
     public @Nullable VehicleModel.TransformContext<ViperEntity> collectTransform(String boneName) {
         return switch (boneName) {
+            // The nose sight: SBW's turret yaw and pitch about its own pivot.
+            case "camera" -> (bone, vehicle, state) -> {
+                bone.setRotY(Mth.lerp(state.getPartialTick(), vehicle.getTurretYRotO(), vehicle.getTurretYRot()) * Mth.DEG_TO_RAD);
+                bone.setRotX(-Mth.lerp(state.getPartialTick(), vehicle.getTurretXRotO(), vehicle.getTurretXRot()) * Mth.DEG_TO_RAD);
+            };
+            // The M197: the sight's angles clamped to the gun mount (ViperEntity), mapped like SBW maps "turret" / "barrel".
+            case "turret" -> (bone, vehicle, state) -> bone.setRotY(vehicle.gunYaw(state.getPartialTick()) * Mth.DEG_TO_RAD);
+            case "barrel" -> (bone, vehicle, state) -> bone.setRotX(-vehicle.gunPitch(state.getPartialTick()) * Mth.DEG_TO_RAD);
             case "propeller" ->
                     (bone, vehicle, state) -> bone.setRotY(-Mth.lerp(state.getPartialTick(), vehicle.getPropellerRotO(), vehicle.getPropellerRot()));
             case "tailPropeller" ->

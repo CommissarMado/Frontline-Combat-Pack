@@ -42,7 +42,8 @@
     "GeoVehicleRendererGroundMixin",
     "MissilePosInputScreenMixin",
     "MissilePosInputDoneMixin",
-    "EntityTurnMixin"
+    "EntityTurnMixin",
+    "VehicleLockFireSoundMixin"
   ],
   "injectors": {
     "defaultRequire": 1

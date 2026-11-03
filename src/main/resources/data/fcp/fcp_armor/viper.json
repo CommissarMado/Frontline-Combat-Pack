@@ -18,7 +18,7 @@
   "weapons": {
     "Cannon": {
       "type": "frag",
-      "pen": 8.0
+      "pen": 9.0
     },
     "Rocket": {
       "type": "frag",

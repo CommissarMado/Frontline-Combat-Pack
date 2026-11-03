@@ -59,8 +59,13 @@ public class Ka52Entity extends CamoVehicleBase {
 
     /** The Igla only flies when locked on: no launch without a target. */
     @Override
+    protected java.util.Set<String> lockOnlyWeapons() {
+        return java.util.Set.of("Igla");
+    }
+
+    @Override
     public void vehicleShoot(@Nullable net.minecraft.world.entity.LivingEntity living, @Nullable java.util.UUID target, @Nullable net.minecraft.world.phys.Vec3 targetPos) {
-        if (refuseUnlocked(living, target, "Igla")) return;
+        if (refuseUnlocked(living, target)) return;
         super.vehicleShoot(living, target, targetPos);
     }
 
