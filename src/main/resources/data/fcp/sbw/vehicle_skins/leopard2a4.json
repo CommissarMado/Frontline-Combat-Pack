@@ -1,0 +1,22 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Standard",
+      "Texture": "fcp:textures/entity/leopard2/leopard2a4_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "green",
+      "Name": "Green",
+      "Texture": "fcp:textures/entity/leopard2/leopard2a4_2.png",
+      "Priority": 2
+    },
+    {
+      "Id": "desert",
+      "Name": "Desert",
+      "Texture": "fcp:textures/entity/leopard2/leopard2a4_3.png",
+      "Priority": 3
+    }
+  ]
+}

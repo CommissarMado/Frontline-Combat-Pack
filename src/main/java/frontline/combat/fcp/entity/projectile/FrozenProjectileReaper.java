@@ -10,6 +10,8 @@ import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -52,6 +54,7 @@ public final class FrozenProjectileReaper {
         MinecraftServer server = event.getServer();
         if (server == null) return;
         for (ServerLevel level : server.getAllLevels()) {
+            List<Entity> frozen = new ArrayList<>();
             for (Entity entity : level.getAllEntities()) {
                 if (!ours(entity) || entity.isRemoved()) continue;
                 int[] seen = SEEN.get(entity);
@@ -63,9 +66,11 @@ public final class FrozenProjectileReaper {
                     seen[0] = entity.tickCount;
                     seen[1] = 0;
                 } else if (++seen[1] >= FROZEN_SECONDS * 20 / CHECK_INTERVAL) {
-                    entity.discard();
+                    frozen.add(entity);
                 }
             }
+            // Not inside the loop: discard() removes from the map being iterated, and a shrink crashes the iterator.
+            frozen.forEach(Entity::discard);
         }
     }
 }

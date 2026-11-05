@@ -69,6 +69,8 @@ public final class EngineControl {
         put(m, 33, "fcp:t14_armata", "fcp:t90a", "fcp:t90m", "fcp:t90m_2022", "fcp:t90m_2024", "fcp:t90ms");
         // challenger2 (Type 10, user pick): challenger2_engine_start_int_01
         put(m, 38, "fcp:type10");
+        // leopard2: Leopard_engine_start_INT_01, 4.00 s
+        put(m, 80, "fcp:leopard2a4", "fcp:leopard2a6", "fcp:leopard2a7v");
         // technical: technical_engine_start_int_01
         put(m, 47, "fcp:land_cruiser_80", "fcp:toyota_hilux", "fcp:toyota_hilux_rocket_pod", "fcp:toyota_hilux_bmp", "fcp:toyota_hilux_spg9", "fcp:toyota_hilux_kornet", "fcp:toyota_hilux_mortar", "fcp:toyota_hilux_zu23");
         // mgator: mgator_engine_start_ext_01

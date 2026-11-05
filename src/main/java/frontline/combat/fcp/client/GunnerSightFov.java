@@ -31,7 +31,8 @@ public final class GunnerSightFov {
         Player player = mc.player;
         if (player == null || ClientEventHandler.zoomVehicle || !mc.options.getCameraType().isFirstPerson()) return;
         if (!(player.getVehicle() instanceof VehicleEntity tank) || !(tank instanceof M1a1Entity || tank instanceof T72Entity || tank instanceof frontline.combat.fcp.entity.vehicle.T90M.T90MEntity
-                || tank instanceof frontline.combat.fcp.entity.vehicle.Type10.Type10Entity)) return;
+                || tank instanceof frontline.combat.fcp.entity.vehicle.Type10.Type10Entity
+                || tank instanceof frontline.combat.fcp.entity.vehicle.Leopard2.Leopard2Entity)) return;
         if (tank.getSeatIndex(player) != tank.computed().getTurretControllerIndex()) return;
         event.setFOV(event.getFOV() / TANK_GUNNER_ZOOM);
     }

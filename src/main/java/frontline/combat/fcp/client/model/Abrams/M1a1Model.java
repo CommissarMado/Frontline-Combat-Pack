@@ -45,6 +45,9 @@ public class M1a1Model extends FCPVehicleModel<M1a1Entity> {
 
     @Override
     public @Nullable VehicleModel.TransformContext<M1a1Entity> collectTransform(String boneName) {
+        // The M1A1 AIM geo names its wheel GROUPS "wheelL" / "wheelR" (the others: "WheelL"), which SBW's wheel pattern
+        // ^wheel[LR].*$ also catches - the whole group would spin about its pivot on top of each wheel. Groups don't turn.
+        if (boneName.equals("wheelL") || boneName.equals("wheelR")) return null;
         // Same sign conventions as SBW's passenger weapon station: yaw bone = -(look offset),
         // pitch bone = -(look pitch), both relative to the turret the MG is mounted on.
         if (boneName.equals("turret3")) {

@@ -29,7 +29,7 @@ import net.minecraftforge.fml.common.Mod;
 import java.util.Set;
 
 /**
- * The commander's sight on the Puma (both variants) and the BMP-2M: the same camera HUD as the
+ * The commander's sight on the Puma (both variants), the BMP-2M and the Leopard 2s: the same camera HUD as the
  * Stugna-P remote (StugnaRemoteClient) -
  * TV frame, reticle, scroll-wheel zoom (1x-6x) with its scale, the RANGE readout and a THERMAL tag -
  * without its ammo, health and distance readouts. The commander seat is thermal-capable in the
@@ -43,7 +43,8 @@ public final class PumaCommanderHud {
     public static final IGuiOverlay OVERLAY = PumaCommanderHud::renderOverlay;
 
     /** Vehicles whose commander (passenger weapon station) seat gets this sight. */
-    private static final Set<String> VEHICLES = Set.of("fcp:puma", "fcp:puma_atgm", "fcp:m2a3", "fcp:m2a3_busk", "fcp:bmp2m", "fcp:t72m2_moderna");
+    private static final Set<String> VEHICLES = Set.of("fcp:puma", "fcp:puma_atgm", "fcp:m2a3", "fcp:m2a3_busk", "fcp:bmp2m", "fcp:t72m2_moderna",
+            "fcp:leopard2a4", "fcp:leopard2a6", "fcp:leopard2a7v");
 
     private static final int MIN_ZOOM = 1, MAX_ZOOM = 6;
     private static final double MAX_RANGE = 500.0;

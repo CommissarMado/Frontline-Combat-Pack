@@ -4,6 +4,7 @@ import com.atsuishio.superbwarfare.entity.vehicle.damage.DamageModifier;
 import com.atsuishio.superbwarfare.data.vehicle.subdata.SeatInfo;
 import com.mojang.math.Axis;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
+import frontline.combat.fcp.vehicle.CamoNetVehicle;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.Vec3;
@@ -26,7 +27,7 @@ import java.util.Map;
  * Each is its own EntityType on this class; the registry name picks the geo, skins and attachment
  * data. The "toggle" bones are removable attachments, kept the same way as the Humvees'.
  */
-public class M1a1Entity extends CamoVehicleBase implements HumveeVehicle {
+public class M1a1Entity extends CamoVehicleBase implements HumveeVehicle, CamoNetVehicle {
 
     public int INVENTORY_SIZE = 9;
 
@@ -40,6 +41,12 @@ public class M1a1Entity extends CamoVehicleBase implements HumveeVehicle {
     private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(M1a1Entity.class, EntityDataSerializers.FLOAT);
     // Selected attachment variants, encoded as "Category=idx;Category=idx;...".
     private static final EntityDataAccessor<String> ATTACHMENTS = SynchedEntityData.defineId(M1a1Entity.class, EntityDataSerializers.STRING);
+    // Camo net (fcp:camo_net, VehicleCamoNet): 0 none, 1 light (Squad M1A2 layout), 2 heavy (War Thunder M1A2C layout).
+    private static final EntityDataAccessor<Integer> CAMO_NET = SynchedEntityData.defineId(M1a1Entity.class, EntityDataSerializers.INT);
+    public static final int CAMO_NET_VARIANTS = 3;
+    // Camo net colour (sneak-use with fcp:camo_net): 0 jungle, 1 woodland (default), 2 olive, 3 timber, 4 desert.
+    private static final EntityDataAccessor<Integer> CAMO_NET_COLOR = SynchedEntityData.defineId(M1a1Entity.class, EntityDataSerializers.INT);
+    public static final int CAMO_NET_COLORS = 5;
     // Fresh spawns roll a random attachment set once; loaded vehicles keep what was saved.
     private boolean attachmentsInitialized = false;
 
@@ -56,6 +63,34 @@ public class M1a1Entity extends CamoVehicleBase implements HumveeVehicle {
         super.defineSynchedData();
         this.entityData.define(STEERING_ANGLE, 0f);
         this.entityData.define(ATTACHMENTS, "");
+        this.entityData.define(CAMO_NET, 0);
+        this.entityData.define(CAMO_NET_COLOR, 1);
+    }
+
+    @Override public String camoNetName() { return humveeName(); }
+
+    /** Camo net preset: 0 none, 1 light, 2 heavy. */
+    public int getCamoNet() {
+        return this.entityData.get(CAMO_NET);
+    }
+
+    /** Next camo net preset (none -> light -> heavy -> none); returns the new one. */
+    public int cycleCamoNet() {
+        int next = (getCamoNet() + 1) % CAMO_NET_VARIANTS;
+        this.entityData.set(CAMO_NET, next);
+        return next;
+    }
+
+    /** Camo net colour: 0 jungle, 1 woodland, 2 olive, 3 timber, 4 desert. */
+    public int getCamoNetColor() {
+        return this.entityData.get(CAMO_NET_COLOR);
+    }
+
+    /** Next camo net colour; returns the new one. */
+    public int cycleCamoNetColor() {
+        int next = (getCamoNetColor() + 1) % CAMO_NET_COLORS;
+        this.entityData.set(CAMO_NET_COLOR, next);
+        return next;
     }
 
     // ---- loader's MG (turret3 / barrel3) ----
@@ -202,6 +237,8 @@ public class M1a1Entity extends CamoVehicleBase implements HumveeVehicle {
         compound.putFloat("SteeringAngle", this.getSteeringAngle());
         compound.putString("Attachments", this.entityData.get(ATTACHMENTS));
         compound.putBoolean("AttachmentsInit", this.attachmentsInitialized);
+        compound.putInt("CamoNet", getCamoNet());
+        compound.putInt("CamoNetColor", getCamoNetColor());
     }
 
     @Override
@@ -214,6 +251,8 @@ public class M1a1Entity extends CamoVehicleBase implements HumveeVehicle {
             this.entityData.set(ATTACHMENTS, compound.getString("Attachments"));
         }
         this.attachmentsInitialized = compound.getBoolean("AttachmentsInit") || compound.contains("Attachments");
+        if (compound.contains("CamoNet")) this.entityData.set(CAMO_NET, compound.getInt("CamoNet") % CAMO_NET_VARIANTS);
+        if (compound.contains("CamoNetColor")) this.entityData.set(CAMO_NET_COLOR, compound.getInt("CamoNetColor") % CAMO_NET_COLORS);
     }
     public boolean GetWeaponState(String WeaponName, int Count) {
         if (getAmmoCount(WeaponName) == Count)
@@ -228,6 +267,8 @@ public class M1a1Entity extends CamoVehicleBase implements HumveeVehicle {
     @Override
     public void baseTick() {
         super.baseTick();
+        // a destroyed tank loses its camo net (it burns off)
+        if (!this.level().isClientSide() && isWreck() && getCamoNet() != 0) this.entityData.set(CAMO_NET, 0);
         if (!this.level().isClientSide() && !this.attachmentsInitialized) {
             randomizeAttachments();
             this.attachmentsInitialized = true;

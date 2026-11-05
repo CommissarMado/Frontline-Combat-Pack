@@ -108,6 +108,7 @@ import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxMortarEntity;
 import frontline.combat.fcp.entity.vehicle.Toyota.ToyotaHiluxZu23Entity;
 import frontline.combat.fcp.entity.vehicle.Trailers.ExampleTrailer.ExampleTrailerEntity;
 import frontline.combat.fcp.entity.vehicle.Type10.Type10Entity;
+import frontline.combat.fcp.entity.vehicle.Leopard2.Leopard2Entity;
 import frontline.combat.fcp.entity.vehicle.TyphoonVdv.TyphoonVdvEntity;
 import frontline.combat.fcp.entity.vehicle.TyphoonVdvUnarmed.TyphoonVdvUnarmedEntity;
 import frontline.combat.fcp.entity.vehicle.LandRover110.LandRover110Entity;
@@ -488,6 +489,13 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<Type10Entity>> TYPE10 = register("type10",
             EntityType.Builder.of(Type10Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+
+    public static final RegistryObject<EntityType<Leopard2Entity>> LEOPARD2A4 = register("leopard2a4",
+            EntityType.Builder.of(Leopard2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<Leopard2Entity>> LEOPARD2A6 = register("leopard2a6",
+            EntityType.Builder.of(Leopard2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<Leopard2Entity>> LEOPARD2A7V = register("leopard2a7v",
+            EntityType.Builder.of(Leopard2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<TyphoonVdvEntity>> TYPHOON_VDV = register("typhoon_vdv",
             EntityType.Builder.of(TyphoonVdvEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,3f));
     public static final RegistryObject<EntityType<TyphoonVdvUnarmedEntity>> TYPHOON_VDV_UNARMED = register("typhoon_vdv_unarmed",

@@ -84,6 +84,7 @@ import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxMortarRenderer;
 import frontline.combat.fcp.client.renderer.Toyota.ToyotaHiluxZu23Renderer;
 import frontline.combat.fcp.client.renderer.Trailers.ExampleTrailer.ExampleTrailerRenderer;
 import frontline.combat.fcp.client.renderer.Type10.Type10Renderer;
+import frontline.combat.fcp.client.renderer.Leopard2.Leopard2Renderer;
 import frontline.combat.fcp.client.renderer.TyphoonVdv.TyphoonVdvRenderer;
 import frontline.combat.fcp.client.renderer.TyphoonVdvUnarmed.TyphoonVdvUnarmedRenderer;
 import frontline.combat.fcp.client.renderer.Uaz.UAZDSHKARenderer;
@@ -325,6 +326,10 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.M1A2_TUSK2.get(), M1a1Renderer::new);
 
         event.registerEntityRenderer(ModEntities.TYPE10.get(), Type10Renderer::new);
+
+        event.registerEntityRenderer(ModEntities.LEOPARD2A4.get(), Leopard2Renderer::new);
+        event.registerEntityRenderer(ModEntities.LEOPARD2A6.get(), Leopard2Renderer::new);
+        event.registerEntityRenderer(ModEntities.LEOPARD2A7V.get(), Leopard2Renderer::new);
 
         event.registerEntityRenderer(ModEntities.TYPHOON_VDV.get(), TyphoonVdvRenderer::new);
         event.registerEntityRenderer(ModEntities.TYPHOON_VDV_UNARMED.get(), TyphoonVdvUnarmedRenderer::new);

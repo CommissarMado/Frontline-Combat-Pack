@@ -26,6 +26,7 @@ public class ModTabs {
 
                 // ---- Custom Items ----
                 output.accept(ModItems.SPRAY.get());
+                output.accept(ModItems.CAMO_NET.get());
                 output.accept(ModItems.REDBULL.get());
                 output.accept(ModItems.DELICIOUS_SNACK.get());
 
@@ -107,6 +108,10 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.M1A2_TUSK2.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.TYPE10.get()));
+
+                output.accept(ContainerBlockItem.createInstance(ModEntities.LEOPARD2A4.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.LEOPARD2A6.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.LEOPARD2A7V.get()));
 
                 output.accept(ContainerBlockItem.createInstance(ModEntities.LITTLEBIRD.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.LITTLEBIRD_ARMED.get()));

@@ -8541,5 +8541,312 @@
         "attenuation_distance": 24
       }
     ]
+  },
+  "squad.leopard2.engine.leopard_engine_idle_ext_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/leopard2/engine/leopard_engine_idle_ext_01",
+        "stream": false,
+        "attenuation_distance": 24
+      }
+    ]
+  },
+  "squad.leopard2.engine.leopard_engine_idle_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/leopard2/engine/leopard_engine_idle_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.leopard2.engine.leopard_engine_low_rpm_ext_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/leopard2/engine/leopard_engine_low_rpm_ext_01",
+        "stream": false,
+        "attenuation_distance": 24
+      }
+    ]
+  },
+  "squad.leopard2.engine.leopard_engine_low_rpm_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/leopard2/engine/leopard_engine_low_rpm_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.leopard2.engine.leopard_engine_throttle_ext_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/leopard2/engine/leopard_engine_throttle_ext_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.leopard2.engine.leopard_engine_throttle_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/leopard2/engine/leopard_engine_throttle_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.leopard2.engine.leopard_engine_start_ext_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/leopard2/engine/leopard_engine_start_ext_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.leopard2.engine.leopard_engine_start_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/leopard2/engine/leopard_engine_start_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.leopard2.engine.leopard_engine_stop_ext_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/leopard2/engine/leopard_engine_stop_ext_01",
+        "stream": false,
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "squad.leopard2.engine.leopard_engine_stop_int_01": {
+    "sounds": [
+      {
+        "name": "fcp:squad/leopard2/engine/leopard_engine_stop_int_01",
+        "stream": false
+      }
+    ]
+  },
+  "squad.weapons.common.leopard_reload_1p": {
+    "sounds": [
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_1p_01",
+        "stream": false,
+        "volume": 0.68
+      },
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_1p_02",
+        "stream": false,
+        "volume": 0.68
+      },
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_1p_03",
+        "stream": false,
+        "volume": 0.68
+      },
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_1p_04",
+        "stream": false,
+        "volume": 0.68
+      },
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_1p_05",
+        "stream": false,
+        "volume": 0.68
+      },
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_1p_06",
+        "stream": false,
+        "volume": 0.68
+      },
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_1p_07",
+        "stream": false,
+        "volume": 0.68
+      },
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_1p_08",
+        "stream": false,
+        "volume": 0.68
+      },
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_1p_09",
+        "stream": false,
+        "volume": 0.68
+      },
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_1p_10",
+        "stream": false,
+        "volume": 0.68
+      }
+    ]
+  },
+  "squad.weapons.common.leopard_reload_3p": {
+    "sounds": [
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_3p_01",
+        "stream": false,
+        "volume": 0.54,
+        "attenuation_distance": 32
+      },
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_3p_02",
+        "stream": false,
+        "volume": 0.54,
+        "attenuation_distance": 32
+      },
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_3p_03",
+        "stream": false,
+        "volume": 0.54,
+        "attenuation_distance": 32
+      },
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_3p_04",
+        "stream": false,
+        "volume": 0.54,
+        "attenuation_distance": 32
+      },
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_3p_05",
+        "stream": false,
+        "volume": 0.54,
+        "attenuation_distance": 32
+      },
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_3p_06",
+        "stream": false,
+        "volume": 0.54,
+        "attenuation_distance": 32
+      },
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_3p_07",
+        "stream": false,
+        "volume": 0.54,
+        "attenuation_distance": 32
+      },
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_3p_08",
+        "stream": false,
+        "volume": 0.54,
+        "attenuation_distance": 32
+      },
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_3p_09",
+        "stream": false,
+        "volume": 0.54,
+        "attenuation_distance": 32
+      },
+      {
+        "name": "fcp:squad/weapons/common/leopard_reload_3p_10",
+        "stream": false,
+        "volume": 0.54,
+        "attenuation_distance": 32
+      }
+    ]
+  },
+  "squad.tracks.abrams": {
+    "sounds": [
+      {
+        "name": "fcp:squad/tracks/abrams",
+        "stream": false,
+        "attenuation_distance": 48
+      }
+    ]
+  },
+  "squad.tracks.leopard": {
+    "sounds": [
+      {
+        "name": "fcp:squad/tracks/leopard",
+        "stream": false,
+        "attenuation_distance": 48
+      }
+    ]
+  },
+  "squad.tracks.t90": {
+    "sounds": [
+      {
+        "name": "fcp:squad/tracks/t90",
+        "stream": false,
+        "attenuation_distance": 48
+      }
+    ]
+  },
+  "squad.tracks.bmp1": {
+    "sounds": [
+      {
+        "name": "fcp:squad/tracks/bmp1",
+        "stream": false,
+        "attenuation_distance": 48
+      }
+    ]
+  },
+  "squad.tracks.bradley": {
+    "sounds": [
+      {
+        "name": "fcp:squad/tracks/bradley",
+        "stream": false,
+        "attenuation_distance": 48
+      }
+    ]
+  },
+  "squad.tracks.warrior": {
+    "sounds": [
+      {
+        "name": "fcp:squad/tracks/warrior",
+        "stream": false,
+        "attenuation_distance": 48
+      }
+    ]
+  },
+  "squad.tracks.fv432": {
+    "sounds": [
+      {
+        "name": "fcp:squad/tracks/fv432",
+        "stream": false,
+        "attenuation_distance": 48
+      }
+    ]
+  },
+  "squad.tracks.mtlb_int": {
+    "sounds": [
+      {
+        "name": "fcp:squad/tracks/mtlb_int",
+        "stream": false
+      }
+    ]
+  },
+  "squad.tracks.bradley_int": {
+    "sounds": [
+      {
+        "name": "fcp:squad/tracks/bradley_int",
+        "stream": false
+      }
+    ]
+  },
+  "squad.tracks.leopard_speed": {
+    "sounds": [
+      {
+        "name": "fcp:squad/tracks/leopard_speed",
+        "stream": false,
+        "attenuation_distance": 48
+      }
+    ]
+  },
+  "squad.tracks.speed_int": {
+    "sounds": [
+      {
+        "name": "fcp:squad/tracks/speed_int",
+        "stream": false
+      }
+    ]
+  },
+  "squad.tracks.leopard_speed_int": {
+    "sounds": [
+      {
+        "name": "fcp:squad/tracks/leopard_speed_int",
+        "stream": false
+      }
+    ]
   }
 }
