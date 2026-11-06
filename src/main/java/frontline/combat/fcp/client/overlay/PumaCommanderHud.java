@@ -44,7 +44,7 @@ public final class PumaCommanderHud {
 
     /** Vehicles whose commander (passenger weapon station) seat gets this sight. */
     private static final Set<String> VEHICLES = Set.of("fcp:puma", "fcp:puma_atgm", "fcp:m2a3", "fcp:m2a3_busk", "fcp:bmp2m", "fcp:t72m2_moderna",
-            "fcp:leopard2a4", "fcp:leopard2a6", "fcp:leopard2a7v");
+            "fcp:leopard2a4", "fcp:leopard2a4_ukr", "fcp:leopard2a6", "fcp:leopard2a7v");
 
     private static final int MIN_ZOOM = 1, MAX_ZOOM = 6;
     private static final double MAX_RANGE = 500.0;

@@ -150,6 +150,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.BMP2.get(), BMP2Renderer::new);
         event.registerEntityRenderer(ModEntities.PUMA.get(), frontline.combat.fcp.client.renderer.Puma.PumaRenderer::new);
         event.registerEntityRenderer(ModEntities.PUMA_ATGM.get(), frontline.combat.fcp.client.renderer.Puma.PumaRenderer::new);
+        event.registerEntityRenderer(ModEntities.MARDER1A3.get(), frontline.combat.fcp.client.renderer.Marder.MarderRenderer::new);
         event.registerEntityRenderer(ModEntities.M2A2.get(), frontline.combat.fcp.client.renderer.Bradley.BradleyRenderer::new);
         event.registerEntityRenderer(ModEntities.M6A2.get(), frontline.combat.fcp.client.renderer.Bradley.BradleyRenderer::new);
         event.registerEntityRenderer(ModEntities.M2A2_BUSK.get(), frontline.combat.fcp.client.renderer.Bradley.BradleyRenderer::new);
@@ -328,6 +329,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.TYPE10.get(), Type10Renderer::new);
 
         event.registerEntityRenderer(ModEntities.LEOPARD2A4.get(), Leopard2Renderer::new);
+        event.registerEntityRenderer(ModEntities.LEOPARD2A4_UKR.get(), Leopard2Renderer::new);
         event.registerEntityRenderer(ModEntities.LEOPARD2A6.get(), Leopard2Renderer::new);
         event.registerEntityRenderer(ModEntities.LEOPARD2A7V.get(), Leopard2Renderer::new);
 

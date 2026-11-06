@@ -205,6 +205,8 @@ public class ModEntities {
             EntityType.Builder.of(PumaEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<PumaEntity>> PUMA_ATGM = register("puma_atgm",
             EntityType.Builder.of(PumaEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Marder.MarderEntity>> MARDER1A3 = register("marder1a3",
+            EntityType.Builder.of(frontline.combat.fcp.entity.vehicle.Marder.MarderEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Bradley.BradleyEntity>> M2A2 = bradley("m2a2");
     public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Bradley.BradleyEntity>> M6A2 = bradley("m6a2");
     public static final RegistryObject<EntityType<frontline.combat.fcp.entity.vehicle.Bradley.BradleyEntity>> M2A2_BUSK = bradley("m2a2_busk");
@@ -491,6 +493,8 @@ public class ModEntities {
             EntityType.Builder.of(Type10Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
 
     public static final RegistryObject<EntityType<Leopard2Entity>> LEOPARD2A4 = register("leopard2a4",
+            EntityType.Builder.of(Leopard2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<Leopard2Entity>> LEOPARD2A4_UKR = register("leopard2a4_ukr",
             EntityType.Builder.of(Leopard2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<Leopard2Entity>> LEOPARD2A6 = register("leopard2a6",
             EntityType.Builder.of(Leopard2Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));

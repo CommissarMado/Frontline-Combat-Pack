@@ -81,7 +81,7 @@ public final class SquadTrackSounds {
         if (id.startsWith("t72") || id.startsWith("t90") || id.startsWith("t14") || id.equals("msta")) return T90;
         if (id.startsWith("bmp") || id.startsWith("brm") || id.equals("khrizantema") || id.equals("2s31")) return BMP;
         if (id.startsWith("m2a") || id.equals("m6a2") || id.equals("aavp") || id.equals("m109")) return BRADLEY;
-        if (id.startsWith("puma")) return WARRIOR;
+        if (id.startsWith("puma") || id.equals("marder1a3")) return WARRIOR;
         if (id.startsWith("m113") || id.equals("skif")) return FV432;
         return ABRAMS; // the M1s, the Type 10, and any other tracked vehicle
     }

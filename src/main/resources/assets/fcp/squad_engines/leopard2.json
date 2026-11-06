@@ -1,6 +1,6 @@
 {
   "_comment": "Generated from the Squad SDK: Leopard_engine_rpm_ALL_Cue.uasset (+ start/stop cues). Leopard 2A4, 2A6 and 2A7V (Squad has the 2A6M).",
-  "vehicles": ["fcp:leopard2a4", "fcp:leopard2a6", "fcp:leopard2a7v"],
+  "vehicles": ["fcp:leopard2a4", "fcp:leopard2a4_ukr", "fcp:leopard2a6", "fcp:leopard2a7v"],
   "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
   "exterior_volume": 0.2667,
   "interior_volume": 1,

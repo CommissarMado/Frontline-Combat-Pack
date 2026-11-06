@@ -64,6 +64,8 @@ public abstract class VehicleBackblastMixin {
             "fcp:stryker_tow",            new Blast(1.275, 0.40, true, null),
             // Spike tubes are 18.7 px; the muzzle ShootPos sits 0.05 past their front.
             "fcp:puma_atgm",              new Blast(1.22, 0.40, true, "ATGM"),
+            // Milan tube is 20 px; the ShootPos sits 0.05 past its front.
+            "fcp:marder1a3",              new Blast(1.30, 0.40, true, "ATGM"),
             // TOW tubes are 1.37 blocks; the ShootPos sits 0.04 past their front.
             "fcp:m2a2",                   new Blast(1.41, 0.40, true, "TOW"),
             "fcp:m2a2_busk",              new Blast(1.41, 0.40, true, "TOW"),

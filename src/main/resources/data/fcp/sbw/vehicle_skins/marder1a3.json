@@ -1,0 +1,10 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Standard",
+      "Texture": "fcp:textures/entity/marder/marder1a3_1.png",
+      "Priority": 1
+    }
+  ]
+}

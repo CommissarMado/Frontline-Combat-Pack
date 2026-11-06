@@ -5371,6 +5371,106 @@
       }
     ]
   },
+  "squad.weapons.rh202.1p_loop_1": {
+    "sounds": [
+      {
+        "name": "fcp:squad/weapons/rh202/1p_loop_1",
+        "stream": false
+      }
+    ]
+  },
+  "squad.weapons.rh202.1p_tail_2": {
+    "sounds": [
+      {
+        "name": "fcp:squad/weapons/rh202/1p_tail_2",
+        "stream": false
+      }
+    ]
+  },
+  "squad.weapons.rh202.3p_loop_3": {
+    "sounds": [
+      {
+        "name": "fcp:squad/weapons/rh202/3p_loop_3",
+        "stream": false,
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "squad.weapons.rh202.3p_loop_4": {
+    "sounds": [
+      {
+        "name": "fcp:squad/weapons/rh202/3p_loop_4",
+        "stream": false,
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "squad.weapons.rh202.3p_loop_5": {
+    "sounds": [
+      {
+        "name": "fcp:squad/weapons/rh202/3p_loop_5",
+        "stream": false,
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "squad.weapons.rh202.3p_tail_6": {
+    "sounds": [
+      {
+        "name": "fcp:squad/weapons/rh202/3p_tail_6_01",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/rh202/3p_tail_6_02",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/rh202/3p_tail_6_03",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/rh202/3p_tail_6_04",
+        "stream": false,
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "squad.weapons.rh202.3p_tail_7": {
+    "sounds": [
+      {
+        "name": "fcp:squad/weapons/rh202/3p_tail_7",
+        "stream": false,
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "squad.weapons.rh202.3p_tail_8": {
+    "sounds": [
+      {
+        "name": "fcp:squad/weapons/rh202/3p_tail_8_01",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/rh202/3p_tail_8_02",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/rh202/3p_tail_8_03",
+        "stream": false,
+        "attenuation_distance": 256
+      },
+      {
+        "name": "fcp:squad/weapons/rh202/3p_tail_8_04",
+        "stream": false,
+        "attenuation_distance": 256
+      }
+    ]
+  },
   "squad.weapons.2a42.3p_shot_4": {
     "sounds": [
       {

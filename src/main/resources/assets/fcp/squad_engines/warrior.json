@@ -1,6 +1,6 @@
 {
   "_comment": "Generated from the Squad SDK: Warrior_engine_rpm_ALL_Cue.uasset (+ start/stop cues).",
-  "vehicles": ["fcp:puma", "fcp:puma_atgm"],
+  "vehicles": ["fcp:puma", "fcp:puma_atgm", "fcp:marder1a3"],
   "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
   "exterior_volume": 0.4444,
   "interior_volume": 1,

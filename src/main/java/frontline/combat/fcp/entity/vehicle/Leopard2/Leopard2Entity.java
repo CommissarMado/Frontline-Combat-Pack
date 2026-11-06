@@ -21,7 +21,7 @@ import org.joml.Matrix4d;
 import java.util.List;
 
 /**
- * Leopard 2A4, 2A6 and 2A7V on one class; the registry name picks the geo and skins.
+ * Leopard 2A4 (German and Ukrainian), 2A6 and 2A7V on one class; the registry name picks the geo and skins.
  * <p>
  * Crew: 0 driver, 1 gunner (Cannon, Coax), 2 commander, 3 loader. The commander's sight (the "camera" bone) is SBW's
  * passenger weapon station, as on the Puma. The loader's open-top MG3 ("weaponstationturret" yaw,
@@ -44,7 +44,7 @@ public class Leopard2Entity extends CamoVehicleBase implements CamoNetVehicle {
         super(type, world);
     }
 
-    /** Registry name ("leopard2a4", "leopard2a6", "leopard2a7v"): picks the geo, skins and MG3 pivots. */
+    /** Registry name ("leopard2a4", "leopard2a4_ukr", "leopard2a6", "leopard2a7v"): picks the geo, skins and MG3 pivots. */
     public String variantName() {
         return HumveeAttachments.vehicleName(this.getType());
     }
@@ -136,8 +136,8 @@ public class Leopard2Entity extends CamoVehicleBase implements CamoNetVehicle {
     /** Built like SBW's station transforms: turret -> ring yaw -> MG pitch. */
     private Matrix4d loaderBarrelTransform(float partialTick) {
         String name = variantName();
-        double[] yawPos = name.equals("leopard2a4") ? A4_YAW_POS : name.equals("leopard2a7v") ? A7V_YAW_POS : A6_YAW_POS;
-        double[] pitchPos = name.equals("leopard2a4") ? A4_PITCH_POS : name.equals("leopard2a7v") ? A7V_PITCH_POS : A6_PITCH_POS;
+        double[] yawPos = name.startsWith("leopard2a4") ? A4_YAW_POS : name.equals("leopard2a7v") ? A7V_YAW_POS : A6_YAW_POS;
+        double[] pitchPos = name.startsWith("leopard2a4") ? A4_PITCH_POS : name.equals("leopard2a7v") ? A7V_PITCH_POS : A6_PITCH_POS;
         float[] a = loaderAim(partialTick);
         Matrix4d t = getTurretTransform(partialTick);
         t.translate(yawPos[0], yawPos[1], yawPos[2]);

@@ -42,6 +42,7 @@ public final class FCPMuzzleEffects {
             "fcp:m1a1",
             "fcp:type10",
             "fcp:leopard2a4",
+            "fcp:leopard2a4_ukr",
             "fcp:leopard2a6",
             "fcp:leopard2a7v",
             "fcp:m1a1_aim",
