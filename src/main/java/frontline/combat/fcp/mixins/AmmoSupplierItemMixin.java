@@ -26,7 +26,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * <p>Ammo still works everywhere it matters: guns and vehicles read ammo ITEMS from the
  * inventory. Only the item -> pool conversion is disabled.
  */
-@Mixin(value = AmmoSupplierItem.class, remap = false)
+@Mixin(AmmoSupplierItem.class)
 public abstract class AmmoSupplierItemMixin {
 
     @Inject(method = "use", at = @At("HEAD"), cancellable = true)

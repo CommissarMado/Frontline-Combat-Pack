@@ -16,5 +16,8 @@ public class ModParticles {
         event.registerSpriteSet(ModParticleTypes.MUZZLE_FLASH.get(), FCPMuzzleParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.MUZZLE_BANG.get(), FCPMuzzleParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.MUZZLE_SPARK.get(), FCPMuzzleParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.DOWNWASH_DUST.get(), DownwashDustParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.GRASS_CLIPPING.get(), GrassClippingParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.LEAF_FLECK.get(), GrassClippingParticle.Provider::new);
     }
 }

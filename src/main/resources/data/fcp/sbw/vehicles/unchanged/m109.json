@@ -345,7 +345,7 @@
   },
   "EngineType": "Track",
   "EngineInfo": {
-    "Buoyancy": 0.05,
+    "Buoyancy": 0,
     "EnergyCostRate": 75.2,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,

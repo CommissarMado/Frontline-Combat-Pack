@@ -5,6 +5,7 @@ import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.particle.FCPMuzzleParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -27,6 +28,15 @@ public class ModParticleTypes {
 
     public static final RegistryObject<ParticleType<FCPMuzzleParticleOption>> MUZZLE_SPARK =
             PARTICLE_TYPES.register("muzzle_spark", () -> create(FCPMuzzleParticleOption.CODEC, FCPMuzzleParticleOption.DESERIALIZER));
+
+    public static final RegistryObject<SimpleParticleType> DOWNWASH_DUST =
+            PARTICLE_TYPES.register("downwash_dust", () -> new SimpleParticleType(true));
+
+    public static final RegistryObject<SimpleParticleType> GRASS_CLIPPING =
+            PARTICLE_TYPES.register("grass_clipping", () -> new SimpleParticleType(true));
+
+    public static final RegistryObject<SimpleParticleType> LEAF_FLECK =
+            PARTICLE_TYPES.register("leaf_fleck", () -> new SimpleParticleType(true));
 
     @SuppressWarnings("deprecation")
     private static <T extends ParticleOptions> ParticleType<T> create(Codec<T> codec, ParticleOptions.Deserializer<T> deserializer) {

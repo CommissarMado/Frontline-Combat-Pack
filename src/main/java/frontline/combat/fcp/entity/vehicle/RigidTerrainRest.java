@@ -11,6 +11,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.joml.Matrix4d;
 import org.joml.Vector4d;
 
+import java.util.Arrays;
+
 /**
  * Terrain tilt for vehicles with a collision box, as a rigid hull resting on the ground.
  * <p>
@@ -40,6 +42,19 @@ public final class RigidTerrainRest {
     private static final float MAX_TILT = 45f;
     /** Tallest vertical face a vehicle can step: any taller is a wall. */
     private static final double MAX_STEP = 1.5;
+    /** The hull's middle, as a fraction of its half length. Just over one sample row (1/4) each way. */
+    private static final double MID_BAND = 0.26;
+    /** Golden-section search: this many steps per axis narrow a slope to about 0.00002. */
+    private static final int SEARCH_STEPS = 24;
+    private static final double GOLDEN = (Math.sqrt(5) - 1) / 2;
+    /** Samples this close together are level ground. */
+    private static final double LEVEL = 1.0e-6;
+
+    /** Each vehicle's last search: what the ground under it was, and the answer. */
+    public static final class RestMemo {
+        private double[] grid;
+        private double[] slopes;
+    }
 
     private RigidTerrainRest() {
     }
@@ -48,6 +63,12 @@ public final class RigidTerrainRest {
     public static void apply(VehicleEntity vehicle) {
         OBBInfo box = vehicle.getCollisionOBBInfo();
         if (box == null) return;
+        // Afloat there is no ground to rest on, however shallow the water: tilting to the bed also dips the bounding box, which buoyancy is measured from.
+        if (!vehicle.onGround() && vehicle.isInFluidType()) {
+            vehicle.setXRot(vehicle.getXRot() * 0.9f);
+            vehicle.setZRot(vehicle.getRoll() * 0.9f);
+            return;
+        }
         Vec3 c = box.getPosition(), s = box.getSize();
         double bottom = c.y - s.y;
         double searchUp = Math.min(vehicle.getStepHeight(), MAX_STEP), searchDown = Math.max(Math.max(s.x, s.y), s.z);
@@ -68,10 +89,11 @@ public final class RigidTerrainRest {
 
         // A sample standing more than MAX_STEP above a neighbour is a wall face the hull has nosed into
         // (SBW lets boxes sink ~0.1 into blocks), not ground: resting on it is what walked hulls up walls.
-        double[] xs = new double[n], zs = new double[n], ts = new double[n];
+        double[] xs = new double[n], zs = new double[n], ts = new double[n], flatGrid = new double[n];
         for (int i = 0; i < COLS; i++) {
             for (int j = 0; j < ROWS; j++) {
                 double t = grid[i][j];
+                flatGrid[i * ROWS + j] = t;
                 if (Double.isNaN(t) || isWall(grid, i, j)) continue;
                 xs[used] = 2 * s.x * i / (COLS - 1) - s.x;
                 zs[used] = 2 * s.z * j / (ROWS - 1) - s.z;
@@ -85,7 +107,14 @@ public final class RigidTerrainRest {
         double gain = Math.max(vehicle.data().compute().getTerrainCompatRotateRate() * GAIN, 1.0e-3);
         double a0 = Math.tan(Math.toRadians(vehicle.getRoll())) / gain;
         double b0 = -Math.tan(Math.toRadians(vehicle.getXRot())) / gain;
-        double[] best = minimise(xs, zs, ts, used, a0, b0);
+        GroundContact contact = (GroundContact) vehicle;
+        double[] best = restSlopes(contact.fcp$restMemo(), flatGrid, xs, zs, ts, used, a0, b0);
+        // The ground under the hull's middle, against the hull as it is tilted now: its ends may clip a step in passing, the middle shouldn't.
+        double midHeight = -Double.MAX_VALUE, a = Math.tan(Math.toRadians(vehicle.getRoll())), b = -Math.tan(Math.toRadians(vehicle.getXRot()));
+        for (int i = 0; i < used; i++) {
+            if (Math.abs(zs[i]) <= s.z * MID_BAND) midHeight = Math.max(midHeight, ts[i] - a * xs[i] - b * zs[i]);
+        }
+        contact.fcp$setRestHeight(centreHeight(xs, zs, ts, used, best[0], best[1]), midHeight == -Double.MAX_VALUE ? Double.NaN : midHeight);
         // Clamped to 45 deg as SBW does.
         float targetXRot = Mth.clamp((float) -Math.toDegrees(Math.atan(best[1] * gain)), -MAX_TILT, MAX_TILT);
         float targetRoll = Mth.clamp((float) Math.toDegrees(Math.atan(best[0] * gain)), -MAX_TILT, MAX_TILT);
@@ -108,25 +137,63 @@ public final class RigidTerrainRest {
         return centreHeight(xs, zs, ts, n, a, b) + HOLD * (da * da + db * db);
     }
 
-    private static double[] minimise(double[] xs, double[] zs, double[] ts, int n, double a0, double b0) {
-        double lo = -MAX_SLOPE, hi = MAX_SLOPE;
-        for (int it = 0; it < 40; it++) {
-            double m1 = lo + (hi - lo) / 3, m2 = hi - (hi - lo) / 3;
-            if (bestOverB(xs, zs, ts, n, m1, a0, b0)[1] <= bestOverB(xs, zs, ts, n, m2, a0, b0)[1]) hi = m2; else lo = m1;
+    /** {roll slope a, pitch slope b}: the same answer as the last search if the ground under the hull hasn't changed. */
+    private static double[] restSlopes(RestMemo memo, double[] grid, double[] xs, double[] zs, double[] ts, int used, double a0, double b0) {
+        if (used == grid.length && isLevel(ts, used)) return new double[]{0, 0};
+        if (Arrays.equals(memo.grid, grid)) return memo.slopes;
+        memo.grid = grid;
+        memo.slopes = minimise(xs, zs, ts, used, a0, b0);
+        return memo.slopes;
+    }
+
+    private static boolean isLevel(double[] ts, int n) {
+        for (int i = 1; i < n; i++) {
+            if (Math.abs(ts[i] - ts[0]) > LEVEL) return false;
         }
-        double a = (lo + hi) / 2;
-        return new double[]{a, bestOverB(xs, zs, ts, n, a, a0, b0)[0]};
+        return true;
+    }
+
+    private static double[] minimise(double[] xs, double[] zs, double[] ts, int n, double a0, double b0) {
+        double lo = -MAX_SLOPE, hi = MAX_SLOPE, m1 = hi - GOLDEN * (hi - lo), m2 = lo + GOLDEN * (hi - lo);
+        double[] r1 = bestOverB(xs, zs, ts, n, m1, a0, b0), r2 = bestOverB(xs, zs, ts, n, m2, a0, b0);
+        for (int it = 0; it < SEARCH_STEPS; it++) {
+            if (r1[1] <= r2[1]) {
+                hi = m2;
+                m2 = m1;
+                r2 = r1;
+                m1 = hi - GOLDEN * (hi - lo);
+                r1 = bestOverB(xs, zs, ts, n, m1, a0, b0);
+            } else {
+                lo = m1;
+                m1 = m2;
+                r1 = r2;
+                m2 = lo + GOLDEN * (hi - lo);
+                r2 = bestOverB(xs, zs, ts, n, m2, a0, b0);
+            }
+        }
+        return r1[1] <= r2[1] ? new double[]{m1, r1[0]} : new double[]{m2, r2[0]};
     }
 
     /** For a fixed roll slope a: {best pitch slope b, objective there}. */
     private static double[] bestOverB(double[] xs, double[] zs, double[] ts, int n, double a, double a0, double b0) {
-        double lo = -MAX_SLOPE, hi = MAX_SLOPE;
-        for (int it = 0; it < 40; it++) {
-            double m1 = lo + (hi - lo) / 3, m2 = hi - (hi - lo) / 3;
-            if (objective(xs, zs, ts, n, a, m1, a0, b0) <= objective(xs, zs, ts, n, a, m2, a0, b0)) hi = m2; else lo = m1;
+        double lo = -MAX_SLOPE, hi = MAX_SLOPE, m1 = hi - GOLDEN * (hi - lo), m2 = lo + GOLDEN * (hi - lo);
+        double f1 = objective(xs, zs, ts, n, a, m1, a0, b0), f2 = objective(xs, zs, ts, n, a, m2, a0, b0);
+        for (int it = 0; it < SEARCH_STEPS; it++) {
+            if (f1 <= f2) {
+                hi = m2;
+                m2 = m1;
+                f2 = f1;
+                m1 = hi - GOLDEN * (hi - lo);
+                f1 = objective(xs, zs, ts, n, a, m1, a0, b0);
+            } else {
+                lo = m1;
+                m1 = m2;
+                f1 = f2;
+                m2 = lo + GOLDEN * (hi - lo);
+                f2 = objective(xs, zs, ts, n, a, m2, a0, b0);
+            }
         }
-        double b = (lo + hi) / 2;
-        return new double[]{b, objective(xs, zs, ts, n, a, b, a0, b0)};
+        return f1 <= f2 ? new double[]{m1, f1} : new double[]{m2, f2};
     }
 
     private static boolean isWall(double[][] grid, int i, int j) {

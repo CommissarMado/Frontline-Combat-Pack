@@ -240,7 +240,7 @@ public class FCPMuzzleParticle extends TextureSheetParticle {
 
     public ParticleRenderType getRenderType() {
 
-        return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+        return FCPParticleRenderTypes.noDepthWrite();
 
     }
 

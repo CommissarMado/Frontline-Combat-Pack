@@ -35,6 +35,12 @@ public interface GroundContact {
     /** Vertical shift of the vehicle's pose in blocks (negative = down), interpolated. */
     float fcp$groundOffset(float partialTick);
 
+    /** Where the rigid hull rests this tick and the ground under its middle, in blocks against the entity's underside (see RigidTerrainRest). */
+    void fcp$setRestHeight(double height, double midHeight);
+
+    /** This vehicle's last rest attitude search (see RigidTerrainRest). */
+    RigidTerrainRest.RestMemo fcp$restMemo();
+
     /** The farthest the pose is ever moved. */
     double MAX_SHIFT = 2.0;
     /** The steepest a landed helicopter is ever set, in degrees. */
@@ -115,7 +121,7 @@ public interface GroundContact {
     }
 
     /** SBW's vehicle transform without our shift: up to the pivot, yaw/pitch/roll, back down. */
-    private static Matrix4d pose(VehicleEntity v, float pitch, float roll) {
+    static Matrix4d pose(VehicleEntity v, float pitch, float roll) {
         double h = v.getRotateOffsetHeight();
         return new Matrix4d()
                 .translate(v.getX(), v.getY() + h, v.getZ())

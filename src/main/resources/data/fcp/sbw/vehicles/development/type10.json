@@ -241,7 +241,7 @@
   "EngineType": "Track",
   "EngineSound": "fcp:bmp1_engine",
   "EngineInfo": {
-    "Buoyancy": 0.05,
+    "Buoyancy": 0,
     "EnergyCostRate": 138.6,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
