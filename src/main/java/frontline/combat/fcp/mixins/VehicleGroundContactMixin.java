@@ -5,6 +5,7 @@ import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import com.atsuishio.superbwarfare.tools.OBB;
 import frontline.combat.fcp.entity.vehicle.GroundContact;
 import frontline.combat.fcp.entity.vehicle.RigidTerrainRest;
+import frontline.combat.fcp.team.VehicleTeamLock;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,9 +17,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 /**
- * Every SBW vehicle tracks a ground-contact shift (non-zero only for landed helicopters, see GroundContact).
+ * Every SBW vehicle tracks a ground-contact shift, but it's only non-zero on FCP's: landed helicopters (see GroundContact)
+ * and step-ups.
  * <p>
- * Ground vehicles also ease their step-ups, on both sides: stepping up lifts the entity the whole step in one tick (stepping
+ * Ground vehicles ease their step-ups, on both sides: stepping up lifts the entity the whole step in one tick (stepping
  * down is gradual, gravity), so the pose starts back at the old height and eases to where the rigid hull rests (see
  * RigidTerrainRest). Damage hitboxes, seats and muzzles follow the pose; physics and the terrain collision box stay on the
  * real position.
@@ -69,6 +71,7 @@ public abstract class VehicleGroundContactMixin implements GroundContact {
             target = "Lcom/atsuishio/superbwarfare/entity/vehicle/base/VehicleEntity;lowHealthWarning()V"))
     private void fcp$easeStep(CallbackInfo ci) {
         VehicleEntity self = (VehicleEntity) (Object) this;
+        if (!VehicleTeamLock.isFcpVehicle(self)) return;
         fcp$stepShiftO = fcp$stepShift;
         VehicleType type = self.getVehicleType();
         double rise = self.getY() - self.yo;
