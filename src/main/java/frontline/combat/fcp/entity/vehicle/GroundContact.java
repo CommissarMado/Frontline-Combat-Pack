@@ -3,6 +3,7 @@ package frontline.combat.fcp.entity.vehicle;
 import com.atsuishio.superbwarfare.data.vehicle.subdata.VehicleType;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import com.mojang.math.Axis;
+import frontline.combat.fcp.team.VehicleTeamLock;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.BlockHitResult;
@@ -14,7 +15,7 @@ import org.joml.Vector4d;
 import java.util.List;
 
 /**
- * Sets a landed helicopter down on its gear.
+ * Sets a landed FCP helicopter down on its gear.
  * <p>
  * SBW's terrain tilt is not geometric: each TerrainCompat point pitches/rolls the vehicle by its height
  * above the ground times its distance from the centre, and the vehicle is never moved vertically (the
@@ -47,7 +48,7 @@ public interface GroundContact {
     float MAX_TILT = 30f;
 
     static boolean applies(VehicleEntity v) {
-        if (v.getVehicleType() != VehicleType.HELICOPTER || !v.onGround()) return false;
+        if (v.getVehicleType() != VehicleType.HELICOPTER || !v.onGround() || !VehicleTeamLock.isFcpVehicle(v)) return false;
         List<Vec3> points = v.computed().getTerrainCompat();
         return points != null && points.size() >= 3;
     }

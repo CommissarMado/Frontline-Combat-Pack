@@ -169,6 +169,7 @@
   "item.fcp.redbull": "Red Bull",
   "item.fcp.spray": "Spray Can",
   "item.fcp.camo_net": "Camo Net",
+  "des.fcp.camo_net": "Only available on Abrams and Leopard tanks for now",
   "tips.fcp.camo_net.0": "Camo net removed",
   "tips.fcp.camo_net.1": "Camo net: Light",
   "tips.fcp.camo_net.2": "Camo net: Heavy",

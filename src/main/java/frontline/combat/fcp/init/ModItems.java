@@ -33,5 +33,5 @@ public class ModItems {
 
     /** Placeholder: use on an Abrams or Leopard 2 to fit a camo net and cycle its variants (VehicleCamoNet). */
     public static final RegistryObject<Item> CAMO_NET = REGISTRY.register("camo_net",
-            () -> new Item(new Item.Properties().stacksTo(1)));
+            () -> new frontline.combat.fcp.item.varies.CamoNetItem());
 }

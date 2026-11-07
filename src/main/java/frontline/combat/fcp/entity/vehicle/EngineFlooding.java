@@ -3,12 +3,13 @@ package frontline.combat.fcp.entity.vehicle;
 import com.atsuishio.superbwarfare.data.vehicle.subdata.EngineInfo;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import com.atsuishio.superbwarfare.tools.OBB;
+import frontline.combat.fcp.team.VehicleTeamLock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.FluidTags;
 import org.joml.Vector3d;
 
 /**
- * Land vehicles that can't float (Buoyancy 0) flood their engine once the water is over the hull; wading up to the roof is
+ * FCP land vehicles that can't float (Buoyancy 0) flood their engine once the water is over the hull; wading up to the roof is
  * fine. With the engine dead, the vehicle loses a tenth of its max health every second it stays under. Back on land that stops
  * and SBW's passive part repair brings the engine back; SBW's own burning still takes over if health has fallen to 10%.
  */
@@ -26,7 +27,7 @@ public final class EngineFlooding {
     }
 
     public static void tick(VehicleEntity vehicle) {
-        if (vehicle.level().isClientSide() || vehicle.isWreck()) return;
+        if (vehicle.level().isClientSide() || vehicle.isWreck() || !VehicleTeamLock.isFcpVehicle(vehicle)) return;
         EngineInfo engine = vehicle.getEngineInfo();
         if (!(engine instanceof EngineInfo.Track || engine instanceof EngineInfo.Wheel) || engine.getBuoyancy() != 0) return;
         if (!hullSubmerged(vehicle)) return;
