@@ -68,8 +68,8 @@
       "EmptyReloadTime": 231,
       "ExplosionDamage": 12.1,
       "ExplosionRadius": 4.3,
-      "HeatPerShoot": 4,
-      "NaturalCooldown": 1,
+      "HeatPerShoot": 4.55,
+      "NaturalCooldown": 1.25,
       "Spread": 0.3,
       "Name": "weapon.fcp.m197",
       "SoundInfo": {

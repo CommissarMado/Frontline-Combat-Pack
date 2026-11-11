@@ -165,8 +165,8 @@
       "Velocity": 25,
       "RecoilTime": 16,
       "RecoilForce": 0.05,
-      "HeatPerShoot": 5,
-      "NaturalCooldown": 1,
+      "HeatPerShoot": 2.18,
+      "NaturalCooldown": 0.5,
       "ShootAnimationTime": 1,
       "AmmoType": "@RifleAmmo",
       "ShootPos": {
@@ -200,8 +200,8 @@
       "Velocity": 25,
       "RecoilTime": 16,
       "RecoilForce": 0.05,
-      "HeatPerShoot": 5,
-      "NaturalCooldown": 1,
+      "HeatPerShoot": 2.18,
+      "NaturalCooldown": 0.5,
       "ShootAnimationTime": 1,
       "AmmoType": "@RifleAmmo",
       "ShootPos": {

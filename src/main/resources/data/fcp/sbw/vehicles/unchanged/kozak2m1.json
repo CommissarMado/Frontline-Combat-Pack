@@ -225,8 +225,8 @@
       "EmptyReloadTime": 401,
       "Magazine": 200,
       "RecoilForce": 0.1,
-      "HeatPerShoot": 5,
-      "NaturalCooldown": 1,
+      "HeatPerShoot": 1.81,
+      "NaturalCooldown": 0.5,
       "ShootAnimationTime": 1,
       "AmmoType": "@HeavyAmmo",
       "ShootPos": {

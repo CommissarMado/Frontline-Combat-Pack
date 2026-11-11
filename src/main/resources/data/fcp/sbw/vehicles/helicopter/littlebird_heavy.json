@@ -112,8 +112,8 @@
       "Velocity": 30,
       "Damage": 19.4,
       "Magazine": 1000,
-      "HeatPerShoot": 1,
-      "NaturalCooldown": 1,
+      "HeatPerShoot": 0.8,
+      "NaturalCooldown": 0.5,
       "Spread": 1.2,
       "Name": "weapon.fcp.m134_minigun",
       "SoundInfo": {

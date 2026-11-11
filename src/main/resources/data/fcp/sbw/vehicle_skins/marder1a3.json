@@ -5,6 +5,18 @@
       "Name": "Standard",
       "Texture": "fcp:textures/entity/marder/marder1a3_1.png",
       "Priority": 1
+    },
+    {
+      "Id": "nato",
+      "Name": "NATO",
+      "Texture": "fcp:textures/entity/marder/mardernato.png",
+      "Priority": 2
+    },
+    {
+      "Id": "sand",
+      "Name": "Sand",
+      "Texture": "fcp:textures/entity/marder/mardersand.png",
+      "Priority": 3
     }
   ]
 }

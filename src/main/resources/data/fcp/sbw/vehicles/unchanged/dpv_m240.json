@@ -196,8 +196,8 @@
       "EmptyReloadTime": 231,
       "Magazine": 200,
       "RecoilForce": 0.05,
-      "HeatPerShoot": 3,
-      "NaturalCooldown": 1,
+      "HeatPerShoot": 1.4,
+      "NaturalCooldown": 0.5,
       "ShootAnimationTime": 1,
       "AmmoType": "@RifleAmmo",
       "ShootPos": {

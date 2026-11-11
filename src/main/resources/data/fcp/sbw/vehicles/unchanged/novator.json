@@ -293,8 +293,8 @@
       "Velocity": 25,
       "RecoilTime": 16,
       "RecoilForce": 0.05,
-      "HeatPerShoot": 5,
-      "NaturalCooldown": 1,
+      "HeatPerShoot": 1.81,
+      "NaturalCooldown": 0.5,
       "ShootAnimationTime": 1,
       "AmmoType": "@HeavyAmmo",
       "ShootPos": {
