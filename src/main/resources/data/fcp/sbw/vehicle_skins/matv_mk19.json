@@ -1,0 +1,22 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Sand",
+      "Texture": "fcp:textures/entity/matv/matv_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "green",
+      "Name": "Green",
+      "Texture": "fcp:textures/entity/matv/matv_2.png",
+      "Priority": 2
+    },
+    {
+      "Id": "pink",
+      "Name": "PINK",
+      "Texture": "fcp:textures/entity/matv/matv_3.png",
+      "Priority": 3
+    }
+  ]
+}

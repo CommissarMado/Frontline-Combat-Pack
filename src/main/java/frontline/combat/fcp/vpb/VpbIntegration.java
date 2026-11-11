@@ -4,6 +4,15 @@ import com.mojang.logging.LogUtils;
 import frontline.combat.fcp.FCP;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.registries.ForgeRegistries;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.server.ServerAboutToStartEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -25,6 +34,32 @@ public final class VpbIntegration {
 
     public static boolean isVpbLoaded() {
         return loaded;
+    }
+
+    /** Small-arms penetration (mm) of Point Blank guns, matching FCP's vehicle MGs: rifle calibres / 12.7 mm and up. */
+    private static final float GUN_PEN = 7f, HEAVY_GUN_PEN = 16f;
+    /** Point Blank guns firing 12.7 mm or heavier (machine guns and anti-materiel rifles), by item id path. */
+    private static final Set<String> HEAVY_GUNS = Set.of("dshkq", "m2q", "gm6lynx", "hissniper", "cs_6p62", "whizzbangq");
+    private static final Map<Class<?>, Boolean> GUN_CLASSES = new ConcurrentHashMap<>();
+
+    /**
+     * Penetration (mm) for a hit from a Point Blank gun, or -1 if the hit isn't one. Point Blank bullets (hitscan and
+     * its slow bullets alike) hurt with the plain player-attack damage type, so they are recognised by the shooter's
+     * main-hand item being a Point Blank GunItem.
+     */
+    public static float gunHitPenetration(DamageSource source) {
+        if (!loaded || !source.is(DamageTypes.PLAYER_ATTACK) || !(source.getEntity() instanceof LivingEntity shooter)) return -1f;
+        ItemStack held = shooter.getMainHandItem();
+        if (held.isEmpty() || !isGunItem(held.getItem().getClass())) return -1f;
+        ResourceLocation id = ForgeRegistries.ITEMS.getKey(held.getItem());
+        return id != null && HEAVY_GUNS.contains(id.getPath()) ? HEAVY_GUN_PEN : GUN_PEN;
+    }
+
+    private static boolean isGunItem(Class<?> cls) {
+        return GUN_CLASSES.computeIfAbsent(cls, c -> {
+            for (Class<?> k = c; k != null; k = k.getSuperclass()) if (k.getName().equals("com.vicmatskiv.pointblank.item.GunItem")) return true;
+            return false;
+        });
     }
 
     @Mod.EventBusSubscriber(modid = FCP.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)

@@ -277,6 +277,10 @@ public final class VehicleArmor {
         } else if (source.is(ModTags.DamageTypes.GUN_DAMAGE)) {
             type = "small_arms";
             pen = SMALL_ARMS_PEN;
+        } else if (frontline.combat.fcp.compat.vpb.VpbIntegration.gunHitPenetration(source) >= 0) {
+            // Point Blank guns hit with the plain player-attack type; they are small arms too (7 mm, 16 mm for 12.7 mm+).
+            type = "small_arms";
+            pen = frontline.combat.fcp.compat.vpb.VpbIntegration.gunHitPenetration(source);
         } else {
             return sbwDamage;
         }

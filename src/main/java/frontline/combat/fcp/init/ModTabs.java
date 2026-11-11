@@ -84,6 +84,7 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV_CROW.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV_TOW.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MATV_9IN1.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.MATV_MK19.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.CAIMAN_UNARMED.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.CAIMAN.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.CAIMAN_UPARMORED_UNARMED.get()));
