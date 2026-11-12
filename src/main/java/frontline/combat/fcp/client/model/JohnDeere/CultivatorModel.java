@@ -32,6 +32,12 @@ public class CultivatorModel extends FCPVehicleModel<CultivatorEntity> {
                         "WheelL0", "WheelR0");
         if (wheels != null) return wheels;
 
+        // The two tiller rotors (13 px across) turn with travel, but only while it is working: hitched to a tractor in
+        // Farm mode.
+        VehicleModel.TransformContext<CultivatorEntity> rotors =
+                WheelRotationTransforms.rollingWhile(boneName, 0.406, CultivatorEntity::towedForWork, "animation", "animation2");
+        if (rotors != null) return rotors;
+
         return super.collectTransform(boneName);
     }
 }

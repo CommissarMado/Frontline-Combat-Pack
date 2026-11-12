@@ -1,14 +1,22 @@
 package frontline.combat.fcp.entity.vehicle.JohnDeere;
 
+import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.entity.vehicle.CamoVehicleBase;
+import frontline.combat.fcp.entity.vehicle.SteerableVehicle;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -31,6 +39,10 @@ import java.util.List;
  *
  * It does NOT replant: harvesting is all it does, and the seed drill handles sowing. A
  * reaped block is left as bare farmland, ready for the seeder to follow.
+ *
+ * ── Farming on / off ─────────────────────────────────────────────────────────
+ * It only reaps with farming on (FarmingVehicle: the ammo type of the driver's "Farming" weapon), which also holds it to
+ * harvesting speed and spins the reel; with it off it drives at road speed and leaves crops alone.
  *
  * ── Harvesting ───────────────────────────────────────────────────────────────
  * Each tick it stamps a ROW of headers across its width, ahead of and perpendicular to its
@@ -56,7 +68,29 @@ import java.util.List;
  *
  * Stem crops (pumpkin/melon gourds) aren't CropBlocks and are left for a later pass.
  */
-public class CombineEntity extends CamoVehicleBase {
+public class CombineEntity extends CamoVehicleBase implements FarmingVehicle, SteerableVehicle {
+
+    private static final EntityDataAccessor<Boolean> FARMING = SynchedEntityData.defineId(CombineEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Float> STEERING_ANGLE = SynchedEntityData.defineId(CombineEntity.class, EntityDataSerializers.FLOAT);
+    /** Harvesting speed (7 km/h) over the 30 km/h road speed. */
+    private static final float FARM_POWER = 7f / 30f;
+    private float prevSteeringAngle = 0f;
+
+    /** Driver-seat weapon whose ammo type switches the unloading auger: 0 off, 1 on. */
+    public static final String AUGER_WEAPON = "Auger";
+    private static final EntityDataAccessor<Boolean> AUGER_ON = SynchedEntityData.defineId(CombineEntity.class, EntityDataSerializers.BOOLEAN);
+    /** Spout swing times: the lengths of the Bradley TOW launcher's up / down sounds (bradley_TOW_up/down_ext_Cue). */
+    private static final float AUGER_OUT_TICKS = 6.30f * 20f, AUGER_IN_TICKS = 5.66f * 20f;
+    private static final SoundEvent AUGER_UP = SoundEvent.createVariableRangeEvent(new ResourceLocation(FCP.MODID, "squad.bradley.tow.up_ext"));
+    private static final SoundEvent AUGER_DOWN = SoundEvent.createVariableRangeEvent(new ResourceLocation(FCP.MODID, "squad.bradley.tow.down_ext"));
+    /**
+     * Spout tip with the spout swung out (vehicle config space: x left, z forward). The "spout" bone pivots at (-1.3033,
+     * 4.1699, -0.1506) and its tip (end of the 7.5 degree nozzle) sits 7.437 behind it and 0.228 lower; swung out 50 degrees
+     * to the right that puts it at pivot + (-7.437 sin 50, -0.228, -7.437 cos 50).
+     */
+    private static final double[] SPOUT_TIP = {-7.0004, 3.9419, -4.9310};
+    private float augerProgress, augerProgressO;
+    private boolean augerWasOn;
 
     // ── Cargo ───────────────────────────────────────────────────────────────────
     /** Yield inventory size in slots. Rounded up to a multiple of 9; scrolls past 63. */
@@ -70,7 +104,8 @@ public class CombineEntity extends CamoVehicleBase {
     private static final double ROW_SPACING = 1.0;
     /** How far in FRONT of the body the header reaps (+forward). */
     private static final double HEADER_FORWARD = 6.0;
-    private static final int SEARCH_DEPTH = 2;
+    /** Blocks searched below and above each header point, so the header works over rough ground. */
+    private static final int SEARCH_DEPTH = 3, SEARCH_UP = 2;
     private static final double REAP_STEP = 0.5;
     private static final int MAX_STEPS = 8;
     private static final double TELEPORT_DISTANCE = 12.0;
@@ -124,15 +159,106 @@ public class CombineEntity extends CamoVehicleBase {
         return cache;
     }
 
+    // ── Road / Farm mode, steering ──────────────────────────────────────────────
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(FARMING, false);
+        this.entityData.define(STEERING_ANGLE, 0f);
+        this.entityData.define(AUGER_ON, false);
+    }
+
+    @Override
+    public boolean isFarming() {
+        return this.entityData.get(FARMING);
+    }
+
+    @Override
+    public float farmPowerCap() {
+        return FARM_POWER;
+    }
+
+    @Override
+    public float getSteeringAngle() {
+        return this.entityData.get(STEERING_ANGLE);
+    }
+
+    @Override
+    public float getPrevSteeringAngle() {
+        return prevSteeringAngle;
+    }
+
+    /** Steering input for the wheel animation only (CombineModel: rear wheels opposite, header wheels with it); SBW turns the combine. */
+    private void updateSteering() {
+        prevSteeringAngle = getSteeringAngle();
+        float angle = getSteeringAngle();
+        boolean left = this.leftInputDown(), right = this.rightInputDown();
+        if (left && !right) angle = Math.min(30f, angle + 2f);
+        else if (right && !left) angle = Math.max(-30f, angle - 2f);
+        else angle *= 0.85f;
+        if (Math.abs(angle) < 0.05f) angle = 0f;
+        this.entityData.set(STEERING_ANGLE, angle);
+    }
+
+    // ── Unloading auger ─────────────────────────────────────────────────────────
+
+    /** Is the auger switched on (synced copy of the driver's "Auger" weapon ammo type)? */
+    public boolean isAugerOn() {
+        return this.entityData.get(AUGER_ON);
+    }
+
+    /** How far the spout has swung out (0 folded .. 1 out), eased like a powered drive, for the model. */
+    public float augerOut(float partialTick) {
+        float t = Mth.lerp(partialTick, augerProgressO, augerProgress);
+        return t * t * (3f - 2f * t);
+    }
+
+    /**
+     * Swings the spout out or in at the Bradley TOW launcher's up / down sound lengths (that sound plays with it), on both
+     * sides from the synced switch; once fully out, empties the hold out of the spout tip, one stack a tick (server).
+     */
+    private void tickAuger() {
+        boolean on = isAugerOn();
+        if (this.level().isClientSide() && on != augerWasOn && this.tickCount > 1) {
+            this.level().playLocalSound(this.getX(), this.getY() + 3, this.getZ(), on ? AUGER_UP : AUGER_DOWN, SoundSource.NEUTRAL, 1f, 1f, false);
+        }
+        augerWasOn = on;
+        augerProgressO = augerProgress;
+        augerProgress = on ? Math.min(1f, augerProgress + 1f / AUGER_OUT_TICKS) : Math.max(0f, augerProgress - 1f / AUGER_IN_TICKS);
+        if (this.level().isClientSide() || !on || augerProgress < 1f) return;
+
+        SimpleContainer hold = getVehicleInventory();
+        for (int slot = 0; slot < hold.getContainerSize(); slot++) {
+            ItemStack stack = hold.getItem(slot);
+            if (stack.isEmpty()) continue;
+            org.joml.Vector4d tip = this.transformPosition(this.getVehicleTransform(1f), SPOUT_TIP[0], SPOUT_TIP[1], SPOUT_TIP[2]);
+            ItemEntity item = new ItemEntity(this.level(), tip.x, tip.y, tip.z, hold.removeItemNoUpdate(slot));
+            item.setDeltaMovement(this.getDeltaMovement().x, -0.1, this.getDeltaMovement().z);
+            item.setDefaultPickUpDelay();
+            this.level().addFreshEntity(item);
+            hold.setChanged();
+            return;
+        }
+    }
+
     // ── Tick / harvesting ───────────────────────────────────────────────────────
 
     @Override
     public void baseTick() {
         super.baseTick();
+        updateSteering();
+        if (!this.level().isClientSide()) {
+            this.entityData.set(FARMING, FarmingVehicle.switchedOn(this));
+            this.entityData.set(AUGER_ON, FarmingVehicle.switchedOn(this, AUGER_WEAPON));
+        }
+        FarmingVehicle.capPower(this);
+        tickAuger();
 
         if (this.level().isClientSide()) return;
 
-        if (Double.isNaN(lastReapX)) {
+        // Farming off: no reaping, and the next working stretch starts where the combine is.
+        if (!isFarming() || Double.isNaN(lastReapX)) {
             lastReapX = this.getX();
             lastReapZ = this.getZ();
             return;
@@ -173,13 +299,17 @@ public class CombineEntity extends CamoVehicleBase {
         // across the farm implements.
         double theta = Math.toRadians(yaw);
         double cos = Math.cos(theta), sin = Math.sin(theta);
+        // The header is well ahead of the body: follow the body's pitch (xRot positive = nose down) so it reaps where it is
+        // on a slope, not at the body's height.
+        double pitch = Math.toRadians(this.getXRot());
+        double lz = HEADER_FORWARD * Math.cos(pitch); // reap in front of the body
+        double ly = -HEADER_FORWARD * Math.sin(pitch);
 
         for (int i = 0; i < count; i++) {
             double lx = -ROW_HALF_WIDTH + i * ROW_SPACING;
-            double lz = HEADER_FORWARD; // reap in front of the body
             double wx = cx + (lx * cos - lz * sin);
             double wz = cz + (lx * sin + lz * cos);
-            reapAt(wx, this.getY(), wz);
+            reapAt(wx, this.getY() + ly, wz);
         }
     }
 
@@ -194,7 +324,7 @@ public class CombineEntity extends CamoVehicleBase {
         // aren't loaded; touching those would force-load them. Skip instead.
         if (!level.hasChunkAt(base)) return;
 
-        for (int dy = 1; dy >= -SEARCH_DEPTH; dy--) {
+        for (int dy = SEARCH_UP; dy >= -SEARCH_DEPTH; dy--) {
             BlockPos pos = base.offset(0, dy, 0);
             BlockState state = level.getBlockState(pos);
             if (!(state.getBlock() instanceof CropBlock crop)) continue;

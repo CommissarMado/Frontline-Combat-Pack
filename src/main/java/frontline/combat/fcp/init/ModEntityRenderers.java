@@ -273,6 +273,8 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.DINGO_MG3.get(), frontline.combat.fcp.client.renderer.Dingo.DingoRenderer::new);
         event.registerEntityRenderer(ModEntities.DINGO_M2.get(), frontline.combat.fcp.client.renderer.Dingo.DingoRenderer::new);
         event.registerEntityRenderer(ModEntities.DINGO_GMG.get(), frontline.combat.fcp.client.renderer.Dingo.DingoRenderer::new);
+        event.registerEntityRenderer(ModEntities.TYPE73.get(), frontline.combat.fcp.client.renderer.Type73.Type73Renderer::new);
+        event.registerEntityRenderer(ModEntities.TYPE73_M2.get(), frontline.combat.fcp.client.renderer.Type73.Type73Renderer::new);
 
         event.registerEntityRenderer(ModEntities.HMMWV_AMBULANCE.get(), HumveeUnarmedRenderer::new);
         event.registerEntityRenderer(ModEntities.HMMWV_ARMORED_M2.get(), HumveeUnarmedRenderer::new);

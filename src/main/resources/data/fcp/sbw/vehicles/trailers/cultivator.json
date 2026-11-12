@@ -4,6 +4,7 @@
   "MaxEnergy": 0,
   "ContainerIcon": "fcp:textures/gui/vehicle/type/civ_us.png",
   "OBB": [
+    {"Size": [4.75, 1.0, 5.39], "Position": [0, 1.0, -1.79], "Part": "Collision"},
     {"Size": [4.75, 0.6, 3], "Position": [0, 0.8, 0.6], "Part": "Body"},
     {"Size": [3.75, 0.6, 1.6], "Position": [0, 0.6, -5.6], "Part": "Body"},
     {"Size": [0.65, 0.3, 3], "Position": [0.025, 1.65, 0.6], "Part": "Body"},

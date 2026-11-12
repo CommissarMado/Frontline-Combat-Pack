@@ -3,6 +3,10 @@ package frontline.combat.fcp.mixins;
 import com.atsuishio.superbwarfare.client.RenderHelper;
 import com.atsuishio.superbwarfare.client.overlay.VehicleHudOverlay;
 import com.atsuishio.superbwarfare.data.gun.GunData;
+import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
+import frontline.combat.fcp.entity.vehicle.JohnDeere.FarmingVehicle;
+import net.minecraft.client.Minecraft;
+import net.minecraft.world.entity.player.Player;
 import frontline.combat.fcp.entity.vehicle.CamoEmplacementEntity;
 import frontline.combat.fcp.entity.vehicle.VehicleInventory;
 import net.minecraft.client.gui.GuiGraphics;
@@ -133,12 +137,29 @@ public abstract class VehicleHudMagazineMixin {
     }
 
     /**
+     * Loaded count when the weapon has no reserve slot (useBackpackAmmo - e.g. FE energy weapons, which show a "%").
+     * Drawn untouched, except that farm on/off switches show no number at all.
+     */
+    @Redirect(
+            method = "renderWeaponInfo",
+            at = @At(value = "INVOKE",
+                    target = "Lcom/atsuishio/superbwarfare/client/overlay/VehicleHudOverlay;renderNumber(Lnet/minecraft/client/gui/GuiGraphics;IZFFF)V",
+                    ordinal = 3)
+    )
+    private void fcp$loadedNoReserve(VehicleHudOverlay overlay, GuiGraphics g, int number,
+                                     boolean percent, float x, float y, float scale) {
+        if (fcp$farmSwitch()) return;
+        fcp$renderNumber(g, number, percent, x, y, scale);
+    }
+
+    /**
      * Draw at the uniform scale, keeping the right edge where SBW had it (digits are
      * right-aligned, so a wider glyph would otherwise push past the frame) and re-centring
      * vertically. Non-emplacements fall through untouched.
      */
     private void fcp$draw(GuiGraphics g, int number, boolean percent,
                           float x, float y, float sbwScale, boolean smallSlot) {
+        if (fcp$farmSwitch()) return; // farm on/off switches: no ammo / energy number
         if (!fcp$emplacement) {
             fcp$renderNumber(g, number, percent, x, y, sbwScale);
             return;
@@ -186,11 +207,23 @@ public abstract class VehicleHudMagazineMixin {
     private void fcp$spaceFraction(GuiGraphics gui, ResourceLocation texture, float x, float y,
                                    float u, float v, float width, float height,
                                    float texWidth, float texHeight) {
+        // farm switches: no fraction bar, and no infinity sprite (number.png) in creative either
+        if ((texture.getPath().endsWith("fraction.png") || texture.getPath().endsWith("frame/number.png")) && fcp$farmSwitch()) return;
         float drawX = x;
         if (fcp$emplacement && texture.getPath().endsWith("fraction.png")) {
             drawX = x + fcp$fractionShift();
         }
         RenderHelper.preciseBlit(gui, texture, drawX, y, u, v, width, height, texWidth, texHeight);
+    }
+
+    /**
+     * True when the local player's selected vehicle weapon is a farm machine's on/off switch (FarmingVehicle). Those are
+     * dummy FE weapons, so SBW would show the vehicle's energy as a "%" beside them - meaningless for a switch.
+     */
+    private static boolean fcp$farmSwitch() {
+        Player player = Minecraft.getInstance().player;
+        if (player == null || !(player.getVehicle() instanceof VehicleEntity vehicle) || !(vehicle instanceof FarmingVehicle)) return false;
+        return FarmingVehicle.isSwitchWeapon(vehicle.getGunName(vehicle.getSeatIndex(player)));
     }
 
     /** Local copy of SBW's digit renderer (its own is private). Digits are right-aligned from x. */

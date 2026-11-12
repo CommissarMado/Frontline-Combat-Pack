@@ -10,7 +10,25 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 
-public class JohnDeereEntity extends CamoVehicleBase {
+/**
+ * John Deere tractor. Its towed implements (cultivator, seeder) only work while its farming switch is on (FarmingVehicle),
+ * which also holds it to working speed.
+ */
+public class JohnDeereEntity extends CamoVehicleBase implements FarmingVehicle {
+
+    private static final EntityDataAccessor<Boolean> FARMING = SynchedEntityData.defineId(JohnDeereEntity.class, EntityDataSerializers.BOOLEAN);
+    /** Field working speed (10 km/h) over the 40 km/h road speed. */
+    private static final float FARM_POWER = 10f / 40f;
+
+    @Override
+    public boolean isFarming() {
+        return this.entityData.get(FARMING);
+    }
+
+    @Override
+    public float farmPowerCap() {
+        return FARM_POWER;
+    }
 
     public int INVENTORY_SIZE = 9;
 
@@ -35,6 +53,7 @@ public class JohnDeereEntity extends CamoVehicleBase {
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(STEERING_ANGLE, 0f);
+        this.entityData.define(FARMING, false);
     }
 
     public float getSteeringAngle() {
@@ -88,6 +107,8 @@ public class JohnDeereEntity extends CamoVehicleBase {
     @Override
     public void baseTick() {
         super.baseTick();
+        if (!this.level().isClientSide()) this.entityData.set(FARMING, FarmingVehicle.switchedOn(this));
+        FarmingVehicle.capPower(this);
 
         prevSteeringAngle = getSteeringAngle();
         float currentAngle = getSteeringAngle();

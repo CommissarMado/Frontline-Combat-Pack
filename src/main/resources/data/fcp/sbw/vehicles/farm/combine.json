@@ -30,7 +30,18 @@
     {
       "IsEnclosed": true,
       "Transform": "Vehicle",
-      "Position": [-0.0625, 2.5, 2.0],
+      "Position": [0.1875, 2.5, 2.0],
+      "MinPitch": -60,
+      "MaxPitch": 60,
+      "MinYaw": -95,
+      "MaxYaw": 95,
+      "BanHand": true,
+      "Weapons": ["Farming", "Auger"]
+    },
+    {
+      "IsEnclosed": true,
+      "Transform": "Vehicle",
+      "Position": [-0.5, 2.5, 2.0],
       "MinPitch": -60,
       "MaxPitch": 60,
       "MinYaw": -95,
@@ -38,15 +49,53 @@
       "BanHand": true
     }
   ],
+  "Weapons": {
+    "Farming": {
+      "Name": "weapon.fcp.farming",
+      "Crosshair": "@Empty",
+      "SoundInfo": {"Change": "fcp:squad.weapons.common.switch_82a"},
+      "RPM": 0,
+      "Damage": 0,
+      "Icon": "fcp:textures/screens/vehicle_weapon/farm_off.png",
+      "AmmoType": [
+        "FE",
+        {
+          "Ammo": "FE",
+          "Override": {
+            "Icon": "fcp:textures/screens/vehicle_weapon/farm_on.png",
+            "Name": "weapon.fcp.farming_on"
+          }
+        }
+      ]
+    },
+    "Auger": {
+      "Name": "weapon.fcp.auger",
+      "Crosshair": "@Empty",
+      "SoundInfo": {"Change": "fcp:squad.weapons.common.switch_82a"},
+      "RPM": 0,
+      "Damage": 0,
+      "Icon": "fcp:textures/screens/vehicle_weapon/auger_off.png",
+      "AmmoType": [
+        "FE",
+        {
+          "Ammo": "FE",
+          "Override": {
+            "Icon": "fcp:textures/screens/vehicle_weapon/auger_on.png",
+            "Name": "weapon.fcp.auger_on"
+          }
+        }
+      ]
+    }
+  },
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 52.6,
+    "EnergyCostRate": 78.1,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 0.32,
+    "MaxForwardSpeedRate": 0.475,
     "MaxBackwardSpeedRate": 0.24,
-    "Increment": 0.01406,
+    "Increment": 0.00947,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1
   },

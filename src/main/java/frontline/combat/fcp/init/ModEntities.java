@@ -420,6 +420,11 @@ public class ModEntities {
             EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<HumveeUnarmedEntity>> DINGO_GMG = register("dingo_gmg",
             EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    // Type 73 light truck: unarmed (rear hard top toggle) and M2, on the shared attachment entity (like the Dingo).
+    public static final RegistryObject<EntityType<HumveeUnarmedEntity>> TYPE73 = register("type73",
+            EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<HumveeUnarmedEntity>> TYPE73_M2 = register("type73_m2",
+            EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<HumveeUnarmedEntity>> HMMWV_AMBULANCE = register("hmmwv_ambulance",
             EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<HumveeUnarmedEntity>> HMMWV_ARMORED_M2 = register("hmmwv_armored_m2",

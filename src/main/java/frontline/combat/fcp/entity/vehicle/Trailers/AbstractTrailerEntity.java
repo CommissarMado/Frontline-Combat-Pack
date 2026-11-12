@@ -86,6 +86,12 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
     /** Ticks over which a fresh hitch eases into place instead of teleporting. */
     private static final int ATTACH_LERP_TICKS = 10;
 
+    /** Largest terrain roll change per tick while towed (degrees). */
+    private static final float MAX_ROLL_STEP = 4.0f;
+    /** Share of horizontal motion an unhitched trailer keeps per tick on the ground. */
+    private static final double GROUND_FRICTION = 0.6;
+    private float lastRoll = 0.0f;
+
     private int hitchGlitchTicks = 0;
     private int yawGlitchTicks = 0;
     private int missingDriverTicks = 0;
@@ -203,10 +209,11 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
         this.wasAttached = attached;
         if (!attached) {
             this.attachLerpTicks = 0;
+            applyGroundFriction();
             return;
         }
 
-        flattenCosmeticRotation();
+        limitRollStep();
 
         Entity driver = resolveDriver();
         if (driver == null) return;
@@ -215,13 +222,32 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
     }
 
     /**
-     * Zero SBW's bank/roll each tick — on a setPos-driven follower they spike for a render
-     * tick during sharp turns, flipping the model sideways. Pitch is NOT zeroed: the
-     * constraint sets it from the terrain every tick, so SBW never gets a word in anyway.
+     * Roll comes from the terrain (FCP's rigid-hull rest, run by SBW's terrain compat before the hitch solve). A towed body
+     * is teleported every tick, so a sharp turn can swing it onto very different ground at once: limit the roll change per
+     * tick so that reads as a lurch, not a flip. Pitch is NOT taken from it: the constraint sets that from the hitch line.
      */
-    private void flattenCosmeticRotation() {
-        this.setZRot(0.0f);
-        this.setPrevRoll(0.0f);
+    private void limitRollStep() {
+        float roll = Mth.clamp(this.getRoll(), this.lastRoll - MAX_ROLL_STEP, this.lastRoll + MAX_ROLL_STEP);
+        this.setZRot(roll);
+        this.lastRoll = roll;
+    }
+
+    /**
+     * Unhitched trailers have no engine (EngineType "Empty"), and SBW only applies ground friction inside its engines, so a
+     * pushed trailer used to slide on forever. Rolling resistance and braked wheels instead: most of the motion goes each tick.
+     */
+    private void applyGroundFriction() {
+        this.lastRoll = this.getRoll();
+        if (!this.onGround()) return;
+        Vec3 v = this.getDeltaMovement();
+        double x = v.x * GROUND_FRICTION, z = v.z * GROUND_FRICTION;
+        if (x * x + z * z < 1.0e-5) x = z = 0;
+        this.setDeltaMovement(x, v.y, z);
+    }
+
+    /** True while hitched to a farm machine in Farm mode: implements only work then. Valid on both sides. */
+    public boolean towedForWork() {
+        return isAttached() && resolveDriver() instanceof frontline.combat.fcp.entity.vehicle.JohnDeere.FarmingVehicle farm && farm.isFarming();
     }
 
     private void applyHitchConstraint(Entity driver) {

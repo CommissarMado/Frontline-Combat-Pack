@@ -1434,5 +1434,19 @@
    "variants": 2,
    "single": true
   }
+ },
+ "type73": {
+  "toggle": {
+   "aabb": [
+    -0.841,
+    1.101,
+    -1.890,
+    0.841,
+    1.899,
+    0.320
+   ],
+   "variants": 2,
+   "single": true
+  }
  }
 }

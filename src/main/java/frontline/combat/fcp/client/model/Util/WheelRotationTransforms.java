@@ -388,4 +388,66 @@ public final class WheelRotationTransforms {
         }
         return null;
     }
+
+    // ── Working parts that only turn while a condition holds (farm implements) ──
+
+    /** One gated part's angle, advanced once per game tick. */
+    private static final class GateState {
+        int lastTick = Integer.MIN_VALUE;
+        double lastX, lastZ, angle, prevAngle;
+        boolean primed;
+    }
+
+    private static final Map<Entity, Map<String, GateState>> GATED = new WeakHashMap<>();
+
+    /** Advances a gated part's angle (degrees) once per tick by {@code step} and returns it interpolated. */
+    private static float gatedDegrees(VehicleEntity vehicle, String key, float partialTick, java.util.function.DoubleUnaryOperator step) {
+        GateState s = GATED.computeIfAbsent(vehicle, k -> new java.util.HashMap<>()).computeIfAbsent(key, k -> new GateState());
+        if (vehicle.tickCount != s.lastTick) {
+            s.lastTick = vehicle.tickCount;
+            s.prevAngle = s.angle;
+            double dx = vehicle.getX() - s.lastX, dz = vehicle.getZ() - s.lastZ;
+            double dist = Math.sqrt(dx * dx + dz * dz);
+            double yaw = Math.toRadians(vehicle.getYRot());
+            double signed = s.primed && dist > 1.0e-5 && dist < MAX_TICK_TRAVEL
+                    ? ((dx * -Math.sin(yaw) + dz * Math.cos(yaw)) >= 0.0 ? dist : -dist) : 0.0;
+            s.angle += step.applyAsDouble(signed);
+            // keep both ends of the interpolation in one turn, so the lerp never runs the long way round
+            double wrap = 360.0 * Math.floor(s.angle / 360.0);
+            s.angle -= wrap;
+            s.prevAngle -= wrap;
+            s.lastX = vehicle.getX();
+            s.lastZ = vehicle.getZ();
+            s.primed = true;
+        }
+        return (float) Mth.lerp((double) partialTick, s.prevAngle, s.angle);
+    }
+
+    /**
+     * Parts that roll with travel like a wheel of {@code radius} (blocks), but only while {@code active} holds - e.g. a
+     * cultivator's rotors, which turn only while it is working and moving. Same spin convention as the wheels (inverted X).
+     */
+    @Nullable
+    public static <T extends VehicleEntity & GeoAnimatable> VehicleModel.TransformContext<T> rollingWhile(
+            String boneName, double radius, java.util.function.Predicate<T> active, String... bones) {
+        for (String b : bones) {
+            if (!b.equals(boneName)) continue;
+            double r = Math.max(0.05, radius);
+            return (bone, vehicle, state) -> applyRoll(bone, SpinAxis.X,
+                    gatedDegrees(vehicle, b, state.getPartialTick(), d -> active.test(vehicle) ? d / r * DEG_PER_RAD : 0.0), true);
+        }
+        return null;
+    }
+
+    /** Parts that spin about X at {@code degPerTick} while {@code active} holds, moving or not - e.g. a combine's reel. */
+    @Nullable
+    public static <T extends VehicleEntity & GeoAnimatable> VehicleModel.TransformContext<T> spinningWhile(
+            String boneName, double degPerTick, java.util.function.Predicate<T> active, String... bones) {
+        for (String b : bones) {
+            if (!b.equals(boneName)) continue;
+            return (bone, vehicle, state) -> applyRoll(bone, SpinAxis.X,
+                    gatedDegrees(vehicle, b, state.getPartialTick(), d -> active.test(vehicle) ? degPerTick : 0.0), true);
+        }
+        return null;
+    }
 }

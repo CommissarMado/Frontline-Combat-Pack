@@ -21,7 +21,7 @@ import frontline.combat.fcp.client.renderer.FcpVehicleTexture;
  *   }
  *
  * Deliberately NOT VehicleRenderer itself: that applies driving pitch/bank/roll visuals,
- * which a towed follower flattens every tick — yaw is the only rotation a trailer has.
+ * which a towed follower doesn't have — a trailer turns by yaw and tilts only with the terrain (pitch and roll).
  * Texture resolves through the camo system, so sprayed camos and the wrecked state work
  * on every trailer automatically.
  */
@@ -47,6 +47,8 @@ public abstract class TrailerRenderer<T extends AbstractTrailerEntity> extends G
         // Terrain pitch from the entity. Negated: the 180° yaw flip above mirrors the X
         // axis, and vanilla xRot is positive-down while the flipped model needs the inverse.
         poseStack.mulPose(Axis.XP.rotationDegrees(-pitch));
+        // Terrain roll (FCP's rigid-hull rest), likewise negated by the flip.
+        poseStack.mulPose(Axis.ZP.rotationDegrees(-Mth.lerp(partialTick, animatable.getPrevRoll(), animatable.getRoll())));
     }
 
     @Override

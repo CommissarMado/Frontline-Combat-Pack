@@ -1,0 +1,6 @@
+{
+  "Skins": [
+    {"Id": "vanilla", "Name": "Olive Drab", "Texture": "fcp:textures/entity/type73/type73_olive.png", "Priority": 1},
+    {"Id": "green", "Name": "Green", "Texture": "fcp:textures/entity/type73/type73_green.png", "Priority": 2}
+  ]
+}

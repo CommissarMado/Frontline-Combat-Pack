@@ -72,7 +72,7 @@ public final class EngineControl {
         // leopard2: Leopard_engine_start_INT_01, 4.00 s
         put(m, 80, "fcp:leopard2a4", "fcp:leopard2a4_ukr", "fcp:leopard2a6", "fcp:leopard2a7v");
         // technical: technical_engine_start_int_01
-        put(m, 47, "fcp:land_cruiser_80", "fcp:toyota_hilux", "fcp:toyota_hilux_rocket_pod", "fcp:toyota_hilux_bmp", "fcp:toyota_hilux_spg9", "fcp:toyota_hilux_kornet", "fcp:toyota_hilux_mortar", "fcp:toyota_hilux_zu23");
+        put(m, 47, "fcp:land_cruiser_80", "fcp:type73", "fcp:type73_m2", "fcp:toyota_hilux", "fcp:toyota_hilux_rocket_pod", "fcp:toyota_hilux_bmp", "fcp:toyota_hilux_spg9", "fcp:toyota_hilux_kornet", "fcp:toyota_hilux_mortar", "fcp:toyota_hilux_zu23");
         // mgator: mgator_engine_start_ext_01
         put(m, 25, "fcp:dpv_m240", "fcp:dpv_minigun");
         // csk131: csk_engine_start_int_01

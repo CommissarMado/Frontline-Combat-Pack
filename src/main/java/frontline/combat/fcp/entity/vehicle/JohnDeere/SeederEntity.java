@@ -37,7 +37,8 @@ public class SeederEntity extends AbstractTrailerEntity {
     private static final double ROW_HALF_WIDTH = 9;
     private static final double ROW_SPACING = 1.0;
     private static final double ROW_LOCAL_Z = -4.0;
-    private static final int SEARCH_DEPTH = 2;
+    /** Blocks searched below and above each row point, so it works over rough ground. */
+    private static final int SEARCH_DEPTH = 3, SEARCH_UP = 2;
     /** Travel between sown rows; also the interpolation step. */
     private static final double PLANT_STEP = 0.5;
     private static final int MAX_STEPS = 8;
@@ -104,7 +105,8 @@ public class SeederEntity extends AbstractTrailerEntity {
 
         if (this.level().isClientSide()) return;
 
-        if (!isAttached()) {
+        // Only while the tractor is in Farm mode (FarmingVehicle); the next working stretch starts where it is.
+        if (!towedForWork()) {
             lastSeedX = Double.NaN;
             lastSeedZ = Double.NaN;
             return;
@@ -157,7 +159,7 @@ public class SeederEntity extends AbstractTrailerEntity {
         // The row overhangs the trailer; touching an unloaded chunk would force-load it.
         if (!level.hasChunkAt(base)) return;
 
-        for (int dy = 1; dy >= -SEARCH_DEPTH; dy--) {
+        for (int dy = SEARCH_UP; dy >= -SEARCH_DEPTH; dy--) {
             BlockPos soil = base.offset(0, dy, 0);
             BlockState soilState = level.getBlockState(soil);
             if (!soilState.is(Blocks.FARMLAND)) continue;

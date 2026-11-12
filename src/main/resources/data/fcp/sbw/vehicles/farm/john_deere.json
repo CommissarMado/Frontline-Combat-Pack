@@ -21,7 +21,8 @@
       "MaxPitch": 60,
       "MinYaw": -95,
       "MaxYaw": 95,
-      "BanHand": true
+      "BanHand": true,
+      "Weapons": ["Farming"]
     },
     {
       "IsEnclosed": true,
@@ -34,15 +35,35 @@
       "BanHand": true
     }
   ],
+  "Weapons": {
+    "Farming": {
+      "Name": "weapon.fcp.farming",
+      "Crosshair": "@Empty",
+      "SoundInfo": {"Change": "fcp:squad.weapons.common.switch_82a"},
+      "RPM": 0,
+      "Damage": 0,
+      "Icon": "fcp:textures/screens/vehicle_weapon/farm_off.png",
+      "AmmoType": [
+        "FE",
+        {
+          "Ammo": "FE",
+          "Override": {
+            "Icon": "fcp:textures/screens/vehicle_weapon/farm_on.png",
+            "Name": "weapon.fcp.farming_on"
+          }
+        }
+      ]
+    }
+  },
   "EngineType": "Wheel",
   "EngineInfo": {
     "Buoyancy": 0,
-    "EnergyCostRate": 33.6,
+    "EnergyCostRate": 41.7,
     "WheelRotSpeed": 1.25,
     "WheelDifferential": 0.5,
-    "MaxForwardSpeedRate": 0.51,
+    "MaxForwardSpeedRate": 0.633,
     "MaxBackwardSpeedRate": 0.32,
-    "Increment": 0.01442,
+    "Increment": 0.01162,
     "Decrement": 0.02,
     "SteeringSpeed": 0.1
   },

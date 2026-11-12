@@ -37,8 +37,8 @@ public class CultivatorEntity extends AbstractTrailerEntity {
     private static final double ROW_SPACING = 1.0;
     /** Where the row sits along the implement: local Z (+forward, -rear). */
     private static final double ROW_LOCAL_Z = 0.0;
-    /** How far below the implement's base to hunt for ground. */
-    private static final int SEARCH_DEPTH = 2;
+    /** Blocks searched below and above each row point, so it works over rough ground. */
+    private static final int SEARCH_DEPTH = 3, SEARCH_UP = 2;
     /** Distance travelled between tilled rows; also the interpolation step. */
     private static final double TILL_STEP = 0.5;
     /** Safety cap on interpolation steps in one tick. */
@@ -76,7 +76,8 @@ public class CultivatorEntity extends AbstractTrailerEntity {
 
         if (this.level().isClientSide()) return;
 
-        if (!isAttached()) {
+        // Only while the tractor is in Farm mode (FarmingVehicle); the next working stretch starts where it is.
+        if (!towedForWork()) {
             lastTillX = Double.NaN;
             lastTillZ = Double.NaN;
             return;
@@ -127,7 +128,7 @@ public class CultivatorEntity extends AbstractTrailerEntity {
 
         if (!level.hasChunkAt(base)) return;
 
-        for (int dy = 1; dy >= -SEARCH_DEPTH; dy--) {
+        for (int dy = SEARCH_UP; dy >= -SEARCH_DEPTH; dy--) {
             BlockPos pos = base.offset(0, dy, 0);
             BlockState state = level.getBlockState(pos);
             if (state.isAir()) continue;
