@@ -245,9 +245,9 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.PANTSIR.get(), frontline.combat.fcp.client.renderer.Pantsir.PantsirRenderer::new);
         event.registerEntityRenderer(ModEntities.BRDM2.get(), frontline.combat.fcp.client.renderer.Brdm.Brdm2Renderer::new);
         event.registerEntityRenderer(ModEntities.BRDM2_KORNET.get(), frontline.combat.fcp.client.renderer.Brdm.Brdm2Renderer::new);
-        event.registerEntityRenderer(ModEntities.M113.get(), frontline.combat.fcp.client.renderer.M113.M113Renderer::new);
-        event.registerEntityRenderer(ModEntities.M113A2.get(), frontline.combat.fcp.client.renderer.M113.M113Renderer::new);
-        event.registerEntityRenderer(ModEntities.SKIF.get(), frontline.combat.fcp.client.renderer.M113.M113Renderer::new);
+        event.registerEntityRenderer(ModEntities.M113.get(), ctx -> new frontline.combat.fcp.client.renderer.M113.M113Renderer(ctx, new frontline.combat.fcp.client.model.M113.M113Model()));
+        event.registerEntityRenderer(ModEntities.M113A2.get(), ctx -> new frontline.combat.fcp.client.renderer.M113.M113Renderer(ctx, new frontline.combat.fcp.client.model.M113.M113A2Model()));
+        event.registerEntityRenderer(ModEntities.SKIF.get(), ctx -> new frontline.combat.fcp.client.renderer.M113.M113Renderer(ctx, new frontline.combat.fcp.client.model.M113.SkifModel()));
         event.registerEntityRenderer(ModEntities.KOMATSU_LAV.get(), frontline.combat.fcp.client.renderer.Komatsu.KomatsuLavRenderer::new);
         event.registerEntityRenderer(ModEntities.KOMATSU_LAV_SHIELD.get(), frontline.combat.fcp.client.renderer.Komatsu.KomatsuLavRenderer::new);
         event.registerEntityRenderer(ModEntities.KOMATSU_LAV_UNARMED.get(), frontline.combat.fcp.client.renderer.Komatsu.KomatsuLavRenderer::new);

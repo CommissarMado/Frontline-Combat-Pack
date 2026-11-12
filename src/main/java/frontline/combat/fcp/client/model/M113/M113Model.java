@@ -1,35 +1,35 @@
 package frontline.combat.fcp.client.model.M113;
 
-import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.model.FCPVehicleModel;
+import frontline.combat.fcp.client.model.Util.FCPTrackPath;
 import frontline.combat.fcp.entity.vehicle.M113.M113Entity;
 import frontline.combat.fcp.vehicle.humvee.HumveeAttachments;
 import net.minecraft.resources.ResourceLocation;
-import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.core.animation.AnimationState;
 
 /**
- * M113, M113A2 and Skif. No track or wheel animation (user). The M113A2's open M2 traverses on "turret" and elevates
- * on "barrel"; its stowage ("toggle1") shows only while fitted.
+ * M113 (geo/m113.geo.json).
  */
 public class M113Model extends FCPVehicleModel<M113Entity> {
 
+    private static final FCPTrackPath TRACK_PATH = M113TrackPaths.M113.reversed();
+
+    @Override
+    protected FCPTrackPath getTrackPath() {
+        return TRACK_PATH;
+    }
+
+    private static final ResourceLocation MODEL = new ResourceLocation(FCP.MODID, "geo/m113.geo.json");
+
     @Override
     public ResourceLocation getModelResource(M113Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/" + animatable.variant() + ".geo.json");
+        return MODEL;
     }
 
     @Override
     public boolean hideForTurretControllerWhileZooming() {
         return false;
-    }
-
-    @Override
-    public @Nullable VehicleModel.TransformContext<M113Entity> collectTransform(String boneName) {
-        // Road wheels and track links stay as modelled.
-        if (boneName.startsWith("wheel") || boneName.startsWith("GUS")) return null;
-        return super.collectTransform(boneName);
     }
 
     @Override
