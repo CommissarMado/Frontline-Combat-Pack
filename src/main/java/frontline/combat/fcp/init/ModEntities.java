@@ -411,6 +411,15 @@ public class ModEntities {
             EntityType.Builder.of(MATV9In1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<MATV9In1Entity>> MATV_MK19 = register("matv_mk19",
             EntityType.Builder.of(MATV9In1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    // ATF Dingo: one model, three gun variants, on the shared attachment entity (like the Caiman).
+    public static final RegistryObject<EntityType<HumveeUnarmedEntity>> DINGO = register("dingo",
+            EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<HumveeUnarmedEntity>> DINGO_MG3 = register("dingo_mg3",
+            EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<HumveeUnarmedEntity>> DINGO_M2 = register("dingo_m2",
+            EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    public static final RegistryObject<EntityType<HumveeUnarmedEntity>> DINGO_GMG = register("dingo_gmg",
+            EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<HumveeUnarmedEntity>> HMMWV_AMBULANCE = register("hmmwv_ambulance",
             EntityType.Builder.of(HumveeUnarmedEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<HumveeUnarmedEntity>> HMMWV_ARMORED_M2 = register("hmmwv_armored_m2",

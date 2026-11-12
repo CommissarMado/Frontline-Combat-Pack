@@ -1,6 +1,6 @@
 {
   "_comment": "Generated from the Squad SDK: MATV_engine_rpm_ALL_Cue.uasset (+ start/stop cues).",
-  "vehicles": ["fcp:komatsu_lav", "fcp:komatsu_lav_shield", "fcp:komatsu_lav_unarmed", "fcp:matv", "fcp:matv_tow", "fcp:matv_crow", "fcp:matv_9in1", "fcp:matv_mk19", "fcp:novator", "fcp:novator_unarmed", "fcp:novator_stugna", "fcp:kozak5", "fcp:kozak2m1", "fcp:kozak_ambulance"],
+  "vehicles": ["fcp:komatsu_lav", "fcp:komatsu_lav_shield", "fcp:komatsu_lav_unarmed", "fcp:matv", "fcp:matv_tow", "fcp:matv_crow", "fcp:matv_9in1", "fcp:matv_mk19", "fcp:dingo", "fcp:dingo_mg3", "fcp:dingo_m2", "fcp:dingo_gmg", "fcp:novator", "fcp:novator_unarmed", "fcp:novator_stugna", "fcp:kozak5", "fcp:kozak2m1", "fcp:kozak_ambulance"],
   "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },
   "exterior_volume": 1,
   "interior_volume": 0.8333,

@@ -1,0 +1,22 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Desert",
+      "Texture": "fcp:textures/entity/dingo/dingo_1.png",
+      "Priority": 1
+    },
+    {
+      "Id": "green",
+      "Name": "Green",
+      "Texture": "fcp:textures/entity/dingo/dingo_2.png",
+      "Priority": 2
+    },
+    {
+      "Id": "nato",
+      "Name": "NATO",
+      "Texture": "fcp:textures/entity/dingo/dingo_3.png",
+      "Priority": 3
+    }
+  ]
+}

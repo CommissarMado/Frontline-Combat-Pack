@@ -269,6 +269,10 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.MATV_CROW.get(), MATVCrowsRenderer::new);
         event.registerEntityRenderer(ModEntities.MATV_9IN1.get(), MATV9In1Renderer::new);
         event.registerEntityRenderer(ModEntities.MATV_MK19.get(), MATV9In1Renderer::new);
+        event.registerEntityRenderer(ModEntities.DINGO.get(), frontline.combat.fcp.client.renderer.Dingo.DingoRenderer::new);
+        event.registerEntityRenderer(ModEntities.DINGO_MG3.get(), frontline.combat.fcp.client.renderer.Dingo.DingoRenderer::new);
+        event.registerEntityRenderer(ModEntities.DINGO_M2.get(), frontline.combat.fcp.client.renderer.Dingo.DingoRenderer::new);
+        event.registerEntityRenderer(ModEntities.DINGO_GMG.get(), frontline.combat.fcp.client.renderer.Dingo.DingoRenderer::new);
 
         event.registerEntityRenderer(ModEntities.HMMWV_AMBULANCE.get(), HumveeUnarmedRenderer::new);
         event.registerEntityRenderer(ModEntities.HMMWV_ARMORED_M2.get(), HumveeUnarmedRenderer::new);

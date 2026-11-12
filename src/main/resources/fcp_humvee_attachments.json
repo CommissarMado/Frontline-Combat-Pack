@@ -1330,5 +1330,109 @@
    "variants": 2,
    "single": true
   }
+ },
+ "dingo_mg3": {
+  "toggle1": {
+   "aabb": [
+    0.372,
+    2.434,
+    -1.825,
+    0.691,
+    2.966,
+    -1.506
+   ],
+   "variants": 2,
+   "single": true
+  },
+  "toggle2": {
+   "aabb": [
+    -1.338,
+    1.531,
+    1.804,
+    1.354,
+    2.062,
+    2.000
+   ],
+   "variants": 2,
+   "single": true
+  }
+ },
+ "dingo_m2": {
+  "toggle1": {
+   "aabb": [
+    0.372,
+    2.434,
+    -1.825,
+    0.691,
+    2.966,
+    -1.506
+   ],
+   "variants": 2,
+   "single": true
+  },
+  "toggle2": {
+   "aabb": [
+    -1.338,
+    1.531,
+    1.804,
+    1.354,
+    2.062,
+    2.000
+   ],
+   "variants": 2,
+   "single": true
+  }
+ },
+ "dingo_gmg": {
+  "toggle1": {
+   "aabb": [
+    0.372,
+    2.434,
+    -1.825,
+    0.691,
+    2.966,
+    -1.506
+   ],
+   "variants": 2,
+   "single": true
+  },
+  "toggle2": {
+   "aabb": [
+    -1.338,
+    1.531,
+    1.804,
+    1.354,
+    2.062,
+    2.000
+   ],
+   "variants": 2,
+   "single": true
+  }
+ },
+ "dingo": {
+  "toggle1": {
+   "aabb": [
+    0.372,
+    2.434,
+    -1.825,
+    0.691,
+    2.966,
+    -1.506
+   ],
+   "variants": 2,
+   "single": true
+  },
+  "toggle2": {
+   "aabb": [
+    -1.338,
+    1.531,
+    1.804,
+    1.354,
+    2.062,
+    2.000
+   ],
+   "variants": 2,
+   "single": true
+  }
  }
 }

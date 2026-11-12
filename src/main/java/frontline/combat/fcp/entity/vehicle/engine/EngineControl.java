@@ -86,7 +86,7 @@ public final class EngineControl {
         // tigr: tigr_engine_start_int_01
         put(m, 28, "fcp:gaz_tigr", "fcp:gaz_tigr_rws", "fcp:gaz_tigr_mg", "fcp:gaz_tigr_gl", "fcp:gaz_tigr_dual");
         // matv: matv_engine_int_start_01
-        put(m, 39, "fcp:komatsu_lav", "fcp:komatsu_lav_shield", "fcp:komatsu_lav_unarmed", "fcp:matv", "fcp:matv_tow", "fcp:matv_crow", "fcp:matv_9in1", "fcp:matv_mk19", "fcp:novator", "fcp:novator_unarmed", "fcp:novator_stugna", "fcp:kozak5", "fcp:kozak2m1", "fcp:kozak_ambulance");
+        put(m, 39, "fcp:komatsu_lav", "fcp:komatsu_lav_shield", "fcp:komatsu_lav_unarmed", "fcp:matv", "fcp:matv_tow", "fcp:matv_crow", "fcp:matv_9in1", "fcp:matv_mk19", "fcp:dingo", "fcp:dingo_mg3", "fcp:dingo_m2", "fcp:dingo_gmg", "fcp:novator", "fcp:novator_unarmed", "fcp:novator_stugna", "fcp:kozak5", "fcp:kozak2m1", "fcp:kozak_ambulance");
         // us_truck: us_truck_engine_start_int_01 (FMTV; also the RG-33 and Caimans, which need a heavier engine)
         put(m, 53, "fcp:m939", "fcp:fmtv", "fcp:fmtv_4x4", "fcp:himars",
                 "fcp:rg_33", "fcp:caiman", "fcp:caiman_unarmed", "fcp:caiman_police", "fcp:caiman_uparmored", "fcp:caiman_uparmored_unarmed");
