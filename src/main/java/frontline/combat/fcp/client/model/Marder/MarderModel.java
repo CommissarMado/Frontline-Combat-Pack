@@ -2,7 +2,10 @@ package frontline.combat.fcp.client.model.Marder;
 
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.client.model.FCPVehicleModel;
+import frontline.combat.fcp.client.model.T72.T72TrackPaths;
 import frontline.combat.fcp.client.model.Util.CannonRecoilTransforms;
+import frontline.combat.fcp.client.model.Util.FCPTrackPath;
 import frontline.combat.fcp.client.model.Util.ModelBoneTransforms;
 import frontline.combat.fcp.entity.vehicle.Marder.MarderEntity;
 import net.minecraft.resources.ResourceLocation;
@@ -16,7 +19,14 @@ import org.jetbrains.annotations.Nullable;
  * Extends VehicleModel directly (like the Bradley): FCPVehicleModel un-hides transform bones, which would
  * cancel the missile hide.
  */
-public class MarderModel extends VehicleModel<MarderEntity> {
+public class MarderModel extends FCPVehicleModel<MarderEntity> {
+
+    private static final FCPTrackPath TRACK_PATH = MarderTrackPaths.MARDER.reversed();
+
+    @Override
+    protected FCPTrackPath getTrackPath() {
+        return TRACK_PATH;
+    }
 
     @Override
     public ResourceLocation getModelResource(MarderEntity animatable) {

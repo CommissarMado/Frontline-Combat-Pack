@@ -3,7 +3,9 @@ package frontline.combat.fcp.client.model.Leopard2;
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.model.FCPVehicleModel;
+import frontline.combat.fcp.client.model.Marder.MarderTrackPaths;
 import frontline.combat.fcp.client.model.Util.CannonRecoilTransforms;
+import frontline.combat.fcp.client.model.Util.FCPTrackPath;
 import frontline.combat.fcp.client.model.Util.ModelBoneTransforms;
 import frontline.combat.fcp.entity.vehicle.Leopard2.Leopard2Entity;
 import net.minecraft.resources.ResourceLocation;
@@ -25,6 +27,13 @@ import org.jetbrains.annotations.Nullable;
  */
 public class Leopard2Model extends FCPVehicleModel<Leopard2Entity> {
 
+    private static final FCPTrackPath TRACK_PATH = Leopard2TrackPaths.LEOPARD2.reversed();
+
+    @Override
+    protected FCPTrackPath getTrackPath() {
+        return TRACK_PATH;
+    }
+
     @Override
     public ResourceLocation getModelResource(Leopard2Entity animatable) {
         return new ResourceLocation(FCP.MODID, "geo/" + animatable.variantName() + ".geo.json");
@@ -37,7 +46,7 @@ public class Leopard2Model extends FCPVehicleModel<Leopard2Entity> {
 
     @Override
     public @Nullable VehicleModel.TransformContext<Leopard2Entity> collectTransform(String boneName) {
-        if (boneName.startsWith("WHEL")) {
+        if (boneName.startsWith("wheel")) {
             VehicleModel.TransformContext<Leopard2Entity> left = super.collectTransform("wheelL"), right = super.collectTransform("wheelR");
             if (left == null || right == null) return null;
             // GeckoLib negates the geo's x: a negative pivot x is the tank's left (+x in the vehicle JSON).
