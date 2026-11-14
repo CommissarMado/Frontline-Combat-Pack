@@ -122,16 +122,20 @@ public class FcpDriverOverlay implements IGuiOverlay {
             "fcp:m1a2_tusk2"
     );
 
-    /** Commanders who look out through a cupola's periscopes (no up/down): they get the driver frame too. */
-    private static final java.util.Map<String, Integer> COMMANDER_CUPOLA_SEATS = java.util.Map.of(
-            "fcp:m113", 1,
-            "fcp:skif", 1,
-            "fcp:marder1a3", 2
+    /**
+     * Commanders who look out through a cupola's periscopes (no up/down): they get the driver frame too.
+     * The cupola is the seat right after the gunner's, so it follows the turret controller between
+     * single crew and multicrew data.
+     */
+    private static final Set<String> COMMANDER_CUPOLA_VEHICLES = Set.of(
+            "fcp:m113",
+            "fcp:skif",
+            "fcp:marder1a3"
     );
 
     private static boolean isCupolaSeat(VehicleEntity ve, int seatIndex) {
-        Integer seat = COMMANDER_CUPOLA_SEATS.get(EntityType.getKey(ve.getType()).toString());
-        return seat != null && seat == seatIndex;
+        return COMMANDER_CUPOLA_VEHICLES.contains(EntityType.getKey(ve.getType()).toString())
+                && seatIndex == ve.computed().getTurretControllerIndex() + 1;
     }
 
     /**
