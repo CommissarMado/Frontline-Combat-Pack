@@ -288,46 +288,46 @@ tasks.withType(JavaCompile).configureEach {
 
 // ============================================================================
 // Vehicle creative-tab icon renderer (build-time, isometric).
-// Renders each vehicle's .geo.json model to a tightly-cropped isometric PNG at
-// assets/superbwarfare/textures/vehicle_icon/container/<id>.png, which SBW's
-// ContainerItemDecorator auto-detects (no code/JSON changes needed).
+// Renders each vehicle's .geo.json model to a 128x128 isometric PNG at
+// assets/superbwarfare/textures/vehicle_icon/container/<id>.png, which FCP's
+// container-icon decorator picks up (no code/JSON changes needed).
 //
-// The generated icons are committed to the repo, so a normal build needs nothing
-// extra. Re-run this ONLY when vehicle models/textures change:
+// The renderer is a small Rust program in tools/icon_renderer (all ~200 icons in
+// about a second). The generated icons are committed to the repo, so a machine
+// without Rust still builds fine - the task is skipped and the committed icons are
+// used. Run by hand with:
 //     ./gradlew renderVehicleIcons
-// Requires python3 with numpy + Pillow  (pip install numpy Pillow).
-// To run it automatically as part of the build, uncomment the dependsOn line below.
+// Requires cargo (https://rustup.rs). See tools/RENDER_ICONS_README.md.
 // ============================================================================
 tasks.register('renderVehicleIcons', Exec) {
     group = 'fcp'
     description = 'Render isometric creative-tab icons for all vehicles from their geo models.'
-    def script = file('tools/render_icons.py')
+    def crate = file('tools/icon_renderer')
     def outDir = file('src/main/resources/assets/superbwarfare/textures/vehicle_icon/container')
-    // optional(true): tools/render_icons.py is matched by '*.py' in .gitignore and so is not in
-    // the repo. Declaring it as a required input makes Gradle fail validation before onlyIf is
-    // ever consulted, which breaks 'build' on any clone that lacks the script.
-    inputs.file(script).optional(true)
+    inputs.files fileTree(crate) { include 'Cargo.toml', 'Cargo.lock', 'src/**' }
     inputs.file file('tools/icon_overrides.json')
     inputs.dir file('src/main/resources/assets/fcp/geo')
     inputs.files fileTree(file('src/main/resources/assets/fcp/textures/entity'))
     inputs.files fileTree(file('src/main/resources/assets/fcp/sbw'))
+    inputs.files fileTree(file('src/main/resources/data')) { include '*/sbw/vehicle_skins/*.json' }
+    // The geo each vehicle uses is read from the model classes and the entity registrations.
+    inputs.file file('src/main/java/frontline/combat/fcp/init/ModEntities.java')
+    inputs.files fileTree(file('src/main/java/frontline/combat/fcp/client/model'))
     outputs.dir outDir
-    // resolve a python launcher available on the build machine
-    def py = System.getenv('PYTHON') ?: (org.gradle.internal.os.OperatingSystem.current().isWindows() ? 'python' : 'python3')
-    // Only run if the script is present AND python is actually available, so a machine missing
-    // either never breaks the build (the committed icons are used as-is). Delete an icon +
-    // rebuild to regenerate it.
+    def cargo = System.getenv('CARGO') ?: 'cargo'
+    // Only run when cargo is actually available, so a machine without Rust never breaks the
+    // build (the committed icons are used as-is).
     onlyIf {
-        if (!script.exists()) return false
         try {
-            def p = ["${py}", '--version'].execute()
+            def p = [cargo, '--version'].execute()
             p.waitFor() == 0
         } catch (ignored) { false }
     }
-    commandLine py, script.absolutePath, '--batch', projectDir.absolutePath
+    commandLine cargo, 'run', '--release', '--quiet', '--manifest-path', new File(crate, 'Cargo.toml').absolutePath,
+            '--', '--batch', projectDir.absolutePath
 }
 
 // Regenerate icons as part of the build. Gradle skips it when nothing changed (up-to-date),
-// and the onlyIf above skips it when python isn't installed.
+// and the onlyIf above skips it when cargo isn't installed.
 tasks.named('processResources').configure { dependsOn 'renderVehicleIcons' }
 

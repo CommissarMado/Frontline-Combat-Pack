@@ -2,7 +2,9 @@ package frontline.combat.fcp.client.model.Bradley;
 
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
+import frontline.combat.fcp.client.model.FCPVehicleModel;
 import frontline.combat.fcp.client.model.Util.CannonRecoilTransforms;
+import frontline.combat.fcp.client.model.Util.FCPTrackPath;
 import frontline.combat.fcp.client.model.Util.ModelBoneTransforms;
 import frontline.combat.fcp.client.sound.AtgmLauncherAnimation;
 import frontline.combat.fcp.entity.vehicle.Bradley.BradleyEntity;
@@ -21,7 +23,14 @@ import org.jetbrains.annotations.Nullable;
  * Extends VehicleModel directly (like the Puma): FCPVehicleModel un-hides transform bones, which would
  * cancel the missile hide.
  */
-public class BradleyModel extends VehicleModel<BradleyEntity> {
+public class BradleyModel extends FCPVehicleModel<BradleyEntity> {
+
+    private static final FCPTrackPath TRACK = BradleyTrackPaths.BRADLEY.reversed();
+
+    @Override
+    protected FCPTrackPath getTrackPath() {
+        return TRACK;
+    }
 
     private static final String CANNON_WEAPON = "Cannon";
     /**

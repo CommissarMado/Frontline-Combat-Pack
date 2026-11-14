@@ -2,12 +2,6 @@
   "bmp1am": {
     "geo": "src/main/resources/assets/fcp/geo/bmp1_am.geo.json"
   },
-  "huey_door_gunner_m60": {
-    "geo": "src/main/resources/assets/fcp/geo/huey_m60.geo.json"
-  },
-  "huey_door_gunner_m134": {
-    "geo": "src/main/resources/assets/fcp/geo/huey_minigun.geo.json"
-  },
   "novator_unarmed": {
     "geo": "src/main/resources/assets/fcp/geo/novator.geo.json"
   },

@@ -3,7 +3,9 @@ package frontline.combat.fcp.client.model.T90M;
 import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.model.FCPVehicleModel;
+import frontline.combat.fcp.client.model.Marder.MarderTrackPaths;
 import frontline.combat.fcp.client.model.Util.CannonRecoilTransforms;
+import frontline.combat.fcp.client.model.Util.FCPTrackPath;
 import frontline.combat.fcp.client.model.Util.ModelBoneTransforms;
 import frontline.combat.fcp.entity.vehicle.T90M.T90MEntity;
 import frontline.combat.fcp.vehicle.humvee.HumveeAttachments;
@@ -17,6 +19,13 @@ import software.bernie.geckolib.core.animation.AnimationState;
  * 2024 only) shows only while fitted.
  */
 public class T90MModel extends FCPVehicleModel<T90MEntity> {
+
+    private static final FCPTrackPath TRACK_PATH = T90MTrackPaths.T90M.reversed();
+
+    @Override
+    protected FCPTrackPath getTrackPath() {
+        return TRACK_PATH;
+    }
 
     @Override
     public ResourceLocation getModelResource(T90MEntity animatable) {
