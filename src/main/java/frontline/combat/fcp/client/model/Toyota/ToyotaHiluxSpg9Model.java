@@ -13,7 +13,7 @@ public class ToyotaHiluxSpg9Model extends VehicleModel<ToyotaHiluxSpg9Entity> {
     @Override
     public ResourceLocation getModelResource(ToyotaHiluxSpg9Entity animatable) {
         // "toyota_hilux_spg9" or "toyota_hilux_kornet" (same entity class, registry name picks the geo).
-        return new ResourceLocation(FCP.MODID, "geo/" + net.minecraft.world.entity.EntityType.getKey(animatable.getType()).getPath() + ".geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/" + net.minecraft.world.entity.EntityType.getKey(animatable.getType()).getPath() + ".geo.json");
     }
 
     @Override

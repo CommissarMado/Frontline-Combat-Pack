@@ -22,10 +22,11 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.AddReloadListenerEvent;
-import net.minecraftforge.event.entity.EntityJoinLevelEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.event.AddReloadListenerEvent;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -50,7 +51,7 @@ import java.util.Map;
  * Anything else (rounds from
  * vehicles without a table, collisions, fire...) keeps SBW's own modifiers.
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID)
+@EventBusSubscriber(modid = FCP.MODID)
 public final class VehicleArmor {
 
     public static final String TAG = "fcp_round";

@@ -15,7 +15,7 @@ import software.bernie.geckolib.cache.object.GeoBone;
 /** The CH-47 is a mesh model: its geo holds the bones and cubes, the meshes come from BoneMeshes. */
 public class Ch47Renderer extends VehicleRenderer<Ch47Entity> {
 
-    private static final ResourceLocation MESHES = new ResourceLocation(FCP.MODID, "meshes/ch47.json");
+    private static final ResourceLocation MESHES = ResourceLocation.fromNamespaceAndPath(FCP.MODID, "meshes/ch47.json");
 
     public Ch47Renderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new Ch47Model());
@@ -28,10 +28,10 @@ public class Ch47Renderer extends VehicleRenderer<Ch47Entity> {
 
     @Override
     public void renderCubesOfBone(PoseStack poseStack, GeoBone bone, VertexConsumer buffer, int packedLight,
-                                  int packedOverlay, float red, float green, float blue, float alpha) {
-        super.renderCubesOfBone(poseStack, bone, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+                                  int packedOverlay, int colour) {
+        super.renderCubesOfBone(poseStack, bone, buffer, packedLight, packedOverlay, colour);
         if (!bone.isHidden()) {
-            BoneMeshes.render(BoneMeshes.get(MESHES), bone, poseStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+            BoneMeshes.render(BoneMeshes.get(MESHES), bone, poseStack, buffer, packedLight, packedOverlay, colour);
         }
     }
 }

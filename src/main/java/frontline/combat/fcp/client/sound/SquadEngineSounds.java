@@ -14,10 +14,10 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,7 +35,7 @@ import java.util.Map;
  * vehicle in first person, which is Squad's InVehicle branch. Start/stop one-shots play on the
  * engine state changes from {@link EngineControl}.
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
 public final class SquadEngineSounds {
 
     private static final double RANGE = 128.0;
@@ -56,8 +56,7 @@ public final class SquadEngineSounds {
     }
 
     @SubscribeEvent
-    public static void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase != TickEvent.Phase.END) return;
+    public static void onClientTick(net.neoforged.neoforge.client.event.ClientTickEvent.Post event) {
         Minecraft mc = Minecraft.getInstance();
         if (mc.isPaused()) return;
         if (mc.level != lastLevel) {

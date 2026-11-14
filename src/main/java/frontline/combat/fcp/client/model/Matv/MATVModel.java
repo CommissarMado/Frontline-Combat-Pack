@@ -19,7 +19,7 @@ public class MATVModel extends FCPVehicleModel<MATVEntity> {
 
     @Override
     public ResourceLocation getModelResource(MATVEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/matv.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/matv.geo.json");
     }
 
     @Override

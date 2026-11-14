@@ -7,7 +7,7 @@ import frontline.combat.fcp.entity.vehicle.Humvee.HumveeUnarmedEntity;
 import frontline.combat.fcp.vehicle.humvee.HumveeAttachments;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 
 /**
  * Type 73 light truck (type73, type73_m2) on the shared attachment entity, like the Dingo. The geo is picked from the
@@ -20,7 +20,7 @@ public class Type73Model extends VehicleModel<HumveeUnarmedEntity> {
 
     @Override
     public ResourceLocation getModelResource(HumveeUnarmedEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/" + animatable.humveeName() + ".geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/" + animatable.humveeName() + ".geo.json");
     }
 
     @Override

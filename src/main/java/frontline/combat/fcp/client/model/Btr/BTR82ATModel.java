@@ -33,7 +33,7 @@ public class BTR82ATModel extends FCPVehicleModel<BTR82ATEntity> {
 
     @Override
     public ResourceLocation getModelResource(BTR82ATEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/btr82at.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/btr82at.geo.json");
     }
 
     @Override

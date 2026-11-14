@@ -8,7 +8,7 @@ import frontline.combat.fcp.entity.projectile.Himars.HimarsMissileEntity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraftforge.common.ForgeConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -55,8 +55,8 @@ public abstract class ArtilleryChunkLoadMixin {
 
     /** SBW's PROJECTILE_CHUNK_LOADING switch: always on for artillery rounds. */
     @Redirect(method = "tick", at = @At(value = "INVOKE", remap = false,
-            target = "Lnet/minecraftforge/common/ForgeConfigSpec$BooleanValue;get()Ljava/lang/Object;"))
-    private Object fcp$artilleryChunkLoading(ForgeConfigSpec.BooleanValue value) {
+            target = "Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;get()Ljava/lang/Object;"))
+    private Object fcp$artilleryChunkLoading(ModConfigSpec.BooleanValue value) {
         if (value == ProjectileConfig.PROJECTILE_CHUNK_LOADING && fcp$isArtilleryRound()) return Boolean.TRUE;
         return value.get();
     }

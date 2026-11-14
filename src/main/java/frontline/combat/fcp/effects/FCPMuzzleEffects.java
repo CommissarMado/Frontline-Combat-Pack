@@ -15,7 +15,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 import java.util.Set;
 import java.util.Map;
@@ -75,7 +75,7 @@ public final class FCPMuzzleEffects {
     }
 
     public static boolean isFCPVehicle(VehicleEntity vehicle) {
-        ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(vehicle.getType());
+        ResourceLocation id = BuiltInRegistries.ENTITY_TYPE.getKey(vehicle.getType());
         return id != null && FCP.MODID.equals(id.getNamespace());
     }
 
@@ -103,7 +103,7 @@ public final class FCPMuzzleEffects {
         if (!isMainCannonWeapon(gunData)) {
             return false;
         }
-        ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(vehicle.getType());
+        ResourceLocation id = BuiltInRegistries.ENTITY_TYPE.getKey(vehicle.getType());
         return id != null && FORWARD_CANNON_BLAST_VEHICLES.contains(id.toString());
     }
 

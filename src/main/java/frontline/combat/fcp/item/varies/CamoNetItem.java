@@ -20,7 +20,7 @@ public class CamoNetItem extends Item {
 
     @Override
     @ParametersAreNonnullByDefault
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+    public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
         pTooltipComponents.add(Component.translatable("des.fcp.camo_net").withStyle(ChatFormatting.GRAY));
     }
 }

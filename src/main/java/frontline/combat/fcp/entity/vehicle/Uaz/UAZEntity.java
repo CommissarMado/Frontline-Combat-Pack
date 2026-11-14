@@ -32,9 +32,9 @@ public class UAZEntity extends CamoVehicleBase {
     public UAZEntity(EntityType<UAZEntity> type, Level world) {super(type, world);}
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(STEERING_ANGLE, 0f);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(STEERING_ANGLE, 0f);
     }
 
     public float getSteeringAngle() {

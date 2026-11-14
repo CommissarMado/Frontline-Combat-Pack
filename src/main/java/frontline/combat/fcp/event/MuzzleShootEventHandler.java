@@ -6,10 +6,11 @@ import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.effects.FCPMuzzleEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = FCP.MODID)
+@EventBusSubscriber(modid = FCP.MODID)
 public final class MuzzleShootEventHandler {
     private MuzzleShootEventHandler() {
     }

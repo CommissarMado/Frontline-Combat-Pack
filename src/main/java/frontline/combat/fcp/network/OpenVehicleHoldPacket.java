@@ -4,7 +4,6 @@ import frontline.combat.fcp.entity.vehicle.VehicleInventory;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 

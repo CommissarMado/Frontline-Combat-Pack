@@ -40,7 +40,7 @@ public final class VehicleSkins {
      * ResourceLocation rather than MissingTextureAtlasSprite so this stays safe to touch on a
      * dedicated server.
      */
-    private static final ResourceLocation MISSING = new ResourceLocation("fcp", "textures/entity/missing.png");
+    private static final ResourceLocation MISSING = ResourceLocation.fromNamespaceAndPath("fcp", "textures/entity/missing.png");
 
     private VehicleSkins() {
     }

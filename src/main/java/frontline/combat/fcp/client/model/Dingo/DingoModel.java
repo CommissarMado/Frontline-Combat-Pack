@@ -7,7 +7,7 @@ import frontline.combat.fcp.entity.vehicle.Humvee.HumveeUnarmedEntity;
 import frontline.combat.fcp.vehicle.humvee.HumveeAttachments;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 
 /**
  * ATF Dingo (dingo_mg3, dingo_m2, dingo_gmg): one model on the shared attachment entity, like the Caiman. The geo is
@@ -21,7 +21,7 @@ public class DingoModel extends VehicleModel<HumveeUnarmedEntity> {
 
     @Override
     public ResourceLocation getModelResource(HumveeUnarmedEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/" + animatable.humveeName() + ".geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/" + animatable.humveeName() + ".geo.json");
     }
 
     @Override

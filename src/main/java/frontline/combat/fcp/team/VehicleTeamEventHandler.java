@@ -18,20 +18,21 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.scores.PlayerTeam;
-import net.minecraftforge.common.util.FakePlayer;
-import net.minecraftforge.event.RegisterCommandsEvent;
-import net.minecraftforge.event.entity.EntityMountEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.server.ServerAboutToStartEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.util.FakePlayer;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.entity.EntityMountEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-@Mod.EventBusSubscriber(modid = FCP.MODID)
+@EventBusSubscriber(modid = FCP.MODID)
 public final class VehicleTeamEventHandler {
 
     private static final Map<UUID, Long> LAST_MESSAGE = new HashMap<>();
@@ -70,8 +71,7 @@ public final class VehicleTeamEventHandler {
 
         if (!isTeamBlocked(cfg, vehicle, player)) return;
 
-        event.setCanceled(true);
-        event.setCancellationResult(InteractionResult.FAIL);
+        frontline.combat.fcp.FCP.cancelInteraction(event, InteractionResult.FAIL);
         notify(player, denyMessage(vehicle), false);
     }
 
@@ -128,7 +128,7 @@ public final class VehicleTeamEventHandler {
 
     private static boolean isBypassItem(TeamLockConfig cfg, ItemStack stack) {
         if (cfg.interactionBypassItems.isEmpty() || stack.isEmpty()) return false;
-        ResourceLocation id = ForgeRegistries.ITEMS.getKey(stack.getItem());
+        ResourceLocation id = BuiltInRegistries.ITEM.getKey(stack.getItem());
         return id != null && cfg.interactionBypassItems.contains(id.toString());
     }
 

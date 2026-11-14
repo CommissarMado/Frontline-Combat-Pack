@@ -8,7 +8,7 @@ import com.google.gson.JsonObject;
 import com.atsuishio.superbwarfare.tools.ParticleTool;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.fml.loading.FMLPaths;
+import net.neoforged.fml.loading.FMLPaths;
 import org.slf4j.Logger;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

@@ -4,6 +4,7 @@ import frontline.combat.fcp.entity.vehicle.Himars.HimarsTvView;
 import net.minecraft.core.SectionPos;
 import net.minecraft.server.level.ChunkMap;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.entity.EntityAccess;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -14,19 +15,16 @@ import org.spongepowered.asm.mixin.injection.Redirect;
  * the missile instead of the player - see HimarsTvView. Everyone else is unaffected.
  * <p>
  * Lithium and Radium overwrite move at the default priority 1000, and Mixin refuses to inject into that at the same priority or
- * lower, so this goes after them. Their move works from SectionPos.of alone, which is why the block coordinates are optional.
+ * lower, so this goes after them.
  */
 @Mixin(value = ChunkMap.class, priority = 1100)
 public abstract class ChunkMapTvViewMixin {
 
-    @Redirect(method = "move", require = 0, at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayer;getBlockX()I"))
-    private int fcp$viewBlockX(ServerPlayer player) {
-        return HimarsTvView.viewOf(player).getBlockX();
-    }
-
-    @Redirect(method = "move", require = 0, at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayer;getBlockZ()I"))
-    private int fcp$viewBlockZ(ServerPlayer player) {
-        return HimarsTvView.viewOf(player).getBlockZ();
+    /** The centre of the chunk view sent to the player (1.20.2+ tracks it as a ChunkTrackingView). */
+    @Redirect(method = "updateChunkTracking", at = @At(value = "INVOKE",
+            target = "Lnet/minecraft/server/level/ServerPlayer;chunkPosition()Lnet/minecraft/world/level/ChunkPos;"))
+    private ChunkPos fcp$viewChunk(ServerPlayer player) {
+        return SectionPos.of(HimarsTvView.viewOf(player)).chunk();
     }
 
     @Redirect(method = {"move", "updatePlayerPos"}, at = @At(value = "INVOKE",

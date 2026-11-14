@@ -14,7 +14,7 @@ public class StrykerTowModel extends VehicleModel<StrykerTowEntity> {
 
     @Override
     public ResourceLocation getModelResource(StrykerTowEntity a) {
-        return new ResourceLocation(FCP.MODID, "geo/stryker_tow.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/stryker_tow.geo.json");
     }
 
     @Override

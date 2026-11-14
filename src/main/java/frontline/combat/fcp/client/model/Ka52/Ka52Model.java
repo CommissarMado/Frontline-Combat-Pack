@@ -28,7 +28,7 @@ public class Ka52Model extends VehicleModel<Ka52Entity> {
 
     @Override
     public ResourceLocation getModelResource(Ka52Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/ka52.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/ka52.geo.json");
     }
 
     @Override

@@ -8,13 +8,13 @@ import frontline.combat.fcp.entity.vehicle.Kamaz.KamazEntity;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.object.GeoBone;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 
 public class KamazModel extends FCPVehicleModel<KamazEntity> {
 
     @Override
     public ResourceLocation getModelResource(KamazEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/kamaz.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/kamaz.geo.json");
     }
 
     @Override

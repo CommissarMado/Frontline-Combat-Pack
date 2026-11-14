@@ -22,7 +22,7 @@ public class KomatsuLavModel extends FCPVehicleModel<KomatsuLavEntity> {
 
     @Override
     public ResourceLocation getModelResource(KomatsuLavEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/" + EntityType.getKey(animatable.getType()).getPath() + ".geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/" + EntityType.getKey(animatable.getType()).getPath() + ".geo.json");
     }
 
     @Override

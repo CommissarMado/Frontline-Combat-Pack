@@ -24,7 +24,7 @@ public class BTR4EEntity extends CamoVehicleBase {
     private float prevSteeringAngle = 0f, wheelRotation = 0f, prevWheelRotation = 0f;
 
     public BTR4EEntity(EntityType<BTR4EEntity> type, Level world) { super(type, world); }
-    @Override protected void defineSynchedData() { super.defineSynchedData(); this.entityData.define(STEERING_ANGLE, 0f); }
+    @Override protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) { super.defineSynchedData(builder); builder.define(STEERING_ANGLE, 0f); }
     public float getSteeringAngle() { return this.entityData.get(STEERING_ANGLE); }
     public void setSteeringAngle(float a) { this.entityData.set(STEERING_ANGLE, a); }
     public float getPrevSteeringAngle(){ return prevSteeringAngle; }

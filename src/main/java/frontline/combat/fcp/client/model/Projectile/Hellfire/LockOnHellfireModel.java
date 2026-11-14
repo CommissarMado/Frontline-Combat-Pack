@@ -10,16 +10,16 @@ public class LockOnHellfireModel extends GeoModel<LockOnHellfireEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(LockOnHellfireEntity entity) {
-        return new ResourceLocation("superbwarfare", "animations/javelin.animation.json");
+        return ResourceLocation.fromNamespaceAndPath("superbwarfare", "animations/javelin.animation.json");
     }
 
     @Override
     public ResourceLocation getModelResource(LockOnHellfireEntity entity) {
-        return new ResourceLocation(FCP.MODID, "geo/hellfire.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/hellfire.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(LockOnHellfireEntity entity) {
-        return new ResourceLocation(FCP.MODID, "textures/entity/hellfire/hellfire.png");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "textures/entity/hellfire/hellfire.png");
     }
 }

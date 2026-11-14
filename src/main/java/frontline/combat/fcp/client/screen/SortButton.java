@@ -14,7 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 public class SortButton extends AbstractButton {
 
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation("fcp", "textures/gui/vehicle_inventory.png");
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/gui/vehicle_inventory.png");
     private static final int TEX_W = 512, TEX_H = 512;
     private static final int SPRITE = 14;
     private static final int U_NORMAL = 430, U_HOVER = 446, V = 0;

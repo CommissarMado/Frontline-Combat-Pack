@@ -43,6 +43,6 @@ public class LockOn9M123Renderer extends EntityRenderer<LockOn9M123Entity> {
 
     @Override
     public @NotNull ResourceLocation getTextureLocation(@NotNull LockOn9M123Entity missile) {
-        return new ResourceLocation("superbwarfare", "textures/bedrock/projectile/wire_guide_missile.png");
+        return ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/bedrock/projectile/wire_guide_missile.png");
     }
 }

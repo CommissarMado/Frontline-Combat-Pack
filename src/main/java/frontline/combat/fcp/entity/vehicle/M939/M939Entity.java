@@ -27,7 +27,7 @@ public class M939Entity extends CamoVehicleBase {
     private float wheelRotation = 0f;
     private float prevWheelRotation = 0f;
     public M939Entity(EntityType<M939Entity> type, Level world) {super(type, world);}
-    @Override protected void defineSynchedData() {super.defineSynchedData(); this.entityData.define(STEERING_ANGLE, 0f); this.entityData.define(TENT, true);}
+    @Override protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {super.defineSynchedData(builder); builder.define(STEERING_ANGLE, 0f); builder.define(TENT, true);}
     public boolean hasTent() {return this.entityData.get(TENT);}
     public void setTent(boolean v) {this.entityData.set(TENT, v);}
     public void toggleTent() {setTent(!hasTent());}

@@ -13,7 +13,7 @@ public class ExampleTrailerModel extends FCPVehicleModel<ExampleTrailerEntity> {
     @Override
     public ResourceLocation getModelResource(ExampleTrailerEntity animatable) {
         // Placeholder geo — swap for your trailer's own model.
-        return new ResourceLocation(FCP.MODID, "geo/lav25.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/lav25.geo.json");
     }
 
     @Override

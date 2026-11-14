@@ -16,7 +16,7 @@ public class CombineModel extends FCPVehicleModel<CombineEntity> {
 
     @Override
     public ResourceLocation getModelResource(CombineEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/combine.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/combine.geo.json");
     }
 
     @Override

@@ -3,12 +3,14 @@ package frontline.combat.fcp.client.particle;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import net.minecraft.network.codec.StreamCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import frontline.combat.fcp.init.ModParticleTypes;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 public record FCPMuzzleParticleOption (
         int color,
@@ -89,28 +91,7 @@ public record FCPMuzzleParticleOption (
         };
     }
 
-    @Override
-    public void writeToNetwork(FriendlyByteBuf buffer) {
-        buffer.writeInt(color);
-        buffer.writeInt(life);
-        buffer.writeFloat(fade);
-        buffer.writeInt(animationSpeed);
-        buffer.writeFloat(baseScale);
-        buffer.writeFloat(targetScale);
-        buffer.writeInt(frameCount);
-        buffer.writeInt(layer);
-        buffer.writeBoolean(lingerSmoke);
-        buffer.writeVarInt(movementDuration);
-        buffer.writeVarInt(attachVehicleId);
-        buffer.writeVarInt(attachSeatIndex);
-    }
-
-    @Override
-    public String writeToString() {
-        return ForgeRegistries.PARTICLE_TYPES.getKey(getType()) + " [" + color + ", " + life + ", " + fade + ", " + animationSpeed + ", " + baseScale + ", " + targetScale + ", " + frameCount + ", " + layer + ", " + lingerSmoke + ", " + movementDuration + ", " + attachVehicleId + ", " + attachSeatIndex + "]";
-    }
-
-    public static final Codec<FCPMuzzleParticleOption> CODEC = RecordCodecBuilder.create(builder -> builder.group(
+    public static final MapCodec<FCPMuzzleParticleOption> CODEC = RecordCodecBuilder.mapCodec(builder -> builder.group(
             Codec.INT.fieldOf("color").forGetter(FCPMuzzleParticleOption::color),
             Codec.INT.fieldOf("life").forGetter(FCPMuzzleParticleOption::life),
             Codec.FLOAT.fieldOf("fade").forGetter(FCPMuzzleParticleOption::fade),
@@ -125,44 +106,23 @@ public record FCPMuzzleParticleOption (
             Codec.INT.optionalFieldOf("attachSeatIndex", 0).forGetter(FCPMuzzleParticleOption::attachSeatIndex)
     ).apply(builder, FCPMuzzleParticleOption::new));
 
-    @SuppressWarnings("deprecation")
-    public static final Deserializer<FCPMuzzleParticleOption> DESERIALIZER = new Deserializer<>() {
-        @Override
-        public FCPMuzzleParticleOption fromCommand(ParticleType<FCPMuzzleParticleOption> type, StringReader reader) throws CommandSyntaxException {
-            reader.expect(' ');
-            int color = reader.readInt();
-            reader.expect(' ');
-            int life = reader.readInt();
-            reader.expect(' ');
-            float fade = reader.readFloat();
-            reader.expect(' ');
-            int animationSpeed = reader.readInt();
-            reader.expect(' ');
-            float baseScale = reader.readFloat();
-            reader.expect(' ');
-            float targetScale = reader.readFloat();
-            reader.expect(' ');
-            int frameCount = reader.readInt();
-            reader.expect(' ');
-            int layer = reader.readInt();
-            reader.expect(' ');
-            boolean lingerSmoke = reader.readBoolean();
-            reader.expect(' ');
-            int movementDuration = reader.readInt();
-            reader.expect(' ');
-            int attachVehicleId = reader.readInt();
-            reader.expect(' ');
-            int attachSeatIndex = reader.readInt();
-            return new FCPMuzzleParticleOption(color, life, fade, animationSpeed, baseScale, targetScale, frameCount, layer, lingerSmoke, movementDuration, attachVehicleId, attachSeatIndex);
-        }
-
-        @Override
-        public FCPMuzzleParticleOption fromNetwork(ParticleType<FCPMuzzleParticleOption> type, FriendlyByteBuf buffer) {
-            return new FCPMuzzleParticleOption(
+    public static final StreamCodec<FriendlyByteBuf, FCPMuzzleParticleOption> STREAM_CODEC = StreamCodec.of(
+            (buffer, option) -> {
+                buffer.writeInt(option.color);
+                buffer.writeInt(option.life);
+                buffer.writeFloat(option.fade);
+                buffer.writeInt(option.animationSpeed);
+                buffer.writeFloat(option.baseScale);
+                buffer.writeFloat(option.targetScale);
+                buffer.writeInt(option.frameCount);
+                buffer.writeInt(option.layer);
+                buffer.writeBoolean(option.lingerSmoke);
+                buffer.writeVarInt(option.movementDuration);
+                buffer.writeVarInt(option.attachVehicleId);
+                buffer.writeVarInt(option.attachSeatIndex);
+            },
+            buffer -> new FCPMuzzleParticleOption(
                     buffer.readInt(), buffer.readInt(), buffer.readFloat(), buffer.readInt(),
                     buffer.readFloat(), buffer.readFloat(), buffer.readInt(), buffer.readInt(), buffer.readBoolean(),
-                    buffer.readVarInt(), buffer.readVarInt(), buffer.readVarInt()
-            );
-        }
-    };
+                    buffer.readVarInt(), buffer.readVarInt(), buffer.readVarInt()));
 }

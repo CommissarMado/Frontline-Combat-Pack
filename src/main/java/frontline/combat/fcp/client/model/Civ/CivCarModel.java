@@ -24,7 +24,7 @@ public class CivCarModel extends VehicleModel<CivCarEntity> {
 
     @Override
     public ResourceLocation getModelResource(CivCarEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/" + animatable.variant() + ".geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/" + animatable.variant() + ".geo.json");
     }
 
     @Override

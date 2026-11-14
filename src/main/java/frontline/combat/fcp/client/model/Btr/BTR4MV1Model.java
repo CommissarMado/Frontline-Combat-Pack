@@ -33,7 +33,7 @@ public class BTR4MV1Model extends FCPVehicleModel<BTR4MV1Entity> {
 
     @Override
     public ResourceLocation getModelResource(BTR4MV1Entity a) {
-        return new ResourceLocation(FCP.MODID, "geo/btr4mv1.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/btr4mv1.geo.json");
     }
 
     @Override

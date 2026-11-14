@@ -15,7 +15,7 @@ public class GazTigrModel extends FCPVehicleModel<GazTigrEntity> {
 
     @Override
     public ResourceLocation getModelResource(GazTigrEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/gaz_tigr.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/gaz_tigr.geo.json");
     }
 
     @Override

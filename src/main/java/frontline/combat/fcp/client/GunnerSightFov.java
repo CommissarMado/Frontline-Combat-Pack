@@ -7,18 +7,19 @@ import frontline.combat.fcp.entity.vehicle.Abrams.M1a1Entity;
 import frontline.combat.fcp.entity.vehicle.T72.T72Entity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ViewportEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.client.event.ViewportEvent;
+import net.neoforged.bus.api.EventPriority;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 
 /**
  * Narrower default view for a main gunner looking through the sight. SBW only zooms the vehicle
  * camera while the zoom key is held (the gun's DefaultZoom); this is the view without it, so the
  * Abrams, T-72/T-90 and Type 10 gunners' sights start magnified like the real wide-field optics.
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
 public final class GunnerSightFov {
 
     private static final double TANK_GUNNER_ZOOM = 2.0;

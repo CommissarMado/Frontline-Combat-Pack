@@ -27,12 +27,12 @@ public class KomatsuLavRenderer extends VehicleRenderer<KomatsuLavEntity> {
 
     @Override
     public void renderCubesOfBone(PoseStack poseStack, GeoBone bone, VertexConsumer buffer, int packedLight,
-                                  int packedOverlay, float red, float green, float blue, float alpha) {
-        super.renderCubesOfBone(poseStack, bone, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+                                  int packedOverlay, int colour) {
+        super.renderCubesOfBone(poseStack, bone, buffer, packedLight, packedOverlay, colour);
         KomatsuLavEntity current = getAnimatable();
         if (!bone.isHidden() && current != null) {
-            ResourceLocation meshes = new ResourceLocation(FCP.MODID, "meshes/" + EntityType.getKey(current.getType()).getPath() + ".json");
-            BoneMeshes.render(BoneMeshes.get(meshes), bone, poseStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+            ResourceLocation meshes = ResourceLocation.fromNamespaceAndPath(FCP.MODID, "meshes/" + EntityType.getKey(current.getType()).getPath() + ".json");
+            BoneMeshes.render(BoneMeshes.get(meshes), bone, poseStack, buffer, packedLight, packedOverlay, colour);
         }
     }
 }

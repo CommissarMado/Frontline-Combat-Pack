@@ -13,7 +13,7 @@ public class SeederModel extends FCPVehicleModel<SeederEntity> {
 
     @Override
     public ResourceLocation getModelResource(SeederEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/seeder.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/seeder.geo.json");
     }
 
     @Override

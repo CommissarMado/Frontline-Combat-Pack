@@ -14,14 +14,15 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.entity.ProjectileImpactEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.minecraft.core.registries.BuiltInRegistries;
 import org.slf4j.Logger;
 
 
-@Mod.EventBusSubscriber(modid = FCP.MODID)
+@EventBusSubscriber(modid = FCP.MODID)
 public final class VpbProjectileImpactHandler {
 
     private static final Logger LOGGER = LogUtils.getLogger();
@@ -40,7 +41,7 @@ public final class VpbProjectileImpactHandler {
         Projectile projectile = event.getProjectile();
         if (projectile == null) return;
 
-        ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(projectile.getType());
+        ResourceLocation id = BuiltInRegistries.ENTITY_TYPE.getKey(projectile.getType());
         WarheadStats stats = cfg.projectileWarheads.get(id);
         if (stats == null) {
             if (cfg.debugLogging && id != null && VpbIntegration.VPB_MODID.equals(id.getNamespace())) {

@@ -11,7 +11,7 @@ public class UAZ452Model extends VehicleModel<UAZ452Entity> {
 
     @Override
     public ResourceLocation getModelResource(UAZ452Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/uaz_452.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/uaz_452.geo.json");
     }
 
     @Override

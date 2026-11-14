@@ -7,10 +7,10 @@ import frontline.combat.fcp.network.FCPNetwork;
 import frontline.combat.fcp.network.GunnerSmokePacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 
 /**
  * Lets the gunner fire smoke on the vehicles listed in GunnerSmoke, using SBW's own release-decoy key.
@@ -19,15 +19,14 @@ import net.minecraftforge.fml.common.Mod;
  * the vehicle. While the gunner holds it, this sends GunnerSmokePacket every tick; the server feeds
  * that into the vehicle's decoy input (and ignores the driver's) - see GunnerSmoke.
  */
-@Mod.EventBusSubscriber(modid = "fcp", value = Dist.CLIENT)
+@EventBusSubscriber(modid = "fcp", value = Dist.CLIENT)
 public final class GunnerSmokeKeyHandler {
 
     private GunnerSmokeKeyHandler() {
     }
 
     @SubscribeEvent
-    public static void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase != TickEvent.Phase.END) return;
+    public static void onClientTick(net.neoforged.neoforge.client.event.ClientTickEvent.Post event) {
 
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;

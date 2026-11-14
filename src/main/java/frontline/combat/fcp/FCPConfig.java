@@ -1,6 +1,6 @@
 package frontline.combat.fcp;
 
-import net.minecraftforge.common.ForgeConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 /**
  * Mod configuration (config/fcp-common.toml).
@@ -12,13 +12,13 @@ import net.minecraftforge.common.ForgeConfigSpec;
  */
 public class FCPConfig {
 
-    public static final ForgeConfigSpec SPEC;
-    private static final ForgeConfigSpec.BooleanValue MULTICREW;
-    private static final ForgeConfigSpec.IntValue STUGNA_LINK_RANGE;
-    private static final ForgeConfigSpec.ConfigValue<Object> NOTICE;
+    public static final ModConfigSpec SPEC;
+    private static final ModConfigSpec.BooleanValue MULTICREW;
+    private static final ModConfigSpec.IntValue STUGNA_LINK_RANGE;
+    private static final ModConfigSpec.ConfigValue<Object> NOTICE;
 
     static {
-        ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
+        ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
         NOTICE = builder.define("n", (Object) "", o -> o instanceof String || o instanceof Boolean);
         builder.push("vehicles");
         MULTICREW = builder

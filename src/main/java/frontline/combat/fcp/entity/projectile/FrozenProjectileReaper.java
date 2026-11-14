@@ -5,10 +5,10 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.EntityJoinLevelEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ import java.util.WeakHashMap;
  * Only SBW's and FCP's own projectiles - vanilla ones (a player's trident, arrows) are left alone. Artillery keeps its
  * chunks loaded in flight (ArtilleryChunkLoadMixin), so this only catches what flies off the edge.
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID)
+@EventBusSubscriber(modid = FCP.MODID)
 public final class FrozenProjectileReaper {
 
     private static final int FROZEN_SECONDS = 5;
@@ -49,8 +49,8 @@ public final class FrozenProjectileReaper {
     }
 
     @SubscribeEvent
-    public static void onServerTick(TickEvent.ServerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END || ++clock % CHECK_INTERVAL != 0) return;
+    public static void onServerTick(net.neoforged.neoforge.event.tick.ServerTickEvent.Post event) {
+        if (++clock % CHECK_INTERVAL != 0) return;
         MinecraftServer server = event.getServer();
         if (server == null) return;
         for (ServerLevel level : server.getAllLevels()) {

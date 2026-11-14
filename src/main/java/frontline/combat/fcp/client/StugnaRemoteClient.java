@@ -20,23 +20,22 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
-import net.minecraftforge.client.event.ComputeFovModifierEvent;
-import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.client.event.MovementInputUpdateEvent;
-import net.minecraftforge.client.event.RenderGuiOverlayEvent;
-import net.minecraftforge.client.event.RenderHandEvent;
-import net.minecraftforge.client.event.RenderHighlightEvent;
-import net.minecraftforge.client.event.ViewportEvent;
-import net.minecraftforge.client.gui.overlay.ForgeGui;
-import net.minecraftforge.client.gui.overlay.IGuiOverlay;
-import net.minecraftforge.client.gui.overlay.NamedGuiOverlay;
-import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
+import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
+import net.neoforged.neoforge.client.event.InputEvent;
+import net.neoforged.neoforge.client.event.MovementInputUpdateEvent;
+import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
+import net.neoforged.neoforge.client.event.RenderHandEvent;
+import net.neoforged.neoforge.client.event.RenderHighlightEvent;
+import net.neoforged.neoforge.client.event.ViewportEvent;
+import net.minecraft.client.gui.Gui;
+import frontline.combat.fcp.client.overlay.IGuiOverlay;
+import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.util.ObfuscationReflectionHelper;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -54,7 +53,7 @@ import java.util.Set;
  * thermal (see ThermalImagingRemoteMixin), sneak disconnects. Walking, the vanilla crosshair and the
  * hotbar are suppressed; the drone camera frame, reticle and readouts are drawn instead.
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
 public final class StugnaRemoteClient {
 
     public static final String OVERLAY_ID = "fcp_stugna_remote";
@@ -66,23 +65,23 @@ public final class StugnaRemoteClient {
 
     // Same camera frame and reticle as SBW's drone HUD.
     private static final ResourceLocation TV_FRAME =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/land/tv_frame.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/land/tv_frame.png");
     private static final ResourceLocation RETICLE =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/crosshair/third_camera.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/crosshair/third_camera.png");
     private static final ResourceLocation ZOOM_SCALE =
-            new ResourceLocation("superbwarfare", "textures/overlay/drone/drone_fov.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/drone/drone_fov.png");
     private static final ResourceLocation ZOOM_MARKER =
-            new ResourceLocation("superbwarfare", "textures/overlay/drone/drone_fov_move.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/drone/drone_fov_move.png");
     /** Beyond this the RANGE readout shows "---m", as on the drone. */
     private static final double MAX_RANGE = 500.0;
 
     /** Vanilla HUD pieces hidden while operating. */
     private static final Set<ResourceLocation> HIDDEN_OVERLAYS = Set.of(
-            VanillaGuiOverlay.CROSSHAIR.id(),
-            VanillaGuiOverlay.HOTBAR.id(),
-            VanillaGuiOverlay.EXPERIENCE_BAR.id(),
-            VanillaGuiOverlay.JUMP_BAR.id(),
-            VanillaGuiOverlay.ITEM_NAME.id());
+            VanillaGuiLayers.CROSSHAIR,
+            VanillaGuiLayers.HOTBAR,
+            VanillaGuiLayers.EXPERIENCE_BAR,
+            VanillaGuiLayers.JUMP_METER,
+            VanillaGuiLayers.SELECTED_ITEM_NAME);
 
     /** Entity id of the launcher being operated, or -1. */
     private static int launcherId = -1;
@@ -102,11 +101,11 @@ public final class StugnaRemoteClient {
     /** Set while asking SBW whether real goggles are worn, so the mixin answers truthfully. */
     private static boolean checkingRealGoggles;
 
-    // Camera#setPosition(Vec3) is protected and Camera#detached private; SRG names, remapped in dev.
+    // Camera#setPosition(Vec3) is protected and Camera#detached private. NeoForge 1.21 runs on Mojang names.
     private static final Method SET_CAMERA_POSITION =
-            ObfuscationReflectionHelper.findMethod(Camera.class, "m_90581_", Vec3.class);
+            ObfuscationReflectionHelper.findMethod(Camera.class, "setPosition", Vec3.class);
     private static final Field CAMERA_DETACHED =
-            ObfuscationReflectionHelper.findField(Camera.class, "f_90560_");
+            ObfuscationReflectionHelper.findField(Camera.class, "detached");
 
     private StugnaRemoteClient() {
     }
@@ -225,9 +224,8 @@ public final class StugnaRemoteClient {
     }
 
     @SubscribeEvent
-    public static void onGuiOverlay(RenderGuiOverlayEvent.Pre event) {
-        NamedGuiOverlay overlay = event.getOverlay();
-        if (isActive() && HIDDEN_OVERLAYS.contains(overlay.id())) {
+    public static void onGuiOverlay(RenderGuiLayerEvent.Pre event) {
+        if (isActive() && HIDDEN_OVERLAYS.contains(event.getName())) {
             event.setCanceled(true);
         }
     }
@@ -255,7 +253,7 @@ public final class StugnaRemoteClient {
             return;
         }
         event.setCanceled(true);
-        zoom = Mth.clamp(zoom + (event.getScrollDelta() > 0 ? 1 : -1), MIN_ZOOM, MAX_ZOOM);
+        zoom = Mth.clamp(zoom + (event.getScrollDeltaY() > 0 ? 1 : -1), MIN_ZOOM, MAX_ZOOM);
     }
 
     @SubscribeEvent
@@ -278,8 +276,8 @@ public final class StugnaRemoteClient {
     }
 
     @SubscribeEvent
-    public static void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase != TickEvent.Phase.END || !isActive()) {
+    public static void onClientTick(net.neoforged.neoforge.client.event.ClientTickEvent.Post event) {
+        if (!isActive()) {
             return;
         }
         Minecraft mc = Minecraft.getInstance();
@@ -317,7 +315,7 @@ public final class StugnaRemoteClient {
     // HUD
     // ---------------------------------------------------------------------------------------------
 
-    private static void renderOverlay(ForgeGui gui, GuiGraphics graphics, float partialTick, int width, int height) {
+    private static void renderOverlay(Gui gui, GuiGraphics graphics, float partialTick, int width, int height) {
         StugnaLauncherEntity stugna = launcher();
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;

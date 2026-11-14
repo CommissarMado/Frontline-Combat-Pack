@@ -21,11 +21,10 @@ import net.minecraft.world.level.block.LightBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.lighting.LevelLightEngine;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.RegisterCommandsEvent;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.level.LevelEvent;
-import net.minecraftforge.event.server.ServerStoppingEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.level.LevelEvent;
+import net.neoforged.neoforge.event.server.ServerStoppingEvent;
+import net.neoforged.bus.api.SubscribeEvent;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -51,7 +50,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * the sections around it are re-lit ({@link #relightBox}) and the corrected light is re-sent to
  * nearby players. {@code /fcplights clear} runs the same re-light on demand.
  */
-@net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid = FCP.MODID)
+@net.neoforged.fml.common.EventBusSubscriber(modid = FCP.MODID)
 public final class MuzzleFlashLight {
 
     private record LightKey(ResourceKey<Level> dimension, BlockPos pos) {
@@ -221,8 +220,8 @@ public final class MuzzleFlashLight {
     // ---------------------------------------------------------------------------------------------
 
     @SubscribeEvent
-    public static void onServerTick(TickEvent.ServerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END || DIRTY.isEmpty()) {
+    public static void onServerTick(net.neoforged.neoforge.event.tick.ServerTickEvent.Post event) {
+        if (DIRTY.isEmpty()) {
             return;
         }
         MinecraftServer server = event.getServer();

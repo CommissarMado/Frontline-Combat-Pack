@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class StrykerMk19Model extends FCPVehicleModel<StrykerMk19Entity> {
 
-    @Override public ResourceLocation getModelResource(StrykerMk19Entity a) { return new ResourceLocation(FCP.MODID, "geo/stryker_mk19.geo.json"); }
+    @Override public ResourceLocation getModelResource(StrykerMk19Entity a) { return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/stryker_mk19.geo.json"); }
     @Override public boolean hideForTurretControllerWhileZooming() { return false; }
 
     @Override public @Nullable VehicleModel.TransformContext<StrykerMk19Entity> collectTransform(String boneName) {

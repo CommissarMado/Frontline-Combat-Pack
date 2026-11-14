@@ -23,7 +23,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.items.ItemHandlerHelper;
+import net.neoforged.neoforge.items.ItemHandlerHelper;
 
 /**
  * fcp:mine (user, 2026-11-03): a copy of Squad's TM-62 anti-tank mine - SBW's TM-62 model and renderer, but Squad's
@@ -41,7 +41,7 @@ public class FcpMineEntity extends Tm62Entity {
     /** Squad AT mine (FCP scale). */
     public static final float DAMAGE = 800f * 0.097f, MIN_DAMAGE = 250f * 0.097f;
     public static final double INNER_RADIUS = 5, OUTER_RADIUS = 10;
-    private static final ResourceLocation CLICK = new ResourceLocation("fcp", "squad.mine.click");
+    private static final ResourceLocation CLICK = ResourceLocation.fromNamespaceAndPath("fcp", "squad.mine.click");
 
     /** Ticks left until it goes off once triggered; -1 while armed and waiting. */
     private int fuse = -1;

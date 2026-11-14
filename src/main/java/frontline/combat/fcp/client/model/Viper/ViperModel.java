@@ -12,7 +12,7 @@ public class ViperModel extends VehicleModel<ViperEntity> {
 
     @Override
     public ResourceLocation getModelResource(ViperEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/viper.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/viper.geo.json");
     }
 
     @Override

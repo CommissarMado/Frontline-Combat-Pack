@@ -8,13 +8,13 @@ import frontline.combat.fcp.entity.vehicle.Ural.UralEntity;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.object.GeoBone;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 
 public class FMTVModel extends VehicleModel<FMTVEntity> {
 
     @Override
     public ResourceLocation getModelResource(FMTVEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/fmtv.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/fmtv.geo.json");
     }
 
     @Override

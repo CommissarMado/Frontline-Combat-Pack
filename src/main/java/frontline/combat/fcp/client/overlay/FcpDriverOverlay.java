@@ -17,10 +17,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.gui.overlay.ForgeGui;
-import net.minecraftforge.client.gui.overlay.IGuiOverlay;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.minecraft.client.gui.Gui;
+import frontline.combat.fcp.client.overlay.IGuiOverlay;
 
 import java.util.Set;
 
@@ -31,21 +31,21 @@ public class FcpDriverOverlay implements IGuiOverlay {
     public static final String ID = "fcp_driver_hud";
 
     private static final ResourceLocation DRIVER_FRAME =
-            new ResourceLocation("fcp", "textures/overlay/vehicle/frame/driver.png");
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/overlay/vehicle/frame/driver.png");
     private static final ResourceLocation COMPASS =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/base/compass.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/base/compass.png");
     private static final ResourceLocation ROLL_IND =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/helicopter/roll_ind.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/helicopter/roll_ind.png");
     private static final ResourceLocation LINE =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/land/line.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/land/line.png");
     private static final ResourceLocation BODY =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/land/body.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/land/body.png");
     private static final ResourceLocation LEFT_WHEEL =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/land/left_wheel.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/land/left_wheel.png");
     private static final ResourceLocation RIGHT_WHEEL =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/land/right_wheel.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/land/right_wheel.png");
     private static final ResourceLocation ENGINE =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/land/engine.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/land/engine.png");
 
     private static final Set<String> DRIVER_OVERLAY_VEHICLES = Set.of(
             "fcp:bmp1",
@@ -151,7 +151,7 @@ public class FcpDriverOverlay implements IGuiOverlay {
     }
 
     @Override
-    public void render(ForgeGui gui, GuiGraphics guiGraphics, float partialTick,
+    public void render(Gui gui, GuiGraphics guiGraphics, float partialTick,
                        int screenWidth, int screenHeight) {
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
@@ -231,13 +231,13 @@ public class FcpDriverOverlay implements IGuiOverlay {
         RenderSystem.depthMask(true);
 
         // Compass
-        RenderHelper.blit(poseStack, COMPASS,
+        RenderHelper.preciseBlitWithColor(guiGraphics, COMPASS,
                 screenWidth / 2f - 128, 10f,
                 128 + (64f / 45 * player.getYRot()), 0f,
                 256f, 16f, 512f, 16f, color);
 
         // Roll indicator
-        RenderHelper.blit(poseStack, ROLL_IND,
+        RenderHelper.preciseBlitWithColor(guiGraphics, ROLL_IND,
                 screenWidth / 2f - 8, 30f,
                 0f, 0f, 16f, 16f, 16f, 16f, color);
 
@@ -261,25 +261,25 @@ public class FcpDriverOverlay implements IGuiOverlay {
         }
 
         // Component damage — hull fixed, turret line rotates
-        RenderHelper.blit(poseStack, BODY,
+        RenderHelper.preciseBlitWithColor(guiGraphics, BODY,
                 screenWidth / 2f + 96, screenHeight - 72f,
                 0f, 0f, 32f, 32f, 32f, 32f,
                 MathTool.getGradientColor(color, 0xFF0000, bodyHeal, 2));
 
         int leftWheelHeal = (int)(100 - (100 * ve.getLeftWheelHealth() / ve.getWheelMaxHealth()));
-        RenderHelper.blit(poseStack, LEFT_WHEEL,
+        RenderHelper.preciseBlitWithColor(guiGraphics, LEFT_WHEEL,
                 screenWidth / 2f + 96, screenHeight - 72f,
                 0f, 0f, 32f, 32f, 32f, 32f,
                 MathTool.getGradientColor(color, 0xFF0000, leftWheelHeal, 2));
 
         int rightWheelHeal = (int)(100 - (100 * ve.getRightWheelHealth() / ve.getWheelMaxHealth()));
-        RenderHelper.blit(poseStack, RIGHT_WHEEL,
+        RenderHelper.preciseBlitWithColor(guiGraphics, RIGHT_WHEEL,
                 screenWidth / 2f + 96, screenHeight - 72f,
                 0f, 0f, 32f, 32f, 32f, 32f,
                 MathTool.getGradientColor(color, 0xFF0000, rightWheelHeal, 2));
 
         int engineHeal = (int)(100 - (100 * ve.getMainEngineHealth() / ve.getEngineMaxHealth()));
-        RenderHelper.blit(poseStack, ENGINE,
+        RenderHelper.preciseBlitWithColor(guiGraphics, ENGINE,
                 screenWidth / 2f + 96, screenHeight - 72f,
                 0f, 0f, 32f, 32f, 32f, 32f,
                 MathTool.getGradientColor(color, 0xFF0000, engineHeal, 2));
@@ -293,7 +293,7 @@ public class FcpDriverOverlay implements IGuiOverlay {
                 screenWidth / 2f + 112, screenHeight - 56f, 0f
         );
         int turretHeal = (int)(100 - (100 * ve.getTurretHealth() / ve.getTurretMaxHealth()));
-        RenderHelper.blit(poseStack, LINE,
+        RenderHelper.preciseBlitWithColor(guiGraphics, LINE,
                 screenWidth / 2f + 112, screenHeight - 71f,
                 0f, 0f, 1f, 16f, 1f, 16f,
                 MathTool.getGradientColor(color, 0xFF0000, turretHeal, 2));

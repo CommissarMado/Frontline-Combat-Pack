@@ -7,7 +7,7 @@ import frontline.combat.fcp.entity.vehicle.Uaz.UAZ3303Entity;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.object.GeoBone;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 
 public class UAZ3303Model extends VehicleModel<UAZ3303Entity> {
 
@@ -24,7 +24,7 @@ public class UAZ3303Model extends VehicleModel<UAZ3303Entity> {
 
     @Override
     public ResourceLocation getModelResource(UAZ3303Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/uaz_3303.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/uaz_3303.geo.json");
     }
 
     @Override

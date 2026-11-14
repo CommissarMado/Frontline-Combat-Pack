@@ -33,10 +33,10 @@ public class Zis5Entity extends CamoVehicleBase {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(STEERING_ANGLE, 0f);
-        this.entityData.define(TENT, TENT_FULL);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(STEERING_ANGLE, 0f);
+        builder.define(TENT, TENT_FULL);
     }
 
     public float getSteeringAngle() {

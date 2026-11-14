@@ -3,7 +3,6 @@ package frontline.combat.fcp.network;
 import frontline.combat.fcp.entity.projectile.Himars.HimarsMissileEntity;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 

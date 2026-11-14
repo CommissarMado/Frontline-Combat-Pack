@@ -15,8 +15,8 @@ import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
-import net.minecraftforge.client.ConfigScreenHandler;
-import net.minecraftforge.fml.ModLoadingContext;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
+import net.neoforged.fml.ModLoadingContext;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -51,9 +51,8 @@ public class FCPConfigScreen extends Screen {
 
     /** Hook for the mods-list Config button. Call once during client setup. */
     public static void registerConfigScreen() {
-        ModLoadingContext.get().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class,
-                () -> new ConfigScreenHandler.ConfigScreenFactory(
-                        (minecraft, parent) -> new FCPConfigScreen(parent)));
+        ModLoadingContext.get().getActiveContainer().registerExtensionPoint(IConfigScreenFactory.class,
+                (container, parent) -> new FCPConfigScreen(parent));
     }
 
     /** Called by FcpConfigStatePacket on the render thread. */
@@ -193,7 +192,6 @@ public class FCPConfigScreen extends Screen {
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-        renderBackground(graphics);
         super.render(graphics, mouseX, mouseY, partialTick);
         int cx = this.width / 2, y = top();
         graphics.drawCenteredString(this.font, this.title, cx, y - 20, 0xFFFFFF);

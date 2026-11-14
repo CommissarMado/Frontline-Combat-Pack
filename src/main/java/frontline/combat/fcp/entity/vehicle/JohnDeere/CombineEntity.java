@@ -24,10 +24,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
@@ -81,8 +81,8 @@ public class CombineEntity extends CamoVehicleBase implements FarmingVehicle, St
     private static final EntityDataAccessor<Boolean> AUGER_ON = SynchedEntityData.defineId(CombineEntity.class, EntityDataSerializers.BOOLEAN);
     /** Spout swing times: the lengths of the Bradley TOW launcher's up / down sounds (bradley_TOW_up/down_ext_Cue). */
     private static final float AUGER_OUT_TICKS = 6.30f * 20f, AUGER_IN_TICKS = 5.66f * 20f;
-    private static final SoundEvent AUGER_UP = SoundEvent.createVariableRangeEvent(new ResourceLocation(FCP.MODID, "squad.bradley.tow.up_ext"));
-    private static final SoundEvent AUGER_DOWN = SoundEvent.createVariableRangeEvent(new ResourceLocation(FCP.MODID, "squad.bradley.tow.down_ext"));
+    private static final SoundEvent AUGER_UP = SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(FCP.MODID, "squad.bradley.tow.up_ext"));
+    private static final SoundEvent AUGER_DOWN = SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(FCP.MODID, "squad.bradley.tow.down_ext"));
     /**
      * Spout tip with the spout swung out (vehicle config space: x left, z forward). The "spout" bone pivots at (-1.3033,
      * 4.1699, -0.1506) and its tip (end of the 7.5 degree nozzle) sits 7.437 behind it and 0.228 lower; swung out 50 degrees
@@ -162,11 +162,11 @@ public class CombineEntity extends CamoVehicleBase implements FarmingVehicle, St
     // ── Road / Farm mode, steering ──────────────────────────────────────────────
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(FARMING, false);
-        this.entityData.define(STEERING_ANGLE, 0f);
-        this.entityData.define(AUGER_ON, false);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(FARMING, false);
+        builder.define(STEERING_ANGLE, 0f);
+        builder.define(AUGER_ON, false);
     }
 
     @Override

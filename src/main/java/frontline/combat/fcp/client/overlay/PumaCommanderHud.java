@@ -15,16 +15,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ComputeFovModifierEvent;
-import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.client.event.RenderGuiOverlayEvent;
-import net.minecraftforge.client.gui.overlay.ForgeGui;
-import net.minecraftforge.client.gui.overlay.IGuiOverlay;
-import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
+import net.neoforged.neoforge.client.event.InputEvent;
+import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
+import net.minecraft.client.gui.Gui;
+import frontline.combat.fcp.client.overlay.IGuiOverlay;
+import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 
 import java.util.Set;
 
@@ -36,7 +36,7 @@ import java.util.Set;
  * vehicle JSON ("HasThermalImaging"), so SBW's own thermal key works there. SBW's vehicle HUD and the
  * vanilla crosshair/hotbar are hidden while in the seat, so only this HUD shows.
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
 public final class PumaCommanderHud {
 
     public static final String OVERLAY_ID = "fcp_puma_commander";
@@ -51,20 +51,20 @@ public final class PumaCommanderHud {
 
     // Same textures as the Stugna remote / SBW's drone HUD.
     private static final ResourceLocation TV_FRAME =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/land/tv_frame.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/land/tv_frame.png");
     private static final ResourceLocation RETICLE =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/crosshair/third_camera.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/crosshair/third_camera.png");
     private static final ResourceLocation ZOOM_SCALE =
-            new ResourceLocation("superbwarfare", "textures/overlay/drone/drone_fov.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/drone/drone_fov.png");
     private static final ResourceLocation ZOOM_MARKER =
-            new ResourceLocation("superbwarfare", "textures/overlay/drone/drone_fov_move.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/drone/drone_fov_move.png");
 
     private static final Set<ResourceLocation> HIDDEN_VANILLA = Set.of(
-            VanillaGuiOverlay.CROSSHAIR.id(),
-            VanillaGuiOverlay.HOTBAR.id(),
-            VanillaGuiOverlay.EXPERIENCE_BAR.id(),
-            VanillaGuiOverlay.JUMP_BAR.id(),
-            VanillaGuiOverlay.ITEM_NAME.id());
+            VanillaGuiLayers.CROSSHAIR,
+            VanillaGuiLayers.HOTBAR,
+            VanillaGuiLayers.EXPERIENCE_BAR,
+            VanillaGuiLayers.JUMP_METER,
+            VanillaGuiLayers.SELECTED_ITEM_NAME);
 
     private static int zoom = MIN_ZOOM;
     private static double zoomLerp = MIN_ZOOM;
@@ -83,8 +83,7 @@ public final class PumaCommanderHud {
     }
 
     @SubscribeEvent
-    public static void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase != TickEvent.Phase.END) return;
+    public static void onClientTick(net.neoforged.neoforge.client.event.ClientTickEvent.Post event) {
         if (commandedVehicle() == null) {
             zoom = MIN_ZOOM;
             zoomLerp = MIN_ZOOM;
@@ -97,7 +96,7 @@ public final class PumaCommanderHud {
     public static void onScroll(InputEvent.MouseScrollingEvent event) {
         if (commandedVehicle() == null || Minecraft.getInstance().screen != null) return;
         event.setCanceled(true);
-        zoom = Mth.clamp(zoom + (event.getScrollDelta() > 0 ? 1 : -1), MIN_ZOOM, MAX_ZOOM);
+        zoom = Mth.clamp(zoom + (event.getScrollDeltaY() > 0 ? 1 : -1), MIN_ZOOM, MAX_ZOOM);
     }
 
     @SubscribeEvent
@@ -108,15 +107,15 @@ public final class PumaCommanderHud {
     }
 
     @SubscribeEvent
-    public static void onGuiOverlay(RenderGuiOverlayEvent.Pre event) {
+    public static void onGuiOverlay(RenderGuiLayerEvent.Pre event) {
         if (commandedVehicle() == null) return;
-        ResourceLocation id = event.getOverlay().id();
+        ResourceLocation id = event.getName();
         if ("superbwarfare".equals(id.getNamespace()) || HIDDEN_VANILLA.contains(id)) {
             event.setCanceled(true);
         }
     }
 
-    private static void renderOverlay(ForgeGui gui, GuiGraphics graphics, float partialTick, int width, int height) {
+    private static void renderOverlay(Gui gui, GuiGraphics graphics, float partialTick, int width, int height) {
         Minecraft mc = Minecraft.getInstance();
         VehicleEntity vehicle = commandedVehicle();
         if (vehicle == null || mc.options.hideGui) return;

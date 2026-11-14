@@ -9,7 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
 public class PantsirModel extends FCPVehicleModel<PantsirEntity> {
-    @Override public ResourceLocation getModelResource(PantsirEntity a) {return new ResourceLocation(FCP.MODID, "geo/pantsir_s1.geo.json");}
+    @Override public ResourceLocation getModelResource(PantsirEntity a) {return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/pantsir_s1.geo.json");}
     @Override public boolean hideForTurretControllerWhileZooming() {return false;}
     @Override public @Nullable VehicleModel.TransformContext<PantsirEntity> collectTransform(String boneName) {
         VehicleModel.TransformContext<PantsirEntity> steer = WheelRotationTransforms.matchAnyTurn(boneName, 0.494, 30f, "whell2", "whell6", "whell7", "whell8");

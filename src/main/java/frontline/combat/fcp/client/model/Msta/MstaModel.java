@@ -16,7 +16,7 @@ public class MstaModel extends VehicleModel<MstaEntity> {
 
     @Override
     public ResourceLocation getModelResource(MstaEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/msta.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/msta.geo.json");
     }
 
     @Override

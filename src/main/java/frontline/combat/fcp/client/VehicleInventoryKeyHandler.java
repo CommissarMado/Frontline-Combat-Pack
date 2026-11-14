@@ -13,13 +13,13 @@ import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.client.event.ScreenEvent;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.ScreenEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import org.slf4j.Logger;
 
 /**
@@ -47,7 +47,7 @@ import org.slf4j.Logger;
  * Whichever runs first wins. If NEITHER logs "handler registered" at startup, nothing in this
  * class is running and that's the problem to chase, not the redirect logic.
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = FCP.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public final class VehicleInventoryKeyHandler {
 
     private static final Logger LOGGER = LogUtils.getLogger();
@@ -65,7 +65,7 @@ public final class VehicleInventoryKeyHandler {
      * handler does nothing at all — without it the tick backstop re-fires every tick during
      * the round trip, closing and re-requesting in a loop.
      */
-    private int pending = 0;
+    private static int pending = 0;
 
     /** How long to wait for the hold to arrive before allowing another attempt. */
     private static final int PENDING_TICKS = 40; // ~2 seconds
@@ -86,46 +86,52 @@ public final class VehicleInventoryKeyHandler {
     public static void register() {
         if (registered) return;
         registered = true;
-        MinecraftForge.EVENT_BUS.register(new VehicleInventoryKeyHandler());
+        NeoForge.EVENT_BUS.register(new Listener());
         LOGGER.info("[FCP] vehicle hold inventory-redirect handler registered");
     }
 
-    @SubscribeEvent
-    public void onScreenOpening(ScreenEvent.Opening event) {
-        // Our own hold arriving means the redirect finished — clear the wait and never
-        // inspect it further.
-        if (event.getNewScreen() instanceof VehicleInventoryScreen) {
-            this.pending = 0;
-            return;
-        }
-        if (this.pending > 0) return; // a redirect is already in flight
-        if (!isRedirectableScreen(event.getNewScreen())) return;
-        if (!shouldRedirect()) return;
-        event.setCanceled(true);
-        openHold();
-    }
+    /**
+     * The game-bus listeners. They live in their own instance so the @EventBusSubscriber above
+     * (mod bus, static methods only) never sees them; {@link #register()} puts one on the game bus.
+     */
+    private static final class Listener {
 
-    @SubscribeEvent
-    public void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase != TickEvent.Phase.END) return;
-        Minecraft mc = Minecraft.getInstance();
-
-        // The hold is open: nothing to do, and stop checking entirely. Re-examining the
-        // screen we just opened is what made this loop.
-        if (mc.screen instanceof VehicleInventoryScreen) {
-            this.pending = 0;
-            return;
-        }
-        // Waiting on the server — don't close anything or ask again.
-        if (this.pending > 0) {
-            this.pending--;
-            return;
+        @SubscribeEvent
+        public void onScreenOpening(ScreenEvent.Opening event) {
+            // Our own hold arriving means the redirect finished — clear the wait and never
+            // inspect it further.
+            if (event.getNewScreen() instanceof VehicleInventoryScreen) {
+                pending = 0;
+                return;
+            }
+            if (pending > 0) return; // a redirect is already in flight
+            if (!isRedirectableScreen(event.getNewScreen())) return;
+            if (!shouldRedirect()) return;
+            event.setCanceled(true);
+            openHold();
         }
 
-        if (!isRedirectableScreen(mc.screen)) return;
-        if (!shouldRedirect()) return;
-        mc.setScreen(null);
-        openHold();
+        @SubscribeEvent
+        public void onClientTick(net.neoforged.neoforge.client.event.ClientTickEvent.Post event) {
+            Minecraft mc = Minecraft.getInstance();
+
+            // The hold is open: nothing to do, and stop checking entirely. Re-examining the
+            // screen we just opened is what made this loop.
+            if (mc.screen instanceof VehicleInventoryScreen) {
+                pending = 0;
+                return;
+            }
+            // Waiting on the server — don't close anything or ask again.
+            if (pending > 0) {
+                pending--;
+                return;
+            }
+
+            if (!isRedirectableScreen(mc.screen)) return;
+            if (!shouldRedirect()) return;
+            mc.setScreen(null);
+            openHold();
+        }
     }
 
     /**
@@ -221,8 +227,8 @@ public final class VehicleInventoryKeyHandler {
         return root instanceof VehicleInventory camo ? camo : null;
     }
 
-    private void openHold() {
-        this.pending = PENDING_TICKS;
+    private static void openHold() {
+        pending = PENDING_TICKS;
         FCPNetwork.FCP_HANDLER.sendToServer(new OpenVehicleHoldPacket());
     }
 }

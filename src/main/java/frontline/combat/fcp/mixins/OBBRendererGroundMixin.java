@@ -34,6 +34,6 @@ public abstract class OBBRendererGroundMixin {
     @Unique
     private static double fcp$drawnFrom(Vec3 pos, VehicleEntity vehicle) {
         GroundContact contact = (GroundContact) vehicle;
-        return pos.y + contact.fcp$groundOffset(1f) - contact.fcp$groundOffset(Minecraft.getInstance().getFrameTime());
+        return pos.y + contact.fcp$groundOffset(1f) - contact.fcp$groundOffset(Minecraft.getInstance().getTimer().getGameTimeDeltaPartialTick(true));
     }
 }

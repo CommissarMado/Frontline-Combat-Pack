@@ -7,10 +7,10 @@ import frontline.combat.fcp.network.ReloadEmplacementPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 
 /**
  * Sends a manual reload request when the player presses SBW's reload key (R by default) while
@@ -22,7 +22,7 @@ import net.minecraftforge.fml.common.Mod;
  *
  * Edge-triggered: fires once per press, not once per tick held.
  */
-@Mod.EventBusSubscriber(modid = "fcp", value = Dist.CLIENT)
+@EventBusSubscriber(modid = "fcp", value = Dist.CLIENT)
 public final class EmplacementReloadKeyHandler {
 
     private static boolean wasDown = false;
@@ -31,8 +31,7 @@ public final class EmplacementReloadKeyHandler {
     }
 
     @SubscribeEvent
-    public static void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase != TickEvent.Phase.END) return;
+    public static void onClientTick(net.neoforged.neoforge.client.event.ClientTickEvent.Post event) {
 
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;

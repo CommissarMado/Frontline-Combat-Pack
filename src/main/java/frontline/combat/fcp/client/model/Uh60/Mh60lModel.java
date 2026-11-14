@@ -11,7 +11,7 @@ public class Mh60lModel extends VehicleModel<Mh60lEntity> {
 
     @Override
     public ResourceLocation getModelResource(Mh60lEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/mh60l.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/mh60l.geo.json");
     }
 
     @Override

@@ -13,9 +13,10 @@ import com.atsuishio.superbwarfare.item.ammo.AmmoBoxItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemHandlerHelper;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.energy.IEnergyStorage;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.ItemHandlerHelper;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -58,9 +59,8 @@ public final class VehicleRearm {
 
     /** Same rate as SBW's charging station gives entities around it. */
     private static void recharge(VehicleEntity vehicle, int ticks) {
-        vehicle.getCapability(ForgeCapabilities.ENERGY).ifPresent(energy -> {
-            if (energy.canReceive()) energy.receiveEnergy(ChargingStationBlockEntity.CHARGE_OTHER_SPEED * ticks, false);
-        });
+        IEnergyStorage energy = vehicle.getCapability(Capabilities.EnergyStorage.ENTITY, null);
+        if (energy != null && energy.canReceive()) energy.receiveEnergy(ChargingStationBlockEntity.CHARGE_OTHER_SPEED * ticks, false);
     }
 
     /** One ammo item's share of the loadout across every weapon that feeds from it. */
@@ -95,7 +95,7 @@ public final class VehicleRearm {
 
     /** One magazine per weapon (and one decoy reload), or everything missing when {@code full}. */
     private static void rearm(VehicleEntity vehicle, boolean full) {
-        IItemHandler inv = vehicle.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve().orElse(null);
+        IItemHandler inv = vehicle.getCapability(Capabilities.ItemHandler.ENTITY);
         if (inv == null) return;
         rearmDecoys(vehicle, inv, full);
         VehicleArmor.Profile p = VehicleArmor.profile(vehicle);

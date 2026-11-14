@@ -12,7 +12,7 @@ public class CultivatorModel extends FCPVehicleModel<CultivatorEntity> {
 
     @Override
     public ResourceLocation getModelResource(CultivatorEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/cultivator.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/cultivator.geo.json");
     }
 
     @Override

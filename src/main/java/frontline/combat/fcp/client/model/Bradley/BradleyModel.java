@@ -41,7 +41,7 @@ public class BradleyModel extends FCPVehicleModel<BradleyEntity> {
 
     @Override
     public ResourceLocation getModelResource(BradleyEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/" + animatable.variant() + ".geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/" + animatable.variant() + ".geo.json");
     }
 
     @Override

@@ -9,7 +9,7 @@ import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
 
 public class EmplM2Model extends FCPVehicleModel<EmplM2Entity> {
-    @Override public ResourceLocation getModelResource(EmplM2Entity a) {return new ResourceLocation(FCP.MODID, "geo/empl_m2.geo.json");}
+    @Override public ResourceLocation getModelResource(EmplM2Entity a) {return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/empl_m2.geo.json");}
     @Override public boolean hideForTurretControllerWhileZooming() {return false;}
     @Override public @Nullable VehicleModel.TransformContext<EmplM2Entity> collectTransform(String boneName) {
         // Two-bone split (bones renamed to the turret/barrel convention):

@@ -2,9 +2,7 @@ package frontline.combat.fcp.network;
 
 import frontline.combat.fcp.FcpWorldSettings;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.network.NetworkEvent;
+import net.neoforged.api.distmarker.Dist;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -46,7 +44,7 @@ public class FcpConfigStatePacket {
     public static void handle(FcpConfigStatePacket msg, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() ->
                 // Indirection keeps the Screen class off dedicated-server classloading.
-                DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+                frontline.combat.fcp.FCP.runOnClient(() -> () -> {
                     FcpWorldSettings.acceptFromServer(msg.world);
                     frontline.combat.fcp.client.screen.FCPConfigScreen.acceptServerState(msg.multicrew, msg.canEdit);
                 }));

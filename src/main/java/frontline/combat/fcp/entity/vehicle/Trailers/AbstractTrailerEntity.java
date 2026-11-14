@@ -24,7 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -108,17 +108,17 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DRIVER_ID, -1);
-        this.entityData.define(ATTACHED, false);
-        this.entityData.define(HITCH_X, 0.0f);
-        this.entityData.define(HITCH_Y, 0.5f);
-        this.entityData.define(HITCH_Z, 0.0f);
-        this.entityData.define(TOW_X, 0.0f);
-        this.entityData.define(TOW_Y, 0.5f);
-        this.entityData.define(TOW_Z, 0.0f);
-        this.entityData.define(MAX_ART, 110.0f);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DRIVER_ID, -1);
+        builder.define(ATTACHED, false);
+        builder.define(HITCH_X, 0.0f);
+        builder.define(HITCH_Y, 0.5f);
+        builder.define(HITCH_Z, 0.0f);
+        builder.define(TOW_X, 0.0f);
+        builder.define(TOW_Y, 0.5f);
+        builder.define(TOW_Z, 0.0f);
+        builder.define(MAX_ART, 110.0f);
     }
 
     /** Rotate a local-space offset by yaw (degrees) and add the given origin. */
@@ -148,7 +148,7 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
 
     @Nullable
     public TrailerTowedData getTowedData() {
-        ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(this.getType());
+        ResourceLocation id = BuiltInRegistries.ENTITY_TYPE.getKey(this.getType());
         return id == null ? null : TrailerTowedConfigs.get(id);
     }
 
@@ -485,7 +485,7 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
         if (driver == null) return false;
         if (this.level().isClientSide()) return false;
 
-        ResourceLocation driverId = ForgeRegistries.ENTITY_TYPES.getKey(driver.getType());
+        ResourceLocation driverId = BuiltInRegistries.ENTITY_TYPE.getKey(driver.getType());
         if (driverId == null) return false;
 
         TrailerDriverData drv = TrailerDriverConfigs.get(driverId);
@@ -612,7 +612,7 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
     /** A towing vehicle's hitch point in world space, or null if it can't tow. */
     @Nullable
     public static Vec3 getHitchWorldPos(Entity driver) {
-        ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(driver.getType());
+        ResourceLocation id = BuiltInRegistries.ENTITY_TYPE.getKey(driver.getType());
         if (id == null) return null;
         TrailerDriverData drv = TrailerDriverConfigs.get(id);
         if (drv == null) return null;
@@ -652,7 +652,7 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
                 entity -> {
                     if (!(entity instanceof GeoVehicleEntity)) return false;
                     if (entity instanceof AbstractTrailerEntity) return false; // no chaining yet
-                    ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(entity.getType());
+                    ResourceLocation id = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
                     return id != null && towed.canBeTowedBy(id);
                 });
 
@@ -686,9 +686,9 @@ public abstract class AbstractTrailerEntity extends CamoVehicleBase {
     }
 
     @Override
-    public void lerpTo(double x, double y, double z, float yaw, float pitch, int steps, boolean teleport) {
+    public void lerpTo(double x, double y, double z, float yaw, float pitch, int steps) {
         if (isAttached()) return;
-        super.lerpTo(x, y, z, yaw, pitch, steps, teleport);
+        super.lerpTo(x, y, z, yaw, pitch, steps);
     }
 
     // ── Interaction ─────────────────────────────────────────────────────────────

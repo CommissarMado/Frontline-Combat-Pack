@@ -30,7 +30,7 @@ public class MarderModel extends FCPVehicleModel<MarderEntity> {
 
     @Override
     public ResourceLocation getModelResource(MarderEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/marder1a3.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/marder1a3.geo.json");
     }
 
     @Override

@@ -15,8 +15,9 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
+import org.joml.Vector3f;
 import software.bernie.geckolib.cache.object.GeoBone;
-import software.bernie.geckolib.util.RenderUtils;
+import software.bernie.geckolib.util.RenderUtil;
 
 import java.io.Reader;
 import java.util.HashMap;
@@ -38,11 +39,11 @@ public final class VehicleCamoNet {
     private static final org.slf4j.Logger LOGGER = com.mojang.logging.LogUtils.getLogger();
     /** Net texture per colour (CamoNetVehicle.getCamoNetColor). */
     private static final ResourceLocation[] TEXTURES = {
-            new ResourceLocation(FCP.MODID, "textures/entity/abrams/camo_net_jungle.png"),
-            new ResourceLocation(FCP.MODID, "textures/entity/abrams/camo_net_woodland.png"),
-            new ResourceLocation(FCP.MODID, "textures/entity/abrams/camo_net_olive.png"),
-            new ResourceLocation(FCP.MODID, "textures/entity/abrams/camo_net_timber.png"),
-            new ResourceLocation(FCP.MODID, "textures/entity/abrams/camo_net_desert.png")};
+            ResourceLocation.fromNamespaceAndPath(FCP.MODID, "textures/entity/abrams/camo_net_jungle.png"),
+            ResourceLocation.fromNamespaceAndPath(FCP.MODID, "textures/entity/abrams/camo_net_woodland.png"),
+            ResourceLocation.fromNamespaceAndPath(FCP.MODID, "textures/entity/abrams/camo_net_olive.png"),
+            ResourceLocation.fromNamespaceAndPath(FCP.MODID, "textures/entity/abrams/camo_net_timber.png"),
+            ResourceLocation.fromNamespaceAndPath(FCP.MODID, "textures/entity/abrams/camo_net_desert.png")};
     /** Mesh file suffix per preset: 1 light (Squad M1A2 layout), 2 heavy (War Thunder M1A2C layout). */
     private static final String[] SUFFIX = {null, "", "_heavy"};
     /** Floats per quad: 4 vertices x (x y z u v) + normal. */
@@ -68,7 +69,7 @@ public final class VehicleCamoNet {
     public void capture(PoseStack poseStack, GeoBone bone) {
         if (mesh == null || bone.isHidden() || !mesh.containsKey(bone.getName())) return;
         poseStack.pushPose();
-        RenderUtils.prepMatrixForBone(poseStack, bone);
+        RenderUtil.prepMatrixForBone(poseStack, bone);
         PoseStack.Pose last = poseStack.last();
         poses.put(bone.getName(), new Frame(new Matrix4f(last.pose()), new Matrix3f(last.normal())));
         poseStack.popPose();
@@ -83,11 +84,11 @@ public final class VehicleCamoNet {
             Matrix4f pose = e.getValue().pose();
             Matrix3f normal = e.getValue().normal();
             for (int i = 0; i + QUAD <= q.length; i += QUAD) {
-                float nx = q[i + 20], ny = q[i + 21], nz = q[i + 22];
+                Vector3f n = normal.transform(q[i + 20], q[i + 21], q[i + 22], new Vector3f());
                 for (int v = 0; v < 4; v++) {
                     int o = i + v * 5;
-                    buffer.vertex(pose, q[o], q[o + 1], q[o + 2]).color(1f, 1f, 1f, 1f).uv(q[o + 3], q[o + 4])
-                            .overlayCoords(OverlayTexture.NO_OVERLAY).uv2(packedLight).normal(normal, nx, ny, nz).endVertex();
+                    buffer.addVertex(pose, q[o], q[o + 1], q[o + 2]).setColor(1f, 1f, 1f, 1f).setUv(q[o + 3], q[o + 4])
+                            .setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(n.x(), n.y(), n.z());
                 }
             }
         }
@@ -100,7 +101,7 @@ public final class VehicleCamoNet {
 
     private static Map<String, float[]> load(String geo) {
         Map<String, float[]> out = new HashMap<>();
-        ResourceLocation file = new ResourceLocation(FCP.MODID, "camo_net/" + geo + ".json");
+        ResourceLocation file = ResourceLocation.fromNamespaceAndPath(FCP.MODID, "camo_net/" + geo + ".json");
         var resource = Minecraft.getInstance().getResourceManager().getResource(file);
         if (resource.isEmpty()) return out;
         try (Reader reader = resource.get().openAsReader()) {

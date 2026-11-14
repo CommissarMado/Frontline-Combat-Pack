@@ -10,7 +10,7 @@ public class AAVPModel extends VehicleModel<AAVPEntity> {
 
     @Override
     public ResourceLocation getModelResource(AAVPEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/aavp.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/aavp.geo.json");
     }
 
     @Override

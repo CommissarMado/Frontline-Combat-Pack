@@ -11,7 +11,7 @@ public class GenericSuvModel extends VehicleModel<GenericSuvEntity> {
 
     @Override
     public ResourceLocation getModelResource(GenericSuvEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/generic_suv.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/generic_suv.geo.json");
     }
 
     @Override

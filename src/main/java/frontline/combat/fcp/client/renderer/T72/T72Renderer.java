@@ -37,7 +37,7 @@ public class T72Renderer extends VehicleRenderer<T72Entity> {
      */
     private static final class ShtoraLayer extends GeoRenderLayer<T72Entity> {
 
-        private static final ResourceLocation MASK = new ResourceLocation(FCP.MODID, "textures/entity/t72/t90a_shtora_glow.png");
+        private static final ResourceLocation MASK = ResourceLocation.fromNamespaceAndPath(FCP.MODID, "textures/entity/t72/t90a_shtora_glow.png");
         private static final float FADE_IN = 0.8f, FADE_OUT = 0.4f, MAX_OPACITY = 1.0f;
 
         /** Glow level per vehicle (0..1) and when it was last updated (nanoTime); client only. */
@@ -66,7 +66,7 @@ public class T72Renderer extends VehicleRenderer<T72Entity> {
             float a = MAX_OPACITY * level[0] * level[0] * (3f - 2f * level[0]);
             RenderType glow = RenderType.entityTranslucentEmissive(MASK);
             getRenderer().reRender(model, poseStack, bufferSource, vehicle, glow, bufferSource.getBuffer(glow), partialTick,
-                    LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, 1f, 1f, 1f, a);
+                    LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(a, 1f, 1f, 1f));
         }
     }
 }

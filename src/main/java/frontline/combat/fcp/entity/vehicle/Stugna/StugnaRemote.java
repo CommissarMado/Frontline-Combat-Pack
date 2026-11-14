@@ -16,13 +16,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.network.PacketDistributor;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Comparator;
@@ -44,7 +43,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * <p>The session ends - and the camera snaps back - if the operator leaves the panel, takes damage,
  * mounts something, dies, logs out or changes dimension, or if the panel or launcher is destroyed.
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID)
+@EventBusSubscriber(modid = FCP.MODID)
 public final class StugnaRemote {
 
     private record Session(ResourceKey<Level> dimension, int controllerId, int launcherId) {
@@ -94,7 +93,7 @@ public final class StugnaRemote {
         // The sight starts where the operator is looking; from here on it moves independently.
         launcher.setAim(player.getYRot(), player.getXRot());
         SESSIONS.put(player.getUUID(), new Session(level.dimension(), controller.getId(), launcher.getId()));
-        FCPNetwork.FCP_HANDLER.send(PacketDistributor.PLAYER.with(() -> player), new StugnaRemoteStatePacket(launcher.getId()));
+        FCPNetwork.FCP_HANDLER.send(FCPNetwork.player(player), new StugnaRemoteStatePacket(launcher.getId()));
         player.displayClientMessage(Component.literal("Linked to Stugna-P - LMB fire, RMB zoom, SHIFT disconnect"), true);
     }
 
@@ -109,7 +108,7 @@ public final class StugnaRemote {
                 && launcher.isOperator(player)) {
             launcher.setOperator(null);
         }
-        FCPNetwork.FCP_HANDLER.send(PacketDistributor.PLAYER.with(() -> player), new StugnaRemoteStatePacket(-1));
+        FCPNetwork.FCP_HANDLER.send(FCPNetwork.player(player), new StugnaRemoteStatePacket(-1));
         if (reason != null) {
             player.displayClientMessage(Component.literal(reason), true);
         }
@@ -165,8 +164,8 @@ public final class StugnaRemote {
     // ---------------------------------------------------------------------------------------------
 
     @SubscribeEvent
-    public static void onServerTick(TickEvent.ServerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END || SESSIONS.isEmpty()) {
+    public static void onServerTick(net.neoforged.neoforge.event.tick.ServerTickEvent.Post event) {
+        if (SESSIONS.isEmpty()) {
             return;
         }
         MinecraftServer server = event.getServer();
@@ -260,7 +259,7 @@ public final class StugnaRemote {
     // ---------------------------------------------------------------------------------------------
 
     @SubscribeEvent
-    public static void onHurt(LivingHurtEvent event) {
+    public static void onHurt(LivingDamageEvent.Post event) {
         if (event.getEntity() instanceof ServerPlayer player && SESSIONS.containsKey(player.getUUID())) {
             stop(player, "Stugna-P disconnected - you were hit");
         }

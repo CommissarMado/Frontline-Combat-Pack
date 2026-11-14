@@ -11,7 +11,7 @@ public class RG33Model extends VehicleModel<RG33Entity> {
 
     @Override
     public ResourceLocation getModelResource(RG33Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/rg_33.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/rg_33.geo.json");
     }
 
     @Override

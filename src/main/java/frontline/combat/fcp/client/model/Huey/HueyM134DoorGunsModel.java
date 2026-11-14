@@ -11,7 +11,7 @@ public class HueyM134DoorGunsModel extends VehicleModel<HueyM134DoorGunsEntity> 
 
     @Override
     public ResourceLocation getModelResource(HueyM134DoorGunsEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/huey_m134.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/huey_m134.geo.json");
     }
 
     @Override

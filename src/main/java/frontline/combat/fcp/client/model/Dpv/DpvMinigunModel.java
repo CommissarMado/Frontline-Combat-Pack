@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 public class DpvMinigunModel extends VehicleModel<DpvMinigunEntity> {
     @Override
     public ResourceLocation getModelResource(DpvMinigunEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/dpv_minigun.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/dpv_minigun.json");
     }
 
     @Override

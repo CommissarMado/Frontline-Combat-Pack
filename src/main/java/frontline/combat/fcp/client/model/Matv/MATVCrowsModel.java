@@ -17,7 +17,7 @@ public class MATVCrowsModel extends FCPVehicleModel<MATVCrowsEntity> {
 
     @Override
     public ResourceLocation getModelResource(MATVCrowsEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/matv_crows.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/matv_crows.geo.json");
     }
 
     @Override

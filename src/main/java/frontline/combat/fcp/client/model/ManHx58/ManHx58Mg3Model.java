@@ -8,10 +8,10 @@ import frontline.combat.fcp.entity.vehicle.ManHx58.ManHx58Mg3Entity;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.object.GeoBone;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 
 public class ManHx58Mg3Model extends FCPVehicleModel<ManHx58Mg3Entity> {
-    @Override public ResourceLocation getModelResource(ManHx58Mg3Entity animatable) {return new ResourceLocation(FCP.MODID, "geo/man_hx58_mg3.geo.json");}
+    @Override public ResourceLocation getModelResource(ManHx58Mg3Entity animatable) {return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/man_hx58_mg3.geo.json");}
 
     @Override
     public void setCustomAnimations(ManHx58Mg3Entity vehicle, long instanceId, AnimationState<ManHx58Mg3Entity> animationState) {

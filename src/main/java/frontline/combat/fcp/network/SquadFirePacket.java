@@ -1,9 +1,7 @@
 package frontline.combat.fcp.network;
 
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.network.NetworkEvent;
+import net.neoforged.api.distmarker.Dist;
 
 import java.util.function.Supplier;
 
@@ -33,7 +31,7 @@ public class SquadFirePacket {
     public static void handle(SquadFirePacket msg, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() ->
                 // Indirection keeps client classes off dedicated-server classloading.
-                DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->
+                frontline.combat.fcp.FCP.runOnClient(() -> () ->
                         frontline.combat.fcp.client.sound.SquadWeaponSounds.onShot(msg.vehicleId, msg.weapon, msg.shooterId)));
         ctx.get().setPacketHandled(true);
     }

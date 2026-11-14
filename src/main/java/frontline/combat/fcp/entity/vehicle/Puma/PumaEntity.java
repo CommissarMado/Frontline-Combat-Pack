@@ -41,9 +41,9 @@ public class PumaEntity extends CamoVehicleBase implements AtgmLauncherVehicle {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(ATGM_RELOADING, false);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(ATGM_RELOADING, false);
     }
 
     @Override

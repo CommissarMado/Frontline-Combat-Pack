@@ -12,9 +12,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 import org.joml.Matrix4d;
 import org.joml.Vector4d;
 
@@ -29,7 +30,7 @@ import java.util.Optional;
  * if the ray misses all of them, the event is left alone so the spray's default camo repaint
  * still works. Generalised to N independent toggles (OH-1 only ever needed two).
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID)
+@EventBusSubscriber(modid = FCP.MODID)
 public final class MI8DoorGunsToggleHandler {
 
     private static final double REACH = 5.0;

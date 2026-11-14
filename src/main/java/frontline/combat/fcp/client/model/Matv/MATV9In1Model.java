@@ -19,7 +19,7 @@ public class MATV9In1Model extends FCPVehicleModel<MATV9In1Entity> {
     public ResourceLocation getModelResource(MATV9In1Entity animatable) {
         // "matv_9in1" or "matv_mk19" (same entity class): the Mk 19 variant's geo is the 9-in-1's without the other two turrets.
         boolean mk19 = net.minecraft.world.entity.EntityType.getKey(animatable.getType()).getPath().equals("matv_mk19");
-        return new ResourceLocation(FCP.MODID, mk19 ? "geo/matv_mk19.geo.json" : "geo/matv9in1.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, mk19 ? "geo/matv_mk19.geo.json" : "geo/matv9in1.geo.json");
     }
 
     @Override

@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 public class DpvM240Model extends VehicleModel<DpvM240Entity> {
     @Override
     public ResourceLocation getModelResource(DpvM240Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/dpv_m240.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/dpv_m240.geo.json");
     }
 
     @Override

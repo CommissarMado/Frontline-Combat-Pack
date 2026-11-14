@@ -5,7 +5,6 @@ import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import frontline.combat.fcp.network.FCPNetwork;
 import frontline.combat.fcp.network.SquadFirePacket;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.network.PacketDistributor;
 
 import java.util.Map;
 import java.util.Set;
@@ -322,7 +321,7 @@ public final class SquadWeaponFire {
         // keyed "weapon#index"; clients fall back to the plain weapon when the profile has no such entry.
         if (data != null && data.selectedAmmoType.get() > 0) weapon = weapon + "#" + data.selectedAmmoType.get();
         final String key = weapon;
-        FCPNetwork.FCP_HANDLER.send(PacketDistributor.TRACKING_ENTITY.with(() -> vehicle),
+        FCPNetwork.FCP_HANDLER.send(FCPNetwork.tracking(vehicle),
                 new SquadFirePacket(vehicle.getId(), key, shooter == null ? -1 : shooter.getId()));
     }
 }

@@ -50,9 +50,9 @@ public class T90MEntity extends CamoVehicleBase implements HumveeVehicle, RoofCo
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(ATTACHMENTS, "");
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(ATTACHMENTS, "");
     }
 
     // ---- mangal attachment (Humvee attachment encoding, but "removed" by default) ----

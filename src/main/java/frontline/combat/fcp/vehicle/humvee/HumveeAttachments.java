@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.model.GeoModel;
 
@@ -96,7 +96,7 @@ public final class HumveeAttachments {
     }
 
     public static String vehicleName(net.minecraft.world.entity.EntityType<?> type) {
-        ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(type);
+        ResourceLocation id = BuiltInRegistries.ENTITY_TYPE.getKey(type);
         return id == null ? "" : id.getPath();
     }
 

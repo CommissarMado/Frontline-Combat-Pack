@@ -59,7 +59,7 @@ public final class SquadEngineProfile {
         static OneShot of(JsonObject parent, String key) {
             if (!parent.has(key)) return null;
             JsonObject o = parent.getAsJsonObject(key);
-            return new OneShot(new ResourceLocation(GsonHelper.getAsString(o, "sound")),
+            return new OneShot(ResourceLocation.parse(GsonHelper.getAsString(o, "sound")),
                     GsonHelper.getAsFloat(o, "volume", 1f), GsonHelper.getAsFloat(o, "duration", 0f));
         }
     }
@@ -78,7 +78,7 @@ public final class SquadEngineProfile {
         public final List<Modulator> pitch = new ArrayList<>();
 
         Layer(JsonObject o) {
-            sound = new ResourceLocation(GsonHelper.getAsString(o, "sound"));
+            sound = ResourceLocation.parse(GsonHelper.getAsString(o, "sound"));
             interior = GsonHelper.getAsBoolean(o, "interior", false);
             gain = GsonHelper.getAsFloat(o, "gain", 1f);
             if (o.has("fade")) {

@@ -7,9 +7,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 
 /**
  * fcp:camo_net (placeholder item): using it on a CamoNetVehicle (Abrams, Leopard 2) cycles the camo net - none, light, heavy
@@ -17,7 +18,7 @@ import net.minecraftforge.fml.common.Mod;
  * anywhere on the tank, apart from the Humvee-style attachment system (no attachment boxes). The net itself is drawn by
  * the client (VehicleCamoNet).
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID)
+@EventBusSubscriber(modid = FCP.MODID)
 public final class CamoNetHandler {
 
     private CamoNetHandler() {

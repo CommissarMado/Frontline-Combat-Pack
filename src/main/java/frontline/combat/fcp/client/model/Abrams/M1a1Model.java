@@ -11,7 +11,7 @@ import frontline.combat.fcp.vehicle.humvee.HumveeAttachments;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 
 
 /**
@@ -30,7 +30,7 @@ public class M1a1Model extends FCPVehicleModel<M1a1Entity> {
 
     @Override
     public ResourceLocation getModelResource(M1a1Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/" + animatable.humveeName() + ".geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/" + animatable.humveeName() + ".geo.json");
     }
 
     @Override

@@ -8,10 +8,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ import java.util.List;
  * cycle); interior layers play while the local player rides in first person, Squad's InVehicle branch. Squad's Speed
  * parameter is cm/s. The Leopard's tracks recording is thin and squeaky on its own: Squad plays it over a louder rumble.
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
 public final class SquadTrackSounds {
 
     private static boolean installed;
@@ -88,8 +88,8 @@ public final class SquadTrackSounds {
 
     /** SBW sets its consumer during its own init, so ours goes in on the first client tick. */
     @SubscribeEvent
-    public static void onClientTick(TickEvent.ClientTickEvent event) {
-        if (installed || event.phase != TickEvent.Phase.END) return;
+    public static void onClientTick(net.neoforged.neoforge.client.event.ClientTickEvent.Post event) {
+        if (installed) return;
         installed = true;
         VehicleEntity.playTrackSound = vehicle -> {
             var sounds = Minecraft.getInstance().getSoundManager();
@@ -101,7 +101,7 @@ public final class SquadTrackSounds {
         private final Layer layer;
 
         Loop(VehicleEntity vehicle, Layer layer) {
-            super(SoundEvent.createVariableRangeEvent(new ResourceLocation(FCP.MODID, "squad.tracks." + layer.sound())), Minecraft.getInstance(), vehicle);
+            super(SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(FCP.MODID, "squad.tracks." + layer.sound())), Minecraft.getInstance(), vehicle);
             this.layer = layer;
         }
 

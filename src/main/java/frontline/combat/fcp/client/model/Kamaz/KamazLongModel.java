@@ -8,10 +8,10 @@ import frontline.combat.fcp.entity.vehicle.Kamaz.KamazLongEntity;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.object.GeoBone;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 
 public class KamazLongModel extends FCPVehicleModel<KamazLongEntity> {
-    @Override public ResourceLocation getModelResource(KamazLongEntity a) {return new ResourceLocation(FCP.MODID, "geo/kamaz_long.geo.json");}
+    @Override public ResourceLocation getModelResource(KamazLongEntity a) {return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/kamaz_long.geo.json");}
     @Override public boolean hideForTurretControllerWhileZooming() {return false;}
     @Override
     public void setCustomAnimations(KamazLongEntity vehicle, long instanceId, AnimationState<KamazLongEntity> animationState) {

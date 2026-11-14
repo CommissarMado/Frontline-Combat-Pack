@@ -6,7 +6,7 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.scores.Team;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 
 public final class VehicleTeamLock {
@@ -39,7 +39,7 @@ public final class VehicleTeamLock {
     }
 
     public static boolean isFcpVehicle(VehicleEntity vehicle) {
-        ResourceLocation key = ForgeRegistries.ENTITY_TYPES.getKey(vehicle.getType());
+        ResourceLocation key = BuiltInRegistries.ENTITY_TYPE.getKey(vehicle.getType());
         return key != null && key.getNamespace().equals("fcp");
     }
 }

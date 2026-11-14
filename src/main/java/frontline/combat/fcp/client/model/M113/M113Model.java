@@ -6,7 +6,7 @@ import frontline.combat.fcp.client.model.Util.FCPTrackPath;
 import frontline.combat.fcp.entity.vehicle.M113.M113Entity;
 import frontline.combat.fcp.vehicle.humvee.HumveeAttachments;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 
 /**
  * M113 (geo/m113.geo.json).
@@ -20,7 +20,7 @@ public class M113Model extends FCPVehicleModel<M113Entity> {
         return TRACK_PATH;
     }
 
-    private static final ResourceLocation MODEL = new ResourceLocation(FCP.MODID, "geo/m113.geo.json");
+    private static final ResourceLocation MODEL = ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/m113.geo.json");
 
     @Override
     public ResourceLocation getModelResource(M113Entity animatable) {

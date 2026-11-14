@@ -30,7 +30,7 @@ public class Bmp3Model extends FCPVehicleModel<Bmp3Entity> {
 
     @Override
     public ResourceLocation getModelResource(Bmp3Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/" + HumveeAttachments.vehicleName(animatable.getType()) + ".geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/" + HumveeAttachments.vehicleName(animatable.getType()) + ".geo.json");
     }
 
     @Override

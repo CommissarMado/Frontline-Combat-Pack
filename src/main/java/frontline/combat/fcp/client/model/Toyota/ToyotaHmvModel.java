@@ -5,7 +5,7 @@ import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.client.model.Util.WheelRotationTransforms;
 import frontline.combat.fcp.entity.vehicle.Humvee.HumveeUnarmedEntity;
 import frontline.combat.fcp.vehicle.humvee.HumveeAttachments;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
@@ -26,7 +26,7 @@ public class ToyotaHmvModel extends VehicleModel<HumveeUnarmedEntity> {
 
     @Override
     public ResourceLocation getModelResource(HumveeUnarmedEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/toyota_hmv.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/toyota_hmv.geo.json");
     }
 
     @Override

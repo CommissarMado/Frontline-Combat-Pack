@@ -11,7 +11,7 @@ public class Gaz66Model extends VehicleModel<Gaz66Entity> {
 
     @Override
     public ResourceLocation getModelResource(Gaz66Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/gaz66.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/gaz66.geo.json");
     }
 
     @Override

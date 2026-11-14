@@ -38,7 +38,7 @@ public class PumaModel extends FCPVehicleModel<PumaEntity> {
 
     @Override
     public ResourceLocation getModelResource(PumaEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/" + HumveeAttachments.vehicleName(animatable.getType()) + ".geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/" + HumveeAttachments.vehicleName(animatable.getType()) + ".geo.json");
     }
 
     @Override

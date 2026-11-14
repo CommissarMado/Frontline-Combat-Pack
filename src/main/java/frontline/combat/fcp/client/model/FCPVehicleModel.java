@@ -5,9 +5,9 @@ import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import frontline.combat.fcp.client.model.Util.FCPTrackPath;
 import frontline.combat.fcp.client.model.Util.ModelBoneTransforms;
 import oshi.util.tuples.Pair;
-import software.bernie.geckolib.core.animatable.GeoAnimatable;
-import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animatable.GeoAnimatable;
+import software.bernie.geckolib.cache.object.GeoBone;
+import software.bernie.geckolib.animation.AnimationState;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -33,7 +33,7 @@ public abstract class FCPVehicleModel <T extends VehicleEntity & GeoAnimatable> 
         }
 
         for (Pair<String, TransformContext<T>> pair : transforms) {
-            CoreGeoBone bone = getAnimationProcessor().getBone(pair.getA());
+            GeoBone bone = getAnimationProcessor().getBone(pair.getA());
             if (bone != null) {
                 ModelBoneTransforms.resetForVehicleRender(bone);
             }

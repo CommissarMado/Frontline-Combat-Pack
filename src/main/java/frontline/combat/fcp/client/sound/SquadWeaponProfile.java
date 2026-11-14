@@ -77,7 +77,7 @@ public final class SquadWeaponProfile {
         public final float delay;
 
         Layer(JsonObject o) {
-            sound = new ResourceLocation(GsonHelper.getAsString(o, "sound"));
+            sound = ResourceLocation.parse(GsonHelper.getAsString(o, "sound"));
             gain = GsonHelper.getAsFloat(o, "gain", 1f);
             if (o.has("fade")) {
                 JsonArray a = o.getAsJsonArray("fade");
@@ -112,7 +112,7 @@ public final class SquadWeaponProfile {
         public final Click start, stop;
 
         Turret(JsonObject o) {
-            loop = new ResourceLocation(GsonHelper.getAsString(o, "loop"));
+            loop = ResourceLocation.parse(GsonHelper.getAsString(o, "loop"));
             speedScale = GsonHelper.getAsFloat(o, "speed_scale", 1f);
             JsonObject pm = GsonHelper.getAsJsonObject(o, "pitch_mod"), vm = GsonHelper.getAsJsonObject(o, "volume_mod");
             pitchIn = pair(pm, "in");
@@ -130,7 +130,7 @@ public final class SquadWeaponProfile {
                 if (!parent.has(key)) return null;
                 JsonObject c = parent.getAsJsonObject(key);
                 float[] p = c.has("pitch") ? pair(c, "pitch") : new float[]{1f, 1f};
-                return new Click(new ResourceLocation(GsonHelper.getAsString(c, "sound")), GsonHelper.getAsFloat(c, "volume", 1f), p[0], p[1]);
+                return new Click(ResourceLocation.parse(GsonHelper.getAsString(c, "sound")), GsonHelper.getAsFloat(c, "volume", 1f), p[0], p[1]);
             }
         }
 

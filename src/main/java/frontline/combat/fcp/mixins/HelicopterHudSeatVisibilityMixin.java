@@ -5,7 +5,7 @@ import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import frontline.combat.fcp.client.overlay.HelicopterHudSeats;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.client.gui.overlay.ForgeGui;
+import net.minecraft.client.player.LocalPlayer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -39,8 +39,7 @@ public abstract class HelicopterHudSeatVisibilityMixin {
     // The per-vehicle seat list lives in HelicopterHudSeats so FcpPilotOverlay can read it too.
 
     @Inject(method = "render", at = @At("HEAD"), cancellable = true)
-    private void fcp$hideForGunnerSeats(VehicleEntity vehicle, Player player, ForgeGui gui,
-                                         GuiGraphics guiGraphics, float partialTick,
+    private void fcp$hideForGunnerSeats(VehicleEntity vehicle, LocalPlayer player, GuiGraphics guiGraphics, float partialTick,
                                          int screenWidth, int screenHeight, CallbackInfo ci) {
         if (vehicle == null || player == null) return;
 

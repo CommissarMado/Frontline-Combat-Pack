@@ -5,11 +5,12 @@ import frontline.combat.fcp.network.SetMulticrewPacket;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.server.ServerStartedEvent;
-import net.minecraftforge.event.server.ServerStoppedEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.server.ServerStartedEvent;
+import net.neoforged.neoforge.event.server.ServerStoppedEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
@@ -36,7 +37,7 @@ import java.util.WeakHashMap;
  * The live values sit in {@link #current()}: on the server from the saved data, on clients from
  * the state packet (they need the gravity for their own trajectory prediction).
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID)
+@EventBusSubscriber(modid = FCP.MODID)
 public final class FcpWorldSettings extends SavedData {
 
     private static final String NAME = "fcp_world_settings";
@@ -80,7 +81,7 @@ public final class FcpWorldSettings extends SavedData {
     // ---- server ----------------------------------------------------------------------------------
 
     public static FcpWorldSettings get(MinecraftServer server) {
-        return server.overworld().getDataStorage().computeIfAbsent(FcpWorldSettings::load, FcpWorldSettings::new, NAME);
+        return server.overworld().getDataStorage().computeIfAbsent(new SavedData.Factory<>(FcpWorldSettings::new, FcpWorldSettings::load), NAME);
     }
 
     public void setLockInventories(boolean lock) {
@@ -119,7 +120,7 @@ public final class FcpWorldSettings extends SavedData {
         current = new Snapshot(lockInventories, fillNewVehicles, armorModel, artilleryWorld, Collections.unmodifiableMap(new LinkedHashMap<>(artillery)));
     }
 
-    private static FcpWorldSettings load(CompoundTag tag) {
+    private static FcpWorldSettings load(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries) {
         FcpWorldSettings s = new FcpWorldSettings();
         s.lockInventories = tag.getBoolean("LockInventories");
         s.fillNewVehicles = tag.getBoolean("FillNewVehicles");
@@ -131,7 +132,7 @@ public final class FcpWorldSettings extends SavedData {
     }
 
     @Override
-    public CompoundTag save(CompoundTag tag) {
+    public CompoundTag save(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries) {
         tag.putBoolean("LockInventories", lockInventories);
         tag.putBoolean("FillNewVehicles", fillNewVehicles);
         tag.putBoolean("ArmorModel", armorModel);

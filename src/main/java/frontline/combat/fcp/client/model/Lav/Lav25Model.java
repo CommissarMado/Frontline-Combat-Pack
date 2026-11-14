@@ -20,7 +20,7 @@ public class Lav25Model extends FCPVehicleModel<Lav25Entity> {
     @Override
     public ResourceLocation getModelResource(Lav25Entity animatable) {
         // lav25_mg is the LAV-25 with the commander's pintle M240; same skins.
-        return new ResourceLocation(FCP.MODID, "geo/" + EntityType.getKey(animatable.getType()).getPath() + ".geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/" + EntityType.getKey(animatable.getType()).getPath() + ".geo.json");
     }
 
     @Override

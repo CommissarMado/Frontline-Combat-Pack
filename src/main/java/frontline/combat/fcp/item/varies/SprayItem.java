@@ -19,7 +19,7 @@ public class SprayItem extends Item {
 
     @Override
     @ParametersAreNonnullByDefault
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+    public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
         pTooltipComponents.add(Component.translatable("des.fcp.spray").withStyle(ChatFormatting.GRAY));
         pTooltipComponents.add(Component.translatable("des.fcp.spray.usage").withStyle(ChatFormatting.DARK_GRAY));
     }

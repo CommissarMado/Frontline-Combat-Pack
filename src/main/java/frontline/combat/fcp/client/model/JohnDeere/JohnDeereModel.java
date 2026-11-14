@@ -12,7 +12,7 @@ public class JohnDeereModel extends FCPVehicleModel<JohnDeereEntity> {
 
     @Override
     public ResourceLocation getModelResource(JohnDeereEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/john_deere.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/john_deere.geo.json");
     }
 
     @Override

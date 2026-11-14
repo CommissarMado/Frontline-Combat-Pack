@@ -6,30 +6,32 @@ import frontline.combat.fcp.init.*;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.BlockItem;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.loading.FMLEnvironment;
+import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
-// The value here should match an entry in the META-INF/mods.toml file
+import java.util.function.Supplier;
+
+// The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(FCP.MODID)
 public class FCP {
     public static final String MODID = "fcp";
     private static final Logger LOGGER = LogUtils.getLogger();
-    public static final net.minecraftforge.network.simple.SimpleChannel PACKET_HANDLER = FCPNetwork.FCP_HANDLER;
 
-    public FCP() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
-        net.minecraftforge.fml.ModLoadingContext.get().registerConfig(
-                net.minecraftforge.fml.config.ModConfig.Type.COMMON, FCPConfig.SPEC);
+    public FCP(IEventBus modEventBus, ModContainer container) {
+        container.registerConfig(ModConfig.Type.COMMON, FCPConfig.SPEC);
 
         ModEntities.register(modEventBus);
         ModBlocks.REGISTRY.register(modEventBus);
@@ -40,43 +42,47 @@ public class FCP {
         ModTabs.TABS.register(modEventBus);
         ModMenus.MENUS.register(modEventBus);
 
-        // Register the commonSetup method for modloading
-        modEventBus.addListener(this::setup);
+        // Network payloads
+        modEventBus.addListener(FCPNetwork::register);
         // Client-only setup (never fires on a dedicated server)
         modEventBus.addListener(this::clientSetup);
 
-        // Register ourselves for server and other game events we are interested in
-        MinecraftForge.EVENT_BUS.register(this);
-        MinecraftForge.EVENT_BUS.addListener(this::onItemTooltip);
+        NeoForge.EVENT_BUS.addListener(this::onItemTooltip);
     }
 
-    private void setup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            FCPNetwork.register();
-        });
+    /**
+     * Runs client-only code. The double lambda keeps the client classes it names off the
+     * dedicated server: they are only loaded when the inner Runnable is created, which never
+     * happens there.
+     */
+    public static void runOnClient(Supplier<Runnable> task) {
+        if (FMLEnvironment.dist == Dist.CLIENT) task.get().run();
+    }
+
+    /** The block-entity NBT an item stack carries (SBW containers keep their vehicle there), or null. */
+    public static @Nullable CompoundTag blockEntityData(ItemStack stack) {
+        CustomData data = stack.get(DataComponents.BLOCK_ENTITY_DATA);
+        return data == null ? null : data.copyTag();
     }
 
     /**
      * Client-side setup.
      *
      * Registers the handler that redirects "open your inventory" to the vehicle's hold while
-     * you're riding one. It's also self-registering via @Mod.EventBusSubscriber, and the
-     * register() call is guarded, so doing it here as well is harmless — this is just the
+     * you're riding one. It's also self-registering via @EventBusSubscriber, and the
+     * register() call is guarded, so doing it here as well is harmless - this is just the
      * path that doesn't depend on annotation scanning.
-     *
-     * DistExecutor keeps the client-only class off the dedicated server entirely, so the
-     * server never even loads it.
      */
     private void clientSetup(final FMLClientSetupEvent event) {
-        event.enqueueWork(() -> DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+        event.enqueueWork(() -> runOnClient(() -> () -> {
             frontline.combat.fcp.client.VehicleInventoryKeyHandler.register();
             frontline.combat.fcp.client.screen.FCPConfigScreen.registerConfigScreen();
         }));
     }
 
     private void onItemTooltip(ItemTooltipEvent event) {
-        if (event.getItemStack().getItem() instanceof BlockItem && event.getItemStack().hasTag()) {
-            CompoundTag tag = BlockItem.getBlockEntityData(event.getItemStack());
+        if (event.getItemStack().getItem() instanceof BlockItem) {
+            CompoundTag tag = blockEntityData(event.getItemStack());
             if (tag != null && tag.contains("EntityType")) {
                 String entityType = tag.getString("EntityType");
                 if (entityType.startsWith(MODID + ":vdv_")) {
@@ -87,8 +93,20 @@ public class FCP {
         }
     }
 
+    /** Cancels an entity interaction and sets its result (only the concrete event types can be cancelled). */
+    public static void cancelInteraction(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent event,
+                                         net.minecraft.world.InteractionResult result) {
+        if (event instanceof net.neoforged.neoforge.event.entity.player.PlayerInteractEvent.EntityInteract e) {
+            e.setCanceled(true);
+            e.setCancellationResult(result);
+        } else if (event instanceof net.neoforged.neoforge.event.entity.player.PlayerInteractEvent.EntityInteractSpecific e) {
+            e.setCanceled(true);
+            e.setCancellationResult(result);
+        }
+    }
+
     // Helper method to create ResourceLocation for this mod
     public static ResourceLocation loc(String path) {
-        return new ResourceLocation(MODID, path);
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
 }

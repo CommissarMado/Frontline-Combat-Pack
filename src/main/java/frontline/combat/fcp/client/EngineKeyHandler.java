@@ -8,10 +8,10 @@ import frontline.combat.fcp.network.FCPNetwork;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 
 /**
  * The driver's engine key (default H).
@@ -25,7 +25,7 @@ import net.minecraftforge.fml.common.Mod;
  *
  * Also times the start for the HUD bar, from when this client saw the engine enter STARTING.
  */
-@Mod.EventBusSubscriber(modid = "fcp", value = Dist.CLIENT)
+@EventBusSubscriber(modid = "fcp", value = Dist.CLIENT)
 public final class EngineKeyHandler {
 
     /** Ticks the key must be held to shut the engine down. */
@@ -45,8 +45,7 @@ public final class EngineKeyHandler {
     }
 
     @SubscribeEvent
-    public static void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase != TickEvent.Phase.END) return;
+    public static void onClientTick(net.neoforged.neoforge.client.event.ClientTickEvent.Post event) {
 
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;

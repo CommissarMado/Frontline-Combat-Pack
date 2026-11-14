@@ -9,7 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
 public class BTR3EModel extends FCPVehicleModel<BTR3EEntity> {
-    @Override public ResourceLocation getModelResource(BTR3EEntity a) { return new ResourceLocation(FCP.MODID, "geo/btr3e.geo.json"); }
+    @Override public ResourceLocation getModelResource(BTR3EEntity a) { return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/btr3e.geo.json"); }
     @Override public boolean hideForTurretControllerWhileZooming() { return false; }
     @Override public @Nullable VehicleModel.TransformContext<BTR3EEntity> collectTransform(String boneName) {
         VehicleModel.TransformContext<BTR3EEntity> turn =

@@ -15,7 +15,7 @@ public class M109Model extends VehicleModel<M109Entity> {
 
     @Override
     public ResourceLocation getModelResource(M109Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/m109.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/m109.geo.json");
     }
 
     @Override

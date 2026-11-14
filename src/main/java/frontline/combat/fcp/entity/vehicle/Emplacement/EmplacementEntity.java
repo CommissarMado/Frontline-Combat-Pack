@@ -41,10 +41,10 @@ public abstract class EmplacementEntity extends CamoEmplacementEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(LOADED, false);
-        this.entityData.define(RELOAD_COOLDOWN, 0);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(LOADED, false);
+        builder.define(RELOAD_COOLDOWN, 0);
     }
 
     public boolean isLoaded() { return this.entityData.get(LOADED); }

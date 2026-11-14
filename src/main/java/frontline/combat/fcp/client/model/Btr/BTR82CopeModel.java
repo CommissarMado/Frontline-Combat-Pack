@@ -16,7 +16,7 @@ public class BTR82CopeModel extends FCPVehicleModel<BTR82CopeEntity> {
 
     @Override
     public ResourceLocation getModelResource(BTR82CopeEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/btr82_cope.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/btr82_cope.geo.json");
     }
     @Override
     public boolean hideForTurretControllerWhileZooming() {

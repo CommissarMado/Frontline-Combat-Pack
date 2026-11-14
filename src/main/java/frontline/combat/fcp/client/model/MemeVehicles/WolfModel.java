@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 public class WolfModel extends FCPVehicleModel<WolfEntity> {
     @Override
     public ResourceLocation getModelResource(WolfEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/wolf.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/wolf.geo.json");
     }
 
     @Override

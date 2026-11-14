@@ -11,9 +11,10 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 import org.joml.Matrix4d;
 import org.joml.Vector4d;
 
@@ -24,7 +25,7 @@ import java.util.Optional;
  * truck with the FCP spray while looking at the canopy's hitbox. If the look ray misses the box
  * the spray is left alone so its default camo repaint still works.
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID)
+@EventBusSubscriber(modid = FCP.MODID)
 public final class ManHx58Mg3TentHandler {
 
     private static final double REACH = 5.0;

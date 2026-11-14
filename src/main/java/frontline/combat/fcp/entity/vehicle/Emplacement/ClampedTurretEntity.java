@@ -51,9 +51,9 @@ public abstract class ClampedTurretEntity extends EmplacementEntity {
     protected double[] bodyBox() { return new double[]{0.4, 0.42, 0.4, 0.0, 0.42, 0.0}; }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(BODY_YAW, 0f);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(BODY_YAW, 0f);
     }
 
     public float getBodyYaw() { return this.entityData.get(BODY_YAW); }
@@ -62,7 +62,7 @@ public abstract class ClampedTurretEntity extends EmplacementEntity {
     @Override
     public InteractionResult interact(Player player, InteractionHand hand) {
         if (player.getMainHandItem().isEmpty() && player.isShiftKeyDown()) {
-            OBB looking = OBB.getLookingObb(player, player.getEntityReach());
+            OBB looking = OBB.getLookingObb(player, player.entityInteractionRange());
             if (looking == leg1 || looking == leg2) {
                 if (player.level() instanceof ServerLevel) {
                     float dir = (looking == leg1) ? 0.2f : -0.2f;

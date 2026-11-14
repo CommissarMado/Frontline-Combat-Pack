@@ -7,7 +7,7 @@ import frontline.combat.fcp.entity.vehicle.Zis5.Zis5Entity;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.object.GeoBone;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 
 public class Zis5Model extends VehicleModel<Zis5Entity> {
 
@@ -26,7 +26,7 @@ public class Zis5Model extends VehicleModel<Zis5Entity> {
 
     @Override
     public ResourceLocation getModelResource(Zis5Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/zis5.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/zis5.geo.json");
     }
 
     @Override

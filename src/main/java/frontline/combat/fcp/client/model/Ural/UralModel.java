@@ -7,7 +7,7 @@ import frontline.combat.fcp.entity.vehicle.Ural.UralEntity;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.object.GeoBone;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 
 public class UralModel extends VehicleModel<UralEntity> {
 
@@ -24,7 +24,7 @@ public class UralModel extends VehicleModel<UralEntity> {
 
     @Override
     public ResourceLocation getModelResource(UralEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/ural.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/ural.geo.json");
     }
 
     @Override

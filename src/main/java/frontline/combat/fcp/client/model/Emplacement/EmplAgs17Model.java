@@ -8,7 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
 public class EmplAgs17Model extends FCPVehicleModel<EmplAgs17Entity> {
-    @Override public ResourceLocation getModelResource(EmplAgs17Entity a) {return new ResourceLocation(FCP.MODID, "geo/empl_ags17.geo.json");}
+    @Override public ResourceLocation getModelResource(EmplAgs17Entity a) {return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/empl_ags17.geo.json");}
     @Override public boolean hideForTurretControllerWhileZooming() {return false;}
     @Override public @Nullable VehicleModel.TransformContext<EmplAgs17Entity> collectTransform(String boneName) {
         // barrel-only emplacement: the barrel bone both rotates (yaw) and elevates (pitch).

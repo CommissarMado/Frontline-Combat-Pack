@@ -13,7 +13,7 @@ public class BTR4EModel extends FCPVehicleModel<BTR4EEntity> {
 
     private static final double WHEEL_RADIUS = 0.584;
 
-    @Override public ResourceLocation getModelResource(BTR4EEntity a) { return new ResourceLocation(FCP.MODID, "geo/btr4e.geo.json"); }
+    @Override public ResourceLocation getModelResource(BTR4EEntity a) { return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/btr4e.geo.json"); }
     @Override public boolean hideForTurretControllerWhileZooming() { return false; }
 
     @Override

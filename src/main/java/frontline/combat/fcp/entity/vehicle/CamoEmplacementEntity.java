@@ -5,11 +5,8 @@ import com.atsuishio.superbwarfare.data.gun.GunProp;
 import com.atsuishio.superbwarfare.data.gun.value.ReloadState;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import net.minecraft.core.Direction;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.wrapper.InvWrapper;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.wrapper.InvWrapper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import net.minecraft.world.entity.Entity;
@@ -62,13 +59,13 @@ public abstract class CamoEmplacementEntity extends CamoVehicleBase {
     }
 
     private Player cachedGunner;
-    private LazyOptional<IItemHandler> gunnerHandler = LazyOptional.empty();
+    private @Nullable IItemHandler gunnerHandler;
 
     /**
      * Report the GUNNER's inventory as this emplacement's item handler.
      *
      * SBW resolves ammo — for counting, for the HUD's reserve figure, and for reloading — through
-     * {@code entity.getCapability(ITEM_HANDLER)} on the VEHICLE. An emplacement has no container
+     * the item-handler capability of the VEHICLE. An emplacement has no container
      * and no hold, so that came back empty and everything downstream read zero: the HUD showed
      * "200 / 0" no matter what the player carried.
      *
@@ -78,25 +75,24 @@ public abstract class CamoEmplacementEntity extends CamoVehicleBase {
      * because VehicleGun.canShoot() starts with {@code if (shooter !is VehicleEntity) return false}.
      */
     @Override
-    public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+    public @Nullable IItemHandler fcp$itemHandler() {
         // Gate on usesInventoryReload(): this capability is what makes SBW resolve the vehicle's
         // ammo to the gunner's inventory, so leaving it on for the manual-loading emplacements
         // (ZiS-3, TOW, Kornet) let them keep drawing from the player through SBW's own paths even
         // after the reload cycle was disabled for them.
-        if (cap == ForgeCapabilities.ITEM_HANDLER && usesInventoryReload()) {
+        if (usesInventoryReload()) {
             Player player = gunner();
             if (player != null) {
-                if (player != cachedGunner || !gunnerHandler.isPresent()) {
+                if (player != cachedGunner || gunnerHandler == null) {
                     cachedGunner = player;
-                    final Player p = player;
-                    gunnerHandler = LazyOptional.of(() -> new InvWrapper(p.getInventory()));
+                    gunnerHandler = new InvWrapper(player.getInventory());
                 }
-                return gunnerHandler.cast();
+                return gunnerHandler;
             }
             cachedGunner = null;
-            gunnerHandler = LazyOptional.empty();
+            gunnerHandler = null;
         }
-        return super.getCapability(cap, side);
+        return super.fcp$itemHandler();
     }
 
     /** The player manning this emplacement, or null. */

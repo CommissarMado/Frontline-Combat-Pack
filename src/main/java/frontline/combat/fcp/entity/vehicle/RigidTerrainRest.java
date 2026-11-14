@@ -71,7 +71,7 @@ public final class RigidTerrainRest {
         }
         Vec3 c = box.getPosition(), s = box.getSize();
         double bottom = c.y - s.y;
-        double searchUp = Math.min(vehicle.getStepHeight(), MAX_STEP), searchDown = Math.max(Math.max(s.x, s.y), s.z);
+        double searchUp = Math.min(vehicle.maxUpStep(), MAX_STEP), searchDown = Math.max(Math.max(s.x, s.y), s.z);
         Matrix4d flat = vehicle.getWheelsTransform(1f);
         Level level = vehicle.level();
 

@@ -10,10 +10,10 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -23,7 +23,7 @@ import java.util.WeakHashMap;
  * of the hull, the "down" cue as it starts folding back in (the arm's animation is timed to these cues, see
  * KhrizantemaEntity). Client-side, from the synced arm progress.
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
 public final class KhrizantemaLauncherSounds {
 
     private static final double RANGE = 96.0;
@@ -45,8 +45,7 @@ public final class KhrizantemaLauncherSounds {
     }
 
     @SubscribeEvent
-    public static void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase != TickEvent.Phase.END) return;
+    public static void onClientTick(net.neoforged.neoforge.client.event.ClientTickEvent.Post event) {
         Minecraft mc = Minecraft.getInstance();
         if (mc.level == null || mc.player == null || mc.isPaused()) return;
         for (Entity e : mc.level.entitiesForRendering()) {
@@ -85,6 +84,6 @@ public final class KhrizantemaLauncherSounds {
     }
 
     private static SoundEvent event(String name) {
-        return SoundEvent.createVariableRangeEvent(new ResourceLocation(FCP.MODID, name));
+        return SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(FCP.MODID, name));
     }
 }

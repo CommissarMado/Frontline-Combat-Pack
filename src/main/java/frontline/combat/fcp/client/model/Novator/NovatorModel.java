@@ -16,7 +16,7 @@ public class NovatorModel extends FCPVehicleModel<NovatorEntity> {
     @Override
     public ResourceLocation getModelResource(NovatorEntity animatable) {
         // "novator" or "novator_stugna" (same entity class, registry name picks the geo).
-        return new ResourceLocation(FCP.MODID, "geo/" + net.minecraft.world.entity.EntityType.getKey(animatable.getType()).getPath() + ".geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/" + net.minecraft.world.entity.EntityType.getKey(animatable.getType()).getPath() + ".geo.json");
     }
 
     @Override

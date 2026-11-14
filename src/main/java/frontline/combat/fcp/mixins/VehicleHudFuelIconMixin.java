@@ -25,7 +25,7 @@ public abstract class VehicleHudFuelIconMixin {
     private static ResourceLocation ENERGY;
 
     private static final ResourceLocation FCP_FUEL_ICON =
-            new ResourceLocation("fcp", "textures/overlay/vehicle/base/fcp_fuel_icon.png");
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/overlay/vehicle/base/fcp_fuel_icon.png");
 
     @Redirect(
             method = "render",

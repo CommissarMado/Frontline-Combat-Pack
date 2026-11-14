@@ -15,10 +15,11 @@ import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterShadersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.client.event.RegisterShadersEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -28,7 +29,7 @@ import java.lang.reflect.Method;
  * their faintest pixels. These don't. SOFT also uses a shader without vanilla's cut-off at 10% opacity, which big faint puffs
  * fall below almost entirely, and which fades them out as they near the ground instead of being cut off by it in a line.
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = FCP.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public final class FCPParticleRenderTypes {
 
     private static ShaderInstance softShader;
@@ -41,13 +42,8 @@ public final class FCPParticleRenderTypes {
 
     private static final ParticleRenderType NO_DEPTH_WRITE = new ParticleRenderType() {
         @Override
-        public void begin(BufferBuilder builder, TextureManager textures) {
-            setUp(builder);
-        }
-
-        @Override
-        public void end(Tesselator tesselator) {
-            tesselator.end();
+        public BufferBuilder begin(Tesselator tesselator, TextureManager textures) {
+            return setUp(tesselator);
         }
 
         @Override
@@ -58,17 +54,12 @@ public final class FCPParticleRenderTypes {
 
     public static final ParticleRenderType SOFT = new ParticleRenderType() {
         @Override
-        public void begin(BufferBuilder builder, TextureManager textures) {
+        public BufferBuilder begin(Tesselator tesselator, TextureManager textures) {
             copySceneDepth();
-            setUp(builder);
+            BufferBuilder builder = setUp(tesselator);
             RenderSystem.setShaderTexture(1, depthCopy.getDepthTextureId());
             RenderSystem.setShader(() -> softShader);
-        }
-
-        @Override
-        public void end(Tesselator tesselator) {
-            tesselator.end();
-            RenderSystem.setShaderTexture(1, 0);
+            return builder;
         }
 
         @Override
@@ -115,18 +106,18 @@ public final class FCPParticleRenderTypes {
         }
     }
 
-    private static void setUp(BufferBuilder builder) {
+    private static BufferBuilder setUp(Tesselator tesselator) {
         RenderSystem.depthMask(false);
         RenderSystem.setShaderTexture(0, TextureAtlas.LOCATION_PARTICLES);
         RenderSystem.enableBlend();
         RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
                 GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
-        builder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.PARTICLE);
+        return tesselator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.PARTICLE);
     }
 
     @SubscribeEvent
     public static void registerShaders(RegisterShadersEvent event) throws IOException {
-        event.registerShader(new ShaderInstance(event.getResourceProvider(), new ResourceLocation(FCP.MODID, "soft_particle"),
+        event.registerShader(new ShaderInstance(event.getResourceProvider(), ResourceLocation.fromNamespaceAndPath(FCP.MODID, "soft_particle"),
                 DefaultVertexFormat.PARTICLE), shader -> softShader = shader);
     }
 }

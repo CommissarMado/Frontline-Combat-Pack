@@ -7,7 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.object.GeoBone;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 
 public class MI17Model extends VehicleModel<MI17Entity> {
 
@@ -31,7 +31,7 @@ public class MI17Model extends VehicleModel<MI17Entity> {
 
     @Override
     public ResourceLocation getModelResource(MI17Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/mi17.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/mi17.geo.json");
     }
 
     @Override

@@ -6,8 +6,8 @@ import frontline.combat.fcp.entity.vehicle.SteerableVehicle;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.core.animatable.GeoAnimatable;
-import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
+import software.bernie.geckolib.animatable.GeoAnimatable;
+import software.bernie.geckolib.cache.object.GeoBone;
 
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -158,7 +158,7 @@ public final class WheelRotationTransforms {
         return (float) deg;
     }
 
-    private static void applyRoll(CoreGeoBone bone, SpinAxis axis, float deg, boolean invert) {
+    private static void applyRoll(GeoBone bone, SpinAxis axis, float deg, boolean invert) {
         float rad = (float) Math.toRadians(invert ? -deg : deg);
         switch (axis) {
             case X -> bone.setRotX(rad);

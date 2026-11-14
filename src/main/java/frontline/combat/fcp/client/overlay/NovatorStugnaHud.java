@@ -15,16 +15,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ComputeFovModifierEvent;
-import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.client.event.RenderGuiOverlayEvent;
-import net.minecraftforge.client.gui.overlay.ForgeGui;
-import net.minecraftforge.client.gui.overlay.IGuiOverlay;
-import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
+import net.neoforged.neoforge.client.event.InputEvent;
+import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
+import net.minecraft.client.gui.Gui;
+import frontline.combat.fcp.client.overlay.IGuiOverlay;
+import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 
 import java.util.Set;
 
@@ -35,7 +35,7 @@ import java.util.Set;
  * so SBW's own thermal key works. In the sight SBW's seat list, bars and weapon box are drawn over it (user); SBW's
  * crosshair and land-HUD frame (LandVehicleHudStatsMixin) and the vanilla crosshair/hotbar are hidden.
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
 public final class NovatorStugnaHud {
 
     public static final String OVERLAY_ID = "fcp_novator_stugna";
@@ -48,22 +48,22 @@ public final class NovatorStugnaHud {
 
     // Same textures as the Stugna remote / SBW's drone HUD.
     private static final ResourceLocation TV_FRAME =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/land/tv_frame.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/land/tv_frame.png");
     private static final ResourceLocation RETICLE =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/crosshair/third_camera.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/crosshair/third_camera.png");
     private static final ResourceLocation ZOOM_SCALE =
-            new ResourceLocation("superbwarfare", "textures/overlay/drone/drone_fov.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/drone/drone_fov.png");
     private static final ResourceLocation ZOOM_MARKER =
-            new ResourceLocation("superbwarfare", "textures/overlay/drone/drone_fov_move.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/drone/drone_fov_move.png");
 
     private static final Set<ResourceLocation> HIDDEN_VANILLA = Set.of(
-            VanillaGuiOverlay.CROSSHAIR.id(),
-            VanillaGuiOverlay.HOTBAR.id(),
-            VanillaGuiOverlay.EXPERIENCE_BAR.id(),
-            VanillaGuiOverlay.JUMP_BAR.id(),
-            VanillaGuiOverlay.ITEM_NAME.id());
+            VanillaGuiLayers.CROSSHAIR,
+            VanillaGuiLayers.HOTBAR,
+            VanillaGuiLayers.EXPERIENCE_BAR,
+            VanillaGuiLayers.JUMP_METER,
+            VanillaGuiLayers.SELECTED_ITEM_NAME);
 
-    private static final ResourceLocation SBW_CROSSHAIR = new ResourceLocation("superbwarfare", "vehicle_crosshair");
+    private static final ResourceLocation SBW_CROSSHAIR = ResourceLocation.fromNamespaceAndPath("superbwarfare", "vehicle_crosshair");
 
     private static int zoom = MIN_ZOOM;
     private static double zoomLerp = MIN_ZOOM;
@@ -86,14 +86,13 @@ public final class NovatorStugnaHud {
     }
 
     @SubscribeEvent
-    public static void onClientTick(TickEvent.ClientTickEvent event) {
+    public static void onClientTick(net.neoforged.neoforge.client.event.ClientTickEvent.Post event) {
         // The gunner only ever looks through the launcher's sight, like the emplaced Stugna's operator: no third
         // person (with it, SBW's ADS skipped this HUD - user).
         Minecraft mc = Minecraft.getInstance();
         if (gunnerSeat() != null && !mc.options.getCameraType().isFirstPerson()) {
             mc.options.setCameraType(net.minecraft.client.CameraType.FIRST_PERSON);
         }
-        if (event.phase != TickEvent.Phase.END) return;
         if (gunnedVehicle() == null) {
             zoom = MIN_ZOOM;
             zoomLerp = MIN_ZOOM;
@@ -106,7 +105,7 @@ public final class NovatorStugnaHud {
     public static void onScroll(InputEvent.MouseScrollingEvent event) {
         if (gunnedVehicle() == null || Minecraft.getInstance().screen != null) return;
         event.setCanceled(true);
-        zoom = Mth.clamp(zoom + (event.getScrollDelta() > 0 ? 1 : -1), MIN_ZOOM, MAX_ZOOM);
+        zoom = Mth.clamp(zoom + (event.getScrollDeltaY() > 0 ? 1 : -1), MIN_ZOOM, MAX_ZOOM);
     }
 
     @SubscribeEvent
@@ -117,17 +116,17 @@ public final class NovatorStugnaHud {
     }
 
     @SubscribeEvent
-    public static void onGuiOverlay(RenderGuiOverlayEvent.Pre event) {
+    public static void onGuiOverlay(RenderGuiLayerEvent.Pre event) {
         // In the sight SBW's seat list, bars and weapon box stay (user); only its crosshair goes (and its land-HUD
         // frame, in LandVehicleHudStatsMixin). Third person is SBW's as usual.
         if (gunnedVehicle() == null) return;
-        ResourceLocation id = event.getOverlay().id();
+        ResourceLocation id = event.getName();
         if (SBW_CROSSHAIR.equals(id) || HIDDEN_VANILLA.contains(id)) {
             event.setCanceled(true);
         }
     }
 
-    private static void renderOverlay(ForgeGui gui, GuiGraphics graphics, float partialTick, int width, int height) {
+    private static void renderOverlay(Gui gui, GuiGraphics graphics, float partialTick, int width, int height) {
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         VehicleEntity vehicle = gunnedVehicle();

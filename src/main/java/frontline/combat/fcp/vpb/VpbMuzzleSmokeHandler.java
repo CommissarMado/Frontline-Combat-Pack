@@ -12,10 +12,10 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.entity.EntityJoinLevelEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.minecraft.core.registries.BuiltInRegistries;
 import org.slf4j.Logger;
 
 
@@ -42,7 +42,7 @@ public final class VpbMuzzleSmokeHandler {
         Entity entity = event.getEntity();
         if (!(entity instanceof Projectile projectile)) return;
 
-        ResourceLocation projId = ForgeRegistries.ENTITY_TYPES.getKey(projectile.getType());
+        ResourceLocation projId = BuiltInRegistries.ENTITY_TYPE.getKey(projectile.getType());
         if (projId == null) return;
 
         if (!cfg.muzzleSmokeProjectiles.contains(projId)) {

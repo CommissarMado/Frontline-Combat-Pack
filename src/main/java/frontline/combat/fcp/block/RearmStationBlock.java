@@ -18,8 +18,15 @@ import org.jetbrains.annotations.Nullable;
  */
 public class RearmStationBlock extends BaseEntityBlock {
 
+    public static final com.mojang.serialization.MapCodec<RearmStationBlock> CODEC = simpleCodec(RearmStationBlock::new);
+
     public RearmStationBlock(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    protected com.mojang.serialization.MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     @Override

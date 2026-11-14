@@ -11,7 +11,7 @@ public class Uh60Model extends VehicleModel<Uh60Entity> {
 
     @Override
     public ResourceLocation getModelResource(Uh60Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/uh60.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/uh60.geo.json");
     }
 
     @Override

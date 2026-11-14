@@ -26,7 +26,7 @@ public final class FcpContainerIcon {
 
     public static ResourceLocation getIcon(ItemStack stack) {
         if (stack == null || !(stack.getItem() instanceof ContainerBlockItem)) return null;
-        CompoundTag tag = BlockItem.getBlockEntityData(stack);
+        CompoundTag tag = frontline.combat.fcp.FCP.blockEntityData(stack);
         if (tag == null || !tag.contains("EntityType")) return null;
         ResourceLocation id = ResourceLocation.tryParse(tag.getString("EntityType"));
         if (id == null || !FCP.MODID.equals(id.getNamespace())) return null; // FCP vehicles only
@@ -35,7 +35,7 @@ public final class FcpContainerIcon {
         ResourceLocation hit = CACHE.get(key);
         if (hit != null) return hit;
 
-        ResourceLocation path = new ResourceLocation("superbwarfare", "textures/vehicle_icon/container/" + key + ".png");
+        ResourceLocation path = ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/vehicle_icon/container/" + key + ".png");
         if (Minecraft.getInstance().getResourceManager().getResource(path).isPresent()) {
             CACHE.put(key, path);
             return path;

@@ -6,7 +6,7 @@ import frontline.combat.fcp.client.model.Util.WheelRotationTransforms;
 import frontline.combat.fcp.entity.vehicle.Humvee.HumveeUnarmedEntity;
 import frontline.combat.fcp.vehicle.humvee.HumveeAttachments;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -21,7 +21,7 @@ public class HumveeUnarmedModel extends VehicleModel<HumveeUnarmedEntity> {
         String name = animatable.humveeName();
         // hmmwv_asrad ships as "<name>.json"; all others as "<name>.geo.json".
         String path = "hmmwv_asrad".equals(name) ? "geo/" + name + ".json" : "geo/" + name + ".geo.json";
-        return new ResourceLocation(FCP.MODID, path);
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, path);
     }
 
     @Override

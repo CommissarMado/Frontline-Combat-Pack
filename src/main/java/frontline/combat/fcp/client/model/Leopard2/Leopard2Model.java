@@ -36,7 +36,7 @@ public class Leopard2Model extends FCPVehicleModel<Leopard2Entity> {
 
     @Override
     public ResourceLocation getModelResource(Leopard2Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/" + animatable.variantName() + ".geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/" + animatable.variantName() + ".geo.json");
     }
 
     @Override

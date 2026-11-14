@@ -3,10 +3,10 @@ package frontline.combat.fcp.init;
 import frontline.combat.fcp.FCP;
 import frontline.combat.fcp.menu.VehicleInventoryMenu;
 import net.minecraft.world.inventory.MenuType;
-import net.minecraftforge.common.extensions.IForgeMenuType;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 /**
  * FCP menu types.
@@ -21,9 +21,9 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModMenus {
 
     public static final DeferredRegister<MenuType<?>> MENUS =
-            DeferredRegister.create(ForgeRegistries.MENU_TYPES, FCP.MODID);
+            DeferredRegister.create(net.minecraft.core.registries.Registries.MENU, FCP.MODID);
 
-    public static final RegistryObject<MenuType<VehicleInventoryMenu>> VEHICLE_INVENTORY =
+    public static final DeferredHolder<MenuType<?>, MenuType<VehicleInventoryMenu>> VEHICLE_INVENTORY =
             MENUS.register("vehicle_inventory",
-                    () -> IForgeMenuType.create(VehicleInventoryMenu::fromNetwork));
+                    () -> IMenuTypeExtension.create(VehicleInventoryMenu::fromNetwork));
 }

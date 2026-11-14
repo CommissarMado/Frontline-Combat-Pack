@@ -45,11 +45,11 @@ public class StugnaLauncherEntity extends EmplacementEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(OPERATOR, "");
-        this.entityData.define(AIM_YAW, 0f);
-        this.entityData.define(AIM_PITCH, 0f);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(OPERATOR, "");
+        builder.define(AIM_YAW, 0f);
+        builder.define(AIM_PITCH, 0f);
     }
 
     /** Sets the sight aim; pitch (negative = up) is limited to the turret's elevation range. */

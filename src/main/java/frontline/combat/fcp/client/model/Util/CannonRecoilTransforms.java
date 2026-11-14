@@ -4,8 +4,8 @@ import com.atsuishio.superbwarfare.client.model.entity.VehicleModel;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.core.animatable.GeoAnimatable;
-import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
+import software.bernie.geckolib.animatable.GeoAnimatable;
+import software.bernie.geckolib.cache.object.GeoBone;
 
 public final class CannonRecoilTransforms {
 
@@ -98,7 +98,7 @@ public final class CannonRecoilTransforms {
 
     }
 
-    public static void apply(CoreGeoBone bone, VehicleEntity vehicle, Profile profile) {
+    public static void apply(GeoBone bone, VehicleEntity vehicle, Profile profile) {
 
         ModelBoneTransforms.clearRecoilOffsets(bone);
 
@@ -118,7 +118,7 @@ public final class CannonRecoilTransforms {
 
     public static void applyBarrelPitchAndRecoil(
 
-            CoreGeoBone bone,
+            GeoBone bone,
 
             VehicleEntity vehicle,
 
@@ -134,7 +134,7 @@ public final class CannonRecoilTransforms {
 
     public static void applyBarrelPitchAndRecoil(
 
-            CoreGeoBone bone,
+            GeoBone bone,
 
             VehicleEntity vehicle,
 

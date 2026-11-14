@@ -38,8 +38,8 @@ public class M1a1Renderer extends VehicleRenderer<M1a1Entity> {
     @Override
     public void renderRecursively(PoseStack poseStack, M1a1Entity animatable, GeoBone bone, RenderType renderType, MultiBufferSource bufferSource,
                                   VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay,
-                                  float red, float green, float blue, float alpha) {
+                                  int colour) {
         if (!isReRender) camoNet.capture(poseStack, bone);
-        super.renderRecursively(poseStack, animatable, bone, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.renderRecursively(poseStack, animatable, bone, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 }

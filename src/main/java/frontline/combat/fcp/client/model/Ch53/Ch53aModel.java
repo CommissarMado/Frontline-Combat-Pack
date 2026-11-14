@@ -11,7 +11,7 @@ public class Ch53aModel extends VehicleModel<Ch53aEntity> {
 
     @Override
     public ResourceLocation getModelResource(Ch53aEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/ch53a.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/ch53a.geo.json");
     }
 
     @Override

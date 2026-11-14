@@ -20,11 +20,11 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
 import java.util.HashMap;
@@ -56,7 +56,7 @@ public final class SquadWeaponSounds {
 
     // ── Profiles ────────────────────────────────────────────────────────────────
 
-    @Mod.EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+    @EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
     public static final class Loader extends SimpleJsonResourceReloadListener {
         private Loader() {
             super(new Gson(), "squad_weapons");
@@ -256,11 +256,10 @@ public final class SquadWeaponSounds {
 
     // ── Tick: burst tails and turret traverse ───────────────────────────────────
 
-    @Mod.EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
     public static final class Ticker {
         @SubscribeEvent
-        public static void onClientTick(TickEvent.ClientTickEvent event) {
-            if (event.phase != TickEvent.Phase.END) return;
+        public static void onClientTick(net.neoforged.neoforge.client.event.ClientTickEvent.Post event) {
             Minecraft mc = Minecraft.getInstance();
             if (mc.level != lastLevel) {
                 stopAll();

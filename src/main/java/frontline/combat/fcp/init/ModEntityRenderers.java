@@ -104,15 +104,16 @@ import frontline.combat.fcp.client.renderer.Uh60.Uh60Renderer;
 import frontline.combat.fcp.client.renderer.Uh60.Uh60MinigunRenderer;
 import frontline.combat.fcp.client.renderer.Uh60.Mh60lRenderer;
 import frontline.combat.fcp.client.renderer.Projectile.Hellfire.LockOnHellfireRenderer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 
 import frontline.combat.fcp.client.overlay.FcpDriverOverlay;
-import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
+import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 
-@Mod.EventBusSubscriber(modid = FCP.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = FCP.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModEntityRenderers {
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
@@ -364,13 +365,13 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.CULTIVATOR.get(), CultivatorRenderer::new);
     }
     @SubscribeEvent
-    public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
-        event.registerBelowAll(FcpDriverOverlay.ID, FcpDriverOverlay.INSTANCE);
-        event.registerBelowAll(FcpPilotOverlay.ID, FcpPilotOverlay.INSTANCE);
-        event.registerAboveAll(frontline.combat.fcp.client.StugnaRemoteClient.OVERLAY_ID, frontline.combat.fcp.client.StugnaRemoteClient.OVERLAY);
-        event.registerAboveAll(frontline.combat.fcp.client.overlay.PumaCommanderHud.OVERLAY_ID, frontline.combat.fcp.client.overlay.PumaCommanderHud.OVERLAY);
-        event.registerBelowAll(frontline.combat.fcp.client.overlay.NovatorStugnaHud.OVERLAY_ID, frontline.combat.fcp.client.overlay.NovatorStugnaHud.OVERLAY);
-        event.registerAboveAll(frontline.combat.fcp.client.HimarsTvClient.OVERLAY_ID, frontline.combat.fcp.client.HimarsTvClient.OVERLAY);
+    public static void registerGuiOverlays(RegisterGuiLayersEvent event) {
+        event.registerBelowAll(frontline.combat.fcp.FCP.loc(FcpDriverOverlay.ID), FcpDriverOverlay.INSTANCE);
+        event.registerBelowAll(frontline.combat.fcp.FCP.loc(FcpPilotOverlay.ID), FcpPilotOverlay.INSTANCE);
+        event.registerAboveAll(frontline.combat.fcp.FCP.loc(frontline.combat.fcp.client.StugnaRemoteClient.OVERLAY_ID), frontline.combat.fcp.client.StugnaRemoteClient.OVERLAY);
+        event.registerAboveAll(frontline.combat.fcp.FCP.loc(frontline.combat.fcp.client.overlay.PumaCommanderHud.OVERLAY_ID), frontline.combat.fcp.client.overlay.PumaCommanderHud.OVERLAY);
+        event.registerBelowAll(frontline.combat.fcp.FCP.loc(frontline.combat.fcp.client.overlay.NovatorStugnaHud.OVERLAY_ID), frontline.combat.fcp.client.overlay.NovatorStugnaHud.OVERLAY);
+        event.registerAboveAll(frontline.combat.fcp.FCP.loc(frontline.combat.fcp.client.HimarsTvClient.OVERLAY_ID), frontline.combat.fcp.client.HimarsTvClient.OVERLAY);
     }
 
 }

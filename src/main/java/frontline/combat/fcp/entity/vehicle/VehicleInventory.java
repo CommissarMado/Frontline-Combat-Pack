@@ -164,7 +164,7 @@ public interface VehicleInventory {
         if (stack.isEmpty()) return -1;
         for (int channel = 0; channel < Math.max(1, bulkChannels()); channel++) {
             ItemStack type = bulkTypeOf(channel);
-            if (!type.isEmpty() && ItemStack.isSameItemSameTags(type, stack)) return channel;
+            if (!type.isEmpty() && ItemStack.isSameItemSameComponents(type, stack)) return channel;
         }
         return -1;
     }
@@ -211,7 +211,7 @@ public interface VehicleInventory {
             ItemStack slot = inventory.getItem(i);
             if (slot.isEmpty()) {
                 inventory.setItem(i, stack.split(Math.min(stack.getCount(), stack.getMaxStackSize())));
-            } else if (ItemStack.isSameItemSameTags(slot, stack)) {
+            } else if (ItemStack.isSameItemSameComponents(slot, stack)) {
                 int space = slot.getMaxStackSize() - slot.getCount();
                 if (space <= 0) continue;
                 int moved = Math.min(space, stack.getCount());

@@ -26,10 +26,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.gui.overlay.ForgeGui;
-import net.minecraftforge.client.gui.overlay.IGuiOverlay;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.minecraft.client.gui.Gui;
+import frontline.combat.fcp.client.overlay.IGuiOverlay;
 
 import java.util.List;
 import java.util.Map;
@@ -41,25 +41,25 @@ public class FcpPilotOverlay implements IGuiOverlay {
     public static final String ID = "fcp_pilot_hud";
 
     private static final ResourceLocation HELI_BASE =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/helicopter/heli_base.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/helicopter/heli_base.png");
     private static final ResourceLocation HELI_DRIVER_ANGLE =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/helicopter/heli_driver_angle.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/helicopter/heli_driver_angle.png");
     private static final ResourceLocation ROLL_IND =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/helicopter/roll_ind.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/helicopter/roll_ind.png");
     private static final ResourceLocation HELI_POWER_RULER =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/helicopter/heli_power_ruler.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/helicopter/heli_power_ruler.png");
     private static final ResourceLocation HELI_POWER =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/helicopter/heli_power.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/helicopter/heli_power.png");
     private static final ResourceLocation HELI_VY_MOVE =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/helicopter/heli_vy_move.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/helicopter/heli_vy_move.png");
     private static final ResourceLocation SPEED_FRAME =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/helicopter/speed_frame.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/helicopter/speed_frame.png");
     private static final ResourceLocation CROSSHAIR_IND =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/helicopter/crosshair_ind.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/helicopter/crosshair_ind.png");
     private static final ResourceLocation COMPASS =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/base/compass.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/base/compass.png");
     private static final ResourceLocation HUD_LINE =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/aircraft/hud_line.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/aircraft/hud_line.png");
 
     // Per-vehicle seat list: [ vehicle, [seats that get the pilot HUD] ].
     // Keys are the entity id path (no namespace), e.g. "littlebird" matches fcp:littlebird.
@@ -108,7 +108,7 @@ public class FcpPilotOverlay implements IGuiOverlay {
     private float lerpPower = 0f;
 
     @Override
-    public void render(ForgeGui gui, GuiGraphics guiGraphics, float partialTick,
+    public void render(Gui gui, GuiGraphics guiGraphics, float partialTick,
                        int screenWidth, int screenHeight) {
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
@@ -183,17 +183,17 @@ public class FcpPilotOverlay implements IGuiOverlay {
         lerpVy = Mth.lerp(0.021f * partialTick, lerpVy, (float) (ve.getDeltaMovement().y() * 20));
 
         // --- Base vignette ---
-        RenderHelper.blit(poseStack, HELI_BASE, k, l, 0f, 0f, i, j, i, j, color);
+        RenderHelper.preciseBlitWithColor(guiGraphics, HELI_BASE, k, l, 0f, 0f, i, j, i, j, color);
 
         // --- Driver / nose angle reticle ---
         float diffY = -Mth.lerp(partialTick, ve.getTurretYRotO(), ve.getTurretYRot()) * 0.3f;
         float diffX = (float) (Mth.wrapDegrees(
                 -VehicleVecUtils.getXRotFromVector(ve.getBarrelVector(partialTick))
                         - Mth.lerp(partialTick, ve.xRotO, ve.getXRot())) * 0.072f);
-        RenderHelper.blit(poseStack, HELI_DRIVER_ANGLE, k + diffY, l + diffX, 0f, 0f, i, j, i, j, color);
+        RenderHelper.preciseBlitWithColor(guiGraphics, HELI_DRIVER_ANGLE, k + diffY, l + diffX, 0f, 0f, i, j, i, j, color);
 
         // --- Compass ---
-        RenderHelper.blit(poseStack, COMPASS,
+        RenderHelper.preciseBlitWithColor(guiGraphics, COMPASS,
                 screenWidth / 2f - 128, 6f,
                 128 + (64f / 45 * ve.getYRot()), 0f,
                 256f, 16f, 512f, 16f, color);
@@ -203,7 +203,7 @@ public class FcpPilotOverlay implements IGuiOverlay {
         poseStack.rotateAround(Axis.ZP.rotationDegrees(-ve.getRoll(partialTick)),
                 screenWidth / 2f, screenHeight / 2f, 0f);
         float pitch = ve.getPitch(partialTick);
-        RenderHelper.blit(poseStack, HUD_LINE,
+        RenderHelper.preciseBlitWithColor(guiGraphics, HUD_LINE,
                 screenWidth / 2f - 144, screenHeight / 2f - 128,
                 0f, 722.5f + 4.725f * pitch,
                 288f, 256f, 288f, 1701f, color);
@@ -213,24 +213,24 @@ public class FcpPilotOverlay implements IGuiOverlay {
         poseStack.pushPose();
         poseStack.rotateAround(Axis.ZP.rotationDegrees(ve.getRoll(partialTick)),
                 screenWidth / 2f, screenHeight / 2f - 56, 0f);
-        RenderHelper.blit(poseStack, ROLL_IND,
+        RenderHelper.preciseBlitWithColor(guiGraphics, ROLL_IND,
                 screenWidth / 2f - 8, screenHeight / 2f - 88,
                 0f, 0f, 16f, 16f, 16f, 16f, color);
         poseStack.popPose();
 
         // --- Engine power ruler + fill ---
-        RenderHelper.blit(poseStack, HELI_POWER_RULER,
+        RenderHelper.preciseBlitWithColor(guiGraphics, HELI_POWER_RULER,
                 screenWidth / 2f + 100, screenHeight / 2f - 64,
                 0f, 0f, 64f, 128f, 64f, 128f, color);
 
         float power = ve.getPower();
         lerpPower = Mth.lerp(0.5f * partialTick, lerpPower, power);
-        RenderHelper.blit(poseStack, HELI_POWER,
+        RenderHelper.preciseBlitWithColor(guiGraphics, HELI_POWER,
                 screenWidth / 2f + 130f, screenHeight / 2f - 64 + 124 - lerpPower * 980,
                 0f, 0f, 4f, lerpPower * 980, 4f, lerpPower * 980, color);
 
         // --- Vertical speed indicator ---
-        RenderHelper.blit(poseStack, HELI_VY_MOVE,
+        RenderHelper.preciseBlitWithColor(guiGraphics, HELI_VY_MOVE,
                 screenWidth / 2f + 138, screenHeight / 2f - 3 - Mth.clamp(lerpVy * 3, -24f, 24f) * 2.5f,
                 0f, 0f, 8f, 8f, 8f, 8f, color);
         guiGraphics.drawString(mc.font,
@@ -245,7 +245,7 @@ public class FcpPilotOverlay implements IGuiOverlay {
                 screenWidth / 2 + 104, screenHeight / 2, color, false);
 
         // --- Speed frame + readout ---
-        RenderHelper.blit(poseStack, SPEED_FRAME,
+        RenderHelper.preciseBlitWithColor(guiGraphics, SPEED_FRAME,
                 screenWidth / 2f - 144, screenHeight / 2f - 6,
                 0f, 0f, 50f, 18f, 50f, 18f, color);
         guiGraphics.drawString(mc.font,
@@ -280,7 +280,7 @@ public class FcpPilotOverlay implements IGuiOverlay {
         VehicleMainWeaponHudOverlay.INSTANCE.renderEnergyInfo(ve, guiGraphics, screenWidth, screenHeight, mc.font);
 
         // --- Crosshair indicator + kill markers at the projected aim point ---
-        RenderHelper.blit(poseStack, CROSSHAIR_IND, x - 8, y - 8, 0f, 0f, 16f, 16f, 16f, 16f, color);
+        RenderHelper.preciseBlitWithColor(guiGraphics, CROSSHAIR_IND, x - 8, y - 8, 0f, 0f, 16f, 16f, 16f, 16f, color);
         VehicleHudOverlay.renderKillIndicatorDynamic(guiGraphics,
                 x - 7.5f + (float) (2 * (Math.random() - 0.5f)),
                 y - 7.5f + (float) (2 * (Math.random() - 0.5f)));
@@ -299,11 +299,11 @@ public class FcpPilotOverlay implements IGuiOverlay {
      */
     // Third-person HUD textures (SBW's HelicopterHud keeps these private).
     private static final ResourceLocation CROSSHAIR_3P =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/crosshair/third_camera_2.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/crosshair/third_camera_2.png");
     private static final ResourceLocation RING_3P =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/aircraft/rex_circle.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/aircraft/rex_circle.png");
     private static final ResourceLocation BLOCK_3P =
-            new ResourceLocation("superbwarfare", "textures/overlay/misc/block_white.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/misc/block_white.png");
     private float mouseX3p, mouseY3p;
 
     /**
@@ -340,13 +340,13 @@ public class FcpPilotOverlay implements IGuiOverlay {
         double distance = ring.distanceTo(origin);
         for (double i = 0; i < distance - 3; i += 3) {
             Vec3 p0 = ring.add(ring.vectorTo(origin).normalize().scale(i));
-            RenderHelper.blit(poseStack, BLOCK_3P, (float) (p0.x - 0.25), (float) (p0.y - 0.25), 0f, 0f, 0.5f, 0.5f, 0.5f, 0.5f, -1);
+            RenderHelper.preciseBlitWithColor(guiGraphics, BLOCK_3P, (float) (p0.x - 0.25), (float) (p0.y - 0.25), 0f, 0f, 0.5f, 0.5f, 0.5f, 0.5f, -1);
         }
 
         float pitch = ve.getPitch(partialTick);
         var aircraftHud = com.atsuishio.superbwarfare.client.overlay.weapon.AircraftHud.INSTANCE;
-        RenderHelper.blit(poseStack, aircraftHud.getHUD_LINE_3P(), x - 96, y - 48, 0f, 195 + 1.36F * pitch, 192f, 96f, 192f, 486f, -1);
-        RenderHelper.blit(poseStack, aircraftHud.getROLL_HUD_3P(), x - 48, y - 48, 0f, 0f, 96f, 96f, 96f, 96f, -1);
+        RenderHelper.preciseBlitWithColor(guiGraphics, aircraftHud.getHUD_LINE_3P(), x - 96, y - 48, 0f, 195 + 1.36F * pitch, 192f, 96f, 192f, 486f, -1);
+        RenderHelper.preciseBlitWithColor(guiGraphics, aircraftHud.getROLL_HUD_3P(), x - 48, y - 48, 0f, 0f, 96f, 96f, 96f, 96f, -1);
 
         poseStack.pushPose();
         poseStack.rotateAround(Axis.ZP.rotationDegrees(ve.getRoll(partialTick)), x, y, 0f);

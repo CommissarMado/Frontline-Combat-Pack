@@ -23,7 +23,7 @@ public class VenaModel extends FCPVehicleModel<VenaEntity> {
 
     @Override
     public ResourceLocation getModelResource(VenaEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/2s31.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/2s31.geo.json");
     }
 
     @Override

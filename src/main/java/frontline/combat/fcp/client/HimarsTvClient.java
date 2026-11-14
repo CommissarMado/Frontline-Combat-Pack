@@ -17,20 +17,20 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
-import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.client.event.RenderGuiOverlayEvent;
-import net.minecraftforge.client.event.RenderHandEvent;
-import net.minecraftforge.client.event.RenderHighlightEvent;
-import net.minecraftforge.client.event.ViewportEvent;
-import net.minecraftforge.client.gui.overlay.ForgeGui;
-import net.minecraftforge.client.gui.overlay.IGuiOverlay;
-import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
+import net.neoforged.neoforge.client.event.InputEvent;
+import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
+import net.neoforged.neoforge.client.event.RenderHandEvent;
+import net.neoforged.neoforge.client.event.RenderHighlightEvent;
+import net.neoforged.neoforge.client.event.ViewportEvent;
+import net.minecraft.client.gui.Gui;
+import frontline.combat.fcp.client.overlay.IGuiOverlay;
+import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.util.ObfuscationReflectionHelper;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -43,16 +43,16 @@ import java.lang.reflect.Method;
  * launcher when the missile is gone or the gunner leaves the seat. Same camera trick and TV frame as the Stugna
  * remote (StugnaRemoteClient), and the picture is always thermal.
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT)
 public final class HimarsTvClient {
 
     public static final String OVERLAY_ID = "fcp_himars_tv";
     public static final IGuiOverlay OVERLAY = HimarsTvClient::renderOverlay;
 
     private static final ResourceLocation TV_FRAME =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/land/tv_frame.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/land/tv_frame.png");
     private static final ResourceLocation RETICLE =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/crosshair/third_camera.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/crosshair/third_camera.png");
 
     /** How far (degrees) the steered heading may lead the missile's actual heading. */
     private static final float MAX_LEAD = 20f;
@@ -66,11 +66,11 @@ public final class HimarsTvClient {
     private static float aimYaw, aimPitch;
     private static float sentYaw = Float.NaN, sentPitch = Float.NaN;
 
-    // Camera#setPosition(Vec3) is protected and Camera#detached private; SRG names, remapped in dev.
+    // Camera#setPosition(Vec3) is protected and Camera#detached private. NeoForge 1.21 runs on Mojang names.
     private static final Method SET_CAMERA_POSITION =
-            ObfuscationReflectionHelper.findMethod(Camera.class, "m_90581_", Vec3.class);
+            ObfuscationReflectionHelper.findMethod(Camera.class, "setPosition", Vec3.class);
     private static final Field CAMERA_DETACHED =
-            ObfuscationReflectionHelper.findField(Camera.class, "f_90560_");
+            ObfuscationReflectionHelper.findField(Camera.class, "detached");
 
     private HimarsTvClient() {
     }
@@ -109,8 +109,7 @@ public final class HimarsTvClient {
     }
 
     @SubscribeEvent
-    public static void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase != TickEvent.Phase.END) return;
+    public static void onClientTick(net.neoforged.neoforge.client.event.ClientTickEvent.Post event) {
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         if (player == null || mc.level == null) {
@@ -143,10 +142,10 @@ public final class HimarsTvClient {
 
     /** Tells HimarsEntity to hold still on this client while the view is away (see HimarsEntity#tick). */
     @SubscribeEvent
-    public static void onClientTickStart(TickEvent.ClientTickEvent event) {
-        if (event.phase == TickEvent.Phase.START) HimarsEntity.localTvViewAway = isActive();
-        if (event.phase == TickEvent.Phase.START) debugLog();
-        if (event.phase == TickEvent.Phase.START) forceThermal();
+    public static void onClientTickStart(net.neoforged.neoforge.client.event.ClientTickEvent.Pre event) {
+        HimarsEntity.localTvViewAway = isActive();
+        debugLog();
+        forceThermal();
     }
 
     /** The thermal setting from before the flight, restored after it; null while not flying. */
@@ -214,10 +213,10 @@ public final class HimarsTvClient {
 
     /** Only the TV picture (and chat) while flying: the gunner's vehicle HUD would sit over it. */
     @SubscribeEvent
-    public static void onGuiOverlay(RenderGuiOverlayEvent.Pre event) {
+    public static void onGuiOverlay(RenderGuiLayerEvent.Pre event) {
         if (!isActive()) return;
-        ResourceLocation id = event.getOverlay().id();
-        if (!id.getPath().equals(OVERLAY_ID) && !id.equals(VanillaGuiOverlay.CHAT_PANEL.id())) event.setCanceled(true);
+        ResourceLocation id = event.getName();
+        if (!id.getPath().equals(OVERLAY_ID) && !id.equals(VanillaGuiLayers.CHAT)) event.setCanceled(true);
     }
 
     @SubscribeEvent
@@ -238,7 +237,7 @@ public final class HimarsTvClient {
         missileId = -1;
     }
 
-    private static void renderOverlay(ForgeGui gui, GuiGraphics graphics, float partialTick, int width, int height) {
+    private static void renderOverlay(Gui gui, GuiGraphics graphics, float partialTick, int width, int height) {
         HimarsMissileEntity missile = missile();
         Minecraft mc = Minecraft.getInstance();
         if (missile == null || mc.player == null || mc.options.hideGui) return;

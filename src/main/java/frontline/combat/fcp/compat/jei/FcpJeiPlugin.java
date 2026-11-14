@@ -17,7 +17,7 @@ public class FcpJeiPlugin implements IModPlugin {
 
     @Override
     public ResourceLocation getPluginUid() {
-        return new ResourceLocation(FCP.MODID, "jei");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "jei");
     }
 
     @Override

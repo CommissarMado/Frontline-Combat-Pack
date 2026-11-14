@@ -248,7 +248,7 @@ public class VehicleInventoryMenu extends AbstractContainerMenu {
         if (stack.isEmpty()) return -1;
         for (int channel = 0; channel < this.channels; channel++) {
             ItemStack type = bulkTypeOf(channel);
-            if (!type.isEmpty() && ItemStack.isSameItemSameTags(type, stack)) return channel;
+            if (!type.isEmpty() && ItemStack.isSameItemSameComponents(type, stack)) return channel;
         }
         return -1;
     }
@@ -266,7 +266,7 @@ public class VehicleInventoryMenu extends AbstractContainerMenu {
         if (this.style != InventoryStyle.BULK) return true;
 
         ItemStack type = bulkTypeOf(channel);
-        if (!type.isEmpty()) return ItemStack.isSameItemSameTags(type, stack);
+        if (!type.isEmpty()) return ItemStack.isSameItemSameComponents(type, stack);
         // An unclaimed channel takes anything that isn't already in another one, so one
         // item can never occupy two channels.
         return channelOf(stack) < 0;
@@ -327,7 +327,7 @@ public class VehicleInventoryMenu extends AbstractContainerMenu {
             if (stack.isEmpty()) continue;
             ItemStack copy = stack.copy();
             for (ItemStack m : merged) {
-                if (m.getCount() < m.getMaxStackSize() && ItemStack.isSameItemSameTags(m, copy)) {
+                if (m.getCount() < m.getMaxStackSize() && ItemStack.isSameItemSameComponents(m, copy)) {
                     int move = Math.min(m.getMaxStackSize() - m.getCount(), copy.getCount());
                     m.grow(move);
                     copy.shrink(move);
@@ -353,7 +353,7 @@ public class VehicleInventoryMenu extends AbstractContainerMenu {
 
     private static String itemKey(ItemStack stack) {
         net.minecraft.resources.ResourceLocation id =
-                net.minecraftforge.registries.ForgeRegistries.ITEMS.getKey(stack.getItem());
+                net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(stack.getItem());
         return id == null ? "" : id.toString();
     }
 
@@ -386,7 +386,7 @@ public class VehicleInventoryMenu extends AbstractContainerMenu {
                 int take = Math.min(result.getMaxStackSize(), stack.getCount());
                 result.setCount(take);
                 stack.shrink(take);
-            } else if (ItemStack.isSameItemSameTags(result, stack)) {
+            } else if (ItemStack.isSameItemSameComponents(result, stack)) {
                 int take = Math.min(result.getMaxStackSize() - result.getCount(), stack.getCount());
                 result.grow(take);
                 stack.shrink(take);
@@ -410,7 +410,7 @@ public class VehicleInventoryMenu extends AbstractContainerMenu {
             ItemStack current = slot.getItem();
             if (current.isEmpty()) {
                 slot.set(stack.split(Math.min(stack.getCount(), stack.getMaxStackSize())));
-            } else if (ItemStack.isSameItemSameTags(current, stack)) {
+            } else if (ItemStack.isSameItemSameComponents(current, stack)) {
                 int space = current.getMaxStackSize() - current.getCount();
                 if (space <= 0) continue;
                 int moved = Math.min(space, stack.getCount());

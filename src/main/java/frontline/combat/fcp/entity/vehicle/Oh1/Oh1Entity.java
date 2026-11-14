@@ -29,10 +29,10 @@ public class Oh1Entity extends CamoVehicleBase {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(TOGGLE1, true);
-        this.entityData.define(TOGGLE2, true);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(TOGGLE1, true);
+        builder.define(TOGGLE2, true);
     }
 
     public boolean hasToggle1() {return this.entityData.get(TOGGLE1);}

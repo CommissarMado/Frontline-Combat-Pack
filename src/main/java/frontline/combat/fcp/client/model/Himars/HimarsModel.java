@@ -25,7 +25,7 @@ public class HimarsModel extends VehicleModel<HimarsEntity> {
 
     @Override
     public ResourceLocation getModelResource(HimarsEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/himars.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/himars.geo.json");
     }
 
     @Override

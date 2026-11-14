@@ -229,7 +229,7 @@ public abstract class VehicleHudMagazineMixin {
     /** Local copy of SBW's digit renderer (its own is private). Digits are right-aligned from x. */
     private static void fcp$renderNumber(GuiGraphics guiGraphics, int number, boolean percent,
                                          float x, float y, float scale) {
-        ResourceLocation numbers = new ResourceLocation("superbwarfare",
+        ResourceLocation numbers = ResourceLocation.fromNamespaceAndPath("superbwarfare",
                 "textures/overlay/vehicle/weapon/frame/number.png");
         float pX = x;
         if (percent) {

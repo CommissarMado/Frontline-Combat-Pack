@@ -13,11 +13,12 @@ import net.minecraft.client.gui.components.MultiLineLabel;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ScreenEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.loading.FMLPaths;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.client.event.ScreenEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.loading.FMLPaths;
 import org.slf4j.Logger;
 
 import java.nio.charset.StandardCharsets;
@@ -35,7 +36,7 @@ import java.util.HexFormat;
  * plus the OS user and machine name, so copying an instance (config included) to someone
  * else brings the prompt back for them.
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.GAME)
 public class DisclaimerScreen extends Screen {
 
     private static final Logger LOGGER = LogUtils.getLogger();
@@ -100,8 +101,8 @@ public class DisclaimerScreen extends Screen {
 
         boolean wasChecked = this.agree != null && this.agree.selected();
         int checkWidth = this.font.width(CHECK) + 24;
-        this.agree = this.addRenderableWidget(new Checkbox(this.width / 2 - checkWidth / 2, checkY,
-                checkWidth, 20, CHECK, wasChecked));
+        this.agree = this.addRenderableWidget(Checkbox.builder(CHECK, this.font)
+                .pos(this.width / 2 - checkWidth / 2, checkY).selected(wasChecked).build());
 
         this.proceed = this.addRenderableWidget(Button.builder(CommonComponents.GUI_PROCEED, b -> accept())
                 .bounds(this.width / 2 - 155, buttonY, 150, 20).build());
@@ -142,7 +143,7 @@ public class DisclaimerScreen extends Screen {
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-        this.renderBackground(graphics);
+        this.renderBackground(graphics, mouseX, mouseY, partialTick);
         graphics.pose().pushPose();
         graphics.pose().translate(this.width / 2f, this.titleY, 0);
         graphics.pose().scale(this.titleScale, this.titleScale, 1);

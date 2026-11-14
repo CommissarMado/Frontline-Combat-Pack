@@ -66,7 +66,7 @@ public final class BoneMeshes {
 
     /** Emits the bone's mesh faces with the current (bone-posed) matrix, the way GeckoLib emits cube quads. */
     public static void render(Map<String, float[][]> meshes, GeoBone bone, PoseStack poseStack, VertexConsumer buffer,
-                              int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+                              int packedLight, int packedOverlay, int colour) {
         float[][] faces = meshes.get(bone.getName());
         if (faces == null) return;
         Matrix4f pose = poseStack.last().pose();
@@ -78,7 +78,7 @@ public final class BoneMeshes {
             for (int i = 0; i < 4; i++) {
                 int o = i * 5;
                 pose.transform(pos.set(f[o], f[o + 1], f[o + 2], 1f));
-                buffer.vertex(pos.x(), pos.y(), pos.z(), red, green, blue, alpha, f[o + 3], f[o + 4],
+                buffer.addVertex(pos.x(), pos.y(), pos.z(), colour, f[o + 3], f[o + 4],
                         packedOverlay, packedLight, normal.x(), normal.y(), normal.z());
             }
         }

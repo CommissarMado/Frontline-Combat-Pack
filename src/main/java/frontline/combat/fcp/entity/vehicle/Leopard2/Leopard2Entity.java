@@ -58,10 +58,10 @@ public class Leopard2Entity extends CamoVehicleBase implements CamoNetVehicle {
     private static final int CAMO_NET_COLORS = 5;
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(CAMO_NET, 0);
-        this.entityData.define(CAMO_NET_COLOR, 1);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(CAMO_NET, 0);
+        builder.define(CAMO_NET_COLOR, 1);
     }
 
     @Override public int getCamoNet() { return this.entityData.get(CAMO_NET); }

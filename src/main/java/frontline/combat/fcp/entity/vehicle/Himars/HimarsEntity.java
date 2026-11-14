@@ -75,10 +75,10 @@ public class HimarsEntity extends CamoVehicleBase implements SteerableVehicle {
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(STEERING_ANGLE, 0f);
-        this.entityData.define(COORD_TARGET, Optional.empty());
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(STEERING_ANGLE, 0f);
+        builder.define(COORD_TARGET, Optional.empty());
     }
 
     /** True while the gunner has the coordinate-input mode selected. */

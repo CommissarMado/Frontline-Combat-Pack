@@ -2,13 +2,14 @@ package frontline.combat.fcp.client;
 
 import com.atsuishio.superbwarfare.init.ModItems;
 import frontline.combat.fcp.FCP;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterItemDecorationsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.client.event.RegisterItemDecorationsEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 
 /** Registers FCP's container-icon decorator on SBW's container item. Self-registering. */
-@Mod.EventBusSubscriber(modid = FCP.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = FCP.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class FcpContainerIconEvents {
 
     @SubscribeEvent

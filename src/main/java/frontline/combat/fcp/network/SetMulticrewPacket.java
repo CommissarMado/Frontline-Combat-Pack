@@ -9,8 +9,6 @@ import net.minecraft.world.entity.Entity;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraftforge.network.NetworkEvent;
-import net.minecraftforge.network.PacketDistributor;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -78,7 +76,7 @@ public class SetMulticrewPacket {
     }
 
     public static void sendStateTo(ServerPlayer player) {
-        FCPNetwork.FCP_HANDLER.send(PacketDistributor.PLAYER.with(() -> player),
+        FCPNetwork.FCP_HANDLER.send(FCPNetwork.player(player),
                 new FcpConfigStatePacket(FCPConfig.multicrewEnabled(), mayEdit(player), FcpWorldSettings.current()));
     }
 

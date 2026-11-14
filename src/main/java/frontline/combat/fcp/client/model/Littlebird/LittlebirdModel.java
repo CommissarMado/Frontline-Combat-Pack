@@ -8,13 +8,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.object.GeoBone;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 
 public class LittlebirdModel extends VehicleModel<LittlebirdEntity> {
 
     @Override
     public ResourceLocation getModelResource(LittlebirdEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/littlebird.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/littlebird.geo.json");
     }
 
     @Override

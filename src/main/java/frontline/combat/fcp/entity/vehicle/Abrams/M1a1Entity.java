@@ -59,12 +59,12 @@ public class M1a1Entity extends CamoVehicleBase implements HumveeVehicle, CamoNe
     public M1a1Entity(EntityType<M1a1Entity> type, Level world) {super(type, world);}
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(STEERING_ANGLE, 0f);
-        this.entityData.define(ATTACHMENTS, "");
-        this.entityData.define(CAMO_NET, 0);
-        this.entityData.define(CAMO_NET_COLOR, 1);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(STEERING_ANGLE, 0f);
+        builder.define(ATTACHMENTS, "");
+        builder.define(CAMO_NET, 0);
+        builder.define(CAMO_NET_COLOR, 1);
     }
 
     @Override public String camoNetName() { return humveeName(); }

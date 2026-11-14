@@ -18,11 +18,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ToolActions;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.object.PlayState;
+import net.neoforged.neoforge.common.ItemAbilities;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 /**
@@ -148,7 +148,7 @@ public class CultivatorEntity extends AbstractTrailerEntity {
         UseOnContext context = new TillContext(this.level(), new ItemStack(Items.DIAMOND_HOE),
                 new BlockHitResult(Vec3.atCenterOf(pos), Direction.UP, pos, false));
 
-        return state.getToolModifiedState(context, ToolActions.HOE_TILL, false);
+        return state.getToolModifiedState(context, ItemAbilities.HOE_TILL, false);
     }
 
     private static class TillContext extends UseOnContext {

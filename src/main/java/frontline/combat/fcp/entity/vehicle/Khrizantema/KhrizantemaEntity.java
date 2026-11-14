@@ -113,13 +113,13 @@ public class KhrizantemaEntity extends CamoVehicleBase {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(SIGHT, 0f);
-        this.entityData.define(ARM, 0f);
-        this.entityData.define(SIGHT_WANTED, false);
-        this.entityData.define(ARM_WANTED, false);
-        this.entityData.define(GUIDING, false);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(SIGHT, 0f);
+        builder.define(ARM, 0f);
+        builder.define(SIGHT_WANTED, false);
+        builder.define(ARM_WANTED, false);
+        builder.define(GUIDING, false);
     }
 
     @Override

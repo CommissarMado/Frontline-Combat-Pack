@@ -9,7 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
 public class KozakAmbulanceModel extends FCPVehicleModel<KozakAmbulanceEntity> {
-    @Override public ResourceLocation getModelResource(KozakAmbulanceEntity animatable) {return new ResourceLocation(FCP.MODID, "geo/kozak_ambulance.geo.json");}
+    @Override public ResourceLocation getModelResource(KozakAmbulanceEntity animatable) {return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/kozak_ambulance.geo.json");}
     @Override public boolean hideForTurretControllerWhileZooming() {return false;}
     @Override public @Nullable VehicleModel.TransformContext<KozakAmbulanceEntity> collectTransform(String boneName) {
         VehicleModel.TransformContext<KozakAmbulanceEntity> steer = WheelRotationTransforms.matchAnyTurn(boneName, 0.43, 30f, "whell", "whell2");

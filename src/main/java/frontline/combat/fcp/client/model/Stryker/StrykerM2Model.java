@@ -15,7 +15,7 @@ public class StrykerM2Model extends FCPVehicleModel<StrykerM2Entity> {
 
     @Override
     public ResourceLocation getModelResource(StrykerM2Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/stryker_m2.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/stryker_m2.geo.json");
     }
 
     @Override

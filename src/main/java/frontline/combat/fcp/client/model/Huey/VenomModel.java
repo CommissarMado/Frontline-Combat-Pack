@@ -13,7 +13,7 @@ public class VenomModel extends VehicleModel<VenomEntity> {
 
     @Override
     public ResourceLocation getModelResource(VenomEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/venom.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/venom.geo.json");
     }
 
     @Override

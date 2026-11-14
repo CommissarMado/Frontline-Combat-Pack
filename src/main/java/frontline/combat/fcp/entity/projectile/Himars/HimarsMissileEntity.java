@@ -32,12 +32,12 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.animation.AnimationState;
-import software.bernie.geckolib.core.animation.RawAnimation;
-import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.AnimationState;
+import software.bernie.geckolib.animation.RawAnimation;
+import software.bernie.geckolib.animation.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.UUID;
@@ -93,11 +93,11 @@ public class HimarsMissileEntity extends MissileProjectile implements GeoEntity 
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(PILOT, -1);
-        this.entityData.define(HEADING_YAW, Float.NaN);
-        this.entityData.define(HEADING_PITCH, Float.NaN);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(PILOT, -1);
+        builder.define(HEADING_YAW, Float.NaN);
+        builder.define(HEADING_PITCH, Float.NaN);
     }
 
     // TEMPORARY diagnostics for the TV-return bug: why and where the missile goes on each side.
@@ -117,7 +117,7 @@ public class HimarsMissileEntity extends MissileProjectile implements GeoEntity 
 
     /** Client: remember the server's position instead of snapping to it; tick() eases towards it. */
     @Override
-    public void lerpTo(double x, double y, double z, float yRot, float xRot, int steps, boolean teleport) {
+    public void lerpTo(double x, double y, double z, float yRot, float xRot, int steps) {
         serverPos = new Vec3(x, y, z);
     }
 
@@ -287,8 +287,8 @@ public class HimarsMissileEntity extends MissileProjectile implements GeoEntity 
     }
 
     @Override
-    public float getGravity() {
-        return tickCount < BOOST ? 0.15F : super.getGravity();
+    protected double getDefaultGravity() {
+        return tickCount < BOOST ? 0.15 : super.getDefaultGravity();
     }
 
     private PlayState movementPredicate(AnimationState<HimarsMissileEntity> event) {

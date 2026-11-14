@@ -12,7 +12,7 @@ public class BTR80CopeModel extends FCPVehicleModel<BTR80CopeEntity> {
 
     @Override
     public ResourceLocation getModelResource(BTR80CopeEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/btr80_cope.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/btr80_cope.geo.json");
     }
 
     @Override

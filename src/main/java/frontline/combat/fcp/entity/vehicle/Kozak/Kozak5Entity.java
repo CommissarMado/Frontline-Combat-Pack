@@ -25,7 +25,7 @@ public class Kozak5Entity extends CamoVehicleBase {
     private float wheelRotation = 0f;
     private float prevWheelRotation = 0f;
     public Kozak5Entity(EntityType<Kozak5Entity> type, Level world) {super(type, world);}
-    @Override protected void defineSynchedData() {super.defineSynchedData(); this.entityData.define(STEERING_ANGLE, 0f);}
+    @Override protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {super.defineSynchedData(builder); builder.define(STEERING_ANGLE, 0f);}
     public float getSteeringAngle() {return this.entityData.get(STEERING_ANGLE);}
     public void setSteeringAngle(float angle) {this.entityData.set(STEERING_ANGLE, angle);}
     public float getPrevSteeringAngle(){return prevSteeringAngle;}

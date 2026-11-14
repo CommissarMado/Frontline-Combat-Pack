@@ -15,7 +15,7 @@ public class StrykerDragoonModel extends FCPVehicleModel<StrykerDragoonEntity> {
 
     private static final String CANNON_WEAPON = "Cannon";
 
-    @Override public ResourceLocation getModelResource(StrykerDragoonEntity a) { return new ResourceLocation(FCP.MODID, "geo/stryker_dragoon.geo.json"); }
+    @Override public ResourceLocation getModelResource(StrykerDragoonEntity a) { return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/stryker_dragoon.geo.json"); }
     @Override public boolean hideForTurretControllerWhileZooming() { return false; }
 
     @Override public @Nullable VehicleModel.TransformContext<StrykerDragoonEntity> collectTransform(String boneName) {

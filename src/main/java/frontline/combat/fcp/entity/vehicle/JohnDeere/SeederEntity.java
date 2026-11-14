@@ -17,11 +17,10 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraftforge.common.IPlantable;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 /**
@@ -79,14 +78,18 @@ public class SeederEntity extends AbstractTrailerEntity {
         return isPlantableOnFarmland(this.level(), stack);
     }
 
+    /** Farmland crops: everything built on vanilla's crop and stem blocks, modded ones included. */
+    private static boolean isCrop(Block block) {
+        return block instanceof net.minecraft.world.level.block.CropBlock
+                || block instanceof net.minecraft.world.level.block.StemBlock;
+    }
+
     /** Asks the item itself whether farmland grows it, so modded seeds work with no list. */
     public static boolean isPlantableOnFarmland(BlockGetter level, ItemStack stack) {
         if (stack.isEmpty()) return false;
         if (!(stack.getItem() instanceof BlockItem blockItem)) return false;
         Block block = blockItem.getBlock();
-        if (!(block instanceof IPlantable plantable)) return false;
-        return Blocks.FARMLAND.defaultBlockState()
-                .canSustainPlant(level, BlockPos.ZERO, Direction.UP, plantable);
+        return isCrop(block);
     }
 
     @Override
@@ -185,8 +188,7 @@ public class SeederEntity extends AbstractTrailerEntity {
 
             // canStoreItem gates what's CARRIED; this asks what THIS soil grows.
             Block block = blockItem.getBlock();
-            if (!(block instanceof IPlantable plantable)) continue;
-            if (!soilState.canSustainPlant(level, soil, Direction.UP, plantable)) continue;
+            if (!isCrop(block)) continue;
 
             BlockState crop = block.defaultBlockState();
             if (!crop.canSurvive(level, cropPos)) continue;

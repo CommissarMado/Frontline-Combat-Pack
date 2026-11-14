@@ -31,9 +31,9 @@ public class BMP1Entity extends CamoVehicleBase {
     public BMP1Entity(EntityType<BMP1Entity> type, Level world) {super(type, world);}
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(STEERING_ANGLE, 0f);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(STEERING_ANGLE, 0f);
     }
 
     public float getSteeringAngle() {

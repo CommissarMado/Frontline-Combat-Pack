@@ -11,7 +11,7 @@ public class Uh60MinigunModel extends VehicleModel<Uh60MinigunEntity> {
 
     @Override
     public ResourceLocation getModelResource(Uh60MinigunEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/uh60_minigun.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/uh60_minigun.geo.json");
     }
 
     @Override

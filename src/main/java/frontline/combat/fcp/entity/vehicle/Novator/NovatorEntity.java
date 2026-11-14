@@ -35,10 +35,10 @@ public class NovatorEntity extends CamoVehicleBase {
     public NovatorEntity(EntityType<NovatorEntity> type, Level world) {super(type, world);}
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(STEERING_ANGLE, 0f);
-        this.entityData.define(TUBE_OFF, false);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(STEERING_ANGLE, 0f);
+        builder.define(TUBE_OFF, false);
     }
 
     public float getSteeringAngle() {

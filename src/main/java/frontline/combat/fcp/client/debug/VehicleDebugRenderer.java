@@ -19,14 +19,14 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
-import net.minecraftforge.client.event.RenderLevelStageEvent;
-import net.minecraftforge.client.settings.KeyConflictContext;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
+import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
+import net.neoforged.neoforge.client.settings.KeyConflictContext;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.minecraft.core.registries.BuiltInRegistries;
 import org.joml.Matrix3f;
 import org.joml.Matrix4d;
 import org.joml.Matrix4f;
@@ -50,7 +50,7 @@ import java.util.List;
  * Self-registering (Forge @EventBusSubscriber), so nothing else needs wiring. It is
  * client-only and reads existing SBW accessors, so it works for any VehicleEntity.
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.GAME)
 public final class VehicleDebugRenderer {
 
     /** Toggle this with the key; defaults off. */
@@ -72,8 +72,7 @@ public final class VehicleDebugRenderer {
     // ── input ──────────────────────────────────────────────────────────────────
 
     @SubscribeEvent
-    public static void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase != TickEvent.Phase.END) return;
+    public static void onClientTick(net.neoforged.neoforge.client.event.ClientTickEvent.Post event) {
         while (TOGGLE_KEY.consumeClick()) {
             enabled = !enabled;
             Minecraft mc = Minecraft.getInstance();
@@ -95,7 +94,7 @@ public final class VehicleDebugRenderer {
         Minecraft mc = Minecraft.getInstance();
         if (mc.level == null) return;
 
-        float pt = event.getPartialTick();
+        float pt = event.getPartialTick().getGameTimeDeltaPartialTick(true);
         Camera camera = mc.gameRenderer.getMainCamera();
         Vec3 cam = camera.getPosition();
 
@@ -265,7 +264,7 @@ public final class VehicleDebugRenderer {
         // singleplayer; on a dedicated server the client map is empty and only an attached
         // trailer's synced hitch (above) will draw.
         try {
-            ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(v.getType());
+            ResourceLocation id = BuiltInRegistries.ENTITY_TYPE.getKey(v.getType());
             if (id == null) return;
             TrailerDriverData drv = TrailerDriverConfigs.get(id);
             if (drv == null) return;
@@ -305,18 +304,18 @@ public final class VehicleDebugRenderer {
                              double x2, double y2, double z2,
                              float r, float g, float b, float a) {
         Matrix4f m = pose.last().pose();
-        Matrix3f n = pose.last().normal();
+        PoseStack.Pose n = pose.last();
         float nx = (float) (x2 - x1), ny = (float) (y2 - y1), nz = (float) (z2 - z1);
         float len = Mth.sqrt(nx * nx + ny * ny + nz * nz);
         if (len < 1.0e-6f) return;
         nx /= len; ny /= len; nz /= len;
-        vc.vertex(m, (float) x1, (float) y1, (float) z1).color(r, g, b, a).normal(n, nx, ny, nz).endVertex();
-        vc.vertex(m, (float) x2, (float) y2, (float) z2).color(r, g, b, a).normal(n, nx, ny, nz).endVertex();
+        vc.addVertex(m, (float) x1, (float) y1, (float) z1).setColor(r, g, b, a).setNormal(n, nx, ny, nz);
+        vc.addVertex(m, (float) x2, (float) y2, (float) z2).setColor(r, g, b, a).setNormal(n, nx, ny, nz);
     }
 
     // ── keybind registration (mod bus) ───────────────────────────────────────────
 
-    @Mod.EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+    @EventBusSubscriber(modid = FCP.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
     public static final class KeyReg {
         @SubscribeEvent
         public static void onRegisterKeys(RegisterKeyMappingsEvent event) {

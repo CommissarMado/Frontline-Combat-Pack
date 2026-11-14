@@ -13,7 +13,7 @@ public class ToyotaHiluxMortarModel extends VehicleModel<ToyotaHiluxMortarEntity
 
     @Override
     public ResourceLocation getModelResource(ToyotaHiluxMortarEntity a) {
-        return new ResourceLocation(FCP.MODID, "geo/toyota_hilux_mortar.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/toyota_hilux_mortar.geo.json");
     }
 
     @Override

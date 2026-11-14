@@ -9,16 +9,17 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import net.minecraftforge.event.RegisterCommandsEvent;
-import net.minecraftforge.event.server.ServerAboutToStartEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.slf4j.Logger;
 
 public final class VpbIntegration {
@@ -51,7 +52,7 @@ public final class VpbIntegration {
         if (!loaded || !source.is(DamageTypes.PLAYER_ATTACK) || !(source.getEntity() instanceof LivingEntity shooter)) return -1f;
         ItemStack held = shooter.getMainHandItem();
         if (held.isEmpty() || !isGunItem(held.getItem().getClass())) return -1f;
-        ResourceLocation id = ForgeRegistries.ITEMS.getKey(held.getItem());
+        ResourceLocation id = BuiltInRegistries.ITEM.getKey(held.getItem());
         return id != null && HEAVY_GUNS.contains(id.getPath()) ? HEAVY_GUN_PEN : GUN_PEN;
     }
 
@@ -62,7 +63,7 @@ public final class VpbIntegration {
         });
     }
 
-    @Mod.EventBusSubscriber(modid = FCP.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    @EventBusSubscriber(modid = FCP.MODID, bus = EventBusSubscriber.Bus.MOD)
     public static final class ModBus {
         private ModBus() {
         }
@@ -79,7 +80,7 @@ public final class VpbIntegration {
         }
     }
 
-    @Mod.EventBusSubscriber(modid = FCP.MODID)
+    @EventBusSubscriber(modid = FCP.MODID)
     public static final class ForgeBus {
         private ForgeBus() {
         }

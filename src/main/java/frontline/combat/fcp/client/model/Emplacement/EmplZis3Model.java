@@ -8,7 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
 public class EmplZis3Model extends FCPVehicleModel<EmplZis3Entity> {
-    @Override public ResourceLocation getModelResource(EmplZis3Entity a) {return new ResourceLocation(FCP.MODID, "geo/empl_zis3.geo.json");}
+    @Override public ResourceLocation getModelResource(EmplZis3Entity a) {return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/empl_zis3.geo.json");}
     @Override public boolean hideForTurretControllerWhileZooming() {return false;}
     @Override public @Nullable VehicleModel.TransformContext<EmplZis3Entity> collectTransform(String boneName) {
         // Breach recoil/reload: drop the breach bone 2.4 Blockbench units when unloaded (sign/scale may need tuning).

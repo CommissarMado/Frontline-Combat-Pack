@@ -11,7 +11,7 @@ public class TyphoonVdvModel extends VehicleModel<TyphoonVdvEntity> {
 
     @Override
     public ResourceLocation getModelResource(TyphoonVdvEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/typhoon_vdv.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/typhoon_vdv.geo.json");
     }
 
     @Override

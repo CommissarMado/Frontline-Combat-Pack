@@ -11,7 +11,7 @@ public class LandRover110Model extends VehicleModel<LandRover110Entity> {
 
     @Override
     public ResourceLocation getModelResource(LandRover110Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/landrover_110.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/landrover_110.geo.json");
     }
 
     @Override

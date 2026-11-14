@@ -7,11 +7,12 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class ModTabs {
 
@@ -19,7 +20,7 @@ public class ModTabs {
 
     // Single merged tab. Icon uses an animated texture (fc_tab_cycle) that cycles the three old
     // tab icons (yellow/red/blue) every 10 ticks (0.5s).
-    public static final RegistryObject<CreativeModeTab> FCP_TAB = TABS.register("fcp_tab", () -> CreativeModeTab.builder()
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> FCP_TAB = TABS.register("fcp_tab", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(ModItems.FC_TAB_ICON.get()))
             .title(Component.translatable("fcptab.fcp_tab"))
             .displayItems((parameters, output) -> {
@@ -254,7 +255,7 @@ public class ModTabs {
 
             }).build());
 
-    @Mod.EventBusSubscriber(modid = FCP.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    @EventBusSubscriber(modid = FCP.MODID, bus = EventBusSubscriber.Bus.MOD)
     public static class Registration {
         @SubscribeEvent
         public static void register(BuildCreativeModeTabContentsEvent event) {

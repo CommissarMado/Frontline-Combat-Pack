@@ -10,7 +10,7 @@ import frontline.combat.fcp.entity.vehicle.T72.T72Entity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
+import software.bernie.geckolib.cache.object.GeoBone;
 
 /**
  * One model for the T-72 family and the T-90A (geo by registry name). Tracks scroll along T72TrackPaths.
@@ -33,7 +33,7 @@ public class T72Model extends FCPVehicleModel<T72Entity> {
 
     @Override
     public ResourceLocation getModelResource(T72Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/" + animatable.variant() + ".geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/" + animatable.variant() + ".geo.json");
     }
 
     @Override
@@ -58,7 +58,7 @@ public class T72Model extends FCPVehicleModel<T72Entity> {
                 VehicleModel.TransformContext<T72Entity> pitch = super.collectTransform("passengerWeaponStationPitch");
                 yield (bone, vehicle, state) -> {
                     if (pitch != null) pitch.transform(bone, vehicle, state);
-                    CoreGeoBone mount = bone.getParent();
+                    GeoBone mount = bone.getParent();
                     // Under a cupola turned 180 degrees the bone's X axis points the other way.
                     if (mount != null) bone.setRotX(bone.getRotX() * Mth.cos(mount.getInitialSnapshot().getRotY()));
                 };

@@ -36,9 +36,9 @@ public class LittlebirdArmedEntity extends CamoVehicleBase {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DOORS, true);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DOORS, true);
     }
 
     public boolean hasDoors() {return this.entityData.get(DOORS);}

@@ -7,7 +7,7 @@ import frontline.combat.fcp.entity.vehicle.Humvee.HumveeUnarmedEntity;
 import frontline.combat.fcp.vehicle.humvee.HumveeAttachments;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 
 /**
  * One model shared by every Caiman MRAP variant. Like the Humvees, the Caimans run on the shared
@@ -21,7 +21,7 @@ public class CaimanModel extends VehicleModel<HumveeUnarmedEntity> {
 
     @Override
     public ResourceLocation getModelResource(HumveeUnarmedEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/" + animatable.humveeName() + ".geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/" + animatable.humveeName() + ".geo.json");
     }
 
     @Override

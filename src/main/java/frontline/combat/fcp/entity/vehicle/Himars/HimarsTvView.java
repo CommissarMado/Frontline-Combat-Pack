@@ -9,10 +9,10 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.TicketType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.ChunkPos;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -32,7 +32,7 @@ import java.util.UUID;
  * way back the player's vehicle and crew are re-sent to them too, so a client that lost track of them while their
  * chunks were away (HimarsEntity holds still meanwhile) gets them back, seated, where the server has them.
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID)
+@EventBusSubscriber(modid = FCP.MODID)
 public final class HimarsTvView {
 
     /** Keeps the launcher's chunk entity-ticking while its gunner looks through a TV missile far away. */
@@ -57,8 +57,8 @@ public final class HimarsTvView {
     }
 
     @SubscribeEvent
-    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END || !(event.player instanceof ServerPlayer player)) return;
+    public static void onPlayerTick(net.neoforged.neoforge.event.tick.PlayerTickEvent.Post event) {
+        if (!(event.getEntity() instanceof ServerPlayer player)) return;
         HimarsMissileEntity missile = missileOf(player);
         if (player.tickCount % 10 == 0 && (missile != null || VIEWING.contains(player.getUUID())
                 || player.getVehicle() instanceof HimarsEntity)) { // TEMPORARY diagnostics

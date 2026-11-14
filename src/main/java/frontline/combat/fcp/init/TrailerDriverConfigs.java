@@ -10,9 +10,10 @@ import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraftforge.event.AddReloadListenerEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.event.AddReloadListenerEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,12 +28,12 @@ import java.util.Map;
  * Keyed by the vehicle's entity registry id (namespace + path).
  * Reloads automatically on /reload — tune hitch offsets without a restart.
  *
- *   TrailerDriverData d = TrailerDriverConfigs.get(new ResourceLocation("fcp", "kamaz"));
- *   boolean canTow       = TrailerDriverConfigs.has(new ResourceLocation("fcp", "kamaz"));
+ *   TrailerDriverData d = TrailerDriverConfigs.get(ResourceLocation.fromNamespaceAndPath("fcp", "kamaz"));
+ *   boolean canTow       = TrailerDriverConfigs.has(ResourceLocation.fromNamespaceAndPath("fcp", "kamaz"));
  *
  * Returns null when a vehicle has no hitch config — null means "cannot tow".
  */
-@Mod.EventBusSubscriber(modid = FCP.MODID)
+@EventBusSubscriber(modid = FCP.MODID)
 public class TrailerDriverConfigs {
 
     private static final String FOLDER = "trailer_driver";
@@ -74,14 +75,16 @@ public class TrailerDriverConfigs {
 
                         TrailerDriverData config = TrailerDriverData.CODEC
                                 .parse(JsonOps.INSTANCE, json)
-                                .getOrThrow(false, err ->
-                                        LOGGER.error("[FCP] Bad trailer_driver config {}: {}", location, err));
+                                .getOrThrow(err -> {
+                                    LOGGER.error("[FCP] Bad trailer_driver config {}: {}", location, err);
+                                    return new IllegalStateException(err);
+                                });
 
                         String stripped = rawPath
                                 .replace(FOLDER + "/", "")
                                 .replace(".json", "");
 
-                        ResourceLocation key = new ResourceLocation(location.getNamespace(), stripped);
+                        ResourceLocation key = ResourceLocation.fromNamespaceAndPath(location.getNamespace(), stripped);
                         loaded.put(key, config);
                         LOGGER.debug("[FCP] Loaded trailer_driver config: {}", key);
 

@@ -18,7 +18,7 @@ public class ToyotaHiluxZu23Model extends VehicleModel<ToyotaHiluxZu23Entity> {
 
     @Override
     public ResourceLocation getModelResource(ToyotaHiluxZu23Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/toyota_hilux_zu23.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/toyota_hilux_zu23.geo.json");
     }
 
     @Override

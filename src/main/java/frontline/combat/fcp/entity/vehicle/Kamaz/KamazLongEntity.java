@@ -27,8 +27,8 @@ public class KamazLongEntity extends CamoVehicleBase {
     private float wheelRotation = 0f;
     private float prevWheelRotation = 0f;
     public KamazLongEntity(EntityType<KamazLongEntity> type, Level world) {super(type, world);}
-    @Override protected void defineSynchedData() {super.defineSynchedData(); this.entityData.define(STEERING_ANGLE, 0f);
-        this.entityData.define(TENT, true);}
+    @Override protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {super.defineSynchedData(builder); builder.define(STEERING_ANGLE, 0f);
+        builder.define(TENT, true);}
     public float getSteeringAngle() {return this.entityData.get(STEERING_ANGLE);}
     public void setSteeringAngle(float a) {this.entityData.set(STEERING_ANGLE, a);}
     public float getPrevSteeringAngle(){return prevSteeringAngle;}

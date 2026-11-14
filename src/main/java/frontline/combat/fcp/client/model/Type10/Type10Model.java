@@ -24,7 +24,7 @@ public class Type10Model extends FCPVehicleModel<Type10Entity> {
 
     @Override
     public ResourceLocation getModelResource(Type10Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/type10.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/type10.geo.json");
     }
 
     @Override

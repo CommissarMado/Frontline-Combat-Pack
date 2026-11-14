@@ -44,9 +44,9 @@ public class BradleyEntity extends CamoVehicleBase implements AtgmLauncherVehicl
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(TOW_RELOADING, false);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(TOW_RELOADING, false);
     }
 
     @Override

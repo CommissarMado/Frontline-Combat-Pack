@@ -11,7 +11,7 @@ import frontline.combat.fcp.entity.vehicle.T90M.T90MEntity;
 import frontline.combat.fcp.vehicle.humvee.HumveeAttachments;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 
 /**
  * All four T-90Ms. No track or wheel animation. The main gun recoils on "GUN" like the Abrams; the commander's
@@ -29,7 +29,7 @@ public class T90MModel extends FCPVehicleModel<T90MEntity> {
 
     @Override
     public ResourceLocation getModelResource(T90MEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/" + animatable.variant() + ".geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/" + animatable.variant() + ".geo.json");
     }
 
     @Override

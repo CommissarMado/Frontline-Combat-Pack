@@ -7,13 +7,13 @@ import frontline.combat.fcp.entity.vehicle.Fmtv4x4.FMTV4x4Entity;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.object.GeoBone;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 
 public class FMTV4x4Model extends VehicleModel<FMTV4x4Entity> {
 
     @Override
     public ResourceLocation getModelResource(FMTV4x4Entity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/fmtv_4x4.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/fmtv_4x4.geo.json");
     }
 
     @Override

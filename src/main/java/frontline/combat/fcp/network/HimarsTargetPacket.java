@@ -4,7 +4,6 @@ import frontline.combat.fcp.entity.vehicle.Himars.HimarsEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.network.NetworkEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
@@ -23,11 +22,11 @@ public class HimarsTargetPacket {
     }
 
     public static void encode(HimarsTargetPacket msg, FriendlyByteBuf buf) {
-        buf.writeNullable(msg.pos, FriendlyByteBuf::writeBlockPos);
+        buf.writeNullable(msg.pos, (b, pos) -> b.writeBlockPos(pos));
     }
 
     public static HimarsTargetPacket decode(FriendlyByteBuf buf) {
-        return new HimarsTargetPacket(buf.readNullable(FriendlyByteBuf::readBlockPos));
+        return new HimarsTargetPacket(buf.readNullable(b -> b.readBlockPos()));
     }
 
     public static void handle(HimarsTargetPacket msg, Supplier<NetworkEvent.Context> ctx) {

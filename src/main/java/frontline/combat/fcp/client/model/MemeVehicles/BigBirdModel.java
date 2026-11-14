@@ -12,7 +12,7 @@ public class BigBirdModel extends VehicleModel<BigBirdEntity> {
 
     @Override
     public ResourceLocation getModelResource(BigBirdEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/bigbird.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/bigbird.geo.json");
     }
 
     @Override

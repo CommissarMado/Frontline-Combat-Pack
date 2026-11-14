@@ -8,7 +8,7 @@ import frontline.combat.fcp.entity.vehicle.Khrizantema.KhrizantemaEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
+import software.bernie.geckolib.cache.object.GeoBone;
 
 import static frontline.combat.fcp.entity.vehicle.Khrizantema.KhrizantemaEntity.*;
 
@@ -51,7 +51,7 @@ public class KhrizantemaModel extends VehicleModel<KhrizantemaEntity> {
 
     @Override
     public ResourceLocation getModelResource(KhrizantemaEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/khrizantema.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/khrizantema.geo.json");
     }
 
     @Override
@@ -140,15 +140,15 @@ public class KhrizantemaModel extends VehicleModel<KhrizantemaEntity> {
         return t * t * (3f - 2f * t);
     }
 
-    private static float restX(CoreGeoBone bone) {
+    private static float restX(GeoBone bone) {
         return bone.getInitialSnapshot().getRotX();
     }
 
-    private static float restY(CoreGeoBone bone) {
+    private static float restY(GeoBone bone) {
         return bone.getInitialSnapshot().getRotY();
     }
 
-    private static float restZ(CoreGeoBone bone) {
+    private static float restZ(GeoBone bone) {
         return bone.getInitialSnapshot().getRotZ();
     }
 }

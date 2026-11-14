@@ -25,7 +25,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.client.gui.overlay.ForgeGui;
+import net.minecraft.client.player.LocalPlayer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -120,9 +120,9 @@ public class LandVehicleHudStatsMixin {
     // the T-72s'/T-90A's NSVT/Kord are aimed through a gunner's sight, the M1A2's CROWS and the
     // T-72AV's cupola through a monitor (SBW's TV frame). The T-72M2 Moderna's sight is PumaCommanderHud.
     private static final ResourceLocation TV_FRAME =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/land/tv_frame.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/land/tv_frame.png");
     private static final ResourceLocation COMMANDER_GUNNER_FRAME =
-            new ResourceLocation("fcp", "textures/overlay/vehicle/frame/gunner.png");
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/overlay/vehicle/frame/gunner.png");
     private static final java.util.Map<String, ResourceLocation> FCP_COMMANDER_FRAMES = java.util.Map.ofEntries(
             java.util.Map.entry("fcp:m1a1", COMMANDER_GUNNER_FRAME),
             java.util.Map.entry("fcp:m1a1_aim", COMMANDER_GUNNER_FRAME),
@@ -171,15 +171,15 @@ public class LandVehicleHudStatsMixin {
     );
 
     private static final ResourceLocation GUNNER_FRAME =
-            new ResourceLocation("fcp", "textures/overlay/vehicle/frame/gunner.png");
+            ResourceLocation.fromNamespaceAndPath("fcp", "textures/overlay/vehicle/frame/gunner.png");
     private static final ResourceLocation COMPASS =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/base/compass.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/base/compass.png");
     private static final ResourceLocation LINE =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/land/line.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/land/line.png");
     private static final ResourceLocation ROLL_IND =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/helicopter/roll_ind.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/helicopter/roll_ind.png");
     private static final ResourceLocation BODY =
-            new ResourceLocation("superbwarfare", "textures/overlay/vehicle/land/body.png");
+            ResourceLocation.fromNamespaceAndPath("superbwarfare", "textures/overlay/vehicle/land/body.png");
 
     @Inject(
             method = "render",
@@ -188,10 +188,7 @@ public class LandVehicleHudStatsMixin {
             remap = false
     )
     private void replaceLandHudForFcp(
-            VehicleEntity vehicle,
-            Player player,
-            ForgeGui gui,
-            GuiGraphics guiGraphics,
+            VehicleEntity vehicle, LocalPlayer player, GuiGraphics guiGraphics,
             float partialTick,
             int screenWidth,
             int screenHeight,
@@ -220,7 +217,7 @@ public class LandVehicleHudStatsMixin {
         if (commanderFrame != null
                 && vehicle.getSeatIndex(player) == vehicle.computed().getPassengerWeaponStationControllerIndex()) {
             ci.cancel();
-            Minecraft mc = gui.getMinecraft();
+            Minecraft mc = Minecraft.getInstance();
             if (mc.options.getCameraType() == CameraType.FIRST_PERSON || ClientEventHandler.zoomVehicle) {
                 RenderSystem.disableDepthTest();
                 RenderSystem.depthMask(false);
@@ -238,7 +235,7 @@ public class LandVehicleHudStatsMixin {
         // Only render for the turret controller seat
         if (vehicle.getSeatIndex(player) != vehicle.computed().getTurretControllerIndex() && !isPassengerGunner) return;
 
-        Minecraft mc = gui.getMinecraft();
+        Minecraft mc = Minecraft.getInstance();
         int color = vehicle.getHudColor();
         var poseStack = guiGraphics.pose();
 
@@ -262,24 +259,24 @@ public class LandVehicleHudStatsMixin {
             }
 
             // Line below crosshair
-            RenderHelper.blit(poseStack, LINE,
+            RenderHelper.preciseBlitWithColor(guiGraphics, LINE,
                     screenWidth / 2f - 64, screenHeight - 56f,
                     0f, 0f, 128f, 1f, 128f, 1f, color);
 
             // Compass
-            RenderHelper.blit(poseStack, COMPASS,
+            RenderHelper.preciseBlitWithColor(guiGraphics, COMPASS,
                     screenWidth / 2f - 128, 10f,
                     128 + (64f / 45 * player.getYRot()), 0f,
                     256f, 16f, 512f, 16f, color);
 
             // Roll indicator
-            RenderHelper.blit(poseStack, ROLL_IND,
+            RenderHelper.preciseBlitWithColor(guiGraphics, ROLL_IND,
                     screenWidth / 2f - 8, 30f,
                     0f, 0f, 16f, 16f, 16f, 16f, color);
 
             // Turret health bar
             int turretHeal = (int)(100 - (100 * vehicle.getTurretHealth() / vehicle.getTurretMaxHealth()));
-            RenderHelper.blit(poseStack, LINE,
+            RenderHelper.preciseBlitWithColor(guiGraphics, LINE,
                     screenWidth / 2f + 112, screenHeight - 71f,
                     0f, 0f, 1f, 16f, 1f, 16f,
                     MathTool.getGradientColor(color, 0xFF0000, turretHeal, 2));
@@ -293,7 +290,7 @@ public class LandVehicleHudStatsMixin {
                     screenWidth / 2f + 112, screenHeight - 56f, 0f
             );
             int bodyHeal = (int)(100 - (100 * vehicle.getHealth() / vehicle.getMaxHealth()));
-            RenderHelper.blit(poseStack, BODY,
+            RenderHelper.preciseBlitWithColor(guiGraphics, BODY,
                     screenWidth / 2f + 96, screenHeight - 72f,
                     0f, 0f, 32f, 32f, 32f, 32f,
                     MathTool.getGradientColor(color, 0xFF0000, bodyHeal, 2));
@@ -352,9 +349,9 @@ public class LandVehicleHudStatsMixin {
      * fire smoke but isn't the first passenger (the first passenger already got SBW's own line).
      */
     @Inject(method = "render", at = @At("RETURN"), remap = false)
-    private void fcp$gunnerSmokeInfo(VehicleEntity vehicle, Player player, ForgeGui gui, GuiGraphics guiGraphics,
+    private void fcp$gunnerSmokeInfo(VehicleEntity vehicle, LocalPlayer player, GuiGraphics guiGraphics,
                                      float partialTick, int screenWidth, int screenHeight, CallbackInfo ci) {
-        Minecraft mc = gui.getMinecraft();
+        Minecraft mc = Minecraft.getInstance();
         if ((mc.options.getCameraType() == CameraType.FIRST_PERSON || ClientEventHandler.zoomVehicle)
                 && vehicle.getFirstPassenger() != player) {
             renderSmokeInfo(vehicle, player, guiGraphics, screenWidth, screenHeight, vehicle.getHudColor());

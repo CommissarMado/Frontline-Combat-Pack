@@ -38,13 +38,9 @@ import java.util.Map;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.core.Direction;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.energy.IEnergyStorage;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.wrapper.InvWrapper;
-import net.minecraftforge.network.NetworkHooks;
+import net.neoforged.neoforge.energy.IEnergyStorage;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.wrapper.InvWrapper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -69,7 +65,7 @@ import org.jetbrains.annotations.Nullable;
  *
  * canBind() is true here, which is what actually exposes these vehicles to the indicator.
  */
-public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements VehicleInventory, EngineControlled {
+public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements FcpItemHandlerSource, VehicleInventory, EngineControlled {
 
     /** Allows the Artillery Indicator to bind to this vehicle for remote aiming. */
     @Override
@@ -229,9 +225,9 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
             SynchedEntityData.defineId(CamoArtilleryBase.class, EntityDataSerializers.BYTE);
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(FCP_ENGINE_STATE, EngineControl.OFF);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(FCP_ENGINE_STATE, EngineControl.OFF);
     }
 
     @Override
@@ -330,12 +326,12 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
 
     /**
      * Exposes {@link #getVehicleInventory()} as the entity's ITEM_HANDLER capability, so
-     * SBW's ammo system (count, reload, consume — all via getCapability(ITEM_HANDLER)) reads
+     * SBW's ammo system (count, reload, consume — all via the ITEM_HANDLER capability) reads
      * and consumes ammo straight from the SAME container the GUI edits. One source of truth,
      * no mirroring. InvWrapper honours the container's canPlaceItem (our filter) on insert;
-     * extraction (firing) is unrestricted. Created lazily, invalidated in invalidateCaps().
+     * extraction (firing) is unrestricted. Created lazily; handed to NeoForge by FcpCapabilities.
      */
-    private LazyOptional<IItemHandler> ammoItemHandler = LazyOptional.empty();
+    private @Nullable IItemHandler ammoItemHandler;
 
     /** No cargo by default. Override per vehicle. */
     @Override
@@ -398,27 +394,18 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
     }
 
     /**
-     * Route the vehicle's ITEM_HANDLER capability to our own cargo/ammo container. SBW's
-     * ammo pipeline resolves ammo through ammoSupplier.getCapability(ITEM_HANDLER); pointing
+     * Route the vehicle's item-handler capability (registered in FcpCapabilities) to our own cargo/ammo container. SBW's
+     * ammo pipeline resolves ammo through ammoSupplier.the ITEM_HANDLER capability; pointing
      * that at getVehicleInventory() means the gun sees exactly what the player loads in the
      * GUI. Any other capability (energy, etc.) falls through to SBW.
      */
     @Override
-    public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (cap == ForgeCapabilities.ITEM_HANDLER && hasVehicleInventory()) {
-            if (!ammoItemHandler.isPresent()) {
-                ammoItemHandler = LazyOptional.of(() -> new InvWrapper(getVehicleInventory()));
-            }
-            return ammoItemHandler.cast();
-        }
-        return super.getCapability(cap, side);
+    public @Nullable IItemHandler fcp$itemHandler() {
+        if (!hasVehicleInventory()) return null;
+        if (ammoItemHandler == null) ammoItemHandler = new InvWrapper(getVehicleInventory());
+        return ammoItemHandler;
     }
 
-    @Override
-    public void invalidateCaps() {
-        super.invalidateCaps();
-        ammoItemHandler.invalidate();
-    }
 
     /** Fractional idle burn carried between ticks (IdleFuel). */
     private double idleFuel;
@@ -451,7 +438,7 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
             ItemStack stack = inventory.getItem(i);
             if (stack.isEmpty()) continue;
 
-            IEnergyStorage source = stack.getCapability(ForgeCapabilities.ENERGY).resolve().orElse(null);
+            IEnergyStorage source = stack.getCapability(net.neoforged.neoforge.capabilities.Capabilities.EnergyStorage.ITEM);
             if (source == null || source.getEnergyStored() <= 0) continue;
 
             int extracted = source.extractEnergy(Math.min(source.getEnergyStored(), needed), false);
@@ -473,7 +460,7 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
         // already lives in another channel can't start a second one.
         int channel = slot / Math.max(1, bulkSlotsPerChannel());
         ItemStack type = bulkTypeOf(channel);
-        if (!type.isEmpty()) return ItemStack.isSameItemSameTags(type, stack);
+        if (!type.isEmpty()) return ItemStack.isSameItemSameComponents(type, stack);
         return bulkChannelOf(stack) < 0;
     }
 
@@ -489,7 +476,7 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
         // Tidy any mixed channel before it's shown, so the player never looks at one.
         normalizeBulkChannels();
         SimpleContainer inventory = getVehicleInventory();
-        NetworkHooks.openScreen(player,
+        player.openMenu(
                 new SimpleMenuProvider(
                         (id, playerInv, p) -> new VehicleInventoryMenu(id, playerInv, inventory, this,
                                 inventoryStyle(), Math.max(1, bulkChannels())),
@@ -669,7 +656,7 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
         super.addAdditionalSaveData(compound);
         compound.putByte("FcpEngineState", fcp$getEngineState());
         if (hasVehicleInventory()) {
-            compound.put("VehicleInventory", getVehicleInventory().createTag());
+            compound.put("VehicleInventory", getVehicleInventory().createTag(this.registryAccess()));
         }
     }
 
@@ -679,7 +666,7 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
         if (compound.contains("FcpEngineState")) fcp$setEngineState(compound.getByte("FcpEngineState"));
         VehicleSkins.migrateLegacyCamo(this, compound);
         if (hasVehicleInventory() && compound.contains("VehicleInventory", Tag.TAG_LIST)) {
-            getVehicleInventory().fromTag(compound.getList("VehicleInventory", Tag.TAG_COMPOUND));
+            getVehicleInventory().fromTag(compound.getList("VehicleInventory", Tag.TAG_COMPOUND), this.registryAccess());
             // Saved contents were laid out against whatever the channel count and size were
             // at the time. If either has changed since, the old stacks now fall across
             // different boundaries and a channel can hold two types. Repair on load.
@@ -720,7 +707,7 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
                     type = stack; // this channel's type is the first thing in it
                     continue;
                 }
-                if (ItemStack.isSameItemSameTags(type, stack)) continue;
+                if (ItemStack.isSameItemSameComponents(type, stack)) continue;
 
                 // A stray: belongs to some other channel.
                 int target = bulkChannelOf(stack);
@@ -749,7 +736,7 @@ public abstract class CamoArtilleryBase extends GeckoArtilleryEntity implements 
             ItemStack slot = inventory.getItem(i);
             if (slot.isEmpty()) {
                 inventory.setItem(i, stack.split(Math.min(stack.getCount(), stack.getMaxStackSize())));
-            } else if (ItemStack.isSameItemSameTags(slot, stack)) {
+            } else if (ItemStack.isSameItemSameComponents(slot, stack)) {
                 int space = slot.getMaxStackSize() - slot.getCount();
                 if (space <= 0) continue;
                 int moved = Math.min(space, stack.getCount());

@@ -13,7 +13,7 @@ public class BMP1PModel extends FCPVehicleModel<BMP1PEntity> {
 
     @Override
     public ResourceLocation getModelResource(BMP1PEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/bmp1p.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/bmp1p.geo.json");
     }
 
     @Override

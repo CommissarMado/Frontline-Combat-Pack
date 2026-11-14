@@ -7,7 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.object.GeoBone;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 
 public class MI8DoorGunsModel extends VehicleModel<MI8DoorGunsEntity> {
 
@@ -32,7 +32,7 @@ public class MI8DoorGunsModel extends VehicleModel<MI8DoorGunsEntity> {
 
     @Override
     public ResourceLocation getModelResource(MI8DoorGunsEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/mi8_door_guns.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/mi8_door_guns.geo.json");
     }
 
     @Override

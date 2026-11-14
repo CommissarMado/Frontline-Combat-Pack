@@ -104,15 +104,15 @@ public class MI17DoorGunsEntity extends CamoVehicleBase {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(TOGGLE6, true);
-        this.entityData.define(TOGGLE4, true);
-        this.entityData.define(TOGGLE5, true);
-        this.entityData.define(TOGGLE2, true);
-        this.entityData.define(TOGGLE1, true);
-        this.entityData.define(TOGGLE3, true);
-        this.entityData.define(TOGGLE, true);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(TOGGLE6, true);
+        builder.define(TOGGLE4, true);
+        builder.define(TOGGLE5, true);
+        builder.define(TOGGLE2, true);
+        builder.define(TOGGLE1, true);
+        builder.define(TOGGLE3, true);
+        builder.define(TOGGLE, true);
     }
 
     public boolean hasToggle6() {return this.entityData.get(TOGGLE6);}

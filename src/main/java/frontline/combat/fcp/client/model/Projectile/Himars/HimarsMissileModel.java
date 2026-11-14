@@ -10,16 +10,16 @@ public class HimarsMissileModel extends GeoModel<HimarsMissileEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(HimarsMissileEntity entity) {
-        return new ResourceLocation("superbwarfare", "animations/javelin.animation.json");
+        return ResourceLocation.fromNamespaceAndPath("superbwarfare", "animations/javelin.animation.json");
     }
 
     @Override
     public ResourceLocation getModelResource(HimarsMissileEntity entity) {
-        return new ResourceLocation(FCP.MODID, "geo/himars_missile.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "geo/himars_missile.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(HimarsMissileEntity entity) {
-        return new ResourceLocation(FCP.MODID, "textures/entity/himars/dark_grey.png");
+        return ResourceLocation.fromNamespaceAndPath(FCP.MODID, "textures/entity/himars/dark_grey.png");
     }
 }

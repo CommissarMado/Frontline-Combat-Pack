@@ -45,9 +45,9 @@ public class M113Entity extends CamoVehicleBase implements HumveeVehicle {
     @Override public InventoryStyle inventoryStyle() { return InventoryStyle.GRID; }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(ATTACHMENTS, "");
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(ATTACHMENTS, "");
     }
 
     // ---- attachment state (same encoding as the Humvees) ----
