@@ -47,6 +47,30 @@
       "Name": "Camo 8",
       "Texture": "fcp:textures/entity/ural/ural_8.png",
       "Priority": 8
+    },
+    {
+      "Id": "camo_9",
+      "Name": "Camo 9",
+      "Texture": "fcp:textures/entity/ural/ural_9.png",
+      "Priority": 9
+    },
+    {
+      "Id": "camo_10",
+      "Name": "Camo 10",
+      "Texture": "fcp:textures/entity/ural/ural_10.png",
+      "Priority": 10
+    },
+    {
+      "Id": "camo_11",
+      "Name": "Camo 11",
+      "Texture": "fcp:textures/entity/ural/ural_11.png",
+      "Priority": 11
+    },
+    {
+      "Id": "camo_12",
+      "Name": "Camo 12",
+      "Texture": "fcp:textures/entity/ural/ural_12.png",
+      "Priority": 12
     }
   ]
 }
