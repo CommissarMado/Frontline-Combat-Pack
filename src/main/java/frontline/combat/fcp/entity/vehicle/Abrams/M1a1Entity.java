@@ -100,6 +100,18 @@ public class M1a1Entity extends CamoVehicleBase implements HumveeVehicle, CamoNe
 
     /** Seat order: driver, gunner, commander station, loader. */
     public static final int LOADER_SEAT = 3;
+    /** Weapon key of the loader's MG: its seat is the loader's, whatever the crew layout. */
+    public static final String LOADER_WEAPON = "LoaderMachineGun";
+
+    /**
+     * The loader's seat index: the seat carrying {@link #LOADER_WEAPON}. Multicrew has it at {@link #LOADER_SEAT} (driver,
+     * gunner, commander, loader), single-crew at 2 (no driver seat) - so it is read from the config, not assumed.
+     */
+    public int loaderSeat() {
+        List<SeatInfo> seats = computed().seats();
+        for (int i = 0; i < seats.size(); i++) if (seats.get(i).weapons().contains(LOADER_WEAPON)) return i;
+        return LOADER_SEAT;
+    }
     public static final String LOADER_BARREL = "LoaderBarrel";
 
     /** turret3 pivot relative to the turret, and barrel3 pivot relative to the turret (blocks, from the 0.8x-resized geos). */
@@ -111,10 +123,11 @@ public class M1a1Entity extends CamoVehicleBase implements HumveeVehicle, CamoNe
      * +pitch down), clamped to the loader seat's limits - the same limits SBW applies to the view.
      */
     public float[] loaderAim(float partialTick) {
-        Entity loader = getNthEntity(LOADER_SEAT);
+        Entity loader = getNthEntity(loaderSeat());
         List<SeatInfo> seats = computed().seats();
-        if (loader == null || seats.size() <= LOADER_SEAT) return new float[]{0f, 0f};
-        SeatInfo seat = seats.get(LOADER_SEAT);
+        int loaderSeat = loaderSeat();
+        if (loader == null || seats.size() <= loaderSeat) return new float[]{0f, 0f};
+        SeatInfo seat = seats.get(loaderSeat);
         Vec3 turret = getTurretVector(partialTick);
         float turretYaw = (float) (-Mth.atan2(turret.x, turret.z) * Mth.RAD_TO_DEG);
         float turretPitch = (float) (-Mth.atan2(turret.y, turret.horizontalDistance()) * Mth.RAD_TO_DEG);
@@ -145,7 +158,7 @@ public class M1a1Entity extends CamoVehicleBase implements HumveeVehicle, CamoNe
     @Override
     public void copyEntityData(Entity entity) {
         super.copyEntityData(entity);
-        if (getSeatIndex(entity) == LOADER_SEAT) {
+        if (getSeatIndex(entity) == loaderSeat()) {
             Vec3 turret = getTurretVector(1f);
             float turretYaw = (float) (-Mth.atan2(turret.x, turret.z) * Mth.RAD_TO_DEG);
             entity.setYBodyRot(turretYaw + loaderAim(1f)[0]);

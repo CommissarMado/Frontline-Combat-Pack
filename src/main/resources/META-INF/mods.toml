@@ -84,6 +84,16 @@ versionRange = "[4.7.2,)"
 ordering = "AFTER"
 side = "BOTH"
 
+# Incompatible: [SBW] Komodo rendering accelerator (modId "komodo") breaks FCP's vehicle rendering.
+# Forge 47 has no "incompatible" dependency type, so it's an optional dependency no real version satisfies:
+# with Komodo installed, Forge stops loading and lists it as the problem.
+[[dependencies.fcp]]
+modId = "komodo"
+mandatory = false
+versionRange = "(,0)"
+ordering = "NONE"
+side = "BOTH"
+
 # Features are specific properties of the game environment, that you may want to declare you require. This example declares
 # that your mod requires GL version 3.2 or higher. Other features will be added. They are side aware so declaring this won't
 # stop your mod loading on the server for example.

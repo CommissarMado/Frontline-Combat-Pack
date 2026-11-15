@@ -29,7 +29,7 @@ public abstract class ChunkMapTvViewMixin {
         return HimarsTvView.viewOf(player).getBlockZ();
     }
 
-    @Redirect(method = {"move", "updatePlayerPos"}, at = @At(value = "INVOKE",
+    @Redirect(method = {"move", "updatePlayerPos"}, require = 0, at = @At(value = "INVOKE",
             target = "Lnet/minecraft/core/SectionPos;of(Lnet/minecraft/world/level/entity/EntityAccess;)Lnet/minecraft/core/SectionPos;"))
     private SectionPos fcp$viewSection(EntityAccess entity) {
         return entity instanceof ServerPlayer player ? SectionPos.of(HimarsTvView.viewOf(player)) : SectionPos.of(entity);

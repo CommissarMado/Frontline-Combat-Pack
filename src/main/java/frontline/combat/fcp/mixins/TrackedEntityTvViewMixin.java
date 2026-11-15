@@ -22,7 +22,9 @@ public abstract class TrackedEntityTvViewMixin {
     @Final
     Entity entity;
 
-    @Redirect(method = "updatePlayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayer;position()Lnet/minecraft/world/phys/Vec3;"))
+    // require = 0: other mods rewrite updatePlayer (a SecurityCraft pack crashed here, 2026-11-15, the position() call
+    // gone); without the hook only the TV-missile entity view is lost, never the game.
+    @Redirect(method = "updatePlayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayer;position()Lnet/minecraft/world/phys/Vec3;"), require = 0)
     private Vec3 fcp$viewPosition(ServerPlayer player) {
         if (entity.getRootVehicle() == player.getRootVehicle()) return player.position();
         return HimarsTvView.viewOf(player).position();
