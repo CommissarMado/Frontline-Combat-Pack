@@ -302,6 +302,9 @@ public class ModEntities {
             EntityType.Builder.of(Mh53Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<Uh60Entity>> UH60 = register("uh60",
             EntityType.Builder.of(Uh60Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    // Black Hawk with the DPV's M240s on the door mounts instead of miniguns (same entity, geo picked by id).
+    public static final RegistryObject<EntityType<Uh60MinigunEntity>> UH60_M240 = register("uh60_m240",
+            EntityType.Builder.of(Uh60MinigunEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<Uh60MinigunEntity>> UH60_MINIGUN = register("uh60_minigun",
             EntityType.Builder.of(Uh60MinigunEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<Mh60lEntity>> MH60L = register("mh60l",
@@ -330,6 +333,9 @@ public class ModEntities {
             EntityType.Builder.of(VenomEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<VenomGunshipEntity>> VENOM_GUNSHIP = register("venom_gunship",
             EntityType.Builder.of(VenomGunshipEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    // Venom with the DPV's M240s on the door mounts instead of miniguns (same entity, geo picked by id).
+    public static final RegistryObject<EntityType<VenomDoorGunsEntity>> VENOM_M240 = register("venom_m240",
+            EntityType.Builder.of(VenomDoorGunsEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<VenomDoorGunsEntity>> VENOM_DOOR_GUNS = register("venom_door_guns",
             EntityType.Builder.of(VenomDoorGunsEntity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<NovatorEntity>> NOVATOR = register("novator",
@@ -398,6 +404,9 @@ public class ModEntities {
     public static final RegistryObject<EntityType<FMTV4x4Entity>> FMTV_4X4 = register("fmtv_4x4",
             EntityType.Builder.of(FMTV4x4Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<Kozak5Entity>> KOZAK5 = register("kozak5",
+            EntityType.Builder.of(Kozak5Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
+    // Kozak-5 with an AGS-17 on the turret instead of the PKM (same entity, geo picked by id).
+    public static final RegistryObject<EntityType<Kozak5Entity>> KOZAK5_AGS = register("kozak5_ags",
             EntityType.Builder.of(Kozak5Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));
     public static final RegistryObject<EntityType<Kozak2m1Entity>> KOZAK2M1 = register("kozak2m1",
             EntityType.Builder.of(Kozak2m1Entity::new, MobCategory.MISC).setTrackingRange(512).setUpdateInterval(1).fireImmune().sized(3f,2f));

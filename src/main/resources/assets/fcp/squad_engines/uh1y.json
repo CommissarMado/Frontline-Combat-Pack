@@ -1,6 +1,6 @@
 {
   "_comment": "Generated from the Squad SDK: UH1Y_engine_rpm_rotors_Cue.uasset (+ start/stop cues).",
-  "vehicles": ["fcp:venom", "fcp:venom_gunship", "fcp:venom_door_guns", "fcp:viper"],
+  "vehicles": ["fcp:venom", "fcp:venom_gunship", "fcp:venom_door_guns", "fcp:venom_m240", "fcp:viper"],
   "mode": "helicopter",
   "rotor_pitch": [0.85, 1.0],
   "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },

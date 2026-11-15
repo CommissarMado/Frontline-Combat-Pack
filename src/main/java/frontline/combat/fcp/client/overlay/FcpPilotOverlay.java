@@ -69,6 +69,7 @@ public class FcpPilotOverlay implements IGuiOverlay {
             Map.entry("littlebird_heavy", List.of(1)),
             Map.entry("venom", List.of(0, 1)),
             Map.entry("venom_door_guns", List.of(0, 1)),
+            Map.entry("venom_m240", List.of(0, 1)),
             Map.entry("venom_gunship", List.of(0, 1)),
             Map.entry("huey", List.of(0, 1)),
             Map.entry("huey_m60_door_guns", List.of(0, 1)),
@@ -97,6 +98,7 @@ public class FcpPilotOverlay implements IGuiOverlay {
             Map.entry("uh60", List.of(0, 1)),
             Map.entry("mh60l", List.of(0, 1)),
             Map.entry("uh60_minigun", List.of(0, 1)),
+            Map.entry("uh60_m240", List.of(0, 1)),
             // Camera gunners: the stock HUD is hidden for them (HelicopterHudSeats), so this draws with the weapon line.
             Map.entry("viper", List.of(1)),
             Map.entry("ka52", List.of(1))

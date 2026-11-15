@@ -13,7 +13,8 @@ public class VenomDoorGunsModel extends VehicleModel<VenomDoorGunsEntity> {
 
     @Override
     public ResourceLocation getModelResource(VenomDoorGunsEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/venom_door_guns.geo.json");
+        // venom_door_guns (miniguns) or venom_m240 (the DPV's M240s on the same door mounts): geo by registry id
+        return new ResourceLocation(FCP.MODID, "geo/" + net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(animatable.getType()).getPath() + ".geo.json");
     }
 
     @Override

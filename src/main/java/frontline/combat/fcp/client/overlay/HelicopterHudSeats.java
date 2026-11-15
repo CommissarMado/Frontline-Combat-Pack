@@ -21,6 +21,7 @@ public final class HelicopterHudSeats {
     // fcp:uh60_minigun - same convention FcpPilotOverlay.PILOT_OVERLAY_VEHICLES uses.
     private static final Map<String, List<Integer>> NO_HELICOPTER_HUD_SEATS = Map.ofEntries(
             entry("uh60_minigun", List.of(2, 3)),
+            entry("uh60_m240", List.of(2, 3)),
             // Same reason as VehicleHudSeatVisibilityMixin's map: seat 1 (copilot) on these three
             // now has an inert "CameraTrack" weapon just to drive the front camera bone, not a
             // real gun, so it shouldn't suddenly gain the flight-instrument gunner HUD either.
@@ -29,6 +30,7 @@ public final class HelicopterHudSeats {
             // seats above, so they don't get the pilot's flight-instrument overlay either.
             entry("venom_gunship", List.of(1, 2, 3)),
             entry("venom_door_guns", List.of(1, 2, 3)),
+            entry("venom_m240", List.of(1, 2, 3)),
             // Huey armed variants: seats 2/3 are the door gunners (M60/M134 left/right), same
             // treatment as the UH-60's own gunner seats. Seat 1 (copilot) carries no weapon at
             // all on these variants (no CameraTrack-style trick needed - the Huey has no front

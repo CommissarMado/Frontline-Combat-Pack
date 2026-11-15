@@ -86,7 +86,7 @@ public final class EngineControl {
         // tigr: tigr_engine_start_int_01
         put(m, 28, "fcp:gaz_tigr", "fcp:gaz_tigr_rws", "fcp:gaz_tigr_mg", "fcp:gaz_tigr_gl", "fcp:gaz_tigr_dual");
         // matv: matv_engine_int_start_01
-        put(m, 39, "fcp:komatsu_lav", "fcp:komatsu_lav_shield", "fcp:komatsu_lav_unarmed", "fcp:matv", "fcp:matv_tow", "fcp:matv_crow", "fcp:matv_9in1", "fcp:matv_mk19", "fcp:dingo", "fcp:dingo_mg3", "fcp:dingo_m2", "fcp:dingo_gmg", "fcp:novator", "fcp:novator_unarmed", "fcp:novator_stugna", "fcp:kozak5", "fcp:kozak2m1", "fcp:kozak_ambulance");
+        put(m, 39, "fcp:komatsu_lav", "fcp:komatsu_lav_shield", "fcp:komatsu_lav_unarmed", "fcp:matv", "fcp:matv_tow", "fcp:matv_crow", "fcp:matv_9in1", "fcp:matv_mk19", "fcp:dingo", "fcp:dingo_mg3", "fcp:dingo_m2", "fcp:dingo_gmg", "fcp:novator", "fcp:novator_unarmed", "fcp:novator_stugna", "fcp:kozak5", "fcp:kozak5_ags", "fcp:kozak2m1", "fcp:kozak_ambulance");
         // us_truck: us_truck_engine_start_int_01 (FMTV; also the RG-33 and Caimans, which need a heavier engine)
         put(m, 53, "fcp:m939", "fcp:fmtv", "fcp:fmtv_4x4", "fcp:himars",
                 "fcp:rg_33", "fcp:caiman", "fcp:caiman_unarmed", "fcp:caiman_police", "fcp:caiman_uparmored", "fcp:caiman_uparmored_unarmed");
@@ -98,9 +98,9 @@ public final class EngineControl {
         put(m, 70, "fcp:suburban", "fcp:hmmwv_ambulance", "fcp:hmmwv_armored_m2", "fcp:hmmwv_armored_mk19", "fcp:hmmwv_armored_unarmed", "fcp:hmmwv_asrad", "fcp:hmmwv_avenger", "fcp:hmmwv_cargo", "fcp:hmmwv_shelter", "fcp:hmmwv_soft_top", "fcp:hmmwv_soft_top_no_doors", "fcp:toyota_hmv", "fcp:hmmwv_unarmored_m2", "fcp:hmmwv_unarmored_m2_shield", "fcp:hmmwv_unarmored_m2_turret", "fcp:hmmwv_unarmored_tow", "fcp:hmmwv_unarmored_tow_turret", "fcp:hmmwv_unarmored_unarmed");
         // Helicopters: Squad rotor start (int), 20 s. Only HELICOPTER_HOLD_TICKS of it is a hold.
         put(m, 400, "fcp:littlebird", "fcp:littlebird_armed", "fcp:littlebird_heavy", "fcp:bigbird", "fcp:oh1");
-        put(m, 400, "fcp:uh60", "fcp:uh60_minigun", "fcp:mh60l");
+        put(m, 400, "fcp:uh60", "fcp:uh60_minigun", "fcp:uh60_m240", "fcp:mh60l");
         put(m, 400, "fcp:huey", "fcp:huey_m60_door_guns", "fcp:huey_m60_gunship", "fcp:huey_m134_door_guns", "fcp:huey_m134_gunship");
-        put(m, 400, "fcp:venom", "fcp:venom_gunship", "fcp:venom_door_guns", "fcp:viper");
+        put(m, 400, "fcp:venom", "fcp:venom_gunship", "fcp:venom_door_guns", "fcp:venom_m240", "fcp:viper");
         put(m, 400, "fcp:mi8", "fcp:mi17", "fcp:mi8_door_guns", "fcp:mi17_door_guns", "fcp:mi8_mtv", "fcp:mi8_amtsh", "fcp:ka52", "fcp:ch53a", "fcp:ch53e", "fcp:mh53");
         // ch47: SPM mod CH-47D start (Startup_INT_APU__001_FADE), 23.1 s
         put(m, 462, "fcp:ch47");

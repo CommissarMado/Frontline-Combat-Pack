@@ -44,33 +44,35 @@ public abstract class VehicleHudSeatVisibilityMixin {
     // look like an unarmed passenger seat instead] ]. Keys are the entity id path (no namespace),
     // e.g. "uh60_minigun" matches fcp:uh60_minigun - same convention
     // FcpPilotOverlay.PILOT_OVERLAY_VEHICLES uses.
-    private static final Map<String, List<Integer>> NO_WEAPON_PANEL_SEATS = Map.of(
-            "uh60_minigun", List.of(2, 3),
+    private static final Map<String, List<Integer>> NO_WEAPON_PANEL_SEATS = Map.ofEntries(
+            Map.entry("uh60_minigun", List.of(2, 3)),
+            Map.entry("uh60_m240", List.of(2, 3)),
             // Seat 1 on these three is the copilot - it now carries an inert "CameraTrack"
             // weapon purely so the front camera bone can read the copilot's aim (see
             // VenomEntity/VenomGunshipEntity/VenomDoorGunsEntity.getCameraYawDeg), not a real
             // gun, so it should keep looking like a normal unarmed copilot seat.
-            "venom", List.of(1),
+            Map.entry("venom", List.of(1)),
             // Seats 2/3 are the door gunners (MinigunRight/MinigunLeft) - same treatment as the
             // Black Hawk's own gunner seats above, for the same reason: they have a real weapon,
             // but they're a fixed door gun, not the pilot, so they shouldn't show the vehicle's
             // main weapon/ammo panel either.
-            "venom_gunship", List.of(1, 2, 3),
-            "venom_door_guns", List.of(1, 2, 3),
+            Map.entry("venom_gunship", List.of(1, 2, 3)),
+            Map.entry("venom_door_guns", List.of(1, 2, 3)),
+            Map.entry("venom_m240", List.of(1, 2, 3)),
             // Huey armed variants: seats 2/3 are the door gunners (M60/M134 left/right), same
             // treatment as the UH-60's own gunner seats. Seat 1 (copilot) carries no weapon on
             // these variants, so it never shows this panel in the first place.
-            "huey_m60_door_guns", List.of(2, 3),
-            "huey_m60_gunship", List.of(2, 3),
-            "huey_m134_door_guns", List.of(2, 3),
-            "huey_m134_gunship", List.of(2, 3),
+            Map.entry("huey_m60_door_guns", List.of(2, 3)),
+            Map.entry("huey_m60_gunship", List.of(2, 3)),
+            Map.entry("huey_m134_door_guns", List.of(2, 3)),
+            Map.entry("huey_m134_gunship", List.of(2, 3)),
             // Mi-17 door-gun variant: seats 2/3 are the pintle-mounted PKM door gunners
             // (PKMRight/PKMLeft), same treatment as the UH-60/Huey/Venom gunner seats above.
-            "mi17_door_guns", List.of(2, 3),
+            Map.entry("mi17_door_guns", List.of(2, 3)),
             // Mi-8 door-gun variant only has the one pintle PKM (seat 2, "PKMLeft"). Seat 1 is
             // the nose gunner (real "NoseGun" weapon, copilot position) - left OUT of this list
             // deliberately, since that seat is meant to keep the pilot-style weapon/ammo panel.
-            "mi8_door_guns", List.of(2)
+            Map.entry("mi8_door_guns", List.of(2))
     );
 
     @Inject(method = "renderWeaponInfo", at = @At("HEAD"), cancellable = true)

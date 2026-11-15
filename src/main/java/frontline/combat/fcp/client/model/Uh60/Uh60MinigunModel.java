@@ -11,7 +11,8 @@ public class Uh60MinigunModel extends VehicleModel<Uh60MinigunEntity> {
 
     @Override
     public ResourceLocation getModelResource(Uh60MinigunEntity animatable) {
-        return new ResourceLocation(FCP.MODID, "geo/uh60_minigun.geo.json");
+        // uh60_minigun (miniguns) or uh60_m240 (the DPV's M240s on the same door mounts): geo by registry id
+        return new ResourceLocation(FCP.MODID, "geo/" + net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(animatable.getType()).getPath() + ".geo.json");
     }
 
     @Override

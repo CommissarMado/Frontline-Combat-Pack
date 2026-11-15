@@ -1,6 +1,6 @@
 {
   "_comment": "Generated from the Squad SDK: uh60_engine_rpm_rotors_Cue.uasset (+ start/stop cues).",
-  "vehicles": ["fcp:uh60", "fcp:uh60_minigun", "fcp:mh60l"],
+  "vehicles": ["fcp:uh60", "fcp:uh60_minigun", "fcp:uh60_m240", "fcp:mh60l"],
   "mode": "helicopter",
   "rotor_pitch": [0.85, 1.0],
   "rpm": { "max": 1500, "load": 500, "rise": 75, "fall": 50 },

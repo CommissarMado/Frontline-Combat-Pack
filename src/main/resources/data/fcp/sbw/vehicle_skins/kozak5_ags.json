@@ -1,0 +1,34 @@
+{
+  "Skins": [
+    {
+      "Id": "vanilla",
+      "Name": "Camo 1",
+      "Texture": "fcp:textures/entity/kozak/kozak_0.png",
+      "Priority": 1
+    },
+    {
+      "Id": "camo_2",
+      "Name": "Camo 2",
+      "Texture": "fcp:textures/entity/kozak/kozak_1.png",
+      "Priority": 2
+    },
+    {
+      "Id": "camo_3",
+      "Name": "Camo 3",
+      "Texture": "fcp:textures/entity/kozak/kozak_2.png",
+      "Priority": 3
+    },
+    {
+      "Id": "camo_4",
+      "Name": "Camo 4",
+      "Texture": "fcp:textures/entity/kozak/kozak_3.png",
+      "Priority": 4
+    },
+    {
+      "Id": "camo_5",
+      "Name": "Camo 5",
+      "Texture": "fcp:textures/entity/kozak/kozak_4.png",
+      "Priority": 5
+    }
+  ]
+}

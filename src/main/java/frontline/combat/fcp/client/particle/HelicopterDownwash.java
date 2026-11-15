@@ -59,10 +59,10 @@ public final class HelicopterDownwash {
         rotors(new Rotor[]{new Rotor(0.26, 7.27)}, "ka52");
         rotors(new Rotor[]{new Rotor(1.0, 4.69)}, "littlebird");
         rotors(new Rotor[]{new Rotor(1.03, 4.69)}, "littlebird_armed", "littlebird_heavy");
-        rotors(new Rotor[]{new Rotor(0.2, 9.42)}, "mh60l", "uh60", "uh60_minigun");
+        rotors(new Rotor[]{new Rotor(0.2, 9.42)}, "mh60l", "uh60", "uh60_minigun", "uh60_m240");
         rotors(new Rotor[]{new Rotor(0.8, 10.37)}, "mi8", "mi8_amtsh", "mi8_door_guns", "mi8_mtv", "mi17", "mi17_door_guns");
         rotors(new Rotor[]{new Rotor(0, 12.57)}, "oh1");
-        rotors(new Rotor[]{new Rotor(-1.6, 6.83)}, "venom", "venom_door_guns", "venom_gunship");
+        rotors(new Rotor[]{new Rotor(-1.6, 6.83)}, "venom", "venom_door_guns", "venom_m240", "venom_gunship");
         rotors(new Rotor[]{new Rotor(0.81, 8.39)}, "viper");
     }
 

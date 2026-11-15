@@ -104,6 +104,7 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MAN_HX60.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.M109.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.KOZAK5.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.KOZAK5_AGS.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.KOZAK2M1.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.KOZAK_AMBULANCE.get()));
 
@@ -132,6 +133,7 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.VENOM.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.VENOM_GUNSHIP.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.VENOM_DOOR_GUNS.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.VENOM_M240.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.VIPER.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.CH53A.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.CH53E.get()));
@@ -139,6 +141,7 @@ public class ModTabs {
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MH53.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.UH60.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.UH60_MINIGUN.get()));
+                output.accept(ContainerBlockItem.createInstance(ModEntities.UH60_M240.get()));
                 output.accept(ContainerBlockItem.createInstance(ModEntities.MH60L.get()));
 
                 // ---- Japanese Vehicles ----

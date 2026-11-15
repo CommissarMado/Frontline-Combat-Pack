@@ -209,6 +209,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.MH53.get(), Mh53Renderer::new);
         event.registerEntityRenderer(ModEntities.UH60.get(), Uh60Renderer::new);
         event.registerEntityRenderer(ModEntities.UH60_MINIGUN.get(), Uh60MinigunRenderer::new);
+        event.registerEntityRenderer(ModEntities.UH60_M240.get(), Uh60MinigunRenderer::new);
         event.registerEntityRenderer(ModEntities.MH60L.get(), Mh60lRenderer::new);
 
         event.registerEntityRenderer(ModEntities.GAZ_TIGR.get(), GazTigrRenderer::new);
@@ -225,6 +226,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.VENOM.get(), VenomRenderer::new);
         event.registerEntityRenderer(ModEntities.VENOM_GUNSHIP.get(), VenomGunshipRenderer::new);
         event.registerEntityRenderer(ModEntities.VENOM_DOOR_GUNS.get(), VenomDoorGunsRenderer::new);
+        event.registerEntityRenderer(ModEntities.VENOM_M240.get(), VenomDoorGunsRenderer::new);
 
         event.registerEntityRenderer(ModEntities.NOVATOR.get(), NovatorRenderer::new);
         event.registerEntityRenderer(ModEntities.NOVATOR_STUGNA.get(), NovatorRenderer::new);
@@ -263,6 +265,7 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(ModEntities.VW_T4.get(), frontline.combat.fcp.client.renderer.Civ.CivCarRenderer::new);
         event.registerEntityRenderer(ModEntities.FMTV_4X4.get(), frontline.combat.fcp.client.renderer.Fmtv4x4.FMTV4x4Renderer::new);
         event.registerEntityRenderer(ModEntities.KOZAK5.get(), frontline.combat.fcp.client.renderer.Kozak.Kozak5Renderer::new);
+        event.registerEntityRenderer(ModEntities.KOZAK5_AGS.get(), frontline.combat.fcp.client.renderer.Kozak.Kozak5Renderer::new);
         event.registerEntityRenderer(ModEntities.KOZAK2M1.get(), frontline.combat.fcp.client.renderer.Kozak.Kozak2m1Renderer::new);
         event.registerEntityRenderer(ModEntities.KOZAK_AMBULANCE.get(), frontline.combat.fcp.client.renderer.Kozak.KozakAmbulanceRenderer::new);
         event.registerEntityRenderer(ModEntities.MATV_TOW.get(), MATVTOWRenderer::new);

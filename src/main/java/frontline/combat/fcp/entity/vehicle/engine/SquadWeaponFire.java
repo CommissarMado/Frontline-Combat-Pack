@@ -90,6 +90,7 @@ public final class SquadWeaponFire {
             "fcp:huey_m60_gunship",
             "fcp:kozak2m1",
             "fcp:kozak5",
+            "fcp:kozak5_ags",
             "fcp:lav25",
             "fcp:lav25_mg",
             "fcp:littlebird_armed",
@@ -158,9 +159,11 @@ public final class SquadWeaponFire {
             "fcp:uaz_dshka",
             "fcp:uaz_spg9",
             "fcp:uh60_minigun",
+            "fcp:uh60_m240",
             "fcp:ural_grad",
             "fcp:himars",
             "fcp:venom_door_guns",
+            "fcp:venom_m240",
             "fcp:venom_gunship",
             "fcp:viper"
 );
@@ -235,6 +238,7 @@ public final class SquadWeaponFire {
             "fcp:huey_m60_gunship",
             "fcp:kozak2m1",
             "fcp:kozak5",
+            "fcp:kozak5_ags",
             "fcp:lav25",
             "fcp:lav25_mg",
             "fcp:m109",
@@ -298,9 +302,11 @@ public final class SquadWeaponFire {
             "fcp:uaz_dshka",
             "fcp:uaz_spg9",
             "fcp:uh60_minigun",
+            "fcp:uh60_m240",
             "fcp:ural_grad",
             "fcp:himars",
             "fcp:venom_door_guns",
+            "fcp:venom_m240",
             "fcp:venom_gunship"
 );
 
